@@ -44,15 +44,18 @@ CustomScript()
     level endon(#"end_game", #"game_ended");
 	self unlink();
     self.menu_selection = [];
-    self.menu_selection[0] = "weapon info";
-    self.menu_selection[1] = "PaP";
+    self.menu_selection[0] = "Info";
+    self.menu_selection[1] = "PaP AE";
     self.menu_selection[2] = "Dark matter";
-    self.menu_selection[3] = "PaP";
+    self.menu_selection[3] = "PaP VoD";
     self.menu_selection[4] = "Camo";
     self.menu_selection[5] = "Reticle";
-    self.menu_selection[6] = "Map test";
-    self.menu_selection[7] = "skin test";
-    self.menu_selection[8] = "sound test";
+    self.menu_selection[6] = "Change map";
+    self.menu_selection[7] = "Change gametype";
+    self.menu_selection[8] = "Blackout mode";
+    self.menu_selection[9] = "skin test";
+    self.menu_selection[10] = "Weapons";
+    self.menu_selection[11] = "Add bot";
 
     self.menu_cursor = 0;
     self.menu_menu = false;
@@ -132,7 +135,13 @@ HandleMenuButton() {
 
         if (isdefined(weapon) && isdefined(weapon.name)) {
             str_weapon = weapon.name;
-            self IPrintLn("Name: " + weapon.name);
+            self IPrintLn("Weapon: " + weapon.name);
+        }
+        if (isdefined(level.gametype)) {
+            self iprintln("gamemode: " + level.gametype);
+        }
+        if (isdefined(level.script)) {
+            self iprintln("map: " + level.script);
         }
         return false;
     case 1:
@@ -320,7 +329,7 @@ HandleMenuButton() {
             if (map_id < 5) {
                 start_map = 0;
             } else if (map_id > maps.size - 5) {
-                start_map = maps.size - 9;
+                start_map = int(max(0, maps.size - 9));
             } else {
                 start_map = map_id - 5;
             }
@@ -337,7 +346,54 @@ HandleMenuButton() {
         }
         return false;
     case 7:
-        spec = -1;
+        gametype_id = 0;
+        gametypes = array(
+            "warzone_solo",
+            "warzone_duo",
+            "warzone_quad",
+            "warzone_escape_quad_dbno",
+            "conf",
+            "conf_hc",
+            "ctf",
+            "dm",
+            "dm_hc",
+            "dom",
+            "dom_hc",
+            "gun",
+            "koth",
+            "infect",
+            "prop",
+            "sd",
+            "sd_hc",
+            "tdm",
+            "tdm_hc",
+            "control",
+            "bounty",
+            "escort",
+            "sd_cwl",
+            "koth_cwl",
+            "control_cwl",
+            "oic",
+            "clean",
+            "tdm_bb",
+            "tdm_bb_hc",
+            "dom_bb",
+            "dom_bb_hc",
+            "dom_dm",
+            "sas",
+            "dom_snipe_bb",
+            "tdm_snipe_bb",
+            "ztcm_towers",
+            "ztrials",
+            "zclassic",
+            "ztutorial",
+            "ztcm_escape",
+            "ztcm_zod",
+            "zstandard",
+            "ztcm"
+        );
+        while (self useButtonPressed()) waitframe(1);
+        first = true;
         while (true) {
             if (self meleeButtonPressed()) {
                 while (self meleeButtonPressed()) waitframe(1);
@@ -345,29 +401,48 @@ HandleMenuButton() {
             }
             if (self attackButtonPressed()) {
                 while (self attackButtonPressed()) waitframe(1);
-                spec += 1;
+                if (gametype_id === gametypes.size - 1) {
+                    gametype_id = 0;
+                } else {
+                    gametype_id = int(min(gametypes.size, gametype_id + 1));
+                }
             } else if (self adsButtonPressed()) {
                 while (self adsButtonPressed()) waitframe(1);
-                spec = int(max(0, spec - 1));
-            } else {
+                if (gametype_id === 0) {
+                    gametype_id = gametypes.size - 1;
+                } else {
+                    gametype_id = int(max(0, gametype_id - 1));
+                }
+            } else if (self useButtonPressed()) {
+                self iprintln("loading mode " + gametypes[gametype_id] + "...");
+                switchmap_load(level.script, gametypes[gametype_id]);
+	            wait(10);
+                switchmap_switch();
+            } else if (!first) {
                 waitframe(1);
                 continue;
+            } else {
+                first = false;
             }
 
-            self setspecialistindex(spec);       
-	        self player_role::update_fields();  
+            if (gametype_id < 5) {
+                start_map = 0;
+            } else if (gametype_id > gametypes.size - 5) {
+                start_map = int(max(0, gametypes.size - 9));
+            } else {
+                start_map = gametype_id - 5;
+            }
+            end_map = start_map + 9;
+            for (i = start_map; i < end_map; i++) {
+                if (i === gametype_id) {
+                    self iPrintLn("> " + gametypes[i]);
+                } else {
+                    self iPrintLn(gametypes[i]);
+                }
+            }
+
             waitframe(1);
         }
-        // #"hash_26cbd829e32a90c5", #"hash_197817ab19e99648")
-	    // self player_role::set(#"hash_26cbd829e32a90c5", 1);
-        return false;
-    case 8:
-        self iprintln("loading alcatraz");
-        // "mode": "warzone_solo",
-        // warzone_escape_quad_dbno
-
-        // setGameTypeString("warzone_escape_quad_dbno");
-        map("wz_escape");
     /*
     
 	globallogic_audio::set_leader_gametype_dialog(key, undefined, undefined, undefined);
@@ -389,6 +464,439 @@ HandleMenuButton() {
 	}
 	globallogic_audio::set_leader_gametype_dialog(key, undefined, undefined, undefined);
     */
+        return false;
+    case 8:
+        blackout_mode_id = 0;
+        blackout_modes = array(
+            "Base solo",
+            "Base duo",
+            "Base quad",
+            "Base Hot and heavy (TEST)",
+            "Alcatraz",
+            "Alcatraz solo",
+            "Alcatraz duo",
+            "Alcatraz quad",
+            "Base Portal (TEST)"
+        );
+        blackout_modes_map = array(
+            "wz_open_skyscrapers",
+            "wz_open_skyscrapers",
+            "wz_open_skyscrapers",
+            "wz_open_skyscrapers",
+            "wz_escape",
+            "wz_escape",
+            "wz_escape",
+            "wz_escape",
+            "wz_open_skyscrapers"
+        );
+        blackout_modes_gametype = array(
+            "warzone_solo",
+            "warzone_duo",
+            "warzone_quad",
+            "warzone_quad",
+            "warzone_escape_quad_dbno",
+            "warzone_solo",
+            "warzone_duo",
+            "warzone_quad",
+            "warzone_escape_quad_dbno"
+        );
+
+
+        while (self useButtonPressed()) waitframe(1);
+        first = true;
+        while (true) {
+            if (self meleeButtonPressed()) {
+                while (self meleeButtonPressed()) waitframe(1);
+                return false;
+            }
+            if (self attackButtonPressed()) {
+                while (self attackButtonPressed()) waitframe(1);
+                if (blackout_mode_id === blackout_modes.size - 1) {
+                    blackout_mode_id = 0;
+                } else {
+                    blackout_mode_id = int(min(blackout_modes.size, blackout_mode_id + 1));
+                }
+            } else if (self adsButtonPressed()) {
+                while (self adsButtonPressed()) waitframe(1);
+                if (blackout_mode_id === 0) {
+                    blackout_mode_id = blackout_modes.size - 1;
+                } else {
+                    blackout_mode_id = int(max(0, blackout_mode_id - 1));
+                }
+            } else if (self useButtonPressed()) {
+                self iprintln("loading mode " + blackout_modes[blackout_mode_id] + "...");
+                switchmap_load(blackout_modes_map[blackout_mode_id], blackout_modes_gametype[blackout_mode_id]);
+	            wait(10);
+                switchmap_switch();
+            } else if (!first) {
+                waitframe(1);
+                continue;
+            } else {
+                first = false;
+            }
+
+            if (blackout_mode_id < 5) {
+                start_map = 0;
+            } else if (blackout_mode_id > blackout_modes.size - 5) {
+                start_map = int(max(0, blackout_modes.size - 9));
+            } else {
+                start_map = blackout_mode_id - 5;
+            }
+            end_map = start_map + 9;
+            for (i = start_map; i < end_map; i++) {
+                if (i === blackout_mode_id) {
+                    self iPrintLn("> " + blackout_modes[i]);
+                } else {
+                    self iPrintLn(blackout_modes[i]);
+                }
+            }
+
+            waitframe(1);
+        }
+    /*
+    
+	globallogic_audio::set_leader_gametype_dialog(key, undefined, undefined, undefined);
+	if(isdefined(getgametypesetting(#"hash_2992e3d39d55b312")) && getgametypesetting(#"hash_2992e3d39d55b312"))
+	{
+		key = "warSpectreRisingStart";
+	}
+	else if(isdefined(getgametypesetting(#"hash_53d529e82bcf1212")) && getgametypesetting(#"hash_53d529e82bcf1212"))
+	{
+		key = "hcStartWarzone";
+	}
+	else if(isdefined(getgametypesetting(#"hash_4ff7ee3c3a534065")) && getgametypesetting(#"hash_4ff7ee3c3a534065"))
+	{
+		key = "warZombieStart";
+	}
+	else
+	{
+		key = "startWarzone";
+	}
+	globallogic_audio::set_leader_gametype_dialog(key, undefined, undefined, undefined);
+    */
+        return false;
+    case 9:
+        character_id = 0;
+        characters = array(
+            "Invisible",
+            "Battery",
+            "Firebreak",
+            "Nomad",
+            "Prophet",
+            "Ruin",
+            "Seraph",
+            "Ajax",
+            "Crash",
+            "Recon",
+            "Torque",
+            "Dempsey Ultimis",
+            "Nikolai Ultimis",
+            "Richtofen Ultimis",
+            "Takeo Ultimis",
+            "Dempsey Primis",
+            "Nikolai Primis",
+            "Richtofen Primis",
+            "Takeo Primis",
+            "Shadow man",
+            "Bruno",
+            "Diego",
+            "Scarlett",
+            "Shaw",
+            "Bruno (IX)",
+            "Diego (IX)",
+            "Scarlett (IX)",
+            "Shaw (IX)",
+            "Reznov",
+            "Mason",
+            "Woods",
+            "Menendez",
+            "Player man 1",
+            "Player man 2",
+            "Player man 3",
+            "Player man 4",
+            "Player woman 1",
+            "Player woman 2",
+            "Player woman 3",
+            "Player woman 4",
+            "Hudson",
+            "Player lvl 20",
+            "Player lvl 40",
+            "Player lvl 60",
+            "Player lvl 80",
+            "Player lvl 81",
+            "Zero",
+            "Reaper (Classic)",
+            "Outrider",
+            "Misty",
+            "Warden",
+            "Cosmo",
+            "Mason (Kid)",
+            "Zombies (Joe)",
+            "Hudson (Cool)",
+            "Zombies (Jane)",
+            "The Replacer",
+            "Spectre",
+            "Blackjack",
+            "Sergei",
+            "Sarah Hall",
+            "Woods (old)",
+            "Mendendez (top1)",
+            "The Replacer (Green)",
+            "Trejo",
+            "Russman",
+            "M. Shadows",
+            "Reaper",
+            "Price Classic",
+            "T.E.D.D.",
+            "Weaver",
+            "Price Classic",
+            "??? 1",
+            "??? 2",
+            "??? 3",
+            "??? 4",
+            "??? 5"
+        );
+        while (self useButtonPressed()) waitframe(1);
+        first = true;
+        while (true) {
+            if (self meleeButtonPressed()) {
+                while (self meleeButtonPressed()) waitframe(1);
+                return false;
+            }
+            if (self attackButtonPressed()) {
+                while (self attackButtonPressed()) waitframe(1);
+                if (character_id === characters.size - 1) {
+                    character_id = 0;
+                } else {
+                    character_id = int(min(characters.size, character_id + 1));
+                }
+            } else if (self adsButtonPressed()) {
+                while (self adsButtonPressed()) waitframe(1);
+                if (character_id === 0) {
+                    character_id = characters.size - 1;
+                } else {
+                    character_id = int(max(0, character_id - 1));
+                }
+            } else if (self useButtonPressed()) {
+                self IPrintLn("Specialist: " + characters[character_id] + " (" + character_id + ")");
+                self setspecialistindex(character_id);       
+                self player_role::update_fields();  
+                return false;
+            } else if (!first) {
+                waitframe(1);
+                continue;
+            } else {
+                first = false;
+            }
+
+            if (character_id < 5) {
+                start_map = 0;
+            } else if (character_id > characters.size - 5) {
+                start_map = int(max(0, characters.size - 9));
+            } else {
+                start_map = character_id - 5;
+            }
+            end_map = start_map + 9;
+            for (i = start_map; i < end_map; i++) {
+                if (i === character_id) {
+                    self iPrintLn("> " + characters[i]);
+                } else {
+                    self iPrintLn(characters[i]);
+                }
+            }
+
+            waitframe(1);
+        }
+        return false;
+    case 10:
+        weapon_id = 0;
+        weapons = array(
+            "ability_dog",
+            "ability_smart_cover",
+            "ac130",
+            "ai_tank_marker",
+            "ar_accurate_t8",
+            "ar_damage_t8",
+            "ar_fastfire_t8",
+            "ar_galil_t8",
+            "ar_mg1909_t8",
+            "ar_modular_t8",
+            "ar_peacekeeper_t8",
+            "ar_standard_t8",
+            "ar_stealth_t8",
+            "bare_hands",
+            "basketball",
+            "bowie_knife",
+            "claymore",
+            "counteruav",
+            "cymbal_monkey",
+            "dart",
+            "drone_squadron",
+            "eq_acid_bomb",
+            "eq_cluster_semtex_grenade",
+            "eq_concertina_wire",
+            "eq_decoy_grenade",
+            "eq_emp_grenade",
+            "eq_grapple",
+            "eq_gravityslam",
+            "eq_hawk",
+            "eq_localheal",
+            "eq_molotov",
+            "eq_seeker_mine",
+            "eq_sensor",
+            "eq_smoke",
+            "eq_swat_grenade",
+            "eq_tripwire",
+            "eq_wraith_fire",
+            "frag_grenade",
+            "gadget_armor",
+            "gadget_health_boost",
+            "gadget_health_regen",
+            "gadget_health_regen_large",
+            "gadget_health_regen_medium",
+            "gadget_health_regen_small",
+            "gadget_health_regen_squad",
+            "gadget_icepick",
+            "gadget_radiation_field",
+            "gadget_spawnbeacon",
+            "gadget_supplypod",
+            "gadget_vision_pulse",
+            "hatchet",
+            "helicopter_comlink",
+            "hero_annihilator",
+            "hero_flamethrower",
+            "hero_pineapplegun",
+            "knife_loadout",
+            "launcher_standard_t8",
+            "lmg_double_t8",
+            "lmg_heavy_t8",
+            "lmg_spray_t8",
+            "lmg_standard_t8",
+            "lmg_stealth_t8",
+            "melee_bowie",
+            "melee_club_t8",
+            "melee_coinbag_t8",
+            "melee_demohammer_t8",
+            "melee_secretsanta_t8",
+            "melee_slaybell_t8",
+            "melee_stopsign_t8",
+            "melee_zombiearm_t8",
+            "overwatch_helicopter",
+            "pistol_burst_t8",
+            "pistol_fullauto_t8",
+            "pistol_revolver_t8",
+            "pistol_standard_t8",
+            "pistol_topbreak_t8",
+            "planemortar",
+            "ray_gun",
+            "recon_car",
+            "remote_missile",
+            "shock_rifle",
+            "shotgun_fullauto_t8",
+            "shotgun_precision_t8",
+            "shotgun_pump_t8",
+            "shotgun_semiauto_t8",
+            "shotgun_trenchgun_t8",
+            "sig_blade",
+            "sig_bow_quickshot",
+            "sig_buckler_dw",
+            "smg_accurate_t8",
+            "smg_capacity_t8",
+            "smg_drum_pistol_t8",
+            "smg_fastburst_t8",
+            "smg_fastfire_t8",
+            "smg_folding_t8",
+            "smg_handling_t8",
+            "smg_mp40_t8",
+            "smg_standard_t8",
+            "smg_vmp_t8",
+            "sniper_damagesemi_t8",
+            "sniper_fastrechamber_t8",
+            "sniper_locus_t8",
+            "sniper_mini14_t8",
+            "sniper_powerbolt_t8",
+            "sniper_powersemi_t8",
+            "sniper_quickscope_t8",
+            "snowball",
+            "special_ballisticknife_t8_dw",
+            "special_crossbow_t8",
+            "spectre_grenade",
+            "straferun",
+            "supplydrop_marker",
+            "swat_team",
+            "tr_damageburst_t8",
+            "tr_flechette_t8",
+            "tr_leveraction_t8",
+            "tr_longburst_t8",
+            "tr_midburst_t8",
+            "tr_powersemi_t8",
+            "trophy_system",
+            "uav",
+            "ultimate_turret",
+            "willy_pete",
+            "ww_blundergat_t8"
+        );
+        while (self useButtonPressed()) waitframe(1);
+        first = true;
+        while (true) {
+            if (self meleeButtonPressed()) {
+                while (self meleeButtonPressed()) waitframe(1);
+                return false;
+            }
+            if (self attackButtonPressed()) {
+                while (self attackButtonPressed()) waitframe(1);
+                if (weapon_id === weapons.size - 1) {
+                    weapon_id = 0;
+                } else {
+                    weapon_id = int(min(weapons.size, weapon_id + 1));
+                }
+            } else if (self adsButtonPressed()) {
+                while (self adsButtonPressed()) waitframe(1);
+                if (weapon_id === 0) {
+                    weapon_id = weapons.size - 1;
+                } else {
+                    weapon_id = int(max(0, weapon_id - 1));
+                }
+            } else if (self useButtonPressed()) {
+                weapon = getweapon(weapons[weapon_id]);
+
+                if (isdefined(weapon)) {
+                    self giveweapon(weapon);
+                } else {
+                    self iPrintLn("unknown weapon " + weapons[weapon_id]);
+                }
+                return false;
+            } else if (!first) {
+                waitframe(1);
+                continue;
+            } else {
+                first = false;
+            }
+
+            if (weapon_id < 5) {
+                start_map = 0;
+            } else if (weapon_id > weapons.size - 5) {
+                start_map = int(max(0, weapons.size - 9));
+            } else {
+                start_map = weapon_id - 5;
+            }
+            end_map = start_map + 9;
+            for (i = start_map; i < end_map; i++) {
+                if (i === weapon_id) {
+                    self iPrintLn("> " + weapons[i]);
+                } else {
+                    self iPrintLn(weapons[i]);
+                }
+            }
+
+            waitframe(1);
+        }
+        return false;
+    case 11:
+        for (i = 0; i < 20; i++) {
+            AddTestClient();
+            self iprintln("Bot #" + i + " added");
+        }
         return false;
     }
     return true;
