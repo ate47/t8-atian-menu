@@ -351,7 +351,9 @@ HandleMenuButton() {
             "warzone_solo",
             "warzone_duo",
             "warzone_quad",
+            "warzone_escape_duo_dbno",
             "warzone_escape_quad_dbno",
+            "warzone_hot_pursuit",
             "conf",
             "conf_hc",
             "ctf",
@@ -359,20 +361,32 @@ HandleMenuButton() {
             "dm_hc",
             "dom",
             "dom_hc",
+            "dom_snipe_bb",
             "gun",
+            "gun_hc",
             "koth",
+            "koth_bb",
+            "koth_cwl",
             "infect",
+            "infect_hc",
             "prop",
+            "prop_hc",
             "sd",
+            "sd_bb",
             "sd_hc",
             "tdm",
             "tdm_hc",
+            "tdm_bb",
+            "tdm_bb_hc",
+            "tdm_snipe_bb",
             "control",
-            "bounty",
-            "escort",
-            "sd_cwl",
-            "koth_cwl",
+            "control_hc",
             "control_cwl",
+            "bounty",
+            "bounty_hc",
+            "escort",
+            "escort_hc",
+            "sd_cwl",
             "oic",
             "clean",
             "tdm_bb",
@@ -381,6 +395,7 @@ HandleMenuButton() {
             "dom_bb_hc",
             "dom_dm",
             "sas",
+            "sas_hc",
             "dom_snipe_bb",
             "tdm_snipe_bb",
             "ztcm_towers",
@@ -443,62 +458,70 @@ HandleMenuButton() {
 
             waitframe(1);
         }
-    /*
-    
-	globallogic_audio::set_leader_gametype_dialog(key, undefined, undefined, undefined);
-	if(isdefined(getgametypesetting(#"hash_2992e3d39d55b312")) && getgametypesetting(#"hash_2992e3d39d55b312"))
-	{
-		key = "warSpectreRisingStart";
-	}
-	else if(isdefined(getgametypesetting(#"hash_53d529e82bcf1212")) && getgametypesetting(#"hash_53d529e82bcf1212"))
-	{
-		key = "hcStartWarzone";
-	}
-	else if(isdefined(getgametypesetting(#"hash_4ff7ee3c3a534065")) && getgametypesetting(#"hash_4ff7ee3c3a534065"))
-	{
-		key = "warZombieStart";
-	}
-	else
-	{
-		key = "startWarzone";
-	}
-	globallogic_audio::set_leader_gametype_dialog(key, undefined, undefined, undefined);
-    */
-        return false;
     case 8:
         blackout_mode_id = 0;
         blackout_modes = array(
             "Base solo",
             "Base duo",
             "Base quad",
-            "Base Hot and heavy (TEST)",
-            "Alcatraz",
-            "Alcatraz solo",
+
+            "Hot pursuit",
+            "Heavy metal heroes",
+            "Alcatraz Heavy metal heroes",
+
             "Alcatraz duo",
             "Alcatraz quad",
-            "Base Portal (TEST)"
+
+            "Alcatraz duo (dbno)",
+            "Alcatraz quad (dbno)",
+
+            "Alcatraz solo (Base)",
+            "Alcatraz duo (Base)",
+            "Alcatraz quad (Base)"
         );
         blackout_modes_map = array(
+            // base
             "wz_open_skyscrapers",
             "wz_open_skyscrapers",
             "wz_open_skyscrapers",
+
+            // hot pursuit
+            "wz_open_skyscrapers",
             "wz_open_skyscrapers",
             "wz_escape",
+
+            // Alcatraz
             "wz_escape",
             "wz_escape",
+
+            // Alcatraz dbno
             "wz_escape",
-            "wz_open_skyscrapers"
+            "wz_escape",
+
+            // Alcatraz base
+            "wz_escape",
+            "wz_escape",
+            "wz_escape"
         );
         blackout_modes_gametype = array(
+            // base
             "warzone_solo",
             "warzone_duo",
             "warzone_quad",
-            "warzone_quad",
+            // hot pursuit
+            "warzone_hot_pursuit",
+            "warzone_heavy_metal_heroes",
+            "warzone_heavy_metal_heroes",
+            // Alcatraz
+            "warzone_escape_duo",
+            "warzone_escape_quad",
+            // Alcatraz dbno
+            "warzone_escape_duo_dbno",
             "warzone_escape_quad_dbno",
+            // Alcatraz base
             "warzone_solo",
             "warzone_duo",
-            "warzone_quad",
-            "warzone_escape_quad_dbno"
+            "warzone_quad"
         );
 
 
@@ -526,7 +549,11 @@ HandleMenuButton() {
             } else if (self useButtonPressed()) {
                 self iprintln("loading mode " + blackout_modes[blackout_mode_id] + "...");
                 switchmap_load(blackout_modes_map[blackout_mode_id], blackout_modes_gametype[blackout_mode_id]);
-	            wait(10);
+                for (i = 0; i < 10; i++) {
+                    self iprintln("loading mode " + blackout_modes[blackout_mode_id] + "... " + (i + 1) + "/10");
+                    self iprintln("map: " + blackout_modes_map[blackout_mode_id] + ", mode: " + blackout_modes_gametype[blackout_mode_id]);
+                    wait(1);
+                }
                 switchmap_switch();
             } else if (!first) {
                 waitframe(1);
@@ -650,11 +677,10 @@ HandleMenuButton() {
             "T.E.D.D.",
             "Weaver",
             "Price Classic",
-            "??? 1",
-            "??? 2",
-            "??? 3",
-            "??? 4",
-            "??? 5"
+            "Stuhlinger",
+            "Marlton",
+            "Zombies (Joe/Infected)",
+            "Zombies (Jane/Infected)"
         );
         while (self useButtonPressed()) waitframe(1);
         first = true;
@@ -820,6 +846,7 @@ HandleMenuButton() {
             "snowball",
             "special_ballisticknife_t8_dw",
             "special_crossbow_t8",
+            "special_crossbow_t8_sas",
             "spectre_grenade",
             "straferun",
             "supplydrop_marker",
@@ -858,10 +885,24 @@ HandleMenuButton() {
                     weapon_id = int(max(0, weapon_id - 1));
                 }
             } else if (self useButtonPressed()) {
-                weapon = getweapon(weapons[weapon_id]);
+                weapon = getweapon(hash(weapons[weapon_id]));
 
                 if (isdefined(weapon)) {
-                    self giveweapon(weapon);
+                    weapon_options = self calcweaponoptions(0, 0, 0);
+
+                    old_weapon = self GetCurrentWeapon();
+
+                    if (isdefined(old_weapon)) {
+                        self takeweapon(old_weapon);
+                    }
+
+                    self giveweapon(weapon, weapon_options);
+
+                    if (isdefined(weapon.name)) {
+                        self iPrintLn("gave weapon : " + weapon.name);
+                    } else {
+                        self iPrintLn("gave weapon nn: " + weapons[weapon_id]);
+                    }
                 } else {
                     self iPrintLn("unknown weapon " + weapons[weapon_id]);
                 }
