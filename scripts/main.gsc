@@ -467,7 +467,9 @@ HandleMenuButton() {
 
             "Hot pursuit",
             "Heavy metal heroes",
-            "Alcatraz Heavy metal heroes",
+            "Heavy metal heroes (Alcatraz)",
+            "Pandemic",
+            "Pandemic (Alcatraz)",
 
             "Alcatraz duo",
             "Alcatraz quad",
@@ -501,7 +503,9 @@ HandleMenuButton() {
             // Alcatraz base
             "wz_escape",
             "wz_escape",
-            "wz_escape"
+            "wz_escape",
+            
+            "wz_open_skyscrapers"
         );
         blackout_modes_gametype = array(
             // base
@@ -512,6 +516,9 @@ HandleMenuButton() {
             "warzone_hot_pursuit",
             "warzone_heavy_metal_heroes",
             "warzone_heavy_metal_heroes",
+            "warzone_pandemic_quad"
+            "warzone_pandemic_quad"
+
             // Alcatraz
             "warzone_escape_duo",
             "warzone_escape_quad",
@@ -521,7 +528,7 @@ HandleMenuButton() {
             // Alcatraz base
             "warzone_solo",
             "warzone_duo",
-            "warzone_quad"
+            "warzone_quad",
         );
 
 
