@@ -6,9 +6,6 @@ onPlayerConnect()
 {
     //connected
     self thread waitForNotify();
-    
-    while (!self meleeButtonPressed()) waitframe(1);
-    self init_menu();
 }
 
 waitForNotify()
@@ -35,8 +32,10 @@ onPlayerSpawned()
 
     self thread InfiniteAmmo();
     self thread ANoclipBind();
-    self thread Immortal();
+    self thread MainRunner();
+    self thread GunModifier();
 
+    // you can uncomment this part to force a Blackout map
 /*// maps wz
     if (is_warzone()) {
         "wz_open_skyscrapers" // Core map
@@ -69,19 +68,18 @@ onPlayerSpawned()
         }
     }
 //*/
+
+    while (!self meleeButtonPressed()) waitframe(1);
+    self init_menu();
 }
 
-Immortal()
-{
-    while(1)
-    {
-        if(self adsButtonPressed() && self useButtonPressed())
-        {
-            self notify(#"example notify", {#action:#"killround"});
-            while(self useButtonPressed() || self adsButtonPressed()) waitframe(1);
-        }
+MainRunner() {
+    self endon(#"disconnect", #"spawned_player");
+    level endon(#"end_game", #"game_ended");
 
-        if (isdefined(self.tool_maxpoints) && self.tool_maxpoints) {
+    for(;;)
+    {
+        if (is_mod_activated("maxpoints")) {
             if(self.score < 99999) {
                 self.score = 99999;
             }
@@ -97,14 +95,180 @@ Immortal()
     }
 }
 
-InfiniteAmmo()
-{
+GunModifier() {
+    self endon(#"disconnect", #"spawned_player");
+    level endon(#"end_game", #"game_ended");
+    for (;;) 
+    {
+        self waittill("weapon_fired");
+        tool_tpgun = is_mod_activated("tpgun");
+        tool_tankgun = is_mod_activated("tankgun");
+        tool_missilegun = is_mod_activated("missilegun");
+        tool_missilegun2 = is_mod_activated("missilegun2");
+        tool_missilegun3 = is_mod_activated("missilegun3");
+        tool_a10gun = is_mod_activated("a10gun");
+        tool_zmnova_white = is_mod_activated("zmnova_white");
+        tool_zmnova_blue = is_mod_activated("zmnova_blue");
+        tool_zmgegenees = is_mod_activated("zmgegenees");
+        tool_zmgegenees_golden = is_mod_activated("zmgegenees_golden");
+        tool_zmelephant_rider = is_mod_activated("zmelephant_rider");
+
+        if (!(tool_tpgun || tool_tankgun || tool_missilegun || tool_a10gun || tool_missilegun2 || tool_zmnova_white || tool_zmnova_blue
+                || tool_zmgegenees || tool_zmgegenees_golden || tool_zmelephant_rider || tool_missilegun3)) {
+            continue;
+        }
+        tag_origin = self GetTagOrigin("tag_weapon");
+        look = AnglesToForward(self GetPlayerAngles());
+        bullet_hit = bullettrace(tag_origin, tag_origin + vecscale(look, 1000), 1, self)["position"];
+
+        if (tool_tpgun) {
+            if (is_mod_activated("fly") && isdefined(self.originObj)) {
+                // consider fly mode
+                self.originObj.origin = bullet_hit;
+            } else {
+                self setorigin(bullet_hit);
+            }
+        }
+        if (tool_tankgun) {
+	        tank_turret = getweapon("tank_robot_launcher_turret");
+            if (!isdefined(tank_turret)) {
+                self iPrintLnBold("^1weapon undefined: tank_robot_launcher_turret");
+            } else {
+                // we add 40 to the origin to avoid blowing up the player
+                rocket = magicbullet(tank_turret, self.origin + vecscale(look, 40) + (0, 0, 1), self.origin + vecscale(look, 1000), self);
+                if (!isdefined(rocket)) {
+                    self iPrintLnBold("^1rocket undefined: rocket");
+                }
+            }
+        }
+        if (tool_missilegun) {
+	        missile = getweapon(#"remote_missile_missile");
+            if (!isdefined(missile)) {
+                self iPrintLnBold("^1weapon undefined: remote_missile_missile");
+            } else {
+                // we add 40 to the origin to avoid blowing up the player
+                rocket = magicbullet(missile, self.origin + vecscale(look, 40) + (0, 0, 1), self.origin + vecscale(look, 1000), self);
+                if (!isdefined(rocket)) {
+                    self iPrintLnBold("^1rocket undefined: rocket");
+                }
+            }
+        }
+        if (tool_missilegun2) {
+	        missile = getweapon(#"hash_33be4792feeabece");
+            if (!isdefined(missile)) {
+                self iPrintLnBold("^1weapon undefined: hash_33be4792feeabece");
+            } else {
+                // we add 40 to the origin to avoid blowing up the player
+                rocket = magicbullet(missile, self.origin + vecscale(look, 40) + (0, 0, 1), self.origin + vecscale(look, 1000), self);
+                if (!isdefined(rocket)) {
+                    self iPrintLnBold("^1rocket undefined: rocket");
+                }
+            }
+        }
+        if (tool_missilegun3) {
+	        missile = getweapon(#"remote_missile_bomblet");
+            if (!isdefined(missile)) {
+                self iPrintLnBold("^1weapon undefined: remote_missile_bomblet");
+            } else {
+                // we add 40 to the origin to avoid blowing up the player
+                rocket = magicbullet(missile, self.origin + vecscale(look, 40) + (0, 0, 1), self.origin + vecscale(look, 1000), self);
+                if (!isdefined(rocket)) {
+                    self iPrintLnBold("^1rocket undefined: rocket");
+                }
+            }
+        }
+
+        if (tool_a10gun) {
+	        missile = getweapon(#"straferun_rockets");
+            if (!isdefined(missile)) {
+                self iPrintLnBold("^1weapon undefined: straferun_rockets");
+            } else {
+                // we add 40 to the origin to avoid blowing up the player
+                rocket = magicbullet(missile, self.origin + vecscale(look, 40) + (0, 0, 1), self.origin + vecscale(look, 1000), self);
+                if (!isdefined(rocket)) {
+                    self iPrintLnBold("^1rocket undefined: rocket");
+                }
+            }
+        }
+
+        if (tool_zmnova_blue) {
+	        missile = getweapon(#"blue_nova_crawler_projectile");
+            if (!isdefined(missile)) {
+                self iPrintLnBold("^1weapon undefined: blue_nova_crawler_projectile");
+            } else {
+                // we add 40 to the origin to avoid blowing up the player
+                rocket = magicbullet(missile, self.origin + vecscale(look, 40) + (0, 0, 1), self.origin + vecscale(look, 1000), self);
+                if (!isdefined(rocket)) {
+                    self iPrintLnBold("^1rocket undefined: rocket");
+                }
+            }
+        }
+
+        if (tool_zmnova_white) {
+	        missile = getweapon(#"white_nova_crawler_projectile");
+            if (!isdefined(missile)) {
+                self iPrintLnBold("^1weapon undefined: white_nova_crawler_projectile");
+            } else {
+                // we add 40 to the origin to avoid blowing up the player
+                rocket = magicbullet(missile, self.origin + vecscale(look, 40) + (0, 0, 1), self.origin + vecscale(look, 1000), self);
+                if (!isdefined(rocket)) {
+                    self iPrintLnBold("^1rocket undefined: rocket");
+                }
+            }
+        }
+
+        if (tool_zmgegenees) {
+	        missile = getweapon(#"gegenees_spear_projectile");
+            if (!isdefined(missile)) {
+                self iPrintLnBold("^1weapon undefined: gegenees_spear_projectile");
+            } else {
+                // we add 40 to the origin to avoid blowing up the player
+                rocket = magicbullet(missile, self.origin + vecscale(look, 40) + (0, 0, 1), self.origin + vecscale(look, 1000), self);
+                if (!isdefined(rocket)) {
+                    self iPrintLnBold("^1rocket undefined: rocket");
+                }
+            }
+        }
+
+        if (tool_zmgegenees_golden) {
+	        missile = getweapon(#"gegenees_golden_spear_projectile");
+            if (!isdefined(missile)) {
+                self iPrintLnBold("^1weapon undefined: gegenees_golden_spear_projectile");
+            } else {
+                // we add 40 to the origin to avoid blowing up the player
+                rocket = magicbullet(missile, self.origin + vecscale(look, 40) + (0, 0, 1), self.origin + vecscale(look, 1000), self);
+                if (!isdefined(rocket)) {
+                    self iPrintLnBold("^1rocket undefined: rocket");
+                }
+            }
+        }
+        
+        if (tool_zmelephant_rider) {
+	        missile = getweapon(#"rider_spear_projectile");
+            if (!isdefined(missile)) {
+                self iPrintLnBold("^1weapon undefined: rider_spear_projectile");
+            } else {
+                // we add 40 to the origin to avoid blowing up the player
+                rocket = magicbullet(missile, self.origin + vecscale(look, 40) + (0, 0, 1), self.origin + vecscale(look, 1000), self);
+                if (!isdefined(rocket)) {
+                    self iPrintLnBold("^1rocket undefined: rocket");
+                }
+            }
+        }
+
+    }
+}
+
+vecscale(vector, scale_factor) {
+    return (vector[0] * scale_factor, vector[1] * scale_factor, vector[2] * scale_factor);
+}
+
+InfiniteAmmo() {
     self endon(#"spawned_player", #"disconnect");
     level endon(#"end_game", #"game_ended");    
     while(true)
     {
-        if (isdefined(self.tool_maxammo) && self.tool_maxammo) {
-
+        if (is_mod_activated("maxammo")) {
             weapon  = self GetCurrentWeapon();
             offhand = self GetCurrentOffhand();
             if(!(!isdefined(weapon) || weapon === level.weaponNone || !isdefined(weapon.clipSize) || weapon.clipSize < 1))
@@ -123,8 +287,7 @@ InfiniteAmmo()
     }
 }
 
-ANoclipBind()
-{
+ANoclipBind() {
     self endon(#"spawned_player", #"disconnect", #"bled_out");
     level endon(#"end_game", #"game_ended");
     self notify(#"stop_player_out_of_playable_area_monitor");
@@ -132,7 +295,7 @@ ANoclipBind()
     if(isdefined(self.originObj)) self.originObj delete();
 	while(true)
 	{
-		if(isdefined(self.tool_fly) && self.tool_fly)
+		if(is_mod_activated("fly"))
 		{
 			self.originObj = spawn("script_origin", self.origin, 1);
     		self.originObj.angles = self.angles;
@@ -142,7 +305,7 @@ ANoclipBind()
 			self enableweapons();
 			while(true)
 			{
-				if(!self.tool_fly) break;
+				if(!is_mod_activated("fly")) break;
 				if(self SprintButtonPressed())
 				{
 					normalized = AnglesToForward(self getPlayerAngles());

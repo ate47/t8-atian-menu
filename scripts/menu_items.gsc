@@ -1,18 +1,49 @@
 init_menus() {
+    // ---- Tools ----
     self add_menu(#"tool_menu", "Tools", #"start_menu");
     self add_menu_item_menuswitch(#"start_menu", "Tools", #"tool_menu");
 
     self add_menu_item(#"tool_menu", "Info", "func_helloworld");
-    self add_menu_item(#"tool_menu", "Fly", "func_fly");
+    self add_menu_item_modswitch(#"tool_menu", "Fly", "fly");
     self add_menu_item(#"tool_menu", "Third person", "func_3rdperson");
 
-    self add_menu_item(#"tool_menu", "Ammos", "func_maxammo");
-    self add_menu_item(#"tool_menu", "Max Points", "func_points");
+    self add_menu_item_modswitch(#"tool_menu", "Ammos", "maxammo");
     self add_menu_item(#"tool_menu", "Invulnerability", "func_invulnerability");
 
-    // ---- Weapons ----
-    self add_menu(#"weapons", "Weapons", #"start_menu");
-    self add_menu_item_menuswitch(#"start_menu", "Weapons", #"weapons");
+    if (is_zombies()) {
+        self add_menu_item_modswitch(#"tool_menu", "Max Points", "points");
+        self add_menu_item(#"tool_menu", "Infinite revive time", "func_inf_revive");
+    }
+
+    self add_menu_item(#"tool_menu", "Test", "func_test");
+
+    // ---- Weapon ----
+    self add_menu(#"tool_weapon", "Weapon", #"start_menu");
+    self add_menu_item_menuswitch(#"start_menu", "Weapon", #"tool_weapon");
+
+    self add_menu_item_modswitch(#"tool_weapon", "TP gun", "tpgun");
+    
+    if (is_multiplayer()) {
+        self add_menu_item_modswitch(#"tool_weapon", "Mantis gun", "tankgun");
+        self add_menu_item_modswitch(#"tool_weapon", "Hellstorm gun", "missilegun");
+        self add_menu_item_modswitch(#"tool_weapon", "Hellstorm bomblet gun", "missilegun3");
+        self add_menu_item_modswitch(#"tool_weapon", "Rocket gun", "missilegun2");
+        self add_menu_item_modswitch(#"tool_weapon", "A-10 gun", "a10gun");
+    } else if (is_zombies()) {
+        if (level.script === "zm_white") {
+            self add_menu_item_modswitch(#"tool_weapon", "Zombie nova (white)", "zmnova_white");
+            self add_menu_item_modswitch(#"tool_weapon", "Zombie nova (blue)", "zmnova_blue");
+        } else if (level.script === "zm_red") {
+            self add_menu_item_modswitch(#"tool_weapon", "Zombie gegenees", "zmgegenees");
+            self add_menu_item_modswitch(#"tool_weapon", "Zombie gegenees (golden)", "zmgegenees_golden");
+        } else if (level.script === "zm_towers") {
+            self add_menu_item_modswitch(#"tool_weapon", "Zombie elephant rider", "zmelephant_rider");
+        }
+    }
+
+    // ---- Give weapon ----
+    self add_menu(#"weapons", "Give weapon", #"start_menu");
+    self add_menu_item_menuswitch(#"start_menu", "Give weapon", #"weapons");
 
     weapons = get_weapons_all();
 
@@ -84,8 +115,8 @@ init_menus() {
         }
     } else if (is_zombies()) {
         // ---- Weapons (Upgraded) ----
-        self add_menu(#"weapons_upgraded", "Weapons (Upgraded)", #"start_menu");
-        self add_menu_item_menuswitch(#"start_menu", "Weapons (Upgraded)", #"weapons_upgraded");
+        self add_menu(#"weapons_upgraded", "Give weapon (Upgraded)", #"start_menu");
+        self add_menu_item_menuswitch(#"start_menu", "Give weapon (Upgraded)", #"weapons_upgraded");
 
         weapons = get_weapons_all();
 
@@ -116,6 +147,9 @@ init_menus() {
     self add_menu(#"camos_pap", "Pack a punch", #"camos");
     self add_menu_item_menuswitch(#"camos", "Pack a punch", #"camos_pap");
     
+    // ---- Camos/Black market (Reactive) ----
+    self add_menu(#"camos_blackjack_reactive", "Black market (Reactive)", #"camos");
+    self add_menu_item_menuswitch(#"camos", "Black market (Reactive)", #"camos_blackjack_reactive");
     // ---- Camos/Black market ----
     self add_menu(#"camos_blackjack", "Black market", #"camos");
     self add_menu_item_menuswitch(#"camos", "Black market", #"camos_blackjack");
@@ -186,21 +220,36 @@ init_menus() {
     self add_menu_item(#"camos_pap", "Alpha Omega", "func_set_camo", 345);
     self add_menu_item(#"camos_pap", "Tag der toten", "func_set_camo", 394);
 
-    self add_menu_item(#"camos_blackjack", "D-Day", "func_set_camo", 298);
-    self add_menu_item(#"camos_blackjack", "Roadtrip", "func_set_camo", 300);
-    self add_menu_item(#"camos_blackjack", "Masked", "func_set_camo", 310);
+    self add_menu_item(#"camos_blackjack_reactive", "D-Day", "func_set_camo", 298);
+    self add_menu_item(#"camos_blackjack_reactive", "Roadtrip", "func_set_camo", 300);
+    self add_menu_item(#"camos_blackjack_reactive", "Masked", "func_set_camo", 310);
+    self add_menu_item(#"camos_blackjack_reactive", "Bobine", "func_set_camo", 52);
+    self add_menu_item(#"camos_blackjack_reactive", "Search", "func_set_camo", 57);
+    self add_menu_item(#"camos_blackjack_reactive", "Strip", "func_set_camo", 62);
+    self add_menu_item(#"camos_blackjack_reactive", "Rave", "func_set_camo", 67);
+    self add_menu_item(#"camos_blackjack_reactive", "Nebula", "func_set_camo", 89);
+    self add_menu_item(#"camos_blackjack_reactive", "After life", "func_set_camo", 90);
+    self add_menu_item(#"camos_blackjack_reactive", "Postluminescence", "func_set_camo", 119);
+    self add_menu_item(#"camos_blackjack_reactive", "115", "func_set_camo", 129);
+    self add_menu_item(#"camos_blackjack_reactive", "Grey matter", "func_set_camo", 131);
+    self add_menu_item(#"camos_blackjack_reactive", "Denied access (waifu)", "func_set_camo", 167);
+    self add_menu_item(#"camos_blackjack_reactive", "Skull", "func_set_camo", 168);
+    self add_menu_item(#"camos_blackjack_reactive", "Solar eruption", "func_set_camo", 381);
+    self add_menu_item(#"camos_blackjack_reactive", "Vision of the future", "func_set_camo", 387);
+    self add_menu_item(#"camos_blackjack_reactive", "Pestilence", "func_set_camo", 389);
+    self add_menu_item(#"camos_blackjack_reactive", "Crypted", "func_set_camo", 286);
+    self add_menu_item(#"camos_blackjack_reactive", "Judas", "func_set_camo", 357);
+    self add_menu_item(#"camos_blackjack_reactive", "Incandescent", "func_set_camo", 359);
+    self add_menu_item(#"camos_blackjack_reactive", "Encoded", "func_set_camo", 363);
+
+    self add_menu_item(#"camos_blackjack", "Twitch 1", "func_set_camo", 79);
+    self add_menu_item(#"camos_blackjack", "Twitch 2", "func_set_camo", 118);
     self add_menu_item(#"camos_blackjack", "$", "func_set_camo", 46);
     self add_menu_item(#"camos_blackjack", "Green course", "func_set_camo", 47);
     self add_menu_item(#"camos_blackjack", "Blue", "func_set_camo", 48);
     self add_menu_item(#"camos_blackjack", "Kiss", "func_set_camo", 49);
     self add_menu_item(#"camos_blackjack", "Fortuna", "func_set_camo", 50);
     self add_menu_item(#"camos_blackjack", "Donuts", "func_set_camo", 51);
-    self add_menu_item(#"camos_blackjack", "Bobine", "func_set_camo", 52);
-    self add_menu_item(#"camos_blackjack", "Search", "func_set_camo", 57);
-    self add_menu_item(#"camos_blackjack", "Strip", "func_set_camo", 62);
-    self add_menu_item(#"camos_blackjack", "Rave", "func_set_camo", 67);
-    self add_menu_item(#"camos_blackjack", "Twitch 1", "func_set_camo", 79);
-    self add_menu_item(#"camos_blackjack", "Twitch 2", "func_set_camo", 118);
     self add_menu_item(#"camos_blackjack", "Serment", "func_set_camo", 80);
     self add_menu_item(#"camos_blackjack", "Imbu", "func_set_camo", 81);
     self add_menu_item(#"camos_blackjack", "Megalodon", "func_set_camo", 82);
@@ -208,10 +257,7 @@ init_menus() {
     self add_menu_item(#"camos_blackjack", "Goinfre", "func_set_camo", 84);
     self add_menu_item(#"camos_blackjack", "Chrysalide", "func_set_camo", 86);
     self add_menu_item(#"camos_blackjack", "Locker", "func_set_camo", 87);
-    self add_menu_item(#"camos_blackjack", "Nebula", "func_set_camo", 89);
-    self add_menu_item(#"camos_blackjack", "After life", "func_set_camo", 90);
     self add_menu_item(#"camos_blackjack", "Bacon", "func_set_camo", 117);
-    self add_menu_item(#"camos_blackjack", "Postluminescence", "func_set_camo", 119);
     self add_menu_item(#"camos_blackjack", "Dead time", "func_set_camo", 120);
     self add_menu_item(#"camos_blackjack", "Dirty buble", "func_set_camo", 121);
     self add_menu_item(#"camos_blackjack", "Heaven", "func_set_camo", 122);
@@ -219,20 +265,15 @@ init_menus() {
     self add_menu_item(#"camos_blackjack", "Mai Tai Zombie", "func_set_camo", 124);
     self add_menu_item(#"camos_blackjack", "Heaven", "func_set_camo", 122);
     self add_menu_item(#"camos_blackjack", "Colonne piégée", "func_set_camo", 126);
-    self add_menu_item(#"camos_blackjack", "115", "func_set_camo", 129);
-    self add_menu_item(#"camos_blackjack", "Grey matter", "func_set_camo", 131);
     self add_menu_item(#"camos_blackjack", "Derezzed", "func_set_camo", 134);
     self add_menu_item(#"camos_blackjack", "Steam explosion", "func_set_camo", 135);
     self add_menu_item(#"camos_blackjack", "Goinfre", "func_set_camo", 136);
     self add_menu_item(#"camos_blackjack", "Arabesque", "func_set_camo", 137);
     self add_menu_item(#"camos_blackjack", "Se sentir visé", "func_set_camo", 166);
-    self add_menu_item(#"camos_blackjack", "Denied access (waifu)", "func_set_camo", 167);
-    self add_menu_item(#"camos_blackjack", "Skull", "func_set_camo", 168);
     self add_menu_item(#"camos_blackjack", "Rampage", "func_set_camo", 170);
     self add_menu_item(#"camos_blackjack", "Soul eater", "func_set_camo", 171);
     self add_menu_item(#"camos_blackjack", "Marathon", "func_set_camo", 172);
     self add_menu_item(#"camos_blackjack", "Avant garde", "func_set_camo", 173);
-    self add_menu_item(#"camos_blackjack", "Crypted", "func_set_camo", 286);
     self add_menu_item(#"camos_blackjack", "Plasma", "func_set_camo", 293);
     self add_menu_item(#"camos_blackjack", "Air fight", "func_set_camo", 305);
     self add_menu_item(#"camos_blackjack", "Cherry", "func_set_camo", 314);
@@ -247,12 +288,6 @@ init_menus() {
     self add_menu_item(#"camos_blackjack", "Vertige", "func_set_camo", 353);
     self add_menu_item(#"camos_blackjack", "High tension", "func_set_camo", 354);
     self add_menu_item(#"camos_blackjack", "Gluant", "func_set_camo", 355);
-    self add_menu_item(#"camos_blackjack", "Judas", "func_set_camo", 357);
-    self add_menu_item(#"camos_blackjack", "Incandescent", "func_set_camo", 359);
-    self add_menu_item(#"camos_blackjack", "Encoded", "func_set_camo", 363);
-    self add_menu_item(#"camos_blackjack", "Solar eruption", "func_set_camo", 381);
-    self add_menu_item(#"camos_blackjack", "Vision of the future", "func_set_camo", 387);
-    self add_menu_item(#"camos_blackjack", "Pestilence", "func_set_camo", 389);
 
     for (i = 0; i < 512; i++) {
         self add_menu_item(#"camos_id", "Id " + i, "func_set_camo", i);
@@ -270,6 +305,50 @@ init_menus() {
         self add_menu_item(#"reticles_id", "Id " + i, "func_set_reticle", i);
     }
 
+    self add_menu_item(#"reticles", "King", "func_set_reticle", 50);
+    self add_menu_item(#"reticles", "Treyarch", "func_set_reticle", 66);
+    self add_menu_item(#"reticles", "Anchor", "func_set_reticle", 67);
+
+    reticle_colors = array("red", "green", "yellow", "purple", "cyan");
+    for (i = 0; i < reticle_colors.size; i++) {
+        self add_menu_item(#"reticles", "Dot" + " " + reticle_colors[i], "func_set_reticle", 0 + i);
+    }
+    for (i = 0; i < reticle_colors.size; i++) {
+        self add_menu_item(#"reticles", "Dot+" + " " + reticle_colors[i], "func_set_reticle", 5 + i);
+    }
+    for (i = 0; i < reticle_colors.size; i++) {
+        self add_menu_item(#"reticles", "Nord" + " " + reticle_colors[i], "func_set_reticle", 10 + i);
+    }
+    for (i = 0; i < reticle_colors.size; i++) {
+        self add_menu_item(#"reticles", "Echelon" + " " + reticle_colors[i], "func_set_reticle", 15 + i);
+    }
+    for (i = 0; i < reticle_colors.size; i++) {
+        self add_menu_item(#"reticles", "Clamp" + " " + reticle_colors[i], "func_set_reticle", 20 + i);
+    }
+    for (i = 0; i < reticle_colors.size; i++) {
+        self add_menu_item(#"reticles", "Circle" + " " + reticle_colors[i], "func_set_reticle", 25 + i);
+    }
+    for (i = 0; i < reticle_colors.size; i++) {
+        self add_menu_item(#"reticles", "Cross" + " " + reticle_colors[i], "func_set_reticle", 30 + i);
+    }
+    for (i = 0; i < reticle_colors.size; i++) {
+        self add_menu_item(#"reticles", "Mustache" + " " + reticle_colors[i], "func_set_reticle", 35 + i);
+    }
+    for (i = 0; i < reticle_colors.size; i++) {
+        self add_menu_item(#"reticles", "Square" + " " + reticle_colors[i], "func_set_reticle", 40 + i);
+    }
+    for (i = 0; i < reticle_colors.size; i++) {
+        self add_menu_item(#"reticles", "Cross" + " " + reticle_colors[i], "func_set_reticle", 45 + i);
+    }
+    for (i = 0; i < reticle_colors.size; i++) {
+        self add_menu_item(#"reticles", "Circle" + " " + reticle_colors[i], "func_set_reticle", 51 + i);
+    }
+    for (i = 0; i < reticle_colors.size; i++) {
+        self add_menu_item(#"reticles", "Clamp" + " " + reticle_colors[i], "func_set_reticle", 56 + i);
+    }
+    for (i = 0; i < reticle_colors.size; i++) {
+        self add_menu_item(#"reticles", "Circle" + " " + reticle_colors[i], "func_set_reticle", 61 + i);
+    }
 
     if (is_multiplayer() || is_warzone()) {
         // ---- Skin custom ----
@@ -318,7 +397,7 @@ init_menus() {
     self thread menu_think();
 }
 
-menu_handlefunc(func_name, data, data2, data3, data4, data5) {
+menu_handlefunc(item, func_name, data, data2, data3, data4, data5) {
     switch (func_name) {
     case "func_helloworld":
         return self func_helloworld(data);
@@ -331,15 +410,13 @@ menu_handlefunc(func_name, data, data2, data3, data4, data5) {
     case "func_set_mapgametype":
         return self func_set_mapgametype(data, data2);
     case "func_3rdperson":
-        return self func_3rdperson();
+        return self func_3rdperson(item);
+    case "func_tpgun":
+        return self func_tpgun(item);
+    case "func_tankgun":
+        return self func_tankgun(item);
     case "func_set_char":
         return self func_set_char(data);
-    case "func_fly":
-        return self func_fly();
-    case "func_maxammo":
-        return self func_maxammo();
-    case "func_points":
-        return self func_points();
     case "func_set_camo":
         return self func_set_camo(data);
     case "func_set_reticle":
@@ -355,7 +432,13 @@ menu_handlefunc(func_name, data, data2, data3, data4, data5) {
     case "func_set_skin_custom_warpaint":
         return self func_set_skin_custom_warpaint(data);
     case "func_invulnerability":
-        return self func_invulnerability();
+        return self func_invulnerability(item);
+    case "func_test":
+        return self func_test(item);
+    case "func_inf_revive":
+        return self func_inf_revive(item); 
+    case "mod_switch":
+        return self mod_switch(item, data);
     case "menu_switch":
         return self menu_switch(data);
     default: 
@@ -414,15 +497,40 @@ func_give_weapon(weapon_name) {
         self iPrintLn("unknown weapon " + weapon_name);
     }
 }
-func_3rdperson() {
+
+func_tpgun(item) {
+    if (!isdefined(self.tool_tpgun)) {
+        self.tool_tpgun = false;
+    }
+
+    self.tool_tpgun = !self.tool_tpgun;
+
+    item.activated = self.tool_tpgun;
+    return true;
+}
+
+func_tankgun(item) {
+    if (!isdefined(self.tool_tankgun)) {
+        self.tool_tankgun = false;
+    }
+
+    self.tool_tankgun = !self.tool_tankgun;
+
+    item.activated = self.tool_tankgun;
+    return true;
+}
+
+func_3rdperson(item) {
     if (!isdefined(self.thirdperson)) {
         self.thirdperson = false;
     }
 
     self.thirdperson = !self.thirdperson;
+
+    item.activated = self.thirdperson;
     
     self setclientthirdperson(self.thirdperson);
-
+    return true;
 }
 
 func_set_mapgametype(map_name, gametype) {
@@ -466,37 +574,14 @@ func_set_char(character_id) {
     self function_ab96a9b5("decal", 0);
     return true;
 }
-func_fly() {
-    if (isdefined(self.tool_fly) && self.tool_fly) {
-        self.tool_fly = false;
-    } else {
-        self.tool_fly = true;
-    }
-    return true;
-}
-func_invulnerability() {
+func_invulnerability(item) {
     if (isdefined(self.tool_invulnerability) && self.tool_invulnerability) {
         self.tool_invulnerability = false;
         self disableinvulnerability();
     } else {
         self.tool_invulnerability = true;
     }
-    return true;
-}
-func_maxammo() {
-    if (isdefined(self.tool_maxammo) && self.tool_maxammo) {
-        self.tool_maxammo = false;
-    } else {
-        self.tool_maxammo = true;
-    }
-    return true;
-}
-func_points() {
-    if (isdefined(self.tool_maxpoints) && self.tool_maxpoints) {
-        self.tool_maxpoints = false;
-    } else {
-        self.tool_maxpoints = true;
-    }
+    item.activated = self.tool_invulnerability;
     return true;
 }
 
@@ -567,4 +652,21 @@ SetCamo(id, reticle) {
             self iPrintLn("var:camo: " + camo_var2);
         }
     }
+}
+func_inf_revive(item) {
+    if (isdefined(self.inf_revive) && self.inf_revive) {
+        self.inf_revive = false;
+        self.var_5c4f1263 = 0;
+        item.activated = false;
+    } else {
+        self.inf_revive = true;
+        self.var_5c4f1263 = 100;
+        item.activated = true;
+    }
+    return true;
+}
+
+func_test(item) {
+    self iPrintLnBold("^8test");
+    return false;
 }

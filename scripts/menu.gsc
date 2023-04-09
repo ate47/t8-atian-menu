@@ -11,12 +11,30 @@ init_menu() {
         #current_menu: #"",
         #cursor: 0,
         #no_render: false,
-        #menus: array()
+        #menus: array(),
+        #mods: array()
     };
 
     self add_menu(#"start_menu", "Atian Menu", #"");
 
     self init_menus();
+}
+
+toggle_mod(mod_name) {
+    if (!isdefined(self.menu_info)) {
+        return;
+    }
+    if (array::contains(self.menu_info.mods, mod_name)) {
+	    arrayremovevalue(self.menu_info.mods, mod_name);
+        return false;
+    } else {
+        array::add(self.menu_info.mods, mod_name);
+        return true;
+    }
+}
+
+is_mod_activated(mod_name) {
+    return isdefined(self.menu_info) && isdefined(self.menu_info.mods) && array::contains(self.menu_info.mods, mod_name);
 }
 
 add_menu(menu_id, menu_name, parent_id) {
@@ -42,6 +60,7 @@ add_menu_item(menu_id, item_name, action, actiondata = undefined, actiondata2 = 
     {
         #name: item_name,
         #action: action,
+        #activated: false,
         #action_data: actiondata,
         #action_data2: actiondata2,
         #action_data3: actiondata3,
@@ -50,8 +69,14 @@ add_menu_item(menu_id, item_name, action, actiondata = undefined, actiondata2 = 
     };
 
     array::add(parent.sub_menus, item);
+    return item;
 }
 
+
+mod_switch(item, mod_name) {
+    item.activated = toggle_mod(mod_name);
+    return true;
+}
 
 menu_switch(menu_id) {
     if (!isdefined(menu_id)) {
@@ -66,6 +91,10 @@ add_menu_item_menuswitch(menu_id, item_name, new_menu_id) {
     self add_menu_item(menu_id, item_name, "menu_switch", new_menu_id);
 }
 
+add_menu_item_modswitch(menu_id, item_name, mod_name) {
+    self add_menu_item(menu_id, item_name, "mod_switch", mod_name);
+}
+
 get_current_menu() {
     return self.menu_info.menus[self.menu_info.current_menu];
 }
@@ -75,7 +104,7 @@ menu_think() {
         // ignore menu creation if already set
         return;
     }
-    self endon(#"disconnect", #"spawned_player");
+    self endon(#"disconnect");
     level endon(#"end_game", #"game_ended");
     while (true) {
         menu_info = self.menu_info;
@@ -128,17 +157,17 @@ menu_think() {
                 item = menu.sub_menus[menu_info.cursor];
                 if (isdefined(item)) {
                     if (isdefined(item.action_data5)) {
-                        res = self menu_handlefunc(item.action, item.action_data, item.action_data2, item.action_data3, item.action_data4, item.action_data5);
+                        res = self menu_handlefunc(item, item.action, item.action_data, item.action_data2, item.action_data3, item.action_data4, item.action_data5);
                     } else if (isdefined(item.action_data4)) {
-                        res = self menu_handlefunc(item.action, item.action_data, item.action_data2, item.action_data3, item.action_data4);
+                        res = self menu_handlefunc(item, item.action, item.action_data, item.action_data2, item.action_data3, item.action_data4);
                     } else if (isdefined(item.action_data3)) {
-                        res = self menu_handlefunc(item.action, item.action_data, item.action_data2, item.action_data3);
+                        res = self menu_handlefunc(item, item.action, item.action_data, item.action_data2, item.action_data3);
                     } else if (isdefined(item.action_data2)) {
-                        res = self menu_handlefunc(item.action, item.action_data, item.action_data2);
+                        res = self menu_handlefunc(item, item.action, item.action_data, item.action_data2);
                     } else if (isdefined(item.action_data)) {
-                        res = self menu_handlefunc(item.action, item.action_data);
+                        res = self menu_handlefunc(item, item.action, item.action_data);
                     } else {
-                        res = self menu_handlefunc(item.action);
+                        res = self menu_handlefunc(item, item.action);
                     }
                     if (!isdefined(res) || !res) {
                         // close the menu at the end
@@ -178,9 +207,18 @@ menu_think() {
                     index_end = int(min(8 * (page + 1), menu.sub_menus.size));
                     for (i = index_start; i < index_end; i++) {
                         if (menu_info.cursor === i) {
-                            self iprintln("-> " + (menu.sub_menus[i].name) + " <");
+                            if (menu.sub_menus[i].activated) {
+                                self iprintln("-> " + (menu.sub_menus[i].name) + " (ON)");
+                            } else {
+                                self iprintln("-> " + (menu.sub_menus[i].name));
+                            }
+                            
                         } else {
-                            self iprintln("- " + (menu.sub_menus[i].name));
+                            if (menu.sub_menus[i].activated) {
+                                self iprintln("- " + (menu.sub_menus[i].name) + " (ON)");
+                            } else {
+                                self iprintln("- " + (menu.sub_menus[i].name));
+                            }
                         }
                     }
                 }

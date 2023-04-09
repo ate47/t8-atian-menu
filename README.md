@@ -15,12 +15,19 @@ Posts or videos I've made using these scripts or the sources:
 
 ## Features
 
-- 3rd person
+- tool
+  - 3rd person
+  - max ammo
+  - fly
+  - no damage
 - set characters
   - skin
   - skin palette
   - skin warpaint
   - skin decals
+- Gun tool ([Demo](https://www.youtube.com/watch?v=hPBZrQQ7u4c))
+  - TP gun
+  - Missile gun**s**
 - fly
 - set map
 - set gametype

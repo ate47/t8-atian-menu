@@ -17,6 +17,9 @@
 //required
 autoexec __init__sytem__()
 {
+    setDvar("developer", 2);
+    setDvar("scr_mod_devblock ", 1);
+    
 	system::register("clientids_shared", &__init__, &__post__init__, undefined);
 }
 
