@@ -11,15 +11,13 @@
 #include scripts\core_common\flag_shared;
 #include scripts\core_common\bots\bot;
 #include scripts\core_common\player\player_role;
+#include scripts\core_common\values_shared;
 
 #namespace clientids_shared;
 
 //required
 autoexec __init__sytem__()
 {
-    setDvar("developer", 2);
-    setDvar("scr_mod_devblock ", 1);
-    
 	system::register("clientids_shared", &__init__, &__post__init__, undefined);
 }
 

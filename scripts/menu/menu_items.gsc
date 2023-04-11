@@ -8,11 +8,39 @@ init_menus() {
     self add_menu_item(#"tool_menu", "Third person", "func_3rdperson");
 
     self add_menu_item_modswitch(#"tool_menu", "Ammos", "maxammo");
+    self add_menu_item(#"tool_menu", "End contracts", "func_end_contracts");
     self add_menu_item(#"tool_menu", "Invulnerability", "func_invulnerability");
 
     if (is_zombies()) {
         self add_menu_item_modswitch(#"tool_menu", "Max Points", "points");
         self add_menu_item(#"tool_menu", "Infinite revive time", "func_inf_revive");
+        self add_menu_item(#"tool_menu", "Kill all zombies", "func_kill_zombies");
+        
+        self add_menu(#"round_tool", "Round tool", #"tool_menu");
+        self add_menu_item_menuswitch(#"tool_menu", "Round tool", #"round_tool");
+        
+        self add_menu(#"round_tool_set", "Set", #"round_tool");
+        self add_menu_item_menuswitch(#"round_tool", "Set", #"round_tool_set");
+
+        for (i = 0; i < 9; i++) {
+            menu_id = hash("round_tool_set" + i);
+            self add_menu(menu_id, "" + max(1, (i * 100)) + " -> " + ((i + 1) * 100), #"round_tool_set");
+            self add_menu_item_menuswitch(#"round_tool_set", "" + max(1, (i * 100)) + " -> " + ((i + 1) * 100), menu_id);
+        }
+        // custom menu for the 900-935
+        self add_menu(#"round_tool_set9", "900 -> 935", #"round_tool_set");
+        self add_menu_item_menuswitch(#"round_tool_set", "900 -> 935", #"round_tool_set9");
+
+        for (i = 1; i <= 935; i++) {
+            self add_menu_item(hash("round_tool_set" + (i / 100)), "" + i, "func_round_set", i);
+        }
+
+        self add_menu_item(#"round_tool", "-100", "func_round_add", -100);
+        self add_menu_item(#"round_tool", "-10", "func_round_add", -10);
+        self add_menu_item(#"round_tool", "-1", "func_round_add", -1);
+        self add_menu_item(#"round_tool", "+1", "func_round_add", 1);
+        self add_menu_item(#"round_tool", "+10", "func_round_add", 10);
+        self add_menu_item(#"round_tool", "+100", "func_round_add", 100);
     }
 
     self add_menu_item(#"tool_menu", "Test", "func_test");
@@ -27,8 +55,8 @@ init_menus() {
         self add_menu_item_modswitch(#"tool_weapon", "Mantis gun", "tankgun");
         self add_menu_item_modswitch(#"tool_weapon", "Hellstorm gun", "missilegun");
         self add_menu_item_modswitch(#"tool_weapon", "Hellstorm bomblet gun", "missilegun3");
-        self add_menu_item_modswitch(#"tool_weapon", "Rocket gun", "missilegun2");
         self add_menu_item_modswitch(#"tool_weapon", "A-10 gun", "a10gun");
+        self add_menu_item_modswitch(#"tool_weapon", "Rocket man", "rocketman");
     } else if (is_zombies()) {
         if (level.script === "zm_white") {
             self add_menu_item_modswitch(#"tool_weapon", "Zombie nova (white)", "zmnova_white");
@@ -38,6 +66,8 @@ init_menus() {
             self add_menu_item_modswitch(#"tool_weapon", "Zombie gegenees (golden)", "zmgegenees_golden");
         } else if (level.script === "zm_towers") {
             self add_menu_item_modswitch(#"tool_weapon", "Zombie elephant rider", "zmelephant_rider");
+        } else if (level.script === "zm_escape") {
+            self add_menu_item_modswitch(#"tool_weapon", "Zombie elephant rider", "zmdart");
         }
     }
 
@@ -350,323 +380,47 @@ init_menus() {
         self add_menu_item(#"reticles", "Circle" + " " + reticle_colors[i], "func_set_reticle", 61 + i);
     }
 
-    if (is_multiplayer() || is_warzone()) {
-        // ---- Skin custom ----
-        self add_menu(#"skin_custom", "Skin custom", #"start_menu");
-        self add_menu_item_menuswitch(#"start_menu", "Skin custom", #"skin_custom");
-        
-        self add_menu_item(#"skin_custom", "Clear", "func_set_skin_custom_clear");
+    // ---- Skin custom ----
+    self add_menu(#"skin_custom", "Skin custom", #"start_menu");
+    self add_menu_item_menuswitch(#"start_menu", "Skin custom", #"skin_custom");
+    
+    self add_menu_item(#"skin_custom", "Clear", "func_set_skin_custom_clear");
 
-        // ---- Skin custom/Skin ----
-        self add_menu(#"skin_custom_skin", "Skin", #"skin_custom");
-        self add_menu_item_menuswitch(#"skin_custom", "Skin", #"skin_custom_skin");
-        self add_menu_item(#"skin_custom_skin", "Default", "func_set_skin_custom", 0);
-        
-        for (i = 1; i < 100; i++) {
-            self add_menu_item(#"skin_custom_skin", "Skin " + i, "func_set_skin_custom", i);
-        }
+    // ---- Skin custom/Skin ----
+    self add_menu(#"skin_custom_skin", "Skin", #"skin_custom");
+    self add_menu_item_menuswitch(#"skin_custom", "Skin", #"skin_custom_skin");
+    self add_menu_item(#"skin_custom_skin", "Default", "func_set_skin_custom", 0);
+    
+    for (i = 1; i < 100; i++) {
+        self add_menu_item(#"skin_custom_skin", "Skin " + i, "func_set_skin_custom", i);
+    }
 
-        // ---- Skin custom/Palette ----
-        self add_menu(#"skin_custom_palette", "Palette", #"skin_custom");
-        self add_menu_item_menuswitch(#"skin_custom", "Palette", #"skin_custom_palette");
-        self add_menu_item(#"skin_custom_palette", "Default", "func_set_skin_custom_palette", 0);
-        
-        for (i = 1; i < 100; i++) {
-            self add_menu_item(#"skin_custom_palette", "Skin " + i, "func_set_skin_custom_palette", i);
-        }
+    // ---- Skin custom/Palette ----
+    self add_menu(#"skin_custom_palette", "Palette", #"skin_custom");
+    self add_menu_item_menuswitch(#"skin_custom", "Palette", #"skin_custom_palette");
+    self add_menu_item(#"skin_custom_palette", "Default", "func_set_skin_custom_palette", 0);
+    
+    for (i = 1; i < 100; i++) {
+        self add_menu_item(#"skin_custom_palette", "Skin " + i, "func_set_skin_custom_palette", i);
+    }
 
-        // ---- Skin custom/Decal ----
-        self add_menu(#"skin_custom_decal", "Decal", #"skin_custom");
-        self add_menu_item_menuswitch(#"skin_custom", "Decal", #"skin_custom_decal");
-        self add_menu_item(#"skin_custom_decal", "Default", "func_set_skin_custom_decal", 0);
-        
-        for (i = 1; i < 100; i++) {
-            self add_menu_item(#"skin_custom_decal", "Skin " + i, "func_set_skin_custom_decal", i);
-        }
+    // ---- Skin custom/Decal ----
+    self add_menu(#"skin_custom_decal", "Decal", #"skin_custom");
+    self add_menu_item_menuswitch(#"skin_custom", "Decal", #"skin_custom_decal");
+    self add_menu_item(#"skin_custom_decal", "Default", "func_set_skin_custom_decal", 0);
+    
+    for (i = 1; i < 100; i++) {
+        self add_menu_item(#"skin_custom_decal", "Skin " + i, "func_set_skin_custom_decal", i);
+    }
 
-        // ---- Skin custom/Warpaint ----
-        self add_menu(#"skin_custom_warpaint", "Warpaint", #"skin_custom");
-        self add_menu_item_menuswitch(#"skin_custom", "Warpaint", #"skin_custom_warpaint");
-        self add_menu_item(#"skin_custom_warpaint", "Default", "func_set_skin_custom_warpaint", 0);
-        
-        for (i = 1; i < 100; i++) {
-            self add_menu_item(#"skin_custom_warpaint", "Skin " + i, "func_set_skin_custom_warpaint", i);
-        }
+    // ---- Skin custom/Warpaint ----
+    self add_menu(#"skin_custom_warpaint", "Warpaint", #"skin_custom");
+    self add_menu_item_menuswitch(#"skin_custom", "Warpaint", #"skin_custom_warpaint");
+    self add_menu_item(#"skin_custom_warpaint", "Default", "func_set_skin_custom_warpaint", 0);
+    
+    for (i = 1; i < 100; i++) {
+        self add_menu_item(#"skin_custom_warpaint", "Skin " + i, "func_set_skin_custom_warpaint", i);
     }
 
     self thread menu_think();
-}
-
-menu_handlefunc(item, func_name, data, data2, data3, data4, data5) {
-    switch (func_name) {
-    case "func_helloworld":
-        return self func_helloworld(data);
-    case "func_give_weapon":
-        return self func_give_weapon(data);
-    case "func_set_map":
-        return self func_set_map(data);
-    case "func_set_gametype":
-        return self func_set_gametype(data);
-    case "func_set_mapgametype":
-        return self func_set_mapgametype(data, data2);
-    case "func_3rdperson":
-        return self func_3rdperson(item);
-    case "func_tpgun":
-        return self func_tpgun(item);
-    case "func_tankgun":
-        return self func_tankgun(item);
-    case "func_set_char":
-        return self func_set_char(data);
-    case "func_set_camo":
-        return self func_set_camo(data);
-    case "func_set_reticle":
-        return self func_set_reticle(data);
-    case "func_set_skin_custom":
-        return self func_set_skin_custom(data);
-    case "func_set_skin_custom_clear":
-        return self func_set_skin_custom_clear();
-    case "func_set_skin_custom_palette":
-        return self func_set_skin_custom_palette(data);
-    case "func_set_skin_custom_decal":
-        return self func_set_skin_custom_decal(data);
-    case "func_set_skin_custom_warpaint":
-        return self func_set_skin_custom_warpaint(data);
-    case "func_invulnerability":
-        return self func_invulnerability(item);
-    case "func_test":
-        return self func_test(item);
-    case "func_inf_revive":
-        return self func_inf_revive(item); 
-    case "mod_switch":
-        return self mod_switch(item, data);
-    case "menu_switch":
-        return self menu_switch(data);
-    default: 
-        self iPrintLnBold("^1bad function " + func_name);
-        return self menu_switch();
-    }
-}
-func_helloworld(text) {
-    if (isdefined(text)) {
-        self iprintln(text);
-    }
-    weapon = self GetCurrentWeapon();
-    if (isdefined(weapon) && isdefined(weapon.name)) {
-        str_weapon = weapon.name;
-        self iprintln("weapon: " + weapon.name);
-    }
-    if (isdefined(level.gametype)) {
-        self iprintln("gtype:  " + level.gametype);
-    }
-    if (isdefined(get_gamemode())) {
-        self iprintln("gmode:  " + get_gamemode());
-    }
-    if (isdefined(level.script)) {
-        self iprintln("map:    " + level.script);
-    }
-    if (isdefined(self.origin)) {
-        self iprintln("origin: " + self.origin);
-    }
-    role = self player_role::get();
-    if (isdefined(role)) {
-        self iprintln("role:   " + role);
-    }
-    self.menu_info.no_render = true;
-}
-
-func_give_weapon(weapon_name) {
-    weapon = getweapon(hash(weapon_name));
-
-    if (isdefined(weapon)) {
-        weapon_options = self calcweaponoptions(0, 0, 0);
-
-        old_weapon = self GetCurrentWeapon();
-
-        if (isdefined(old_weapon)) {
-            self takeweapon(old_weapon);
-        }
-
-        self giveweapon(weapon, weapon_options);
-
-        if (isdefined(weapon.name)) {
-            self iPrintLn("gave weapon : " + weapon.name);
-        } else {
-            self iPrintLn("gave weapon nn: " + weapon_name);
-        }
-    } else {
-        self iPrintLn("unknown weapon " + weapon_name);
-    }
-}
-
-func_tpgun(item) {
-    if (!isdefined(self.tool_tpgun)) {
-        self.tool_tpgun = false;
-    }
-
-    self.tool_tpgun = !self.tool_tpgun;
-
-    item.activated = self.tool_tpgun;
-    return true;
-}
-
-func_tankgun(item) {
-    if (!isdefined(self.tool_tankgun)) {
-        self.tool_tankgun = false;
-    }
-
-    self.tool_tankgun = !self.tool_tankgun;
-
-    item.activated = self.tool_tankgun;
-    return true;
-}
-
-func_3rdperson(item) {
-    if (!isdefined(self.thirdperson)) {
-        self.thirdperson = false;
-    }
-
-    self.thirdperson = !self.thirdperson;
-
-    item.activated = self.thirdperson;
-    
-    self setclientthirdperson(self.thirdperson);
-    return true;
-}
-
-func_set_mapgametype(map_name, gametype) {
-    self iPrintLn("loading map " + map_name + " with mode " + gametype);
-
-    switchmap_load(map_name, gametype);
-    wait(1);
-    switchmap_switch();
-}
-
-func_set_map(map_name) {
-    self iPrintLn("loading " + map_name);
-
-    map(map_name);
-    wait(1);
-    switchmap_switch();
-}
-func_set_gametype(gametype) {
-    map_name = util::get_map_name();
-    self iPrintLn("loading mode " + gametype);
-
-    switchmap_load(map_name, gametype);
-    wait(1);
-    switchmap_switch();
-}
-
-func_set_char(character_id) {
-    self setspecialistindex(character_id);
-    self player_role::update_fields();
-
-    // clear fields
-    self setcharacteroutfit(0);
-    self function_9b48a8e5(0);
-    self function_ab96a9b5("head", 0);
-    self function_ab96a9b5("headgear", 0);
-    self function_ab96a9b5("arms", 0);
-    self function_ab96a9b5("torso", 0);
-    self function_ab96a9b5("legs", 0);
-    self function_ab96a9b5("palette", 0);
-    self function_ab96a9b5("warpaint", 0);
-    self function_ab96a9b5("decal", 0);
-    return true;
-}
-func_invulnerability(item) {
-    if (isdefined(self.tool_invulnerability) && self.tool_invulnerability) {
-        self.tool_invulnerability = false;
-        self disableinvulnerability();
-    } else {
-        self.tool_invulnerability = true;
-    }
-    item.activated = self.tool_invulnerability;
-    return true;
-}
-
-func_set_camo(data) {
-    self SetCamo(data, 0);
-    return true;
-}
-func_set_reticle(data) {
-    SetReticle(data);
-    return true;
-}
-func_set_skin_custom_clear() {
-    self setcharacteroutfit(0);
-    self function_9b48a8e5(0);
-    self function_ab96a9b5("head", 0);
-    self function_ab96a9b5("headgear", 0);
-    self function_ab96a9b5("arms", 0);
-    self function_ab96a9b5("torso", 0);
-    self function_ab96a9b5("legs", 0);
-    self function_ab96a9b5("palette", 0);
-    self function_ab96a9b5("warpaint", 0);
-    self function_ab96a9b5("decal", 0);
-    return true;
-}
-func_set_skin_custom(data) {
-    self setcharacteroutfit(data);
-    return true;
-}
-func_set_skin_custom_palette(data) {
-    self function_ab96a9b5("palette", data);
-    return true;
-}
-func_set_skin_custom_warpaint(data) {
-    self function_ab96a9b5("warpaint", data);
-    return true;
-}
-func_set_skin_custom_decal(data) {
-    self function_ab96a9b5("decal", data);
-    return true;
-}
-
-SetReticle(reticle) {
-    weapon = self getCurrentWeapon();
-    if (isdefined(weapon)) {
-        self takeweapon(weapon);
-        camo_index = getCamoIndex(self getBuildKitWeaponOptions(weapon));
-        weapon_options = self calcweaponoptions(camo_index, reticle, 0);
-        
-        self giveweapon(weapon, weapon_options);
-    }
-}
-SetCamo(id, reticle) {
-    weapon = self GetCurrentWeapon();
-
-    if (!isdefined(reticle)) {
-        reticle = 0;
-    }
-
-    if (isdefined(weapon)) {
-        self takeweapon(weapon);
-        weapon_options = self calcweaponoptions(id, reticle, 0);
-        
-        self giveweapon(weapon, weapon_options);
-        camo_index_var = getcamoindex(weapon_options);
-        camo_var2 = function_11c873a(camo_index_var);
-        self iPrintLn("camo: " + camo_index_var + ", reticle: " + reticle);
-        if (isdefined(camo_var2)) {
-            self iPrintLn("var:camo: " + camo_var2);
-        }
-    }
-}
-func_inf_revive(item) {
-    if (isdefined(self.inf_revive) && self.inf_revive) {
-        self.inf_revive = false;
-        self.var_5c4f1263 = 0;
-        item.activated = false;
-    } else {
-        self.inf_revive = true;
-        self.var_5c4f1263 = 100;
-        item.activated = true;
-    }
-    return true;
-}
-
-func_test(item) {
-    self iPrintLnBold("^8test");
-    return false;
 }

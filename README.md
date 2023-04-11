@@ -13,24 +13,41 @@ Posts or videos I've made using these scripts or the sources:
 - [Reddit - Camo we can't buy anymore](https://www.reddit.com/r/Blackops4/comments/10y963t/if_someone_wants_to_see_the_camos_we_cant_buy/)
 - [Reddit - Stats for the care packages](https://www.reddit.com/r/Blackops4/comments/nhonhu/if_you_had_ever_wondered_the_probabilities_in_the/)
 
+## Config
+
+You can config the mod menu in the [`scripts/config.gsc`](scripts/config.gsc) file, current tools:
+
+- `force_blackout_map` : Force a blackout map at start
+- `force_blackout_gametype` : Force a blackout mode at start
+
 ## Features
 
-- tool
+- Tools
   - 3rd person
   - max ammo
   - fly
   - no damage
+  - max points (Zombies)
+- Gun tool ([Demo](https://www.youtube.com/watch?v=hPBZrQQ7u4c))
+  - TP gun
+  - Rocket man (MP)
+  - A10 rocket (MP)
+  - Mantis rocket (MP)
+  - Hellstorm rockets (MP)
+  - Dart (MP)
+  - Elephant riders (IX)
+  - Gegenees shot (AE)
+  - Darts (BoTD)
+  - Nova shot (AO)
 - set characters
-  - skin
+- set skin
   - skin palette
   - skin warpaint
   - skin decals
-- Gun tool ([Demo](https://www.youtube.com/watch?v=hPBZrQQ7u4c))
-  - TP gun
-  - Missile gun**s**
 - fly
 - set map
 - set gametype
-- give weapon
+- give weapon (+upgraded (Zombies))
 - set camo
+- set reticle
 

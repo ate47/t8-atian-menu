@@ -196,28 +196,28 @@ menu_think() {
             menu = self get_current_menu();
             if (isdefined(menu)) {
                 if (menu.sub_menus.size === 0) {
-                    self iprintln("---- " + menu.name + " (empty) ----");
+                    self iprintln("^1---- " + menu.name + " (empty) ----");
                     index_end = 1;
                 } else {
                     page = int(menu_info.cursor / 8);
                     maxpage = int((menu.sub_menus.size - 1) / 8) + 1;
-                    self iprintln("---- " + menu.name + " (" + (page + 1) + "/" + maxpage + ") ----");
+                    self iprintln("^2---- " + menu.name + " (" + (page + 1) + "/" + maxpage + ") ----");
 
                     index_start = 8 * page;
                     index_end = int(min(8 * (page + 1), menu.sub_menus.size));
                     for (i = index_start; i < index_end; i++) {
                         if (menu_info.cursor === i) {
                             if (menu.sub_menus[i].activated) {
-                                self iprintln("-> " + (menu.sub_menus[i].name) + " (ON)");
+                                self iprintln("^4-> " + (menu.sub_menus[i].name) + "^1 (ON)");
                             } else {
-                                self iprintln("-> " + (menu.sub_menus[i].name));
+                                self iprintln("^4-> " + (menu.sub_menus[i].name));
                             }
                             
                         } else {
                             if (menu.sub_menus[i].activated) {
-                                self iprintln("- " + (menu.sub_menus[i].name) + " (ON)");
+                                self iprintln("^3- " + (menu.sub_menus[i].name) + "^1 (ON)");
                             } else {
-                                self iprintln("- " + (menu.sub_menus[i].name));
+                                self iprintln("^3- " + (menu.sub_menus[i].name));
                             }
                         }
                     }
