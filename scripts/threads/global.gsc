@@ -14,7 +14,10 @@ MainRunner() {
         if (isdefined(self.tool_invulnerability) && self.tool_invulnerability) {
             self freezeControls(false);
             self enableInvulnerability();
-            self val::set(#"oob", "disable_oob", true);
+            self val::set(#"atianmod", "disable_oob", true);
+        }
+        if (isdefined(self.tool_zmignoreme) && self.tool_zmignoreme) {
+            self val::set(#"atianmod", "zmignoreme", true);
         }
 
         if (isdefined(self.rocketman_rocket) && self SprintButtonPressed()) {

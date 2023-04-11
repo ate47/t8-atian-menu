@@ -134,7 +134,7 @@ get_characters_zm() {
         "Richtofen (Ultimis/AO)",
         "Takeo (Ultimis/AO)",
         "Russman",
-        "Abigail \"Misty\" Briarton",
+        "Misty (Abigail Briarton)",
         "Marlton Johnson",
         "Samuel Stuhlinger",
         "Richtofen (Primis/Alcatraz)"
@@ -467,12 +467,33 @@ get_all_maps_mp() {
         "mp_slums2",
         "mp_station",
         "mp_urban",
+        "mp_urban_alt",
         "mp_zombie_museum"
     );
 }
 get_all_maps_wz() {
     return array(
         "wz_escape",
+        "wz_escape_alt",
         "wz_open_skyscrapers"
+    );
+}
+
+get_wz_vehicles() {
+    return array(
+        "helicopter_light",
+        "helicopter_utility",
+        "vehicle_t8_mil_helicopter_transport_dark_wz",
+        "player_atv",
+        "player_tank",
+        "player_suv",
+        "player_muscle",
+        "veh_muscle_car_convertible_player_wz_replacer",
+        "player_motorcycle",
+        "recon_wz",
+        "cargo_truck_wz",
+        "tactical_raft_wz",
+        "pbr_boat_wz",
+        "player_fav"
     );
 }

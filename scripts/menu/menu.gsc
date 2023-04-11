@@ -18,6 +18,16 @@ init_menu() {
     self add_menu(#"start_menu", "Atian Menu", #"");
 
     self init_menus();
+
+    if (isdefined(self.atianconfig.preloaded_menus)) {
+        for (i = 0; i < self.atianconfig.preloaded_menus.size; i++) {
+            preload_menu = strtok(self.atianconfig.preloaded_menus[i], "::");
+            if (preload_menu.size == 2) {
+                self ClickMenuButton(hash(preload_menu[0]), preload_menu[1]);
+            }
+        }
+        self.atianconfig.preloaded_menus = undefined;
+    }
 }
 
 toggle_mod(mod_name) {
@@ -78,7 +88,7 @@ mod_switch(item, mod_name) {
     return true;
 }
 
-menu_switch(menu_id) {
+menu_switch(item, menu_id) {
     if (!isdefined(menu_id)) {
         menu_id = #"";
     }
@@ -88,11 +98,11 @@ menu_switch(menu_id) {
 }
 
 add_menu_item_menuswitch(menu_id, item_name, new_menu_id) {
-    self add_menu_item(menu_id, item_name, "menu_switch", new_menu_id);
+    self add_menu_item(menu_id, item_name, &menu_switch, new_menu_id);
 }
 
 add_menu_item_modswitch(menu_id, item_name, mod_name) {
-    self add_menu_item(menu_id, item_name, "mod_switch", mod_name);
+    self add_menu_item(menu_id, item_name, &mod_switch, mod_name);
 }
 
 get_current_menu() {
@@ -156,22 +166,24 @@ menu_think() {
             if (isdefined(menu)) {
                 item = menu.sub_menus[menu_info.cursor];
                 if (isdefined(item)) {
-                    if (isdefined(item.action_data5)) {
-                        res = self menu_handlefunc(item, item.action, item.action_data, item.action_data2, item.action_data3, item.action_data4, item.action_data5);
-                    } else if (isdefined(item.action_data4)) {
-                        res = self menu_handlefunc(item, item.action, item.action_data, item.action_data2, item.action_data3, item.action_data4);
-                    } else if (isdefined(item.action_data3)) {
-                        res = self menu_handlefunc(item, item.action, item.action_data, item.action_data2, item.action_data3);
-                    } else if (isdefined(item.action_data2)) {
-                        res = self menu_handlefunc(item, item.action, item.action_data, item.action_data2);
-                    } else if (isdefined(item.action_data)) {
-                        res = self menu_handlefunc(item, item.action, item.action_data);
-                    } else {
-                        res = self menu_handlefunc(item, item.action);
-                    }
-                    if (!isdefined(res) || !res) {
-                        // close the menu at the end
-                        menu_info.current_menu = #"";
+                    if (isdefined(item.action)) {
+                        if (isdefined(item.action_data5)) {
+                            res = self [[ item.action ]](item, item.action_data, item.action_data2, item.action_data3, item.action_data4, item.action_data5);
+                        } else if (isdefined(item.action_data4)) {
+                            res = self [[ item.action ]](item, item.action_data, item.action_data2, item.action_data3, item.action_data4);
+                        } else if (isdefined(item.action_data3)) {
+                            res = self [[ item.action ]](item, item.action_data, item.action_data2, item.action_data3);
+                        } else if (isdefined(item.action_data2)) {
+                            res = self [[ item.action ]](item, item.action_data, item.action_data2);
+                        } else if (isdefined(item.action_data)) {
+                            res = self [[ item.action ]](item, item.action_data);
+                        } else {
+                            res = self [[ item.action ]](item);
+                        }
+                        if (!isdefined(res) || !res) {
+                            // close the menu at the end
+                            menu_info.current_menu = #"";
+                        }
                     }
                 } else {
                     // wtf?
@@ -239,4 +251,33 @@ menu_think() {
         waitframe(1);
     }
     
+}
+
+ClickMenuButtonIsMenuNameEqual(menu_item, menu_name) {
+    return menu_item.name == menu_name;
+}
+
+ClickMenuButton(menu_id, menu_item_name) {
+    menu = self.menu_info.menus[menu_id];
+    if (isdefined(menu)) {
+        menu_item_index = array::find(menu.sub_menus, menu_item_name, &ClickMenuButtonIsMenuNameEqual);
+        if (isdefined(menu_item_index)) {
+            item = menu.sub_menus[menu_item_index];
+            if (isdefined(item.action)) {
+                if (isdefined(item.action_data5)) {
+                    self [[ item.action ]](item, item.action_data, item.action_data2, item.action_data3, item.action_data4, item.action_data5);
+                } else if (isdefined(item.action_data4)) {
+                    self [[ item.action ]](item, item.action_data, item.action_data2, item.action_data3, item.action_data4);
+                } else if (isdefined(item.action_data3)) {
+                    self [[ item.action ]](item, item.action_data, item.action_data2, item.action_data3);
+                } else if (isdefined(item.action_data2)) {
+                    self [[ item.action ]](item, item.action_data, item.action_data2);
+                } else if (isdefined(item.action_data)) {
+                    self [[ item.action ]](item, item.action_data);
+                } else {
+                    self [[ item.action ]](item);
+                }
+            }
+        }
+    }
 }

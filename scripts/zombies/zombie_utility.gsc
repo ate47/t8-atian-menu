@@ -12,16 +12,16 @@ get_round_number() {
 	return world.roundnumber ^ 115;
 }
 
-func_round_add(count) {
+func_round_add(item, count) {
     set_round_number(get_round_number() + count);
     self thread func_kill_zombies();
 }
-func_round_set(round) {
+func_round_set(item, round) {
     set_round_number(round);
     self thread func_kill_zombies();
 }
 
-func_kill_zombies() {
+func_kill_zombies(item) {
     if (!isdefined(level.zombie_team)) {
         return;
     }
@@ -31,4 +31,28 @@ func_kill_zombies() {
             zombie dodamage(zombie.maxhealth + 666, zombie.origin, self);
         }
     }
+}
+func_zmignoreme(item) {
+    if (isdefined(self.tool_zmignoreme) && self.tool_zmignoreme) {
+        self.tool_zmignoreme = false;
+        self disableinvulnerability();
+        self val::set(#"atianmod", "zmignoreme", false);
+    } else {
+        self.tool_zmignoreme = true;
+    }
+    item.activated = self.tool_zmignoreme;
+    return true;
+}
+
+func_inf_revive(item) {
+    if (isdefined(self.inf_revive) && self.inf_revive) {
+        self.inf_revive = false;
+        self.var_5c4f1263 = 0;
+        item.activated = false;
+    } else {
+        self.inf_revive = true;
+        self.var_5c4f1263 = 100;
+        item.activated = true;
+    }
+    return true;
 }

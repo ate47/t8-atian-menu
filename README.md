@@ -17,8 +17,17 @@ Posts or videos I've made using these scripts or the sources:
 
 You can config the mod menu in the [`scripts/config.gsc`](scripts/config.gsc) file, current tools:
 
-- `force_blackout_map` : Force a blackout map at start
-- `force_blackout_gametype` : Force a blackout mode at start
+- blackout
+  - Force mode
+  - Force map
+  - Set the zombies spawner types
+  - Spawn the Icarus
+  - Quaknarok
+  - Spawn waterballons
+  - Spawn snowballs
+- general
+  - Force character skin
+  - Enable options at startup
 
 ## Features
 
