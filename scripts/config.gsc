@@ -15,13 +15,20 @@ AtianMenuConfig() {
     // number of lives per player
     self.numlives = 1000;
 
+    // size of the sensor dart radius
+    // - blackout core     : 2400 
+    // - blackout alcatraz : 1200
+    // - multiplayer       : 800 
+    self.sensor_dart_radius = 4800;
+
     // --------- menu config ---------
     
     // load menus at start, should be the same as the one described in menu_items.gsc, syntax: "MENU_NAME::ITEM_NAME"
     // example: "tool_menu::Invulnerability" for no damage
     self.preloaded_menus = array(
         "tool_menu::Ammos",
-        "tool_menu::Invulnerability"
+        "tool_menu::Invulnerability",
+        "tool_menu::Max Points"
     );
 
     // only the host has the menu
@@ -86,4 +93,97 @@ AtianMenuConfig() {
     // spawn Water ballons (can't be used with blackout_quaknarok)
     self.blackout_spawn_waterballons = false;
 
+    
+    // -------- zombie config --------
+
+    // start round
+    self.zm_custom_startround = 115;
+    // maximum round number (stop the game once reached)
+    // self.zm_custom_zmroundcap = 999;
+    
+    // allow traps
+    //self.zm_custom_traps = true;
+
+    // highlight craftable elements
+    self.zm_custom_highlightcraftables = true;
+
+    // no barriers
+    // self.zm_custom_norepair = false;
+
+    // perk decay (false to remove all perks when down)
+    // self.zm_custom_perks_decay = false;
+
+    // enable magic
+    // self.zm_custom_magic = false;
+    
+    // enable friendly fire
+    // self.zm_custom_friendlyfire = true;
+
+    // enable AAT
+    // self.zm_custom_aat = false;
+
+    // disable loadout
+    //self.zm_custom_no_loadout = true;
+
+    // maximum time (minutes?)
+    // self.zm_custom_zmtimecap = 0;
+
+    // down point lost
+    // percentage of the player's score
+    // self.zm_custom_down_lost_percentage = 0.4;
+    
+    // death point lost
+    // percentage of the player's score
+    // self.zm_custom_down_death_percentage = 0.4;
+
+    // enable powerups
+    //self.zm_custom_zmpowerupsactive = false;
+    // disable powerups per type
+    // options: "nuke", "double", "instakill", "chaospoints", "firesale", "specialweapon", "freeperk", "maxammo", "carpenter"
+    self.zm_custom_disable_powerup = array(
+    );
+
+    // disable weapon categories
+    // options: "pistol", "shotgun", "smg", "ar", "tr", "lmg", "sniper", "melee", "equipment", "hero"
+    self.zm_custom_disable_weapon_category = array(
+    );
+    
+    // allow elixir by category
+    // self.zm_custom_elixir_lvl1 = true;
+    // self.zm_custom_elixir_lvl2 = true;
+    // self.zm_custom_elixir_lvl3 = true;
+    // self.zm_custom_elixir_lvl4 = true;
+    // self.zm_custom_elixir_lvl5 = true;
+
+    // allow elixirs
+    //self.zm_custom_zmelixiractive = false;
+    // disable elixir per type
+    // options : "aftertaste", "alchemicalantithesis", "alwaysdoneswiftly", "antientrapment", "anywherebuthere", "arsenalaccelerator", 
+    //           "boardgames", "bulletboost", "burnedout", "cacheback", "conflagrationliquidation", "crawlspace", "ctrlz", "dangerclosest", 
+    //           "deadofnuclearwinter", "dividendyield", "equipmint", "extracredit", "freefire", "headdrama", "headscan", 
+    //           "immolationliquidation", "inplainsight", "jointheparty", "killjoy", "licensedcontractor", "neardeathexperience", 
+    //           "newtoniannegation", "nowyouseeme", "nowherebutthere", "perkup", "perkaholic", "phantomreload", "phoenixup", 
+    //           "pointdrops", "popshocks", "powerkeg", "powervacuum", "refreshmint", "reigndrops", "secretshopper", "shieldsup", 
+    //           "shoppingfree", "sodafountain", "stockoption", "suitup", "swordflay", "talkinboutregeneration", "temporalgift", 
+    //           "undeadmanwalking", "wallpower", "whoskeepingscore"
+    self.zm_custom_disable_elixir = array(
+    );
+
+    // allow perks
+    //self.zm_custom_zmperkactive = false;
+    // disable perk per type
+    // options : "armorvest", "fastreload", "quickrevive", "widowswine", "staminup", "additionalprimaryweapon", "electriccherry", 
+    //           "deadshot", "cooldown", "dying_wish", "phdflopper", "stronghold", "extraammo", "awareness", "shield", "mystery", 
+    //           "etherealrazor", "zombshell", "wolf_protector", "death_dash"
+    self.zm_custom_disable_perk = array(
+    );
+
+    
+    // disable entities from spawning
+    // options : "miniboss", "heavy", "dog", "enhanced"
+    self.zm_custom_disable_entities = array(
+    );
+
+    // headshots only
+	// self.zm_custom_headshots_only = false;
 }

@@ -17,6 +17,9 @@ Posts or videos I've made using these scripts or the sources:
 
 You can config the mod menu in the [`scripts/config.gsc`](scripts/config.gsc) file, current tools:
 
+- general
+  - Force character skin
+  - Enable options at startup
 - blackout
   - Force mode
   - Force map
@@ -25,9 +28,8 @@ You can config the mod menu in the [`scripts/config.gsc`](scripts/config.gsc) fi
   - Quaknarok
   - Spawn waterballons
   - Spawn snowballs
-- general
-  - Force character skin
-  - Enable options at startup
+- zombies
+  - Custom mutation like config to setup your own zombies
 
 ## Features
 
@@ -39,7 +41,8 @@ You can config the mod menu in the [`scripts/config.gsc`](scripts/config.gsc) fi
   - max points (Zombies)
 - Gun tool ([Demo](https://www.youtube.com/watch?v=hPBZrQQ7u4c))
   - TP gun
-  - Rocket man (MP)
+  - Rocket man
+  - Rocket gun
   - A10 rocket (MP)
   - Mantis rocket (MP)
   - Hellstorm rockets (MP)
@@ -56,6 +59,9 @@ You can config the mod menu in the [`scripts/config.gsc`](scripts/config.gsc) fi
 - fly
 - set map
 - set gametype
+- set round (Zombies)
+- ignore me (Zombies)
+- End contracts (Zombies)
 - give weapon (+upgraded (Zombies))
 - set camo
 - set reticle

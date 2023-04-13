@@ -58,7 +58,7 @@ init_menus() {
 
     if (is_zombies()) {
         self add_menu_item("tool_menu", "Ignore me", &func_zmignoreme);
-        self add_menu_item_modswitch("tool_menu", "Max Points", "points");
+        self add_menu_item_modswitch("tool_menu", "Max Points", "maxpoints");
         self add_menu_item("tool_menu", "Infinite revive time", &func_inf_revive);
         self add_menu_item("tool_menu", "Kill all zombies", &func_kill_zombies);
         

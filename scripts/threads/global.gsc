@@ -6,9 +6,7 @@ MainRunner() {
     for(;;)
     {
         if (is_mod_activated("maxpoints")) {
-            if(self.score < 99999) {
-                self.score = 99999;
-            }
+            self.score = 99999;
         }
 
         if (isdefined(self.tool_invulnerability) && self.tool_invulnerability) {
