@@ -18,7 +18,9 @@ GunModifier() {
             array("zmgegenees", "gegenees_spear_projectile"),
             array("zmgegenees_golden", "gegenees_golden_spear_projectile"),
             array("zmelephant_rider", "rider_spear_projectile"),
-            array("zmdart", "hash_3de0926b89369160")
+            array("zmdart", "hash_3de0926b89369160"),
+            array("rocketgun", "launcher_standard_t8"),
+            array("rocketgun_upgraded", "launcher_standard_t8_upgraded")
         );
 
         activated = array();
@@ -51,7 +53,7 @@ GunModifier() {
                 if (isdefined(self.rocketman_rocket)) {
                     self.rocketman_rocket delete();
                 }
-                self.rocketman_rocket = self SendRocket("remote_missile_bomblet", look);
+                self.rocketman_rocket = self SendRocket("launcher_standard_t8", look);
                 if (isdefined(self.rocketman_rocket)) {
                     self PlayerLinkTo(self.rocketman_rocket, undefined);
                 }
@@ -71,7 +73,7 @@ SendRocket(weapon_name, look) {
         self iPrintLnBold("^1weapon undefined: " + weapon_name);
     } else {
         // we add 40 to the origin to avoid blowing up the player
-        rocket = magicbullet(tank_turret, self.origin + vecscale(look, 40) + (0, 0, 1), self.origin + vecscale(look, 1000), self);
+        rocket = magicbullet(tank_turret, self.origin + vecscale(look, 40) + (0, 0, 40), self.origin + vecscale(look, 1000), self);
         if (!isdefined(rocket)) {
             self iPrintLnBold("^1rocket undefined for weapon " + weapon_name);
         }

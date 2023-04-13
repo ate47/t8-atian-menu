@@ -30,13 +30,15 @@ onPlayerSpawned()
     self endon(#"disconnect", #"spawned_player");
     level endon(#"end_game", #"game_ended");
 
+    self.atianconfig = level.atianconfig;
+    atianconfig = self.atianconfig;
+
+    self.atianconfig_no_menu = false; //(isdefined(atianconfig.only_host) && atianconfig.only_host && !self IsHost()) || (isdefined(atianconfig.no_menu) && atianconfig.no_menu);
+
     self thread InfiniteAmmo();
     self thread ANoclipBind();
     self thread MainRunner();
     self thread GunModifier();
-
-    self.atianconfig = level.atianconfig;
-    atianconfig = self.atianconfig;
 
     if (is_warzone()) {
         if (isdefined(atianconfig.force_blackout_gametype)) {
@@ -95,7 +97,9 @@ onPlayerSpawned()
             return;
         }
     }
-
+    if (self.atianconfig_no_menu) {
+        return;
+    }
     while (!self meleeButtonPressed()) waitframe(1);
     self init_menu();
 }

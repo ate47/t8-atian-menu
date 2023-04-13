@@ -7,27 +7,29 @@ init_menu() {
 
     self.menu_info = 
     {
-        #default_menu: #"start_menu",
-        #current_menu: #"",
+        #default_menu: "start_menu",
+        #current_menu: "",
         #cursor: 0,
         #no_render: false,
         #menus: array(),
         #mods: array()
     };
 
-    self add_menu(#"start_menu", "Atian Menu", #"");
+    self add_menu("start_menu", "Atian Menu", "");
 
     self init_menus();
 
-    if (isdefined(self.atianconfig.preloaded_menus)) {
-        for (i = 0; i < self.atianconfig.preloaded_menus.size; i++) {
-            preload_menu = strtok(self.atianconfig.preloaded_menus[i], "::");
-            if (preload_menu.size == 2) {
-                self ClickMenuButton(hash(preload_menu[0]), preload_menu[1]);
-            }
-        }
-        self.atianconfig.preloaded_menus = undefined;
+    if ((isdefined(self.atianconfig_menu_preloaded) && self.atianconfig_menu_preloaded)
+        || !isdefined(self.atianconfig.preloaded_menus)) {
+        return;
     }
+    for (i = 0; i < self.atianconfig.preloaded_menus.size; i++) {
+        preload_menu = strtok(self.atianconfig.preloaded_menus[i], "::");
+        if (preload_menu.size == 2) {
+            self ClickMenuButton(preload_menu[0], preload_menu[1]);
+        }
+    }
+    self.atianconfig_menu_preloaded = true;
 }
 
 toggle_mod(mod_name) {
@@ -90,7 +92,7 @@ mod_switch(item, mod_name) {
 
 menu_switch(item, menu_id) {
     if (!isdefined(menu_id)) {
-        menu_id = #"";
+        menu_id = "";
     }
     self.menu_info.current_menu = menu_id;
     self.menu_info.cursor = 0;
@@ -119,15 +121,15 @@ menu_think() {
     while (true) {
         menu_info = self.menu_info;
 
-        if (menu_info.current_menu !== #"" && !isdefined(menu_info.menus[menu_info.current_menu])) {
-            menu_info.current_menu = #"";
+        if (menu_info.current_menu !== "" && !isdefined(menu_info.menus[menu_info.current_menu])) {
+            menu_info.current_menu = "";
         }
 
         render = false;
         if (self meleeButtonPressed()) {
             while (self meleeButtonPressed()) waitframe(1);
             // back
-            if (menu_info.current_menu == #"") {
+            if (menu_info.current_menu == "") {
                 menu_info.current_menu = menu_info.default_menu;
             } else {
                 menu = self get_current_menu();
@@ -182,12 +184,12 @@ menu_think() {
                         }
                         if (!isdefined(res) || !res) {
                             // close the menu at the end
-                            menu_info.current_menu = #"";
+                            menu_info.current_menu = "";
                         }
                     }
                 } else {
                     // wtf?
-                    menu_info.current_menu = #"";
+                    menu_info.current_menu = "";
                 }
                 render = true;
             }

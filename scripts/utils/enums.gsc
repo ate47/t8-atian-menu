@@ -467,7 +467,6 @@ get_all_maps_mp() {
         "mp_slums2",
         "mp_station",
         "mp_urban",
-        "mp_urban_alt",
         "mp_zombie_museum"
     );
 }

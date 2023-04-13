@@ -11,7 +11,7 @@ func_helloworld(item, text) {
         self iprintln("gtype:  " + level.gametype);
     }
     if (isdefined(get_gamemode())) {
-        self iprintln("gmode:  " + get_gamemode());
+        self iprintln("gmode:  " + get_gamemode() + " " + SessionModeIsZombiesGame());
     }
     if (isdefined(level.script)) {
         self iprintln("map:    " + level.script);

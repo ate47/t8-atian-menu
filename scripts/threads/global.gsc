@@ -17,7 +17,7 @@ MainRunner() {
             self val::set(#"atianmod", "disable_oob", true);
         }
         if (isdefined(self.tool_zmignoreme) && self.tool_zmignoreme) {
-            self val::set(#"atianmod", "zmignoreme", true);
+            self val::set(#"atianmod", "ignoreme", true);
         }
 
         if (isdefined(self.rocketman_rocket) && self SprintButtonPressed()) {

@@ -36,7 +36,7 @@ func_zmignoreme(item) {
     if (isdefined(self.tool_zmignoreme) && self.tool_zmignoreme) {
         self.tool_zmignoreme = false;
         self disableinvulnerability();
-        self val::set(#"atianmod", "zmignoreme", false);
+        self val::set(#"atianmod", "ignoreme", false);
     } else {
         self.tool_zmignoreme = true;
     }

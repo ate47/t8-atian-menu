@@ -1,15 +1,15 @@
 // utility class to guess the loaded mode
 
 is_warzone() {
-    return isdefined(level.selected_gamemode) && level.selected_gamemode === "wz";
+    return sessionmodeiswarzonegame();
 }
 
 is_zombies() {
-    return isdefined(level.selected_gamemode) && level.selected_gamemode === "zm";
+    return sessionmodeiszombiesgame();
 }
 
 is_multiplayer() {
-    return isdefined(level.selected_gamemode) && level.selected_gamemode === "mp";
+    return sessionmodeismultiplayergame();
 }
 
 can_spawn_vehicle() {
