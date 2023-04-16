@@ -1,6 +1,6 @@
-# t8-tests
+# Atian menu
 
-Tests repo for T8 (Black ops 4) GSC scripts
+Mod menu for T8 (Black ops 4) GSC scripts
 
 Using the compiler: https://github.com/shiversoftdev/t7-compiler
 
@@ -12,6 +12,8 @@ Posts or videos I've made using these scripts or the sources:
 
 - [Reddit - Camo we can't buy anymore](https://www.reddit.com/r/Blackops4/comments/10y963t/if_someone_wants_to_see_the_camos_we_cant_buy/)
 - [Reddit - Stats for the care packages](https://www.reddit.com/r/Blackops4/comments/nhonhu/if_you_had_ever_wondered_the_probabilities_in_the/)
+- [Blackout Quaknarok](https://www.youtube.com/watch?v=XphuwHYtSjk)
+- [GSC Weapon tool](https://www.youtube.com/watch?v=hPBZrQQ7u4c)
 
 ## Config
 
