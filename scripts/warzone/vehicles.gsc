@@ -1,7 +1,7 @@
 func_spawn_vehicle(item, vehicule_type) {
     tag_origin = self GetTagOrigin("tag_weapon");
     look = AnglesToForward(self GetPlayerAngles());
-    bullet_hit = bullettrace(tag_origin, tag_origin + vecscale(look, 5000), 1, self)["position"];
+    bullet_hit = bullettrace(tag_origin, tag_origin + vectorscale(look, 5000), 1, self)["position"];
 
     ground_pos = bullettrace(bullet_hit + vectorscale((0, 0, 1), 128), bullet_hit - vectorscale((0, 0, 1), 128), 0, undefined, 1);
     if (ground_pos[#"surfacetype"] == "water" || ground_pos[#"surfacetype"] == "watershallow")

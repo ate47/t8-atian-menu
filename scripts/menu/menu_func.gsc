@@ -1,30 +1,61 @@
 func_helloworld(item, text) {
-    if (isdefined(text)) {
-        self iprintln(text);
-    }
-    weapon = self GetCurrentWeapon();
-    if (isdefined(weapon) && isdefined(weapon.name)) {
-        str_weapon = weapon.name;
-        self iprintln("weapon: " + weapon.name);
-    }
-    if (isdefined(level.gametype)) {
-        self iprintln("gtype:  " + level.gametype);
-    }
-    if (isdefined(get_gamemode())) {
-        self iprintln("gmode:  " + get_gamemode() + " " + SessionModeIsZombiesGame());
-    }
-    if (isdefined(level.script)) {
-        self iprintln("map:    " + level.script);
-    }
-    if (isdefined(self.origin)) {
-        self iprintln("origin: " + self.origin);
-    }
-    role = self player_role::get();
-    if (isdefined(role)) {
-        self iprintln("role:   " + role);
-    }
+    ts = 0;
+    while (!(self key_mgr_has_key_pressed(#"last_item"))) {
+        nts = GetTime();
+        
+        if (nts > ts) {
+            ts = nts + 1000; // add 1s
+        } else {
+            waitframe(1);
+            continue;
+        }
+        index_end = 0;
 
-    self.menu_info.no_render = true;
+        if (isdefined(text)) {
+            self iprintln(text);
+            index_end++;
+        }
+        weapon = self GetCurrentWeapon();
+        
+        if (isdefined(weapon) && isdefined(weapon.name)) {
+            str_weapon = weapon.name;
+            self iprintln("weapon: " + weapon.name);
+            index_end++;
+        }
+        if (isdefined(level.gametype)) {
+            gametype = level.gametype;
+        } else {
+            gametype = "nogtype";
+        }
+        if (isdefined(level.script)) {
+            script = level.script;
+        } else {
+            script = "noscript";
+        }
+        self iprintln("mode: " + gametype + "(" + get_gamemode() + "/" + script + ")");
+        index_end++;
+
+        if (isdefined(self.origin)) {
+            self iprintln("origin: " + self.origin);
+            index_end++;
+        }
+        self iprintln("angles: " + self GetPlayerAngles());
+        index_end++;
+        role = self player_role::get();
+        if (isdefined(role)) {
+            self iprintln("role:   " + role);
+            index_end++;
+        }
+        
+        end_space = (8 - (index_end % 8));
+        if (end_space !== 8) {
+            for (i = 0; i < end_space; i++) {
+                self iprintln("");
+            }
+        }
+        waitframe(1);
+    }
+    return true;
 }
 
 func_3rdperson(item) {
@@ -89,7 +120,10 @@ func_test(item) {
     return false;
 }
 
-func_teleport(item, origin) {
+func_teleport(item, origin, angles) {
     self setOrigin(origin);
+    if (isdefined(angles)) {
+        self setPlayerAngles(angles);
+    }
     return true;
 }

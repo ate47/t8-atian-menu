@@ -74,13 +74,19 @@ key_mgr_has_key_pressed(id, wait_release = false) {
     }
     
     for (;;) {
+        we_continue = false;
         for (i = 0; i < key_cfg.size; i++) {
-            if (!self key_mgr_has_key_pressed_id(key_cfg[i])) {
-                return true;
+            if (self key_mgr_has_key_pressed_id(key_cfg[i])) {
+                we_continue = true;
             }
+        }
+        // wait for all the keys
+        if (!we_continue) {
+            break;
         }
         waitframe(1);
     }
+    return true;
 }
 key_mgr_has_key_pressed_id(id) {
     switch (id) {

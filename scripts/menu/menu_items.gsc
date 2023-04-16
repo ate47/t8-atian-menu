@@ -100,8 +100,8 @@ init_menus() {
     self add_menu_item("tool_menu", "Test", &func_test);
 
     // ---- Weapon ----
-    self add_menu("tool_weapon", "Weapon", "start_menu");
-    self add_menu_item_menuswitch("start_menu", "Weapon", "tool_weapon");
+    self add_menu("tool_weapon", "Guns", "start_menu");
+    self add_menu_item_menuswitch("start_menu", "Guns", "tool_weapon");
 
     self add_menu_item_modswitch("tool_weapon", "TP gun", "tpgun");
     
@@ -126,6 +126,7 @@ init_menus() {
     } else {
         self add_menu_item_modswitch("tool_weapon", "Rocket gun", "rocketgun");
     }
+    self add_menu_item_modswitch("tool_weapon", "Armageddon", "rocket_armageddon");
     self add_menu_item_modswitch("tool_weapon", "Rocket man", "rocketman");
 
     // ---- Give weapon ----
@@ -136,6 +137,29 @@ init_menus() {
 
     for (i = 0; i < weapons.size; i++) {
         self add_menu_item("weapons", weapons[i], &func_give_weapon, weapons[i]);
+    }
+
+    if (isdefined(level.script)) {
+        self add_menu("teleport", "Teleport", "start_menu");
+        self add_menu_item_menuswitch("start_menu", "Teleport", "teleport");
+
+        if (is_warzone()) {
+            self add_menu_item_modswitch("teleport", "Waypoint tp", "waypoint_tp");
+        }
+
+        switch (level.script) {
+            case "wz_escape":
+            case "wz_escape_alt":
+                self add_menu_item("teleport", "Boat", &func_teleport, (-9045, -4126, 117.117), (0, 150, 0));
+                self add_menu_item("teleport", "Docks", &func_teleport, (2049, -4510, 144.125), (-9, -178, 0));
+                self add_menu_item("teleport", "Island", &func_teleport, (-9868, -7088, 199.947), (0, 62, 0));
+                self add_menu_item("teleport", "Main building", &func_teleport, (-70, 419, 1392.13), (0, -5, 0));
+                self add_menu_item("teleport", "Model industries", &func_teleport, (5636, 9464, 1144.13), (0, -70, 0));
+                self add_menu_item("teleport", "New industries", &func_teleport, (3268, 6574, 527.625), (0, 16, 0));
+                self add_menu_item("teleport", "Submarine", &func_teleport, (9503, 5888, 117), (0, 67, 0));
+                self add_menu_item("teleport", "White house", &func_teleport, (-4057, -4664, 693.125), (-10, -100, 0));
+                break;
+        }
     }
 
     if (is_warzone()) {
@@ -229,6 +253,11 @@ init_menus() {
             self add_menu_item("weapons_upgraded", weapons[i], &func_give_weapon, weapons[i] + "_upgraded");
         }
     }
+    self add_menu("random", "Random", "start_menu");
+    self add_menu_item_menuswitch("start_menu", "Random", "random");
+
+    self add_menu_item_modswitch("random", "YOU SPIN ME...", "spin_me");
+    
 
     // ---- Characters ----
     self add_menu("characters", "Characters", "start_menu");

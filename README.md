@@ -42,11 +42,13 @@ You can config the mod menu in the [`scripts/config.gsc`](scripts/config.gsc) fi
   - max ammo
   - fly
   - no damage
+  - Kill all zombies
   - max points (Zombies)
 - Gun tool ([Demo](https://www.youtube.com/watch?v=hPBZrQQ7u4c))
   - TP gun
   - Rocket man
   - Rocket gun
+  - Armageddon
   - A10 rocket (MP)
   - Mantis rocket (MP)
   - Hellstorm rockets (MP)
@@ -55,6 +57,8 @@ You can config the mod menu in the [`scripts/config.gsc`](scripts/config.gsc) fi
   - Gegenees shot (AE)
   - Darts (BoTD)
   - Nova shot (AO)
+- Teleport tool
+  - Waypoint tp (Blackout) : TP using the map (need fix for the main map)
 - set characters
 - set skin
   - skin palette
