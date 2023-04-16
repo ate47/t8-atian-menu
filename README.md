@@ -15,6 +15,8 @@ Posts or videos I've made using these scripts or the sources:
 
 ## Config
 
+You can config the mod keys in the [`scripts/keyconfig.gsc`](scripts/keyconfig.gsc) file, by default you open it with ADS+Melee.
+
 You can config the mod menu in the [`scripts/config.gsc`](scripts/config.gsc) file, current tools:
 
 - general

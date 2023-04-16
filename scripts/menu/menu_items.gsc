@@ -61,7 +61,16 @@ init_menus() {
         self add_menu_item_modswitch("tool_menu", "Max Points", "maxpoints");
         self add_menu_item("tool_menu", "Infinite revive time", &func_inf_revive);
         self add_menu_item("tool_menu", "Kill all zombies", &func_kill_zombies);
-        
+
+        self add_menu("zombies_speed", "Zombies speed", "tool_menu");
+        self add_menu_item_menuswitch("tool_menu", "Zombies speed", "zombies_speed");
+
+        self add_menu_item("zombies_speed", "Default", &func_zombies_speed);
+        self add_menu_item("zombies_speed", "Walk", &func_zombies_speed, "walk");
+        self add_menu_item("zombies_speed", "Run", &func_zombies_speed, "run");
+        self add_menu_item("zombies_speed", "Sprint", &func_zombies_speed, "sprint");
+        self add_menu_item("zombies_speed", "Super sprint", &func_zombies_speed, "super_sprint");
+
         self add_menu("round_tool", "Round tool", "tool_menu");
         self add_menu_item_menuswitch("tool_menu", "Round tool", "round_tool");
         

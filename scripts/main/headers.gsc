@@ -139,7 +139,24 @@ handle_config() {
         if (isdefined(atianconfig.zm_custom_no_loadout)) setGametypeSetting(#"hash_589c0366b1458c7e", atianconfig.zm_custom_no_loadout);
         if (isdefined(atianconfig.zm_custom_headshots_only)) setGametypeSetting(#"hash_4cb15aed177a8ef5", atianconfig.zm_custom_headshots_only);
         
+        if (isdefined(atianconfig.zm_custom_zombies_speed_max)) {
+            switch (atianconfig.zm_custom_zombies_speed_max) {
+                case "walk": setGametypeSetting("hash_7b14ee93b27576a9", 0); break;
+                case "run": setGametypeSetting("hash_7b14ee93b27576a9", 1); break;
+                case "sprint": setGametypeSetting("hash_7b14ee93b27576a9", 2); break;
+                case "super_sprint": setGametypeSetting("hash_7b14ee93b27576a9", 3); break;
+            }
+        }
         
+        if (isdefined(atianconfig.zm_custom_zombies_speed_min)) {
+            switch (atianconfig.zm_custom_zombies_speed_min) {
+                case "walk": setGametypeSetting("hash_58af4e73782aba2f", 0); break;
+                case "run": setGametypeSetting("hash_58af4e73782aba2f", 1); break;
+                case "sprint": setGametypeSetting("hash_58af4e73782aba2f", 2); break;
+                case "super_sprint": setGametypeSetting("hash_58af4e73782aba2f", 3); break;
+            }
+        }
+
         if (isdefined(atianconfig.zm_custom_down_lost_percentage) && atianconfig.zm_custom_down_lost_percentage)
             setGametypeSetting(#"hash_1fed0d9afc0b0040", atianconfig.zm_custom_down_lost_percentage);
         if (isdefined(atianconfig.zm_custom_down_death_percentage) && atianconfig.zm_custom_down_death_percentage) 

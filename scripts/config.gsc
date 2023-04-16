@@ -97,7 +97,7 @@ AtianMenuConfig() {
     // -------- zombie config --------
 
     // start round
-    self.zm_custom_startround = 115;
+    // self.zm_custom_startround = 115;
     // maximum round number (stop the game once reached)
     // self.zm_custom_zmroundcap = 999;
     
@@ -135,6 +135,12 @@ AtianMenuConfig() {
     // death point lost
     // percentage of the player's score
     // self.zm_custom_down_death_percentage = 0.4;
+
+
+    // set the zombies' speed
+    // options: "walk", "run", "sprint", "super_sprint"
+    // self.zm_custom_zombies_speed_max = "run"
+    // self.zm_custom_zombies_speed_min = "walk"
 
     // enable powerups
     //self.zm_custom_zmpowerupsactive = false;

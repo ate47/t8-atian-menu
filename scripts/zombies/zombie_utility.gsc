@@ -56,3 +56,27 @@ func_inf_revive(item) {
     }
     return true;
 }
+
+func_zombies_speed(item, speed) {
+    if (!isdefined(speed)) {
+        level.var_43fb4347 = undefined; 
+        level.var_102b1301 = undefined;
+        a_e_zombies = getaiarray();
+        foreach(e_zombie in a_e_zombies) {
+            if (isdefined(e_zombie.zombie_move_speed_backupobj)) {
+                e_zombie.zombie_move_speed = e_zombie.zombie_move_speed_backupobj;
+            } else {
+                e_zombie.zombie_move_speed = "walk";
+            }
+        }
+    } else {
+        a_e_zombies = getaiarray();
+        foreach(e_zombie in a_e_zombies) {
+            e_zombie.zombie_move_speed_backupobj = e_zombie.zombie_move_speed;
+            e_zombie.zombie_move_speed = speed;
+        }
+        level.var_43fb4347 = speed; 
+        level.var_102b1301 = speed;
+    }
+}
+
