@@ -3,7 +3,6 @@ init_menu() {
         // ignore menu creation if already set
         return;
     }
-    while (!self meleeButtonPressed()) waitframe(1);
 
     self.menu_info = 
     {
@@ -126,19 +125,27 @@ menu_think() {
         }
 
         render = false;
-        if (self meleeButtonPressed()) {
-            while (self meleeButtonPressed()) waitframe(1);
-            // back
-            if (menu_info.current_menu == "") {
+        if (menu_info.current_menu == "") {
+            // out menu
+            if (self key_mgr_has_key_pressed(#"open_menu", true)) {
                 menu_info.current_menu = menu_info.default_menu;
+                self.menu_info.cursor = 0;
+                render = true;
             } else {
-                menu = self get_current_menu();
+                waitframe(1);
+                continue;
+            }
+        } else if (self key_mgr_has_key_pressed(#"parent_page", true)) {
+            // back
+            menu = self get_current_menu();
+            if (!isdefined(menu)) {
+                menu_info.current_menu = "";
+            } else {
                 menu_info.current_menu = menu.parent_id;
             }
             self.menu_info.cursor = 0;
             render = true;
-        } else if (self adsButtonPressed()) {
-            while (self adsButtonPressed()) waitframe(1);
+        } else if (self key_mgr_has_key_pressed(#"last_item", true)) {
             // up arrow
             menu = self get_current_menu();
             if (isdefined(menu)) {
@@ -149,8 +156,7 @@ menu_think() {
                 }
                 render = true;
             }
-        } else if (self attackButtonPressed()) {
-            while (self attackButtonPressed()) waitframe(1);
+        } else if (self key_mgr_has_key_pressed(#"next_item", true)) {
             // bottom arrow
             menu = self get_current_menu();
             if (isdefined(menu)) {
@@ -161,8 +167,7 @@ menu_think() {
                 }
                 render = true;
             }
-        } else if (self useButtonPressed()) {
-            while (self useButtonPressed()) waitframe(1);
+        } else if (self key_mgr_has_key_pressed(#"select_item", true)) {
             // use
             menu = self get_current_menu();
             if (isdefined(menu)) {
@@ -193,7 +198,6 @@ menu_think() {
                 }
                 render = true;
             }
-
         } else {
             waitframe(1);
             continue;

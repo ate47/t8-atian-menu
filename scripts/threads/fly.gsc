@@ -18,7 +18,7 @@ ANoclipBind() {
 			while(true)
 			{
 				if(!is_mod_activated("fly")) break;
-				if(self SprintButtonPressed())
+				if(self key_mgr_has_key_pressed(#"fly_key", false))
 				{
 					normalized = AnglesToForward(self getPlayerAngles());
 					scaled = vectorScale(normalized, 60);

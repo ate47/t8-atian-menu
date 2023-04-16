@@ -18,7 +18,7 @@ MainRunner() {
             self val::set(#"atianmod", "ignoreme", true);
         }
 
-        if (isdefined(self.rocketman_rocket) && self SprintButtonPressed()) {
+        if (isdefined(self.rocketman_rocket) && self key_mgr_has_key_pressed(#"fly_key", false)) {
             // delete the rocketman rocket if the user is sprinting
             self.rocketman_rocket delete();
         }

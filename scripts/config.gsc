@@ -46,7 +46,7 @@ AtianMenuConfig() {
     //    "wz_open_skyscrapers" // Core map
     //    "wz_escape"           // Alcatraz
     //    "wz_escape_alt"       // Alcatraz night
-    self.force_blackout_map = "wz_open_skyscrapers";
+    self.force_blackout_map = "wz_escape_alt";
 
     // force a blackout mode, options: 
     //    "warzone_solo"             // solo
@@ -60,7 +60,7 @@ AtianMenuConfig() {
     //    "warzone_hardcore_duo"     // hardcore duo
     //    "warzone_hardcore_quad"    // hardcore quad
     //    "warzone_pandemic_quad"    // pandemic (script error with alcatraz)
-    self.force_blackout_gametype = "warzone_quad";
+    self.force_blackout_gametype = "warzone_escape_quad_dbno";
 
     
     // duck zombies, example: https://www.youtube.com/watch?v=XphuwHYtSjk

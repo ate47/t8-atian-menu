@@ -33,7 +33,10 @@ onPlayerSpawned()
     self.atianconfig = level.atianconfig;
     atianconfig = self.atianconfig;
 
-    self.atianconfig_no_menu = false; //(isdefined(atianconfig.only_host) && atianconfig.only_host && !self IsHost()) || (isdefined(atianconfig.no_menu) && atianconfig.no_menu);
+    // init key manager
+    self key_mgr_init();
+
+    atianconfig_no_menu = (isdefined(atianconfig.only_host) && atianconfig.only_host && !self IsHost()) || (isdefined(atianconfig.no_menu) && atianconfig.no_menu);
 
     self thread InfiniteAmmo();
     self thread ANoclipBind();
@@ -97,9 +100,10 @@ onPlayerSpawned()
             return;
         }
     }
-    if (self.atianconfig_no_menu) {
+    if (atianconfig_no_menu) {
         return;
     }
     while (!self meleeButtonPressed()) waitframe(1);
+    // init menu system
     self init_menu();
 }
