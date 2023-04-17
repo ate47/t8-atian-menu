@@ -1,6 +1,6 @@
 func_helloworld(item, text) {
     ts = 0;
-    while (!(self key_mgr_has_key_pressed(#"last_item"))) {
+    while (!(self key_mgr_has_key_pressed(#"parent_page"))) {
         nts = GetTime();
         
         if (nts > ts) {

@@ -37,7 +37,10 @@ __post__init__() {
     }
 }
 
-set_self_health(health) {
+on_avogadro_spawn(health) {
+    if (level.atianconfig.blackout_quaknarok) {
+        self attach("p8_zm_red_floatie_duck", "j_spinelower", 1);
+    }
     self.maxhealth = health;   
     self.health = health;
 }
@@ -85,7 +88,7 @@ handle_config() {
                     break;
                 case "avogadro":
                     if (isdefined(atianconfig.blackout_spawn_default_health) && atianconfig.blackout_spawn_default_health > 1) {
-                        spawner::add_archetype_spawn_function(#"avogadro", &set_self_health, atianconfig.blackout_spawn_default_health);
+                        spawner::add_archetype_spawn_function(#"avogadro", &on_avogadro_spawn, atianconfig.blackout_spawn_default_health);
                     }
 	                
                     setGametypeSetting(#"hash_29a8b0865154e079", true);
@@ -147,7 +150,7 @@ handle_config() {
                 case "super_sprint": setGametypeSetting("hash_7b14ee93b27576a9", 3); break;
             }
         }
-        
+
         if (isdefined(atianconfig.zm_custom_zombies_speed_min)) {
             switch (atianconfig.zm_custom_zombies_speed_min) {
                 case "walk": setGametypeSetting("hash_58af4e73782aba2f", 0); break;
