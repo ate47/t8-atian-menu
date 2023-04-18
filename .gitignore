@@ -4,3 +4,5 @@ temp
 compiled.gscc
 compiled.omap
 hashes.txt
+
+scripts/devconfig.gsc
