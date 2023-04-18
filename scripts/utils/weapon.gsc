@@ -23,7 +23,7 @@ func_give_weapon(item, weapon_name) {
 }
 
 func_set_camo(item, data) {
-    self SetCamo(data, 0);
+    self Set_Camo(data, undefined);
     return true;
 }
 
@@ -43,17 +43,17 @@ SetReticle(reticle) {
     }
 }
 
-SetCamo(id, reticle) {
+Set_Camo(id, reticle) {
     weapon = self GetCurrentWeapon();
 
-    if (!isdefined(reticle)) {
-        reticle = 0;
-    }
-
     if (isdefined(weapon)) {
+        if (!isdefined(reticle) || !reticle) {
+            self setcamo(weapon, id);
+            return;
+        }
         self takeweapon(weapon);
         weapon_options = self calcweaponoptions(id, reticle, 0);
-        
+
         self giveweapon(weapon, weapon_options);
         camo_index_var = getcamoindex(weapon_options);
         camo_var2 = function_11c873a(camo_index_var);

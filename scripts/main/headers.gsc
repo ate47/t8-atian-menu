@@ -12,8 +12,7 @@
 #include scripts\core_common\bots\bot;
 #include scripts\core_common\player\player_role;
 #include scripts\core_common\values_shared;
-#include scripts\core_common\vehicle_shared;
-#include scripts\core_common\spawner_shared.gsc;
+#include scripts\core_common\spawner_shared;
 
 #namespace clientids_shared;
 
@@ -38,16 +37,20 @@ __post__init__() {
 }
 
 on_avogadro_spawn(health) {
-    if (level.atianconfig.blackout_quaknarok) {
+    if (isdefined(level.atianconfig.blackout_quaknarok) && level.atianconfig.blackout_quaknarok) {
         self attach("p8_zm_red_floatie_duck", "j_spinelower", 1);
     }
-    self.maxhealth = health;   
-    self.health = health;
+    if (isdefined(level.atianconfig.blackout_spawn_default_health) && 
+        level.atianconfig.blackout_spawn_default_health > 1) {
+        self.maxhealth = health;   
+        self.health = health;
+    }
 }
 
 handle_config() {
     level.atianconfig = spawnstruct();
     level.atianconfig AtianMenuConfig();
+    level.atianconfig AtianMenuDevConfig();
     atianconfig = level.atianconfig;
     if (is_warzone() || is_multiplayer()) {
         if (isdefined(atianconfig.sensor_dart_radius) && atianconfig.sensor_dart_radius > 0) {
@@ -55,7 +58,11 @@ handle_config() {
         }
     }
 
-    if (is_warzone()) {
+    if (is_multiplayer()) {
+        if (isdefined(atianconfig.mp_drafttime) && atianconfig.mp_drafttime >= 0) {
+            setGametypeSetting(#"drafttime", atianconfig.mp_drafttime);
+        }
+    } else if (is_warzone()) {
         if (isdefined(atianconfig.waverespawndelay) && atianconfig.waverespawndelay > 0) {
             setGametypeSetting(#"waverespawndelay", atianconfig.waverespawndelay);
         }
@@ -87,10 +94,7 @@ handle_config() {
                     setGametypeSetting(#"hash_2f1217d530d06c4c", true);
                     break;
                 case "avogadro":
-                    if (isdefined(atianconfig.blackout_spawn_default_health) && atianconfig.blackout_spawn_default_health > 1) {
-                        spawner::add_archetype_spawn_function(#"avogadro", &on_avogadro_spawn, atianconfig.blackout_spawn_default_health);
-                    }
-	                
+                    spawner::add_archetype_spawn_function(#"avogadro", &on_avogadro_spawn, atianconfig.blackout_spawn_default_health);
                     setGametypeSetting(#"hash_29a8b0865154e079", true);
                     setGametypeSetting(#"wzavogadro", true);
                     break;

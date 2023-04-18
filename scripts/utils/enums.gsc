@@ -87,137 +87,137 @@ get_characters_for_mode() {
 }
 get_characters_mp() {
     return array(
-        "Invisible",
-        "Ajax",
-        "Battery",
-        "Crash",
-        "Firebreak",
-        "Nomad",
-        "Prophet",
-        "Recon",
-        "Ruin",
-        "Seraph",
-        "Torque",
-        "Zero",
-        "Outrider",
-        "Spectre",
-        "Reaper",
-        "Zombies (Joe/Infected)",
-        "Zombies (Jane/Infected)"
+        "Invisible",  // 0
+        "Ajax", // 1
+        "Battery", // 2
+        "Crash", // 3
+        "Firebreak", // 4
+        "Nomad", // 5
+        "Prophet", // 6
+        "Recon", // 7
+        "Ruin", // 8
+        "Seraph", // 9
+        "Torque", // 10
+        "Zero", // 11
+        "Outrider", // 12
+        "Spectre", // 13
+        "Reaper", // 14
+        "Zombies (Joe/Infected)", // 15
+        "Zombies (Jane/Infected)" // 16
     );
 }
 get_characters_zm() {
     return array(
-        "Invisible",
-        "Scarlett",
-        "Bruno",
-        "Diego",
-        "Shaw",
-        "Richtofen (Primis)",
-        "Dempsey (Primis)",
-        "Nikolai (Primis)",
-        "Takeo (Primis)",
-        "Christina Fowler",
-        "Jonathan Warwick",
-        "Gideon Jones",
-        "Godfrey",
-        "Bruno (IX)",
-        "Diego (IX)",
-        "Scarlett (IX)",
-        "Shaw (IX)",
-        "Dempsey (Ultimis)",
-        "Nikolai (Ultimis)",
-        "Richtofen (Ultimis)",
-        "Takeo (Ultimis)",
-        "Dempsey (Ultimis/AO)",
-        "Nikolai (Ultimis/AO)",
-        "Richtofen (Ultimis/AO)",
-        "Takeo (Ultimis/AO)",
-        "Russman",
-        "Misty (Abigail Briarton)",
-        "Marlton Johnson",
-        "Samuel Stuhlinger",
-        "Richtofen (Primis/Alcatraz)"
+        "Invisible", // 0
+        "Scarlett", // 1
+        "Bruno", // 2
+        "Diego", // 3
+        "Shaw", // 4
+        "Richtofen (Primis)", // 5
+        "Dempsey (Primis)", // 6
+        "Nikolai (Primis)", // 7
+        "Takeo (Primis)", // 8
+        "Christina Fowler", // 9
+        "Jonathan Warwick", // 10
+        "Gideon Jones", // 11
+        "Godfrey", // 12
+        "Bruno (IX)", // 13
+        "Diego (IX)", // 14
+        "Scarlett (IX)", // 15
+        "Shaw (IX)", // 16
+        "Dempsey (Ultimis)", // 17
+        "Nikolai (Ultimis)", // 18
+        "Richtofen (Ultimis)", // 19
+        "Takeo (Ultimis)", // 20
+        "Dempsey (Ultimis/AO)", // 21
+        "Nikolai (Ultimis/AO)", // 22
+        "Richtofen (Ultimis/AO)", // 23
+        "Takeo (Ultimis/AO)", // 24
+        "Russman", // 25
+        "Misty (Abigail Briarton)", // 26
+        "Marlton Johnson", // 27
+        "Samuel Stuhlinger", // 28
+        "Richtofen (Primis/Alcatraz)" // 29
     );
 }
 get_characters_wz() {
     return array(
-        "Invisible",
-        "Battery",
-        "Firebreak",
-        "Nomad",
-        "Prophet",
-        "Ruin",
-        "Seraph",
-        "Ajax",
-        "Crash",
-        "Recon",
-        "Torque",
-        "Dempsey Ultimis",
-        "Nikolai Ultimis",
-        "Richtofen Ultimis",
-        "Takeo Ultimis",
-        "Dempsey Primis",
-        "Nikolai Primis",
-        "Richtofen Primis",
-        "Takeo Primis",
-        "Shadow man",
-        "Bruno",
-        "Diego",
-        "Scarlett",
-        "Shaw",
-        "Bruno (IX)",
-        "Diego (IX)",
-        "Scarlett (IX)",
-        "Shaw (IX)",
-        "Reznov",
-        "Mason",
-        "Woods",
-        "Menendez",
-        "Player man 1",
-        "Player man 2",
-        "Player man 3",
-        "Player man 4",
-        "Player woman 1",
-        "Player woman 2",
-        "Player woman 3",
-        "Player woman 4",
-        "Hudson",
-        "Player lvl 20",
-        "Player lvl 40",
-        "Player lvl 60",
-        "Player lvl 80",
-        "Player lvl 81",
-        "Zero",
-        "Reaper (Classic)",
-        "Outrider",
-        "Misty",
-        "Warden",
-        "Cosmo",
-        "Mason (Kid)",
-        "Zombies (Joe)",
-        "Hudson (Cool)",
-        "Zombies (Jane)",
-        "The Replacer",
-        "Spectre",
-        "Blackjack",
-        "Sergei",
-        "Sarah Hall",
-        "Woods (old)",
-        "Mendendez (top1)",
-        "The Replacer (Green)",
-        "Trejo",
-        "Russman",
-        "M. Shadows",
-        "Reaper",
-        "Price Classic",
-        "T.E.D.D.",
-        "Weaver",
-        "Price Classic",
-        "Stuhlinger",
-        "Marlton",
-        "Zombies (Joe/Infected)",
-        "Zombies (Jane/Infected)"
+        "Invisible", // 0
+        "Battery", // 1
+        "Firebreak", // 2
+        "Nomad", // 3
+        "Prophet", // 4
+        "Ruin", // 5
+        "Seraph", // 6
+        "Ajax", // 7
+        "Crash", // 8
+        "Recon", // 9
+        "Torque", // 10
+        "Dempsey Ultimis", // 11
+        "Nikolai Ultimis", // 12
+        "Richtofen Ultimis", // 13
+        "Takeo Ultimis", // 14
+        "Dempsey Primis", // 15
+        "Nikolai Primis", // 16
+        "Richtofen Primis", // 17
+        "Takeo Primis", // 18
+        "Shadow man", // 19
+        "Bruno", // 20
+        "Diego", // 21
+        "Scarlett", // 22
+        "Shaw", // 23
+        "Bruno (IX)", // 24
+        "Diego (IX)", // 25
+        "Scarlett (IX)", // 26
+        "Shaw (IX)", // 27
+        "Reznov", // 28
+        "Mason", // 29
+        "Woods", // 30
+        "Menendez", // 31
+        "Player man 1", // 32
+        "Player man 2", // 33
+        "Player man 3", // 34
+        "Player man 4", // 35
+        "Player woman 1", // 36
+        "Player woman 2", // 37
+        "Player woman 3", // 38
+        "Player woman 4", // 39
+        "Hudson", // 40
+        "Player lvl 20", // 41
+        "Player lvl 40", // 42
+        "Player lvl 60", // 43
+        "Player lvl 80", // 44
+        "Player lvl 81", // 45
+        "Zero", // 46
+        "Reaper (Classic)", // 47
+        "Outrider", // 48
+        "Misty", // 49
+        "Warden", // 50
+        "Cosmo", // 51
+        "Mason (Kid)", // 52
+        "Zombies (Joe)", // 53
+        "Hudson (Cool)", // 54
+        "Zombies (Jane)", // 55
+        "The Replacer", // 56
+        "Spectre", // 57
+        "Blackjack", // 58
+        "Sergei", // 59
+        "Sarah Hall", // 60
+        "Woods (old)", // 61
+        "Mendendez (top1)", // 62
+        "The Replacer (Green)", // 63
+        "Trejo", // 64
+        "Russman", // 65
+        "M. Shadows", // 66
+        "Reaper", // 67
+        "Price Classic", // 68
+        "T.E.D.D.", // 69
+        "Weaver", // 70
+        "Price Classic", // 71
+        "Stuhlinger", // 72
+        "Marlton", // 73
+        "Zombies (Joe/Infected)", // 74
+        "Zombies (Jane/Infected)" // 75
     );
 }
 

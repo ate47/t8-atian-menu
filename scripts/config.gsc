@@ -37,33 +37,37 @@ AtianMenuConfig() {
     // do not activate the menu, only use the config to create the game
     // self.no_menu = true;
 
-    // dev menu, mostly useless for you
-    self.dev = true;
-
     // ------- blackout config -------
 
     // force a blackout map, options:
     //    "wz_open_skyscrapers" // Core map
     //    "wz_escape"           // Alcatraz
     //    "wz_escape_alt"       // Alcatraz night
-    self.force_blackout_map = "wz_escape_alt";
+    self.force_blackout_map = "wz_open_skyscrapers";
 
     // force a blackout mode, options: 
-    //    "warzone_solo"             // solo
-    //    "warzone_duo"              // duo
-    //    "warzone_quad"             // quad
-    //    "warzone_escape_duo_dbno"  // alcatraz portal duo
-    //    "warzone_escape_quad_dbno" // alcatraz portal quad
-    //    "warzone_hot_pursuit"      // hot pursuit
-    //    "warzone_spectre_rising"   // spectre rising DLC (crash the game)
-    //    "warzone_hardcore_solo"    // hardcore solo
-    //    "warzone_hardcore_duo"     // hardcore duo
-    //    "warzone_hardcore_quad"    // hardcore quad
-    //    "warzone_pandemic_quad"    // pandemic (script error with alcatraz)
-    self.force_blackout_gametype = "warzone_escape_quad_dbno";
+    //    "warzone_solo"               // solo
+    //    "warzone_duo"                // duo
+    //    "warzone_quad"               // quad
+    //    "warzone_escape_duo_dbno"    // alcatraz portal duo
+    //    "warzone_escape_quad_dbno"   // alcatraz portal quad
+    //    "warzone_hot_pursuit"        // hot pursuit
+    //    "warzone_heavy_metal_heroes" // heavy metal heroes
+    //    "warzone_hardcore_solo"      // hardcore solo
+    //    "warzone_hardcore_duo"       // hardcore duo
+    //    "warzone_hardcore_quad"      // hardcore quad
+    //    "warzone_pandemic_quad"      // pandemic (script error with alcatraz)
+    // ---- gametypes with errors:
+    //    "warzone_heavy_metal"        // heavy metal (no heroes) (script error)
+    //    "warzone_spectre_rising"     // spectre rising DLC (crash the game)
+    self.force_blackout_gametype = "warzone_quad";
+
+    // force the gametype, but without switching, will be in the menu after quit
+    //self.force_blackout_noswitch = true;
 
     
     // duck zombies, example: https://www.youtube.com/watch?v=XphuwHYtSjk
+    // new: it works on the avogadro (https://youtu.be/tUzdoK6g1V4)
     self.blackout_quaknarok = true;
 
     // zombie spawn
@@ -93,11 +97,15 @@ AtianMenuConfig() {
     // spawn Water ballons (can't be used with blackout_quaknarok)
     self.blackout_spawn_waterballons = false;
 
-    
+    // ------ multiplayer config -----
+
+    // time to select a specialist
+    self.mp_drafttime = 2;
+
     // -------- zombie config --------
 
     // start round
-    // self.zm_custom_startround = 115;
+    self.zm_custom_startround = 115;
     // maximum round number (stop the game once reached)
     // self.zm_custom_zmroundcap = 999;
     

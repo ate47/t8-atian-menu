@@ -19,7 +19,7 @@ func_helloworld(item, text) {
         
         if (isdefined(weapon) && isdefined(weapon.name)) {
             str_weapon = weapon.name;
-            self iprintln("weapon: " + weapon.name);
+            self iprintln("^1weapon:^0 " + weapon.name);
             index_end++;
         }
         if (isdefined(level.gametype)) {
@@ -32,18 +32,18 @@ func_helloworld(item, text) {
         } else {
             script = "noscript";
         }
-        self iprintln("mode: " + gametype + "(" + get_gamemode() + "/" + script + ")");
+        self iprintln("^1mode: ^0" + gametype + "(" + get_gamemode() + "/" + script + ")");
         index_end++;
 
         if (isdefined(self.origin)) {
-            self iprintln("origin: " + self.origin);
+            self iprintln("^1origin: ^0" + self.origin);
             index_end++;
         }
-        self iprintln("angles: " + self GetPlayerAngles());
+        self iprintln("^1angles: ^0" + self GetPlayerAngles());
         index_end++;
         role = self player_role::get();
         if (isdefined(role)) {
-            self iprintln("role:   " + role);
+            self iprintln("^1role:   ^0" + role);
             index_end++;
         }
         
@@ -70,6 +70,34 @@ func_3rdperson(item) {
     self setclientthirdperson(self.thirdperson);
     return true;
 }
+
+func_echobold(item, data) {
+    if (isdefined(data)) {
+        if (isarray(data)) {
+            foreach (l in data) {
+                self iprintlnbold(l);
+            }
+        } else {
+            self iprintlnbold(data);
+        }
+    }
+    return true;
+}
+
+func_echo(item, data) {
+    if (isdefined(data)) {
+        if (isarray(data)) {
+            foreach (l in data) {
+                self iprintln(l);
+            }
+        } else {
+            self iprintln(data);
+        }
+    }
+    item.no_render = true;
+    return true;
+}
+
 
 func_set_mapgametype(item, map_name, gametype) {
     self iPrintLn("loading map " + map_name + " with mode " + gametype);

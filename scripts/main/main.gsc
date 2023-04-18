@@ -96,8 +96,10 @@ onPlayerSpawned()
             self iPrintLn("loading " + map_force + "/" + gametype_force);
 
             switchmap_load(map_force, gametype_force);
-            wait(1);
-            switchmap_switch();
+            if (!isdefined(atianconfig.force_blackout_noswitch) || !atianconfig.force_blackout_noswitch) {
+                wait(1);
+                switchmap_switch();
+            }
             return;
         }
     }

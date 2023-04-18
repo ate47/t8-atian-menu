@@ -50,15 +50,37 @@ WaypointPlaced(response, intpayload) {
         return;
     }
     
+    if (isdefined(level.mapcenter)) {
+        mapcenter = level.mapcenter;
+    } else {
+        mapcenter = (0, 0, 0);
+    }
+
     xcoord = int(intpayload / 1000);
     ycoord = intpayload - (xcoord * 1000);
 
     // map size x : var_405a6738
     // map size y : var_8a390df2
-    y = (xcoord - 500) / 500 * (0-level.var_405a6738);
-    x = (ycoord - 500) / 500 * (0-level.var_8a390df2);
+    y = (xcoord - 500) / 500 * (0-level.var_405a6738) + mapcenter[1];
+    x = (ycoord - 500) / 500 * (0-level.var_8a390df2) + mapcenter[0];
     
-    self iPrintLnBold("^3teleported to ^4" + x + "^3/^4" + y);
+    self iPrintLnBold("^6Teleported to ^4" + x + "^6/^4" + y);
+
+    position = bullettrace((x, y, 5000), (x, y, -5000), 0, self, 1)[#"position"];
+    self setOrigin(position);
+}
+
+RandomTp() {
+    if (isdefined(level.mapcenter)) {
+        mapcenter = level.mapcenter;
+    } else {
+        mapcenter = (0, 0, 0);
+    }
+    
+    x = randomfloatrange(0, 2 * level.var_405a6738) - level.var_405a6738 + mapcenter[1];
+    y = randomfloatrange(0, 2 * level.var_8a390df2) - level.var_8a390df2 + mapcenter[0];
+    
+    self iPrintLnBold("^6Teleported to ^4" + x + "^6/^4" + y);
 
     position = bullettrace((x, y, 5000), (x, y, -5000), 0, self, 1)[#"position"];
     self setOrigin(position);

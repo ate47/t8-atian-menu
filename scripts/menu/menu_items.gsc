@@ -15,6 +15,34 @@ init_menus() {
         self add_menu("tool_menu_dev", "Dev tools", "tool_menu");
         self add_menu_item_menuswitch("tool_menu", "Dev tools", "tool_menu_dev");
 
+        self add_menu("dev_color", "Color", "tool_menu_dev");
+        self add_menu_item_menuswitch("tool_menu_dev", "Color", "dev_color");
+        self add_menu("dev_color_bold", "Color (bold)", "tool_menu_dev");
+        self add_menu_item_menuswitch("tool_menu_dev", "Color (bold)", "dev_color_bold");
+
+        self add_menu_item("dev_color", "All Color", &func_echo, "^00 ^11 ^22 ^33 ^44 ^55 ^66 ^77 ^88 ^99 ");
+        self add_menu_item("dev_color", "^0 Color 0", &func_echo, "^0Color 0");
+        self add_menu_item("dev_color", "^1 Color 1", &func_echo, "^1Color 1");
+        self add_menu_item("dev_color", "^2 Color 2", &func_echo, "^2Color 2");
+        self add_menu_item("dev_color", "^3 Color 3", &func_echo, "^3Color 3");
+        self add_menu_item("dev_color", "^4 Color 4", &func_echo, "^4Color 4");
+        self add_menu_item("dev_color", "^5 Color 5", &func_echo, "^5Color 5");
+        self add_menu_item("dev_color", "^6 Color 6", &func_echo, "^6Color 6");
+        self add_menu_item("dev_color", "^7 Color 7", &func_echo, "^7Color 7");
+        self add_menu_item("dev_color", "^8 Color 8", &func_echo, "^8Color 8");
+        self add_menu_item("dev_color", "^9 Color 9", &func_echo, "^9Color 9");
+        self add_menu_item("dev_color_bold", "All Color", &func_echobold, "^00 ^11 ^22 ^33 ^44 ^55 ^66 ^77 ^88 ^99 ");
+        self add_menu_item("dev_color_bold", "^0 Color 0", &func_echobold, "^0Color 0");
+        self add_menu_item("dev_color_bold", "^1 Color 1", &func_echobold, "^1Color 1");
+        self add_menu_item("dev_color_bold", "^2 Color 2", &func_echobold, "^2Color 2");
+        self add_menu_item("dev_color_bold", "^3 Color 3", &func_echobold, "^3Color 3");
+        self add_menu_item("dev_color_bold", "^4 Color 4", &func_echobold, "^4Color 4");
+        self add_menu_item("dev_color_bold", "^5 Color 5", &func_echobold, "^5Color 5");
+        self add_menu_item("dev_color_bold", "^6 Color 6", &func_echobold, "^6Color 6");
+        self add_menu_item("dev_color_bold", "^7 Color 7", &func_echobold, "^7Color 7");
+        self add_menu_item("dev_color_bold", "^8 Color 8", &func_echobold, "^8Color 8");
+        self add_menu_item("dev_color_bold", "^9 Color 9", &func_echobold, "^9Color 9");
+
         self add_menu("dev_config", "Config", "tool_menu_dev");
         self add_menu_item_menuswitch("tool_menu_dev", "Config", "dev_config");
         
@@ -95,6 +123,8 @@ init_menus() {
         self add_menu_item("round_tool", "+1", &func_round_add, 1);
         self add_menu_item("round_tool", "+10", &func_round_add, 10);
         self add_menu_item("round_tool", "+100", &func_round_add, 100);
+
+        self add_menu_item("tool_menu", "Complete ee", &func_complete_ee);
     }
 
     self add_menu_item("tool_menu", "Test", &func_test);
@@ -145,6 +175,8 @@ init_menus() {
 
         if (is_warzone()) {
             self add_menu_item_modswitch("teleport", "Waypoint tp", "waypoint_tp");
+            self add_menu_item("teleport", "Random tp", &RandomTp);
+            
         }
 
         switch (level.script) {
@@ -158,6 +190,21 @@ init_menus() {
                 self add_menu_item("teleport", "New industries", &func_teleport, (3268, 6574, 527.625), (0, 16, 0));
                 self add_menu_item("teleport", "Submarine", &func_teleport, (9503, 5888, 117), (0, 67, 0));
                 self add_menu_item("teleport", "White house", &func_teleport, (-4057, -4664, 693.125), (-10, -100, 0));
+                break;
+            case "wz_open_skyscrapers":
+            case "wz_open_skyscrapers_alt":
+                self add_menu_item("teleport", "Asylum", &func_teleport, (9904.15, -41700.2, 4013.05), (0, -63, 0));
+                self add_menu_item("teleport", "Buried", &func_teleport, (-55217.4, -38466.2, 1996.18), (0, 13, 0));
+                self add_menu_item("teleport", "Dam", &func_teleport, (37654.7, -45952.6, 4072.38), (27, 128, 0));
+                self add_menu_item("teleport", "Dock", &func_teleport, (-31249, 25237, 1148.13), (0, 170, 0));
+                self add_menu_item("teleport", "Factory", &func_teleport, (-40143, -13333, 1366.13), (0, -60, 0));
+                self add_menu_item("teleport", "Firing range", &func_teleport, (12296.2, -2656.55, 1326.5), (0, 144, 0));
+                self add_menu_item("teleport", "Lighthouse", &func_teleport, (-45981, 27144, 1240.13), (-25, -29, 0));
+                self add_menu_item("teleport", "Nuketown", &func_teleport, (-11560, 45393, 1650.82), (0, -155, 0));
+                self add_menu_item("teleport", "Raid", &func_teleport, (48010, 5174, 5132.13), (0, 60, 0));
+                self add_menu_item("teleport", "Rivertown", &func_teleport, (-2899, -17123, 1308.13), (0, -23, 0));
+                self add_menu_item("teleport", "Sat", &func_teleport, (4510.68, 17379.9, 4031.51), (0, 38, 0));
+                self add_menu_item("teleport", "Train station", &func_teleport, (26605, -19024, 2015.11), (-3, -90, 0));
                 break;
         }
     }
@@ -498,9 +545,20 @@ init_menus() {
         self add_menu_item("skin_custom_default", "Battery twitter", &func_set_skin, 1, 19);
         self add_menu_item("skin_custom_default", "Battery criminal", &func_set_skin, 1, 21);
         self add_menu_item("skin_custom_default", "Battery aviator", &func_set_skin, 1, 25);
+        // 2 = firebreak
+        self add_menu_item("skin_custom_default", "Firebreak silverfish", &func_set_skin, 2, 9);
+        self add_menu_item("skin_custom_default", "Firebreak nebula", &func_set_skin, 2, 10);
+        self add_menu_item("skin_custom_default", "Firebreak number", &func_set_skin, 2, 14);
+        self add_menu_item("skin_custom_default", "Firebreak rabbit", &func_set_skin, 2, 15);
+        self add_menu_item("skin_custom_default", "Firebreak money", &func_set_skin, 2, 17);
         // 17 = richtofen
         self add_menu_item("skin_custom_default", "Richtofen great war", &func_set_skin, 17, 2);
         self add_menu_item("skin_custom_default", "Zombie", &func_set_skin, 17, 1);
+        // 67 = reaper
+        self add_menu_item("skin_custom_default", "Reaper spectre", &func_set_skin, 67, 1);
+        self add_menu_item("skin_custom_default", "Reaper punk", &func_set_skin, 67, 2);
+        self add_menu_item("skin_custom_default", "Reaper red", &func_set_skin, 67, 3);
+        self add_menu_item("skin_custom_default", "Reaper number", &func_set_skin, 67, 4);
     } else if (is_multiplayer()) {
         // 2 = battery
         self add_menu_item("skin_custom_default", "Battery number", &func_set_skin, 2, 14);
@@ -508,7 +566,17 @@ init_menus() {
         self add_menu_item("skin_custom_default", "Battery twitter", &func_set_skin, 2, 19);
         self add_menu_item("skin_custom_default", "Battery criminal", &func_set_skin, 2, 21);
         self add_menu_item("skin_custom_default", "Battery aviator", &func_set_skin, 2, 25);
-
+        // 4 = firebreak
+        self add_menu_item("skin_custom_default", "Firebreak silverfish", &func_set_skin, 4, 9);
+        self add_menu_item("skin_custom_default", "Firebreak nebula", &func_set_skin, 4, 10);
+        self add_menu_item("skin_custom_default", "Firebreak number", &func_set_skin, 4, 14);
+        self add_menu_item("skin_custom_default", "Firebreak rabbit", &func_set_skin, 4, 15);
+        self add_menu_item("skin_custom_default", "Firebreak money", &func_set_skin, 4, 17);
+        // 14 = reaper
+        self add_menu_item("skin_custom_default", "Reaper spectre", &func_set_skin, 14, 1);
+        self add_menu_item("skin_custom_default", "Reaper punk", &func_set_skin, 14, 2);
+        self add_menu_item("skin_custom_default", "Reaper red", &func_set_skin, 14, 3);
+        self add_menu_item("skin_custom_default", "Reaper number", &func_set_skin, 14, 4);
     } else if (is_zombies()) {
         // 5 = richtofen
         self add_menu_item("skin_custom_default", "Richtofen great war", &func_set_skin, 5, 2);

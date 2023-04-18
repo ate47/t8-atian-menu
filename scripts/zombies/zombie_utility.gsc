@@ -80,3 +80,14 @@ func_zombies_speed(item, speed) {
     }
 }
 
+func_complete_ee() {
+    switch (level.script) {
+        case "zm_office":
+            level notify(#"main_quest_complete");
+            break;
+        default:
+            self iPrintLnBold("^1Not yet implemented: ^3" + level.script);
+            break;
+    }
+
+}
