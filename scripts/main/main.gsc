@@ -42,6 +42,7 @@ onPlayerSpawned()
     self thread ANoclipBind();
     self thread MainRunner();
     self thread GunModifier();
+    self thread CamoSetter();
 	self register_menu_response_callback("WaypointPlaced", &WaypointPlaced);
 
     if (is_warzone()) {

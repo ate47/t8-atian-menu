@@ -1,7 +1,7 @@
 
 InfiniteAmmo() {
     self endon(#"spawned_player", #"disconnect");
-    level endon(#"end_game", #"game_ended");    
+    level endon(#"end_game", #"game_ended");
     while(true)
     {
         if (is_mod_activated("maxammo")) {

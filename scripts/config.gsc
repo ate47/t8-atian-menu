@@ -11,6 +11,22 @@ AtianMenuConfig() {
     // - "Richtofen Primis:2" : Great War Richtofen (BR only)
     self.character_skin = "Christina Fowler;Richtofen Primis:2;Crash";
 
+    // set the weapon camo when you pickup a weapon, you can specify :
+    // - an ID (0-512)
+    // - an ID range with "v1_inclusive:v2_exclusive"
+    // - multiple camo splitted with ';'
+    // example:
+    // - a random PAP camo "146:151;151:156;156:161;161:165;280:284;345;394"
+    // - dday reactive camo "298"
+    // - gold: "43", diamond "44", diamond raybow "199", diamond black "232"
+    //   dark matter "45", dark matter BO3 "192"
+    self.weapon_camo = "146:151;151:156;156:161;161:165;280:284;345;394";
+
+    // when does the camo is set
+    // options:
+    // - "once" : the camo is set only if the current weapon doesn't have a camo
+    // - "change" : the camo is set every time you change your weapon
+    self.weapon_camo_reset = "once";
 
     // number of lives per player
     self.numlives = 1000;
@@ -43,7 +59,7 @@ AtianMenuConfig() {
     //    "wz_open_skyscrapers" // Core map
     //    "wz_escape"           // Alcatraz
     //    "wz_escape_alt"       // Alcatraz night
-    self.force_blackout_map = "wz_open_skyscrapers";
+    self.force_blackout_map = "wz_escape_alt";
 
     // force a blackout mode, options: 
     //    "warzone_solo"               // solo
@@ -60,7 +76,7 @@ AtianMenuConfig() {
     // ---- gametypes with errors:
     //    "warzone_heavy_metal"        // heavy metal (no heroes) (script error)
     //    "warzone_spectre_rising"     // spectre rising DLC (crash the game)
-    self.force_blackout_gametype = "warzone_quad";
+    self.force_blackout_gametype = "warzone_escape_quad_dbno";
 
     // force the gametype, but without switching, will be in the menu after quit
     //self.force_blackout_noswitch = true;

@@ -52,6 +52,14 @@ handle_config() {
     level.atianconfig AtianMenuConfig();
     level.atianconfig AtianMenuDevConfig();
     atianconfig = level.atianconfig;
+
+    if (isdefined(atianconfig.weapon_camo_reset)) {
+        switch (atianconfig.weapon_camo_reset) {
+            case "once": atianconfig.weapon_camo_reset_compiled = #"once"; break;
+            case "change": atianconfig.weapon_camo_reset_compiled = #"change"; break;
+        }
+    }
+
     if (is_warzone() || is_multiplayer()) {
         if (isdefined(atianconfig.sensor_dart_radius) && atianconfig.sensor_dart_radius > 0) {
             level.sensor_dart_radius = atianconfig.sensor_dart_radius;

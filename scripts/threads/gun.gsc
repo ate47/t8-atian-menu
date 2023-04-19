@@ -115,3 +115,85 @@ SendRocket(weapon_name, look) {
         return rocket;
     }
 }
+CamoSetter() {
+    self endon(#"spawned_player", #"disconnect");
+    level endon(#"end_game", #"game_ended");
+    while(true)
+    {
+        weapon = self GetCurrentWeapon();
+        offhand = self GetCurrentOffhand();
+
+        if (isdefined(weapon)) {
+            c = self get_random_player_camo(weapon);
+            if (isdefined(c)) {
+                self setcamo(weapon, c);
+            }
+        }
+        if (isdefined(offhand)) {
+            c = self get_random_player_camo(offhand);
+            if (isdefined(c)) {
+                self setcamo(offhand, c);
+            }
+        }
+        // waittill now returns a variable
+        result = self waittill(#"weapon_change");
+    }
+}
+
+get_random_player_camo(weapon) {
+    if (!isdefined(self.atianconfig) || !isdefined(self.atianconfig.weapon_camo)) {
+        return undefined;
+    }
+    if (isdefined(weapon) && (!isdefined(self.atianconfig.weapon_camo_reset_compiled) || 
+            self.atianconfig.weapon_camo_reset_compiled == #"once")) {
+        // test that we don't already have a camo
+	    weapon_options = self getweaponoptions(weapon);
+        camoindex = getcamoindex(weapon_options);
+        if (isdefined(camoindex) && camoindex != 0) {
+            return undefined;
+        }
+    }
+
+    return compute_cammo_data_cfg(self.atianconfig.weapon_camo);
+}
+
+compute_cammo_data_cfg(camo_data) {
+    data = camo_data;
+    for (;;) {
+        if (!isdefined(data)) {
+            return undefined;
+        }
+        if (isarray(data)) {
+            if (data.size == 0) {
+                return undefined;
+            }
+            data = array::random(data);
+        } else if (isint(data)) {
+            return data;
+        } else if (isstring(data)){
+            return compute_cammo_data_cfg_str(data);
+        }
+    }
+}
+compute_cammo_data_cfg_str(str_data) {
+    str = str_data;
+    split_element = strtok(str, ";");
+    if (split_element.size != 1) {
+        // compute a random element
+        str = array::random(split_element);
+    }
+
+    range_element = strtok(str, ":");
+
+    if (range_element.size == 1) {
+        // compute a random element
+        return int(range_element[0]);
+    } else if (range_element.size == 2) {
+        start = int(range_element[0]);
+        end = int(range_element[1]);
+        if (isdefined(start) && isdefined(end)) {
+            return randomintrange(start, end);
+        }
+    }
+    return undefined;
+}
