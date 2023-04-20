@@ -7,6 +7,7 @@ GunModifier() {
         tool_tpgun = self is_mod_activated("tpgun");
         tool_rocketman = self is_mod_activated("rocketman");
         tool_rocket_armageddon = self is_mod_activated("rocket_armageddon");
+        tool_explosion_gun = self is_mod_activated("explosion_gun");
 
         tools = array(
             array("tankgun", "tank_robot_launcher_turret"),
@@ -33,7 +34,7 @@ GunModifier() {
             }
         }
 
-        if (!(tool_tpgun || activated.size != 0 || tool_rocketman || tool_rocket_armageddon)) {
+        if (!(tool_tpgun || activated.size != 0 || tool_rocketman || tool_rocket_armageddon || tool_explosion_gun)) {
             continue;
         }
         // at least one tool is activated
@@ -41,6 +42,10 @@ GunModifier() {
         look = AnglesToForward(self GetPlayerAngles());
         bullet_hit = bullettrace(tag_origin, tag_origin + vectorscale(look, 10000), 1, self)["position"];
 
+        if (tool_explosion_gun) {
+            physicsexplosionsphere(bullet_hit, 200, 200, 20);
+	        earthquake(0.7, 1, bullet_hit, 200);
+        }
         if (tool_tpgun) {
             if (self is_mod_activated("fly") && isdefined(self.originObj)) {
                 // consider fly mode

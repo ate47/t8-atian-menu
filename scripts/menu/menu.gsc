@@ -48,12 +48,13 @@ is_mod_activated(mod_name) {
     return isdefined(self.menu_info) && isdefined(self.menu_info.mods) && array::contains(self.menu_info.mods, mod_name);
 }
 
-add_menu(menu_id, menu_name, parent_id) {
+add_menu(menu_id, menu_name, parent_id, menuenterfunc = undefined) {
     menu = 
     {
         #id: menu_id,
         #name: menu_name,
         #parent_id: parent_id,
+        #menu_enter_func: menuenterfunc,
         #sub_menus: array()
     };
 
@@ -95,6 +96,13 @@ menu_switch(item, menu_id) {
     }
     self.menu_info.current_menu = menu_id;
     self.menu_info.cursor = 0;
+
+    menu = self.menu_info.menus[menu_id];
+
+    if (isdefined(menu) && isdefined(menu.menu_enter_func)) {
+        self [[ menu.menu_enter_func ]](menu);
+    }
+    
     return true;
 }
 
@@ -117,6 +125,8 @@ menu_think() {
     }
     self endon(#"disconnect");
     level endon(#"end_game", #"game_ended");
+    
+    ts = 0;
     while (true) {
         menu_info = self.menu_info;
 
@@ -199,8 +209,20 @@ menu_think() {
                 render = true;
             }
         } else {
-            waitframe(1);
-            continue;
+            if (menu_info.current_menu != "") {
+                nts = GetTime();
+                
+                if (nts > ts) {
+                    ts = nts + 5000; // add 5s
+                    render = true;
+                } else {
+                    waitframe(1);
+                    continue;
+                }
+            } else {
+                waitframe(1);
+                continue;
+            }
         }
 
         if (menu_info.no_render) {

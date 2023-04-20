@@ -64,7 +64,7 @@ WaypointPlaced(response, intpayload) {
     y = (xcoord - 500) / 500 * (0-level.var_405a6738) + mapcenter[1];
     x = (ycoord - 500) / 500 * (0-level.var_8a390df2) + mapcenter[0];
     
-    self iPrintLnBold("^6Teleported to ^4" + x + "^6/^4" + y);
+    self iPrintLnBold("^6Teleported to ^2" + x + "^6/^2" + y);
 
     position = bullettrace((x, y, 5000), (x, y, -5000), 0, self, 1)[#"position"];
     self setOrigin(position);

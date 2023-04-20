@@ -9,7 +9,7 @@ AtianMenuConfig() {
     // - "Richtofen (Primis):2" : Great War Richtofen (ZM only)
     // - "Richtofen Primis:1" : Alcatraz zombies (BR only)
     // - "Richtofen Primis:2" : Great War Richtofen (BR only)
-    self.character_skin = "Christina Fowler;Richtofen Primis:2;Crash";
+    self.character_skin = "Christina Fowler;Richtofen Primis:2;Outrider:10";
 
     // set the weapon camo when you pickup a weapon, you can specify :
     // - an ID (0-512)
