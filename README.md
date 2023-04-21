@@ -6,6 +6,15 @@ Using the compiler: https://github.com/shiversoftdev/t7-compiler
 
 Using the sources: https://github.com/ate47/t8-src
 
+- [Atian menu](#atian-menu)
+  - [Posts](#posts)
+  - [Config](#config)
+  - [Features](#features)
+  - [Dev tools](#dev-tools)
+    - [Hash lookup](#hash-lookup)
+    - [Create menu](#create-menu)
+
+
 ## Posts
 
 Posts or videos I've made using these scripts or the sources:
@@ -59,6 +68,7 @@ You can config the mod menu in the [`scripts/config.gsc`](scripts/config.gsc) fi
   - Nova shot (AO)
 - Teleport tool
   - Waypoint tp (Blackout) : TP using the map (need fix for the main map)
+  - tp to hot location in your map (wip)
 - set characters
 - set skin
   - skin palette
@@ -74,3 +84,42 @@ You can config the mod menu in the [`scripts/config.gsc`](scripts/config.gsc) fi
 - set camo
 - set reticle
 
+## Dev tools
+
+### Hash lookup
+
+The `hash_lookup(hash_str)` function can be used to look for unhashed values, to add a string to this function,
+add it to the [`lookup.txt`](lookup.txt) file and run the [`build_lookup.ps1`](build_lookup.ps1) script.
+
+### Create menu
+
+The menu descriptions are usually put in the [`scripts/menu/menu_items.gsc`](scripts/menu/menu_items.gsc) script.
+
+To register a menu, you can call this method:
+
+```gsc
+<player> add_menu(menu_id, menu_name, parent_id, menuenterfunc = undefined);
+```
+
+- ``menu_id`` is the id of your menu.
+- ``menu_name`` is the name of your menu.
+- ``parent_id`` is the parent of your menu, ie: the menu openned if you go the previous menu in your menu. Can be `""` for no parent.
+- ``menuenterfunc`` is the *optional* function to when the used is entering your menu, it will call it with self set to the player and the menu as an argument.
+
+You can then add elements to your menu using
+
+```gsc
+<player> add_menu_item(menu_id, item_name, action, actiondata = undefined, actiondata2 = undefined, actiondata3 = undefined, actiondata4 = undefined, actiondata5 = undefined);
+<player> add_menu_item_menuswitch(menu_id, item_name, new_menu_id);
+<player> add_menu_item_modswitch(menu_id, item_name, mod_name);
+```
+
+- `add_menu_item`, add an item with the name `item_name` in the menu `menu_id`, the action is a function, it will be called with the player as self, the item as a 1st parameter and then the actiondataX as 2nd to 6th parameter.
+- `add_menu_item_menuswitch`, add an item with the name `item_name` in the menu `menu_id`, it will open the menu `new_menu_id`
+- `add_menu_item_modswitch`, add an item with the name `item_name` in the menu `menu_id`, it will toggle the mod `mod_name` and set the menu item to activated by putting on/off on it
+
+You can use this function to check if a mod is activated:
+
+```gsc
+<player> is_mod_activated(mod_name);
+```
