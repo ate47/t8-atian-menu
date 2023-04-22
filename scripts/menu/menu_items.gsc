@@ -11,57 +11,6 @@ init_menus() {
     self add_menu_item("tool_menu", "End contracts", &func_end_contracts);
     self add_menu_item("tool_menu", "Invulnerability", &func_invulnerability);
 
-    if (isdefined(self.atianconfig.dev) && self.atianconfig.dev) {
-        self add_menu("tool_menu_dev", "Dev tools", "tool_menu");
-        self add_menu_item_menuswitch("tool_menu", "Dev tools", "tool_menu_dev");
-
-        self add_menu_item("tool_menu_dev", "All Color (ln)", &func_echo_dev_color);
-        self add_menu_item("tool_menu_dev", "All Color (bold)", &func_echobold, "^00 ^11 ^22 ^33 ^44 ^55 ^66 ^77 ^88 ^99 ");
-
-        self add_menu("tool_menu_dev_entities", "Entities", "tool_menu_dev", &func_searchentities);
-        self add_menu_item_menuswitch("tool_menu_dev", "Entities", "tool_menu_dev_entities");
-        
-        self add_menu("dev_config", "Config", "tool_menu_dev");
-        self add_menu_item_menuswitch("tool_menu_dev", "Config", "dev_config");
-        
-        if (isdefined(level.var_cca518d) && level.var_cca518d) {
-            self add_menu_item("dev_config", "spawn zombies");
-        }
-        if (isdefined(level.var_d33a57a) && level.var_d33a57a) {
-            self add_menu_item("dev_config", "spawn blight father");
-        }
-        if (isdefined(level.var_b6e30614) && level.var_b6e30614) {
-            self add_menu_item("dev_config", "spawn dog");
-        }
-        if (isdefined(level.var_6b59ac2c) && level.var_6b59ac2c) {
-            self add_menu_item("dev_config", "spawn brutus");
-        }
-        if (isdefined(level.var_4f7f5c18) && level.var_4f7f5c18) {
-            self add_menu_item("dev_config", "spawn brutus boss");
-        }
-        if (isdefined(level.var_9196aafd) && level.var_9196aafd) {
-            self add_menu_item("dev_config", "spawn avogadro");
-        }
-        if (isdefined(level.var_5c9e1f9) && level.var_5c9e1f9) {
-            self add_menu_item("dev_config", "spawn icarus");
-        }
-        if (isdefined(getgametypesetting(#"hash_7c8ad12994670d63")) && getgametypesetting(#"hash_7c8ad12994670d63")) {
-            self add_menu_item("dev_config", "spawn blackjack stash");
-        }
-        
-        wz_stash_blackjack = getdynentarray(#"wz_stash_blackjack");
-        if (isdefined(wz_stash_blackjack)) {
-            self add_menu("dev_wz_stash_blackjack", "Stash blackjack", "tool_menu_dev");
-            self add_menu_item_menuswitch("tool_menu_dev", "Stash blackjack", "dev_wz_stash_blackjack");
-            
-            for (i = 0; i < wz_stash_blackjack.size; i++) {
-                if (isdefined(wz_stash_blackjack[i].origin)) {
-                    self add_menu_item("dev_config", "stash " + i, &func_teleport, wz_stash_blackjack[i].origin);
-                }
-            }
-        }
-    }
-
     if (is_zombies()) {
         self add_menu_item("tool_menu", "Ignore me", &func_zmignoreme);
         self add_menu_item_modswitch("tool_menu", "Max Points", "maxpoints");
@@ -185,6 +134,9 @@ init_menus() {
                 self add_menu_item("teleport", "Sat", &func_teleport, (4510.68, 17379.9, 4031.51), (0, 38, 0));
                 self add_menu_item("teleport", "Train station", &func_teleport, (26605, -19024, 2015.11), (-3, -90, 0));
                 break;
+            case "mp_casino":
+                self add_menu_item("teleport", "Center", &func_teleport, (482, -24, 0.125));
+                break;
             case "mp_firingrange2":
             case "mp_firingrange2_alt":
                 self add_menu_item("teleport", "Center", &func_teleport, (207, -680, 56.125), (0, 34, 0));
@@ -206,6 +158,10 @@ init_menus() {
             case "mp_icebreaker":
                 self add_menu_item("teleport", "Center", &func_teleport, (-3472, 814, 216.17), (0, -57, 0));
                 self add_menu_item("teleport", "Top iceberg", &func_teleport, (9899, -666, 4950.47), (18, -176, 0));
+                break;
+            case "mp_madagascar":
+                self add_menu_item("teleport", "Center", &func_teleport, (489, 427, 187.458), (0, 15, 0));
+                self add_menu_item("teleport", "Mountains", &func_teleport, (72406, 92087, 21293));
                 break;
             case "mp_maldives": // lair
                 self add_menu_item("teleport", "Center", &func_teleport, (-3, -724, 288.125), (0, 67, 0));
@@ -349,156 +305,28 @@ init_menus() {
     // ---- Camos ----
     self add_menu("camos", "Camos", "start_menu");
     self add_menu_item_menuswitch("start_menu", "Camos", "camos");
+
+    camo_data = get_camo_enum_data();
     
-    // ---- Camos/Mastery ----
-    self add_menu("camos_master", "Mastery", "camos");
-    self add_menu_item_menuswitch("camos", "Mastery", "camos_master");
-    
-    // ---- Camos/Pack a punch ----
-    self add_menu("camos_pap", "Pack a punch", "camos");
-    self add_menu_item_menuswitch("camos", "Pack a punch", "camos_pap");
-    
-    // ---- Camos/Black market (Reactive) ----
-    self add_menu("camos_blackjack_reactive", "Black market (Reactive)", "camos");
-    self add_menu_item_menuswitch("camos", "Black market (Reactive)", "camos_blackjack_reactive");
-    // ---- Camos/Black market ----
-    self add_menu("camos_blackjack", "Black market", "camos");
-    self add_menu_item_menuswitch("camos", "Black market", "camos_blackjack");
-    
-    // ---- Camos/Multiplayer ----
-    self add_menu("camos_mp", "Multiplayer", "camos");
-    self add_menu_item_menuswitch("camos", "Multiplayer", "camos_mp");
-    
-    // ---- Camos/Zombies ----
-    self add_menu("camos_zm", "Zombies", "camos");
-    self add_menu_item_menuswitch("camos", "Zombies", "camos_zm");
-    
-    // ---- Camos/Blackout ----
-    self add_menu("camos_wz", "Blackout", "camos");
-    self add_menu_item_menuswitch("camos", "Blackout", "camos_wz");
-    
+    foreach(category_key, cat_item in camo_data.categories) {
+        cat_menu_id = "camos_" + cat_item.id;
+        self add_menu(cat_menu_id, cat_item.name, "camos");
+        self add_menu_item_menuswitch("camos", cat_item.name, cat_menu_id);
+
+        for (i = 0; i < cat_item.camos.size; i++) {
+            camo_item = cat_item.camos[i];
+
+            if (camo_item.category != cat_item.id) {
+                continue;
+            }
+
+            self add_menu_item(cat_menu_id, camo_item.title, &func_set_camo, camo_item.id);
+        }
+    }
+
     // ---- Camos/By id ----
     self add_menu("camos_id", "By id", "camos");
     self add_menu_item_menuswitch("camos", "By id", "camos_id");
-
-    for (i = 1; i < 43; i += 3) {
-        self add_menu_item("camos_mp", "Generic MP " + i, &func_set_camo, i);
-    }
-
-    for (i = 2; i < 43; i += 3) {
-        self add_menu_item("camos_wz", "Generic BR " + i, &func_set_camo, i);
-    }
-
-    for (i = 3; i < 43; i += 3) {
-        self add_menu_item("camos_zm", "Generic ZM " + i, &func_set_camo, i);
-    }
-
-    self add_menu_item("camos_master", "Gold", &func_set_camo, 43);
-    self add_menu_item("camos_master", "Diamond", &func_set_camo, 44);
-    self add_menu_item("camos_master", "Dark matter", &func_set_camo, 45);
-    
-
-    self add_menu_item("camos_pap", "Voyage of despair purple", &func_set_camo, 146);
-    self add_menu_item("camos_pap", "Voyage of despair red", &func_set_camo, 147);
-    self add_menu_item("camos_pap", "Voyage of despair green", &func_set_camo, 148);
-    self add_menu_item("camos_pap", "Voyage of despair yellow", &func_set_camo, 149);
-    self add_menu_item("camos_pap", "Voyage of despair pink", &func_set_camo, 150);
-    self add_menu_item("camos_pap", "IX blue", &func_set_camo, 151);
-    self add_menu_item("camos_pap", "IX red", &func_set_camo, 152);
-    self add_menu_item("camos_pap", "IX green", &func_set_camo, 153);
-    self add_menu_item("camos_pap", "IX purple", &func_set_camo, 154);
-    self add_menu_item("camos_pap", "IX orange", &func_set_camo, 155);
-    self add_menu_item("camos_pap", "Blood of the Dead yellow", &func_set_camo, 156);
-    self add_menu_item("camos_pap", "Blood of the Dead red", &func_set_camo, 157);
-    self add_menu_item("camos_pap", "Blood of the Dead yellow", &func_set_camo, 158);
-    self add_menu_item("camos_pap", "Blood of the Dead green", &func_set_camo, 159);
-    self add_menu_item("camos_pap", "Blood of the Dead purple", &func_set_camo, 160);
-    self add_menu_item("camos_pap", "Classified 1", &func_set_camo, 161);
-    self add_menu_item("camos_pap", "Classified 2", &func_set_camo, 162);
-    self add_menu_item("camos_pap", "Classified 3", &func_set_camo, 163);
-    self add_menu_item("camos_pap", "Classified 4", &func_set_camo, 164);
-    self add_menu_item("camos_pap", "Classified 5", &func_set_camo, 165);
-    self add_menu_item("camos_pap", "Dead of the night green", &func_set_camo, 280);
-    self add_menu_item("camos_pap", "Dead of the night purple", &func_set_camo, 281);
-    self add_menu_item("camos_pap", "Dead of the night red", &func_set_camo, 282);
-    self add_menu_item("camos_pap", "Dead of the night blue", &func_set_camo, 283);
-    self add_menu_item("camos_pap", "Dead of the night orange", &func_set_camo, 284);
-    self add_menu_item("camos_pap", "Ancien Evil purple", &func_set_camo, 74);
-    self add_menu_item("camos_pap", "Ancien Evil blue", &func_set_camo, 75);
-    self add_menu_item("camos_pap", "Ancien Evil orange", &func_set_camo, 76);
-    self add_menu_item("camos_pap", "Ancien Evil yellow", &func_set_camo, 77);
-    self add_menu_item("camos_pap", "Ancien Evil green", &func_set_camo, 78);
-    self add_menu_item("camos_pap", "Alpha Omega", &func_set_camo, 345);
-    self add_menu_item("camos_pap", "Tag der toten", &func_set_camo, 394);
-
-    self add_menu_item("camos_blackjack_reactive", "D-Day", &func_set_camo, 298);
-    self add_menu_item("camos_blackjack_reactive", "Roadtrip", &func_set_camo, 300);
-    self add_menu_item("camos_blackjack_reactive", "Masked", &func_set_camo, 310);
-    self add_menu_item("camos_blackjack_reactive", "Bobine", &func_set_camo, 52);
-    self add_menu_item("camos_blackjack_reactive", "Search", &func_set_camo, 57);
-    self add_menu_item("camos_blackjack_reactive", "Strip", &func_set_camo, 62);
-    self add_menu_item("camos_blackjack_reactive", "Rave", &func_set_camo, 67);
-    self add_menu_item("camos_blackjack_reactive", "Nebula", &func_set_camo, 89);
-    self add_menu_item("camos_blackjack_reactive", "After life", &func_set_camo, 90);
-    self add_menu_item("camos_blackjack_reactive", "Postluminescence", &func_set_camo, 119);
-    self add_menu_item("camos_blackjack_reactive", "115", &func_set_camo, 129);
-    self add_menu_item("camos_blackjack_reactive", "Grey matter", &func_set_camo, 131);
-    self add_menu_item("camos_blackjack_reactive", "Denied access (waifu)", &func_set_camo, 167);
-    self add_menu_item("camos_blackjack_reactive", "Skull", &func_set_camo, 168);
-    self add_menu_item("camos_blackjack_reactive", "Solar eruption", &func_set_camo, 381);
-    self add_menu_item("camos_blackjack_reactive", "Vision of the future", &func_set_camo, 387);
-    self add_menu_item("camos_blackjack_reactive", "Pestilence", &func_set_camo, 389);
-    self add_menu_item("camos_blackjack_reactive", "Crypted", &func_set_camo, 286);
-    self add_menu_item("camos_blackjack_reactive", "Judas", &func_set_camo, 357);
-    self add_menu_item("camos_blackjack_reactive", "Incandescent", &func_set_camo, 359);
-    self add_menu_item("camos_blackjack_reactive", "Encoded", &func_set_camo, 363);
-
-    self add_menu_item("camos_blackjack", "Twitch 1", &func_set_camo, 79);
-    self add_menu_item("camos_blackjack", "Twitch 2", &func_set_camo, 118);
-    self add_menu_item("camos_blackjack", "$", &func_set_camo, 46);
-    self add_menu_item("camos_blackjack", "Green course", &func_set_camo, 47);
-    self add_menu_item("camos_blackjack", "Blue", &func_set_camo, 48);
-    self add_menu_item("camos_blackjack", "Kiss", &func_set_camo, 49);
-    self add_menu_item("camos_blackjack", "Fortuna", &func_set_camo, 50);
-    self add_menu_item("camos_blackjack", "Donuts", &func_set_camo, 51);
-    self add_menu_item("camos_blackjack", "Serment", &func_set_camo, 80);
-    self add_menu_item("camos_blackjack", "Imbu", &func_set_camo, 81);
-    self add_menu_item("camos_blackjack", "Megalodon", &func_set_camo, 82);
-    self add_menu_item("camos_blackjack", "Surf", &func_set_camo, 83);
-    self add_menu_item("camos_blackjack", "Goinfre", &func_set_camo, 84);
-    self add_menu_item("camos_blackjack", "Chrysalide", &func_set_camo, 86);
-    self add_menu_item("camos_blackjack", "Locker", &func_set_camo, 87);
-    self add_menu_item("camos_blackjack", "Bacon", &func_set_camo, 117);
-    self add_menu_item("camos_blackjack", "Dead time", &func_set_camo, 120);
-    self add_menu_item("camos_blackjack", "Dirty buble", &func_set_camo, 121);
-    self add_menu_item("camos_blackjack", "Heaven", &func_set_camo, 122);
-    self add_menu_item("camos_blackjack", "Pique nique royal", &func_set_camo, 123);
-    self add_menu_item("camos_blackjack", "Mai Tai Zombie", &func_set_camo, 124);
-    self add_menu_item("camos_blackjack", "Heaven", &func_set_camo, 122);
-    self add_menu_item("camos_blackjack", "Colonne piégée", &func_set_camo, 126);
-    self add_menu_item("camos_blackjack", "Derezzed", &func_set_camo, 134);
-    self add_menu_item("camos_blackjack", "Steam explosion", &func_set_camo, 135);
-    self add_menu_item("camos_blackjack", "Goinfre", &func_set_camo, 136);
-    self add_menu_item("camos_blackjack", "Arabesque", &func_set_camo, 137);
-    self add_menu_item("camos_blackjack", "Se sentir visé", &func_set_camo, 166);
-    self add_menu_item("camos_blackjack", "Rampage", &func_set_camo, 170);
-    self add_menu_item("camos_blackjack", "Soul eater", &func_set_camo, 171);
-    self add_menu_item("camos_blackjack", "Marathon", &func_set_camo, 172);
-    self add_menu_item("camos_blackjack", "Avant garde", &func_set_camo, 173);
-    self add_menu_item("camos_blackjack", "Plasma", &func_set_camo, 293);
-    self add_menu_item("camos_blackjack", "Air fight", &func_set_camo, 305);
-    self add_menu_item("camos_blackjack", "Cherry", &func_set_camo, 314);
-    self add_menu_item("camos_blackjack", "Gigakiller", &func_set_camo, 315);
-    self add_menu_item("camos_blackjack", "Flicker", &func_set_camo, 316);
-    self add_menu_item("camos_blackjack", "Rocket box", &func_set_camo, 317);
-    self add_menu_item("camos_blackjack", "USA", &func_set_camo, 346);
-    self add_menu_item("camos_blackjack", "Juicy", &func_set_camo, 347);
-    self add_menu_item("camos_blackjack", "Glyph", &func_set_camo, 348);
-    self add_menu_item("camos_blackjack", "Gratte-gratte", &func_set_camo, 350);
-    self add_menu_item("camos_blackjack", "Flocon", &func_set_camo, 351);
-    self add_menu_item("camos_blackjack", "Vertige", &func_set_camo, 353);
-    self add_menu_item("camos_blackjack", "High tension", &func_set_camo, 354);
-    self add_menu_item("camos_blackjack", "Gluant", &func_set_camo, 355);
 
     for (i = 0; i < 512; i++) {
         self add_menu_item("camos_id", "Id " + i, &func_set_camo, i);
@@ -690,6 +518,81 @@ init_menus() {
     
     for (i = 1; i < 100; i++) {
         self add_menu_item("skin_custom_warpaint", "Skin " + i, &func_set_skin_custom_warpaint, i);
+    }
+
+    
+    if (isdefined(self.atianconfig.dev) && self.atianconfig.dev) {
+
+        self add_menu_item("tool_menu", "Hide hud", &func_hidehud);
+        
+        self add_menu_item_modswitch("tool_weapon", "Physic gun", "physic_gun");
+        
+        self add_menu("tool_menu_dev", "Dev tools", "tool_menu");
+        self add_menu_item_menuswitch("tool_menu", "Dev tools", "tool_menu_dev");
+
+        if (isdefined(level.atianconfig.loaded_modules)) {
+            self add_menu("dev_systems", "Loaded systems", "tool_menu_dev");
+            self add_menu_item_menuswitch("tool_menu_dev", "Loaded systems", "dev_systems");
+            
+            for (i = 0; i < level.atianconfig.loaded_modules.size; i++) {
+                self add_menu_item("dev_systems", "" + level.atianconfig.loaded_modules[i]);
+            }
+        }
+
+        if (isdefined(level.atianconfig.ignored_modules)) {
+            self add_menu("dev_systems_ignored", "Loaded systems", "tool_menu_dev");
+            self add_menu_item_menuswitch("tool_menu_dev", "Ignored loaded systems", "dev_systems_ignored");
+            
+            for (i = 0; i < level.atianconfig.ignored_modules.size; i++) {
+                self add_menu_item("dev_systems_ignored", "" + level.atianconfig.ignored_modules[i]);
+            }
+        }
+
+        self add_menu_item("tool_menu_dev", "All Color (ln)", &func_echo_dev_color);
+        self add_menu_item("tool_menu_dev", "All Color (bold)", &func_echobold, "^00 ^11 ^22 ^33 ^44 ^55 ^66 ^77 ^88 ^99 ");
+
+        self add_menu("tool_menu_dev_entities", "Entities", "tool_menu_dev", &func_searchentities);
+        self add_menu_item_menuswitch("tool_menu_dev", "Entities", "tool_menu_dev_entities");
+        
+        self add_menu("dev_config", "Config", "tool_menu_dev");
+        self add_menu_item_menuswitch("tool_menu_dev", "Config", "dev_config");
+        
+        if (isdefined(level.var_cca518d) && level.var_cca518d) {
+            self add_menu_item("dev_config", "spawn zombies");
+        }
+        if (isdefined(level.var_d33a57a) && level.var_d33a57a) {
+            self add_menu_item("dev_config", "spawn blight father");
+        }
+        if (isdefined(level.var_b6e30614) && level.var_b6e30614) {
+            self add_menu_item("dev_config", "spawn dog");
+        }
+        if (isdefined(level.var_6b59ac2c) && level.var_6b59ac2c) {
+            self add_menu_item("dev_config", "spawn brutus");
+        }
+        if (isdefined(level.var_4f7f5c18) && level.var_4f7f5c18) {
+            self add_menu_item("dev_config", "spawn brutus boss");
+        }
+        if (isdefined(level.var_9196aafd) && level.var_9196aafd) {
+            self add_menu_item("dev_config", "spawn avogadro");
+        }
+        if (isdefined(level.var_5c9e1f9) && level.var_5c9e1f9) {
+            self add_menu_item("dev_config", "spawn icarus");
+        }
+        if (isdefined(getgametypesetting(#"hash_7c8ad12994670d63")) && getgametypesetting(#"hash_7c8ad12994670d63")) {
+            self add_menu_item("dev_config", "spawn blackjack stash");
+        }
+        
+        wz_stash_blackjack = getdynentarray(#"wz_stash_blackjack");
+        if (isdefined(wz_stash_blackjack)) {
+            self add_menu("dev_wz_stash_blackjack", "Stash blackjack", "tool_menu_dev");
+            self add_menu_item_menuswitch("tool_menu_dev", "Stash blackjack", "dev_wz_stash_blackjack");
+            
+            for (i = 0; i < wz_stash_blackjack.size; i++) {
+                if (isdefined(wz_stash_blackjack[i].origin)) {
+                    self add_menu_item("dev_config", "stash " + i, &func_teleport, wz_stash_blackjack[i].origin);
+                }
+            }
+        }
     }
 
     self thread menu_think();

@@ -52,7 +52,6 @@ onPlayerSpawned()
     self thread CamoSetter();
 	self register_menu_response_callback("WaypointPlaced", &WaypointPlaced);
 
-
     if (isdefined(atianconfig.character_skin)) {
         skins = strtok(atianconfig.character_skin, ";");
         mode_skin = get_characters_for_mode();
@@ -86,6 +85,12 @@ onPlayerSpawned()
         }
     }
     
+    if (is_zombies()) {
+        if (isdefined(atianconfig.zm_start_time_hud) && atianconfig.zm_start_time_hud && level.gametype == "zclassic") {
+            // I don't know what can happen if it's not a zclassic game
+            // thread zm_init_timer_time();
+        }
+    }
     if (is_warzone()) {
         if (isdefined(atianconfig.force_blackout_gametype)) {
             gametype_force = atianconfig.force_blackout_gametype;
@@ -115,7 +120,11 @@ onPlayerSpawned()
     if (atianconfig_no_menu) {
         return;
     }
-    while (!self meleeButtonPressed()) waitframe(1);
     // init menu system
     self init_menu();
+}
+
+zm_init_timer_time() {
+	level flagsys::wait_till("gameplay_started");
+    clientfield::set_world_uimodel("ZMHudGlobal.trials.gameStartTime", level.var_21e22beb);
 }

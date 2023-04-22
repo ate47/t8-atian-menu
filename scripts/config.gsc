@@ -130,7 +130,7 @@ AtianMenuConfig() {
     // -------- zombie config --------
 
     // start round
-    self.zm_custom_startround = 115;
+    //self.zm_custom_startround = 115;
     // maximum round number (stop the game once reached)
     // self.zm_custom_zmroundcap = 999;
     

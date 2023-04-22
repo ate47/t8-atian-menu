@@ -62,6 +62,23 @@ func_helloworld(item, text) {
     return true;
 }
 
+func_hidehud(item) {
+    /*
+    if (!isdefined(getuimodel(getglobaluimodel(), "ZMHudGlobal.trials.hudDeactivated"))) {
+        createuimodel(getglobaluimodel(), "ZMHudGlobal.trials.hudDeactivated");
+        clientfield::register("worlduimodel", "ZMHudGlobal.trials.hudDeactivated", 1, 1, "int");
+    }
+
+	old = clientfield::get_world_uimodel("ZMHudGlobal.trials.hudDeactivated");
+    if (!isdefined(old)) {
+        old = false;
+    }
+    item.activated = !old;
+	clientfield::set_world_uimodel("ZMHudGlobal.trials.hudDeactivated", !old);
+    */
+    return true;
+}
+
 func_3rdperson(item) {
     if (!isdefined(self.thirdperson)) {
         self.thirdperson = false;
@@ -221,6 +238,8 @@ func_searchentities(menu) {
         if (!isdefined(e.origin)) {
             continue;
         }
+	    // e function_bf9d3071(#"hash_1978eff2ac047e65");
+		// e function_78233d29(#"hash_1978eff2ac047e65", "", #"brightness", 1);
 
         name = "";
         if (isdefined(e.name)) {

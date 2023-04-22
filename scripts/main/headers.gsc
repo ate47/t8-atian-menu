@@ -13,6 +13,7 @@
 #include scripts\core_common\player\player_role;
 #include scripts\core_common\values_shared;
 #include scripts\core_common\spawner_shared;
+#include scripts\core_common\flagsys_shared;
 
 #namespace clientids_shared;
 
@@ -31,9 +32,17 @@ __init__() {
 }
 
 __post__init__() {
-    level.atianconfig.loaded_modules = array();
-    if (isdefined(level.system_funcs[#"wz_vehicle"])) {
-        array::add(level.atianconfig.loaded_modules, "wz_vehicle");
+    if (isdefined(level.atianconfig.dev) && level.atianconfig.dev) {
+        level.atianconfig.loaded_modules = array();
+        level.atianconfig.ignored_modules = array();
+        // write all the systems
+        foreach (sys_key, sys_item in level.system_funcs) {
+            if (sys_item.ignore) {
+                array::add(level.atianconfig.ignored_modules, hash_lookup(sys_key));
+            } else {
+                array::add(level.atianconfig.loaded_modules, hash_lookup(sys_key));
+            }
+        }
     }
 }
 

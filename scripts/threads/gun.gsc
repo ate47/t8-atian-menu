@@ -219,8 +219,7 @@ compute_cammo_data_cfg_str(str_data) {
     if (range_element.size == 1) {
         if (range_element[0] == "random") {
             // random camo
-            generate_enum_values();
-            camo_item = array::random(level.atian_enum_data.camo_data.camos);
+            camo_item = array::random(get_camo_enum_data().camos);
 
             if (!isdefined(camo_item)) {
                 return undefined;
@@ -233,8 +232,7 @@ compute_cammo_data_cfg_str(str_data) {
         switch (range_element[0]) {
             case "cat":
             {
-                generate_enum_values();
-                cat_item = level.atian_enum_data.camo_data.categories[range_element[1]];
+                cat_item = get_camo_enum_data().categories[range_element[1]];
                 if (!isdefined(cat_item)) {
                     return undefined;
                 }
