@@ -3,5 +3,5 @@ AtianMenuDevConfig() {
     // this file is .gitignored (if you know what it means)
 
     // activate the dev options
-    self.dev = true;
+    self.dev = false;
 }
