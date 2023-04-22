@@ -24,6 +24,7 @@ autoexec __init__sytem__() {
 
 //required
 __init__() {
+    generate_enum_values();
     callback::on_start_gametype(&init);
     callback::on_connect(&onPlayerConnect);
     callback::on_spawned(&onPlayerSpawned);

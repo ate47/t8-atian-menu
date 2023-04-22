@@ -23,5 +23,11 @@ AtianMenuKeyConfig() {
     self.select_item = "use";
 
     // fly in fly mode, cancel fly in rocketman mode, default "sprint"
-    self.fly_key = "sprint";
+    self.fly_fast_key = "sprint";
+    self.fly_up_key = "jump";
+    self.fly_down_key = "stance";
+
+    // special tool in the menu
+    self.special_weapon_primary = "attack";
+    self.special_weapon_secondary = "reload";
 }

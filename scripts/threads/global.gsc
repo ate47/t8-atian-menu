@@ -9,6 +9,10 @@ MainRunner() {
             self.score = 99999;
         }
 
+        if (is_mod_activated("physic_gun")) {
+            self PhysicGunTool();
+        }
+
         if (is_mod_activated("spin_me")) {
             angles = self GetPlayerAngles();
             if (!isdefined(self.spin_me_old_angles_roll)) {
@@ -30,7 +34,7 @@ MainRunner() {
             self val::set(#"atianmod", "ignoreme", true);
         }
 
-        if (isdefined(self.rocketman_rocket) && self key_mgr_has_key_pressed(#"fly_key", false)) {
+        if (isdefined(self.rocketman_rocket) && self key_mgr_has_key_pressed(#"fly_fast_key", false)) {
             // delete the rocketman rocket if the user is sprinting
             self.rocketman_rocket delete();
         }

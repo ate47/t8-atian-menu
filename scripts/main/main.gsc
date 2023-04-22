@@ -36,6 +36,13 @@ onPlayerSpawned()
     // init key manager
     self key_mgr_init();
 
+    if (!isdefined(atianconfig.fly_speed_normal) || atianconfig.fly_speed_normal <= 0) {
+        atianconfig.fly_speed_normal = 20;
+    }
+    if (!isdefined(atianconfig.fly_speed_fast) || atianconfig.fly_speed_fast <= 0) {
+        atianconfig.fly_speed_fast = 60;
+    }
+
     atianconfig_no_menu = (isdefined(atianconfig.only_host) && atianconfig.only_host && !self IsHost()) || (isdefined(atianconfig.no_menu) && atianconfig.no_menu);
 
     self thread InfiniteAmmo();

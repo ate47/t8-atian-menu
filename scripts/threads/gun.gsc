@@ -106,6 +106,32 @@ GunModifier() {
         }
     }
 }
+PhysicGunTool() {
+    if (!isdefined(self.physic_gun)) {
+        self.physic_gun = spawnstruct();
+    }
+    
+    if (isdefined(self.physic_gun.attach)) {
+        if (self key_mgr_has_key_pressed(#"special_weapon_secondary", true)) {
+            self.physic_gun.attach = undefined;
+        }
+        if (isdefined(self.physic_gun.attach)) {
+            tag_origin = self GetTagOrigin("tag_weapon");
+            look = AnglesToForward(self GetPlayerAngles());
+            self.physic_gun.attach.origin = tag_origin + vectorscale(look, 40);
+        }
+    } else {
+        if (self key_mgr_has_key_pressed(#"special_weapon_secondary", true)) {
+            // attach visible entity
+            tag_origin = self GetTagOrigin("tag_weapon");
+            look = AnglesToForward(self GetPlayerAngles());
+            entity = bullettrace(tag_origin, tag_origin + vectorscale(look, 10000), 1, self)["entity"];
+            if (isdefined(entity)) {
+                self.physic_gun.attach = entity;
+            }
+        }
+    }
+}
 
 SendRocket(weapon_name, look) {
     tank_turret = getweapon(hash(weapon_name));
@@ -191,9 +217,35 @@ compute_cammo_data_cfg_str(str_data) {
     range_element = strtok(str, ":");
 
     if (range_element.size == 1) {
+        if (range_element[0] == "random") {
+            // random camo
+            generate_enum_values();
+            camo_item = array::random(level.atian_enum_data.camo_data.camos);
+
+            if (!isdefined(camo_item)) {
+                return undefined;
+            }
+            return camo_item.id;
+        }
         // compute a random element
         return int(range_element[0]);
     } else if (range_element.size == 2) {
+        switch (range_element[0]) {
+            case "cat":
+            {
+                generate_enum_values();
+                cat_item = level.atian_enum_data.camo_data.categories[range_element[1]];
+                if (!isdefined(cat_item)) {
+                    return undefined;
+                }
+                camo_item = array::random(cat_item.camos);
+
+                if (!isdefined(camo_item)) {
+                    return undefined;
+                }
+                return camo_item.id;
+            }
+        }
         start = int(range_element[0]);
         end = int(range_element[1]);
         if (isdefined(start) && isdefined(end)) {

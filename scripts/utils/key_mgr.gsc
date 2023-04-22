@@ -23,7 +23,11 @@ key_mgr_init() {
     self key_mgr_compile_key(#"last_item", key_config.last_item, #"ads");
     self key_mgr_compile_key(#"next_item", key_config.next_item, #"attack");
     self key_mgr_compile_key(#"select_item", key_config.select_item, #"use");
-    self key_mgr_compile_key(#"fly_key", key_config.fly_key, #"sprint");
+    self key_mgr_compile_key(#"fly_fast_key", key_config.fly_fast_key, #"sprint");
+    self key_mgr_compile_key(#"fly_up_key", key_config.fly_up_key, #"jump");
+    self key_mgr_compile_key(#"fly_down_key", key_config.fly_down_key, #"stance");
+    self key_mgr_compile_key(#"special_weapon_primary", key_config.special_weapon_primary, #"attack");
+    self key_mgr_compile_key(#"special_weapon_secondary", key_config.special_weapon_secondary, #"reload");
 }
 
 key_mgr_is_valid(key) {
@@ -55,6 +59,26 @@ key_mgr_compile_key(id, config, default_config) {
     self.key_mgr.config[id] = cfg;
 }
 
+key_mgr_get_key_str(id) {
+    key_mgr_init();
+
+    if (!isdefined(self.key_mgr.config[id])) {
+        return; // bad config
+    }
+    
+    key_cfg = self.key_mgr.config[id];
+    if (key_cfg.size == 0) {
+        return "";
+    }
+
+    s = key_mgr_get_key_str_id(key_cfg[0]);
+
+    for (i = 1; i < key_cfg.size; i++) {
+        s += "+" + key_mgr_get_key_str_id(key_cfg[i]);
+    }
+
+    return s;
+}
 key_mgr_has_key_pressed(id, wait_release = false) {
     key_mgr_init();
 
@@ -87,6 +111,33 @@ key_mgr_has_key_pressed(id, wait_release = false) {
         waitframe(1);
     }
     return true;
+}
+
+key_mgr_get_key_str_id(id) {
+    switch (id) {
+        case #"action": return "[{+action}]";
+        case #"actionslotfour": return "[{+actionslot 4}]";
+        case #"actionslotone": return "[{+actionslot 1}]";
+        case #"actionslotthree": return "[{+actionslot 3}]";
+        case #"actionslottwo": return "[{+actionslot 2}]";
+        case #"ads": return "[{+ads}]";
+        case #"attack": return "[{+attack}]";
+        case #"changeseat": return "[{+switchseat}]";
+        case #"frag": return "[{+frag}]";
+        case #"jump": return "[{+gostand}]";
+        case #"melee": return "[{+melee}]";
+        case #"offhandspecial": return "[{+offhandspecial}]";
+        case #"reload": return "[{+usereload}]";
+        case #"secondaryoffhand": return "[{+smoke}]";
+        case #"sprint": return "[{+sprint}]";
+        case #"stance": return "[{+stance}]";
+        case #"throw": return "[{+frag}]";
+        case #"use": return "[{+use}]";
+        case #"vehicleattack": return "[{+vehicleattack}]";
+        case #"vehiclemoveup": return "[{+vehiclemoveup}]";
+        case #"weaponswitch": return "[{+weapnext_inventory}]";
+        default: return "??";
+    }
 }
 key_mgr_has_key_pressed_id(id) {
     switch (id) {

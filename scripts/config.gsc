@@ -15,12 +15,14 @@ AtianMenuConfig() {
     // - an ID (0-512)
     // - an ID range with "v1_inclusive:v2_exclusive"
     // - multiple camo splitted with ';'
+    // - a random camo in a category with "cat:category_id"
+    // - a random camo "random"
     // example:
-    // - a random PAP camo "146:151;151:156;156:161;161:165;280:284;345;394"
+    // - a random PAP camo "cat:pap"
     // - dday reactive camo "298"
     // - gold: "43", diamond "44", diamond raybow "199", diamond black "232"
     //   dark matter "45", dark matter BO3 "192"
-    self.weapon_camo = "146:151;151:156;156:161;161:165;280:284;345;394";
+    self.weapon_camo = "random";
 
     // when does the camo is set
     // options:
@@ -44,7 +46,8 @@ AtianMenuConfig() {
     self.preloaded_menus = array(
         "tool_menu::Ammos",
         "tool_menu::Invulnerability",
-        "tool_menu::Max Points"
+        "tool_menu::Max Points",
+        "teleport::waypoint_tp"
     );
 
     // only the host has the menu
@@ -52,6 +55,12 @@ AtianMenuConfig() {
     
     // do not activate the menu, only use the config to create the game
     // self.no_menu = true;
+
+    // fly speeds
+    // - fly when moving, default 20
+    self.fly_speed_normal = 20;
+    // - fly when moving fast, default 60
+    self.fly_speed_fast = 60;
 
     // ------- blackout config -------
 

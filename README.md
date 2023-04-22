@@ -11,6 +11,7 @@ Using the sources: https://github.com/ate47/t8-src
   - [Config](#config)
   - [Features](#features)
   - [Dev tools](#dev-tools)
+    - [Color](#color)
     - [Hash lookup](#hash-lookup)
     - [Create menu](#create-menu)
 
@@ -85,6 +86,20 @@ You can config the mod menu in the [`scripts/config.gsc`](scripts/config.gsc) fi
 - set reticle
 
 ## Dev tools
+
+### Color
+
+Using `iprintln`: `^0`: red, `^1`: cyan, but only for the whole line.
+
+Using `iprintlnbold`:
+- `^0` black (hide)
+- `^1` red
+- `^2` green
+- `^3` yellow
+- `^4` blue
+- `^5` cyan
+- `^6` pink
+- `^7` bright yellow
 
 ### Hash lookup
 
