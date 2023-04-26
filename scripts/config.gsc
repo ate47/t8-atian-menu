@@ -158,6 +158,11 @@ AtianMenuConfig() {
     // disable loadout
     //self.zm_custom_no_loadout = true;
 
+    // set the start and the evolution of the zombies' health during the round
+    // self.zm_custom_zombies_health_start = 150;
+    // self.zm_custom_zombies_health_add = 0;
+    // self.zm_custom_zombies_health_multiplier = 1;
+
     // maximum time (minutes?)
     // self.zm_custom_zmtimecap = 0;
 

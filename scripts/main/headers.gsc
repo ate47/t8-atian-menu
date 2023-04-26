@@ -163,7 +163,14 @@ handle_config() {
         if (isdefined(atianconfig.zm_custom_aat)) setGametypeSetting(#"hash_57a5c7a9dcf94d61", atianconfig.zm_custom_aat);
         if (isdefined(atianconfig.zm_custom_no_loadout)) setGametypeSetting(#"hash_589c0366b1458c7e", atianconfig.zm_custom_no_loadout);
         if (isdefined(atianconfig.zm_custom_headshots_only)) setGametypeSetting(#"hash_4cb15aed177a8ef5", atianconfig.zm_custom_headshots_only);
+        if (isdefined(atianconfig.zm_custom_zombies_health_multiplier) && atianconfig.zm_custom_zombies_health_multiplier >= 0) 
+            setGametypeSetting(#"zombie_health_increase_multiplier", atianconfig.zm_custom_zombies_health_multiplier);
+        if (isdefined(atianconfig.zm_custom_zombies_health_add) && atianconfig.zm_custom_zombies_health_add >= 0) 
+            setGametypeSetting(#"zombie_health_increase", atianconfig.zm_custom_zombies_health_add);
+        if (isdefined(atianconfig.zm_custom_zombies_health_start) && atianconfig.zm_custom_zombies_health_start >= 0) 
+            setGametypeSetting(#"zombie_health_start", atianconfig.zm_custom_zombies_health_start);
         
+
         if (isdefined(atianconfig.zm_custom_zombies_speed_max)) {
             switch (atianconfig.zm_custom_zombies_speed_max) {
                 case "walk": setGametypeSetting("hash_7b14ee93b27576a9", 0); break;

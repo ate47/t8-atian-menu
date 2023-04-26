@@ -48,7 +48,7 @@ is_mod_activated(mod_name) {
     return isdefined(self.menu_info) && isdefined(self.menu_info.mods) && array::contains(self.menu_info.mods, mod_name);
 }
 
-add_menu(menu_id, menu_name, parent_id, menuenterfunc = undefined) {
+add_menu(menu_id, menu_name, parent_id, create_switch = false, menuenterfunc = undefined) {
     menu = 
     {
         #id: menu_id,
@@ -59,6 +59,10 @@ add_menu(menu_id, menu_name, parent_id, menuenterfunc = undefined) {
     };
 
     self.menu_info.menus[menu_id] = menu;
+    
+    if (create_switch) {
+        self add_menu_item_menuswitch(parent_id, menu_name, menu_id);
+    }
 }
 add_menu_item(menu_id, item_name, action, actiondata = undefined, actiondata2 = undefined, actiondata3 = undefined, actiondata4 = undefined, actiondata5 = undefined) {
     if (!isdefined(self.menu_info.menus[menu_id])) {

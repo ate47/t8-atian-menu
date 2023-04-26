@@ -113,12 +113,13 @@ The menu descriptions are usually put in the [`scripts/menu/menu_items.gsc`](scr
 To register a menu, you can call this method:
 
 ```gsc
-<player> add_menu(menu_id, menu_name, parent_id, menuenterfunc = undefined);
+<player> add_menu(menu_id, menu_name, parent_id, create_menu = false, menuenterfunc = undefined);
 ```
 
 - ``menu_id`` is the id of your menu.
 - ``menu_name`` is the name of your menu.
 - ``parent_id`` is the parent of your menu, ie: the menu openned if you go the previous menu in your menu. Can be `""` for no parent.
+- ``create_menu`` is creating the menu link from the parent to the menu
 - ``menuenterfunc`` is the *optional* function to when the used is entering your menu, it will call it with self set to the player and the menu as an argument.
 
 You can then add elements to your menu using

@@ -1,15 +1,12 @@
-init()
-{
+init() {
 }
 
-onPlayerConnect()
-{
+onPlayerConnect() {
     //connected
     self thread waitForNotify();
 }
 
-waitForNotify()
-{
+waitForNotify() {
     self endon(#"disconnect");
     while(true)
     {
@@ -24,8 +21,7 @@ waitForNotify()
     }
 }
 
-onPlayerSpawned()
-{
+onPlayerSpawned() {
     // notice how endon now takes variadic parameters
     self endon(#"disconnect", #"spawned_player");
     level endon(#"end_game", #"game_ended");
