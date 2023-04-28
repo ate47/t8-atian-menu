@@ -20,6 +20,7 @@ func_give_weapon(item, weapon_name) {
     } else {
         self iPrintLn("unknown weapon " + weapon_name);
     }
+    return true;
 }
 
 func_set_camo(item, data) {

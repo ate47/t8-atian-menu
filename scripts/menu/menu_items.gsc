@@ -496,6 +496,16 @@ init_menus() {
         
         self add_menu("tool_menu_dev", "Dev tools", "tool_menu", true);
 
+
+        self add_menu_item("tool_menu_dev", "Unlock all", &func_unlock_all);
+
+        foreach(weapon in level.zombie_weapons) {
+            self add_menu("dev_weapon", "Dev ZM weapon", "tool_menu_dev", true);
+            if(isdefined(weapon.weapon.name)) {
+                self add_menu_item("dev_weapon", hash_lookup(weapon.weapon.name), &func_give_weapon, weapon.weapon.name);
+            }
+        }
+
         if (isdefined(level.atianconfig.loaded_modules)) {
             self add_menu("dev_systems", "Loaded systems", "tool_menu_dev", true);
             
@@ -505,7 +515,7 @@ init_menus() {
         }
 
         if (isdefined(level.atianconfig.ignored_modules)) {
-            self add_menu("dev_systems_ignored", "Loaded systems", "tool_menu_dev", true);
+            self add_menu("dev_systems_ignored", "Ignored systems", "tool_menu_dev", true);
             
             for (i = 0; i < level.atianconfig.ignored_modules.size; i++) {
                 self add_menu_item("dev_systems_ignored", "" + level.atianconfig.ignored_modules[i]);

@@ -232,6 +232,8 @@ get_weapons_all() {
         "ar_peacekeeper_t8",
         "ar_standard_t8",
         "ar_stealth_t8",
+        "ar_an94",
+        "ar_doublebarrel",
         "hero_annihilator",
         "hero_flamethrower",
         "hero_pineapplegun",
