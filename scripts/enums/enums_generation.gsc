@@ -5,5 +5,6 @@ generate_enum_values() {
 
     level.atian_enum_data = spawnstruct();
     level.atian_enum_data generate_camo_enum();
+    level.atian_enum_data generate_skin_enum();
 }
 

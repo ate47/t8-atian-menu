@@ -106,6 +106,10 @@ Using `iprintlnbold`:
 The `hash_lookup(hash_str)` function can be used to look for unhashed values, to add a string to this function,
 add it to the [`lookup.txt`](lookup.txt) file and run the [`build_lookup.ps1`](build_lookup.ps1) script.
 
+You can create your own version by creating a file named lookup_big.txt and by running `.\build_lookup.ps1 -Big .\lookup_big.txt`, it won't be add to the repo.
+
+If the lookup is too big, the game won't start. TODO: split the switch.
+
 ### Create menu
 
 The menu descriptions are usually put in the [`scripts/menu/menu_items.gsc`](scripts/menu/menu_items.gsc) script.

@@ -1,4 +1,11 @@
 init() {
+    if (isdefined(level.atianconfig.custom_gametype)) {
+        switch (level.atianconfig.custom_gametype) {
+            case "zinfinite":
+                zinfinite_init_gametype();
+                break;
+        }
+    }
 }
 
 onPlayerConnect() {

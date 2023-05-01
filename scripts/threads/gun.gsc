@@ -38,7 +38,7 @@ GunModifier() {
             continue;
         }
         // at least one tool is activated
-        tag_origin = self GetTagOrigin("tag_weapon");
+        tag_origin = self geteye();
         look = AnglesToForward(self GetPlayerAngles());
         bullet_hit = bullettrace(tag_origin, tag_origin + vectorscale(look, 10000), 1, self)["position"];
 
@@ -116,14 +116,14 @@ PhysicGunTool() {
             self.physic_gun.attach = undefined;
         }
         if (isdefined(self.physic_gun.attach)) {
-            tag_origin = self GetTagOrigin("tag_weapon");
+            tag_origin = self geteye();
             look = AnglesToForward(self GetPlayerAngles());
             self.physic_gun.attach.origin = tag_origin + vectorscale(look, 40);
         }
     } else {
         if (self key_mgr_has_key_pressed(#"special_weapon_secondary", true)) {
             // attach visible entity
-            tag_origin = self GetTagOrigin("tag_weapon");
+            tag_origin = self geteye();
             look = AnglesToForward(self GetPlayerAngles());
             entity = bullettrace(tag_origin, tag_origin + vectorscale(look, 10000), 1, self)["entity"];
             if (isdefined(entity)) {

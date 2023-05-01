@@ -201,7 +201,7 @@ menu_think() {
                         } else {
                             res = self [[ item.action ]](item);
                         }
-                        if (!isdefined(res) || !res) {
+                        if (isdefined(res) && !res) {
                             // close the menu at the end
                             menu_info.current_menu = "";
                         }

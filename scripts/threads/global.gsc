@@ -29,9 +29,6 @@ MainRunner() {
             self freezeControls(false);
             self enableInvulnerability();
             self val::set(#"atianmod", "disable_oob", true);
-            if (is_zombies()) {
-		        self clientfield::set_to_player("zm_zone_out_of_bounds", false);
-            }
         }
         if (isdefined(self.tool_zmignoreme) && self.tool_zmignoreme) {
             self val::set(#"atianmod", "ignoreme", true);

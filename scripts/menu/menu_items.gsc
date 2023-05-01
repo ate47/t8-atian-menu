@@ -2,12 +2,14 @@ init_menus() {
     // ---- Tools ----
     self add_menu("tool_menu", "Tools", "start_menu", true);
 
-    self add_menu_item("tool_menu", "Info", &func_helloworld);
+    self add_menu_item("tool_menu", "Info", &func_infomenu);
     self add_menu_item_modswitch("tool_menu", "Fly", "fly");
     self add_menu_item("tool_menu", "Third person", &func_3rdperson);
 
     self add_menu_item_modswitch("tool_menu", "Ammos", "maxammo");
-    self add_menu_item("tool_menu", "End contracts", &func_end_contracts);
+    if (is_zombies()) {
+        self add_menu_item("tool_menu", "End contracts", &func_end_contracts);
+    }
     self add_menu_item("tool_menu", "Invulnerability", &func_invulnerability);
 
     if (is_zombies()) {
@@ -99,6 +101,10 @@ init_menus() {
         }
 
         switch (level.script) {
+            case "zm_towers":
+                self add_menu_item("teleport", "Boss fight", &func_teleport, (-3518, 460, 1.15883), (0, -180, 0));
+                self add_menu_item("teleport", "Arena", &func_teleport, (30, 80, 80.625), (0, -180, 0));
+                break;
             case "wz_escape":
             case "wz_escape_alt":
                 self add_menu_item("teleport", "Boat", &func_teleport, (-9045, -4126, 117.117), (0, 150, 0));
@@ -131,6 +137,9 @@ init_menus() {
             case "mp_embassy":
                 self add_menu_item("teleport", "Center", &func_teleport, (650, -1677, 144.125), (0, -32, 0));
                 self add_menu_item("teleport", "Building top", &func_teleport, (-2640, -2416, 2720.13), (0, 12, 0));
+                break;
+            case "mp_elevation":
+                self add_menu_item("teleport", "Center", &func_teleport, (43, -108, 208.679), (0, -110, 0));
                 break;
             case "mp_firingrange2":
             case "mp_firingrange2_alt":
@@ -279,15 +288,6 @@ init_menus() {
     self add_menu_item_modswitch("random", "YOU SPIN ME...", "spin_me");
     
 
-    // ---- Characters ----
-    self add_menu("characters", "Characters", "start_menu", true);
-
-    characters = get_characters_for_mode();
-
-    for (i = 0; i < characters.size; i++) {
-        self add_menu_item("characters", characters[i], &func_set_char, i);
-    }
-
     // ---- Camos ----
     self add_menu("camos", "Camos", "start_menu", true);
 
@@ -370,88 +370,41 @@ init_menus() {
         self add_menu_item("reticles", "Circle" + " " + reticle_colors[i], &func_set_reticle, 61 + i);
     }
 
+    // ---- Characters ----
+    self add_menu("characters", "Characters", "start_menu", true);
+
     // ---- Skin custom ----
+    self add_menu("skin_custom_default", "Skins", "start_menu", true);
+
     self add_menu("skin_custom", "Skin custom", "start_menu", true);
 
-    self add_menu("skin_custom_default", "Known skins", "skin_custom", true);
+    skin_data = get_skin_enum_data();
+    foreach(character_id, char_item in skin_data.characters) {
+        if (is_warzone()) {
+            sid = char_item.wz;
+        } else if (is_multiplayer()) {
+            sid = char_item.mp;
+        } else if (is_zombies()) {
+            sid = char_item.zm;
+        } 
+        if (sid == 0 && !char_item.invisible) continue;
 
-    if (is_warzone()) {
-        // 1 = battery
-        self add_menu("skin_custom_default_battery", "Battery", "skin_custom_default", true);
-        self add_menu_item("skin_custom_default_battery", "Battery number", &func_set_skin, 1, 14);
-        self add_menu_item("skin_custom_default_battery", "Battery money", &func_set_skin, 1, 16);
-        self add_menu_item("skin_custom_default_battery", "Battery twitter", &func_set_skin, 1, 19);
-        self add_menu_item("skin_custom_default_battery", "Battery criminal", &func_set_skin, 1, 21);
-        self add_menu_item("skin_custom_default_battery", "Battery aviator", &func_set_skin, 1, 25);
-        // 2 = firebreak
-        self add_menu("skin_custom_default_firebreak", "Firebreak", "skin_custom_default", true);
-        self add_menu_item("skin_custom_default_firebreak", "Firebreak silverfish", &func_set_skin, 2, 9);
-        self add_menu_item("skin_custom_default_firebreak", "Firebreak nebula", &func_set_skin, 2, 10);
-        self add_menu_item("skin_custom_default_firebreak", "Firebreak number", &func_set_skin, 2, 14);
-        self add_menu_item("skin_custom_default_firebreak", "Firebreak rabbit", &func_set_skin, 2, 15);
-        self add_menu_item("skin_custom_default_firebreak", "Firebreak money", &func_set_skin, 2, 17);
-        // 48 = outrider
-        self add_menu("skin_custom_default_outrider", "Outrider", "skin_custom_default", true);
-        self add_menu_item("skin_custom_default_outrider", "Outrider money", &func_set_skin, 48, 3);
-        self add_menu_item("skin_custom_default_outrider", "Outrider number", &func_set_skin, 48, 4);
-        self add_menu_item("skin_custom_default_outrider", "Outrider pirate", &func_set_skin, 48, 10);
-        self add_menu_item("skin_custom_default_outrider", "Outrider cheerleader", &func_set_skin, 48, 14);
-        self add_menu_item("skin_custom_default_outrider", "Outrider heroes", &func_set_skin, 48, 18);
-        self add_menu_item("skin_custom_default_outrider", "Outrider red", &func_set_skin, 48, 1);
-        self add_menu_item("skin_custom_default_outrider", "Outrider white", &func_set_skin, 48, 8);
-        self add_menu_item("skin_custom_default_outrider", "Outrider green", &func_set_skin, 48, 15);
-        self add_menu_item("skin_custom_default_outrider", "Outrider pink", &func_set_skin, 48, 19);
-        self add_menu_item("skin_custom_default_outrider", "Outrider blank", &func_set_skin, 48, 19, 1);
-        // DO NOT TEST 12
+        self add_menu_item("characters", char_item.id, &func_set_char, sid);
 
-        // 67 = reaper
-        self add_menu("skin_custom_default_reaper", "Reaper", "skin_custom_default", true);
-        self add_menu_item("skin_custom_default_reaper", "Reaper spectre", &func_set_skin, 67, 1);
-        self add_menu_item("skin_custom_default_reaper", "Reaper punk", &func_set_skin, 67, 2);
-        self add_menu_item("skin_custom_default_reaper", "Reaper red", &func_set_skin, 67, 3);
-        self add_menu_item("skin_custom_default_reaper", "Reaper number", &func_set_skin, 67, 4);
-        // 17 = richtofen
-        self add_menu_item("skin_custom_default", "Richtofen great war", &func_set_skin, 17, 2);
-        self add_menu_item("skin_custom_default", "Zombie", &func_set_skin, 17, 1);
-    } else if (is_multiplayer()) {
-        // 2 = battery
-        self add_menu("skin_custom_default_battery", "Battery", "skin_custom_default", true);
-        self add_menu_item("skin_custom_default_battery", "Battery number", &func_set_skin, 2, 14);
-        self add_menu_item("skin_custom_default_battery", "Battery money", &func_set_skin, 2, 16);
-        self add_menu_item("skin_custom_default_battery", "Battery twitter", &func_set_skin, 2, 19);
-        self add_menu_item("skin_custom_default_battery", "Battery criminal", &func_set_skin, 2, 21);
-        self add_menu_item("skin_custom_default_battery", "Battery aviator", &func_set_skin, 2, 25);
-        // 4 = firebreak
-        self add_menu("skin_custom_default_firebreak", "Firebreak", "skin_custom_default", true);
-        self add_menu_item("skin_custom_default_firebreak", "Firebreak silverfish", &func_set_skin, 4, 9);
-        self add_menu_item("skin_custom_default_firebreak", "Firebreak nebula", &func_set_skin, 4, 10);
-        self add_menu_item("skin_custom_default_firebreak", "Firebreak number", &func_set_skin, 4, 14);
-        self add_menu_item("skin_custom_default_firebreak", "Firebreak rabbit", &func_set_skin, 4, 15);
-        self add_menu_item("skin_custom_default_firebreak", "Firebreak money", &func_set_skin, 4, 17);
-        // 12 = outrider
-        self add_menu("skin_custom_default_outrider", "Outrider", "skin_custom_default", true);
-        self add_menu_item("skin_custom_default_outrider", "Outrider money", &func_set_skin, 12, 3);
-        self add_menu_item("skin_custom_default_outrider", "Outrider number", &func_set_skin, 12, 4);
-        self add_menu_item("skin_custom_default_outrider", "Outrider pirate", &func_set_skin, 12, 10);
-        self add_menu_item("skin_custom_default_outrider", "Outrider cheerleader", &func_set_skin, 12, 14);
-        self add_menu_item("skin_custom_default_outrider", "Outrider heroes", &func_set_skin, 12, 18);
-        self add_menu_item("skin_custom_default_outrider", "Outrider red", &func_set_skin, 12, 1);
-        self add_menu_item("skin_custom_default_outrider", "Outrider white", &func_set_skin, 12, 8);
-        self add_menu_item("skin_custom_default_outrider", "Outrider green", &func_set_skin, 12, 15);
-        self add_menu_item("skin_custom_default_outrider", "Outrider pink", &func_set_skin, 12, 19);
-        self add_menu_item("skin_custom_default_outrider", "Outrider blank", &func_set_skin, 12, 19, 1);
-        // DO NOT TEST 12
-        // 14 = reaper
-        self add_menu("skin_custom_default_reaper", "Reaper", "skin_custom_default", true);
-        self add_menu_item("skin_custom_default_reaper", "Reaper spectre", &func_set_skin, 14, 1);
-        self add_menu_item("skin_custom_default_reaper", "Reaper punk", &func_set_skin, 14, 2);
-        self add_menu_item("skin_custom_default_reaper", "Reaper red", &func_set_skin, 14, 3);
-        self add_menu_item("skin_custom_default_reaper", "Reaper number", &func_set_skin, 14, 4);
-    } else if (is_zombies()) {
-        // 5 = richtofen
-        self add_menu_item("skin_custom_default", "Richtofen great war", &func_set_skin, 5, 2);
-        self add_menu_item("skin_custom_default", "Zombie", &func_set_skin, 5, 1);
-    } 
+        if (char_item.skins.size == 0) {
+            continue; // no sknown skin for this character
+        }
+
+        char_menu_id = "characters_skin_" + sid;
+        self add_menu(char_menu_id, char_item.id, "skin_custom_default", true);
+
+        self add_menu_item(char_menu_id, "Default", &func_set_skin, sid, 0, 0);
+
+        for (i = 0; i < char_item.skins.size; i++) {
+            skin_item = char_item.skins[i];
+            self add_menu_item(char_menu_id, skin_item.title, &func_set_skin, sid, skin_item.skin, skin_item.palette);
+        }
+    }
     
     self add_menu_item("skin_custom", "Clear", &func_set_skin_custom_clear);
 
@@ -496,13 +449,20 @@ init_menus() {
         
         self add_menu("tool_menu_dev", "Dev tools", "tool_menu", true);
 
+         
+        self add_menu_item("tool_menu_dev", "func_pb_gactive 1", &func_setpbgactivebank, 0);
+        self add_menu_item("tool_menu_dev", "func_pb_gactive 2", &func_setpbgactivebank, 1);
+        self add_menu_item("tool_menu_dev", "func_pb_gactive 4", &func_setpbgactivebank, 2);
+        self add_menu_item("tool_menu_dev", "func_pb_gactive 8", &func_setpbgactivebank, 3);
 
         self add_menu_item("tool_menu_dev", "Unlock all", &func_unlock_all);
 
-        foreach(weapon in level.zombie_weapons) {
+        if (isdefined(level.zombie_weapons)) {
             self add_menu("dev_weapon", "Dev ZM weapon", "tool_menu_dev", true);
-            if(isdefined(weapon.weapon.name)) {
-                self add_menu_item("dev_weapon", hash_lookup(weapon.weapon.name), &func_give_weapon, weapon.weapon.name);
+            foreach(weapon in level.zombie_weapons) {
+                if(isdefined(weapon.weapon.name)) {
+                    self add_menu_item("dev_weapon", hash_lookup(weapon.weapon.name), &func_give_weapon, weapon.weapon.name);
+                }
             }
         }
 

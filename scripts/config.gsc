@@ -5,11 +5,11 @@ AtianMenuConfig() {
     // the first is the most important, if no skin can be found, it won't change the skin, the key "random" is selecting a random skin
     // you can set the outfit, palette, warpaint and decal using NAME:OUTFIT:PALETTE:WARPAINT:DECAL, 0 = default, a bad config can
     // crash the game. A fun usage:
-    // - "Richtofen (Primis):1" : Alcatraz zombies (ZM only)
-    // - "Richtofen (Primis):2" : Great War Richtofen (ZM only)
+    // - "Richtofen (Primis):1" : Alcatraz zombies (ZM/BR only)
+    // - "Richtofen (Primis):2" : Great War Richtofen (ZM/BR only)
     // - "Richtofen Primis:1" : Alcatraz zombies (BR only)
     // - "Richtofen Primis:2" : Great War Richtofen (BR only)
-    self.character_skin = "Christina Fowler;Richtofen Primis:2;Outrider:10";
+    self.character_skin = "Christina Fowler;Richtofen (Primis):2;Outrider:10";
 
     // set the weapon camo when you pickup a weapon, you can specify :
     // - an ID (0-512)
@@ -47,7 +47,8 @@ AtianMenuConfig() {
         "tool_menu::Ammos",
         "tool_menu::Invulnerability",
         "tool_menu::Max Points",
-        "teleport::waypoint_tp"
+        "teleport::waypoint_tp",
+        "tool_menu::End contracts"
     );
 
     // only the host has the menu
@@ -230,4 +231,7 @@ AtianMenuConfig() {
 
     // headshots only
 	// self.zm_custom_headshots_only = false;
+
+    // max powerups drop per round
+    self.zm_max_drop_per_round = 4;
 }

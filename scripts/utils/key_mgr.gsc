@@ -127,7 +127,7 @@ key_mgr_get_key_str_id(id) {
         case #"jump": return "[{+gostand}]";
         case #"melee": return "[{+melee}]";
         case #"offhandspecial": return "[{+offhandspecial}]";
-        case #"reload": return "[{+usereload}]";
+        case #"reload": return "[{+reload}]";
         case #"secondaryoffhand": return "[{+smoke}]";
         case #"sprint": return "[{+sprint}]";
         case #"stance": return "[{+stance}]";

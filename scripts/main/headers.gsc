@@ -21,6 +21,7 @@
 autoexec __init__sytem__() {
 	system::register("clientids_shared", &__init__, &__post__init__, undefined);
     handle_config();
+    register_info_pages();
 }
 
 //required
@@ -62,6 +63,8 @@ handle_config() {
     level.atianconfig AtianMenuConfig();
     level.atianconfig AtianMenuDevConfig();
     atianconfig = level.atianconfig;
+
+    spawner::add_archetype_spawn_function(#"zombie", &on_zombie_spawn);
 
     if (isdefined(atianconfig.weapon_camo_reset)) {
         switch (atianconfig.weapon_camo_reset) {
@@ -169,8 +172,9 @@ handle_config() {
             setGametypeSetting(#"zombie_health_increase", atianconfig.zm_custom_zombies_health_add);
         if (isdefined(atianconfig.zm_custom_zombies_health_start) && atianconfig.zm_custom_zombies_health_start >= 0) 
             setGametypeSetting(#"zombie_health_start", atianconfig.zm_custom_zombies_health_start);
-        
-
+        if (isdefined(atianconfig.zm_max_drop_per_round) && atianconfig.zm_max_drop_per_round >= 0) 
+            setGametypeSetting(#"hash_d46a4e7a41e005c", atianconfig.zm_max_drop_per_round);
+            
         if (isdefined(atianconfig.zm_custom_zombies_speed_max)) {
             switch (atianconfig.zm_custom_zombies_speed_max) {
                 case "walk": setGametypeSetting("hash_7b14ee93b27576a9", 0); break;

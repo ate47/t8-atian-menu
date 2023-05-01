@@ -1,65 +1,9 @@
-func_helloworld(item, text) {
-    ts = 0;
-    while (!(self key_mgr_has_key_pressed(#"parent_page"))) {
-        nts = GetTime();
-        
-        if (nts > ts) {
-            ts = nts + 1000; // add 1s
-        } else {
-            waitframe(1);
-            continue;
-        }
-        index_end = 0;
-
-        if (isdefined(text)) {
-            self iprintln(text);
-            index_end++;
-        }
-        weapon = self GetCurrentWeapon();
-        
-        if (isdefined(weapon) && isdefined(weapon.name)) {
-            str_weapon = weapon.name;
-            self iprintln("^1weapon:^0 " + hash_lookup(weapon.name));
-            index_end++;
-        }
-        if (isdefined(level.gametype)) {
-            gametype = level.gametype;
-        } else {
-            gametype = "nogtype";
-        }
-        if (isdefined(level.script)) {
-            script = level.script;
-        } else {
-            script = "noscript";
-        }
-        self iprintln("^1mode: ^0" + gametype + "(" + get_gamemode() + "/" + script + ")");
-        index_end++;
-
-        if (isdefined(self.origin)) {
-            self iprintln("^1origin: ^0" + self.origin);
-            index_end++;
-        }
-        self iprintln("^1angles: ^0" + self GetPlayerAngles());
-        index_end++;
-        role = self player_role::get();
-        if (isdefined(role)) {
-            self iprintln("^1role:   ^0" + role);
-            index_end++;
-        }
-        
-        end_space = (8 - (index_end % 8));
-        if (end_space !== 8) {
-            for (i = 0; i < end_space; i++) {
-                self iprintln("");
-            }
-        }
-        waitframe(1);
+nullable_to_str(obj, default_obj = "") {
+    if (isdefined(obj)) {
+        return obj;
+    } else {
+        return default_obj;
     }
-    while (self key_mgr_has_key_pressed(#"parent_page")) {
-        waitframe(1);
-    }
-
-    return true;
 }
 
 func_hidehud(item) {

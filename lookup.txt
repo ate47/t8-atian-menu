@@ -47,6 +47,7 @@ as_debug
 attachment
 audio
 auto_turret
+avogadro
 backpack
 ballistic_knife
 bare_hands
@@ -65,6 +66,8 @@ blightfather
 blightfathers
 blood
 bombers
+bonfire_sale
+bonus_points_player
 bonus_points_player_shared
 bonus_points_team
 bot
@@ -75,6 +78,7 @@ bot_position
 bot_stance
 bouncingbetty
 bowie_knife
+boxmove
 brutus
 burnplayer
 callback
@@ -181,6 +185,7 @@ destructible_character
 dev
 devgui
 dialog_shared
+dogstart
 doors
 double_points
 draft
@@ -189,6 +194,7 @@ drown
 duplicate_render
 dynent_world
 electric_zombie
+elephant
 empgrenade
 end_game_flow
 entityheadicons
@@ -212,6 +218,7 @@ equipment
 explode
 exploder
 extra_life
+fav
 fire_sale
 flagsys
 frag_grenade
@@ -259,6 +266,7 @@ gravity_spikes
 grenades
 hackable
 hacker_tool
+hash_165d4f75a46540bb
 hatchet
 hawk
 hawk_mp
@@ -273,18 +281,9 @@ helicopter_sounds
 helicopter_utility
 hellhound
 hero_annihilator
-insta_kill
-nuke
-minigun
-bonus_points_player
-hero_weapon_power
-zombie_blood
-bonfire_sale
-boxmove
-dogstart
-shield_upgrade
 hero_flamethrower
 hero_pineapplegun
+hero_weapon_power
 hero_weapon_ready
 high_value_operative
 homunculus
@@ -295,6 +294,7 @@ human_riotshield
 human_rpg
 infection
 influencers_shared
+insta_kill
 inventory_ac130
 inventory_dart
 inventory_drone_squadron
@@ -336,6 +336,7 @@ lmg_stealth_t8_upgraded
 load
 localheal
 lui_shared
+mannequin
 mansion_ww
 marauder
 marauders
@@ -365,7 +366,9 @@ melee_zombiearm_t8
 melee_zombiearm_t8_upgraded
 menus
 mg
+mini_ai_quadtank
 mini_turret
+minigun
 mission
 MOD_AAT
 mod_additionalprimaryweapon
@@ -460,6 +463,7 @@ none
 nosferatu
 nova_6
 nova_crawler
+nuke
 out_of_bounds
 overwatch_helicopter
 pap_quest
@@ -504,6 +508,7 @@ popups
 postfx_bundle
 potm
 proximity_grenade
+quad
 quest
 radiant_live_udpate
 radiant_live_update
@@ -511,6 +516,7 @@ rank
 raps
 rat
 ray_gun
+rcbomb
 rcxd
 recon_car
 recon_wz
@@ -536,6 +542,7 @@ sensor_dart
 serverfaceanim
 serversettings
 shellshock
+shield_upgrade
 shock_rifle
 shockrifle
 shotgun
@@ -623,6 +630,7 @@ specialty_wolf_protector
 specialty_zombshell
 spectating
 spectre_grenade
+spider
 spike_charge
 spike_charge_siegebot
 spknifeork
@@ -658,6 +666,7 @@ teamset_axis
 teamset_seals
 tesla_gun
 tesla_sniper
+thrasher
 tiger
 tigers
 timer_1
@@ -1001,5 +1010,6 @@ zm_zod_companion
 zm_zonemgr
 zmb_tigers
 zombie
+zombie_blood
 zombie_dog
 zombie_quad

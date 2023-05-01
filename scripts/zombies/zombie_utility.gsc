@@ -91,3 +91,6 @@ func_complete_ee() {
     }
 
 }
+on_zombie_spawn() {
+    
+}
