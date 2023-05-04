@@ -6,6 +6,7 @@ init() {
                 break;
         }
     }
+    devInitGametype();
 }
 
 onPlayerConnect() {
@@ -120,6 +121,9 @@ onPlayerSpawned() {
             return;
         }
     }
+
+    self onPlayerSpawnedDev();
+
     if (atianconfig_no_menu) {
         return;
     }

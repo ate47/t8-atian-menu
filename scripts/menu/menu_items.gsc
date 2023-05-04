@@ -134,6 +134,12 @@ init_menus() {
             case "mp_casino":
                 self add_menu_item("teleport", "Center", &func_teleport, (482, -24, 0.125));
                 break;
+            case "mp_cairo":
+                self add_menu_item("teleport", "Center", &func_teleport, (533, 372, -0.064));
+                break;
+            case "mp_cosmodrome":
+                self add_menu_item("teleport", "Center", &func_teleport, (-927, 372, -3.875));
+                break;
             case "mp_embassy":
                 self add_menu_item("teleport", "Center", &func_teleport, (650, -1677, 144.125), (0, -32, 0));
                 self add_menu_item("teleport", "Building top", &func_teleport, (-2640, -2416, 2720.13), (0, 12, 0));
@@ -205,7 +211,7 @@ init_menus() {
 
             wz_vehicles = get_wz_vehicles();
             for (i = 0; i < wz_vehicles.size; i++) {
-                self add_menu_item("vehicle_wz", "" + wz_vehicles[i], &func_spawn_vehicle, wz_vehicles[i]);
+                self add_menu_item("vehicle_wz", hash_lookup(wz_vehicles[i]), &func_spawn_vehicle, wz_vehicles[i]);
             }
         }
 
@@ -441,7 +447,7 @@ init_menus() {
     }
 
     
-    if (isdefined(self.atianconfig.dev) && self.atianconfig.dev) {
+    if (is_dev_mode()) {
 
         self add_menu_item("tool_menu", "Hide hud", &func_hidehud);
 
@@ -524,6 +530,65 @@ init_menus() {
                 }
             }
         }
+
+/*
+        if (is_warzone()) {
+            self add_menu("dev_spawnlist", "Spawn list", "tool_menu_dev", true);
+            spawnlist_types = array();
+            spawnlist = struct::get_array("scriptbundle_itemspawnlist", "classname");
+            if (!isdefined(spawnlist)) {
+                self add_menu_item("dev_spawnlist", "no spawnlist");
+            } else {
+                foreach(group in spawnlist) {
+                    if(!isdefined(group.target) || !isdefined(group.var_b91441dd) || !isdefined(group.var_b91441dd.itemlist)) {
+                        continue;
+                    }
+
+                    itemlist = group.var_b91441dd.itemlist;
+                    for (row = 0; row < itemlist.size; row++) {
+                        item_name = group.var_b91441dd.itemlist[row].var_a6762160;
+                        if(isdefined(item_name) && isdefined(level.var_4afb8f5a) && isdefined(level.var_4afb8f5a[item_name])) {
+                            item_name = level.var_4afb8f5a[item_name];
+                        }
+                        if(!isdefined(item_name) || item_name == "") {
+                            return;
+                        }
+                        item_bundle = getscriptbundle(item_name);
+                        
+                        if(!isdefined(item_bundle) || !isdefined(item_bundle.itemtype) || item_bundle.itemtype == #"blank") {
+                            return;
+                        }
+                        menu_type = spawnlist_types[item_bundle.itemtype];
+                        if (!isdefined(menu_type)) {
+                            menu_type = "dev_spawnlist_" + item_bundle.itemtype;
+                            spawnlist_types[item_bundle.itemtype] = menu_type;
+                            self add_menu(menu_type, hash_lookup(item_bundle.itemtype), "dev_spawnlist", true);
+                        }
+                        
+                        if (item_bundle.itemtype == #"vehicle") {
+                            self add_menu_item(menu_type, hash_lookup(item_bundle.vehicle), &func_spawn_vehicle, item_bundle.vehicle);
+                        } else if (item_bundle.itemtype == #"weapon") {
+                            if (isdefined(item_bundle.name)) {
+                                if (isdefined(isweapon(item_bundle.weapon))) {
+                                    self add_menu_item(menu_type, hash_lookup(item_bundle.name), &func_give_weapon, item_bundle.weapon);
+                                } else if (isdefined(isweapon(item_bundle.weapon.weapon))) {
+                                    self add_menu_item(menu_type, hash_lookup(item_bundle.name), &func_give_weapon, item_bundle.weapon.weapon);
+                                } else {
+                                    self add_menu_item(menu_type, hash_lookup(item_bundle.name));
+                                }
+                            } else {
+                                self add_menu_item(menu_type, "unknown");
+                            }
+                        } else if (isdefined(item_bundle.name)) {
+                            self add_menu_item(menu_type, hash_lookup(item_bundle.name));
+                        } else {
+                            self add_menu_item(menu_type, "unknown");
+                        }
+                    }
+                }
+            }
+        }
+*/
     }
 
     self thread menu_think();

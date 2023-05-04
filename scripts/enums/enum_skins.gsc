@@ -241,4 +241,15 @@ generate_skin_enum() {
     skin_data add_skin_enum("Crash", "Spectre", 28);
     skin_data add_skin_enum("Crash", "Twitch", 21);
     skin_data add_skin_enum("Crash", "White", 0, 3);
+    
+    skin_data add_skin_enum("Nomad", "80", 16);
+    skin_data add_skin_enum("Nomad", "Elvis", 17);
+    skin_data add_skin_enum("Nomad", "Money", 15);
+    skin_data add_skin_enum("Nomad", "Number", 13);
+    skin_data add_skin_enum("Nomad", "Twitch", 20);
+    skin_data add_skin_enum("Nomad", "Pirate", 23);
+    skin_data add_skin_enum("Nomad", "Werewolf", 31);
+    skin_data add_skin_enum("Nomad", "White", 0, 3);
+    skin_data add_skin_enum("Nomad", "Zombie", 27);
+
 }

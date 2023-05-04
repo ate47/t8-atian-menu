@@ -83,8 +83,3 @@ add_info_page(page_name, timeout, page_print_func, modes = undefined) {
     page.page_print_func = page_print_func;
     array::add(level.atian_info_pages, page, true);
 }
-
-register_info_pages() {
-    add_info_page("Main", 1000, &info_page_main);
-    add_info_page("Look tool", 500, &info_page_looktool);
-}

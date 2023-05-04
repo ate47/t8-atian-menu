@@ -33,7 +33,7 @@ __init__() {
 }
 
 __post__init__() {
-    if (isdefined(level.atianconfig.dev) && level.atianconfig.dev) {
+    if (is_dev_mode()) {
         level.atianconfig.loaded_modules = array();
         level.atianconfig.ignored_modules = array();
         // write all the systems
@@ -60,6 +60,7 @@ on_avogadro_spawn(health) {
 
 handle_config() {
     level.atianconfig = spawnstruct();
+    level.atianconfig.devcfg = spawnstruct();
     level.atianconfig AtianMenuConfig();
     level.atianconfig AtianMenuDevConfig();
     atianconfig = level.atianconfig;

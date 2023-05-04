@@ -1,3 +1,8 @@
+register_info_pages() {
+    add_info_page("Main", 1000, &info_page_main);
+    add_info_page("Look tool", 500, &info_page_looktool);
+}
+
 info_page_main() {
     index_end = 0;
 
@@ -13,7 +18,8 @@ info_page_main() {
         self iprintln("^1model:   " + hash_lookup(self.model));
         index_end++;
     }
-    self iprintln("^1mode: " + nullable_to_str(level.gametype, "nogametype") + "(" + get_gamemode() + "/" + nullable_to_str(level.script, "noscript") + ")");
+	sessionmode = currentsessionmode();
+    self iprintln("^1mode: " + nullable_to_str(level.gametype, "nogametype") + "(" + sessionmode + ":" + get_gamemode() + "/" + nullable_to_str(level.script, "noscript") + ")");
     index_end++;
 
     if (isdefined(self.origin)) {
@@ -22,10 +28,13 @@ info_page_main() {
     }
     self iprintln("^1angles: " + self GetPlayerAngles());
     index_end++;
-    role = self player_role::get();
+    role = self getcharacterbodytype();
+    // displayname = makelocalizedstring();
     if (isdefined(role)) {
-        self iprintln("^1role:   ^0" + role);
-        index_end++;
+        self iprintln("^1role:   " + hash_lookup(getcharacterdisplayname(role, sessionmode)) + "(" + role + ")");
+        self iprintln("^1r asset:" + hash_lookup(getcharacterassetname(role, sessionmode)));
+        
+        index_end += 2;
     }
 
     return index_end;
@@ -44,6 +53,7 @@ info_page_looktool() {
     position_hit = bullet_hit[#"position"];
     if (position_hit == tag_end) {
         self iprintln("^1look el: no tag end");
+        index_end++;
     } else {
         self iprintln("^1look el: " + position_hit + " (press " + key_mgr_get_key_str(#"special_weapon_secondary") + " to tp)");
         if (self key_mgr_has_key_pressed(#"special_weapon_secondary", true)) {
@@ -60,7 +70,6 @@ info_page_looktool() {
         hitloc_hit = bullet_hit[#"hitloc"];
         dynent_hit = bullet_hit[#"dynent"];
 
-// makelocalizedstring
         if (isdefined(entity_hit)) {
             
             self iprintln("^1en: " + hash_lookup(nullable_to_str(entity_hit.model)) + " " + nullable_to_str(entity_hit.origin) + " ar:" + nullable_to_str(hash_lookup(entity_hit.archetype)));

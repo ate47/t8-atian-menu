@@ -28,7 +28,6 @@ hash_lookup(hash_value) {
         case #"ambient": return "ambient";
         case #"ammo": return "ammo";
         case #"amws": return "amws";
-        case #"amws": return "amws";
         case #"animation": return "animation";
         case #"antipersonnel_guidance": return "antipersonnel_guidance";
         case #"ar": return "ar";
@@ -69,7 +68,6 @@ hash_lookup(hash_value) {
         case #"barricades": return "barricades";
         case #"basketball": return "basketball";
         case #"bat": return "bat";
-        case #"bat": return "bat";
         case #"battlechatter": return "battlechatter";
         case #"battleshield": return "battleshield";
         case #"bb": return "bb";
@@ -77,7 +75,7 @@ hash_lookup(hash_value) {
         case #"bgb_pack": return "bgb_pack";
         case #"blackjack_challenges": return "blackjack_challenges";
         case #"blade": return "blade";
-        case #"blight_father": return "blight_father";
+        case #"blank": return "blank";
         case #"blight_father": return "blight_father";
         case #"blightfather": return "blightfather";
         case #"blightfathers": return "blightfathers";
@@ -97,13 +95,11 @@ hash_lookup(hash_value) {
         case #"bowie_knife": return "bowie_knife";
         case #"boxmove": return "boxmove";
         case #"brutus": return "brutus";
-        case #"brutus": return "brutus";
         case #"burnplayer": return "burnplayer";
         case #"callback": return "callback";
         case #"cargo_truck_wz": return "cargo_truck_wz";
         case #"carpenter": return "carpenter";
         case #"cash": return "cash";
-        case #"catalyst": return "catalyst";
         case #"catalyst": return "catalyst";
         case #"catalysts": return "catalysts";
         case #"challenges": return "challenges";
@@ -169,7 +165,6 @@ hash_lookup(hash_value) {
         case #"character_unlock_zero": return "character_unlock_zero";
         case #"character_unlock_zero_fixup": return "character_unlock_zero_fixup";
         case #"civilian": return "civilian";
-        case #"civilian": return "civilian";
         case #"claymore": return "claymore";
         case #"claymore_zm": return "claymore_zm";
         case #"clean": return "clean";
@@ -182,7 +177,6 @@ hash_lookup(hash_value) {
         case #"contracts": return "contracts";
         case #"contracts_shared": return "contracts_shared";
         case #"counteruav": return "counteruav";
-        case #"crimson_nosferatu": return "crimson_nosferatu";
         case #"crimson_nosferatu": return "crimson_nosferatu";
         case #"ct_bots": return "ct_bots";
         case #"ct_util": return "ct_util";
@@ -269,13 +263,10 @@ hash_lookup(hash_value) {
         case #"game_start": return "game_start";
         case #"gameobjects": return "gameobjects";
         case #"gegenees": return "gegenees";
-        case #"gegenees": return "gegenees";
+        case #"generic": return "generic";
         case #"gestures": return "gestures";
         case #"ghost": return "ghost";
-        case #"ghost": return "ghost";
         case #"gladiator": return "gladiator";
-        case #"gladiator": return "gladiator";
-        case #"glaive": return "glaive";
         case #"glaive": return "glaive";
         case #"global_fx": return "global_fx";
         case #"globallogic": return "globallogic";
@@ -315,10 +306,7 @@ hash_lookup(hash_value) {
         case #"hud": return "hud";
         case #"hud_message": return "hud_message";
         case #"human": return "human";
-        case #"human": return "human";
         case #"human_riotshield": return "human_riotshield";
-        case #"human_riotshield": return "human_riotshield";
-        case #"human_rpg": return "human_rpg";
         case #"human_rpg": return "human_rpg";
         case #"infection": return "infection";
         case #"influencers_shared": return "influencers_shared";
@@ -339,6 +327,7 @@ hash_lookup(hash_value) {
         case #"item_world": return "item_world";
         case #"kill_with_special": return "kill_with_special";
         case #"killcam": return "killcam";
+        case #"killstreak": return "killstreak";
         case #"killstreaks": return "killstreaks";
         case #"knife_loadout": return "knife_loadout";
         case #"laststand": return "laststand";
@@ -476,7 +465,6 @@ hash_lookup(hash_value) {
         case #"molotov": return "molotov";
         case #"molotov_zm": return "molotov_zm";
         case #"mp_dog": return "mp_dog";
-        case #"mp_dog": return "mp_dog";
         case #"mp_platoons": return "mp_platoons";
         case #"multi_extracam": return "multi_extracam";
         case #"multilockap_guidance": return "multilockap_guidance";
@@ -490,15 +478,12 @@ hash_lookup(hash_value) {
         case #"mute_smoke": return "mute_smoke";
         case #"none": return "none";
         case #"nosferatu": return "nosferatu";
-        case #"nosferatu": return "nosferatu";
         case #"nova_6": return "nova_6";
-        case #"nova_crawler": return "nova_crawler";
         case #"nova_crawler": return "nova_crawler";
         case #"nuke": return "nuke";
         case #"out_of_bounds": return "out_of_bounds";
         case #"overwatch_helicopter": return "overwatch_helicopter";
         case #"pap_quest": return "pap_quest";
-        case #"parasite": return "parasite";
         case #"parasite": return "parasite";
         case #"pbr_boat_wz": return "pbr_boat_wz";
         case #"perk_generic": return "perk_generic";
@@ -546,7 +531,6 @@ hash_lookup(hash_value) {
         case #"radiant_live_update": return "radiant_live_update";
         case #"rank": return "rank";
         case #"raps": return "raps";
-        case #"raps": return "raps";
         case #"rat": return "rat";
         case #"ray_gun": return "ray_gun";
         case #"rcbomb": return "rcbomb";
@@ -560,7 +544,6 @@ hash_lookup(hash_value) {
         case #"rewindobjects": return "rewindobjects";
         case #"rifle": return "rifle";
         case #"riotshield": return "riotshield";
-        case #"robot": return "robot";
         case #"robot": return "robot";
         case #"rocket": return "rocket";
         case #"rocketlauncher": return "rocketlauncher";
@@ -596,7 +579,6 @@ hash_lookup(hash_value) {
         case #"sig_buckler_dw": return "sig_buckler_dw";
         case #"sig_buckler_dw_upgraded": return "sig_buckler_dw_upgraded";
         case #"singlelockap_guidance": return "singlelockap_guidance";
-        case #"skeleton": return "skeleton";
         case #"skeleton": return "skeleton";
         case #"smart_cover": return "smart_cover";
         case #"smg": return "smg";
@@ -684,7 +666,6 @@ hash_lookup(hash_value) {
         case #"status_effects": return "status_effects";
         case #"sticky_grenade": return "sticky_grenade";
         case #"stoker": return "stoker";
-        case #"stoker": return "stoker";
         case #"stokers": return "stokers";
         case #"straferun": return "straferun";
         case #"strategic_command": return "strategic_command";
@@ -703,7 +684,6 @@ hash_lookup(hash_value) {
         case #"tesla_gun": return "tesla_gun";
         case #"tesla_sniper": return "tesla_sniper";
         case #"thrasher": return "thrasher";
-        case #"tiger": return "tiger";
         case #"tiger": return "tiger";
         case #"tigers": return "tigers";
         case #"timer_1": return "timer_1";
@@ -735,7 +715,6 @@ hash_lookup(hash_value) {
         case #"trigger": return "trigger";
         case #"trophy_system": return "trophy_system";
         case #"turret": return "turret";
-        case #"turret": return "turret";
         case #"tweakables": return "tweakables";
         case #"uav": return "uav";
         case #"ultimate_turret": return "ultimate_turret";
@@ -756,8 +735,6 @@ hash_lookup(hash_value) {
         case #"warden": return "warden";
         case #"wardens": return "wardens";
         case #"warlord": return "warlord";
-        case #"warlord": return "warlord";
-        case #"wasp": return "wasp";
         case #"wasp": return "wasp";
         case #"water_surface": return "water_surface";
         case #"wave_manager": return "wave_manager";
@@ -768,7 +745,6 @@ hash_lookup(hash_value) {
         case #"weaponobjects": return "weaponobjects";
         case #"weapons": return "weapons";
         case #"weapons_shared": return "weapons_shared";
-        case #"werewolf": return "werewolf";
         case #"werewolf": return "werewolf";
         case #"willy_pete": return "willy_pete";
         case #"wing_drone": return "wing_drone";
@@ -1051,11 +1027,8 @@ hash_lookup(hash_value) {
         case #"zm_zonemgr": return "zm_zonemgr";
         case #"zmb_tigers": return "zmb_tigers";
         case #"zombie": return "zombie";
-        case #"zombie": return "zombie";
         case #"zombie_blood": return "zombie_blood";
         case #"zombie_dog": return "zombie_dog";
-        case #"zombie_dog": return "zombie_dog";
-        case #"zombie_quad": return "zombie_quad";
         case #"zombie_quad": return "zombie_quad";
         default: return hash_value;
     }

@@ -54,6 +54,7 @@ You can config the mod menu in the [`scripts/config.gsc`](scripts/config.gsc) fi
   - no damage
   - Kill all zombies
   - max points (Zombies)
+  - set zombies' speed (Zombies)
 - Gun tool ([Demo](https://www.youtube.com/watch?v=hPBZrQQ7u4c))
   - TP gun
   - Rocket man

@@ -9,24 +9,31 @@ func_spawn_vehicle(item, vehicule_type) {
         ground_pos = bullettrace(bullet_hit + vectorscale((0, 0, 1), 2048), bullet_hit - vectorscale((0, 0, 1), 2048), 0, undefined, 1);
     }
     spawnpoint = ground_pos[#"position"] + vectorscale((0, 0, 1), 36);
-    vehicle = undefined;
-    self iPrintLnBold("^3spawn point: " + spawnpoint);
+        
+    display = hash_lookup(vehicule_type);
 
     if(!function_3238d10d(spawnpoint)) {
-        self iPrintLnBold("^1Bad spawn point: " + spawnpoint);
+        self iPrintLnBold("^1Bad spawn point: ^6" + display);
         return;
     }
-    vehicle = spawnvehicle(vehicule_type, spawnpoint, 0);
+    self iPrintLnBold("^4Try spawn: ^6" + display);
+	vehicle = spawnvehicle(vehicule_type, spawnpoint, (0, 0, 0));
     if (!isdefined(vehicle)) {
-        self iPrintLnBold("^1Can't spawn vehicle: " + vehicule_type);
+        self iPrintLnBold("^1Can't spawn vehicle: " + display);
         return;
     }
-    if(isairborne(vehicle)) {
-        spawnoffset = (0, 0, vehicle.height);
-        vehicle.origin = bullet_hit + spawnoffset;
-    }
-	vehicle makeusable();
-    if(isdefined(vehicle.isphysicsvehicle) && vehicle.isphysicsvehicle) {
-        vehicle setbrake(1);
-    }
+    self iPrintLnBold("^4Vehicle spawn: ^6" + display);
+
+    // if (isairborne(vehicle)) {
+    //     vehicle.origin = ground_pos + (0, 0, vehicle.height);
+    // }
+
+    // self iPrintLnBold("^1makeusable");
+	// vehicle makeusable();
+
+    // if(isdefined(vehicle.isphysicsvehicle) && vehicle.isphysicsvehicle) {
+    //     self iPrintLnBold("^1setbrake");
+    //     vehicle setbrake(1);
+    // }
+    // self iPrintLnBold("^2done");
 }

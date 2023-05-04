@@ -61,6 +61,7 @@ bgb
 bgb_pack
 blackjack_challenges
 blade
+blank
 blight_father
 blightfather
 blightfathers
@@ -248,6 +249,7 @@ galvaknuckles
 game_start
 gameobjects
 gegenees
+generic
 gestures
 ghost
 gladiator
@@ -311,6 +313,7 @@ item_inventory
 item_world
 kill_with_special
 killcam
+killstreak
 killstreaks
 knife_loadout
 laststand
