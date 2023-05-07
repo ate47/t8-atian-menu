@@ -48,14 +48,17 @@ is_mod_activated(mod_name) {
     return isdefined(self.menu_info) && isdefined(self.menu_info.mods) && array::contains(self.menu_info.mods, mod_name);
 }
 
-add_menu(menu_id, menu_name, parent_id, create_switch = false, menuenterfunc = undefined, menuenterfuncdata = undefined) {
+add_menu(menu_id, menu_name, parent_id, create_switch = false, menuenterfunc = undefined, menuenterfuncdata1 = undefined, menuenterfuncdata2 = undefined, menuenterfuncdata3 = undefined, menuenterfuncdata4 = undefined) {
     menu = 
     {
         #id: menu_id,
         #name: menu_name,
         #parent_id: parent_id,
         #menu_enter_func: menuenterfunc,
-        #menu_enter_func_data : menuenterfuncdata,
+        #menu_enter_func_data1 : menuenterfuncdata1,
+        #menu_enter_func_data2 : menuenterfuncdata2,
+        #menu_enter_func_data3 : menuenterfuncdata3,
+        #menu_enter_func_data4 : menuenterfuncdata4,
         #sub_menus: array()
     };
 
@@ -105,8 +108,14 @@ menu_switch(item, menu_id) {
     menu = self.menu_info.menus[menu_id];
 
     if (isdefined(menu) && isdefined(menu.menu_enter_func)) {
-        if (isdefined(menu.menu_enter_func_data)) {
-            self [[ menu.menu_enter_func ]](menu, menu.menu_enter_func_data);
+        if (isdefined(menu.menu_enter_func_data4)) {
+            self [[ menu.menu_enter_func ]](menu, menu.menu_enter_func_data1, menu.menu_enter_func_data2, menu.menu_enter_func_data3, menu.menu_enter_func_data4);
+        } else if (isdefined(menu.menu_enter_func_data3)) {
+            self [[ menu.menu_enter_func ]](menu, menu.menu_enter_func_data1, menu.menu_enter_func_data2, menu.menu_enter_func_data3);
+        } else if (isdefined(menu.menu_enter_func_data2)) {
+            self [[ menu.menu_enter_func ]](menu, menu.menu_enter_func_data1, menu.menu_enter_func_data2);
+        } else if (isdefined(menu.menu_enter_func_data1)) {
+            self [[ menu.menu_enter_func ]](menu, menu.menu_enter_func_data1);
         } else {
             self [[ menu.menu_enter_func ]](menu);
         }

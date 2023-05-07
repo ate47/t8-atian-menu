@@ -22,7 +22,7 @@ AtianMenuConfig() {
     // - dday reactive camo "298"
     // - gold: "43", diamond "44", diamond raybow "199", diamond black "232"
     //   dark matter "45", dark matter BO3 "192"
-    self.weapon_camo = "199";
+    // self.weapon_camo = "199";
 
     // when does the camo is set
     // options:

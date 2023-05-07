@@ -91,6 +91,17 @@ init_menus() {
     for (i = 0; i < weapons.size; i++) {
         self add_menu_item("weapons", weapons[i], &func_give_weapon, weapons[i]);
     }
+    
+    self add_menu_item("weapons", "companion", &func_give_weapon, "hash_680d9169c5e72bdc");
+    self add_menu_item("weapons", "zombie_fists", &func_give_weapon, "zombie_fists");
+    self add_menu_item("weapons", "blood ukn 1", &func_give_weapon, "hash_617dcc39334959ce");
+    self add_menu_item("weapons", "blood ukn 2", &func_give_weapon, "hash_494f5501b3f8e1e9");
+    self add_menu_item("weapons", "blood dart mb", &func_give_weapon, "hash_3de0926b89369160");
+    self add_menu_item("weapons", "tower ukn 1", &func_give_weapon, "hash_5aa162d2872d2bac");
+    self add_menu_item("weapons", "tower ukn 2", &func_give_weapon, "hash_eeac880dffb5d95");
+    
+
+
 
     if (isdefined(level.script)) {
         self add_menu("teleport", "Teleport", "start_menu", true);
@@ -320,6 +331,37 @@ init_menus() {
             self add_menu_item(cat_menu_id, camo_item.title, &func_set_camo, camo_item.id);
         }
     }
+    // ---- Mastercrafts ----
+    self add_menu("mastercrafts", "Mastercrafts", "start_menu", true);
+    self add_menu_item("mastercrafts", "Random", &func_give_random_mastercraft);
+    if (is_zombies()) {
+        self add_menu_item("mastercrafts", "Random (Upgraded)", &func_give_random_mastercraft, true);
+    }
+
+    mastercraft_data = get_mastercraft_enum_data();
+    
+    foreach(mastercraft_key, mastercraft_item in mastercraft_data.all) {
+        lookup = hash_lookup(mastercraft_item.name);
+        
+        mc_menu_id = "mastercrafts_" + lookup;
+        self add_menu(mc_menu_id, lookup, "mastercrafts", true);
+
+        for (i = 0; i < mastercraft_item.variants.size; i++) {
+            variant_item = mastercraft_item.variants[i];
+
+            self add_menu_item(mc_menu_id, variant_item.name, &func_give_weapon, mastercraft_item.name, variant_item.id);
+        }
+        if (is_zombies()) {
+            mc_menu_id = "mastercrafts_" + lookup + "_upgraded";
+            self add_menu(mc_menu_id, lookup, "mastercrafts", true);
+
+            for (i = 0; i < mastercraft_item.variants.size; i++) {
+                variant_item = mastercraft_item.variants[i];
+
+                self add_menu_item(mc_menu_id, variant_item.name, &func_give_weapon, mastercraft_item.name, variant_item.id, true);
+            }
+        }
+    }
 
     // ---- Camos/By id ----
     self add_menu("camos_id", "By id", "camos", true);
@@ -332,7 +374,7 @@ init_menus() {
     self add_menu("reticles", "Reticles", "start_menu", true);
     
     // ---- Reticles/By id ----
-    self add_menu("reticles_id", "Reticles Id", "start_menu", true);
+    self add_menu("reticles_id", "Reticles Id", "reticles", true);
     
     for (i = 0; i < 512; i++) {
         self add_menu_item("reticles_id", "Id " + i, &func_set_reticle, i);
@@ -468,6 +510,20 @@ init_menus() {
         
         if (is_zombies()) {
             self add_menu("dev_ee", "ZM easter eggs", "tool_menu_dev", true, &func_searchee);
+            self add_menu("dev_zmweapon_dv1", "ZM weapons dv=1", "tool_menu_dev", true, &func_searchweapon, #"hash_5694d3fa5334f8fe");
+            self add_menu("dev_zmweapon_dv2", "ZM weapons dv=2", "tool_menu_dev", true, &func_searchweapon, #"hash_3f8d28bb3d9e9bec");
+            self add_menu("dev_zmweapon_dvn", "ZM weapons ndv", "tool_menu_dev", true, &func_searchweapon, #"hash_7bda40310359350e");
+        }
+
+        self add_menu_item("tool_menu_dev", "reset weapon opts", &func_setweaponoptreset);
+        self add_menu("dev_weaponopt3", "Weapon opt 3", "tool_menu_dev", true);
+        self add_menu("dev_weaponopt4", "Weapon opt 4", "tool_menu_dev", true);
+        self add_menu("dev_weaponopt5", "Weapon opt 5", "tool_menu_dev", true);
+
+        for (i = 0; i < 256; i++) {
+            self add_menu_item("dev_weaponopt3", "opt3=" + i, &func_setweaponopt3, i);
+            self add_menu_item("dev_weaponopt4", "opt4=" + i, &func_setweaponopt4, i);
+            self add_menu_item("dev_weaponopt5", "opt5=" + i, &func_setweaponopt5, i);
         }
         
         self add_menu_item("tool_menu_dev", "Dev test 1", &func_dev_method1);
@@ -486,16 +542,6 @@ init_menus() {
         
         for (i = 0; i < dynents.size; i++) {
             self add_menu_item("dev_dynent", "" + dynents[i], &func_dynent_tp, dynents[i]);
-        }
-
-        self add_menu("dev_weaponopt3", "Weapon opt 3", "tool_menu_dev", true);
-        self add_menu("dev_weaponopt4", "Weapon opt 4", "tool_menu_dev", true);
-        self add_menu("dev_weaponopt5", "Weapon opt 5", "tool_menu_dev", true);
-
-        for (i = 0; i < 256; i++) {
-            self add_menu_item("dev_weaponopt3", "opt3=" + i, &func_setweaponopt3, i);
-            self add_menu_item("dev_weaponopt4", "opt4=" + i, &func_setweaponopt4, i);
-            self add_menu_item("dev_weaponopt5", "opt5=" + i, &func_setweaponopt5, i);
         }
 
          

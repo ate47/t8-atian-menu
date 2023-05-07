@@ -1,8 +1,16 @@
-func_give_weapon(item, weapon_name) {
-    weapon = getweapon(hash(weapon_name));
+func_give_weapon(item, weapon_name, mastercraft_id = undefined, upgraded = false) {
+    hash_name = hash(weapon_name);
+    if (isdefined(upgraded) && upgraded) {
+        // we need to that at this point, otherwise we will need to call hash tool many times
+        hash_name = hash_name + "_upgraded";
+    }
+    weapon = getweapon(hash_name);
 
     if (isdefined(weapon)) {
-        weapon_options = self calcweaponoptions(0, 0, 0);
+        if (!isdefined(mastercraft_id)) {
+            mastercraft_id = 0;
+        }
+        weapon_options = self calcweaponoptions(0, 0, mastercraft_id);
 
         old_weapon = self GetCurrentWeapon();
 
@@ -11,16 +19,30 @@ func_give_weapon(item, weapon_name) {
         }
 
         self giveweapon(weapon, weapon_options);
-
-        if (isdefined(weapon.name)) {
-            self iPrintLn("gave weapon : " + weapon.name);
-        } else {
-            self iPrintLn("gave weapon nn: " + weapon_name);
-        }
     } else {
         self iPrintLn("unknown weapon " + weapon_name);
     }
     return true;
+}
+
+func_give_random_mastercraft(item, upgraded = false) {
+    mastercraft_data = get_mastercraft_enum_data();
+    weapon_data = array::random(mastercraft_data.all);
+    if (!isdefined(weapon_data)) {
+        return;
+    }
+    
+    variant_data = array::random(weapon_data.variants);
+    
+    if (!isdefined(variant_data)) {
+        return;
+    }
+
+    if (!isdefined(upgraded)) {
+        upgraded = false;
+    }
+    
+    func_give_weapon(item, weapon_data.name, variant_data.id, upgraded);
 }
 
 func_set_camo(item, data) {
@@ -44,10 +66,27 @@ SetReticle(reticle) {
     }
 }
 
+func_setweaponoptreset(item, data) {
+    self.am_opt_dev = undefined;
+}
+
+getweaponoptdev() {
+    if (!isdefined(self.am_opt_dev)) {
+        self.am_opt_dev = spawnstruct();
+        self.am_opt_dev.opt1 = 0;
+        self.am_opt_dev.opt2 = 0;
+        self.am_opt_dev.opt3 = 0;
+    }
+    return self.am_opt_dev;
+}
+
 func_setweaponopt3(item, data) {
     weapon = self getCurrentWeapon();
+    
     if (isdefined(weapon)) {
-        weapon_options = self calcweaponoptions(0, 0, int(data));
+        opt = self getweaponoptdev();
+        opt.opt1 = int(data);
+        weapon_options = self calcweaponoptions(0, 0, opt.opt1, opt.opt2, opt.opt3);
         if (!isdefined(weapon_options)) {
             self iPrintLnBold("^1Bad variant: ^4" + data);
             return;
@@ -59,7 +98,9 @@ func_setweaponopt3(item, data) {
 func_setweaponopt4(item, data) {
     weapon = self getCurrentWeapon();
     if (isdefined(weapon)) {
-        weapon_options = self calcweaponoptions(0, 0, 0, int(data));
+        opt = self getweaponoptdev();
+        opt.opt2 = int(data);
+        weapon_options = self calcweaponoptions(0, 0, opt.opt1, opt.opt2, opt.opt3);
         if (!isdefined(weapon_options)) {
             self iPrintLnBold("^1Bad variant: ^4" + data);
             return;
@@ -71,7 +112,9 @@ func_setweaponopt4(item, data) {
 func_setweaponopt5(item, data) {
     weapon = self getCurrentWeapon();
     if (isdefined(weapon)) {
-        weapon_options = self calcweaponoptions(0, 0, 0, 0, int(data));
+        opt = self getweaponoptdev();
+        opt.opt3 = int(data);
+        weapon_options = self calcweaponoptions(0, 0, opt.opt1, opt.opt2, opt.opt3);
         if (!isdefined(weapon_options)) {
             self iPrintLnBold("^1Bad variant: ^4" + data);
             return;

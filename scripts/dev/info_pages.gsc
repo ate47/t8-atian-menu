@@ -1,6 +1,26 @@
 register_info_pages() {
     add_info_page("Main", 1000, &info_page_main);
     add_info_page("Look tool", 500, &info_page_looktool);
+    if (is_dev_mode()) {
+        add_info_page("Dev", 500, &info_page_dev);
+    }
+}
+
+info_page_dev() {
+    index_end = 0;
+
+    weapon = self GetCurrentWeapon();
+    if (isdefined(weapon)) {
+        ukn_info1 = self function_ddd45573(weapon); // set = function_3fb8b14
+        if (isdefined(ukn_info1)) {
+            self iprintln("^1ukn info 1: " + ukn_info1);
+        } else {
+            self iprintln("^1ukn info 1: undefined");
+        }
+            
+    }
+    
+    return index_end;
 }
 
 info_page_main() {
