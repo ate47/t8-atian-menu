@@ -15,3 +15,20 @@ broadcase_message_wait(str_message, ttw) {
         wait 1;
     }
 }
+
+to_str_bool(bool_value) {
+    if (!isdefined(bool_value)) {
+        return "undefined";
+    }
+    if (bool_value) {
+        return "true";
+    }
+    return "false";
+}
+nullable_to_str(obj, default_obj = "") {
+    if (isdefined(obj)) {
+        return obj;
+    } else {
+        return default_obj;
+    }
+}

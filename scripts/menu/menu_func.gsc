@@ -1,11 +1,3 @@
-nullable_to_str(obj, default_obj = "") {
-    if (isdefined(obj)) {
-        return obj;
-    } else {
-        return default_obj;
-    }
-}
-
 func_hidehud(item) {
     /*
     if (!isdefined(getuimodel(getglobaluimodel(), "ZMHudGlobal.trials.hudDeactivated"))) {

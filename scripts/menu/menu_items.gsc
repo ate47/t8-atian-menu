@@ -105,6 +105,13 @@ init_menus() {
                 self add_menu_item("teleport", "Boss fight", &func_teleport, (-3518, 460, 1.15883), (0, -180, 0));
                 self add_menu_item("teleport", "Arena", &func_teleport, (30, 80, 80.625), (0, -180, 0));
                 break;
+            case "zm_office":
+                self add_menu_item("teleport", "Groom Lake", &func_teleport, (8550, 1300, -416.375), (0, -90, 0));
+                self add_menu_item("teleport", "Office", &func_teleport, (-485, 2490, 16.125), (0, 180, 0));
+                break;
+            case "zm_mansion":
+                self add_menu_item("teleport", "Spawn", &func_teleport, (235, 1086, -7.875), (0, -50, 0));
+                break;
             case "wz_escape":
             case "wz_escape_alt":
                 self add_menu_item("teleport", "Boat", &func_teleport, (-9045, -4126, 117.117), (0, 150, 0));
@@ -381,6 +388,8 @@ init_menus() {
 
     // ---- Skin custom ----
     self add_menu("skin_custom_default", "Skins", "start_menu", true);
+    self add_menu_item("skin_custom_default", "Set custom skin", &func_set_random_skin);
+
 
     self add_menu("skin_custom", "Skin custom", "start_menu", true);
 
@@ -448,12 +457,46 @@ init_menus() {
 
     
     if (is_dev_mode()) {
+        self add_menu_item("random", "add bot", &func_spawn_add_bot, true);
+        self add_menu_item("random", "init commander", &func_init_bot_commander);
 
         self add_menu_item("tool_menu", "Hide hud", &func_hidehud);
 
         self add_menu_item_modswitch("tool_weapon", "Physic gun", "physic_gun");
         
         self add_menu("tool_menu_dev", "Dev tools", "tool_menu", true);
+        
+        if (is_zombies()) {
+            self add_menu("dev_ee", "ZM easter eggs", "tool_menu_dev", true, &func_searchee);
+        }
+        
+        self add_menu_item("tool_menu_dev", "Dev test 1", &func_dev_method1);
+        self add_menu_item("tool_menu_dev", "Dev test 2", &func_dev_method2);
+        self add_menu_item("tool_menu_dev", "Dev test 3", &func_dev_method3);
+        self add_menu_item("tool_menu_dev", "Dev test 4", &func_dev_method4);
+        self add_menu_item("tool_menu_dev", "Dev test 5", &func_dev_method5);
+
+        self add_menu("dev_dynent", "Dynent tp", "tool_menu_dev", true);
+
+        dynents = array("zombie_apoc_homunculus", "spring_event_homunculus", "nixie_tube_cage");
+        
+        self add_menu("dev_dynent_fishing_rock", "Fishing rock", "dev_dynent", true, &func_searchdynent, "fishing_rock");
+        self add_menu("dev_dynent_blackjack", "Stash blackjack", "dev_dynent", true, &func_searchdynent, #"wz_stash_blackjack");
+        self add_menu("dev_dynent_spring_event_homunculus", "Spring event homunculus", "dev_dynent", true, &func_searchdynent, "spring_event_homunculus");
+        
+        for (i = 0; i < dynents.size; i++) {
+            self add_menu_item("dev_dynent", "" + dynents[i], &func_dynent_tp, dynents[i]);
+        }
+
+        self add_menu("dev_weaponopt3", "Weapon opt 3", "tool_menu_dev", true);
+        self add_menu("dev_weaponopt4", "Weapon opt 4", "tool_menu_dev", true);
+        self add_menu("dev_weaponopt5", "Weapon opt 5", "tool_menu_dev", true);
+
+        for (i = 0; i < 256; i++) {
+            self add_menu_item("dev_weaponopt3", "opt3=" + i, &func_setweaponopt3, i);
+            self add_menu_item("dev_weaponopt4", "opt4=" + i, &func_setweaponopt4, i);
+            self add_menu_item("dev_weaponopt5", "opt5=" + i, &func_setweaponopt5, i);
+        }
 
          
         self add_menu_item("tool_menu_dev", "func_pb_gactive 1", &func_setpbgactivebank, 0);
@@ -518,17 +561,6 @@ init_menus() {
         }
         if (isdefined(getgametypesetting(#"hash_7c8ad12994670d63")) && getgametypesetting(#"hash_7c8ad12994670d63")) {
             self add_menu_item("dev_config", "spawn blackjack stash");
-        }
-        
-        wz_stash_blackjack = getdynentarray(#"wz_stash_blackjack");
-        if (isdefined(wz_stash_blackjack)) {
-            self add_menu("dev_wz_stash_blackjack", "Stash blackjack", "tool_menu_dev", true);
-            
-            for (i = 0; i < wz_stash_blackjack.size; i++) {
-                if (isdefined(wz_stash_blackjack[i].origin)) {
-                    self add_menu_item("dev_config", "stash " + i, &func_teleport, wz_stash_blackjack[i].origin);
-                }
-            }
         }
 
 /*

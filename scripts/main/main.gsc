@@ -34,6 +34,10 @@ onPlayerSpawned() {
     self endon(#"disconnect", #"spawned_player");
     level endon(#"end_game", #"game_ended");
 
+    if (isbot(self)) {
+        return; // ignore bot
+    }
+
     self.atianconfig = level.atianconfig;
     atianconfig = self.atianconfig;
 
@@ -62,7 +66,18 @@ onPlayerSpawned() {
         if (isdefined(mode_skin)) {
             for (i = 0; i < skins.size; i++) {
                 if (skins[i] == "random") {
-                    self SetSkin(randomint(mode_skin.size) + 1);
+                    skin_rnd = get_skin_random();
+                    if (!isdefined(skin_rnd)) {
+                        // error -> using random skin
+                        continue;
+                    }
+                    skin_id = int(skin_rnd[0]);
+                    outfit = int(skin_rnd[1]);
+                    palette = int(skin_rnd[2]);
+
+                    self SetSkin(skin_id);
+                    self setcharacteroutfit(outfit);
+                    self function_ab96a9b5("palette", palette);
                     break;
                 } else {
                     // 0NAME:1OUTFIT:2PALETTE:3WARPAINT:4DECAL

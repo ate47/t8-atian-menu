@@ -44,6 +44,43 @@ SetReticle(reticle) {
     }
 }
 
+func_setweaponopt3(item, data) {
+    weapon = self getCurrentWeapon();
+    if (isdefined(weapon)) {
+        weapon_options = self calcweaponoptions(0, 0, int(data));
+        if (!isdefined(weapon_options)) {
+            self iPrintLnBold("^1Bad variant: ^4" + data);
+            return;
+        }
+        self takeweapon(weapon);
+        self giveweapon(weapon, weapon_options);
+    }
+}
+func_setweaponopt4(item, data) {
+    weapon = self getCurrentWeapon();
+    if (isdefined(weapon)) {
+        weapon_options = self calcweaponoptions(0, 0, 0, int(data));
+        if (!isdefined(weapon_options)) {
+            self iPrintLnBold("^1Bad variant: ^4" + data);
+            return;
+        }
+        self takeweapon(weapon);
+        self giveweapon(weapon, weapon_options);
+    }
+}
+func_setweaponopt5(item, data) {
+    weapon = self getCurrentWeapon();
+    if (isdefined(weapon)) {
+        weapon_options = self calcweaponoptions(0, 0, 0, 0, int(data));
+        if (!isdefined(weapon_options)) {
+            self iPrintLnBold("^1Bad variant: ^4" + data);
+            return;
+        }
+        self takeweapon(weapon);
+        self giveweapon(weapon, weapon_options);
+    }
+}
+
 Set_Camo(id, reticle) {
     weapon = self GetCurrentWeapon();
 

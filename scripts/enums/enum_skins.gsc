@@ -11,17 +11,34 @@ add_skin_character_enum(character_id, mp, wz, zm) {
         if (wz) {
             cur.wz = wz;
         }
-
-        return;
+    } else {
+        cur = {
+            #id: character_id,
+            #mp: mp,
+            #wz: wz,
+            #zm: zm,
+            #current: 0,
+            #invisible: (!mp && !wz && !zm),
+            #skins: array()
+        };
+        self.characters[character_id] = cur;
     }
-    self.characters[character_id] = {
-        #id: character_id,
-        #mp: mp,
-        #wz: wz,
-        #zm: zm,
-        #invisible: (!mp && !wz && !zm),
-        #skins: array()
-    };
+    if (is_multiplayer()) {
+        if (mp) {
+            cur.current = mp;
+            array::add(self.current_mode_characters, cur);
+        }
+    } else if (is_zombies()) {
+        if (zm) {
+            cur.current = zm;
+            array::add(self.current_mode_characters, cur);
+        }
+    } else if (is_warzone()) {
+        if (wz) {
+            cur.current = wz;
+            array::add(self.current_mode_characters, cur);
+        }
+    }
 }
 add_skin_enum(character_id, skin_title, skin, palette = 0) {
     skin_item = {
@@ -45,13 +62,28 @@ get_skin_enum_data() {
     return level.atian_enum_data.skin_data;
 }
 
+get_skin_random() {
+    skin_data = get_skin_enum_data();
+    character = array::random(skin_data.current_mode_characters);
+    if (!isdefined(character) || character.current == 0) {
+        return undefined;
+    }
+    skin = array::random(character.skins);
+
+    if (!isdefined(skin)) {
+        return (character.current, 0, 0);
+    }
+    return (character.current, skin.skin, skin.palette);
+}
+
 generate_skin_enum() {
     if (isdefined(self.skin_data)) {
         return;
     }
     skin_data = {
         #characters: array(),
-        #skins: array()
+        #skins: array(),
+        #current_mode_characters: array()
     };
     self.skin_data = skin_data;
 
@@ -189,17 +221,57 @@ generate_skin_enum() {
 
     // add skin data
 
+    //the color palette ids for the nebula skin is the same for all outfit
+    nebula_colors = array("Blue", "Pink", "Orange");
+
+    skin_data add_skin_enum("Ajax", "Chef", 25);
+    skin_data add_skin_enum("Ajax", "Heist", 24);
+    skin_data add_skin_enum("Ajax", "Money", 16);
+    for (i = 0; i < nebula_colors.size; i++) {
+        skin_data add_skin_enum("Ajax", "Nebula " + nebula_colors[i], 10, i);
+    }
+    skin_data add_skin_enum("Ajax", "Number", 14);
+    skin_data add_skin_enum("Ajax", "Twitch", 19);
+    skin_data add_skin_enum("Ajax", "White", 0, 3);
+
     skin_data add_skin_enum("Battery", "Aviator", 25);
     skin_data add_skin_enum("Battery", "Criminal", 21);
     skin_data add_skin_enum("Battery", "Number", 14);
     skin_data add_skin_enum("Battery", "Money", 16);
     skin_data add_skin_enum("Battery", "Twitter", 19);
     
-    skin_data add_skin_enum("Firebreak", "Nebula", 10);
+    skin_data add_skin_enum("Crash", "Banana", 30);
+    skin_data add_skin_enum("Crash", "Blue", 0, 2);
+    skin_data add_skin_enum("Crash", "Magnum", 19);
+    skin_data add_skin_enum("Crash", "Money", 16);
+    for (i = 0; i < nebula_colors.size; i++) {
+        skin_data add_skin_enum("Crash", "Nebula " + nebula_colors[i], 9, i);
+    }
+    skin_data add_skin_enum("Crash", "Number", 14);
+    skin_data add_skin_enum("Crash", "Rambo", 20);
+    skin_data add_skin_enum("Crash", "Red", 8);
+    skin_data add_skin_enum("Crash", "Rigor Mortis", 29);
+    skin_data add_skin_enum("Crash", "Spectre", 28);
+    skin_data add_skin_enum("Crash", "Twitch", 21);
+    skin_data add_skin_enum("Crash", "White", 0, 3);
+
+    for (i = 0; i < nebula_colors.size; i++) {
+        skin_data add_skin_enum("Firebreak", "Nebula " + nebula_colors[i], 10, i);
+    }
     skin_data add_skin_enum("Firebreak", "Money", 17);
     skin_data add_skin_enum("Firebreak", "Number", 14);
     skin_data add_skin_enum("Firebreak", "Rabbit", 15);
     skin_data add_skin_enum("Firebreak", "Silverfish", 9);
+    
+    skin_data add_skin_enum("Nomad", "80", 16);
+    skin_data add_skin_enum("Nomad", "Elvis", 17);
+    skin_data add_skin_enum("Nomad", "Money", 15);
+    skin_data add_skin_enum("Nomad", "Number", 13);
+    skin_data add_skin_enum("Nomad", "Twitch", 20);
+    skin_data add_skin_enum("Nomad", "Pirate", 23);
+    skin_data add_skin_enum("Nomad", "Werewolf", 31);
+    skin_data add_skin_enum("Nomad", "White", 0, 3);
+    skin_data add_skin_enum("Nomad", "Zombie", 27);
     
     skin_data add_skin_enum("Outrider", "Blank", 19, 1);
     skin_data add_skin_enum("Outrider", "Cheerleader", 14);
@@ -213,14 +285,70 @@ generate_skin_enum() {
     skin_data add_skin_enum("Outrider", "White", 8);
     // DO NOT TEST 12
 
+    skin_data add_skin_enum("Prophet", "Money", 16);
+    for (i = 0; i < nebula_colors.size; i++) {
+        skin_data add_skin_enum("Prophet", "Nebula " + nebula_colors[i], 9, i);
+    }
+    skin_data add_skin_enum("Prophet", "Number", 14);
+    skin_data add_skin_enum("Prophet", "Pirate", 22);
+    skin_data add_skin_enum("Prophet", "Plague", 20);
+    skin_data add_skin_enum("Prophet", "Space", 28);
+    skin_data add_skin_enum("Prophet", "Twitch", 19);
+    skin_data add_skin_enum("Prophet", "White", 0, 3);
+
     skin_data add_skin_enum("Reaper", "Spectre", 1);
     skin_data add_skin_enum("Reaper", "Punk", 2);
     skin_data add_skin_enum("Reaper", "Red", 3);
     skin_data add_skin_enum("Reaper", "Number", 4);
+
+    skin_data add_skin_enum("Recon", "Money", 16);
+    for (i = 0; i < nebula_colors.size; i++) {
+        skin_data add_skin_enum("Recon", "Nebula " + nebula_colors[i], 10, i);
+    }
+    skin_data add_skin_enum("Recon", "Number", 14);
+    skin_data add_skin_enum("Recon", "Fish", 22);
+    skin_data add_skin_enum("Recon", "Snake", 20);
+    skin_data add_skin_enum("Recon", "Twitch", 19);
+    skin_data add_skin_enum("Recon", "White", 0, 3);
+
+
+    skin_data add_skin_enum("Ruin", "Biker", 17);
+    skin_data add_skin_enum("Ruin", "Hero", 30);
+    skin_data add_skin_enum("Ruin", "Money", 14);
+    skin_data add_skin_enum("Ruin", "Muertos", 6);
+    for (i = 0; i < nebula_colors.size; i++) {
+        skin_data add_skin_enum("Ruin", "Nebula " + nebula_colors[i], 10, i);
+    }
+    skin_data add_skin_enum("Ruin", "Number", 15);
+    skin_data add_skin_enum("Ruin", "Police", 16);
+    skin_data add_skin_enum("Ruin", "Twitch", 21);
+    skin_data add_skin_enum("Ruin", "White", 0, 3);
+    skin_data add_skin_enum("Ruin", "Yellow", 22);
+    skin_data add_skin_enum("Ruin", "Zombie", 26);
     
     skin_data add_skin_enum("Richtofen (Primis)", "Great war", 2);
     skin_data add_skin_enum("Richtofen (Primis)", "Zombie", 1);
     
+    skin_data add_skin_enum("Seraph", "Heist", 17);
+    skin_data add_skin_enum("Seraph", "Hero", 30);
+    skin_data add_skin_enum("Seraph", "Money", 18);
+    for (i = 0; i < nebula_colors.size; i++) {
+        skin_data add_skin_enum("Seraph", "Nebula " + nebula_colors[i], 10, i);
+    }
+    skin_data add_skin_enum("Seraph", "Number", 14);
+    skin_data add_skin_enum("Seraph", "Police", 16);
+    skin_data add_skin_enum("Seraph", "Red", 0, 2);
+    skin_data add_skin_enum("Seraph", "Twitch", 21);
+    skin_data add_skin_enum("Seraph", "Vampire", 24);
+    skin_data add_skin_enum("Seraph", "White", 0, 3);
+
+    skin_data add_skin_enum("Spectre", "Apocalypse Z", 8);
+    skin_data add_skin_enum("Spectre", "Hero", 12);
+    skin_data add_skin_enum("Spectre", "Japan", 3);
+    skin_data add_skin_enum("Spectre", "Number", 4);
+    skin_data add_skin_enum("Spectre", "Twitch", 6);
+    skin_data add_skin_enum("Spectre", "White", 1, 3);
+
     skin_data add_skin_enum("Torque", "Blue", 0, 1);
     skin_data add_skin_enum("Torque", "Money", 16);
     skin_data add_skin_enum("Torque", "Number", 14);
@@ -229,27 +357,31 @@ generate_skin_enum() {
     skin_data add_skin_enum("Torque", "Yellow", 0, 2);
     skin_data add_skin_enum("Torque", "Zombie killer", 21);
 
-    skin_data add_skin_enum("Crash", "Banana", 30);
-    skin_data add_skin_enum("Crash", "Blue", 0, 2);
-    skin_data add_skin_enum("Crash", "Magnum", 19);
-    skin_data add_skin_enum("Crash", "Money", 16);
-    skin_data add_skin_enum("Crash", "Nebula", 9);
-    skin_data add_skin_enum("Crash", "Number", 14);
-    skin_data add_skin_enum("Crash", "Rambo", 20);
-    skin_data add_skin_enum("Crash", "Red", 8);
-    skin_data add_skin_enum("Crash", "Rigor Mortis", 29);
-    skin_data add_skin_enum("Crash", "Spectre", 28);
-    skin_data add_skin_enum("Crash", "Twitch", 21);
-    skin_data add_skin_enum("Crash", "White", 0, 3);
-    
-    skin_data add_skin_enum("Nomad", "80", 16);
-    skin_data add_skin_enum("Nomad", "Elvis", 17);
-    skin_data add_skin_enum("Nomad", "Money", 15);
-    skin_data add_skin_enum("Nomad", "Number", 13);
-    skin_data add_skin_enum("Nomad", "Twitch", 20);
-    skin_data add_skin_enum("Nomad", "Pirate", 23);
-    skin_data add_skin_enum("Nomad", "Werewolf", 31);
-    skin_data add_skin_enum("Nomad", "White", 0, 3);
-    skin_data add_skin_enum("Nomad", "Zombie", 27);
 
+    skin_data add_skin_enum("Zero", "Blue", 1);
+    skin_data add_skin_enum("Zero", "Dark", 6);
+    skin_data add_skin_enum("Zero", "Hero", 23);
+    skin_data add_skin_enum("Zero", "Money", 27);
+    for (i = 0; i < nebula_colors.size; i++) {
+        skin_data add_skin_enum("Zero", "Nebula " + nebula_colors[i], 4, i);
+    }
+    skin_data add_skin_enum("Zero", "Number", 26);
+    skin_data add_skin_enum("Zero", "Pirate", 16);
+    skin_data add_skin_enum("Zero", "Twitch", 13);
+    skin_data add_skin_enum("Zero", "Water", 14);
+    skin_data add_skin_enum("Zero", "White", 0, 3);
+    skin_data add_skin_enum("Zero", "Zombie", 19);
+
+}
+
+func_set_random_skin(item) {
+    rnd_skin = get_skin_random();
+    if (!isdefined(rnd_skin)) {
+        self debugln("^1Can't find random skin!");
+        return;
+    }
+    self debugln("^1using skin ^5" + rnd_skin);
+    self setspecialistindex(int(rnd_skin[0]));
+    self setcharacteroutfit(int(rnd_skin[1]));
+    self function_ab96a9b5("palette", int(rnd_skin[2]));
 }

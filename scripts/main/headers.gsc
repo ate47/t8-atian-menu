@@ -14,6 +14,11 @@
 #include scripts\core_common\values_shared;
 #include scripts\core_common\spawner_shared;
 #include scripts\core_common\flagsys_shared;
+#include scripts\core_common\ai\planner_commander;
+#include scripts\core_common\ai\planner_squad_utility;
+#include scripts\core_common\ai\planner_commander_utility;
+#include scripts\core_common\ai\planner_generic_commander;
+#include script_31e56101095f174b; // core_common\ai\plannerutility??
 
 #namespace clientids_shared;
 
@@ -65,6 +70,8 @@ handle_config() {
     level.atianconfig AtianMenuDevConfig();
     atianconfig = level.atianconfig;
 
+    setGametypeSetting(#"teamcount", 100);
+
     spawner::add_archetype_spawn_function(#"zombie", &on_zombie_spawn);
 
     if (isdefined(atianconfig.weapon_camo_reset)) {
@@ -85,17 +92,45 @@ handle_config() {
             setGametypeSetting(#"drafttime", atianconfig.mp_drafttime);
         }
     } else if (is_warzone()) {
+        wzall_ee = isdefined(atianconfig.blackout_ee) && atianconfig.blackout_ee;
+        
+        if (wzall_ee || isdefined(atianconfig.blackout_spawn_icarus))
+            setGametypeSetting(#"hash_701bac755292fab2", wzall_ee || atianconfig.blackout_spawn_icarus);
+            // crash the game
+        // if (wzall_ee || isdefined(atianconfig.blackout_ee_fishing))
+        //     setGametypeSetting(#"hash_473fee16f796c84e", wzall_ee || atianconfig.blackout_ee_fishing);
+        // if (wzall_ee || isdefined(atianconfig.blackout_ee_spoon))
+        //     setGametypeSetting(#"hash_30b11d064f146fcc", wzall_ee || atianconfig.blackout_ee_spoon);
+        // if (wzall_ee || isdefined(atianconfig.blackout_ee_nixie_tube))
+        //     setGametypeSetting(#"hash_11b79ec2ffb886c8", wzall_ee || atianconfig.blackout_ee_nixie_tube);
+        // if (wzall_ee || isdefined(atianconfig.blackout_ee_poster))
+        //     setGametypeSetting(#"hash_5f842714fa80e5a9", wzall_ee || atianconfig.blackout_ee_poster);
+        //if (wzall_ee || isdefined(atianconfig.blackout_ee_homunculus))
+        //    setGametypeSetting(#"hash_6fbf57e2af153e5f", wzall_ee || atianconfig.blackout_ee_homunculus);
+        //if (isdefined(atianconfig.blackout_ee_spring_homunculus))
+        //    setGametypeSetting(#"hash_53b5887dea69a320", atianconfig.blackout_ee_spring_homunculus);
+            
+        //// activate homunculus ee, by default if self.blackout_ee = true
+        //self.blackout_ee_homunculus = true;
+        //// activate homunculus spring event
+        //self.blackout_ee_spring_homunculus = false;
+        //// activate fishing, by default if self.blackout_ee = true
+        //self.blackout_ee_fishing = true;
+        //// activate spoon ee, by default if self.blackout_ee = true
+        //self.blackout_ee_spoon = true;
+        //// activate nivie tube ee, by default if self.blackout_ee = true
+        //self.blackout_ee_nixie_tube = true;
+        //// activate poster ee, by default if self.blackout_ee = true
+        //self.blackout_ee_poster = true;
+
         if (isdefined(atianconfig.waverespawndelay) && atianconfig.waverespawndelay > 0) {
             setGametypeSetting(#"waverespawndelay", atianconfig.waverespawndelay);
-        }
-        if (isdefined(atianconfig.blackout_spawn_icarus)) {
-            setGametypeSetting(#"hash_701bac755292fab2", atianconfig.blackout_spawn_icarus);
         }
         if (isdefined(atianconfig.blackout_quaknarok) && atianconfig.blackout_quaknarok) {
             setGametypeSetting(#"hash_3e2d2cf6b1cc6c68", true);
         }
         if (isdefined(atianconfig.blackout_blackjack)) {
-            setGametypeSetting(#"hash_7c8ad12994670d63", atianconfig.blackout_blackjack);
+            setGametypeSetting(#"hash_7c8ad12994670d63", !atianconfig.blackout_blackjack);
         }
         if (isdefined(atianconfig.blackout_spawn_zombies) && atianconfig.blackout_spawn_zombies) {
             setGametypeSetting(#"wzzombies", true);

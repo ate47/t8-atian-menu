@@ -64,6 +64,8 @@ generate_camo_enum() {
     camo_data add_camo_enum("master", "Gold", 43);
     camo_data add_camo_enum("master", "Diamond", 44);
     camo_data add_camo_enum("master", "Dark matter", 45);
+    camo_data add_camo_enum("master", "Diamond (Last tier)", 199);
+    camo_data add_camo_enum("master", "Dark matter (Last tier)", 192);
     
     // Pack a punch
     camo_data add_camo_enum("pap", "Voyage of despair purple", 146);

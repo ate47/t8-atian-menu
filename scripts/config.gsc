@@ -9,7 +9,7 @@ AtianMenuConfig() {
     // - "Richtofen (Primis):2" : Great War Richtofen (ZM/BR only)
     // - "Richtofen Primis:1" : Alcatraz zombies (BR only)
     // - "Richtofen Primis:2" : Great War Richtofen (BR only)
-    self.character_skin = "Christina Fowler;Richtofen (Primis):2;Outrider:10";
+    self.character_skin = "random";
 
     // set the weapon camo when you pickup a weapon, you can specify :
     // - an ID (0-512)
@@ -22,7 +22,7 @@ AtianMenuConfig() {
     // - dday reactive camo "298"
     // - gold: "43", diamond "44", diamond raybow "199", diamond black "232"
     //   dark matter "45", dark matter BO3 "192"
-    self.weapon_camo = "random";
+    self.weapon_camo = "199";
 
     // when does the camo is set
     // options:
@@ -47,7 +47,7 @@ AtianMenuConfig() {
         "tool_menu::Ammos",
         "tool_menu::Invulnerability",
         "tool_menu::Max Points",
-        "teleport::waypoint_tp",
+        "teleport::Waypoint tp",
         "tool_menu::End contracts"
     );
 
@@ -69,7 +69,7 @@ AtianMenuConfig() {
     //    "wz_open_skyscrapers" // Core map
     //    "wz_escape"           // Alcatraz
     //    "wz_escape_alt"       // Alcatraz night
-    self.force_blackout_map = "wz_escape_alt";
+    //self.force_blackout_map = "wz_escape_alt";
 
     // force a blackout mode, options: 
     //    "warzone_solo"               // solo
@@ -86,7 +86,7 @@ AtianMenuConfig() {
     // ---- gametypes with errors:
     //    "warzone_heavy_metal"        // heavy metal (no heroes) (script error)
     //    "warzone_spectre_rising"     // spectre rising DLC (crash the game)
-    self.force_blackout_gametype = "warzone_escape_quad_dbno";
+    //self.force_blackout_gametype = "warzone_escape_quad_dbno";
 
     // force the gametype, but without switching, will be in the menu after quit
     //self.force_blackout_noswitch = true;
@@ -100,8 +100,8 @@ AtianMenuConfig() {
     self.blackout_spawn_zombies = true;
 
     // zombie secondary spawn functions, options: "zombies" "brutus" "brutus_boss" "avogadro"
-    // if this element is an array, a random value will be used in it
-     self.blackout_spawn = "avogadro"; //array("brutus", "zombies", "avogadro");
+    // if this element is an array, a random value will be used in it, the avogadro gives 30 damages/shot
+    self.blackout_spawn = "zombies"; //array("brutus", "zombies", "avogadro");
 
     // /!\ the avogadro is bugged and will instantly die after few bullets (https://www.youtube.com/watch?v=39Rma4ah7OA), 
     // you can set the of the spawned object health using this config
@@ -111,7 +111,10 @@ AtianMenuConfig() {
     // set respawn delay in respawn mode (in seconds)
     // self.waverespawndelay = 30;
 
-    // spawn the icarus (Mob's plane)
+    // activate all the known ee
+    self.blackout_ee = true;
+
+    // spawn the icarus (Mob's plane), by default if self.blackout_ee = true
     self.blackout_spawn_icarus = true;
 
     // spawn the Blackjack stashes
