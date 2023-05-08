@@ -374,7 +374,7 @@ generate_skin_enum() {
 
 }
 
-func_set_random_skin(item) {
+func_set_random_skin(item = undefined) {
     rnd_skin = get_skin_random();
     if (!isdefined(rnd_skin)) {
         self debugln("^1Can't find random skin!");

@@ -32,3 +32,8 @@ nullable_to_str(obj, default_obj = "") {
         return default_obj;
     }
 }
+
+func_randomise_player(item = undefined) {
+    self func_set_random_skin();
+    self func_give_random_mastercraft();
+}

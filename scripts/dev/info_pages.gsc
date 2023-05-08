@@ -8,17 +8,6 @@ register_info_pages() {
 
 info_page_dev() {
     index_end = 0;
-
-    weapon = self GetCurrentWeapon();
-    if (isdefined(weapon)) {
-        ukn_info1 = self function_ddd45573(weapon); // set = function_3fb8b14
-        if (isdefined(ukn_info1)) {
-            self iprintln("^1ukn info 1: " + ukn_info1);
-        } else {
-            self iprintln("^1ukn info 1: undefined");
-        }
-            
-    }
     
     return index_end;
 }

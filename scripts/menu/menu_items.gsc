@@ -117,6 +117,9 @@ init_menus() {
         }
 
         switch (level.script) {
+            case "zm_zodt8":
+                self add_menu_item("teleport", "Spawn", &func_teleport, (-16, -4113, 928.125));
+                break;
             case "zm_towers":
                 self add_menu_item("teleport", "Boss fight", &func_teleport, (-3518, 460, 1.15883), (0, -180, 0));
                 self add_menu_item("teleport", "Arena", &func_teleport, (30, 80, 80.625), (0, -180, 0));
@@ -315,6 +318,7 @@ init_menus() {
     self add_menu("random", "Random", "start_menu", true);
 
     self add_menu_item_modswitch("random", "YOU SPIN ME...", "spin_me");
+    self add_menu_item("random", "Randomise me", &func_randomise_player);
     
 
     // ---- Camos ----
