@@ -57,14 +57,6 @@ func_dev_method4() {
 func_dev_method5() {
 }
 
-func_init_bot_commander(item) {
-    if (is_zombies()) {
-        self debugln("^1Can't set bot commander in zombies (i don't want to crash)");
-        return;
-    }
-    init_bot_commanders();
-}
-
 func_spawn_add_bot(item, look) {
     bot = AddTestClient();
     if (!isdefined(bot)) {

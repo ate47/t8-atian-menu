@@ -14,11 +14,6 @@
 #include scripts\core_common\values_shared;
 #include scripts\core_common\spawner_shared;
 #include scripts\core_common\flagsys_shared;
-#include scripts\core_common\ai\planner_commander;
-#include scripts\core_common\ai\planner_squad_utility;
-#include scripts\core_common\ai\planner_commander_utility;
-#include scripts\core_common\ai\planner_generic_commander;
-#include script_31e56101095f174b; // core_common\ai\plannerutility??
 
 #namespace clientids_shared;
 

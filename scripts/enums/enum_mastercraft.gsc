@@ -72,6 +72,10 @@ generate_mastercraft_enum() {
     mastercraft_data add_mk2("ar_fastfire_t8", "MK2", 1);
     mastercraft_data add_mastercraft("ar_fastfire_t8", "MC", 2);
 
+    mastercraft_data add_mk2("ar_modular_t8", "MK2", 1);
+    mastercraft_data add_mastercraft("ar_modular_t8", "MC", 2);
+    mastercraft_data add_mastercraft("ar_modular_t8", "MC", 3);
+
     mastercraft_data add_mk2("ar_stealth_t8", "MK2", 3);
     mastercraft_data add_mastercraft("ar_stealth_t8", "MC VAmPiRe", 2);
     
@@ -140,8 +144,6 @@ generate_mastercraft_enum() {
     mastercraft_data add_mk2("smg_folding_t8", "MK2", 1);
 
     // SNIPER
-    
-    mastercraft_data add_mastercraft("sniper_damagesemi_t8", "MC", 2);
 
     mastercraft_data add_mastercraft("sniper_fastrechamber_t8", "MC", 2);
 
@@ -149,8 +151,11 @@ generate_mastercraft_enum() {
 
     mastercraft_data add_mk2("sniper_powerbolt_t8", "MK2", 3);
     mastercraft_data add_mastercraft("sniper_powerbolt_t8", "MC", 2);
-
-    // TODO: forgot sniper_quickscope_t8
+    
+    mastercraft_data add_mastercraft("sniper_powersemi_t8", "MC", 2);
+    
+    mastercraft_data add_mk2("sniper_quickscope_t8", "MK2", 1);
+    mastercraft_data add_mastercraft("sniper_quickscope_t8", "MC", 2);
 
     // TACTICAL RIFLE
 

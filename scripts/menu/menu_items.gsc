@@ -91,7 +91,12 @@ init_menus() {
     for (i = 0; i < weapons.size; i++) {
         self add_menu_item("weapons", weapons[i], &func_give_weapon, weapons[i]);
     }
-    
+
+    if (isdefined(self.atianconfig.add_weapons)) {
+        for (i = 0; i < self.atianconfig.add_weapons.size; i++) {
+            self add_menu_item("weapons", self.atianconfig.add_weapons[i], &func_give_weapon, self.atianconfig.add_weapons[i]);
+        }
+    }
     self add_menu_item("weapons", "companion", &func_give_weapon, "hash_680d9169c5e72bdc");
     self add_menu_item("weapons", "zombie_fists", &func_give_weapon, "zombie_fists");
     self add_menu_item("weapons", "blood ukn 1", &func_give_weapon, "hash_617dcc39334959ce");
@@ -353,7 +358,7 @@ init_menus() {
         }
         if (is_zombies()) {
             mc_menu_id = "mastercrafts_" + lookup + "_upgraded";
-            self add_menu(mc_menu_id, lookup, "mastercrafts", true);
+            self add_menu(mc_menu_id, lookup + " (upgraded)", "mastercrafts", true);
 
             for (i = 0; i < mastercraft_item.variants.size; i++) {
                 variant_item = mastercraft_item.variants[i];
@@ -500,7 +505,6 @@ init_menus() {
     
     if (is_dev_mode()) {
         self add_menu_item("random", "add bot", &func_spawn_add_bot, true);
-        self add_menu_item("random", "init commander", &func_init_bot_commander);
 
         self add_menu_item("tool_menu", "Hide hud", &func_hidehud);
 

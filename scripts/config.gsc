@@ -39,6 +39,9 @@ AtianMenuConfig() {
     // - multiplayer       : 800 
     self.sensor_dart_radius = 4800;
 
+    // add weapons to the give weapon menu
+    // self.add_weapons = array("ww_crossbow_t8", "ww_crossbow_t8_upgraded");
+
     // --------- menu config ---------
     
     // load menus at start, should be the same as the one described in menu_items.gsc, syntax: "MENU_NAME::ITEM_NAME"
