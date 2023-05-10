@@ -8,7 +8,26 @@ register_info_pages() {
 
 info_page_dev() {
     index_end = 0;
-    
+    if (self isinvehicle()) {
+        vehicle = self getvehicleoccupied();
+        if (isdefined(vehicle)) {
+            if (isdefined(vehicle.origin)) {
+                self iprintln("^1veh origin: " + vehicle.origin);
+                index_end++;
+            }
+            if (isdefined(vehicle.model)) {
+                self iprintln("^1veh model: " + hash_lookup(vehicle.model));
+                index_end++;
+            }
+            if (isdefined(vehicle.scriptvehicletype)) {
+                self iprintln("^1veh script: " + hash_lookup(vehicle.scriptvehicletype));
+                index_end++;
+            }
+        } else {
+            self iprintln("^1no veh");
+            index_end++;
+        }
+    }
     return index_end;
 }
 
@@ -80,9 +99,12 @@ info_page_looktool() {
         dynent_hit = bullet_hit[#"dynent"];
 
         if (isdefined(entity_hit)) {
-            
             self iprintln("^1en: " + hash_lookup(nullable_to_str(entity_hit.model)) + " " + nullable_to_str(entity_hit.origin) + " ar:" + nullable_to_str(hash_lookup(entity_hit.archetype)));
             index_end++;
+            if (isvehicle(entity_hit)) {
+                self iprintln("^1veh: " + nullable_to_str(entity_hit.scriptvehicletype));
+                index_end++;
+            }
         }
         if (isdefined(dynent_hit)) {
             self iprintln("^1de:" + hash_lookup(nullable_to_str(dynent_hit.targetname)) + " " + nullable_to_str(dynent_hit.origin) + "" + nullable_to_str(dynent_hit.displayname));

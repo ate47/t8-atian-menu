@@ -7,5 +7,6 @@ generate_enum_values() {
     level.atian_enum_data generate_camo_enum();
     level.atian_enum_data generate_skin_enum();
     level.atian_enum_data generate_mastercraft_enum();
+    level.atian_enum_data generate_weapon_enum();
 }
 

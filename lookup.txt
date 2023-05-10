@@ -27,10 +27,14 @@ ar
 ar_accurate_t8
 ar_accurate_t8_upgraded
 ar_an94
+ar_an94_t8
+ar_an94_t8_upgraded
 ar_an94_upgraded
 ar_damage_t8
 ar_damage_t8_upgraded
 ar_doublebarrel
+ar_doublebarrel_t8
+ar_doublebarrel_t8_upgraded
 ar_doublebarrel_upgraded
 ar_fastfire_t8
 ar_fastfire_t8_upgraded

@@ -55,6 +55,8 @@ init_menus() {
     // ---- Weapon ----
     self add_menu("tool_weapon", "Guns", "start_menu", true);
 
+    self add_menu_item("tool_weapon", "Drop weapon", &func_drop);
+
     self add_menu_item_modswitch("tool_weapon", "TP gun", "tpgun");
     self add_menu_item_modswitch("tool_weapon", "Physic Explosion gun", "explosion_gun");
 
@@ -86,27 +88,30 @@ init_menus() {
     // ---- Give weapon ----
     self add_menu("weapons", "Give weapon", "start_menu", true);
 
-    weapons = get_weapons_all();
+    weapon_data = get_weapon_enum_data();
 
-    for (i = 0; i < weapons.size; i++) {
-        self add_menu_item("weapons", weapons[i], &func_give_weapon, weapons[i]);
-    }
-
-    if (isdefined(self.atianconfig.add_weapons)) {
-        for (i = 0; i < self.atianconfig.add_weapons.size; i++) {
-            self add_menu_item("weapons", self.atianconfig.add_weapons[i], &func_give_weapon, self.atianconfig.add_weapons[i]);
+    foreach (cat_key, cat_item in weapon_data.categories) {
+        menu_id = "weapons_" + cat_item.name;
+        if (cat_item.weapons.size == 0) {
+            continue; // empty category
+        }
+        self add_menu(menu_id, cat_item.title, "weapons", true);
+        for (i = 0; i < cat_item.weapons.size; i++) {
+            w_i = cat_item.weapons[i];
+            self add_menu_item(menu_id, w_i.title, &func_give_weapon, w_i.name);
+            if (is_zombies() && w_i.upgradable) {
+                self add_menu_item(menu_id, w_i.title + " (Upgraded)", &func_give_weapon, w_i.name, 0, true);
+            }
         }
     }
-    self add_menu_item("weapons", "companion", &func_give_weapon, "hash_680d9169c5e72bdc");
-    self add_menu_item("weapons", "zombie_fists", &func_give_weapon, "zombie_fists");
-    self add_menu_item("weapons", "blood ukn 1", &func_give_weapon, "hash_617dcc39334959ce");
-    self add_menu_item("weapons", "blood ukn 2", &func_give_weapon, "hash_494f5501b3f8e1e9");
-    self add_menu_item("weapons", "blood dart mb", &func_give_weapon, "hash_3de0926b89369160");
-    self add_menu_item("weapons", "tower ukn 1", &func_give_weapon, "hash_5aa162d2872d2bac");
-    self add_menu_item("weapons", "tower ukn 2", &func_give_weapon, "hash_eeac880dffb5d95");
+    if (isdefined(self.atianconfig.add_weapons) && self.atianconfig.add_weapons.size != 0) {
+        self add_menu("weapons_custom", "Custom", "weapons", true);
+
+        for (i = 0; i < self.atianconfig.add_weapons.size; i++) {
+            self add_menu_item("weapons_custom", self.atianconfig.add_weapons[i], &func_give_weapon, self.atianconfig.add_weapons[i]);
+        }
+    }
     
-
-
 
     if (isdefined(level.script)) {
         self add_menu("teleport", "Teleport", "start_menu", true);
@@ -304,15 +309,6 @@ init_menus() {
         
         for (i = 0; i < mode_mp.size; i++) {
             self add_menu_item("mode_mp", mode_mp[i], &func_set_gametype, mode_mp[i]);
-        }
-    } else if (is_zombies()) {
-        // ---- Weapons (Upgraded) ----
-        self add_menu("weapons_upgraded", "Give weapon (Upgraded)", "start_menu", true);
-
-        weapons = get_weapons_all();
-
-        for (i = 0; i < weapons.size; i++) {
-            self add_menu_item("weapons_upgraded", weapons[i], &func_give_weapon, weapons[i] + "_upgraded");
         }
     }
     self add_menu("random", "Random", "start_menu", true);

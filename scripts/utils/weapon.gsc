@@ -12,17 +12,29 @@ func_give_weapon(item, weapon_name, mastercraft_id = undefined, upgraded = false
         }
         weapon_options = self calcweaponoptions(0, 0, mastercraft_id);
 
-        old_weapon = self GetCurrentWeapon();
+        self giveweapon(weapon, weapon_options);
+        wait .1;
 
-        if (isdefined(old_weapon)) {
+        self switchToWeapon(weapon);
+
+        wait .1;
+
+        new_weapon = self getcurrentweapon();
+
+        if (is_warzone() && isdefined(old_weapon) && new_weapon != weapon) {
             self takeweapon(old_weapon);
         }
-
-        self giveweapon(weapon, weapon_options);
     } else {
         self iPrintLn("unknown weapon " + weapon_name);
     }
     return true;
+}
+
+func_drop() {
+    weapon = self getcurrentweapon();
+    if (isdefined(weapon)) {
+        self dropitem(weapon);
+    }
 }
 
 func_give_random_mastercraft(item, upgraded = false) {

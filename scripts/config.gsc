@@ -72,7 +72,7 @@ AtianMenuConfig() {
     //    "wz_open_skyscrapers" // Core map
     //    "wz_escape"           // Alcatraz
     //    "wz_escape_alt"       // Alcatraz night
-    //self.force_blackout_map = "wz_escape_alt";
+    self.force_blackout_map = "wz_escape_alt";
 
     // force a blackout mode, options: 
     //    "warzone_solo"               // solo
@@ -89,7 +89,7 @@ AtianMenuConfig() {
     // ---- gametypes with errors:
     //    "warzone_heavy_metal"        // heavy metal (no heroes) (script error)
     //    "warzone_spectre_rising"     // spectre rising DLC (crash the game)
-    //self.force_blackout_gametype = "warzone_escape_quad_dbno";
+    self.force_blackout_gametype = "warzone_escape_quad_dbno";
 
     // force the gametype, but without switching, will be in the menu after quit
     //self.force_blackout_noswitch = true;
@@ -240,4 +240,15 @@ AtianMenuConfig() {
 
     // max powerups drop per round
     self.zm_max_drop_per_round = 4;
+
+    
+    // ------- dev config -------
+    // config to replace the internal of the menu, by default nothing is set
+
+    // activate the dev options
+    //self.dev = true;
+
+    // remove weapon restiction on the weapon enum data,
+    // you won't be able to use a weapon if it is not available on this map
+    //self.devcfg.enum_weapon_no_restrict = false;
 }
