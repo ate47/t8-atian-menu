@@ -5,3 +5,5 @@ AtianMenuDevConfig() {
     // activate the dev options
     self.dev = false;
 }
+AtianMenuDevKeyConfig() {
+}

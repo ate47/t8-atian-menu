@@ -33,16 +33,14 @@ __init__() {
 }
 
 __post__init__() {
-    if (is_dev_mode()) {
-        level.atianconfig.loaded_modules = array();
-        level.atianconfig.ignored_modules = array();
-        // write all the systems
-        foreach (sys_key, sys_item in level.system_funcs) {
-            if (sys_item.ignore) {
-                array::add(level.atianconfig.ignored_modules, hash_lookup(sys_key));
-            } else {
-                array::add(level.atianconfig.loaded_modules, hash_lookup(sys_key));
-            }
+    level.atianconfig.loaded_modules = array();
+    level.atianconfig.ignored_modules = array();
+    // write all the systems
+    foreach (sys_key, sys_item in level.system_funcs) {
+        if (sys_item.ignore) {
+            array::add(level.atianconfig.ignored_modules, hash_lookup(sys_key));
+        } else {
+            array::add(level.atianconfig.loaded_modules, hash_lookup(sys_key));
         }
     }
 }
@@ -64,10 +62,6 @@ handle_config() {
     level.atianconfig AtianMenuConfig();
     level.atianconfig AtianMenuDevConfig();
     atianconfig = level.atianconfig;
-
-    setGametypeSetting(#"teamcount", 100);
-
-    spawner::add_archetype_spawn_function(#"zombie", &on_zombie_spawn);
 
     if (isdefined(atianconfig.weapon_camo_reset)) {
         switch (atianconfig.weapon_camo_reset) {
@@ -171,12 +165,13 @@ handle_config() {
         if (isdefined(atianconfig.blackout_spawn_waterballons) && atianconfig.blackout_spawn_waterballons) {
             setGametypeSetting(#"hash_33d1ac5e99fb0584", true);
         }
-    }
-    if (isdefined(atianconfig.numlives) && atianconfig.numlives > 0) {
-        setGametypeSetting(#"playernumlives", atianconfig.numlives);
+        if (isdefined(atianconfig.numlives) && atianconfig.numlives > 0) {
+            setGametypeSetting(#"playernumlives", atianconfig.numlives);
+        }
     }
     
     if (is_zombies()) {
+        spawner::add_archetype_spawn_function(#"zombie", &on_zombie_spawn);
         if (isdefined(atianconfig.zm_custom_startround) && atianconfig.zm_custom_startround > 0) setGametypeSetting(#"startround", atianconfig.zm_custom_startround);
         if (isdefined(atianconfig.zm_custom_zmroundcap) && atianconfig.zm_custom_zmroundcap > 0) setGametypeSetting(#"zmroundcap", atianconfig.zm_custom_zmroundcap);
         if (isdefined(atianconfig.zm_custom_zmtimecap) && atianconfig.zm_custom_zmtimecap > 0) setGametypeSetting(#"zmtimecap", atianconfig.zm_custom_zmtimecap);
@@ -295,8 +290,6 @@ handle_config() {
                 }
             }
         }
-
-        
         
     }
 }

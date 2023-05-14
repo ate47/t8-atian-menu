@@ -17,6 +17,7 @@ key_mgr_init() {
     // load the config
     key_config = key_mgr.key_config;
     key_config AtianMenuKeyConfig();
+    key_config AtianMenuDevKeyConfig();
 
     self key_mgr_compile_key(#"open_menu", key_config.menu_open, array(#"ads", #"melee"));
     self key_mgr_compile_key(#"parent_page", key_config.parent_page, #"melee");

@@ -52,6 +52,7 @@ add_menu(menu_id, menu_name, parent_id, create_switch = false, menuenterfunc = u
     menu = 
     {
         #id: menu_id,
+        #cursor: 0,
         #name: menu_name,
         #parent_id: parent_id,
         #menu_enter_func: menuenterfunc,
@@ -177,10 +178,15 @@ menu_think() {
             // up arrow
             menu = self get_current_menu();
             if (isdefined(menu)) {
-                if (menu_info.cursor == 0) {
-                    menu_info.cursor = menu.sub_menus.size - 1;
+                //if (menu_info.cursor == 0) {
+                //    menu_info.cursor = menu.sub_menus.size - 1;
+                //} else {
+                //    menu_info.cursor--;
+                //}
+                if (menu.cursor == 0 || menu.cursor >= menu.sub_menus.size) {
+                    menu.cursor = menu.sub_menus.size - 1;
                 } else {
-                    menu_info.cursor--;
+                    menu.cursor--;
                 }
                 render = true;
             }
@@ -188,10 +194,15 @@ menu_think() {
             // bottom arrow
             menu = self get_current_menu();
             if (isdefined(menu)) {
-                if (menu_info.cursor < menu.sub_menus.size - 1) {
-                    menu_info.cursor++;
+                //if (menu_info.cursor < menu.sub_menus.size - 1) {
+                //    menu_info.cursor++;
+                //} else {
+                //    menu_info.cursor = 0;
+                //}
+                if (menu.cursor < menu.sub_menus.size - 1) {
+                    menu.cursor++;
                 } else {
-                    menu_info.cursor = 0;
+                    menu.cursor = 0;
                 }
                 render = true;
             }
@@ -199,7 +210,8 @@ menu_think() {
             // use
             menu = self get_current_menu();
             if (isdefined(menu)) {
-                item = menu.sub_menus[menu_info.cursor];
+                //item = menu.sub_menus[menu_info.cursor];
+                item = menu.sub_menus[menu.cursor];
                 if (isdefined(item)) {
                     if (isdefined(item.action)) {
                         if (isdefined(item.action_data5)) {
@@ -257,14 +269,16 @@ menu_think() {
                     self iprintln("^1---- " + menu.name + " (empty) ----");
                     index_end = 1;
                 } else {
-                    page = int(menu_info.cursor / 8);
+                    //page = int(menu_info.cursor / 8);
+                    page = int(menu.cursor / 8);
                     maxpage = int((menu.sub_menus.size - 1) / 8) + 1;
                     self iprintln("^1---- " + menu.name + " (" + (page + 1) + "/" + maxpage + ") ----");
 
                     index_start = 8 * page;
                     index_end = int(min(8 * (page + 1), menu.sub_menus.size));
                     for (i = index_start; i < index_end; i++) {
-                        if (menu_info.cursor === i) {
+                        //if (menu_info.cursor === i) {
+                        if (menu.cursor === i) {
                             if (menu.sub_menus[i].activated) {
                                 self iprintln("^0-> ^1" + (menu.sub_menus[i].name) + "^0 (ON)");
                             } else {
@@ -326,4 +340,24 @@ ClickMenuButton(menu_id, menu_item_name) {
             }
         }
     }
+}
+
+menu_open_message(menu, message, func, data1, data2) {
+
+    if (isdefined(message)) {
+        self iPrintLnBold(message);
+    }
+
+    if (!isdefined(func)) {
+        return;
+    }
+
+    if (isdefined(data2)) {
+        return [[ func ]](data1, data2);
+    }
+
+    if (isdefined(data1)) {
+        return [[ func ]](data1);
+    } 
+    return [[ func ]]();
 }

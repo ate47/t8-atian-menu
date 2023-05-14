@@ -11,28 +11,18 @@ func_give_weapon(item, weapon_name, mastercraft_id = undefined, upgraded = false
             mastercraft_id = 0;
         }
         weapon_options = self calcweaponoptions(0, 0, mastercraft_id);
-
+        
         self giveweapon(weapon, weapon_options);
-        wait .1;
-
-        self switchToWeapon(weapon);
-
-        wait .1;
-
-        new_weapon = self getcurrentweapon();
-
-        if (is_warzone() && isdefined(old_weapon) && new_weapon != weapon) {
-            self takeweapon(old_weapon);
-        }
+        self switchtoweapon(weapon);
     } else {
         self iPrintLn("unknown weapon " + weapon_name);
     }
     return true;
 }
 
-func_drop() {
+func_drop(item) {
     weapon = self getcurrentweapon();
-    if (isdefined(weapon)) {
+    if (isdefined(weapon) && self hasweapon(weapon)) {
         self dropitem(weapon);
     }
 }

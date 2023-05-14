@@ -11,36 +11,22 @@ weapon_enum_match_restriction(weapon_restriction) {
                 continue; // bad config
             }
 
-            // bad compiler considering a continue in a switch
-            is_false = false;
             switch (res_data[0]) {
                 case "map":
-                    if (!array::contains(strTok(res_data[1], ","), nullable_to_str(level.script, "noscript"))) {
-                        break; // map not in the list
-                    }
-                    is_false = true;
+                    data = nullable_to_str(level.script, "noscript");
                     break;
                 case "gamemode":
-                    if (!array::contains(strTok(res_data[1], ","), get_gamemode())) {
-                        break; // gamemode not in the list
-                    }
+                    data = get_gamemode();
                     is_false = true;
                     break;
                 case "gametype":
-                    if (!array::contains(strTok(res_data[1], ","), nullable_to_str(level.gametype, "nogametype"))) {
-                        break; // gametype not in the list
-                    }
-                    is_false = true;
+                    data = nullable_to_str(level.gametype, "nogametype");
                     break;
                 default:
-                    is_false = true;
+                    data = undefined;
                     break; // bad config
             }
-            if (is_false) {
-                continue;
-            }
-            
-            query_false = true;
+            query_false = !isdefined(data) || !array::contains(strTok(res_data[1], ","), data);
             break;
         }
         if (query_false) {
@@ -50,7 +36,6 @@ weapon_enum_match_restriction(weapon_restriction) {
     }
     return false;
 }
-
 add_weapon_info(weapon_name, weapon_title, weapon_category, is_upgradable = false, weapon_restriction = undefined) {
     if (isdefined(weapon_restriction)
         && !(isdefined(level.atianconfig.devcfg.enum_weapon_no_restrict) && level.atianconfig.devcfg.enum_weapon_no_restrict)) {
@@ -94,7 +79,8 @@ generate_weapon_enum() {
     }
     weapon_data = {
         #weapons: array(),
-        #categories: array()
+        #categories: array(),
+        #global_weapons: array()
     };
     self.weapon_data = weapon_data;
 
@@ -109,6 +95,8 @@ generate_weapon_enum() {
     weapon_data add_weapon_category("special", "Special");
     weapon_data add_weapon_category("ww", "Wonder weapon");
     weapon_data add_weapon_category("hero", "Hero weapon");
+    weapon_data add_weapon_category("gametype", "Gametype weapon");
+    weapon_data add_weapon_category("gadget", "Gadget");
 
     
 
@@ -137,10 +125,43 @@ generate_weapon_enum() {
     weapon_data add_weapon_info("smg_mp40_t8", "MP40", "smg", true, "gamemode=zm,wz");
     weapon_data add_weapon_info("smg_thompson_t8", "M1927", "smg", true, "map=zm_office,zm_orange,zm_escape,zm_white");
     
+    weapon_data add_weapon_info("tr_longburst_t8", "Swordfish", "tr", true);
+    weapon_data add_weapon_info("tr_leveraction_t8", "Essex Model 07", "tr", true, "gamemode=zm,wz");
+    weapon_data add_weapon_info("tr_midburst_t8", "ABR 223", "tr", true);
+    weapon_data add_weapon_info("tr_powersemi_t8", "Auger DMR", "tr", true);
+    weapon_data add_weapon_info("tr_flechette_t8", "S6 Stingray", "tr", true);
+    weapon_data add_weapon_info("tr_damageburst_t8", "M16", "tr", true);
+
+    weapon_data add_weapon_info("sniper_powerbolt_t8", "Paladin HB50", "sniper", true);
+    weapon_data add_weapon_info("sniper_powersemi_t8", "SDM", "sniper", true);
+    weapon_data add_weapon_info("sniper_fastrechamber_t8", "Outlaw", "sniper", true);
+    weapon_data add_weapon_info("sniper_quickscope_t8", "Koshka", "sniper", true);
+    weapon_data add_weapon_info("sniper_locus_t8", "Locus", "sniper", true);
+    weapon_data add_weapon_info("sniper_damagesemi_t8", "Havelina AA50", "sniper", true);
+    weapon_data add_weapon_info("sniper_mini14_t8", "Vendetta", "sniper", true);
+
+    weapon_data add_weapon_info("pistol_standard_t8", "Strife", "pistol", true);
+    weapon_data add_weapon_info("pistol_burst_t8", "RK-7 Garrison", "pistol", true);
+    weapon_data add_weapon_info("pistol_revolver_t8", "Mozu", "pistol", true);
+    weapon_data add_weapon_info("pistol_fullauto_t8", "KAP-45", "pistol", true);
+    weapon_data add_weapon_info("pistol_topbreak_t8", "Welling", "pistol", true, "gamemode=zm");
+
+    weapon_data add_weapon_info("lmg_standard_t8", "Titan", "lmg", true);
+    weapon_data add_weapon_info("lmg_spray_t8", "Hades", "lmg", true);
+    weapon_data add_weapon_info("lmg_heavy_t8", "VKM-750", "lmg", true);
+    weapon_data add_weapon_info("lmg_double_t8", "Zweihander", "lmg", true, "gamemode=zm");
+    weapon_data add_weapon_info("lmg_stealth_t8", "Tigershark", "lmg", true);
+    
+    weapon_data add_weapon_info("shotgun_pump_t8", "MOG-12", "shotgun", true);
+    weapon_data add_weapon_info("shotgun_semiauto_t8", "SG-12", "shotgun", true);
+    weapon_data add_weapon_info("shotgun_trenchgun_t8", "Trenchgun", "shotgun", true, "gamemode=zm");
+    weapon_data add_weapon_info("shotgun_fullauto_t8", "Rampage", "shotgun", true);
+    weapon_data add_weapon_info("shotgun_precision_t8", "Argus", "shotgun", true);
+
     weapon_data add_weapon_info("bare_hands", "Bare hands", "melee", false);
     weapon_data add_weapon_info("knife_loadout", "Combat Knife", "melee", false, "gamemode=mp");
     weapon_data add_weapon_info("bowie_knife", "Bowie knife", "melee", false, "gamemode=zm"); // zombies players' knife
-    weapon_data add_weapon_info("melee_bowie", "Bowie knife", "melee", false, "gamemode=mp,wz"); // infected's knife
+    weapon_data add_weapon_info("melee_bowie", "Bowie knife", "melee", false, "gamemode=wz");
     weapon_data add_weapon_info("melee_club_t8", "Nifo'oti", "melee", false, "gamemode=mp,wz");
     weapon_data add_weapon_info("melee_coinbag_t8", "Cha-Ching", "melee", false, "gamemode=mp,wz");
     weapon_data add_weapon_info("melee_demohammer_t8", "Home Wrecker", "melee", false, "gamemode=mp,wz");
@@ -151,14 +172,12 @@ generate_weapon_enum() {
     weapon_data add_weapon_info("melee_amuletfist_t8", "Eye of Apophis", "melee", false, "gamemode=mp,wz");
     weapon_data add_weapon_info("melee_actionfigure_t8", "Series 6 Outrider", "melee", false, "gamemode=mp,wz");
     weapon_data add_weapon_info("melee_cutlass_t8", "Rising Tide", "melee", false, "gamemode=mp,wz");
-
-    weapon_data add_weapon_info("launcher_standard_t8", "Hellion Salvo", "special", true);
-    weapon_data add_weapon_info("special_ballisticknife_t8_dw", "Ballistic Knife", "special", true);
-    weapon_data add_weapon_info("special_crossbow_t8", "Reaver C86", "special", true);
-    weapon_data add_weapon_info("special_crossbow_t8_sas", "Reaver C86 (S&S)", "special", false, "gamemode=mp"); // ;gametype=sas
-    weapon_data add_weapon_info("basketball", "Basketball", "special", false, "gamemode=wz");
+    weapon_data add_weapon_info("spknifeork", "Spknifeork", "melee", false, "map=zm_escape");
+    weapon_data add_weapon_info("spknifspoon_alcatrazeork", "Spknifspoon", "melee", false, "map=zm_escape");
+    weapon_data add_weapon_info("spork_alcatraz", "Spknifeork", "melee", false, "map=zm_escape");
+    weapon_data add_weapon_info("stake_knife", "Stake knife", "melee", false, "map=zm_mansion");
     
-    weapon_data add_weapon_info("ray_gun", "Ray gun", "ww", true, "gamemode=wz|map=zm_office,zm_orange,zm_escape,zm_white|gametype=ct_recon_tutorial");
+    weapon_data add_weapon_info("ray_gun", "Ray gun", "ww", true, "gamemode=wz,mp|map=zm_office,zm_orange,zm_escape,zm_white");
     weapon_data add_weapon_info("ray_gun_mk2", "Ray gun MK2", "ww", true, "map=zm_office,zm_orange,zm_escape,zm_white,wz_escape,wz_escape_alt"); // crash the game on the main map
     weapon_data add_weapon_info("ray_gun_mk2v", "Ray gun MK2 V", "ww", true, "map=zm_white,wz_escape,wz_escape_alt");
     weapon_data add_weapon_info("ray_gun_mk2x", "Ray gun MK2 X", "ww", true, "map=zm_white,wz_escape,wz_escape_alt");
@@ -170,8 +189,8 @@ generate_weapon_enum() {
     weapon_data add_weapon_info("ww_blundergat_acid_t8", "Acidgat", "ww", true, "map=zm_escape");
     weapon_data add_weapon_info("hash_494f5501b3f8e1e9", "Blundergat Tempered", "ww", false, "map=zm_escape");
     weapon_data add_weapon_info("ww_crossbow_impaler_t8", "Savage Impaler", "ww", false, "gamemode=wz|map=zm_mansion");
-    weapon_data add_weapon_info("hash_138efe2bb30be63c", "Alistair's Folly", "ww", false, "map=zm_mansion,wz_escape,wz_escape_alt");
-    weapon_data add_weapon_info("hash_138f012bb30beb55", "Chaos Theory", "ww", false, "map=zm_mansion");
+    weapon_data add_weapon_info("hash_138efe2bb30be63c", "Alistair's Folly", "ww", false, "map=zm_mansion"); // wz_escape,wz_escape_alt
+    weapon_data add_weapon_info("hash_138f012bb30beb55", "Chaos Theory", "ww", false, "map=zm_mansion"); 
     weapon_data add_weapon_info("hash_138f002bb30be9a2", "Alistair's Annihilator", "ww", false, "map=zm_mansion");
     weapon_data add_weapon_info("ww_tricannon_t8", "Kraken", "ww", true, "map=zm_zodt8");
     weapon_data add_weapon_info("ww_tricannon_water_t8", "Kraken (Water)", "ww", true, "map=zm_zodt8");
@@ -222,37 +241,271 @@ generate_weapon_enum() {
     weapon_data add_weapon_info("hash_74dd67dd8a46d144", "Overkill (LV 1)", "hero", false, "gamemode=zm;map=zm_zodt8,zm_towers,zm_mansion,zm_red");
     weapon_data add_weapon_info("hash_74dd6add8a46d65d", "Overkill (LV 2)", "hero", false, "gamemode=zm;map=zm_zodt8,zm_towers,zm_mansion,zm_red");
     weapon_data add_weapon_info("hash_74dd69dd8a46d4aa", "Overkill (LV 3)", "hero", false, "gamemode=zm;map=zm_zodt8,zm_towers,zm_mansion,zm_red");
-
-    weapon_data add_weapon_info("tr_longburst_t8", "Swordfish", "tr", true);
-    weapon_data add_weapon_info("tr_leveraction_t8", "Essex Model 07", "tr", true, "gamemode=zm,wz");
-    weapon_data add_weapon_info("tr_midburst_t8", "ABR 223", "tr", true);
-    weapon_data add_weapon_info("tr_powersemi_t8", "Auger DMR", "tr", true);
-    weapon_data add_weapon_info("tr_flechette_t8", "S6 Stingray", "tr", true);
-    weapon_data add_weapon_info("tr_damageburst_t8", "M16", "tr", true);
-
-    weapon_data add_weapon_info("sniper_powerbolt_t8", "Paladin HB50", "sniper", true);
-    weapon_data add_weapon_info("sniper_powersemi_t8", "SDM", "sniper", true);
-    weapon_data add_weapon_info("sniper_fastrechamber_t8", "Outlaw", "sniper", true);
-    weapon_data add_weapon_info("sniper_quickscope_t8", "Koshka", "sniper", true);
-    weapon_data add_weapon_info("sniper_locus_t8", "Locus", "sniper", true);
-    weapon_data add_weapon_info("sniper_damagesemi_t8", "Havelina AA50", "sniper", true);
-    weapon_data add_weapon_info("sniper_mini14_t8", "Vendetta", "sniper", true);
-
-    weapon_data add_weapon_info("pistol_standard_t8", "Strife", "pistol", true);
-    weapon_data add_weapon_info("pistol_burst_t8", "RK-7 Garrison", "pistol", true);
-    weapon_data add_weapon_info("pistol_revolver_t8", "Mozu", "pistol", true);
-    weapon_data add_weapon_info("pistol_fullauto_t8", "KAP-45", "pistol", true);
-    weapon_data add_weapon_info("pistol_topbreak_t8", "Welling", "pistol", true, "gamemode=zm");
-
-    weapon_data add_weapon_info("lmg_standard_t8", "Titan", "lmg", true);
-    weapon_data add_weapon_info("lmg_spray_t8", "Hades", "lmg", true);
-    weapon_data add_weapon_info("lmg_heavy_t8", "VKM-750", "lmg", true);
-    weapon_data add_weapon_info("lmg_double_t8", "Zweihander", "lmg", true, "gamemode=zm");
-    weapon_data add_weapon_info("lmg_stealth_t8", "Tigershark", "lmg", true);
+    weapon_data add_weapon_info("hero_lightninggun", "Tempest (BO3)", "hero", false, "gamemode=mp");
+    // weapon_data add_weapon_info("hero_lightninggun_arc", "Tempest 2 (BO3)", "hero", false, "gamemode=mp");
+    weapon_data add_weapon_info("shock_rifle", "Tempest (BO4)", "hero", false, "gamemode=mp");
+    weapon_data add_weapon_info("seeker_mine_arc", "Seeker mine arc weapon", "hero", false, "gamemode=mp");
     
-    weapon_data add_weapon_info("shotgun_pump_t8", "MOG-12", "shotgun", true);
-    weapon_data add_weapon_info("shotgun_semiauto_t8", "SG-12", "shotgun", true);
-    weapon_data add_weapon_info("shotgun_trenchgun_t8", "Trenchgun", "shotgun", true, "gamemode=zm");
-    weapon_data add_weapon_info("shotgun_fullauto_t8", "Rampage", "shotgun", true);
-    weapon_data add_weapon_info("shotgun_precision_t8", "Argus", "shotgun", true);
+
+    weapon_data add_weapon_info("hero_annihilator", "Annihilator", "hero", false, "gamemode=mp,wz");
+    weapon_data add_weapon_info("hero_flamethrower", "Purifier", "hero", false, "gamemode=mp,wz");
+    weapon_data add_weapon_info("hero_pineapplegun", "War machine", "hero", false, "gamemode=mp,wz");
+    weapon_data add_weapon_info("hero_pineapple_grenade", "War machine pistol", "hero", false, "gamemode=mp,wz");
+    weapon_data add_weapon_info("hero_gravityspikes", "Gravity spikes", "hero", false, "gamemode=mp");
+    weapon_data add_weapon_info("sig_blade", "Blade", "hero", false, "gamemode=mp,wz");
+    weapon_data add_weapon_info("sig_buckler", "Shield", "hero", false, "gamemode=mp");
+    weapon_data add_weapon_info("sig_minigun", "Minigun (bug)", "hero", false, "gamemode=mp");
+    weapon_data add_weapon_info("hero_minigun", "Minigun (BO3)", "hero", false, "gamemode=mp");
+    weapon_data add_weapon_info("hero_bowlauncher", "Sparrow (BO3 physic)", "hero", false, "gamemode=mp");
+    weapon_data add_weapon_info("eq_localheal", "Heal", "hero", false, "gamemode=mp");
+    weapon_data add_weapon_info("gadget_icepick", "Icepick", "hero", false, "gamemode=mp");
+
+    weapon_data add_weapon_info("basketball", "Basketball", "special", false, "gamemode=wz");
+    weapon_data add_weapon_info("special_ballisticknife_t8_dw", "Ballistic Knife", "special", true);
+    weapon_data add_weapon_info("special_crossbow_t8", "Reaver C86", "special", true);
+    weapon_data add_weapon_info("special_crossbow_t8_sas", "Reaver C86 (S&S)", "special", false, "gamemode=mp"); // ;gametype=sas
+    weapon_data add_weapon_info("launcher_standard_t8", "Hellion Salvo", "special", true);
+    weapon_data add_weapon_info("remote_missile_missile", "Hellstorm missile", "special", false, "gamemode=mp");
+
+
+    weapon_data add_weapon_info("ball", "Ball", "gametype", false, "gamemode=mp");
+    weapon_data add_weapon_info("briefcase_bomb", "Briefcase bomb", "gametype", false, "gamemode=mp");
+    weapon_data add_weapon_info("briefcase_bomb_defuse", "Briefcase bomb (defuse)", "gametype", false, "gamemode=mp");
+    weapon_data add_weapon_info("downed", "Downed", "gametype", false, "gamemode=mp");
+    
+    weapon_data add_weapon_info("gadget_supplypod", "Ammo pod", "gadget", false, "gamemode=mp");
+    weapon_data add_weapon_info("eq_acid_bomb", "Acid bomb", "gadget", false); // yes, no restriction
+    // weapon_data add_weapon_info("bouncingbetty", "Bouncing betty", "gadget", false, "gamemode=mp"); // Crash the server
+    weapon_data add_weapon_info("claymore", "Claymore", "gadget", false);
+    weapon_data add_weapon_info("eq_cluster_semtex_grenade", "Cluster grenade", "gadget", false, "gamemode=mp,wz");
+    weapon_data add_weapon_info("eq_concertina_wire", "Concertina wire", "gadget", false, "gamemode=mp,wz");
+    weapon_data add_weapon_info("concussion_grenade", "Concussion grenade", "gadget", false, "gamemode=mp,wz"); // or eq_slow_grenade eq_slow_grenade_hunter_ph
+    weapon_data add_weapon_info("cymbal_monkey", "Cymbal monkey", "gadget", true, "gamemode=wz|map=zm_office,zm_escape,zm_white,zm_orange");
+    weapon_data add_weapon_info("eq_emp_grenade", "EMP grenade", "gadget", false, "gamemode=mp,wz");
+    weapon_data add_weapon_info("frag_grenade", "Frag grenade", "gadget", false);
+    weapon_data add_weapon_info("flash_grenade", "Flash grenade", "gadget", false, "gamemode=mp,wz");
+    weapon_data add_weapon_info("eq_grapple", "Grapple", "gadget", false, "gamemode=mp,wz");
+    weapon_data add_weapon_info("eq_hawk", "Hawk", "gadget", false, "gamemode=mp,wz");
+    weapon_data add_weapon_info("gadget_jammer", "Jammer (prototype)", "gadget", false, "gamemode=mp,wz");
+    weapon_data add_weapon_info("gadget_health_regen", "Health regen", "gadget", false, "gamemode=mp");
+    weapon_data add_weapon_info("homunculus", "Homunculus", "gadget", true, "gamemode=wz|map=zm_zodt8,zm_towers,zm_mansion,zm_red");
+    weapon_data add_weapon_info("eq_molotov", "Molotov", "gadget", false);
+    weapon_data add_weapon_info("mute_smoke", "Mute smoke (bug)", "gadget", false, "gamemode=mp");
+    weapon_data add_weapon_info("gadget_radiation_field", "Nuclear reactor", "gadget", false, "gamemode=mp");
+    weapon_data add_weapon_info("eq_sensor", "Sensor dart", "gadget", false, "gamemode=mp,wz");
+    weapon_data add_weapon_info("willy_pete", "Smoke", "gadget", false, "gamemode=mp,wz");
+    weapon_data add_weapon_info("eq_smoke", "Smoke (Spectre)", "gadget", false, "gamemode=mp,wz");
+    weapon_data add_weapon_info("snowball", "Snowball", "gadget", false, "gamemode=wz|map=zm_orange");
+    weapon_data add_weapon_info("gadget_spawnbeacon", "Spawn beacon", "gadget", false, "gamemode=mp");
+    weapon_data add_weapon_info("m202_flash", "Thermite", "gadget", false, "gamemode=mp");
+    weapon_data add_weapon_info("hatchet", "Tomahawk", "gadget", false, "gamemode=mp,wz");
+    weapon_data add_weapon_info("tomahawk_t8", "Hell retriver", "gadget", true, "gamemode=wz|map=zm_escape");
+    weapon_data add_weapon_info("eq_tripwire", "Tripwire", "gadget", false, "gamemode=mp,wz");
+    weapon_data add_weapon_info("trophy_system", "Trophy system", "gadget", false, "gamemode=mp,wz");
+    weapon_data add_weapon_info("waterballoon", "Waterballoon", "gadget", false, "gamemode=wz");
+    weapon_data add_weapon_info("eq_swat_grenade", "9-Bang", "gadget", false, "gamemode=mp,wz");
+    
+    array::add(weapon_data.global_weapons, "drone_squadron");
+    array::add(weapon_data.global_weapons, "drone_strike");
+    array::add(weapon_data.global_weapons, "emp");
+    array::add(weapon_data.global_weapons, "emp_grenade");
+    array::add(weapon_data.global_weapons, "emp_turret");
+    array::add(weapon_data.global_weapons, "eq_cluster_semtex_grenade");
+    array::add(weapon_data.global_weapons, "eq_concertina_wire");
+    array::add(weapon_data.global_weapons, "eq_grapple");
+    array::add(weapon_data.global_weapons, "eq_gravityslam");
+    array::add(weapon_data.global_weapons, "eq_hawk");
+    array::add(weapon_data.global_weapons, "eq_localheal");
+    array::add(weapon_data.global_weapons, "eq_sensor");
+    array::add(weapon_data.global_weapons, "eq_slow_grenade");
+    array::add(weapon_data.global_weapons, "eq_slow_grenade_hunter_ph");
+    array::add(weapon_data.global_weapons, "eq_smoke");
+    array::add(weapon_data.global_weapons, "eq_sticky_grenade");
+    array::add(weapon_data.global_weapons, "eq_swat_grenade");
+    array::add(weapon_data.global_weapons, "eq_tripwire");
+    array::add(weapon_data.global_weapons, "equip_sprout");
+    array::add(weapon_data.global_weapons, "flak_drone_rocket");
+    array::add(weapon_data.global_weapons, "gadget_armor");
+    array::add(weapon_data.global_weapons, "gadget_camo");
+    array::add(weapon_data.global_weapons, "gadget_clone");
+    array::add(weapon_data.global_weapons, "gadget_health_regen");
+    array::add(weapon_data.global_weapons, "gadget_health_regen_squad");
+    array::add(weapon_data.global_weapons, "gadget_heat_wave");
+    array::add(weapon_data.global_weapons, "gadget_icepick");
+    array::add(weapon_data.global_weapons, "gadget_jammer");
+    array::add(weapon_data.global_weapons, "gadget_medicalinjectiongun");
+    array::add(weapon_data.global_weapons, "gadget_radiation_field");
+    array::add(weapon_data.global_weapons, "gadget_resurrect");
+    array::add(weapon_data.global_weapons, "gadget_spawnbeacon");
+    array::add(weapon_data.global_weapons, "gadget_speed_burst");
+    array::add(weapon_data.global_weapons, "gadget_supplypod");
+    array::add(weapon_data.global_weapons, "gadget_vision_pulse");
+    array::add(weapon_data.global_weapons, "galvaknuckles_t8");
+    array::add(weapon_data.global_weapons, "golden_knife");
+    array::add(weapon_data.global_weapons, "gun_ultimate_turret");
+    array::add(weapon_data.global_weapons, "helicopter_comlink");
+    array::add(weapon_data.global_weapons, "hero_pineapple_grenade");
+    array::add(weapon_data.global_weapons, "hind_ffar");
+    
+    array::add(weapon_data.global_weapons, "siegebot_javelin_turret");
+    array::add(weapon_data.global_weapons, "siegebot_launcher_turret");
+    array::add(weapon_data.global_weapons, "siegebot_launcher_turret_theia");
+    array::add(weapon_data.global_weapons, "sig_blade");
+    array::add(weapon_data.global_weapons, "sig_buckler");
+    array::add(weapon_data.global_weapons, "sig_buckler_dw");
+    array::add(weapon_data.global_weapons, "sig_buckler_turret");
+    array::add(weapon_data.global_weapons, "sig_minigun");
+    array::add(weapon_data.global_weapons, "spike_charge");
+    array::add(weapon_data.global_weapons, "spike_charge_siegebot");
+    array::add(weapon_data.global_weapons, "spike_charge_siegebot_theia");
+    array::add(weapon_data.global_weapons, "spike_launcher");
+    array::add(weapon_data.global_weapons, "spike_launcher_cpzm");
+    array::add(weapon_data.global_weapons, "sticky_grenade");
+    array::add(weapon_data.global_weapons, "hero_gravityspikes");
+    array::add(weapon_data.global_weapons, "killstreak_ai_tank");
+    array::add(weapon_data.global_weapons, "killstreak_qrdrone");
+    // array::add(weapon_data.global_weapons, "killstreak_remote");
+    array::add(weapon_data.global_weapons, "microwave_turret");
+    array::add(weapon_data.global_weapons, "microwave_turret_deploy");
+    array::add(weapon_data.global_weapons, "minigun");
+    array::add(weapon_data.global_weapons, "music_box");
+    array::add(weapon_data.global_weapons, "overwatch_helicopter");
+    //array::add(weapon_data.global_weapons, "parachute");
+    array::add(weapon_data.global_weapons, "planemortar");
+    array::add(weapon_data.global_weapons, "recon_car");
+    array::add(weapon_data.global_weapons, "remote_missile");
+    array::add(weapon_data.global_weapons, "remote_missile_bomblet");
+    array::add(weapon_data.global_weapons, "rider_spear_projectile");
+    array::add(weapon_data.global_weapons, "riotshield");
+    array::add(weapon_data.global_weapons, "satchel_charge");
+    array::add(weapon_data.global_weapons, "satellite");
+    array::add(weapon_data.global_weapons, "scavenger_item");
+    array::add(weapon_data.global_weapons, "scavenger_item_hack");
+    array::add(weapon_data.global_weapons, "scrambler");
+    array::add(weapon_data.global_weapons, "seeker_mine_arc");
+    array::add(weapon_data.global_weapons, "spectre_grenade");
+    array::add(weapon_data.global_weapons, "spknifeork");
+    array::add(weapon_data.global_weapons, "spoon_alcatraz");
+    array::add(weapon_data.global_weapons, "spork_alcatraz");
+    array::add(weapon_data.global_weapons, "stake_knife");
+    array::add(weapon_data.global_weapons, "sprint_boost_grenade");
+    array::add(weapon_data.global_weapons, "straferun");
+    //array::add(weapon_data.global_weapons, "straferun_gun");
+    //array::add(weapon_data.global_weapons, "straferun_rockets");
+    array::add(weapon_data.global_weapons, "supplydrop");
+    array::add(weapon_data.global_weapons, "swat_team");
+    array::add(weapon_data.global_weapons, "tank_robot");
+    array::add(weapon_data.global_weapons, "tank_robot_launcher_turret");
+    array::add(weapon_data.global_weapons, "uav");
+    array::add(weapon_data.global_weapons, "ultimate_turret");
+    array::add(weapon_data.global_weapons, "ultimate_turret_deploy");
+    array::add(weapon_data.global_weapons, "weapon_null");
+    array::add(weapon_data.global_weapons, "wraith_fire_fire");
+    array::add(weapon_data.global_weapons, "zhield_dw");
+    array::add(weapon_data.global_weapons, "zhield_frost_dw");
+    array::add(weapon_data.global_weapons, "zhield_zpear_dw");
+    array::add(weapon_data.global_weapons, "zhield_zpear_turret");
+    array::add(weapon_data.global_weapons, "zombie_ai_defaultmelee");
+    array::add(weapon_data.global_weapons, "zombie_builder");
+    array::add(weapon_data.global_weapons, "zombie_fists");
+    array::add(weapon_data.global_weapons, "bowie_knife");
+    array::add(weapon_data.global_weapons, "bowie_knife_story_1");
+    array::add(weapon_data.global_weapons, "camera_spike");
+    array::add(weapon_data.global_weapons, "cobra_20mm");
+    //array::add(weapon_data.global_weapons, "cobra_20mm_comlink");
+    array::add(weapon_data.global_weapons, "combat_robot_marker");
+    array::add(weapon_data.global_weapons, "counteruav");
+    array::add(weapon_data.global_weapons, "cymbal_monkey");
+    array::add(weapon_data.global_weapons, "dart");
+    array::add(weapon_data.global_weapons, "dart_blade");
+    array::add(weapon_data.global_weapons, "dart_turret");
+    //array::add(weapon_data.global_weapons, "destructible_car");
+    array::add(weapon_data.global_weapons, "dog_ai_defaultmelee");
+    array::add(weapon_data.global_weapons, "hash_114729f4d5a8d08c");
+    array::add(weapon_data.global_weapons, "hash_117b6097e272dd1f");
+    array::add(weapon_data.global_weapons, "hash_136814846f94f0cd");
+    array::add(weapon_data.global_weapons, "hash_158041aab1e14f3a");
+    array::add(weapon_data.global_weapons, "hash_166200a2e04510f4");
+    array::add(weapon_data.global_weapons, "hash_1773b576c62a506");
+    array::add(weapon_data.global_weapons, "hash_17f9f60ce4ea5074");
+    array::add(weapon_data.global_weapons, "hash_185abc5c82e9d849");
+    array::add(weapon_data.global_weapons, "hash_18c353e6053566bd");
+    array::add(weapon_data.global_weapons, "hash_19049416fc420e6f");
+    array::add(weapon_data.global_weapons, "hash_19abd3767bd1566d");
+    array::add(weapon_data.global_weapons, "hash_1b92c0a29a45b07c");
+    array::add(weapon_data.global_weapons, "hash_1d2a0f56220e6ff6");
+    array::add(weapon_data.global_weapons, "hash_1d2a1056220e71a9");
+    array::add(weapon_data.global_weapons, "hash_1d2a1156220e735c");
+    array::add(weapon_data.global_weapons, "hash_1d2a1256220e750f");
+    array::add(weapon_data.global_weapons, "hash_1d8ec79043d16eb");
+    array::add(weapon_data.global_weapons, "hash_1db9fa8f7231f179");
+    array::add(weapon_data.global_weapons, "hash_216eeca7a4295e4");
+    array::add(weapon_data.global_weapons, "hash_2182349b1e42e1a4");
+    array::add(weapon_data.global_weapons, "hash_24840aebcc206215");
+    array::add(weapon_data.global_weapons, "hash_26ffb92552ae26be");
+    array::add(weapon_data.global_weapons, "hash_27e4878539bc7f72");
+    array::add(weapon_data.global_weapons, "hash_28323cd36d8b5f93");
+    array::add(weapon_data.global_weapons, "hash_286a30586a6aed12");
+    array::add(weapon_data.global_weapons, "hash_291e1c117ebbf5e6");
+    array::add(weapon_data.global_weapons, "hash_2b3a2f2eeada34a8");
+    array::add(weapon_data.global_weapons, "hash_2ca35808b452d993");
+    array::add(weapon_data.global_weapons, "hash_31be8125c7d0f273");
+    array::add(weapon_data.global_weapons, "hash_33be4792feeabece");
+    array::add(weapon_data.global_weapons, "hash_34575452eba07c65");
+    array::add(weapon_data.global_weapons, "hash_38c782e8db011867");
+    array::add(weapon_data.global_weapons, "hash_38ffd09564931482");
+    array::add(weapon_data.global_weapons, "hash_3b38033eca0a3bdd");
+    array::add(weapon_data.global_weapons, "hash_3b5610f58856b4ea");
+    array::add(weapon_data.global_weapons, "hash_3f62a872201cd1ce");
+    array::add(weapon_data.global_weapons, "hash_3fec64a2af587850");
+    array::add(weapon_data.global_weapons, "hash_40380537847df901");
+    array::add(weapon_data.global_weapons, "hash_42895043be26dc73");
+    array::add(weapon_data.global_weapons, "hash_42a45d43be3dba42");
+    array::add(weapon_data.global_weapons, "hash_46a10de5f2b5c030");
+    array::add(weapon_data.global_weapons, "hash_46a10fe5f2b5c396");
+    array::add(weapon_data.global_weapons, "hash_46a110e5f2b5c549");
+    array::add(weapon_data.global_weapons, "hash_49441cf211e409b9");
+    array::add(weapon_data.global_weapons, "hash_494e18dad9bd3acb");
+    array::add(weapon_data.global_weapons, "hash_494e1ddad9bd434a");
+    array::add(weapon_data.global_weapons, "hash_494e1edad9bd44fd");
+    array::add(weapon_data.global_weapons, "hash_494f5501b3f8e1e9");
+    array::add(weapon_data.global_weapons, "hash_4aa70c9036cc210e");
+    array::add(weapon_data.global_weapons, "hash_4b92b1a2aa3037f5");
+    array::add(weapon_data.global_weapons, "hash_5517c404e6d9592b");
+    array::add(weapon_data.global_weapons, "hash_5517c504e6d95ade");
+    array::add(weapon_data.global_weapons, "hash_5517c604e6d95c91");
+    array::add(weapon_data.global_weapons, "hash_5624a55eb03372d0");
+    array::add(weapon_data.global_weapons, "hash_579652e2459b8c74");
+    array::add(weapon_data.global_weapons, "hash_5a7fd1af4a1d5c9");
+    array::add(weapon_data.global_weapons, "hash_5ce0422cff84b2b3");
+    array::add(weapon_data.global_weapons, "hash_5e1f4dd6a8a34700");
+    array::add(weapon_data.global_weapons, "hash_5fbda3ef4b135b49");
+    array::add(weapon_data.global_weapons, "hash_615e6c73989c85b4");
+    array::add(weapon_data.global_weapons, "hash_617dcc39334959ce");
+    array::add(weapon_data.global_weapons, "hash_661d3f578391fdda");
+    array::add(weapon_data.global_weapons, "hash_66401df7cd6bf292");
+    array::add(weapon_data.global_weapons, "hash_6a9069969e6fa287");
+    array::add(weapon_data.global_weapons, "hash_6b525d940c1c1e39");
+    array::add(weapon_data.global_weapons, "hash_721bd01efec90239");
+    array::add(weapon_data.global_weapons, "hash_7264d6f24a950a5b");
+    array::add(weapon_data.global_weapons, "hash_72cba96681a7af18");
+    array::add(weapon_data.global_weapons, "hash_740692024876c999");
+    array::add(weapon_data.global_weapons, "hash_753ba1d1412a4962");
+    array::add(weapon_data.global_weapons, "hash_76d1218de27081f6");
+    array::add(weapon_data.global_weapons, "hash_78e66b21aa05c753");
+    array::add(weapon_data.global_weapons, "hash_7932008294f0d876");
+    array::add(weapon_data.global_weapons, "hash_79fccf9f83bf7568");
+    array::add(weapon_data.global_weapons, "hash_7a42b57be462143f");
+    array::add(weapon_data.global_weapons, "hash_7a88daffaea7a9cf");
+    array::add(weapon_data.global_weapons, "hash_7ab3f9a730359659");
+    array::add(weapon_data.global_weapons, "hash_7ca6d96b2bfb822c");
+    array::add(weapon_data.global_weapons, "hash_7ca6dc6b2bfb8745");
+    array::add(weapon_data.global_weapons, "hash_7d040bd867e93061");
+    array::add(weapon_data.global_weapons, "hash_8a4d8f38ca65ff0");
+    array::add(weapon_data.global_weapons, "hash_8c773df059a6d5e");
+    array::add(weapon_data.global_weapons, "hash_a2556a2905fd952");
+    array::add(weapon_data.global_weapons, "hash_a3fa25abdd4b905");
+    array::add(weapon_data.global_weapons, "hash_eb070d4a71cdba8");
+    array::add(weapon_data.global_weapons, "hash_eb072d4a71cdf0e");
+    array::add(weapon_data.global_weapons, "hash_eb073d4a71ce0c1");
 }

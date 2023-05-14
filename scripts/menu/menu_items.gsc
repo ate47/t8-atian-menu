@@ -111,6 +111,12 @@ init_menus() {
             self add_menu_item("weapons_custom", self.atianconfig.add_weapons[i], &func_give_weapon, self.atianconfig.add_weapons[i]);
         }
     }
+
+    // internal weapons
+    self add_menu("weapons_internal", "Internal", "weapons", true, &menu_open_message, "^1Warning: Can crash the game with bad usage!");
+    for (i = 0; i < weapon_data.global_weapons.size; i++) {
+        self add_menu_item("weapons_internal", weapon_data.global_weapons[i], &func_give_weapon, weapon_data.global_weapons[i]);
+    }
     
 
     if (isdefined(level.script)) {
@@ -168,6 +174,9 @@ init_menus() {
             case "mp_cairo":
                 self add_menu_item("teleport", "Center", &func_teleport, (533, 372, -0.064));
                 break;
+            case "mp_grind":
+                self add_menu_item("teleport", "Center", &func_teleport, (43, -581, 1208.13));
+                break;
             case "mp_cosmodrome":
                 self add_menu_item("teleport", "Center", &func_teleport, (-927, 372, -3.875));
                 break;
@@ -187,7 +196,10 @@ init_menus() {
                 self add_menu_item("teleport", "West City", &func_teleport, (-74410, 15369, 512.125), (-23, 117, 0));
                 self add_menu_item("teleport", "West City - Park", &func_teleport, (-72134, -19485, 512.125), (0, 85, 0));
                 break;
-            case "mp_gridlock": // lair
+            case "mp_geothermal":
+                self add_menu_item("teleport", "Center", &func_teleport, (-777, 1465, 448.125), (0, -77, 0));
+                break;
+            case "mp_gridlock":
                 self add_menu_item("teleport", "Center", &func_teleport, (-3, -724, 288.125), (0, 67, 0));
                 break;
             case "mp_hacienda":
@@ -226,6 +238,9 @@ init_menus() {
                 self add_menu_item("teleport", "Island 4", &func_teleport, (7258, -13268, 92.4429), (0, 170, 0));
                 self add_menu_item("teleport", "Island 4", &func_teleport, (8627, 11180, 18.8269), (0, -148, 0));
                 self add_menu_item("teleport", "Jail", &func_teleport, (2273, -1938, -47.875), (0, 26, 0));
+                break;
+            case "mp_russianbase":
+                self add_menu_item("teleport", "Center", &func_teleport, (-230, -118, -0.69361));
                 break;
             case "mp_urban": // arsenal
             case "mp_urban_alt": // arsenal sandstorm
@@ -502,6 +517,27 @@ init_menus() {
         self add_menu_item("skin_custom_warpaint", "Skin " + i, &func_set_skin_custom_warpaint, i);
     }
 
+    self add_menu("internal", "Internal", "start_menu", true);
+    
+    if (is_zombies()) {
+        self add_menu("dev_ee", "ZM easter eggs", "internal", true, &func_searchee);
+    }
+
+    if (isdefined(level.atianconfig.loaded_modules)) {
+        self add_menu("dev_systems", "Loaded systems", "internal", true);
+        
+        for (i = 0; i < level.atianconfig.loaded_modules.size; i++) {
+            self add_menu_item("dev_systems", "" + level.atianconfig.loaded_modules[i]);
+        }
+    }
+
+    if (isdefined(level.atianconfig.ignored_modules)) {
+        self add_menu("dev_systems_ignored", "Ignored systems", "internal", true);
+        
+        for (i = 0; i < level.atianconfig.ignored_modules.size; i++) {
+            self add_menu_item("dev_systems_ignored", "" + level.atianconfig.ignored_modules[i]);
+        }
+    }
     
     if (is_dev_mode()) {
         self add_menu_item("random", "add bot", &func_spawn_add_bot, true);
@@ -511,13 +547,6 @@ init_menus() {
         self add_menu_item_modswitch("tool_weapon", "Physic gun", "physic_gun");
         
         self add_menu("tool_menu_dev", "Dev tools", "tool_menu", true);
-        
-        if (is_zombies()) {
-            self add_menu("dev_ee", "ZM easter eggs", "tool_menu_dev", true, &func_searchee);
-            self add_menu("dev_zmweapon_dv1", "ZM weapons dv=1", "tool_menu_dev", true, &func_searchweapon, #"hash_5694d3fa5334f8fe");
-            self add_menu("dev_zmweapon_dv2", "ZM weapons dv=2", "tool_menu_dev", true, &func_searchweapon, #"hash_3f8d28bb3d9e9bec");
-            self add_menu("dev_zmweapon_dvn", "ZM weapons ndv", "tool_menu_dev", true, &func_searchweapon, #"hash_7bda40310359350e");
-        }
 
         self add_menu_item("tool_menu_dev", "reset weapon opts", &func_setweaponoptreset);
         self add_menu("dev_weaponopt3", "Weapon opt 3", "tool_menu_dev", true);
@@ -562,22 +591,6 @@ init_menus() {
                 if(isdefined(weapon.weapon.name)) {
                     self add_menu_item("dev_weapon", hash_lookup(weapon.weapon.name), &func_give_weapon, weapon.weapon.name);
                 }
-            }
-        }
-
-        if (isdefined(level.atianconfig.loaded_modules)) {
-            self add_menu("dev_systems", "Loaded systems", "tool_menu_dev", true);
-            
-            for (i = 0; i < level.atianconfig.loaded_modules.size; i++) {
-                self add_menu_item("dev_systems", "" + level.atianconfig.loaded_modules[i]);
-            }
-        }
-
-        if (isdefined(level.atianconfig.ignored_modules)) {
-            self add_menu("dev_systems_ignored", "Ignored systems", "tool_menu_dev", true);
-            
-            for (i = 0; i < level.atianconfig.ignored_modules.size; i++) {
-                self add_menu_item("dev_systems_ignored", "" + level.atianconfig.ignored_modules[i]);
             }
         }
 
