@@ -16,3 +16,4 @@ wz_escape_alt 6c4fd4af9da9e4ca
 What can cause a crash:
 
 - Bad function call : bad name? forgot [[ func ]] to call a function pointer?
+- using array::add(arr, val) with isarray(arr) = false

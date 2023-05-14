@@ -17,7 +17,6 @@ weapon_enum_match_restriction(weapon_restriction) {
                     break;
                 case "gamemode":
                     data = get_gamemode();
-                    is_false = true;
                     break;
                 case "gametype":
                     data = nullable_to_str(level.gametype, "nogametype");

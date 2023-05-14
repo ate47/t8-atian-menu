@@ -33,13 +33,15 @@ You can config the mod menu in the [`scripts/config.gsc`](scripts/config.gsc) fi
 
 - general
   - Force character skin
+  - Force weapon camo
   - Enable options at startup
 - blackout
   - Force mode
   - Force map
-  - Set the zombies spawner types
+  - Set the zombies spawner types (brutus, avogadro or zombies)
   - Spawn the Icarus
   - Quaknarok
+  - Set the health of the avogadro
   - Spawn waterballons
   - Spawn snowballs
 - zombies
@@ -50,41 +52,52 @@ You can config the mod menu in the [`scripts/config.gsc`](scripts/config.gsc) fi
 - Tools
   - 3rd person
   - max ammo
-  - fly
+  - fly mode (+config for the speeds)
   - no damage
   - Kill all zombies
   - max points (Zombies)
   - set zombies' speed (Zombies)
+  - set round (Zombies)
+  - ignore me (Zombies)
+  - End contracts (Zombies)
+- Give weapons
+  - All base weapons + upgraded in zombies
+  - Wunderwaffe (BO3) (Zombies/Tag der Totten)
+  - Tempest/Minigun (BO3) (Multiplayer)
+  - Hell retriver, Waterballoons and Snowballs (Blackout)
+  - Spectre's Blade (Blackout)
+  - Prototypes and remnant from BO3
 - Gun tool ([Demo](https://www.youtube.com/watch?v=hPBZrQQ7u4c))
+  - Drop weapon
   - TP gun
   - Rocket man
   - Rocket gun
   - Armageddon
-  - A10 rocket (MP)
-  - Mantis rocket (MP)
-  - Hellstorm rockets (MP)
-  - Dart (MP)
+  - A10 rocket/minigun, Mantis rocket, Hellstorm rocket, Dart (MP)
   - Elephant riders (IX)
   - Gegenees shot (AE)
   - Darts (BoTD)
   - Nova shot (AO)
 - Teleport tool
   - Waypoint tp (Blackout) : TP using the map (need fix for the main map)
-  - tp to hot location in your map (wip)
-- set characters
-- set skin
-  - skin palette
-  - skin warpaint
-  - skin decals
-- fly
-- set map
-- set gametype
-- set round (Zombies)
-- ignore me (Zombies)
-- End contracts (Zombies)
-- give weapon (+upgraded (Zombies))
-- set camo
-- set reticle
+  - tp to hot location in your map (wip, not all the maps are available)
+- Loading
+  - set map
+  - set gametype
+- Customization
+  - set characters
+  - Set character skin (+unreleased skin)
+  - set skin palette
+  - set skin warpaint
+  - set skin decals
+  - Set weapon camo
+  - Set weapon reticle
+  - Set weapon mastercraft
+- Internal tools
+  - GSC system list (+ignored)
+  - Loaded EEs list (Zombies)
+  - Basic hash_lookup method
+  - Entity tp
 
 ## Dev tools
 

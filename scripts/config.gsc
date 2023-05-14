@@ -132,7 +132,7 @@ AtianMenuConfig() {
     // ------ multiplayer config -----
 
     // time to select a specialist
-    self.mp_drafttime = 2;
+    //self.mp_drafttime = 30;
 
     // -------- zombie config --------
 
