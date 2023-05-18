@@ -168,6 +168,24 @@ handle_config() {
         if (isdefined(atianconfig.numlives) && atianconfig.numlives > 0) {
             setGametypeSetting(#"playernumlives", atianconfig.numlives);
         }
+        if (isdefined(atianconfig.blackout_enable)) {
+            if (isarray(atianconfig.blackout_enable)) {
+                for (i = 0; i < atianconfig.blackout_enable.size; i++) {
+                    setGametypeSetting(#"wzenable" + atianconfig.blackout_enable[i], true);
+                }
+            } else {
+                setGametypeSetting(#"wzenable" + atianconfig.blackout_enable, true);
+            }
+        }
+        if (isdefined(atianconfig.blackout_disable)) {
+            if (isarray(atianconfig.blackout_disable)) {
+                for (i = 0; i < atianconfig.blackout_disable.size; i++) {
+                    setGametypeSetting(#"wzenable" + atianconfig.blackout_disable[i], false);
+                }
+            } else {
+                setGametypeSetting(#"wzenable" + atianconfig.blackout_disable, false);
+            }
+        }
     }
     
     if (is_zombies()) {

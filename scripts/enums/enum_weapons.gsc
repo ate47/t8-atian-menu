@@ -1,4 +1,7 @@
 weapon_enum_match_restriction(weapon_restriction) {
+    if (isdefined(level.atianconfig.devcfg.bypassweapon_script) && level.atianconfig.devcfg.bypassweapon_script) {
+        return true;
+    }
     a_restrictions_or = strTok(weapon_restriction, "|");
     
     for (i = 0; i < a_restrictions_or.size; i++) {
@@ -144,6 +147,7 @@ generate_weapon_enum() {
     weapon_data add_weapon_info("pistol_revolver_t8", "Mozu", "pistol", true);
     weapon_data add_weapon_info("pistol_fullauto_t8", "KAP-45", "pistol", true);
     weapon_data add_weapon_info("pistol_topbreak_t8", "Welling", "pistol", true, "gamemode=zm");
+    weapon_data add_weapon_info("pistol_standard", "MR-6 (BO3)", "pistol", false);
 
     weapon_data add_weapon_info("lmg_standard_t8", "Titan", "lmg", true);
     weapon_data add_weapon_info("lmg_spray_t8", "Hades", "lmg", true);
@@ -172,9 +176,11 @@ generate_weapon_enum() {
     weapon_data add_weapon_info("melee_actionfigure_t8", "Series 6 Outrider", "melee", false, "gamemode=mp,wz");
     weapon_data add_weapon_info("melee_cutlass_t8", "Rising Tide", "melee", false, "gamemode=mp,wz");
     weapon_data add_weapon_info("spknifeork", "Spknifeork", "melee", false, "map=zm_escape");
-    weapon_data add_weapon_info("spknifspoon_alcatrazeork", "Spknifspoon", "melee", false, "map=zm_escape");
+    weapon_data add_weapon_info("spoon_alcatraz", "Spoon alcatraz", "melee", false, "map=zm_escape");
     weapon_data add_weapon_info("spork_alcatraz", "Spknifeork", "melee", false, "map=zm_escape");
     weapon_data add_weapon_info("stake_knife", "Stake knife", "melee", false, "map=zm_mansion");
+    weapon_data add_weapon_info("galvaknuckles_t8", "Galvaknuckles", "melee", false, "map=zm_white");
+    
     
     weapon_data add_weapon_info("ray_gun", "Ray gun", "ww", true, "gamemode=wz,mp|map=zm_office,zm_orange,zm_escape,zm_white");
     weapon_data add_weapon_info("ray_gun_mk2", "Ray gun MK2", "ww", true, "map=zm_office,zm_orange,zm_escape,zm_white,wz_escape,wz_escape_alt"); // crash the game on the main map
@@ -182,7 +188,7 @@ generate_weapon_enum() {
     weapon_data add_weapon_info("ray_gun_mk2x", "Ray gun MK2 X", "ww", true, "map=zm_white,wz_escape,wz_escape_alt");
     weapon_data add_weapon_info("ray_gun_mk2y", "Ray gun MK2 Y", "ww", true, "map=zm_white,wz_escape,wz_escape_alt");
     weapon_data add_weapon_info("ray_gun_mk2z", "Ray gun MK2 Z", "ww", true, "map=zm_white,wz_escape,wz_escape_alt");
-    weapon_data add_weapon_info("ww_freezegun_t8", "Winter's Howl", "ww", true, "map=zm_office,zm_orange,wz_escape,wz_escape_alt");
+    weapon_data add_weapon_info("ww_freezegun_t8", "Winter's Howl", "ww", true, "map=zm_office,zm_white,zm_orange,wz_escape,wz_escape_alt");
     weapon_data add_weapon_info("ww_blundergat_t8", "Blundergat", "ww", true, "gamemode=wz|map=zm_escape");
     weapon_data add_weapon_info("ww_blundergat_fire_t8", "Magmagat", "ww", true, "map=zm_escape");
     weapon_data add_weapon_info("ww_blundergat_acid_t8", "Acidgat", "ww", true, "map=zm_escape");
@@ -244,8 +250,6 @@ generate_weapon_enum() {
     // weapon_data add_weapon_info("hero_lightninggun_arc", "Tempest 2 (BO3)", "hero", false, "gamemode=mp");
     weapon_data add_weapon_info("shock_rifle", "Tempest (BO4)", "hero", false, "gamemode=mp");
     weapon_data add_weapon_info("seeker_mine_arc", "Seeker mine arc weapon", "hero", false, "gamemode=mp");
-    
-
     weapon_data add_weapon_info("hero_annihilator", "Annihilator", "hero", false, "gamemode=mp,wz");
     weapon_data add_weapon_info("hero_flamethrower", "Purifier", "hero", false, "gamemode=mp,wz");
     weapon_data add_weapon_info("hero_pineapplegun", "War machine", "hero", false, "gamemode=mp,wz");
@@ -256,6 +260,7 @@ generate_weapon_enum() {
     weapon_data add_weapon_info("sig_minigun", "Minigun (bug)", "hero", false, "gamemode=mp");
     weapon_data add_weapon_info("hero_minigun", "Minigun (BO3)", "hero", false, "gamemode=mp");
     weapon_data add_weapon_info("hero_bowlauncher", "Sparrow (BO3 physic)", "hero", false, "gamemode=mp");
+    weapon_data add_weapon_info("sig_bow_quickshot", "Sparrow", "hero", false, "gamemode=mp");
     weapon_data add_weapon_info("eq_localheal", "Heal", "hero", false, "gamemode=mp");
     weapon_data add_weapon_info("gadget_icepick", "Icepick", "hero", false, "gamemode=mp");
 
@@ -265,7 +270,11 @@ generate_weapon_enum() {
     weapon_data add_weapon_info("special_crossbow_t8_sas", "Reaver C86 (S&S)", "special", false, "gamemode=mp"); // ;gametype=sas
     weapon_data add_weapon_info("launcher_standard_t8", "Hellion Salvo", "special", true);
     weapon_data add_weapon_info("remote_missile_missile", "Hellstorm missile", "special", false, "gamemode=mp");
-
+    weapon_data add_weapon_info("minigun", "Minigun", "special", false, "gamemode=zm");
+    weapon_data add_weapon_info("zhield_dw", "Shield", "special", false, "map=zm_zodt8,zm_orange,zm_white,zm_mansion");
+    weapon_data add_weapon_info("hash_42a45d43be3dba42", "Soul shield", "special", false, "map=zm_escape");
+    weapon_data add_weapon_info("riotshield", "Riot shield", "special", false, "gamemode=zm");
+    weapon_data add_weapon_info("defaultweapon", "Default weapon", "special", false);
 
     weapon_data add_weapon_info("ball", "Ball", "gametype", false, "gamemode=mp");
     weapon_data add_weapon_info("briefcase_bomb", "Briefcase bomb", "gametype", false, "gamemode=mp");
@@ -279,7 +288,7 @@ generate_weapon_enum() {
     weapon_data add_weapon_info("eq_cluster_semtex_grenade", "Cluster grenade", "gadget", false, "gamemode=mp,wz");
     weapon_data add_weapon_info("eq_concertina_wire", "Concertina wire", "gadget", false, "gamemode=mp,wz");
     weapon_data add_weapon_info("concussion_grenade", "Concussion grenade", "gadget", false, "gamemode=mp,wz"); // or eq_slow_grenade eq_slow_grenade_hunter_ph
-    weapon_data add_weapon_info("cymbal_monkey", "Cymbal monkey", "gadget", true, "gamemode=wz|map=zm_office,zm_escape,zm_white,zm_orange");
+    weapon_data add_weapon_info("cymbal_monkey", "Cymbal monkey", "gadget", false, "gamemode=wz|map=zm_office,zm_escape,zm_white,zm_orange");
     weapon_data add_weapon_info("eq_emp_grenade", "EMP grenade", "gadget", false, "gamemode=mp,wz");
     weapon_data add_weapon_info("frag_grenade", "Frag grenade", "gadget", false);
     weapon_data add_weapon_info("flash_grenade", "Flash grenade", "gadget", false, "gamemode=mp,wz");
@@ -287,7 +296,7 @@ generate_weapon_enum() {
     weapon_data add_weapon_info("eq_hawk", "Hawk", "gadget", false, "gamemode=mp,wz");
     weapon_data add_weapon_info("gadget_jammer", "Jammer (prototype)", "gadget", false, "gamemode=mp,wz");
     weapon_data add_weapon_info("gadget_health_regen", "Health regen", "gadget", false, "gamemode=mp");
-    weapon_data add_weapon_info("homunculus", "Homunculus", "gadget", true, "gamemode=wz|map=zm_zodt8,zm_towers,zm_mansion,zm_red");
+    weapon_data add_weapon_info("homunculus", "Homunculus", "gadget", false, "gamemode=wz,zm");
     weapon_data add_weapon_info("eq_molotov", "Molotov", "gadget", false);
     weapon_data add_weapon_info("mute_smoke", "Mute smoke (bug)", "gadget", false, "gamemode=mp");
     weapon_data add_weapon_info("gadget_radiation_field", "Nuclear reactor", "gadget", false, "gamemode=mp");
@@ -297,12 +306,15 @@ generate_weapon_enum() {
     weapon_data add_weapon_info("snowball", "Snowball", "gadget", false, "gamemode=wz|map=zm_orange");
     weapon_data add_weapon_info("gadget_spawnbeacon", "Spawn beacon", "gadget", false, "gamemode=mp");
     weapon_data add_weapon_info("m202_flash", "Thermite", "gadget", false, "gamemode=mp");
+    weapon_data add_weapon_info("wraith_fire_fire", "Thermite", "gadget", false, "gamemode=zm");
     weapon_data add_weapon_info("hatchet", "Tomahawk", "gadget", false, "gamemode=mp,wz");
     weapon_data add_weapon_info("tomahawk_t8", "Hell retriver", "gadget", true, "gamemode=wz|map=zm_escape");
     weapon_data add_weapon_info("eq_tripwire", "Tripwire", "gadget", false, "gamemode=mp,wz");
     weapon_data add_weapon_info("trophy_system", "Trophy system", "gadget", false, "gamemode=mp,wz");
     weapon_data add_weapon_info("waterballoon", "Waterballoon", "gadget", false, "gamemode=wz");
     weapon_data add_weapon_info("eq_swat_grenade", "9-Bang", "gadget", false, "gamemode=mp,wz");
+    weapon_data add_weapon_info("sticky_grenade", "Sticky grenade", "gadget", false, "gamemode=zm");
+    
     
     array::add(weapon_data.global_weapons, "drone_squadron");
     array::add(weapon_data.global_weapons, "drone_strike");
@@ -507,4 +519,98 @@ generate_weapon_enum() {
     array::add(weapon_data.global_weapons, "hash_eb070d4a71cdba8");
     array::add(weapon_data.global_weapons, "hash_eb072d4a71cdf0e");
     array::add(weapon_data.global_weapons, "hash_eb073d4a71ce0c1");
+
+    array::add(weapon_data.global_weapons, "pistol_standard");
+    array::add(weapon_data.global_weapons, "pistol_revolver38");
+    array::add(weapon_data.global_weapons, "pistol_burst");
+    array::add(weapon_data.global_weapons, "pistol_fullauto");
+    array::add(weapon_data.global_weapons, "pistol_shotgun_dw");
+    array::add(weapon_data.global_weapons, "pistol_energy");
+    array::add(weapon_data.global_weapons, "smg_standard");
+    array::add(weapon_data.global_weapons, "smg_versatile");
+    array::add(weapon_data.global_weapons, "smg_capacity");
+    array::add(weapon_data.global_weapons, "smg_fastfire");
+    array::add(weapon_data.global_weapons, "smg_burst");
+    array::add(weapon_data.global_weapons, "smg_longrange");
+    array::add(weapon_data.global_weapons, "smg_sten");
+    array::add(weapon_data.global_weapons, "smg_mp40");
+    array::add(weapon_data.global_weapons, "smg_ppsh");
+    array::add(weapon_data.global_weapons, "smg_thompson");
+    array::add(weapon_data.global_weapons, "ar_standard");
+    array::add(weapon_data.global_weapons, "ar_cqb");
+    array::add(weapon_data.global_weapons, "ar_accurate");
+    array::add(weapon_data.global_weapons, "ar_damage");
+    array::add(weapon_data.global_weapons, "ar_marksman");
+    array::add(weapon_data.global_weapons, "ar_longburst");
+    array::add(weapon_data.global_weapons, "ar_garand");
+    array::add(weapon_data.global_weapons, "ar_famas");
+    array::add(weapon_data.global_weapons, "ar_peacekeeper");
+    array::add(weapon_data.global_weapons, "shotgun_pump");
+    array::add(weapon_data.global_weapons, "shotgun_semiauto");
+    array::add(weapon_data.global_weapons, "shotgun_fullauto");
+    array::add(weapon_data.global_weapons, "shotgun_precision");
+    array::add(weapon_data.global_weapons, "shotgun_energy");
+    array::add(weapon_data.global_weapons, "lmg_light");
+    array::add(weapon_data.global_weapons, "lmg_cqb");
+    array::add(weapon_data.global_weapons, "lmg_slowfire");
+    array::add(weapon_data.global_weapons, "lmg_heavy");
+    array::add(weapon_data.global_weapons, "sniper_fastsemi");
+    array::add(weapon_data.global_weapons, "sniper_fastbolt");
+    array::add(weapon_data.global_weapons, "sniper_powerbolt");
+    array::add(weapon_data.global_weapons, "launcher_standard");
+    array::add(weapon_data.global_weapons, "launcher_multi");
+    array::add(weapon_data.global_weapons, "special_crossbow_dw");
+    array::add(weapon_data.global_weapons, "ray_gun");
+    array::add(weapon_data.global_weapons, "idgun");
+    array::add(weapon_data.global_weapons, "idgun_0");
+    array::add(weapon_data.global_weapons, "idgun_1");
+    array::add(weapon_data.global_weapons, "idgun_2");
+    array::add(weapon_data.global_weapons, "idgun_3");
+    array::add(weapon_data.global_weapons, "idgun_upgraded_0");
+    array::add(weapon_data.global_weapons, "idgun_upgraded_1");
+    array::add(weapon_data.global_weapons, "idgun_upgraded_2");
+    array::add(weapon_data.global_weapons, "idgun_upgraded_3");
+    array::add(weapon_data.global_weapons, "tesla_gun");
+    array::add(weapon_data.global_weapons, "tesla_gun_upgraded");
+    array::add(weapon_data.global_weapons, "hero_annihilator");
+    array::add(weapon_data.global_weapons, "elemental_bow");
+    array::add(weapon_data.global_weapons, "elemental_bow_storm");
+    array::add(weapon_data.global_weapons, "elemental_bow_demongate");
+    array::add(weapon_data.global_weapons, "elemental_bow_rune_prison");
+    array::add(weapon_data.global_weapons, "elemental_bow_wolf_howl");
+    array::add(weapon_data.global_weapons, "hero_gravityspikes_melee");
+    array::add(weapon_data.global_weapons, "hero_mirg2000");
+    array::add(weapon_data.global_weapons, "hero_mirg2000_upgraded");
+    array::add(weapon_data.global_weapons, "skull_gun");
+    array::add(weapon_data.global_weapons, "raygun_mark3");
+    array::add(weapon_data.global_weapons, "dragon_gauntlet_flamethrower");
+    array::add(weapon_data.global_weapons, "melee_wrench");
+    array::add(weapon_data.global_weapons, "melee_dagger");
+    array::add(weapon_data.global_weapons, "melee_fireaxe");
+    array::add(weapon_data.global_weapons, "melee_sword");
+    array::add(weapon_data.global_weapons, "thundergun");
+    array::add(weapon_data.global_weapons, "melee_nunchuks");
+    array::add(weapon_data.global_weapons, "melee_mace");
+    array::add(weapon_data.global_weapons, "melee_improvise");
+    array::add(weapon_data.global_weapons, "melee_boneglass");
+    array::add(weapon_data.global_weapons, "melee_katana");
+    array::add(weapon_data.global_weapons, "minigun");
+    array::add(weapon_data.global_weapons, "cymbal_monkey");
+    array::add(weapon_data.global_weapons, "octobomb");
+    array::add(weapon_data.global_weapons, "octobomb_upgraded");
+    array::add(weapon_data.global_weapons, "glaive_apothicon_0");
+    array::add(weapon_data.global_weapons, "glaive_apothicon_1");
+    array::add(weapon_data.global_weapons, "glaive_apothicon_2");
+    array::add(weapon_data.global_weapons, "glaive_apothicon_3");
+    array::add(weapon_data.global_weapons, "glaive_keeper_0");
+    array::add(weapon_data.global_weapons, "glaive_keeper_1");
+    array::add(weapon_data.global_weapons, "glaive_keeper_2");
+    array::add(weapon_data.global_weapons, "glaive_keeper_3");
+    array::add(weapon_data.global_weapons, "knife");
+    array::add(weapon_data.global_weapons, "bowie_knife");
+    array::add(weapon_data.global_weapons, "defaultweapon");
+    array::add(weapon_data.global_weapons, "zod_riotshield");
+    array::add(weapon_data.global_weapons, "zod_riotshield_upgraded");
+    array::add(weapon_data.global_weapons, "hero_gravityspikes");
+    array::add(weapon_data.global_weapons, "zombie_beast_grapple_dwr");
 }

@@ -6,6 +6,7 @@ get_all_modes_wz() {
         "warzone_escape_duo_dbno",
         "warzone_escape_quad_dbno",
         "warzone_hot_pursuit",
+        "warzone_heavy_metal_heroes",
         "warzone_spectre_rising",
         "warzone_hardcore_solo",
         "warzone_hardcore_duo",

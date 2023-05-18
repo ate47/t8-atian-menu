@@ -131,6 +131,11 @@ init_menus() {
             case "zm_zodt8":
                 self add_menu_item("teleport", "Spawn", &func_teleport, (-16, -4113, 928.125));
                 break;
+            case "zm_escape":
+                self add_menu_item("teleport", "Roof", &func_teleport, (3443, 9802, 1704.13));
+                self add_menu_item("teleport", "Spawn", &func_teleport, (9923, 11439, 256.125));
+                self add_menu_item("teleport", "White house", &func_teleport, (-5681, 8934, 463.125), (-10, -141, 0));
+                break;
             case "zm_towers":
                 self add_menu_item("teleport", "Boss fight", &func_teleport, (-3518, 460, 1.15883), (0, -180, 0));
                 self add_menu_item("teleport", "Arena", &func_teleport, (30, 80, 80.625), (0, -180, 0));
@@ -141,6 +146,9 @@ init_menus() {
                 break;
             case "zm_mansion":
                 self add_menu_item("teleport", "Spawn", &func_teleport, (235, 1086, -7.875), (0, -50, 0));
+                break;
+            case "zm_white":
+                self add_menu_item("teleport", "Center", &func_teleport, (-149, 675, -61.125), (0, -100, 0));
                 break;
             case "wz_escape":
             case "wz_escape_alt":
@@ -273,31 +281,39 @@ init_menus() {
         if (!(isdefined(self.atianconfig.force_blackout_map) && isdefined(self.atianconfig.force_blackout_gametype))) {
             self add_menu("gmap_wz", "Set map/gametype", "start_menu", true);
 
-            self add_menu_item("gmap_wz", "Core Solo", &func_set_mapgametype, "wz_open_skyscrapers", "warzone_solo");
-            self add_menu_item("gmap_wz", "Core Duo", &func_set_mapgametype, "wz_open_skyscrapers", "warzone_duo");
-            self add_menu_item("gmap_wz", "Core Quad", &func_set_mapgametype, "wz_open_skyscrapers", "warzone_quad");
-            
-            self add_menu_item("gmap_wz", "Alcatraz portal Duo", &func_set_mapgametype, "wz_escape", "warzone_escape_duo_dbno");
-            self add_menu_item("gmap_wz", "Alcatraz portal Quad", &func_set_mapgametype, "wz_escape", "warzone_escape_quad_dbno");
-            
-            self add_menu_item("gmap_wz", "Alcatraz Night portal Duo", &func_set_mapgametype, "wz_escape_alt", "warzone_escape_duo_dbno");
-            self add_menu_item("gmap_wz", "Alcatraz Night portal Quad", &func_set_mapgametype, "wz_escape_alt", "warzone_escape_quad_dbno");
+            self add_menu("gmap_wz_open_skyscrapers", "Core map", "gmap_wz", true);
+            self add_menu("gmap_wz_escape", "Alcatraz", "gmap_wz", true);
+            self add_menu("gmap_wz_escape_alt", "Alcatraz Night", "gmap_wz", true);
 
-            self add_menu_item("gmap_wz", "Hot pursuit", &func_set_mapgametype, "wz_open_skyscrapers", "warzone_hot_pursuit");
-            self add_menu_item("gmap_wz", "Pandemic", &func_set_mapgametype, "wz_open_skyscrapers", "warzone_pandemic_quad");
-            self add_menu_item("gmap_wz", "Heavy metal heroes", &func_set_mapgametype, "wz_open_skyscrapers", "warzone_heavy_metal_heroes");
-
-            self add_menu_item("gmap_wz", "Core hardcore Solo", &func_set_mapgametype, "wz_escape", "warzone_hardcore_solo");
-            self add_menu_item("gmap_wz", "Core hardcore Duo", &func_set_mapgametype, "wz_escape", "warzone_hardcore_duo");
-            self add_menu_item("gmap_wz", "Core hardcore Quad", &func_set_mapgametype, "wz_escape", "warzone_hardcore_quad");
+            self add_menu_item("gmap_wz_open_skyscrapers", "Hot pursuit", &func_set_mapgametype, "wz_open_skyscrapers", "warzone_hot_pursuit");
+            self add_menu_item("gmap_wz_open_skyscrapers", "Pandemic", &func_set_mapgametype, "wz_open_skyscrapers", "warzone_pandemic_quad");
+            self add_menu_item("gmap_wz_open_skyscrapers", "Heavy metal heroes", &func_set_mapgametype, "wz_open_skyscrapers", "warzone_heavy_metal_heroes");
             
-            self add_menu_item("gmap_wz", "Alcatraz hardcore Solo", &func_set_mapgametype, "wz_escape", "warzone_hardcore_solo");
-            self add_menu_item("gmap_wz", "Alcatraz hardcore Duo", &func_set_mapgametype, "wz_escape", "warzone_hardcore_duo");
-            self add_menu_item("gmap_wz", "Alcatraz hardcore Quad", &func_set_mapgametype, "wz_escape", "warzone_hardcore_quad");
+            escape_maps = array("wz_escape", "wz_escape_alt");
 
-            self add_menu_item("gmap_wz", "Alcatraz Solo (no respawn)", &func_set_mapgametype, "wz_escape", "warzone_solo");
-            self add_menu_item("gmap_wz", "Alcatraz Duo (no respawn)", &func_set_mapgametype, "wz_escape", "warzone_duo");
-            self add_menu_item("gmap_wz", "Alcatraz Quad (no respawn)", &func_set_mapgametype, "wz_escape", "warzone_quad");
+            for (i = 0; i < escape_maps.size; i++) {
+                map_name = escape_maps[i];
+                menuid = "gmap_" + map_name;
+
+
+                self add_menu_item(menuid, "Portal Duo", &func_set_mapgametype, map_name, "warzone_escape_duo_dbno");
+                self add_menu_item(menuid, "Portal Quad", &func_set_mapgametype, map_name, "warzone_escape_quad_dbno");
+            }
+
+            wz_maps = get_all_maps_wz();
+
+            for (i = 0; i < wz_maps.size; i++) {
+                map_name = wz_maps[i];
+                menuid = "gmap_" + map_name;
+            
+                self add_menu_item(menuid, "Standard Solo", &func_set_mapgametype, map_name, "warzone_solo");
+                self add_menu_item(menuid, "Standard Duo", &func_set_mapgametype, map_name, "warzone_duo");
+                self add_menu_item(menuid, "Standard Quad", &func_set_mapgametype, map_name, "warzone_quad");
+                
+                self add_menu_item(menuid, "Hardcore Solo", &func_set_mapgametype, map_name, "warzone_hardcore_solo");
+                self add_menu_item(menuid, "Hardcore Duo", &func_set_mapgametype, map_name, "warzone_hardcore_duo");
+                self add_menu_item(menuid, "Hardcore Quad", &func_set_mapgametype, map_name, "warzone_hardcore_quad");
+            }
         }
         
         if (!isdefined(self.atianconfig.force_blackout_gametype)) {
@@ -547,6 +563,22 @@ init_menus() {
         self add_menu_item_modswitch("tool_weapon", "Physic gun", "physic_gun");
         
         self add_menu("tool_menu_dev", "Dev tools", "tool_menu", true);
+
+        if (is_warzone()) {
+            self add_menu("wzitems", "Blackout item", "tool_menu_dev", true);
+    
+            wzitems_data = get_wzitems_enum_data();
+            foreach(category_key, cat_item in wzitems_data.categories) {
+                cat_menu_id = "wzitems_" + cat_item.name;
+                self add_menu(cat_menu_id, cat_item.title, "wzitems", true);
+
+                for (i = 0; i < cat_item.items.size; i++) {
+                    item = cat_item.items[i];
+
+                    self add_menu_item(cat_menu_id, item.title + " (" + i + ")", &func_give_wzitem, item.name, item.title);
+                }
+            }
+        }
 
         self add_menu_item("tool_menu_dev", "reset weapon opts", &func_setweaponoptreset);
         self add_menu("dev_weaponopt3", "Weapon opt 3", "tool_menu_dev", true);

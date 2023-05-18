@@ -72,7 +72,7 @@ AtianMenuConfig() {
     //    "wz_open_skyscrapers" // Core map
     //    "wz_escape"           // Alcatraz
     //    "wz_escape_alt"       // Alcatraz night
-    self.force_blackout_map = "wz_escape_alt";
+    //self.force_blackout_map = "wz_escape_alt";
 
     // force a blackout mode, options: 
     //    "warzone_solo"               // solo
@@ -89,7 +89,10 @@ AtianMenuConfig() {
     // ---- gametypes with errors:
     //    "warzone_heavy_metal"        // heavy metal (no heroes) (script error)
     //    "warzone_spectre_rising"     // spectre rising DLC (crash the game)
-    self.force_blackout_gametype = "warzone_escape_quad_dbno";
+    //    "warzone_ambush_solo"        // ambush solo (script error)
+    //    "warzone_ambush_duo"         // ambush duo (script error)
+    //    "warzone_ambush_quads"       // ambush quad (script error)
+    //self.force_blackout_gametype = "warzone_escape_quad_dbno";
 
     // force the gametype, but without switching, will be in the menu after quit
     //self.force_blackout_noswitch = true;
@@ -128,6 +131,28 @@ AtianMenuConfig() {
 
     // spawn Water ballons (can't be used with blackout_quaknarok)
     self.blackout_spawn_waterballons = false;
+
+    // enable/disable objects in blackout, options (not everything is there):
+    // vehicles ..: "atv", "suv", "tacticalraft", "cargotruck", "tank", "pbr", "arav", "motorcycle", "musclecar"
+    // items .....: "backpack", "medkit", "lv1armor", "lv2armor", "lv3armor"
+    // gadgets ...: "homunculus", "cymbalmonkey", "hawk", "dart", "trophysystem", "fraggrenade", 
+    //              "smokegrenade", "acidbomb", "wraithfire", "empgrenade"
+    // weapons ...: "blundergat", "raygun", "blade"
+    // attachments: "reflex", "holo", "stock", "extmag", "fastmag", "elo", "lasersight"
+    // heros .....: "raygun", "blade", "blundergat", "sparrow", "warmachine", "tak5"
+    // ar ........: "icr", "rampart", "kn", "maddox", "vapr", "swat", "grav", "an94", "doublebarrel", (unknown: peacekeeper)
+    // smg .......: "mp40", "mx9", "gks", "spitfire", "cordite", "saug", "daemon", "switchblade", "vmp", "minigun"
+    // sniper ....: "sdm", "koshka", "outlaw", "paladin", "vendetta" (unknown: locus)
+    // lmg .......: "vkm", "hades", "titan", "zweihander" (unknown: tigershark)
+    // pistol ....: "mozu", "strife", "rk7", "kap45"
+    // tr ........: "auger", "abr", "essex", "m16", "swordfish" (unknown: stingray)
+    // shotguns ..: "sg12", "mog12", "argus", "rampage"
+    // specials ..: "bowieknife", "secretsanta", "slaybell", "stopsign", "coinbag", "zombiearm", "homewrecker",
+    //              "amulet", "actionfigure", "launcher"(unknown: Nifo'oti, Rising Tide)
+    self.blackout_enable = array(
+    );
+    self.blackout_disable = array(
+    );
 
     // ------ multiplayer config -----
 
@@ -251,4 +276,6 @@ AtianMenuConfig() {
     // remove weapon restiction on the weapon enum data,
     // you won't be able to use a weapon if it is not available on this map
     //self.devcfg.enum_weapon_no_restrict = false;
+    // bypass the level script weapon restriction in the enums
+    //self.devcfg.bypassweapon_script = true;
 }
