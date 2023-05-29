@@ -9,6 +9,10 @@ MainRunner() {
             self.score = 99999;
         }
 
+        if (is_mod_activated("maxrevive")) {
+            self set_revive_count(99);
+        }
+
         if (is_mod_activated("physic_gun")) {
             self PhysicGunTool();
         }

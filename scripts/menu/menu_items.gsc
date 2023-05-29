@@ -15,6 +15,7 @@ init_menus() {
     if (is_zombies()) {
         self add_menu_item("tool_menu", "Ignore me", &func_zmignoreme);
         self add_menu_item_modswitch("tool_menu", "Max Points", "maxpoints");
+        self add_menu_item("tool_menu", "Max Revive", &func_zmmaxrevive);
         self add_menu_item("tool_menu", "Infinite revive time", &func_inf_revive);
         self add_menu_item("tool_menu", "Kill all zombies", &func_kill_zombies);
 
@@ -104,6 +105,7 @@ init_menus() {
             }
         }
     }
+    
     if (isdefined(self.atianconfig.add_weapons) && self.atianconfig.add_weapons.size != 0) {
         self add_menu("weapons_custom", "Custom", "weapons", true);
 
@@ -118,6 +120,7 @@ init_menus() {
         self add_menu_item("weapons_internal", weapon_data.global_weapons[i], &func_give_weapon, weapon_data.global_weapons[i]);
     }
     
+    self add_menu("weapons_attachment", "Set attachment", "weapons", true, &func_searchattachment);
 
     if (isdefined(level.script)) {
         self add_menu("teleport", "Teleport", "start_menu", true);
@@ -564,7 +567,7 @@ init_menus() {
         
         self add_menu("tool_menu_dev", "Dev tools", "tool_menu", true);
 
-        if (is_warzone()) {
+        //if (is_warzone()) {
             self add_menu("wzitems", "Blackout item", "tool_menu_dev", true);
     
             wzitems_data = get_wzitems_enum_data();
@@ -578,7 +581,7 @@ init_menus() {
                     self add_menu_item(cat_menu_id, item.title + " (" + i + ")", &func_give_wzitem, item.name, item.title);
                 }
             }
-        }
+        //}
 
         self add_menu_item("tool_menu_dev", "reset weapon opts", &func_setweaponoptreset);
         self add_menu("dev_weaponopt3", "Weapon opt 3", "tool_menu_dev", true);

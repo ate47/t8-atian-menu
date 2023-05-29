@@ -28,6 +28,13 @@ info_page_dev() {
             index_end++;
         }
     }
+    
+    weapon = self GetCurrentWeapon();
+    if (isdefined(weapon)) {
+        self iprintln("^1wo: " + get_object_type(self getweaponoptions(weapon)));
+        index_end++;
+    }
+
     return index_end;
 }
 

@@ -146,3 +146,63 @@ Set_Camo(id, reticle) {
         }
     }
 }
+func_searchattachment(menu) {
+    // clear attach
+    menu.sub_menus = array();
+
+    weapon = self getcurrentweapon();
+
+    if (!isdefined(weapon) || !isdefined(weapon.supportedattachments)) {
+        return;
+    }
+
+    attachments = getWeaponAttachments(weapon);
+
+    if (!isdefined(attachments)) {
+        attachments = array();
+    }
+
+    foreach (attachment in weapon.supportedattachments) {
+        if (attachment == "null" || attachment == "none") {
+            continue; // we don't want them
+        }
+        if (array::contains(attachments, attachment)) {
+            suffix = " - Remove";
+        } else {
+            suffix = " - Add";
+        }
+        self add_menu_item(menu.id, "" + attachment + suffix, &func_setdattachment, weapon, attachment);
+    }
+}
+
+func_setdattachment(item, weapon, attachment) {
+    if (!isdefined(weapon.name)) {
+        self iprintlnbold("^9bad weapon");
+        return;
+    }
+
+    attachments = getWeaponAttachments(weapon);
+    weapon_options = self getweaponoptions(weapon);
+
+    if (!isdefined(attachments)) {
+        attachments = array();
+    }
+
+    if (array::contains(attachments, attachment)) {
+        // remove the attachment
+        arrayremovevalue(attachments, attachment);
+
+    } else {
+        // add the attachment
+        array::add(attachments, attachment, true);
+    }
+
+    new_weapon = getweapon(weapon.name, attachments);
+    
+    if (!isdefined(new_weapon)) {
+        self iprintlnbold("^9bad new weapon: ^1" + weapon.name);
+        return;
+    }
+    self takeweapon(weapon);
+    self giveweapon(new_weapon, weapon_options);
+}

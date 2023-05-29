@@ -50,6 +50,7 @@ AtianMenuConfig() {
         "tool_menu::Ammos",
         "tool_menu::Invulnerability",
         "tool_menu::Max Points",
+        "tool_menu::Max Revive",
         "teleport::Waypoint tp",
         "tool_menu::End contracts"
     );
@@ -133,6 +134,8 @@ AtianMenuConfig() {
     self.blackout_spawn_waterballons = false;
 
     // enable/disable objects in blackout, options (not everything is there):
+    // it'll only disable the spawn, not the objects, so if you can't control the zone
+    // files, this config is useless
     // vehicles ..: "atv", "suv", "tacticalraft", "cargotruck", "tank", "pbr", "arav", "motorcycle", "musclecar"
     // items .....: "backpack", "medkit", "lv1armor", "lv2armor", "lv3armor"
     // gadgets ...: "homunculus", "cymbalmonkey", "hawk", "dart", "trophysystem", "fraggrenade", 
@@ -149,10 +152,13 @@ AtianMenuConfig() {
     // shotguns ..: "sg12", "mog12", "argus", "rampage"
     // specials ..: "bowieknife", "secretsanta", "slaybell", "stopsign", "coinbag", "zombiearm", "homewrecker",
     //              "amulet", "actionfigure", "launcher"(unknown: Nifo'oti, Rising Tide)
-    self.blackout_enable = array(
-    );
-    self.blackout_disable = array(
-    );
+    // perks .....: "perkawareness", "perkbrawler", "perkconsumer", "perkdeadsilence", "perkengineer", "perkironlungs", "perksquadlink"
+    //              "perklooter", "perkmedic", "perkmobility", "perkoutlander", "perkparanoia", "perkreinforced" (unknown: tracker/skulker)
+
+    //self.blackout_enable = array(
+    //);
+    //self.blackout_disable = array(
+    //);
 
     // ------ multiplayer config -----
 

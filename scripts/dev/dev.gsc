@@ -93,3 +93,19 @@ func_spawn_add_bot(item, look) {
 
     bot setOrigin(spawnpoint);
 }
+
+get_object_type(obj) {
+    if (!isdefined(obj)) return "undefined";
+    if (isstruct(obj)) {
+        if (!isentity(obj)) return "struct";
+        if (isbot(obj)) return "bot";
+        if (isplayer(obj)) return "player";
+        return "entity";
+    }
+    if (isstring(obj)) return "string'" + obj + "'";
+    if (isarray(obj)) return "array[" + obj.size + "]";
+    if (isint(obj)) return "int[" + obj + "]";
+    if (isfloat(obj)) return "float[";
+    if (ishash(obj)) return "hash_" + obj;
+    return "unknown";
+}

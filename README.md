@@ -1,6 +1,8 @@
 # Atian menu
 
-Mod menu for T8 (Black ops 4) GSC scripts
+[![YouTube](https://img.shields.io/badge/ate48-%23FF0000.svg?style=for-the-badge&logo=YouTube&logoColor=white)](https://www.youtube.com/user/wilate48) [![Discord](https://img.shields.io/badge/ATESab-%237289DA.svg?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/wNH73Sg) [![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)](https://github.com/ate47)
+
+Mod menu for T8 (Black ops 4) GSC scripts.
 
 Using the compiler: https://github.com/shiversoftdev/t7-compiler
 
@@ -49,6 +51,8 @@ You can config the mod menu in the [`scripts/config.gsc`](scripts/config.gsc) fi
 
 ## Features
 
+This tool can be paired with the [t8-custom-ee mod](https://github.com/ate47/t8-custom-ee/tree/main) to run EE in custom mutation, casual or offline.
+
 - Tools
   - 3rd person
   - max ammo
@@ -56,6 +60,7 @@ You can config the mod menu in the [`scripts/config.gsc`](scripts/config.gsc) fi
   - no damage
   - Kill all zombies
   - max points (Zombies)
+  - max revive (Zombies)
   - set zombies' speed (Zombies)
   - set round (Zombies)
   - ignore me (Zombies)

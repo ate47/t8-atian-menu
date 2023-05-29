@@ -32,6 +32,21 @@ func_kill_zombies(item) {
         }
     }
 }
+func_zmmaxrevive(item) {
+    count = self get_revive_count();
+    activated = self toggle_mod("maxrevive");
+    if (activated) {
+        // we save the old value
+        self.zmmaxrevive_savedcount = count;
+    } else if (isdefined(self.zmmaxrevive_savedcount)) {
+        // we reset the new value
+        self set_revive_count(self.zmmaxrevive_savedcount);
+        self.zmmaxrevive_savedcount = undefined;
+    }
+    item.activated = activated;
+    return true;
+}
+
 func_zmignoreme(item) {
     if (isdefined(self.tool_zmignoreme) && self.tool_zmignoreme) {
         self.tool_zmignoreme = false;
@@ -93,4 +108,23 @@ func_complete_ee() {
 }
 on_zombie_spawn() {
     
+}
+
+add_revive(count) {
+    self set_revive_count(self get_revive_count() + count);
+}
+
+set_revive_count(count) {
+    if (get_revive_count() == count) {
+        return; // useless
+    }
+	self.var_72249004 = int(max(count, 0));
+	self clientfield::set_player_uimodel("ZMInventoryPersonal.self_revive_count", count);
+	if(isdefined(level.var_c1fe3c83)) {
+		self [[ level.var_c1fe3c83 ]]();
+    }
+}
+
+get_revive_count() {
+    return self.var_72249004;
 }
