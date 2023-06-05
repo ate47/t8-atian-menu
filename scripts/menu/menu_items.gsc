@@ -96,12 +96,26 @@ init_menus() {
         if (cat_item.weapons.size == 0) {
             continue; // empty category
         }
+
         self add_menu(menu_id, cat_item.title, "weapons", true);
-        for (i = 0; i < cat_item.weapons.size; i++) {
-            w_i = cat_item.weapons[i];
-            self add_menu_item(menu_id, w_i.title, &func_give_weapon, w_i.name);
-            if (is_zombies() && w_i.upgradable) {
-                self add_menu_item(menu_id, w_i.title + " (Upgraded)", &func_give_weapon, w_i.name, 0, true);
+        if (cat_item.name == "gadget" && is_multiplayer()) {
+            for (i = 0; i < cat_item.weapons.size; i++) {
+                w_i = cat_item.weapons[i];
+                self add_menu_item(menu_id, w_i.title, &func_setgadget, w_i.name, w_i.gadgetid);
+            }
+        } else if (cat_item.name == "scorestreak" && is_multiplayer()) {
+            self add_menu_item(menu_id, "Clear streaks", &func_clear_killstreaks);
+            for (i = 0; i < cat_item.weapons.size; i++) {
+                w_i = cat_item.weapons[i];
+                self add_menu_item(menu_id, w_i.title, &func_give_killstreak, w_i.name);
+            }
+        } else {
+            for (i = 0; i < cat_item.weapons.size; i++) {
+                w_i = cat_item.weapons[i];
+                self add_menu_item(menu_id, w_i.title, &func_give_weapon, w_i.name);
+                if (is_zombies() && w_i.upgradable) {
+                    self add_menu_item(menu_id, w_i.title + " (Upgraded)", &func_give_weapon, w_i.name, 0, true);
+                }
             }
         }
     }
@@ -252,6 +266,10 @@ init_menus() {
                 break;
             case "mp_russianbase":
                 self add_menu_item("teleport", "Center", &func_teleport, (-230, -118, -0.69361));
+                break;
+            case "mp_seaside":
+            case "mp_seaside_alt":
+                self add_menu_item("teleport", "Center", &func_teleport, (611, -1137, 703.125));
                 break;
             case "mp_urban": // arsenal
             case "mp_urban_alt": // arsenal sandstorm
@@ -540,6 +558,11 @@ init_menus() {
     
     if (is_zombies()) {
         self add_menu("dev_ee", "ZM easter eggs", "internal", true, &func_searchee);
+    }
+
+    if (is_multiplayer()) {
+        self add_menu("dev_gadgets", "Gadgets", "internal", true, &func_searchgadgets);
+        self add_menu("dev_killstreak", "Killstreaks", "internal", true, &func_searchkillstreaks);
     }
 
     if (isdefined(level.atianconfig.loaded_modules)) {

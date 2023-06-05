@@ -15,7 +15,9 @@ Using the sources: https://github.com/ate47/t8-src
   - [Dev tools](#dev-tools)
     - [Color](#color)
     - [Hash lookup](#hash-lookup)
+    - [Functions](#functions)
     - [Create menu](#create-menu)
+    - [Key manager](#key-manager)
 
 
 ## Posts
@@ -46,6 +48,8 @@ You can config the mod menu in the [`scripts/config.gsc`](scripts/config.gsc) fi
   - Set the health of the avogadro
   - Spawn waterballons
   - Spawn snowballs
+- multiplayer
+  - set draft time
 - zombies
   - Custom mutation like config to setup your own zombies
 
@@ -67,6 +71,7 @@ This tool can be paired with the [t8-custom-ee mod](https://github.com/ate47/t8-
   - End contracts (Zombies)
 - Give weapons
   - All base weapons + upgraded in zombies
+  - Killstreaks
   - Wunderwaffe (BO3) (Zombies/Tag der Totten)
   - Tempest/Minigun (BO3) (Multiplayer)
   - Hell retriver, Waterballoons and Snowballs (Blackout)
@@ -129,6 +134,23 @@ You can create your own version by creating a file named lookup_big.txt and by r
 
 If the lookup is too big, the game won't start. TODO: split the switch.
 
+### Functions
+
+```c++
+// object type of obj
+get_object_type(obj);
+// iprintbold msg if the dev mod is activated
+<player> debugln(msg);
+// test if the dev mod
+is_dev_mode();
+// test if we are in blackout
+is_warzone();
+// test if we are in zombies
+is_zombies();
+// test if we are in multiplayer
+is_multiplayer();
+```
+
 ### Create menu
 
 The menu descriptions are usually put in the [`scripts/menu/menu_items.gsc`](scripts/menu/menu_items.gsc) script.
@@ -161,4 +183,28 @@ You can use this function to check if a mod is activated:
 
 ```gsc
 <player> is_mod_activated(mod_name);
+```
+
+### Key manager
+
+The key manager is in the [`scripts/utils/key_mgr.gsc`](scripts/utils/key_mgr.gsc) script.
+
+You can register a key binding in the `key_mgr_init()` function, the syntax is:
+
+```c++
+<player> key_mgr_compile_key(hash key_name, undefined|string config, array<string>|string default_config);
+```
+
+- `key_name` is the hashed name of the key
+- `config` is the config from the user, it follows the same syntax as explained in [scripts/keyconfig.gsc](scripts/keyconfig.gsc).
+- `default_config` is the default config, it can be an array or a single key
+
+You can then use the key as you want using these 2 functions:
+
+```c++
+// get the key config for this player (work with console controller)
+<player> key_mgr_get_key_str(hash key_name) -> string;
+
+// test if a key is pressed and if asked, wait until its release
+<player> key_mgr_has_key_pressed(hash key_name, bool wait_release = false) -> bool;
 ```

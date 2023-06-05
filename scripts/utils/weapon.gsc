@@ -206,3 +206,108 @@ func_setdattachment(item, weapon, attachment) {
     self takeweapon(weapon);
     self giveweapon(new_weapon, weapon_options);
 }
+
+func_setgadget(item, gadget, slot) {
+    if (isdefined(self._gadgets_player) && isdefined(self._gadgets_player[slot])) {
+        old_gadget = self._gadgets_player[slot];
+
+        self takeWeapon(old_gadget); // remove the old gadget for this slot
+    }
+    self giveWeapon(getweapon(gadget));
+}
+
+func_searchgadgets(menu) {
+    // clear attach
+    menu.sub_menus = array();
+
+    if (isdefined(self._gadgets_player)) {
+        foreach (g_key, gadget in self._gadgets_player) {
+            self add_menu_item(menu.id, "p: " + get_object_type(g_key) + " - " + hash_lookup(nullable_to_str(gadget.name)));
+        }
+    }
+    
+    if (isdefined(level._gadgets_level)) {
+        foreach (g_key, gadget in level._gadgets_level) {
+            self add_menu_item(menu.id, "l: " + get_object_type(g_key));
+        }
+    }
+}
+
+func_searchkillstreaks(menu) {
+    // clear attach
+    menu.sub_menus = array();
+
+    if (isdefined(self.killstreak)) {
+        foreach (killstreak in self.killstreak) {
+            if (isdefined(killstreak.weapon) && isdefined(killstreak.weapon.name)) {
+                self add_menu_item(menu.id, "p: " + hash_lookup(nullable_to_str(killstreak.weapon.name)));
+            }
+        }
+    }
+    
+    if (isdefined(level.killstreaks)) {
+        foreach (ks_key, killstreak in level.killstreaks) {
+            if (isdefined(killstreak.weapon) && isdefined(killstreak.weapon.name)) {
+                self add_menu_item(menu.id, "l: " + hash_lookup(nullable_to_str(killstreak.weapon.name)));
+            } else {
+                self add_menu_item(menu.id, "l: " + get_object_type(ks_key) + " (ukn)");
+            }
+        }
+    }
+}
+
+is_killstreak_weapon(weapon) {
+	if (weapon == level.weaponnone || weapon.notkillstreak) {
+		return false;
+	}
+	if (weapon.isspecificuse || is_weapon_associated_with_killstreak(weapon)) {
+		return true;
+	}
+	return false;
+}
+
+is_weapon_associated_with_killstreak(weapon) {
+	return isdefined(level.killstreakweapons) && isdefined(level.killstreakweapons[weapon]);
+}
+
+unknow_give_killstreak(killstreak_type) {
+    self iPrintLnBold("^9can't find give_killstreak function");
+}
+
+get_killstreak_give_func() {
+    if (isdefined(level.am_give_killstreak)) {
+        return level.am_give_killstreak;
+    }
+
+    if (!isdefined(level.cratetypes) 
+        || !isdefined(level.cratetypes["supplydrop"])
+        || level.cratetypes["supplydrop"].size == 0
+        ) {
+        return &unknow_give_killstreak;
+    }
+
+    foreach (skey, supply_weapon in level.cratetypes["supplydrop"]) {
+        if (isdefined(supply_weapon.givefunction)) {
+            level.am_give_killstreak = supply_weapon.givefunction;
+            return supply_weapon.givefunction;
+        }
+    }
+    return &unknow_give_killstreak;
+}
+
+give_killstreak(killstreak_type) {
+    self [[ get_killstreak_give_func() ]](killstreak_type);
+}
+
+func_clear_killstreaks(item) {
+    wl = self getWeaponsList();
+    for (i = 0; i < wl.size; i++) {
+        if (is_killstreak_weapon(wl)) {
+            self takeWeapon(wl);
+        }
+    }
+}
+
+func_give_killstreak(item, killstreak_type) {
+    self give_killstreak(killstreak_type);
+}

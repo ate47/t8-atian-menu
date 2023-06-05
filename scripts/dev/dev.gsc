@@ -105,7 +105,8 @@ get_object_type(obj) {
     if (isstring(obj)) return "string'" + obj + "'";
     if (isarray(obj)) return "array[" + obj.size + "]";
     if (isint(obj)) return "int[" + obj + "]";
-    if (isfloat(obj)) return "float[";
-    if (ishash(obj)) return "hash_" + obj;
+    if (isfloat(obj)) return "float[" + obj + "]";
+    if (ishash(obj)) return "hash[" + hash_lookup(obj) + "]";
+    if (isfunctionptr(obj)) return "func";
     return "unknown";
 }

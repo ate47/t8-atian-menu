@@ -31,13 +31,13 @@ AtianMenuConfig() {
     self.weapon_camo_reset = "once";
 
     // number of lives per player
-    self.numlives = 1000;
+    // self.numlives = 1000;
 
     // size of the sensor dart radius
     // - blackout core     : 2400 
     // - blackout alcatraz : 1200
     // - multiplayer       : 800 
-    self.sensor_dart_radius = 4800;
+    // self.sensor_dart_radius = 4800;
 
     // add weapons to the give weapon menu
     // self.add_weapons = array("ww_crossbow_t8", "ww_crossbow_t8_upgraded");

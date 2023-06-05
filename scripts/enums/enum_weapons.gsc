@@ -38,7 +38,7 @@ weapon_enum_match_restriction(weapon_restriction) {
     }
     return false;
 }
-add_weapon_info(weapon_name, weapon_title, weapon_category, is_upgradable = false, weapon_restriction = undefined) {
+add_weapon_info(weapon_name, weapon_title, weapon_category, is_upgradable = false, weapon_restriction = undefined, gadget_id = 0) {
     if (isdefined(weapon_restriction)
         && !(isdefined(level.atianconfig.devcfg.enum_weapon_no_restrict) && level.atianconfig.devcfg.enum_weapon_no_restrict)) {
         if (!weapon_enum_match_restriction(weapon_restriction)) {
@@ -49,7 +49,8 @@ add_weapon_info(weapon_name, weapon_title, weapon_category, is_upgradable = fals
         #name: weapon_name,
         #title: weapon_title,
         #category: weapon_category,
-        #upgradable: is_upgradable
+        #upgradable: is_upgradable,
+        #gadgetid: gadget_id
     };
 
     array::add(self.weapons, weapon_name_data);
@@ -96,9 +97,10 @@ generate_weapon_enum() {
     weapon_data add_weapon_category("melee", "Melee");
     weapon_data add_weapon_category("special", "Special");
     weapon_data add_weapon_category("ww", "Wonder weapon");
-    weapon_data add_weapon_category("hero", "Hero weapon");
-    weapon_data add_weapon_category("gametype", "Gametype weapon");
     weapon_data add_weapon_category("gadget", "Gadget");
+    weapon_data add_weapon_category("hero", "Hero weapon");
+    weapon_data add_weapon_category("scorestreak", "Scorestreak");
+    weapon_data add_weapon_category("gametype", "Gametype weapon");
 
     
 
@@ -246,23 +248,12 @@ generate_weapon_enum() {
     weapon_data add_weapon_info("hash_74dd67dd8a46d144", "Overkill (LV 1)", "hero", false, "gamemode=zm;map=zm_zodt8,zm_towers,zm_mansion,zm_red");
     weapon_data add_weapon_info("hash_74dd6add8a46d65d", "Overkill (LV 2)", "hero", false, "gamemode=zm;map=zm_zodt8,zm_towers,zm_mansion,zm_red");
     weapon_data add_weapon_info("hash_74dd69dd8a46d4aa", "Overkill (LV 3)", "hero", false, "gamemode=zm;map=zm_zodt8,zm_towers,zm_mansion,zm_red");
-    weapon_data add_weapon_info("hero_lightninggun", "Tempest (BO3)", "hero", false, "gamemode=mp");
     // weapon_data add_weapon_info("hero_lightninggun_arc", "Tempest 2 (BO3)", "hero", false, "gamemode=mp");
-    weapon_data add_weapon_info("shock_rifle", "Tempest (BO4)", "hero", false, "gamemode=mp");
-    weapon_data add_weapon_info("seeker_mine_arc", "Seeker mine arc weapon", "hero", false, "gamemode=mp");
-    weapon_data add_weapon_info("hero_annihilator", "Annihilator", "hero", false, "gamemode=mp,wz");
-    weapon_data add_weapon_info("hero_flamethrower", "Purifier", "hero", false, "gamemode=mp,wz");
-    weapon_data add_weapon_info("hero_pineapplegun", "War machine", "hero", false, "gamemode=mp,wz");
-    weapon_data add_weapon_info("hero_pineapple_grenade", "War machine pistol", "hero", false, "gamemode=mp,wz");
-    weapon_data add_weapon_info("hero_gravityspikes", "Gravity spikes", "hero", false, "gamemode=mp");
-    weapon_data add_weapon_info("sig_blade", "Blade", "hero", false, "gamemode=mp,wz");
-    weapon_data add_weapon_info("sig_buckler", "Shield", "hero", false, "gamemode=mp");
+    weapon_data add_weapon_info("sig_blade", "Blade", "hero", false, "gamemode=wz");
     weapon_data add_weapon_info("sig_minigun", "Minigun (bug)", "hero", false, "gamemode=mp");
     weapon_data add_weapon_info("hero_minigun", "Minigun (BO3)", "hero", false, "gamemode=mp");
     weapon_data add_weapon_info("hero_bowlauncher", "Sparrow (BO3 physic)", "hero", false, "gamemode=mp");
-    weapon_data add_weapon_info("sig_bow_quickshot", "Sparrow", "hero", false, "gamemode=mp");
-    weapon_data add_weapon_info("eq_localheal", "Heal", "hero", false, "gamemode=mp");
-    weapon_data add_weapon_info("gadget_icepick", "Icepick", "hero", false, "gamemode=mp");
+    weapon_data add_weapon_info("seeker_mine_arc", "Seeker mine arc weapon", "hero", false, "gamemode=mp");
 
     weapon_data add_weapon_info("basketball", "Basketball", "special", false, "gamemode=wz");
     weapon_data add_weapon_info("special_ballisticknife_t8_dw", "Ballistic Knife", "special", true);
@@ -295,7 +286,7 @@ generate_weapon_enum() {
     weapon_data add_weapon_info("eq_grapple", "Grapple", "gadget", false, "gamemode=mp,wz");
     weapon_data add_weapon_info("eq_hawk", "Hawk", "gadget", false, "gamemode=mp,wz");
     weapon_data add_weapon_info("gadget_jammer", "Jammer (prototype)", "gadget", false, "gamemode=mp,wz");
-    weapon_data add_weapon_info("gadget_health_regen", "Health regen", "gadget", false, "gamemode=mp");
+    weapon_data add_weapon_info("gadget_health_regen", "Health regen", "gadget", false, "gamemode=mp", 1);
     weapon_data add_weapon_info("homunculus", "Homunculus", "gadget", false, "gamemode=wz,zm");
     weapon_data add_weapon_info("eq_molotov", "Molotov", "gadget", false);
     weapon_data add_weapon_info("mute_smoke", "Mute smoke (bug)", "gadget", false, "gamemode=mp");
@@ -314,8 +305,46 @@ generate_weapon_enum() {
     weapon_data add_weapon_info("waterballoon", "Waterballoon", "gadget", false, "gamemode=wz");
     weapon_data add_weapon_info("eq_swat_grenade", "9-Bang", "gadget", false, "gamemode=mp,wz");
     weapon_data add_weapon_info("sticky_grenade", "Sticky grenade", "gadget", false, "gamemode=zm");
+    weapon_data add_weapon_info("hash_f525ab9cc66c061 ", "Jammer", "gadget", false, "gamemode=mp");
+    weapon_data add_weapon_info("sig_blade", "Blade", "gadget", false, "gamemode=mp", 2);
+    weapon_data add_weapon_info("sig_buckler", "Shield", "gadget", false, "gamemode=mp", 2);
+    weapon_data add_weapon_info("hero_lightninggun", "Tempest (BO3)", "gadget", false, "gamemode=mp", 2);
+    weapon_data add_weapon_info("shock_rifle", "Tempest (BO4)", "gadget", false, "gamemode=mp", 2);
+    weapon_data add_weapon_info("hero_annihilator", "Annihilator", "gadget", false, "gamemode=mp,wz", 2);
+    weapon_data add_weapon_info("hero_flamethrower", "Purifier", "gadget", false, "gamemode=mp,wz", 2);
+    weapon_data add_weapon_info("hero_pineapplegun", "War machine", "gadget", false, "gamemode=mp,wz", 2);
+    weapon_data add_weapon_info("ability_dog", "Dog", "gadget", false, "gamemode=mp", 2);
+    weapon_data add_weapon_info("hero_pineapple_grenade", "War machine pistol", "gadget", false, "gamemode=mp,wz", 2);
+    weapon_data add_weapon_info("hero_gravityspikes", "Gravity spikes", "gadget", false, "gamemode=mp", 2);
+    weapon_data add_weapon_info("sig_bow_quickshot", "Sparrow", "gadget", false, "gamemode=mp", 2);
+    weapon_data add_weapon_info("eq_localheal", "Heal", "gadget", false, "gamemode=mp", 2);
+    weapon_data add_weapon_info("gadget_icepick", "Icepick", "gadget", false, "gamemode=mp", 2);
     
-    
+    // weapon_data add_weapon_info("inventory_supplydrop_marker", "Supply drop", "scorestreak", false, "gamemode=mp");
+    weapon_data add_weapon_info("inventory_counteruav", "C-UAV", "scorestreak", false, "gamemode=mp");
+    weapon_data add_weapon_info("inventory_uav", "UAV", "scorestreak", false, "gamemode=mp");
+    weapon_data add_weapon_info("inventory_swat_team", "Swat team", "scorestreak", false, "gamemode=mp");
+    weapon_data add_weapon_info("inventory_overwatch_helicopter", "Overwatch helicopter", "scorestreak", false, "gamemode=mp");
+    weapon_data add_weapon_info("inventory_helicopter_comlink", "Helicopter comlink", "scorestreak", false, "gamemode=mp");
+    weapon_data add_weapon_info("inventory_drone_squadron", "Drone squadron", "scorestreak", false, "gamemode=mp");
+    weapon_data add_weapon_info("inventory_dart", "Dart", "scorestreak", false, "gamemode=mp");
+    weapon_data add_weapon_info("inventory_ac130", "Gunship", "scorestreak", false, "gamemode=mp");
+    weapon_data add_weapon_info("inventory_planemortar", "Plane mortar", "scorestreak", false, "gamemode=mp");
+    weapon_data add_weapon_info("inventory_remote_missile", "Hellstorm", "scorestreak", false, "gamemode=mp");
+    weapon_data add_weapon_info("inventory_straferun", "Straferun", "scorestreak", false, "gamemode=mp");
+    weapon_data add_weapon_info("inventory_recon_car", "RCXD", "scorestreak", false, "gamemode=mp");
+    weapon_data add_weapon_info("inventory_ultimate_turret", "Turret", "scorestreak", false, "gamemode=mp");
+    weapon_data add_weapon_info("inventory_ai_tank_marker", "Mantis", "scorestreak", false, "gamemode=mp");
+
+    array::add(weapon_data.global_weapons, "hero_bowlauncher2");
+    array::add(weapon_data.global_weapons, "hero_bowlauncher3");
+    array::add(weapon_data.global_weapons, "hero_bowlauncher4");
+    array::add(weapon_data.global_weapons, "hash_1d2a0f56220e6ff6");
+    array::add(weapon_data.global_weapons, "hash_1d2a1056220e71a9");
+    array::add(weapon_data.global_weapons, "hash_1d2a1156220e735c");
+    array::add(weapon_data.global_weapons, "hash_1d2a1256220e750f");
+    array::add(weapon_data.global_weapons, "hash_40380537847df901");
+    array::add(weapon_data.global_weapons, "hero_bowlauncher");
     array::add(weapon_data.global_weapons, "drone_squadron");
     array::add(weapon_data.global_weapons, "drone_strike");
     array::add(weapon_data.global_weapons, "emp");
