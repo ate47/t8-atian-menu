@@ -48,6 +48,7 @@ You can config the mod menu in the [`scripts/config.gsc`](scripts/config.gsc) fi
   - Set the health of the avogadro
   - Spawn waterballons
   - Spawn snowballs
+  - Zombies eyes
 - multiplayer
   - set draft time
 - zombies

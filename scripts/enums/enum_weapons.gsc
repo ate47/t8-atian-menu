@@ -305,7 +305,7 @@ generate_weapon_enum() {
     weapon_data add_weapon_info("waterballoon", "Waterballoon", "gadget", false, "gamemode=wz");
     weapon_data add_weapon_info("eq_swat_grenade", "9-Bang", "gadget", false, "gamemode=mp,wz");
     weapon_data add_weapon_info("sticky_grenade", "Sticky grenade", "gadget", false, "gamemode=zm");
-    weapon_data add_weapon_info("hash_f525ab9cc66c061 ", "Jammer", "gadget", false, "gamemode=mp");
+    weapon_data add_weapon_info("eq_shroud ", "Jammer", "gadget", false, "gamemode=mp");
     weapon_data add_weapon_info("sig_blade", "Blade", "gadget", false, "gamemode=mp", 2);
     weapon_data add_weapon_info("sig_buckler", "Shield", "gadget", false, "gamemode=mp", 2);
     weapon_data add_weapon_info("hero_lightninggun", "Tempest (BO3)", "gadget", false, "gamemode=mp", 2);

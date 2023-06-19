@@ -107,7 +107,8 @@ func_complete_ee() {
 
 }
 on_zombie_spawn() {
-    
+    self.am_noted = 1;
+    return;
 }
 
 add_revive(count) {

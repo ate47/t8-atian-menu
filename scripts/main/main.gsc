@@ -50,6 +50,11 @@ onPlayerSpawned() {
     if (!isdefined(atianconfig.fly_speed_fast) || atianconfig.fly_speed_fast <= 0) {
         atianconfig.fly_speed_fast = 60;
     }
+    if (isdefined(atianconfig.zm_custom_health_onkill) && atianconfig.zm_custom_health_onkill > 0) {
+        // bypass the setting zmhealthonkill to be more friendly
+        self.var_6162c5a7 = atianconfig.zm_custom_health_onkill;
+    }
+    
 
     atianconfig_no_menu = (isdefined(atianconfig.only_host) && atianconfig.only_host && !self IsHost()) || (isdefined(atianconfig.no_menu) && atianconfig.no_menu);
 

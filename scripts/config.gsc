@@ -20,9 +20,9 @@ AtianMenuConfig() {
     // example:
     // - a random PAP camo "cat:pap"
     // - dday reactive camo "298"
-    // - gold: "43", diamond "44", diamond raybow "199", diamond black "232"
+    // - gold: "43", diamond "44", diamond raybow "199"
     //   dark matter "45", dark matter BO3 "192"
-    // self.weapon_camo = "199";
+    self.weapon_camo = "random";
 
     // when does the camo is set
     // options:
@@ -40,7 +40,7 @@ AtianMenuConfig() {
     // self.sensor_dart_radius = 4800;
 
     // add weapons to the give weapon menu
-    // self.add_weapons = array("ww_crossbow_t8", "ww_crossbow_t8_upgraded");
+    // self.add_weapons = array();
 
     // --------- menu config ---------
     
@@ -73,7 +73,7 @@ AtianMenuConfig() {
     //    "wz_open_skyscrapers" // Core map
     //    "wz_escape"           // Alcatraz
     //    "wz_escape_alt"       // Alcatraz night
-    //self.force_blackout_map = "wz_escape_alt";
+    self.force_blackout_map = "wz_escape_alt";
 
     // force a blackout mode, options: 
     //    "warzone_solo"               // solo
@@ -93,7 +93,7 @@ AtianMenuConfig() {
     //    "warzone_ambush_solo"        // ambush solo (script error)
     //    "warzone_ambush_duo"         // ambush duo (script error)
     //    "warzone_ambush_quads"       // ambush quad (script error)
-    //self.force_blackout_gametype = "warzone_escape_quad_dbno";
+    self.force_blackout_gametype = "warzone_escape_quad_dbno";
 
     // force the gametype, but without switching, will be in the menu after quit
     //self.force_blackout_noswitch = true;
@@ -107,8 +107,12 @@ AtianMenuConfig() {
     self.blackout_spawn_zombies = true;
 
     // zombie secondary spawn functions, options: "zombies" "brutus" "brutus_boss" "avogadro"
-    // if this element is an array, a random value will be used in it, the avogadro gives 30 damages/shot
+    // if this element is an array, a random value will be used in it, the avogadro gives 60 damages/shot
     self.blackout_spawn = "zombies"; //array("brutus", "zombies", "avogadro");
+
+    // set the zombies' eyes color (for default zombies)
+    // options: "green", "red", "blue", "clear", "random"
+    self.backout_zombies_eyes = "random";
 
     // /!\ the avogadro is bugged and will instantly die after few bullets (https://www.youtube.com/watch?v=39Rma4ah7OA), 
     // you can set the of the spawned object health using this config
@@ -166,6 +170,9 @@ AtianMenuConfig() {
     //self.mp_drafttime = 30;
 
     // -------- zombie config --------
+
+    // show the ingame timer
+    self.zm_custom_show_timer = true;
 
     // start round
     //self.zm_custom_startround = 115;
@@ -273,6 +280,22 @@ AtianMenuConfig() {
     self.zm_max_drop_per_round = 4;
 
     
+    // regen delay for the player
+    // options: "fast", "normal", "long"
+    // self.zm_custom_health_regendelay = "normal";
+
+    // regen rate for the player
+    // options: "instant", "fast", "normal", "slow", "none"
+    // self.zm_custom_health_regenrate = "normal";
+
+    // health when killing a zombies
+    // in the custom mutation menu, the values are 0, 10, 25 or 50
+    // self.zm_custom_health_onkill = 0;
+
+    // draning the health of the player
+    // options: "none", "slow" (every 6s), "fast" (every 3s), "hardcore" (every 1s)
+    // self.zm_custom_health_drain = 0;
+
     // ------- dev config -------
     // config to replace the internal of the menu, by default nothing is set
 

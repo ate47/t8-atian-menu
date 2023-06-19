@@ -49,6 +49,13 @@ init_menus() {
         self add_menu_item("round_tool", "+100", &func_round_add, 100);
 
         self add_menu_item("tool_menu", "Complete ee", &func_complete_ee);
+    } else if (is_warzone() || is_ct()) {
+        self add_menu("zombies_eyes", "Zombies eyes", "tool_menu", true);
+        self add_menu_item("zombies_eyes", "Clear", &func_wz_set_zombies_eyes_color, #"clear");
+        self add_menu_item("zombies_eyes", "Blue", &func_wz_set_zombies_eyes_color, #"blue");
+        self add_menu_item("zombies_eyes", "Green", &func_wz_set_zombies_eyes_color, #"green");
+        self add_menu_item("zombies_eyes", "Red", &func_wz_set_zombies_eyes_color, #"red");
+        self add_menu_item("zombies_eyes", "Random", &func_wz_set_zombies_eyes_color, #"random");
     }
 
     self add_menu_item("tool_menu", "Test", &func_test);
@@ -557,6 +564,7 @@ init_menus() {
     self add_menu("internal", "Internal", "start_menu", true);
     
     if (is_zombies()) {
+        self add_menu_item("internal", "Open Narrative room", &func_activate_narrative_room);
         self add_menu("dev_ee", "ZM easter eggs", "internal", true, &func_searchee);
     }
 

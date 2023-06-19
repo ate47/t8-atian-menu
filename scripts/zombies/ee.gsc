@@ -66,3 +66,37 @@ ee_hashname_resolve(name) {
         return hash_lookup(name);
     }
 }
+
+
+
+func_activate_narrative_room(item) {
+    self thread func_activate_narrative_room_thread();
+}
+
+func_activate_narrative_room_thread() {
+    // zm_red, zm_office, zm_escape
+    level notify(#"fake_waittill");
+    // zm_towers
+	doors = getentarray("lore_room", "targetname");
+    if (isdefined(doors)) {
+        foreach(e_door in doors) {
+            e_door delete();
+        }
+    }
+    // zm_white
+	door = getent("bread_door", "targetname");
+    if (isdefined(door)) {
+		doors rotateto(doors.angles + (vectorscale((0, -1, 0), 170)), 1);
+		doors waittill(#"movedone");
+        doors disconnectpaths();
+        v_blocker = spawn("trigger_box", (-800, -1070, -132), 0, 408, 164, 132);
+        v_blocker disconnectpaths();
+    }
+    // zm_zodt8 (thanks Serious)
+	doors = getent("baphomets_entry", "targetname");
+    if (isdefined(doors)) {
+        foreach(e_door in doors) {
+            e_door delete();
+        }
+    }
+}

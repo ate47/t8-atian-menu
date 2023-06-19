@@ -1,5 +1,10 @@
 func_give_weapon(item, weapon_name, mastercraft_id = undefined, upgraded = false) {
-    hash_name = hash(weapon_name);
+    if (ishash(weapon_name)) {
+        hash_name = weapon_name;
+        weapon_name = hash_lookup(weapon_name);
+    } else {
+        hash_name = hash(weapon_name);
+    }
     if (isdefined(upgraded) && upgraded) {
         // we need to that at this point, otherwise we will need to call hash tool many times
         hash_name = hash_name + "_upgraded";
