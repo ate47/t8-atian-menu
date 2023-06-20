@@ -49,6 +49,18 @@ init_menus() {
         self add_menu_item("round_tool", "+100", &func_round_add, 100);
 
         self add_menu_item("tool_menu", "Complete ee", &func_complete_ee);
+
+        if (sessionmodeisonlinegame()) {
+            self add_menu("zm_xp_multiplier", "XP multiplier", "tool_menu", true);
+            self add_menu_item("zm_xp_multiplier", "/4", &func_set_xp_multiplier, 0.25);
+            self add_menu_item("zm_xp_multiplier", "/2", &func_set_xp_multiplier, 0.5);
+            self add_menu_item("zm_xp_multiplier", "Normal", &func_set_xp_multiplier);
+            self add_menu_item("zm_xp_multiplier", "x2", &func_set_xp_multiplier, 2);
+            self add_menu_item("zm_xp_multiplier", "x4", &func_set_xp_multiplier, 4);
+            self add_menu_item("zm_xp_multiplier", "x8", &func_set_xp_multiplier, 8);
+            self add_menu_item("zm_xp_multiplier", "x9999", &func_set_xp_multiplier, 9999);
+            
+        }
     } else if (is_warzone() || is_ct()) {
         self add_menu("zombies_eyes", "Zombies eyes", "tool_menu", true);
         self add_menu_item("zombies_eyes", "Clear", &func_wz_set_zombies_eyes_color, #"clear");
@@ -563,6 +575,8 @@ init_menus() {
 
     self add_menu("internal", "Internal", "start_menu", true);
     
+    self add_menu("dev_csv", "CSV explorer", "internal", true, &func_csv_explorer_tab);
+
     if (is_zombies()) {
         self add_menu_item("internal", "Open Narrative room", &func_activate_narrative_room);
         self add_menu("dev_ee", "ZM easter eggs", "internal", true, &func_searchee);
@@ -597,6 +611,7 @@ init_menus() {
         self add_menu_item_modswitch("tool_weapon", "Physic gun", "physic_gun");
         
         self add_menu("tool_menu_dev", "Dev tools", "tool_menu", true);
+        self add_menu("tool_menu_dev_logs", "Logs", "tool_menu_dev", true, &func_am_log);
 
         //if (is_warzone()) {
             self add_menu("wzitems", "Blackout item", "tool_menu_dev", true);

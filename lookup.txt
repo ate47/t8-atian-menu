@@ -1128,6 +1128,7 @@ zm_transform
 zm_trap_electric
 zm_traps
 zm_trial
+melee_cutlass_t8
 zm_trial_close_quarters
 zm_trial_disable_hud
 zm_trial_distance_traveled

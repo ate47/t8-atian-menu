@@ -96,17 +96,113 @@ func_spawn_add_bot(item, look) {
 
 get_object_type(obj) {
     if (!isdefined(obj)) return "undefined";
-    if (isstruct(obj)) {
-        if (!isentity(obj)) return "struct";
-        if (isbot(obj)) return "bot";
-        if (isplayer(obj)) return "player";
+    if (isbot(obj)) {
+        if (isdefined(obj.name)) return "bot[" + hash_lookup(obj.name) + "]";
+        return "bot";
+    }
+    if (isplayer(obj)) {
+        if (isdefined(obj.name)) return "player[" + hash_lookup(obj.name) + "]";
+        return "player";
+    }
+    if (isentity(obj)) {
+        if (isdefined(obj.archetype)) return "entity[" + hash_lookup(obj.archetype) + "]";
         return "entity";
     }
-    if (isstring(obj)) return "string'" + obj + "'";
+    if (isstruct(obj)) return "struct";
+    if (isvec(obj)) return "vec" + isvec;
+    if (isstring(obj)) return "string[" + obj + "]";
     if (isarray(obj)) return "array[" + obj.size + "]";
     if (isint(obj)) return "int[" + obj + "]";
     if (isfloat(obj)) return "float[" + obj + "]";
     if (ishash(obj)) return "hash[" + hash_lookup(obj) + "]";
-    if (isfunctionptr(obj)) return "func";
+    if (isweapon(obj)) {
+        if (isdefined(obj.name)) return "weapon[" + hash_lookup(obj.name) + "]";
+        return "weapon";
+    }
+    if (isclass(obj)) return "class";
+    if (isscriptfunctionptr(obj)) return "script_func";
+    if (iscodefunctionptr(obj)) return "code_func";
     return "unknown";
+}
+
+am_log(str) {
+    if (!isdefined(level.am_messages)) {
+        level.am_messages = array();
+    }
+
+    array::add(level.am_messages, str, true);
+}
+
+
+func_am_log(menu) {
+    menu.sub_menus = array();
+
+    if (!isdefined(level.am_messages) || level.am_messages.size == 0) {
+        self add_menu_item(menu.id, "no logs");
+        return; // no logs
+    }
+
+    for (i = 0; i < level.am_messages.size; i++) {
+        self add_menu_item(menu.id, level.am_messages[i]);
+    }
+
+}
+
+
+func_csv_explorer_tab(menu) {
+    if (isdefined(menu.sub_menus) && menu.sub_menus.size != 0) {
+        // already done, I assume a CSV can't be updated at runtime
+        return; 
+    }
+    menu.sub_menus = array();
+
+    csv_files = get_known_csv_files();
+
+    for (i = 0; i < csv_files.size; i++) {
+        asset = csv_files[i];
+        v = isassetloaded("stringtable", asset);
+
+        if (!(isdefined(v) && v)) {
+            continue; // not loaded
+        }
+
+        if (ishash(asset)) {
+            name = hash_lookup(asset);
+        } else {
+            name = asset;
+        }
+        self add_menu(menu.id + "_c_" + i, get_csv_file_title(name), menu.id, true, &func_csv_explorer, asset);
+    }
+}
+
+func_csv_explorer(menu, tablename) {
+    if (isdefined(menu.sub_menus) && menu.sub_menus.size != 0) {
+        return; 
+    }
+    menu.sub_menus = array();
+
+    rows = tablelookuprowcount(tablename);
+
+    if (!isdefined(rows)) {
+        self add_menu_item(menu.id, "no info");
+        return;
+    }
+
+    for (i = 0; i < rows; i++) {
+        self add_menu(menu.id + "_r_" + i, "Row " + i, menu.id, true, &func_csv_row_explorer, tablename, i);
+    }
+}
+
+func_csv_row_explorer(menu, tablename, row) {
+    if (isdefined(menu.sub_menus) && menu.sub_menus.size != 0) {
+        return; 
+    }
+    menu.sub_menus = array();
+
+    columns = tablelookupcolumncount(tablename);
+
+    for (i = 0; i < columns; i++) {
+        val = tablelookupcolumnforrow(tablename, row, i);
+        self add_menu_item(menu.id, i + ":" + get_object_type(val));
+    }
 }

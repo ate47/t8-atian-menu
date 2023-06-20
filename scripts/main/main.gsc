@@ -6,10 +6,13 @@ init() {
                 break;
         }
     }
+
     devInitGametype();
 }
 
 onPlayerConnect() {
+    // xp factor
+    level.var_3426461d = &get_xp_multiplier;
     //connected
     self thread waitForNotify();
 }

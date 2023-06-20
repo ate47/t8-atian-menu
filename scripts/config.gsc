@@ -174,6 +174,15 @@ AtianMenuConfig() {
     // show the ingame timer
     self.zm_custom_show_timer = true;
 
+    // xp multiplier (only in online)
+    // self.xp_multiplier = 9999;
+
+    // bypass custom mutation no EE policy
+    self.zm_custom_ee = true;
+
+    // activate Shamrock & Awe Event, if this value isn't set to true, you won't be able to get the Leprechaun Homunculus
+    self.zm_holiday_event = true;
+
     // start round
     //self.zm_custom_startround = 115;
     // maximum round number (stop the game once reached)
@@ -238,10 +247,15 @@ AtianMenuConfig() {
     );
     
     // allow elixir by category
+    // loadout
     // self.zm_custom_elixir_lvl1 = true;
+    // common
     // self.zm_custom_elixir_lvl2 = true;
+    // rare
     // self.zm_custom_elixir_lvl3 = true;
+    // legendary
     // self.zm_custom_elixir_lvl4 = true;
+    // epic
     // self.zm_custom_elixir_lvl5 = true;
 
     // allow elixirs
@@ -254,8 +268,32 @@ AtianMenuConfig() {
     //           "newtoniannegation", "nowyouseeme", "nowherebutthere", "perkup", "perkaholic", "phantomreload", "phoenixup", 
     //           "pointdrops", "popshocks", "powerkeg", "powervacuum", "refreshmint", "reigndrops", "secretshopper", "shieldsup", 
     //           "shoppingfree", "sodafountain", "stockoption", "suitup", "swordflay", "talkinboutregeneration", "temporalgift", 
-    //           "undeadmanwalking", "wallpower", "whoskeepingscore"
+    //           "undeadmanwalking", "wallpower", "whoskeepingscore", "quacknarok"
     self.zm_custom_disable_elixir = array(
+    );
+    
+    // allow talisman by category
+    // common
+    // self.zm_custom_talisman_lvl1 = true;
+    // rare
+    // self.zm_custom_talisman_lvl2 = true;
+    // legendary
+    // self.zm_custom_talisman_lvl3 = true;
+    // epic
+    // self.zm_custom_talisman_lvl4 = true;
+    // ultra
+    // self.zm_custom_talisman_lvl5 = true;
+
+    
+    // allow talismans
+    //self.zm_custom_zmtalismanactive = false;
+    // disable talisman per type
+    // options : "boxguaranteeboxonly", "boxguaranteelmg", "coagulant", "extraclaymore", "extrafrag", "extraminiturret", "extramolotov",
+    //           "extrasemtex", "impatient", "perkmodsingle", "perkpermanent1", "perkpermanent2", "perkpermanent3", "perkpermanent4",
+    //           "perkreducecost1", "perkreducecost2", "perkreducecost3", "perkreducecost4", "perkstart1", "perkstart2", "perkstart3",
+    //           "perkstart4", "shielddurabilitylegendary", "shielddurabilityrare", "shieldprice", "specialstartlvl2", "specialstartlvl3",
+    //           "specialxprate", "startweaponar", "startweaponlmg", "startweaponsmg", "reducepapcost", "permanentheroweaparmor", "extraselfrevive"
+    self.zm_custom_disable_talisman = array(
     );
 
     // allow perks

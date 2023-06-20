@@ -106,6 +106,55 @@ func_complete_ee() {
     }
 
 }
+
+get_zvar(zvar) {
+	if(!isdefined(level.zombie_vars)) {
+		level.zombie_vars = [];
+	}
+	return level.zombie_vars[zvar];
+}
+
+func_set_xp_multiplier(item, value = undefined) {
+    if (isdefined(value) && value >= 0) {
+        level.atianconfig.xp_multiplier = value;
+        self iPrintLnBold("^5XP multiplier set to ^6" + value);
+    } else {
+        level.atianconfig.xp_multiplier = undefined;
+        self iPrintLnBold("^5XP multiplier set to normal");
+    }
+}
+
+get_xp_multiplier() {
+    if (isdefined(level.atianconfig.xp_multiplier) &&  level.atianconfig.xp_multiplier >= 0) {
+        return level.atianconfig.xp_multiplier;
+    }
+	n_multiplier = get_zvar(#"hash_1ab42b4d7db4cb3c");
+	if(level.gametype == #"zstandard") {
+		switch(level.players.size) {
+			case 1:
+				return n_multiplier * 0.55;
+			case 2:
+				return n_multiplier * 0.75;
+			case 3:
+				return n_multiplier * 0.9;
+			case 4:
+				return n_multiplier * 1.1;
+		}
+	} else {
+		switch(level.players.size) {
+			case 1:
+				return n_multiplier * 0.63;
+			case 2:
+				return n_multiplier * 0.75;
+			case 3:
+				return n_multiplier * 0.8;
+			case 4:
+				return n_multiplier * 0.95;
+		}
+	}
+    return 1;
+}
+
 on_zombie_spawn() {
     self.am_noted = 1;
     return;

@@ -52,11 +52,13 @@ You can config the mod menu in the [`scripts/config.gsc`](scripts/config.gsc) fi
 - multiplayer
   - set draft time
 - zombies
+  - Allow EEs in custom mutation
   - Custom mutation like config to setup your own zombies
+  - Set XP multiplier
 
 ## Features
 
-This tool can be paired with the [t8-custom-ee mod](https://github.com/ate47/t8-custom-ee/tree/main) to run EE in custom mutation, casual or offline.
+This tool can be paired with the [t8-custom-ee mod](https://github.com/ate47/t8-custom-ee/tree/main) to run EE in casual or offline, you don't need it for custom mutations.
 
 - Tools
   - 3rd person
@@ -70,6 +72,7 @@ This tool can be paired with the [t8-custom-ee mod](https://github.com/ate47/t8-
   - set round (Zombies)
   - ignore me (Zombies)
   - End contracts (Zombies)
+  - Set XP multiplier (Zombies)
 - Give weapons
   - All base weapons + upgraded in zombies
   - Killstreaks
@@ -134,6 +137,8 @@ add it to the [`lookup.txt`](lookup.txt) file and run the [`build_lookup.ps1`](b
 You can create your own version by creating a file named lookup_big.txt and by running `.\build_lookup.ps1 -Big .\lookup_big.txt`, it won't be add to the repo.
 
 If the lookup is too big, the game won't start. TODO: split the switch.
+
+You can explore CSV files from the game using the method `get_known_csv_files()` in [enums.gsc](scripts/enums/enums.gsc).
 
 ### Functions
 

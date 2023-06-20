@@ -288,6 +288,7 @@ generate_weapon_enum() {
     weapon_data add_weapon_info("gadget_jammer", "Jammer (prototype)", "gadget", false, "gamemode=mp,wz");
     weapon_data add_weapon_info("gadget_health_regen", "Health regen", "gadget", false, "gamemode=mp", 1);
     weapon_data add_weapon_info("homunculus", "Homunculus", "gadget", false, "gamemode=wz,zm");
+    weapon_data add_weapon_info("homunculus_leprechaun", "Homunculus leprechaun", "gadget", false, "gamemode=wz,zm");
     weapon_data add_weapon_info("eq_molotov", "Molotov", "gadget", false);
     weapon_data add_weapon_info("mute_smoke", "Mute smoke (bug)", "gadget", false, "gamemode=mp");
     weapon_data add_weapon_info("gadget_radiation_field", "Nuclear reactor", "gadget", false, "gamemode=mp");

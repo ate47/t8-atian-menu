@@ -27,6 +27,18 @@ autoexec __init__sytem__() {
 //required
 __init__() {
     generate_enum_values();
+
+    if (isdefined(level.atianconfig.zm_custom_ee) && level.atianconfig.zm_custom_ee) {
+        // no contract
+        level.var_aa2d5655 = undefined;
+        // can xp
+        level.var_5164a0ca = undefined;
+        // disable ee
+        level.var_73d1e054 = undefined;
+        // end game mode type
+        level.var_211e3a53 = undefined;
+    }
+
     callback::on_start_gametype(&init);
     callback::on_connect(&onPlayerConnect);
     callback::on_spawned(&onPlayerSpawned);
@@ -80,6 +92,7 @@ handle_config() {
     }
 
     if (is_multiplayer()) {
+        // specialistequipmentreadyonrespawn
         if (isdefined(atianconfig.mp_drafttime) && atianconfig.mp_drafttime >= 0) {
             setGametypeSetting(#"drafttime", atianconfig.mp_drafttime);
         }
@@ -193,18 +206,25 @@ handle_config() {
     }
     
     if (is_zombies()) {
+        if (isdefined(atianconfig.zm_holiday_event) && atianconfig.zm_holiday_event) setdvar(#"zm_holiday_event", 1);
         spawner::add_archetype_spawn_function(#"zombie", &on_zombie_spawn);
         if (isdefined(atianconfig.zm_custom_startround) && atianconfig.zm_custom_startround > 0) setGametypeSetting(#"startround", atianconfig.zm_custom_startround);
         if (isdefined(atianconfig.zm_custom_zmroundcap) && atianconfig.zm_custom_zmroundcap > 0) setGametypeSetting(#"zmroundcap", atianconfig.zm_custom_zmroundcap);
         if (isdefined(atianconfig.zm_custom_zmtimecap) && atianconfig.zm_custom_zmtimecap > 0) setGametypeSetting(#"zmtimecap", atianconfig.zm_custom_zmtimecap);
         if (isdefined(atianconfig.zm_custom_zmpowerupsactive)) setGametypeSetting(#"zmpowerupsactive", atianconfig.zm_custom_zmpowerupsactive);
-        if (isdefined(atianconfig.zm_custom_zmelixiractive)) setGametypeSetting(#"hash_137eb8d53913f781", atianconfig.zm_custom_zmelixiractive);
+        if (isdefined(atianconfig.zm_custom_zmelixiractive)) setGametypeSetting(#"zmelixirsenabled", atianconfig.zm_custom_zmelixiractive);
         if (isdefined(atianconfig.zm_custom_zmperkactive)) setGametypeSetting(#"zmperksactive", atianconfig.zm_custom_zmperkactive);
         if (isdefined(atianconfig.zm_custom_elixir_lvl1)) setGametypeSetting(#"hash_3ab7cedcfef7eacc", atianconfig.zm_custom_elixir_lvl1);
-        if (isdefined(atianconfig.zm_custom_elixir_lvl2)) setGametypeSetting(#"hash_5374d50efd1e6b59", atianconfig.zm_custom_elixir_lvl2);
-        if (isdefined(atianconfig.zm_custom_elixir_lvl3)) setGametypeSetting(#"hash_5e1f08b8335a0ce0", atianconfig.zm_custom_elixir_lvl3);
-        if (isdefined(atianconfig.zm_custom_elixir_lvl4)) setGametypeSetting(#"hash_7ea1426ffa93f34d", atianconfig.zm_custom_elixir_lvl4);
-        if (isdefined(atianconfig.zm_custom_elixir_lvl5)) setGametypeSetting(#"hash_5746674cbab8264d", atianconfig.zm_custom_elixir_lvl5);
+        if (isdefined(atianconfig.zm_custom_elixir_lvl2)) setGametypeSetting(#"zmelixirscommon", atianconfig.zm_custom_elixir_lvl2);
+        if (isdefined(atianconfig.zm_custom_elixir_lvl3)) setGametypeSetting(#"zmelixirsrare", atianconfig.zm_custom_elixir_lvl3);
+        if (isdefined(atianconfig.zm_custom_elixir_lvl4)) setGametypeSetting(#"zmelixirslegendary", atianconfig.zm_custom_elixir_lvl4);
+        if (isdefined(atianconfig.zm_custom_elixir_lvl5)) setGametypeSetting(#"zmelixirsepic", atianconfig.zm_custom_elixir_lvl5);
+        if (isdefined(atianconfig.zm_custom_zmtalismanactive)) setGametypeSetting(#"zmtalismansenabled", atianconfig.zm_custom_zmtalismanactive);
+        if (isdefined(atianconfig.zm_custom_talisman_lvl1)) setGametypeSetting(#"zmtalismanscommon", atianconfig.zm_custom_talisman_lvl1);
+        if (isdefined(atianconfig.zm_custom_talisman_lvl2)) setGametypeSetting(#"zmtalismansrare", atianconfig.zm_custom_talisman_lvl2);
+        if (isdefined(atianconfig.zm_custom_talisman_lvl3)) setGametypeSetting(#"zmtalismanslegendary", atianconfig.zm_custom_talisman_lvl3);
+        if (isdefined(atianconfig.zm_custom_talisman_lvl4)) setGametypeSetting(#"zmtalismansepic", atianconfig.zm_custom_talisman_lvl4);
+        if (isdefined(atianconfig.zm_custom_talisman_lvl5)) setGametypeSetting(#"zmtalismansultra", atianconfig.zm_custom_talisman_lvl5);
         if (isdefined(atianconfig.zm_custom_traps)) setGametypeSetting(#"zmtrapsenabled", atianconfig.zm_custom_traps);
         if (isdefined(atianconfig.zm_custom_highlightcraftables)) setGametypeSetting(#"zmcraftingkeyline", atianconfig.zm_custom_highlightcraftables);
         if (isdefined(atianconfig.zm_custom_norepair)) setGametypeSetting(#"zmbarricadestate", atianconfig.zm_custom_norepair);
@@ -280,19 +300,19 @@ handle_config() {
 
         if (isdefined(atianconfig.zm_custom_zombies_speed_max)) {
             switch (atianconfig.zm_custom_zombies_speed_max) {
-                case "walk": setGametypeSetting("hash_7b14ee93b27576a9", 0); break;
-                case "run": setGametypeSetting("hash_7b14ee93b27576a9", 1); break;
-                case "sprint": setGametypeSetting("hash_7b14ee93b27576a9", 2); break;
-                case "super_sprint": setGametypeSetting("hash_7b14ee93b27576a9", 3); break;
+                case "walk": setGametypeSetting("zmzombieminspeed", 0); break;
+                case "run": setGametypeSetting("zmzombieminspeed", 1); break;
+                case "sprint": setGametypeSetting("zmzombieminspeed", 2); break;
+                case "super_sprint": setGametypeSetting("zmzombieminspeed", 3); break;
             }
         }
 
         if (isdefined(atianconfig.zm_custom_zombies_speed_min)) {
             switch (atianconfig.zm_custom_zombies_speed_min) {
-                case "walk": setGametypeSetting("hash_58af4e73782aba2f", 0); break;
-                case "run": setGametypeSetting("hash_58af4e73782aba2f", 1); break;
-                case "sprint": setGametypeSetting("hash_58af4e73782aba2f", 2); break;
-                case "super_sprint": setGametypeSetting("hash_58af4e73782aba2f", 3); break;
+                case "walk": setGametypeSetting("zmzombiemaxspeed", 0); break;
+                case "run": setGametypeSetting("zmzombiemaxspeed", 1); break;
+                case "sprint": setGametypeSetting("zmzombiemaxspeed", 2); break;
+                case "super_sprint": setGametypeSetting("zmzombiemaxspeed", 3); break;
             }
         }
 
@@ -317,42 +337,48 @@ handle_config() {
                 setGametypeSetting(hash("zmelixir" + atianconfig.zm_custom_disable_elixir[i]), false);
             }
         }
+
+        if (isdefined(atianconfig.zm_custom_disable_talisman)) {
+            for (i = 0; i < atianconfig.zm_custom_disable_talisman.size; i++) {
+                setGametypeSetting(hash("zmtalisman" + atianconfig.zm_custom_disable_talisman[i]), false);
+            }
+        }
         
         if (isdefined(atianconfig.zm_custom_disable_weapon_category)) {
             for (i = 0; i < atianconfig.zm_custom_disable_weapon_category.size; i++) {
                 switch (atianconfig.zm_custom_disable_weapon_category[i]) {
                     case "pistol": setGametypeSetting(#"zmweaponspistol", false); break;
-                    case "shotgun": setGametypeSetting(#"hash_edfb07f798aaab5", false); break;
+                    case "shotgun": setGametypeSetting(#"zmweaponsshotgun", false); break;
                     case "smg": setGametypeSetting(#"zmweaponssmg", false); break;
                     case "ar": setGametypeSetting(#"zmweaponsar", false); break;
                     case "tr": setGametypeSetting(#"zmweaponstr", false); break;
                     case "lmg": setGametypeSetting(#"zmweaponslmg", false); break;
                     case "sniper": setGametypeSetting(#"zmweaponssniper", false); break;
                     case "melee": setGametypeSetting(#"zmweaponsknife", false); break;
-                    case "equipment": setGametypeSetting(#"hash_65a1298089d361f1", false); break;
-                    case "hero": setGametypeSetting(#"hash_b066c34278e6394", false); break;
+                    case "equipment": setGametypeSetting(#"zmequipmentisenabled", false); break;
+                    case "hero": setGametypeSetting(#"zmspecweaponisenabled", false); break;
                 }
             }
         }
         if (isdefined(atianconfig.zm_custom_disable_perk)) {
             for (i = 0; i < atianconfig.zm_custom_disable_perk.size; i++) {
                 switch (atianconfig.zm_custom_disable_perk[i]) {
-                    case "armorvest": setGametypeSetting(#"hash_7520ccdc8dcaee8d", false); break;
-                    case "fastreload": setGametypeSetting(#"hash_8edd17a31990450", false); break;
+                    case "armorvest": setGametypeSetting(#"zmperksjuggernaut", false); break;
+                    case "fastreload": setGametypeSetting(#"zmperksspeed", false); break;
                     case "quickrevive": setGametypeSetting(#"zmperksquickrevive", false); break;
                     case "widowswine": setGametypeSetting(#"hash_557e3edd7fe168c3", false); break;
                     case "staminup": setGametypeSetting(#"zmperksstaminup", false); break;
                     case "additionalprimaryweapon": setGametypeSetting(#"zmperksmulekick", false); break;
-                    case "electriccherry": setGametypeSetting(#"hash_77c5cc2d9b6ca16c", false); break;
+                    case "electriccherry": setGametypeSetting(#"zmperkselectricburst", false); break;
                     case "deadshot": setGametypeSetting(#"zmperksdeadshot", false); break;
                     case "cooldown": setGametypeSetting(#"zmperkscooldown", false); break;
                     case "dying_wish": setGametypeSetting(#"zmperksdyingwish", false); break;
                     case "phdflopper": setGametypeSetting(#"zmperksphdslider", false); break;
                     case "stronghold": setGametypeSetting(#"hash_5690c4dcc61973ec", false); break;
-                    case "extraammo": setGametypeSetting(#"hash_1bdfb5736ad174a3", false); break;
+                    case "extraammo": setGametypeSetting(#"zmperksbandolier", false); break;
                     case "awareness": setGametypeSetting(#"zmperksdeathperception", false); break;
-                    case "shield": setGametypeSetting(#"hash_2dd9d538ca5bc2d6", false); break;
-                    case "mystery": setGametypeSetting(#"hash_179ae09979e80714", false); break;
+                    case "shield": setGametypeSetting(#"zmperksvictorious", false); break;
+                    case "mystery": setGametypeSetting(#"zmperkssecretsauce", false); break;
                     case "etherealrazor": setGametypeSetting(#"zmperksetherealrazor", false); break;
                     case "zombshell": setGametypeSetting(#"zmperkszombshell", false); break;
                     case "wolf_protector": setGametypeSetting(#"zmperkswolfprotector", false); break;
@@ -366,7 +392,7 @@ handle_config() {
                 switch (atianconfig.zm_custom_disable_entities[i]) {
                     case "miniboss": setGametypeSetting(#"zmminibossstate", false); break;
                     case "heavy": setGametypeSetting(#"zmheavystate", false); break;
-                    case "dog": setGametypeSetting(#"hash_5f8aca8340761fce", false); break;
+                    case "dog": setGametypeSetting(#"zmpopcornstate", false); break;
                     case "enhanced": setGametypeSetting(#"zmenhancedstate", false); break;
                 }
             }
