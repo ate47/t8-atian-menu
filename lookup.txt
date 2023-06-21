@@ -1,5 +1,4 @@
 
-
 1
 10
 11
@@ -16,7 +15,6 @@
 3
 4
 5
-5b4f32b99fbab593 # dog
 6
 7
 8
@@ -24,17 +22,14 @@
 aat
 abilities
 ability_dog
-ability_dog
 ability_gadgets
 ability_player
 ability_smart_cover
-ac130
 ac130
 acid_bomb
 activecamo
 ai_puppeteer
 ai_squads
-ai_tank_marker
 ai_tank_marker
 ambient
 ammo
@@ -192,10 +187,10 @@ clientids
 cobra_20mm_comlink
 colors
 concertina_wire
+concussion_grenade
 containers
 contracts
 contracts_shared
-counteruav
 counteruav
 crawler_start
 crimson_nosferatu
@@ -204,7 +199,6 @@ ct_util
 cwl_contracts
 cymbal_monkey
 damagefeedback
-dart
 dart
 dart_wz
 death_circle
@@ -229,7 +223,6 @@ double_points
 draft
 drawings
 drone_squadron
-drone_squadron
 drown
 duplicate_render
 dynent_world
@@ -252,6 +245,7 @@ eq_localheal
 eq_molotov
 eq_seeker_mine
 eq_sensor
+eq_shroud
 eq_smoke
 eq_swat_grenade
 eq_tripwire
@@ -324,7 +318,6 @@ healthoverlay
 heatseekingmissile
 helicopter
 helicopter_comlink
-helicopter_comlink
 helicopter_light
 helicopter_sounds
 helicopter_utility
@@ -338,6 +331,8 @@ hero_gravityspikes
 hero_hammer_lv1
 hero_hammer_lv2
 hero_hammer_lv3
+hero_lightninggun
+hero_pineapple_grenade
 hero_pineapplegun
 hero_scepter_lv1
 hero_scepter_lv2
@@ -349,6 +344,7 @@ hero_weapon_power
 hero_weapon_ready
 high_value_operative
 homunculus
+homunculus_leprechaun
 hud
 hud_message
 human
@@ -359,30 +355,20 @@ influencers_shared
 insanity_mode
 insta_kill
 inventory_ac130
-inventory_ac130
 inventory_ai_tank_marker
 inventory_counteruav
 inventory_dart
-inventory_dart
-inventory_drone_squadron
 inventory_drone_squadron
 inventory_helicopter_comlink
-inventory_helicopter_comlink
-inventory_overwatch_helicopter
 inventory_overwatch_helicopter
 inventory_planemortar
-inventory_planemortar
-inventory_recon_car
 inventory_recon_car
 inventory_remote_missile
-inventory_remote_missile
-inventory_straferun
 inventory_straferun
 inventory_supplydrop_marker
 inventory_swat_team
 inventory_tank_robot
 inventory_uav
-inventory_ultimate_turret
 inventory_ultimate_turret
 item_drop
 item_inventory
@@ -417,6 +403,7 @@ lmg_stealth_t8_upgraded
 load
 localheal
 lui_shared
+m202_flash
 main_quest
 mannequin
 mansion_ww
@@ -439,6 +426,7 @@ melee_club_t8
 melee_club_t8_upgraded
 melee_coinbag_t8
 melee_coinbag_t8_upgraded
+melee_cutlass_t8
 melee_demohammer_t8
 melee_demohammer_t8_upgraded
 melee_secretsanta_t8
@@ -562,7 +550,6 @@ out_of_bounds
 outro
 outro_igc
 overwatch_helicopter
-overwatch_helicopter
 pap_quest
 pap_rock
 parasite
@@ -583,7 +570,6 @@ pistol_standard_t8_upgraded
 pistol_topbreak_t8
 pistol_topbreak_t8_upgraded
 placeable_mine
-planemortar
 planemortar
 planner_commander
 planner_commander_utility
@@ -626,10 +612,8 @@ ray_gun_mk2z
 rcbomb
 rcxd
 recon_car
-recon_car
 recon_wz
 reflect
-remote_missile
 remote_missile
 remotemissile
 renderoverridebundle
@@ -670,6 +654,7 @@ shotgun_trenchgun_t8_upgraded
 shrapnel
 sig_blade
 sig_bow_quickshot
+sig_buckler
 sig_buckler_dw
 sig_buckler_dw_upgraded
 sig_minigun
@@ -691,6 +676,8 @@ smg_folding_t8
 smg_folding_t8_upgraded
 smg_handling_t8
 smg_handling_t8_upgraded
+smg_minigun_t8
+smg_minigun_t8_upgraded
 smg_mp40_t8
 smg_mp40_t8_upgraded
 smg_standard_t8
@@ -780,14 +767,11 @@ sticky_grenade
 stoker
 stokers
 straferun
-straferun
 strategic_command
 supplydrop
 supplydrop_marker
-supplydrop_marker
 supplypod
 swat
-swat_team
 swat_team
 tactical_raft_wz
 tacticalinsertion
@@ -801,6 +785,7 @@ tesla_gun
 tesla_sniper
 thrasher
 thundergun
+thunderstorm
 tiger
 tigers
 timer_1
@@ -838,8 +823,6 @@ tundragun
 turret
 tweakables
 uav
-uav
-ultimate_turret
 ultimate_turret
 ultimate_turret_wz
 userspawnselection
@@ -873,6 +856,7 @@ werewolf
 willy_pete
 wing_drone
 wraith_fire
+wraith_fire_fire
 wraith_fire_zm
 ww_blundergat_acid_t8
 ww_blundergat_fire_t8
@@ -1128,7 +1112,6 @@ zm_transform
 zm_trap_electric
 zm_traps
 zm_trial
-melee_cutlass_t8
 zm_trial_close_quarters
 zm_trial_disable_hud
 zm_trial_distance_traveled

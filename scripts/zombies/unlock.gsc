@@ -11,6 +11,23 @@ unlock_all(player) {
     player endon_callback(&player_unlock_all_off, #"disconnect", #"spawned_player");
     level endon(#"end_game", #"game_ended");
 
+    for (tableid = 0; tableid < 6; tableid++) {
+	    tablename = #"gamedata/stats/zm/statsmilestones" + tableid + ".csv";
+        rows = tablelookuprowcount(tablename);
+        columns = tablelookupcolumncount(tablename);
+
+        
+
+       //for (row = 0; row < rows; row++) {
+       //    
+
+       //}
+
+        // value = int(tablelookup(tablename, 0, value, 2));
+        // type = tablelookup(tablename, 0, value, 3);
+        // name = tablelookup(tablename, 0, value, 4);
+    }
+    return;
     player.am_unlockall_running = true;
     
     foreach(weapon in level.zombie_weapons) {

@@ -6,6 +6,40 @@ init() {
                 break;
         }
     }
+    
+    
+    if (is_zombies()) {
+        if (isdefined(level.atianconfig.zm_custom_health_multiplier_zombie) && level.atianconfig.zm_custom_health_multiplier_zombie > 0) 
+            level.var_46e03bb6 = level.atianconfig.zm_custom_health_multiplier_zombie;
+        if (isdefined(level.atianconfig.zm_custom_health_multiplier_enhanced) && level.atianconfig.zm_custom_health_multiplier_enhanced > 0) 
+            level.var_1eb98fb1 = level.atianconfig.zm_custom_health_multiplier_enhanced;
+        if (isdefined(level.atianconfig.zm_custom_health_multiplier_miniboss) && level.atianconfig.zm_custom_health_multiplier_miniboss > 0) 
+            level.var_9503486c = level.atianconfig.zm_custom_health_multiplier_miniboss;
+        if (isdefined(level.atianconfig.zm_custom_health_multiplier_popcorn) && level.atianconfig.zm_custom_health_multiplier_popcorn > 0) 
+            level.var_570d178a = level.atianconfig.zm_custom_health_multiplier_popcorn;
+        if (isdefined(level.atianconfig.zm_custom_health_multiplier_heavy) && level.atianconfig.zm_custom_health_multiplier_heavy > 0) 
+            level.var_1b0cc4f5 = level.atianconfig.zm_custom_health_multiplier_heavy;
+
+        if (isdefined(level.atianconfig.zm_custom_damage_multiplier_zombie) && level.atianconfig.zm_custom_damage_multiplier_zombie >= 0)
+            level.var_c739ead9 = level.atianconfig.zm_custom_damage_multiplier_zombie;
+        if (isdefined(level.atianconfig.zm_custom_damage_multiplier_enhanced) && level.atianconfig.zm_custom_damage_multiplier_enhanced >= 0)
+            level.var_53c7ca1d = level.atianconfig.zm_custom_damage_multiplier_enhanced;
+        if (isdefined(level.atianconfig.zm_custom_damage_multiplier_miniboss) && level.atianconfig.zm_custom_damage_multiplier_miniboss >= 0)
+            level.var_1bb1a2fb = level.atianconfig.zm_custom_damage_multiplier_miniboss;
+        if (isdefined(level.atianconfig.zm_custom_damage_multiplier_popcorn) && level.atianconfig.zm_custom_damage_multiplier_popcorn >= 0)
+            level.var_5db2341c = level.atianconfig.zm_custom_damage_multiplier_popcorn;
+        if (isdefined(level.atianconfig.zm_custom_damage_multiplier_heavy) && level.atianconfig.zm_custom_damage_multiplier_heavy >= 0)
+            level.var_4d7e8b66 = level.atianconfig.zm_custom_damage_multiplier_heavy;
+
+        if (isdefined(level.atianconfig.zm_custom_count_multiplier_enhanced) && level.atianconfig.zm_custom_count_multiplier_enhanced > 0)
+            level.var_71bc2e8f = level.atianconfig.zm_custom_count_multiplier_enhanced;
+        if (isdefined(level.atianconfig.zm_custom_count_multiplier_miniboss) && level.atianconfig.zm_custom_count_multiplier_miniboss > 0)
+            level.var_928a4995 = level.atianconfig.zm_custom_count_multiplier_miniboss;
+        if (isdefined(level.atianconfig.zm_custom_count_multiplier_popcorn) && level.atianconfig.zm_custom_count_multiplier_popcorn > 0)
+            level.var_9d9b2113 = level.atianconfig.zm_custom_count_multiplier_popcorn;
+        if (isdefined(level.atianconfig.zm_custom_count_multiplier_heavy) && level.atianconfig.zm_custom_count_multiplier_heavy > 0)
+            level.var_cd345b49 = level.atianconfig.zm_custom_count_multiplier_heavy;
+    }
 
     devInitGametype();
 }

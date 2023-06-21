@@ -234,6 +234,26 @@ AtianMenuConfig() {
     // self.zm_custom_zombies_speed_max = "run"
     // self.zm_custom_zombies_speed_min = "walk"
 
+    // set the health multiplier for the zombies
+    self.zm_custom_health_multiplier_zombie = 1;
+    self.zm_custom_health_multiplier_enhanced = 1;
+    self.zm_custom_health_multiplier_miniboss = 1;
+    self.zm_custom_health_multiplier_popcorn = 1;
+    self.zm_custom_health_multiplier_heavy = 1;
+
+    // set the damage multiplier from the zombies
+    self.zm_custom_damage_multiplier_zombie = 1;
+    self.zm_custom_damage_multiplier_enhanced = 1;
+    self.zm_custom_damage_multiplier_miniboss = 1;
+    self.zm_custom_damage_multiplier_popcorn = 1;
+    self.zm_custom_damage_multiplier_heavy = 1;
+
+    // set the count multiplier for special zombies
+    self.zm_custom_count_multiplier_enhanced = 1;
+    self.zm_custom_count_multiplier_miniboss = 1;
+    self.zm_custom_count_multiplier_popcorn = 1;
+    self.zm_custom_count_multiplier_heavy = 1;
+
     // enable powerups
     //self.zm_custom_zmpowerupsactive = false;
     // disable powerups per type

@@ -10,12 +10,13 @@ AtianMenuDevConfig() {
     // - zinfinite : infinite zombies spawn
     //     mode(s): ZM
     //     map(s):  IX
-    self.custom_gametype = "zinfinite";
+   // self.custom_gametype = "zinfinite";
 
     self.mp_drafttime = 2;
     self.devcfg.wz_bots = true;
     self.devcfg.bypassweapon_script = true;
     self.allow_ee = true;
+    self.xp_multiplier = 9999;
 }
 AtianMenuDevKeyConfig() {
     self.select_item = "reload";

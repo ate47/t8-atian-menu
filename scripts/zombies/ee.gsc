@@ -67,6 +67,45 @@ ee_hashname_resolve(name) {
     }
 }
 
+should_fail_ee_nostart(name) {
+    if (!is_ee_start(name)) {
+        self iPrintLnBold(guess_why_ee_not_started());
+        return true;
+    }
+    return false;
+}
+
+is_ee_start(name) {
+    return isdefined(level._ee) && isdefined(level._ee[name]) && level._ee[name].started;
+}
+
+guess_why_ee_not_started() {
+    if (isdefined(level.gamedifficulty) && level.gamedifficulty === 0) {
+        return "Can't be done is casual";
+    }
+    setting = getgametypesetting(#"hash_3c5363541b97ca3e");
+    if (isdefined(setting) && !setting) {
+        return "Bad settings";
+    }
+	if (isdefined(level.var_73d1e054) && level.var_73d1e054) {
+        return "Bypass failed";
+    }
+    if (!SessionModeIsOnlineGame()) {
+        return "Offline game";
+    }
+    return "Can't guess why";
+}
+
+func_complete_ee() {
+    switch (level.script) {
+        case "zm_office":
+            level notify(#"main_quest_complete");
+            break;
+        default:
+        self iPrintLnBold("^1Not yet implemented: ^3" + level.script);
+            break;
+    }
+}
 
 
 func_activate_narrative_room(item) {

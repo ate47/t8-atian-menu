@@ -19,3 +19,23 @@ What can cause a crash:
 - using array::add(arr, val) with isarray(arr) = false
 - err 3126405504 BA592980 blackops4.exe+3c3c12b // 5C8B4810
 - braker 917 brute goodnight
+
+hash_1f4a4976ecd7a486,zmzombiehealthmult
+hash_670f45d5eb3fa542,zmminibosshealthmult
+hash_419385810c47590e,zmenhancedhealthmult
+hash_2469c185ca99aaa9,zmpopcornhealthmult
+hash_3b558172d2c08a74,zmcrawlerhealthmult
+hash_785d86e04353c3b3,zmheavyhealthmult
+
+hash_10457cddea07071,zmzombiedamagemult
+hash_1400ec3bdc33999,zmenhanceddamagemult
+hash_3ad1d9286ae70254,zmheavydamagemult
+hash_4149a5426a229656,zmpopcorndamagemult
+hash_5e30739150832bd3,zmcrawlerdamagemult
+hash_6e4de30418b7a575,zmminibossdamagemult
+
+zmheavystate
+level.var_cd345b49 / hash_aa498eca8149e1c  // heavy
+level.var_928a4995 / hash_5261400ecb67c787 // miniboss
+level.var_9d9b2113 / hash_1c31b8bc2b1996ca // dog
+level.var_71bc2e8f / hash_600fdf6bc4d21353 // enhanced

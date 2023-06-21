@@ -7,6 +7,7 @@ MainRunner() {
     {
         if (is_mod_activated("maxpoints")) {
             self.score = 99999;
+            // self.zombie_vars[#"zombie_point_scalar"] = 999;
         }
 
         if (is_mod_activated("maxrevive")) {
