@@ -373,6 +373,7 @@ inventory_ultimate_turret
 item_drop
 item_inventory
 item_world
+kill
 kill_with_special
 killcam
 killstreak
@@ -429,6 +430,7 @@ melee_coinbag_t8_upgraded
 melee_cutlass_t8
 melee_demohammer_t8
 melee_demohammer_t8_upgraded
+melee_kill
 melee_secretsanta_t8
 melee_secretsanta_t8_upgraded
 melee_slaybell_t8
@@ -1166,3 +1168,4 @@ zombie_blood
 zombie_dog
 zombie_fists
 zombie_quad
+zhield_dw

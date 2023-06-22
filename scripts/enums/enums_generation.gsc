@@ -9,5 +9,6 @@ generate_enum_values() {
     level.atian_enum_data generate_mastercraft_enum();
     level.atian_enum_data generate_weapon_enum();
     level.atian_enum_data generate_wzitems_enum();
+    level.atian_enum_data generate_mapenum_enum();
 }
 

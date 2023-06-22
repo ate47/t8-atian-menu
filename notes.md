@@ -19,23 +19,38 @@ What can cause a crash:
 - using array::add(arr, val) with isarray(arr) = false
 - err 3126405504 BA592980 blackops4.exe+3c3c12b // 5C8B4810
 - braker 917 brute goodnight
+- 2006839707 -> array:add in bad ptr
+- Whiskey 110 Late tiger -> accessing array like a struct?
+- kilo 45 gold dove, usage of unset local var
 
-hash_1f4a4976ecd7a486,zmzombiehealthmult
-hash_670f45d5eb3fa542,zmminibosshealthmult
-hash_419385810c47590e,zmenhancedhealthmult
-hash_2469c185ca99aaa9,zmpopcornhealthmult
-hash_3b558172d2c08a74,zmcrawlerhealthmult
-hash_785d86e04353c3b3,zmheavyhealthmult
+kill: 50
+melee_kill: 100
 
-hash_10457cddea07071,zmzombiedamagemult
-hash_1400ec3bdc33999,zmenhanceddamagemult
-hash_3ad1d9286ae70254,zmheavydamagemult
-hash_4149a5426a229656,zmpopcorndamagemult
-hash_5e30739150832bd3,zmcrawlerdamagemult
-hash_6e4de30418b7a575,zmminibossdamagemult
+- Rush
+  - Players
+    - 1 : 55%
+    - 2 : 75%
+    - 3 : 90%
+    - 4 : 110%
+  - Difficulty
+    - Easy: 1
+    - Normal: 1
+    - Hard: 1.25
+    - Insane: 1.5
+- Normal
+  - Players
+    - 1 : 63%
+    - 2 : 75%
+    - 3 : 80%
+    - 4 : 95%
+  - Difficulty
+    - Easy: 1
+    - Normal: 1
+    - Hard: 1.25
+    - Insane: 1.5
 
-zmheavystate
-level.var_cd345b49 / hash_aa498eca8149e1c  // heavy
-level.var_928a4995 / hash_5261400ecb67c787 // miniboss
-level.var_9d9b2113 / hash_1c31b8bc2b1996ca // dog
-level.var_71bc2e8f / hash_600fdf6bc4d21353 // enhanced
+level.scoreinfo[#"melee_kill"]
+level.scoreinfo[#"kill"]
+
+see that if you can
+client-functions-49600d0,function_9e72a96,1,1,1,sub_000000000069AE30,

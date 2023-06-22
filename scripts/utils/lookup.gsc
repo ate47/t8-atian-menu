@@ -387,6 +387,7 @@ hash_lookup(hash_value) {
         case #"item_drop": return "item_drop";
         case #"item_inventory": return "item_inventory";
         case #"item_world": return "item_world";
+        case #"kill": return "kill";
         case #"kill_with_special": return "kill_with_special";
         case #"killcam": return "killcam";
         case #"killstreak": return "killstreak";
@@ -443,6 +444,7 @@ hash_lookup(hash_value) {
         case #"melee_cutlass_t8": return "melee_cutlass_t8";
         case #"melee_demohammer_t8": return "melee_demohammer_t8";
         case #"melee_demohammer_t8_upgraded": return "melee_demohammer_t8_upgraded";
+        case #"melee_kill": return "melee_kill";
         case #"melee_secretsanta_t8": return "melee_secretsanta_t8";
         case #"melee_secretsanta_t8_upgraded": return "melee_secretsanta_t8_upgraded";
         case #"melee_slaybell_t8": return "melee_slaybell_t8";
@@ -917,6 +919,7 @@ hash_lookup(hash_value) {
         case #"wz_vehicle": return "wz_vehicle";
         case #"yellow_snowballs": return "yellow_snowballs";
         case #"zdraw": return "zdraw";
+        case #"zhield_dw": return "zhield_dw";
         case #"zm": return "zm";
         case #"zm_aat_brain_decay": return "zm_aat_brain_decay";
         case #"zm_aat_frostbite": return "zm_aat_frostbite";

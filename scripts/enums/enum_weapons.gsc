@@ -252,6 +252,7 @@ generate_weapon_enum() {
     weapon_data add_weapon_info("sig_blade", "Blade", "hero", false, "gamemode=wz");
     weapon_data add_weapon_info("sig_minigun", "Minigun (bug)", "hero", false, "gamemode=mp");
     weapon_data add_weapon_info("hero_minigun", "Minigun (BO3)", "hero", false, "gamemode=mp");
+    weapon_data add_weapon_info("sig_minigun_alt", "Minigun (mount)", "hero", false, "gamemode=mp");
     weapon_data add_weapon_info("hero_bowlauncher", "Sparrow (BO3 physic)", "hero", false, "gamemode=mp");
     weapon_data add_weapon_info("seeker_mine_arc", "Seeker mine arc weapon", "hero", false, "gamemode=mp");
 
@@ -313,6 +314,7 @@ generate_weapon_enum() {
     weapon_data add_weapon_info("hero_lightninggun", "Tempest (BO3)", "gadget", false, "gamemode=mp", 2);
     weapon_data add_weapon_info("shock_rifle", "Tempest (BO4)", "gadget", false, "gamemode=mp", 2);
     weapon_data add_weapon_info("hero_annihilator", "Annihilator", "gadget", false, "gamemode=mp,wz", 2);
+    weapon_data add_weapon_info("hero_annihilator_oic", "Annihilator (OIC)", "gadget", false, "gamemode=mp", 2);
     weapon_data add_weapon_info("hero_flamethrower", "Purifier", "gadget", false, "gamemode=mp,wz", 2);
     weapon_data add_weapon_info("hero_pineapplegun", "War machine", "gadget", false, "gamemode=mp,wz", 2);
     weapon_data add_weapon_info("ability_dog", "Dog", "gadget", false, "gamemode=mp", 2);
@@ -338,14 +340,8 @@ generate_weapon_enum() {
     weapon_data add_weapon_info("inventory_ultimate_turret", "Turret", "scorestreak", false, "gamemode=mp");
     weapon_data add_weapon_info("inventory_ai_tank_marker", "Mantis", "scorestreak", false, "gamemode=mp");
 
-    array::add(weapon_data.global_weapons, "hero_bowlauncher2");
-    array::add(weapon_data.global_weapons, "hero_bowlauncher3");
-    array::add(weapon_data.global_weapons, "hero_bowlauncher4");
-    array::add(weapon_data.global_weapons, #"hash_1d2a0f56220e6ff6");
-    array::add(weapon_data.global_weapons, #"hash_1d2a1056220e71a9");
-    array::add(weapon_data.global_weapons, #"hash_1d2a1156220e735c");
-    array::add(weapon_data.global_weapons, #"hash_1d2a1256220e750f");
-    array::add(weapon_data.global_weapons, #"hash_40380537847df901");
+
+    array::add(weapon_data.global_weapons, "homunculus_upgraded");
     array::add(weapon_data.global_weapons, "hero_bowlauncher");
     array::add(weapon_data.global_weapons, "drone_squadron");
     array::add(weapon_data.global_weapons, "drone_strike");

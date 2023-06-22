@@ -68,6 +68,7 @@ add_menu(menu_id, menu_name, parent_id, create_switch = false, menuenterfunc = u
     if (create_switch) {
         self add_menu_item_menuswitch(parent_id, menu_name, menu_id);
     }
+    return menu;
 }
 add_menu_item(menu_id, item_name, action, actiondata = undefined, actiondata2 = undefined, actiondata3 = undefined, actiondata4 = undefined, actiondata5 = undefined) {
     if (!isdefined(self.menu_info.menus[menu_id])) {
