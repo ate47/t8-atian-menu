@@ -6,14 +6,18 @@ system_add_reqs(target, reqs) {
     sys = level.system_funcs[target];
 
     if (!isdefined(sys.reqs)) {
-        sys.reqs = [];
-    }
+        // we put our system(s)
+        sys.reqs = reqs;
+    } else if (!isarray(sys.reqs)) {
+        // convert it to an array
+        sys.reqs = array(sys.reqs);
     
-    if (isarray(reqs)) {
-        foreach (req in reqs) {
-            array::add(sys.reqs, req, false);
+        if (isarray(reqs)) {
+            foreach (req in reqs) {
+                array::add(sys.reqs, req, false);
+            }
+        } else {
+            array::add(sys.reqs, reqs, false);
         }
-    } else {
-        array::add(sys.reqs, reqs, false);
     }
 }

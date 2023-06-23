@@ -79,6 +79,7 @@ AtianMenuConfig() {
     //    "warzone_solo"               // solo
     //    "warzone_duo"                // duo
     //    "warzone_quad"               // quad
+    //    "warzone_escape_solo"        // alcatraz portal solo
     //    "warzone_escape_duo_dbno"    // alcatraz portal duo
     //    "warzone_escape_quad_dbno"   // alcatraz portal quad
     //    "warzone_hot_pursuit"        // hot pursuit

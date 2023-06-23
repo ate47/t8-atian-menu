@@ -177,15 +177,7 @@ func_searchentities(menu) {
 	    // e function_bf9d3071(#"hash_1978eff2ac047e65");
 		// e function_78233d29(#"hash_1978eff2ac047e65", "", #"brightness", 1);
 
-        name = "";
-        if (isdefined(e.name)) {
-            name += " " + e.name;
-        }
-        if (isdefined(e.archetype)) {
-            name += "(arc:" + hash_lookup(e.archetype) + ")";
-        }
-
-        self add_menu_item(menu.id, "Entity " + i + name, &func_teleport, e.origin);
+        self add_menu_item(menu.id, "" + i + ":" + get_object_type(e), &func_teleport, e.origin);
     }
 
 }

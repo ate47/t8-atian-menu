@@ -15,7 +15,9 @@ wz_escape_alt 6c4fd4af9da9e4ca
 
 What can cause a crash:
 
-- Bad function call : bad name? forgot [[ func ]] to call a function pointer?
+- Bad function call : 1670707254 
+- bad name? 
+- forgot [[ func ]] to call a function pointer?
 - using array::add(arr, val) with isarray(arr) = false
 - err 3126405504 BA592980 blackops4.exe+3c3c12b // 5C8B4810
 - braker 917 brute goodnight
@@ -74,6 +76,7 @@ gamemodeismode(int mode)->bool
 - 6=league
 - 7=theater
 - default=false
+
 
 #"hash_5e9c3f9821e1ee0a" // paint can item
 

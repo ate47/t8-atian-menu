@@ -362,7 +362,7 @@ init_menus() {
                 map_name = escape_maps[i];
                 menuid = "gmap_" + map_name;
 
-
+                self add_menu_item(menuid, "Portal Solo", &func_set_mapgametype, map_name, "warzone_escape_solo");
                 self add_menu_item(menuid, "Portal Duo", &func_set_mapgametype, map_name, "warzone_escape_duo_dbno");
                 self add_menu_item(menuid, "Portal Quad", &func_set_mapgametype, map_name, "warzone_escape_quad_dbno");
             }
@@ -770,19 +770,35 @@ init_menus() {
         self add_menu("dev_killstreak", "Killstreaks", "internal", true, &func_searchkillstreaks);
     }
 
-    if (isdefined(level.atianconfig.loaded_modules)) {
+    if (isdefined(level.atianconfig.loaded_modules_elem)) {
         self add_menu("dev_systems", "Loaded systems", "internal", true);
-        
-        for (i = 0; i < level.atianconfig.loaded_modules.size; i++) {
-            self add_menu_item("dev_systems", "" + level.atianconfig.loaded_modules[i]);
-        }
-    }
-
-    if (isdefined(level.atianconfig.ignored_modules)) {
         self add_menu("dev_systems_ignored", "Ignored systems", "internal", true);
         
-        for (i = 0; i < level.atianconfig.ignored_modules.size; i++) {
-            self add_menu_item("dev_systems_ignored", "" + level.atianconfig.ignored_modules[i]);
+        foreach (sys in level.atianconfig.loaded_modules_elem) {
+            if (sys.ignore) {
+                self add_menu_item("dev_systems_ignored", "" + sys.name);
+            } else {
+                sysmenudid = "dev_systems_" + sys.name;
+                if (isdefined(sys.reqs) && !(isarray(sys.reqs) && sys.reqs.size == 0)) {
+                    if (!isarray(sys.reqs)) {
+                        reqs = array(sys.reqs);
+                    } else {
+                        reqs = sys.reqs;
+                    }
+                    self add_menu(sysmenudid, "" + sys.name + " (" + reqs.size + ")", "dev_systems", true);
+                    foreach (req in reqs) {
+                        nreq = hash_lookup(req);
+                        if (array::contains(level.atianconfig.loaded_modules, nreq)) {
+                            suffix = " (loaded)";
+                        } else {
+                            suffix = " (not loaded)";
+                        }
+                        self add_menu_item(sysmenudid, "" + nreq + suffix);
+                    }
+                } else {
+                    self add_menu_item("dev_systems", "" + sys.name + " (0)");
+                }
+            }
         }
     }
     
@@ -795,6 +811,13 @@ init_menus() {
         
         self add_menu("tool_menu_dev", "Dev tools", "tool_menu", true);
         self add_menu("tool_menu_dev_logs", "Logs", "tool_menu_dev", true, &func_am_log);
+
+        self add_menu("dev_wog", "Group data", "tool_menu_dev", true);
+
+        group_elements = array("camo", "tag", "emblem", "paintjob", "reticle", "lens", "reticle_color");
+        foreach (group in group_elements) {
+            self add_menu("dev_wog_" + group, group, "dev_wog", true, &func_weaponoption_search, group);
+        }
 
         //if (is_warzone()) {
             self add_menu("wzitems", "Blackout item", "tool_menu_dev", true);

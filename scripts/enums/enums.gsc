@@ -3,6 +3,7 @@ get_all_modes_wz() {
         "warzone_solo",
         "warzone_duo",
         "warzone_quad",
+        "warzone_escape_solo",
         "warzone_escape_duo_dbno",
         "warzone_escape_quad_dbno",
         "warzone_hot_pursuit",

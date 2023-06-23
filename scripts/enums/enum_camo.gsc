@@ -45,6 +45,17 @@ generate_camo_enum() {
     camo_data add_camo_category_enum("zm", "Zombies");
     camo_data add_camo_category_enum("wz", "Blackout");
 
+    // not compatible with setcamo
+    //camos = function_ea647602("camo");
+    //
+    //if (isdefined(camos) && camos.size != 0) {
+    //    camo_data add_camo_category_enum("internal", "Internal");
+    //
+    //    foreach (e in camos) {
+    //        camo_data add_camo_enum("internal", e.name, e.item_index);
+    //    }
+    //}
+
     // multiplayer
     for (i = 1; i < 43; i += 3) {
         camo_data add_camo_enum("mp", "Generic MP " + int(1 + i / 3), i);

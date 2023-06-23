@@ -1,3 +1,13 @@
+dev_init() {
+    if (!is_dev_mode()) {
+        return;
+    }
+
+
+
+}
+
+
 func_create_big_array(item, count) {
     arr = array();
 
@@ -146,4 +156,21 @@ func_am_log(menu) {
         self add_menu_item(menu.id, level.am_messages[i]);
     }
 
+}
+
+func_weaponoption_search(menu, group) {
+    menu.sub_menus = array();
+
+    weapon = self getcurrentweapon();
+
+    //groups = array("camo", "tag", "emblem", "paintjob", "reticle", "lens", "reticle_color");
+    a_opt = function_ea647602(group, weapon);
+
+    if (isdefined(a_opt) && a_opt.size != 0) {
+        foreach (e in a_opt) {
+            self add_menu_item(menu.id, e.name + "-" + e.item_index);
+        }
+    } else {
+        self add_menu_item(menu.id, "no option for group " + group);
+    }
 }

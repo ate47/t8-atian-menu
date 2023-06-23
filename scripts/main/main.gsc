@@ -1,4 +1,5 @@
 init() {
+    dev_init();
     if (isdefined(level.atianconfig.custom_gametype)) {
         switch (level.atianconfig.custom_gametype) {
             case "zinfinite":

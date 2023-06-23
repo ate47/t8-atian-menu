@@ -20,16 +20,15 @@
 //required
 autoexec __init__sytem__() {
 	system::register("clientids_shared", &__init__, &__post__init__, undefined);
-	system::register("atianmenu_itembypass", &__wz_item_init__, undefined, undefined);
-    callback::add_callback(#"on_pre_initialization", &__pre_init_system__, undefined);
+	system::register("atianmenu_wz_item", &__wz_item_init__, undefined, undefined);
+    callback::add_callback(#"on_pre_initialization", &on_pre_init, undefined);
     handle_config();
     register_info_pages();
 }
 
-__pre_init_system__() {
-    system_add_reqs("item_world", "atianmenu_itembypass");
+on_pre_init() {
+    system_add_reqs("item_world", "atianmenu_wz_item");
 }
-
 
 //required
 __init__() {
@@ -52,15 +51,15 @@ __init__() {
 }
 
 __post__init__() {
-    level.atianconfig.loaded_modules = array();
-    level.atianconfig.ignored_modules = array();
+    level.atianconfig.loaded_modules = [];
+    level.atianconfig.loaded_modules_elem = [];
     // write all the systems
     foreach (sys_key, sys_item in level.system_funcs) {
-        if (sys_item.ignore) {
-            array::add(level.atianconfig.ignored_modules, hash_lookup(sys_key));
-        } else {
-            array::add(level.atianconfig.loaded_modules, hash_lookup(sys_key));
+        sys_item.name = hash_lookup(sys_key);
+        if (!sys_item.ignore) {
+            array::add(level.atianconfig.loaded_modules, sys_item.name);
         }
+        array::add(level.atianconfig.loaded_modules_elem, sys_item);
     }
 }
 
@@ -68,6 +67,7 @@ handle_config() {
     if (isdefined(level.atianconfig)) {
         return; // already set
     }
+    level.am_dev = spawnstruct();
     level.atianconfig = spawnstruct();
     level.atianconfig.devcfg = spawnstruct();
     level.atianconfig AtianMenuConfig();
