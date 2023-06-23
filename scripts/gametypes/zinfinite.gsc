@@ -15,8 +15,8 @@ zinfinite_init_gametype() {
     level.round_wait_func = &zinfinite_round_wait;
 	level.zombie_round_start_delay = 0;
     level.next_dog_round = 937;
-    level.zombie_vars["zombie_between_round_time"] = 0;
-    level.zombie_vars["zombie_intermission_time"] = 0;
+    set_zvar("zombie_between_round_time", 0);
+    set_zvar("zombie_intermission_time", 0);
     
 }
 

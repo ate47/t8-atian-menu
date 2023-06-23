@@ -33,7 +33,7 @@ AtianMenuConfig() {
     // number of lives per player
     // self.numlives = 1000;
 
-    // size of the sensor dart radius
+    // size of the sensor dart radius (global, can be set by game mode)
     // - blackout core     : 2400 
     // - blackout alcatraz : 1200
     // - multiplayer       : 800 
@@ -101,7 +101,10 @@ AtianMenuConfig() {
     
     // duck zombies, example: https://www.youtube.com/watch?v=XphuwHYtSjk
     // new: it works on the avogadro (https://youtu.be/tUzdoK6g1V4)
-    self.blackout_quaknarok = true;
+    self.blackout_quacknarok = true;
+
+    // percentage of the zombies to have the quaknarok effect
+    self.blackout_quacknarok_spawn_percentage = 1;
 
     // zombie spawn
     self.blackout_spawn_zombies = true;
@@ -109,6 +112,10 @@ AtianMenuConfig() {
     // zombie secondary spawn functions, options: "zombies" "brutus" "brutus_boss" "avogadro"
     // if this element is an array, a random value will be used in it, the avogadro gives 60 damages/shot
     self.blackout_spawn = "zombies"; //array("brutus", "zombies", "avogadro");
+
+    // set the number of zombies per zone (only for the blackout_spawn="zombies")
+    // the game set a maximum of 25 zombies at the same time on the map (https://www.youtube.com/watch?v=gGfDjTgJxQU)
+    //self.blackout_zombies_count = 30;
 
     // set the zombies' eyes color (for default zombies)
     // options: "green", "red", "blue", "clear", "random"
@@ -134,8 +141,26 @@ AtianMenuConfig() {
     // spawn Snowballs
     self.blackout_spawn_snowballs = true;
 
-    // spawn Water ballons (can't be used with blackout_quaknarok)
+    // spawn Water ballons (can't be used with blackout_quacknarok)
     self.blackout_spawn_waterballons = false;
+
+    // enable cowards way out in last stand
+    self.blackout_laststand_enable_cowards_wayout = true;
+
+    // set the invulnerability time in last stand
+    //self.blackout_laststand_invulnerability_time = 0.5;
+
+    // set the revive time in last stand
+    //self.blackout_laststand_revive_time = 5;
+
+    // skip last stand
+    self.blackout_laststand_skip=false;
+
+    // size of the sensor dart radius
+    // - blackout core     : 2400 
+    // - blackout alcatraz : 1200
+    // - multiplayer       : 800
+    // self.blackout_sensor_dart_radius = 2400;
 
     // enable/disable objects in blackout, options (not everything is there):
     // it'll only disable the spawn, not the objects, so if you can't control the zone
@@ -168,6 +193,24 @@ AtianMenuConfig() {
 
     // time to select a specialist
     //self.mp_drafttime = 30;
+    
+    // set the invulnerability time in last stand
+    //self.mp_laststand_invulnerability_time = 0.5;
+
+    // skip last stand
+    //self.mp_laststand_skip = false;
+
+    // set the revive time in last stand
+    //self.mp_laststand_revive_time = 5;
+
+    // set the maximum count of last stand
+    //self.mp_laststand_max_count = 6;
+
+    // size of the sensor dart radius
+    // - blackout core     : 2400 
+    // - blackout alcatraz : 1200
+    // - multiplayer       : 800
+    // self.mp_sensor_dart_radius = 800;
 
     // -------- zombie config --------
 
@@ -182,6 +225,9 @@ AtianMenuConfig() {
 
     // activate Shamrock & Awe Event, if this value isn't set to true, you won't be able to get the Leprechaun Homunculus
     self.zm_holiday_event = true;
+
+    // activate constant quaknarok
+    //self.zm_quaknarok = true;
 
     // start round
     //self.zm_custom_startround = 115;

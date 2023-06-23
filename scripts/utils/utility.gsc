@@ -37,3 +37,32 @@ func_randomise_player(item = undefined) {
     self func_set_random_skin();
     self func_give_random_mastercraft();
 }
+
+
+is_quacknarok_activated() {
+    if (sessionModeIsZombiesGame()) {
+        return isdefined(level.atianconfig.zm_quaknarok) && level.atianconfig.zm_quaknarok;
+    }
+    if (sessionModeIsWarzoneGame()) {
+        return isdefined(level.atianconfig.blackout_quaknarok) && level.atianconfig.blackout_quaknarok;
+    }
+}
+
+set_quacknarok_activated(value = undefined) {
+    if (sessionModeIsZombiesGame()) {
+        if (!isdefined(value)) {
+            level.atianconfig.zm_quaknarok = !isdefined(level.atianconfig.zm_quaknarok) || !level.atianconfig.zm_quaknarok;
+        } else {
+            level.atianconfig.zm_quaknarok = value;
+        }
+        return level.atianconfig.zm_quaknarok;
+    }
+    if (sessionModeIsWarzoneGame()) {
+        if (!isdefined(value)) {
+            level.atianconfig.blackout_quaknarok = isdefined(level.atianconfig.blackout_quaknarok) && !level.atianconfig.blackout_quaknarok;
+        } else {
+            level.atianconfig.blackout_quaknarok = value;
+        }
+        return level.atianconfig.blackout_quaknarok;
+    }
+}

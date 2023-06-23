@@ -102,6 +102,13 @@ get_zvar(zvar) {
 	return level.zombie_vars[zvar];
 }
 
+set_zvar(zvar, value) {
+	if(!isdefined(level.zombie_vars)) {
+		level.zombie_vars = [];
+	}
+	level.zombie_vars[zvar] = value;
+}
+
 func_set_xp_multiplier(item, value = undefined) {
     if (isdefined(value) && value >= 0) {
         level.atianconfig.xp_multiplier = value;
@@ -144,8 +151,29 @@ get_xp_multiplier() {
 }
 
 on_zombie_spawn() {
-    self.am_noted = 1;
-    return;
+    if (isdefined(level.atianconfig.zm_quaknarok) && level.atianconfig.zm_quaknarok) {
+        // we don't call it if quacknarok is already in use
+        if (!zm_player_has_quacknarok()) {
+            self.bgb_quacknarok = 1;
+            self attach(#"p8_zm_red_floatie_duck", "j_spinelower", 1);
+        }
+    }
+}
+
+zm_bgb_is_enabled(name) {
+	if(!isdefined(self) || !isdefined(self.bgb)) {
+		return false;
+	}
+	return self.bgb === name;
+}
+
+zm_player_has_quacknarok() {
+    foreach (player in getplayers()) {
+        if(player zm_bgb_is_enabled(#"zm_bgb_quacknarok")) {
+            return true;
+        }
+    }
+    return false;
 }
 
 add_revive(count) {
@@ -165,4 +193,26 @@ set_revive_count(count) {
 
 get_revive_count() {
     return self.var_72249004;
+}
+
+
+get_zombie_hint(ref) {
+	if(isdefined(level.zombie_hints[ref])) {
+		return level.zombie_hints[ref];
+	}
+	return level.zombie_hints[#"undefined"];
+}
+
+set_hint_string(ent, default_ref, cost) {
+	ref = default_ref;
+	if (isdefined(ent.script_hint))
+	{
+		ref = ent.script_hint;
+	}
+	hint = get_zombie_hint(ref);
+	if (isdefined(cost)) {
+		self sethintstring(hint, cost);
+	} else {
+		self sethintstring(hint);
+	}
 }

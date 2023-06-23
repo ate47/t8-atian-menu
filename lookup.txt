@@ -865,6 +865,8 @@ ww_blundergat_fire_t8
 ww_blundergat_t8
 ww_blundergat_t8_upgraded
 ww_crossbow_impaler_t8
+ww_crossbow_t8
+ww_crossbow_t8_upgraded
 ww_freezegun_t8
 ww_freezegun_t8_upgraded
 ww_hand_c
@@ -905,6 +907,7 @@ wz_supply_stash
 wz_vehicle
 yellow_snowballs
 zdraw
+zhield_dw
 zm
 zm_aat_brain_decay
 zm_aat_frostbite
@@ -1168,4 +1171,4 @@ zombie_blood
 zombie_dog
 zombie_fists
 zombie_quad
-zhield_dw
+atianmenu_itembypass

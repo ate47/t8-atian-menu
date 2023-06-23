@@ -9,6 +9,12 @@ init() {
     
     
     if (is_zombies()) {
+        if (isdefined(level.atianconfig.zm_custom_zombies_health_multiplier) && level.atianconfig.zm_custom_zombies_health_multiplier >= 0) 
+            set_zvar(#"zombie_health_increase_multiplier", level.atianconfig.zm_custom_zombies_health_multiplier);
+        if (isdefined(level.atianconfig.zm_custom_zombies_health_add) && level.atianconfig.zm_custom_zombies_health_add >= 0) 
+            set_zvar(#"zombie_health_increase", level.atianconfig.zm_custom_zombies_health_add);
+        if (isdefined(level.atianconfig.zm_custom_zombies_health_start) && level.atianconfig.zm_custom_zombies_health_start >= 0) 
+            set_zvar(#"zombie_health_start", level.atianconfig.zm_custom_zombies_health_start);
         if (isdefined(level.atianconfig.zm_custom_health_multiplier_zombie) && level.atianconfig.zm_custom_health_multiplier_zombie > 0) 
             level.var_46e03bb6 = level.atianconfig.zm_custom_health_multiplier_zombie;
         if (isdefined(level.atianconfig.zm_custom_health_multiplier_enhanced) && level.atianconfig.zm_custom_health_multiplier_enhanced > 0) 
@@ -87,9 +93,22 @@ onPlayerSpawned() {
     if (!isdefined(atianconfig.fly_speed_fast) || atianconfig.fly_speed_fast <= 0) {
         atianconfig.fly_speed_fast = 60;
     }
-    if (isdefined(atianconfig.zm_custom_health_onkill) && atianconfig.zm_custom_health_onkill > 0) {
-        // bypass the setting zmhealthonkill to be more friendly
-        self.var_6162c5a7 = atianconfig.zm_custom_health_onkill;
+    
+    if (isdefined(atianconfig.sensor_dart_radius) && atianconfig.sensor_dart_radius > 0) {
+        level.sensor_dart_radius = atianconfig.sensor_dart_radius;
+    }
+
+    if (is_multiplayer()) {
+        if (isdefined(atianconfig.mp_sensor_dart_radius) && atianconfig.mp_sensor_dart_radius > 0)
+            level.sensor_dart_radius = atianconfig.mp_sensor_dart_radius;
+    } else if (is_warzone()) {
+        if (isdefined(atianconfig.blackout_sensor_dart_radius) && atianconfig.blackout_sensor_dart_radius > 0)
+            level.sensor_dart_radius = atianconfig.blackout_sensor_dart_radius;
+    } else if (is_zombies()) {
+        if (isdefined(atianconfig.zm_custom_health_onkill) && atianconfig.zm_custom_health_onkill > 0) {
+            // bypass the setting zmhealthonkill to be more friendly
+            self.var_6162c5a7 = atianconfig.zm_custom_health_onkill;
+        }
     }
     
 

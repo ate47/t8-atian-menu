@@ -6,6 +6,34 @@ on_wz_zombie_spawn() {
         // delay the call to bypass the default implementation
         self thread wz_zombie_eye_glow_delay(color_id);
     }
+    
+    if (level.atianconfig.blackout_quaknarok) {
+        if (!isdefined(level.atianconfig.blackout_quacknarok_spawn_percentage)) {
+            level.atianconfig.blackout_quacknarok_spawn_percentage = 0.3;
+        }
+        // this should be implemented here because by default we can't have more than 6 quaknarok zombies
+        if (randomfloat(1) <= level.atianconfig.blackout_quacknarok_spawn_percentage) {
+            self.quacknarok = 1;
+            self attach(#"p8_zm_red_floatie_duck", "j_spinelower", 1);
+        }
+    }
+}
+
+on_wz_avogadro_spawn() {
+    if (isdefined(level.atianconfig.blackout_quaknarok) && level.atianconfig.blackout_quaknarok) {
+        if (!isdefined(level.atianconfig.blackout_quaknarok)) {
+            level.atianconfig.blackout_quaknarok = 0.5; // we have 4 avogadros, so 0.5 is better
+        }
+        if (randomfloat(1) <= level.atianconfig.blackout_quaknarok) {
+            self.quacknarok = 1;
+            self attach("p8_zm_red_floatie_duck", "j_spinelower", 1);
+        }
+    }
+    if (isdefined(level.atianconfig.blackout_spawn_default_health) && 
+            level.atianconfig.blackout_spawn_default_health > 1) {
+        self.maxhealth = level.atianconfig.blackout_spawn_default_health;   
+        self.health = level.atianconfig.blackout_spawn_default_health;
+    }
 }
 
 func_wz_set_zombies_eyes_color(item, color_id) {

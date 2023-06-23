@@ -55,6 +55,7 @@ You can config the mod menu in the [`scripts/config.gsc`](scripts/config.gsc) fi
   - Allow EEs in custom mutation
   - Custom mutation like config to setup your own zombies
   - Set XP multiplier
+  - Quaknarok
 
 ## Features
 

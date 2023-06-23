@@ -189,3 +189,11 @@ func_searchentities(menu) {
     }
 
 }
+
+func_set_quacknarok(item, init = false) {
+    if (init) {
+        item.activated = is_quacknarok_activated();
+    } else {
+        item.activated = set_quacknarok_activated();
+    }
+}

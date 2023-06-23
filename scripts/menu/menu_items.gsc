@@ -61,13 +61,6 @@ init_menus() {
             self add_menu_item("zm_xp_multiplier", "x9999", &func_set_xp_multiplier, 9999);
             
         }
-    } else if (is_warzone() || is_ct()) {
-        self add_menu("zombies_eyes", "Zombies eyes", "tool_menu", true);
-        self add_menu_item("zombies_eyes", "Clear", &func_wz_set_zombies_eyes_color, #"clear");
-        self add_menu_item("zombies_eyes", "Blue", &func_wz_set_zombies_eyes_color, #"blue");
-        self add_menu_item("zombies_eyes", "Green", &func_wz_set_zombies_eyes_color, #"green");
-        self add_menu_item("zombies_eyes", "Red", &func_wz_set_zombies_eyes_color, #"red");
-        self add_menu_item("zombies_eyes", "Random", &func_wz_set_zombies_eyes_color, #"random");
     }
 
     self add_menu_item("tool_menu", "Test", &func_test);
@@ -412,6 +405,22 @@ init_menus() {
 
     self add_menu_item_modswitch("random", "YOU SPIN ME...", "spin_me");
     self add_menu_item("random", "Randomise me", &func_randomise_player);
+    
+    if (is_zombies() || is_warzone()) {
+        quacknarok_menu_item = self add_menu_item("random", "Quacknarok", &func_set_quacknarok);
+        
+        if (!isdefined(quacknarok_menu_item)) {
+            self func_set_quacknarok(quacknarok_menu_item, true);
+        }
+    }
+    if (is_warzone() || is_ct()) {
+        self add_menu("zombies_eyes", "Zombies eyes", "random", true);
+        self add_menu_item("zombies_eyes", "Clear", &func_wz_set_zombies_eyes_color, #"clear");
+        self add_menu_item("zombies_eyes", "Blue", &func_wz_set_zombies_eyes_color, #"blue");
+        self add_menu_item("zombies_eyes", "Green", &func_wz_set_zombies_eyes_color, #"green");
+        self add_menu_item("zombies_eyes", "Red", &func_wz_set_zombies_eyes_color, #"red");
+        self add_menu_item("zombies_eyes", "Random", &func_wz_set_zombies_eyes_color, #"random");
+    }
     
 
     // ---- Camos ----

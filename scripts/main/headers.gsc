@@ -20,9 +20,16 @@
 //required
 autoexec __init__sytem__() {
 	system::register("clientids_shared", &__init__, &__post__init__, undefined);
+	system::register("atianmenu_itembypass", &__wz_item_init__, undefined, undefined);
+    callback::add_callback(#"on_pre_initialization", &__pre_init_system__, undefined);
     handle_config();
     register_info_pages();
 }
+
+__pre_init_system__() {
+    system_add_reqs("item_world", "atianmenu_itembypass");
+}
+
 
 //required
 __init__() {
@@ -57,17 +64,6 @@ __post__init__() {
     }
 }
 
-on_avogadro_spawn(health) {
-    if (isdefined(level.atianconfig.blackout_quaknarok) && level.atianconfig.blackout_quaknarok) {
-        self attach("p8_zm_red_floatie_duck", "j_spinelower", 1);
-    }
-    if (isdefined(level.atianconfig.blackout_spawn_default_health) && 
-        level.atianconfig.blackout_spawn_default_health > 1) {
-        self.maxhealth = health;   
-        self.health = health;
-    }
-}
-
 handle_config() {
     if (isdefined(level.atianconfig)) {
         return; // already set
@@ -85,35 +81,51 @@ handle_config() {
         }
     }
 
-    if (is_warzone() || is_multiplayer()) {
-        if (isdefined(atianconfig.sensor_dart_radius) && atianconfig.sensor_dart_radius > 0) {
-            level.sensor_dart_radius = atianconfig.sensor_dart_radius;
-        }
+    // the warzone team made a typo in the zombies' name, so I have to support both names just in case someone wants
+    // to use old configs
+    if (!isdefined(atianconfig.blackout_quaknarok)) {
+        atianconfig.blackout_quaknarok = atianconfig.blackout_quacknarok;
     }
 
     if (is_multiplayer()) {
         // specialistequipmentreadyonrespawn
-        if (isdefined(atianconfig.mp_drafttime) && atianconfig.mp_drafttime >= 0) {
+        if (isdefined(atianconfig.mp_drafttime) && atianconfig.mp_drafttime >= 0)
             setGametypeSetting(#"drafttime", atianconfig.mp_drafttime);
-        }
+        if (isdefined(atianconfig.mp_laststand_invulnerability_time) && atianconfig.mp_laststand_invulnerability_time >= 0)
+            SetGametypeSetting(#"hash_4c7c8c4bd1b2a58b", atianconfig.mp_laststand_invulnerability_time);
+        if (isdefined(atianconfig.mp_laststand_skip))
+            SetGametypeSetting(#"skiplaststand", atianconfig.mp_laststand_skip);
+        if (isdefined(atianconfig.mp_laststand_revive_time) && atianconfig.mp_laststand_revive_time > 0)
+            setGametypeSetting(#"laststandrevivetime", atianconfig.mp_laststand_revive_time);
+        if (isdefined(atianconfig.mp_laststand_max_count) && atianconfig.mp_laststand_max_count >= 0)
+            setGametypeSetting(#"hash_83f11b8abac148f", atianconfig.mp_laststand_max_count);
+        
     } else if (is_warzone()) {
+        setGametypeSetting(#"wzenablespraycans", true); // useless
+        
+        if (isdefined(atianconfig.blackout_zombies_count) && atianconfig.blackout_zombies_count > 0) {
+            // spawn custom zombies
+            setGametypeSetting(#"hash_14019eb043d9e43b", true);
+            setGametypeSetting(#"wzzombiesmaxcount", atianconfig.blackout_zombies_count);
+        }
+
         wzall_ee = isdefined(atianconfig.blackout_ee) && atianconfig.blackout_ee;
         
         if (wzall_ee || isdefined(atianconfig.blackout_spawn_icarus))
             setGametypeSetting(#"hash_701bac755292fab2", wzall_ee || atianconfig.blackout_spawn_icarus);
             // crash the game
-        // if (wzall_ee || isdefined(atianconfig.blackout_ee_fishing))
-        //     setGametypeSetting(#"hash_473fee16f796c84e", wzall_ee || atianconfig.blackout_ee_fishing);
-        // if (wzall_ee || isdefined(atianconfig.blackout_ee_spoon))
-        //     setGametypeSetting(#"hash_30b11d064f146fcc", wzall_ee || atianconfig.blackout_ee_spoon);
-        // if (wzall_ee || isdefined(atianconfig.blackout_ee_nixie_tube))
-        //     setGametypeSetting(#"hash_11b79ec2ffb886c8", wzall_ee || atianconfig.blackout_ee_nixie_tube);
-        // if (wzall_ee || isdefined(atianconfig.blackout_ee_poster))
-        //     setGametypeSetting(#"hash_5f842714fa80e5a9", wzall_ee || atianconfig.blackout_ee_poster);
-        //if (wzall_ee || isdefined(atianconfig.blackout_ee_homunculus))
-        //    setGametypeSetting(#"hash_6fbf57e2af153e5f", wzall_ee || atianconfig.blackout_ee_homunculus);
-        //if (isdefined(atianconfig.blackout_ee_spring_homunculus))
-        //    setGametypeSetting(#"hash_53b5887dea69a320", atianconfig.blackout_ee_spring_homunculus);
+         if (wzall_ee || isdefined(atianconfig.blackout_ee_fishing))
+             setGametypeSetting(#"hash_473fee16f796c84e", wzall_ee || atianconfig.blackout_ee_fishing);
+         if (wzall_ee || isdefined(atianconfig.blackout_ee_spoon))
+             setGametypeSetting(#"hash_30b11d064f146fcc", wzall_ee || atianconfig.blackout_ee_spoon);
+         if (wzall_ee || isdefined(atianconfig.blackout_ee_nixie_tube))
+             setGametypeSetting(#"hash_11b79ec2ffb886c8", wzall_ee || atianconfig.blackout_ee_nixie_tube);
+         if (wzall_ee || isdefined(atianconfig.blackout_ee_poster))
+             setGametypeSetting(#"hash_5f842714fa80e5a9", wzall_ee || atianconfig.blackout_ee_poster);
+        if (wzall_ee || isdefined(atianconfig.blackout_ee_homunculus))
+            setGametypeSetting(#"hash_6fbf57e2af153e5f", wzall_ee || atianconfig.blackout_ee_homunculus);
+        if (isdefined(atianconfig.blackout_ee_spring_homunculus))
+            setGametypeSetting(#"hash_53b5887dea69a320", atianconfig.blackout_ee_spring_homunculus);
             
         //// activate homunculus ee, by default if self.blackout_ee = true
         //self.blackout_ee_homunculus = true;
@@ -127,19 +139,27 @@ handle_config() {
         //self.blackout_ee_nixie_tube = true;
         //// activate poster ee, by default if self.blackout_ee = true
         //self.blackout_ee_poster = true;
-
-        if (isdefined(atianconfig.waverespawndelay) && atianconfig.waverespawndelay > 0) {
+        if (isdefined(atianconfig.blackout_laststand_enable_cowards_wayout))
+            setGametypeSetting(#"wzenablecowardswayout", atianconfig.blackout_laststand_enable_cowards_wayout);
+        if (isdefined(atianconfig.blackout_laststand_invulnerability_time) && atianconfig.blackout_laststand_invulnerability_time >= 0)
+            SetGametypeSetting(#"hash_4c7c8c4bd1b2a58b", atianconfig.blackout_laststand_invulnerability_time);
+        if (isdefined(atianconfig.blackout_laststand_skip))
+            SetGametypeSetting(#"skiplaststand", atianconfig.blackout_laststand_skip);
+        if (isdefined(atianconfig.blackout_laststand_revive_time) && atianconfig.blackout_laststand_revive_time > 0)
+            setGametypeSetting(#"laststandrevivetime", atianconfig.blackout_laststand_revive_time);
+        if (isdefined(atianconfig.waverespawndelay) && atianconfig.waverespawndelay > 0)
             setGametypeSetting(#"waverespawndelay", atianconfig.waverespawndelay);
+        // implemented internally to add feature
+        //if (isdefined(atianconfig.blackout_quaknarok) && atianconfig.blackout_quaknarok)
+        //    setGametypeSetting(#"hash_3e2d2cf6b1cc6c68", true);
+        if (isdefined(atianconfig.blackout_blackjack) && atianconfig.blackout_blackjack) {
+            // the system is checking if we're in custom game and delete the spawn
+            system::ignore(#"wz_stash_blackjack");
+            setGametypeSetting(#"wzlootlockers", true);
+            //setGametypeSetting(#"wzenablecontrabandstash", true);
         }
-        if (isdefined(atianconfig.blackout_quaknarok) && atianconfig.blackout_quaknarok) {
-            setGametypeSetting(#"hash_3e2d2cf6b1cc6c68", true);
-        }
-        if (isdefined(atianconfig.blackout_blackjack)) {
-            setGametypeSetting(#"wzlootlockers", !atianconfig.blackout_blackjack);
-        }
-        if (isdefined(atianconfig.blackout_spawn_zombies) && atianconfig.blackout_spawn_zombies) {
+        if (isdefined(atianconfig.blackout_spawn_zombies) && atianconfig.blackout_spawn_zombies)
             setGametypeSetting(#"wzzombies", true);
-        }
         if (isdefined(atianconfig.blackout_spawn)) {
             if (isarray(atianconfig.blackout_spawn)) {
                 spawn_elem = array::random(atianconfig.blackout_spawn);
@@ -156,7 +176,7 @@ handle_config() {
                     setGametypeSetting(#"wzbrutuslarge", true);
                     break;
                 case "avogadro":
-                    spawner::add_archetype_spawn_function(#"avogadro", &on_avogadro_spawn, atianconfig.blackout_spawn_default_health);
+                    spawner::add_archetype_spawn_function(#"avogadro", &on_wz_avogadro_spawn);
                     setGametypeSetting(#"wzavogadroeverywhere", true);
                     setGametypeSetting(#"wzavogadro", true);
                     break;
@@ -237,12 +257,6 @@ handle_config() {
             setGametypeSetting(#"zmheadshotsonly", atianconfig.zm_custom_headshots_only);
             setGametypeSetting(#"headshotsonly", atianconfig.zm_custom_headshots_only);
         }
-        if (isdefined(atianconfig.zm_custom_zombies_health_multiplier) && atianconfig.zm_custom_zombies_health_multiplier >= 0) 
-            setGametypeSetting(#"zombie_health_increase_multiplier", atianconfig.zm_custom_zombies_health_multiplier);
-        if (isdefined(atianconfig.zm_custom_zombies_health_add) && atianconfig.zm_custom_zombies_health_add >= 0) 
-            setGametypeSetting(#"zombie_health_increase", atianconfig.zm_custom_zombies_health_add);
-        if (isdefined(atianconfig.zm_custom_zombies_health_start) && atianconfig.zm_custom_zombies_health_start >= 0) 
-            setGametypeSetting(#"zombie_health_start", atianconfig.zm_custom_zombies_health_start);
         if (isdefined(atianconfig.zm_max_drop_per_round) && atianconfig.zm_max_drop_per_round >= 0) 
             setGametypeSetting(#"hash_d46a4e7a41e005c", atianconfig.zm_max_drop_per_round);
 
