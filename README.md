@@ -39,6 +39,7 @@ You can config the mod menu in the [`scripts/config.gsc`](scripts/config.gsc) fi
   - Force character skin
   - Force weapon camo
   - Enable options at startup
+  - Set random skin and camo on bots
 - blackout
   - Force mode
   - Force map
