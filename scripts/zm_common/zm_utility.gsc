@@ -95,11 +95,16 @@ func_zombies_speed(item, speed) {
     }
 }
 
-get_zvar(zvar) {
+get_zvar(zvar, default_value = undefined) {
 	if(!isdefined(level.zombie_vars)) {
 		level.zombie_vars = [];
 	}
-	return level.zombie_vars[zvar];
+    k = level.zombie_vars[zvar];
+    
+    if (isdefined(k)) {
+        return k;
+    }
+    return default_value;
 }
 
 set_zvar(zvar, value) {
@@ -123,7 +128,12 @@ get_xp_multiplier() {
     if (isdefined(level.atianconfig.xp_multiplier) &&  level.atianconfig.xp_multiplier >= 0) {
         return level.atianconfig.xp_multiplier;
     }
-	n_multiplier = get_zvar(#"hash_1ab42b4d7db4cb3c");
+	n_multiplier = get_zvar(#"hash_1ab42b4d7db4cb3c", 1);
+
+    if (!isdefined(level.players)) {
+        return n_multiplier;
+    }
+    
 	if(level.gametype == #"zstandard") {
 		switch(level.players.size) {
 			case 1:
@@ -147,7 +157,7 @@ get_xp_multiplier() {
 				return n_multiplier * 0.95;
 		}
 	}
-    return 1;
+    return n_multiplier;
 }
 
 on_zombie_spawn() {

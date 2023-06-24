@@ -132,13 +132,22 @@ func_test(item) {
     return false;
 }
 
-func_teleport(item, origin, angles) {
+func_teleport(item, origin, angles = undefined) {
+    if (isentity(origin)) {
+        origin = origin.origin;
+    } else if (isstruct(origin)) {
+        origin = origin.origin;
+    }
+
+    if (!isdefined(origin) || !isvec(origin)) {
+        return;
+    }
+
     self setOrigin(origin);
     if (isdefined(angles)) {
         self setPlayerAngles(angles);
     }
     self iPrintLnBold("^6Teleported to ^2" + origin);
-    return true;
 }
 
 func_searchentities_compare(e1, e2, player_origin) {
@@ -177,7 +186,7 @@ func_searchentities(menu) {
 	    // e function_bf9d3071(#"hash_1978eff2ac047e65");
 		// e function_78233d29(#"hash_1978eff2ac047e65", "", #"brightness", 1);
 
-        self add_menu_item(menu.id, "" + i + ":" + get_object_type(e), &func_teleport, e.origin);
+        self add_menu_item(menu.id, "" + i + ":" + get_object_type(e), &func_teleport, e);
     }
 
 }

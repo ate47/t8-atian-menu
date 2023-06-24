@@ -42,6 +42,24 @@ AtianMenuConfig() {
     // add weapons to the give weapon menu
     // self.add_weapons = array();
 
+    // --------- bot config ----------
+
+    // set a random skin when creating a bot
+    // same config options as character_skin
+    self.bot_random_skin = "random";
+    
+    // options:
+    // - "none" : No random skin at spawn time
+    // - "once" : The bot will respawn with the same skin
+    // - "respawn" : at every respawn a new skin will be set
+    self.bot_random_skin_logic = "once";
+
+    // set a camo to the bots, same config as weapon_camo
+    self.bot_random_camo = "random";
+
+    // add bot at the start of the game
+    //self.bot_add_start = 10;
+
     // --------- menu config ---------
     
     // load menus at start, should be the same as the one described in menu_items.gsc, syntax: "MENU_NAME::ITEM_NAME"

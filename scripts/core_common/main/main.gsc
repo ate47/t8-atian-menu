@@ -48,42 +48,96 @@ init() {
             level.var_cd345b49 = level.atianconfig.zm_custom_count_multiplier_heavy;
     }
 
+    if (!(is_warzone() && !is_dev_mode())) {
+        // don't add bot in wz, it's useless
+        bot_add_start = level.atianconfig.bot_add_start;
+        if (isdefined(bot_add_start) && bot_add_start > 0) {
+            thread add_n_bot_delay();
+        }
+    }
+
+
     devInitGametype();
 }
 
 onPlayerConnect() {
     // xp factor
-    level.var_3426461d = &get_xp_multiplier;
-    //connected
-    self thread waitForNotify();
+    if (is_zombies()) {
+        level.var_3426461d = &get_xp_multiplier;
+    }
 }
 
-waitForNotify() {
-    self endon(#"disconnect");
+bot_set_skin_delay() {
+    self endon(#"disconnect", #"spawned_player");
+    level endon(#"end_game", #"game_ended");
+
+
+    wait(0.2);
+
+    if (!isdefined(self.rnd_skin)) {
+        return;
+    }
+
+    if (!isvec(self.rnd_skin)) {
+        return; // wtf?
+    }
+
+    self setspecialistindex(int(self.rnd_skin[0]));
+    self setcharacteroutfit(int(self.rnd_skin[1]));
+    self function_ab96a9b5("palette", int(self.rnd_skin[2]));
+}
+
+bot_set_random_camo_delay(camo_cfg) {
+    self endon(#"spawned_player", #"disconnect", #"death");
+    level endon(#"end_game", #"game_ended");
     while(true)
     {
-        result = self waittill(#"example notify");
-        if(!isdefined(result.action)) continue;
-        if(result.action == #"killround")
-        {
-            level.zombie_total = 0;
-            foreach(ai in getaiteamarray(level.zombie_team)) ai kill();
-            self iprintln(level.tutorial.var);
+        weapon = self GetCurrentWeapon();
+        offhand = self GetCurrentOffhand();
+
+        if (isdefined(weapon)) {
+            camo_id = compute_cammo_data_cfg(camo_cfg);
+
+            if (isdefined(camo_id)) {
+                self setcamo(weapon, camo_id);
+            }
         }
+        if (isdefined(offhand)) {
+            camo_id = compute_cammo_data_cfg(camo_cfg);
+
+            if (isdefined(camo_id)) {
+                self setcamo(offhand, camo_id);
+            }
+        }
+        // waittill now returns a variable
+        result = self waittill(#"weapon_change");
     }
 }
 
 onPlayerSpawned() {
-    // notice how endon now takes variadic parameters
     self endon(#"disconnect", #"spawned_player");
     level endon(#"end_game", #"game_ended");
 
+    atianconfig = level.atianconfig;
+
     if (isbot(self)) {
+        if ((isdefined(atianconfig.bot_random_skin_logic) && atianconfig.bot_random_skin_logic != "none")
+            && (!(atianconfig.infection_mode && isdefined(self.infected) && self.infected)) 
+                && !(atianconfig.bot_random_skin_logic == "once" && isdefined(self.rnd_skin))) {
+            self.rnd_skin = get_skin_config_val(atianconfig.bot_random_skin);
+        }
+
+        // respawn bot with a skin
+        if (isdefined(self.rnd_skin)) {
+            self thread bot_set_skin_delay();
+        }
+        if (isdefined(atianconfig.bot_random_camo)) {
+            self thread bot_set_random_camo_delay(atianconfig.bot_random_camo);
+        }
         return; // ignore bot
     }
 
-    self.atianconfig = level.atianconfig;
-    atianconfig = self.atianconfig;
+    self.atianconfig = atianconfig;
 
     // init key manager
     self key_mgr_init();
@@ -121,50 +175,8 @@ onPlayerSpawned() {
     self thread GunModifier();
     self thread CamoSetter();
 	self register_menu_response_callback("WaypointPlaced", &WaypointPlaced);
-
-    if (isdefined(atianconfig.character_skin)) {
-        skins = strtok(atianconfig.character_skin, ";");
-        mode_skin = get_characters_for_mode();
-        if (isdefined(mode_skin)) {
-            for (i = 0; i < skins.size; i++) {
-                if (skins[i] == "random") {
-                    skin_rnd = get_skin_random();
-                    if (!isdefined(skin_rnd)) {
-                        // error -> using random skin
-                        continue;
-                    }
-                    skin_id = int(skin_rnd[0]);
-                    outfit = int(skin_rnd[1]);
-                    palette = int(skin_rnd[2]);
-
-                    self SetSkin(skin_id);
-                    self setcharacteroutfit(outfit);
-                    self function_ab96a9b5("palette", palette);
-                    break;
-                } else {
-                    // 0NAME:1OUTFIT:2PALETTE:3WARPAINT:4DECAL
-                    modifiers = strtok(skins[i], ":");
-                    skin_id = array::find(mode_skin, modifiers[0]);
-                    if (isdefined(skin_id)) {
-                        self SetSkin(skin_id);
-                        if (modifiers.size > 1) { // 1OUTFIT
-                            self setcharacteroutfit(int(modifiers[1]));
-                            if (modifiers.size > 2) { // 2PALETTE
-                                self function_ab96a9b5("palette", int(modifiers[2]));
-                                if (modifiers.size > 3) { // 3WARPAINT
-                                    self function_ab96a9b5("warpaint", int(modifiers[3]));
-                                    if (modifiers.size > 4) { // 4DECAL
-                                        self function_ab96a9b5("decal", int(modifiers[4]));
-                                    }
-                                }
-                            }
-                        }
-                        break;
-                    }
-                }
-            }
-        }
-    }
+    
+    self set_skin_config_val(atianconfig.character_skin);
     
     if (is_zombies()) {
         if (isdefined(atianconfig.zm_start_time_hud) && atianconfig.zm_start_time_hud && level.gametype == "zclassic") {

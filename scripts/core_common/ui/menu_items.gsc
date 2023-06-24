@@ -406,6 +406,18 @@ init_menus() {
     self add_menu_item_modswitch("random", "YOU SPIN ME...", "spin_me");
     self add_menu_item("random", "Randomise me", &func_randomise_player);
     
+    if (!(is_warzone() && !is_dev_mode())) {
+        // don't add bot in wz, it's useless
+        self add_menu("random_bot", "Bot tool", "random", true);
+        self add_menu("random_bot_teleport", "Teleport to bot", "random_bot", true, &func_bot_search, #"teleport");
+        self add_menu_item("random_bot", "Add bot", &func_spawn_add_bot, false);
+        self add_menu_item("random_bot", "Add bot (look)", &func_spawn_add_bot, true);
+        self add_menu_item("random_bot", "Add bot (max)", &func_spawn_add_bot, false, true);
+        self add_menu_item("random_bot", "Remove bot", &func_spawn_remove_bot);
+        self add_menu("random_bot_remove", "Remove bot (list)", "random_bot", true, &func_bot_search, #"remove");
+        self add_menu_item("random_bot", "Remove bot (all)", &func_spawn_remove_bot, true);
+    }
+
     if (is_zombies() || is_warzone()) {
         quacknarok_menu_item = self add_menu_item("random", "Quacknarok", &func_set_quacknarok);
         
@@ -803,7 +815,6 @@ init_menus() {
     }
     
     if (is_dev_mode()) {
-        self add_menu_item("random", "add bot", &func_spawn_add_bot, true);
 
         self add_menu_item("tool_menu", "Hide hud", &func_hidehud);
 

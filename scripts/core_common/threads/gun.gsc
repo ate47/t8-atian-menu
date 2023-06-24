@@ -190,21 +190,27 @@ get_random_player_camo(weapon) {
 
 compute_cammo_data_cfg(camo_data) {
     data = camo_data;
-    for (;;) {
-        if (!isdefined(data)) {
+    if (!isdefined(data)) {
+        return undefined;
+    }
+    if (isarray(data)) {
+        if (data.size == 0) {
             return undefined;
         }
-        if (isarray(data)) {
-            if (data.size == 0) {
-                return undefined;
-            }
-            data = array::random(data);
-        } else if (isint(data)) {
-            return data;
-        } else if (isstring(data)){
-            return compute_cammo_data_cfg_str(data);
-        }
+        data = array::random(data);
     }
+    
+    if (!isdefined(data)) {
+        return undefined;
+    }
+    
+    if (isint(data)) {
+        return data;
+    }
+    if (isstring(data)){
+        return compute_cammo_data_cfg_str(data);
+    }
+    return undefined;
 }
 compute_cammo_data_cfg_str(str_data) {
     str = str_data;
@@ -243,11 +249,13 @@ compute_cammo_data_cfg_str(str_data) {
                 }
                 return camo_item.id;
             }
-        }
-        start = int(range_element[0]);
-        end = int(range_element[1]);
-        if (isdefined(start) && isdefined(end)) {
-            return randomintrange(start, end);
+            default:
+                start = int(range_element[0]);
+                end = int(range_element[1]);
+                if (isdefined(start) && isdefined(end)) {
+                    return randomintrange(start, end);
+                }
+                break;
         }
     }
     return undefined;

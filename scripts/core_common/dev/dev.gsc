@@ -67,43 +67,6 @@ func_dev_method4() {
 func_dev_method5() {
 }
 
-func_spawn_add_bot(item, look) {
-    bot = AddTestClient();
-    if (!isdefined(bot)) {
-        self debugln("^1Can't add a new bot!");
-        return;
-    }
-    wait 0.1;
-
-    rnd_skin = get_skin_random();
-    if (!isdefined(rnd_skin)) {
-        self debugln("^1Can't find random skin!");
-    } else {
-        self debugln("^1using skin ^5" + rnd_skin);
-        bot setspecialistindex(int(rnd_skin[0]));
-        bot setcharacteroutfit(int(rnd_skin[1]));
-        bot function_ab96a9b5("palette", int(rnd_skin[2]));
-    }
-
-    if (!isdefined(look) || !look) {
-        return;
-    }
-    
-    tag_origin = self GetTagOrigin("tag_weapon");
-    look = AnglesToForward(self GetPlayerAngles());
-    bullet_hit = bullettrace(tag_origin, tag_origin + vectorscale(look, 5000), 1, self)["position"];
-
-    ground_pos = bullettrace(bullet_hit + vectorscale((0, 0, 1), 128), bullet_hit - vectorscale((0, 0, 1), 128), 0, undefined, 1);
-    if (ground_pos[#"surfacetype"] == "water" || ground_pos[#"surfacetype"] == "watershallow")
-    {
-        ground_pos = bullettrace(bullet_hit + vectorscale((0, 0, 1), 2048), bullet_hit - vectorscale((0, 0, 1), 2048), 0, undefined, 1);
-    }
-    spawnpoint = ground_pos[#"position"];
-
-
-    bot setOrigin(spawnpoint);
-}
-
 get_object_type(obj) {
     if (!isdefined(obj)) return "undefined";
     if (isbot(obj)) {

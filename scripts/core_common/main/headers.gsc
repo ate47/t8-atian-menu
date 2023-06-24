@@ -44,6 +44,9 @@ __init__() {
         // end game mode type
         level.var_211e3a53 = undefined;
     }
+    
+    level.atianconfig.infection_mode = isdefined(getgametypesetting("infectionmode")) && getgametypesetting("infectionmode");
+    level.am_dev.bot_skins = [];
 
     callback::on_start_gametype(&init);
     callback::on_connect(&onPlayerConnect);

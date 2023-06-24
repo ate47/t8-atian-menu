@@ -85,7 +85,7 @@ get_characters_for_mode() {
     if (is_zombies()) {
         return get_characters_zm();
     }
-    return undefined;
+    return array();
 }
 get_characters_mp() {
     return array(
@@ -534,4 +534,15 @@ get_csv_file_title(hash_csv) {
         }
     }
     return hash_csv;
+}
+
+get_bot_names() {
+    return array(
+        "AA",
+        "BB",
+        "CC",
+        "DD",
+        "EE",
+        "FF"
+    );
 }
