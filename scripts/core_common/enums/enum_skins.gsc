@@ -246,7 +246,7 @@ generate_skin_enum() {
     }
     skin_data add_skin_enum("Ajax", "Number", 14);
     skin_data add_skin_enum("Ajax", "Twitch", 19);
-    skin_data add_skin_enum("Ajax", "White", 0, 3);
+    skin_data add_skin_enum("Ajax", "White", 0, 3, false);
 
     skin_data add_skin_enum("Battery", "Aviator", 25);
     skin_data add_skin_enum("Battery", "Criminal", 21);
