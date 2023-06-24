@@ -50,6 +50,7 @@ ar_doublebarrel_t8
 ar_doublebarrel_t8_upgraded
 ar_doublebarrel_upgraded
 ar_fastfire_t8
+ar_fastfire_t8_operator
 ar_fastfire_t8_upgraded
 ar_galil_t8
 ar_galil_t8_upgraded
@@ -62,12 +63,14 @@ ar_peacekeeper_t8_upgraded
 ar_standard_t8
 ar_standard_t8_upgraded
 ar_stealth_t8
+ar_stealth_t8_operator
 ar_stealth_t8_upgraded
 archetype_avogadro
 arena
 armor
 art
 as_debug
+atianmenu_itembypass
 attachment
 audio
 auto_turret
@@ -396,8 +399,10 @@ lmg_double_t8_upgraded
 lmg_heavy_t8
 lmg_heavy_t8_upgraded
 lmg_spray_t8
+lmg_spray_t8_operator
 lmg_spray_t8_upgraded
 lmg_standard_t8
+lmg_standard_t8_operator
 lmg_standard_t8_upgraded
 lmg_stealth_t8
 lmg_stealth_t8_upgraded
@@ -566,6 +571,7 @@ pistol_burst_t8_upgraded
 pistol_fullauto_t8
 pistol_fullauto_t8_upgraded
 pistol_revolver_t8
+pistol_revolver_t8_operator
 pistol_revolver_t8_upgraded
 pistol_standard_t8
 pistol_standard_t8_upgraded
@@ -665,6 +671,7 @@ skeleton
 smart_cover
 smg
 smg_accurate_t8
+smg_accurate_t8_operator
 smg_accurate_t8_upgraded
 smg_capacity_t8
 smg_capacity_t8_upgraded
@@ -673,6 +680,7 @@ smg_drum_pistol_t8_upgraded
 smg_fastburst_t8
 smg_fastburst_t8_upgraded
 smg_fastfire_t8
+smg_fastfire_t8_operator
 smg_fastfire_t8_upgraded
 smg_folding_t8
 smg_folding_t8_upgraded
@@ -693,6 +701,7 @@ sniper
 sniper_damagesemi_t8
 sniper_damagesemi_t8_upgraded
 sniper_fastrechamber_t8
+sniper_fastrechamber_t8_operator
 sniper_fastrechamber_t8_upgraded
 sniper_locus_t8
 sniper_locus_t8_upgraded
@@ -703,6 +712,7 @@ sniper_powerbolt_t8_upgraded
 sniper_powersemi_t8
 sniper_powersemi_t8_upgraded
 sniper_quickscope_t8
+sniper_quickscope_t8_operator
 sniper_quickscope_t8_upgraded
 snowball
 snowball_upgraded
@@ -810,10 +820,13 @@ tr_flechette_t8_upgraded
 tr_leveraction_t8
 tr_leveraction_t8_upgraded
 tr_longburst_t8
+tr_longburst_t8_operator
 tr_longburst_t8_upgraded
 tr_midburst_t8
+tr_midburst_t8_operator
 tr_midburst_t8_upgraded
 tr_powersemi_t8
+tr_powersemi_t8_operator
 tr_powersemi_t8_upgraded
 tracker
 trapd
@@ -1171,4 +1184,3 @@ zombie_blood
 zombie_dog
 zombie_fists
 zombie_quad
-atianmenu_itembypass
