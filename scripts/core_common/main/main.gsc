@@ -7,6 +7,8 @@ init() {
                 break;
         }
     }
+
+    handle_force_map();
     
     
     if (is_zombies()) {
@@ -166,7 +168,6 @@ onPlayerSpawned() {
             self.var_6162c5a7 = atianconfig.zm_custom_health_onkill;
         }
     }
-    
 
     atianconfig_no_menu = (isdefined(atianconfig.only_host) && atianconfig.only_host && !self IsHost()) || (isdefined(atianconfig.no_menu) && atianconfig.no_menu);
 
@@ -178,33 +179,6 @@ onPlayerSpawned() {
     self thread onPlayerSpawnedDelay();
     
     self set_skin_config_val(atianconfig.character_skin);
-    
-    if (is_warzone()) {
-        if (isdefined(atianconfig.force_blackout_gametype)) {
-            gametype_force = atianconfig.force_blackout_gametype;
-        } else {
-            gametype_force = level.gametype;
-        }
-        if (isdefined(atianconfig.force_blackout_map)) {
-            map_force = atianconfig.force_blackout_map;
-        } else {
-            map_force = util::get_map_name();
-        }
-        
-
-        if (util::get_map_name() != map_force || level.gametype != gametype_force) {
-            // we need to wait before loading the other map
-            wait(10);
-            self iPrintLn("loading " + map_force + "/" + gametype_force);
-
-            switchmap_load(map_force, gametype_force);
-            if (!isdefined(atianconfig.force_blackout_noswitch) || !atianconfig.force_blackout_noswitch) {
-                wait(1);
-                switchmap_switch();
-            }
-            return;
-        }
-    }
 
     self onPlayerSpawnedDev();
 

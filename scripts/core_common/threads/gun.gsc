@@ -38,9 +38,8 @@ GunModifier() {
             continue;
         }
         // at least one tool is activated
-        tag_origin = self geteye();
         look = AnglesToForward(self GetPlayerAngles());
-        bullet_hit = bullettrace(tag_origin, tag_origin + vectorscale(look, 10000), 1, self)["position"];
+        bullet_hit = get_look_position();
 
         if (tool_explosion_gun) {
             physicsexplosionsphere(bullet_hit, 200, 200, 20);

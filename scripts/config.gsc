@@ -233,6 +233,13 @@ AtianMenuConfig() {
     // - multiplayer       : 800
     // self.mp_sensor_dart_radius = 800;
 
+    // force a multiplayer map
+    //self.mp_force_map = "mp_seaside";
+
+    // force a multiplayer mode
+    // you can start CT modes, but it'll crash at the end or if you don't start the right map
+    //self.mp_force_gametype = "sd";
+
     // -------- zombie config --------
 
     // show the ingame timer

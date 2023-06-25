@@ -32,9 +32,10 @@ on_pre_init() {
 
 //required
 __init__() {
+    atianconfig = level.atianconfig;
     generate_enum_values();
 
-    if (isdefined(level.atianconfig.zm_custom_ee) && level.atianconfig.zm_custom_ee) {
+    if (isdefined(atianconfig.zm_custom_ee) && atianconfig.zm_custom_ee) {
         // no contract
         level.var_aa2d5655 = undefined;
         // can xp
@@ -45,7 +46,7 @@ __init__() {
         level.var_211e3a53 = undefined;
     }
     
-    level.atianconfig.infection_mode = isdefined(getgametypesetting("infectionmode")) && getgametypesetting("infectionmode");
+    atianconfig.infection_mode = isdefined(getgametypesetting("infectionmode")) && getgametypesetting("infectionmode");
     level.am_dev.bot_skins = [];
 
     callback::on_start_gametype(&init);

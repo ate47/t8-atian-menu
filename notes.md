@@ -98,3 +98,4 @@ level.var_79a3ba26 = [#"hash_6e237d1aec5ebae2":1, #"hash_28fb7b6581fc57fb":1, #"
 it would be fun to test if the 3rd value is right:
 
 - `"wzplayerinsertiontypeindex"` - Respawn type, 0=helicopter,1=portals,2=direct freefall??
+- self playsound(localclientnum, #"uin_unavailable_charging");

@@ -66,3 +66,9 @@ set_quacknarok_activated(value = undefined) {
         return level.atianconfig.blackout_quaknarok;
     }
 }
+
+get_look_position() {
+    tag_origin = self geteye();
+    look = AnglesToForward(self GetPlayerAngles());
+    return bullettrace(tag_origin, tag_origin + vectorscale(look, 10000), 1, self)["position"];
+}
