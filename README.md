@@ -31,6 +31,14 @@ Posts or videos I've made using these scripts or the sources:
 
 ## Config
 
+If you don't want to use the menu and only use particular functions from the mod, you can set the value of `no_menu` to `true` in [scripts/config.gsc](scripts/config.gsc).
+
+If the config function is empty, nothing will happen in game.
+
+```c++
+self.no_menu = true;
+```
+
 You can config the mod keys in the [`scripts/keyconfig.gsc`](scripts/keyconfig.gsc) file, by default you open it with ADS+Melee.
 
 You can config the mod menu in the [`scripts/config.gsc`](scripts/config.gsc) file, current tools:
@@ -165,7 +173,7 @@ The menu descriptions are usually put in the [`scripts/menu/menu_items.gsc`](scr
 
 To register a menu, you can call this method:
 
-```gsc
+```c++
 <player> add_menu(menu_id, menu_name, parent_id, create_menu = false, menuenterfunc = undefined);
 ```
 
@@ -177,7 +185,7 @@ To register a menu, you can call this method:
 
 You can then add elements to your menu using
 
-```gsc
+```c++
 <player> add_menu_item(menu_id, item_name, action, actiondata = undefined, actiondata2 = undefined, actiondata3 = undefined, actiondata4 = undefined, actiondata5 = undefined);
 <player> add_menu_item_menuswitch(menu_id, item_name, new_menu_id);
 <player> add_menu_item_modswitch(menu_id, item_name, mod_name);
@@ -189,7 +197,7 @@ You can then add elements to your menu using
 
 You can use this function to check if a mod is activated:
 
-```gsc
+```c++
 <player> is_mod_activated(mod_name);
 ```
 

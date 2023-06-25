@@ -12,7 +12,8 @@ get_all_modes_wz() {
         "warzone_hardcore_solo",
         "warzone_hardcore_duo",
         "warzone_hardcore_quad",
-        "warzone_pandemic_quad"
+        "warzone_pandemic_quad",
+        "warzone_bigteam_dbno_quad"
     );
 }
 get_all_modes_mp() {

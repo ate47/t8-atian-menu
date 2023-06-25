@@ -118,6 +118,7 @@ onPlayerSpawned() {
     self endon(#"disconnect", #"spawned_player");
     level endon(#"end_game", #"game_ended");
 
+    self.atian = spawnStruct();
     atianconfig = level.atianconfig;
 
     if (isbot(self)) {
@@ -174,16 +175,10 @@ onPlayerSpawned() {
     self thread MainRunner();
     self thread GunModifier();
     self thread CamoSetter();
-	self register_menu_response_callback("WaypointPlaced", &WaypointPlaced);
+    self thread onPlayerSpawnedDelay();
     
     self set_skin_config_val(atianconfig.character_skin);
     
-    if (is_zombies()) {
-        if (isdefined(atianconfig.zm_start_time_hud) && atianconfig.zm_start_time_hud && level.gametype == "zclassic") {
-            // I don't know what can happen if it's not a zclassic game
-            // thread zm_init_timer_time();
-        }
-    }
     if (is_warzone()) {
         if (isdefined(atianconfig.force_blackout_gametype)) {
             gametype_force = atianconfig.force_blackout_gametype;
@@ -216,11 +211,32 @@ onPlayerSpawned() {
     if (atianconfig_no_menu) {
         return;
     }
+
     // init menu system
-    self init_menu();
+    if (!self init_menu("Atian Menu")) {
+        return;
+    }
+    
+    // init the configuration
+    self init_menus();
+    
+    self thread menu_think();
+
+    if ((isdefined(self.atianconfig_menu_preloaded) && self.atianconfig_menu_preloaded)
+        || !isdefined(self.atianconfig.preloaded_menus)) {
+        return;
+    }
+    for (i = 0; i < self.atianconfig.preloaded_menus.size; i++) {
+        preload_menu = strtok(self.atianconfig.preloaded_menus[i], "::");
+        if (preload_menu.size == 2) {
+            self ClickMenuButton(preload_menu[0], preload_menu[1]);
+        }
+    }
+    self.atianconfig_menu_preloaded = true;
 }
 
-zm_init_timer_time() {
-	level flagsys::wait_till("gameplay_started");
-    clientfield::set_world_uimodel("ZMHudGlobal.trials.gameStartTime", level.var_21e22beb);
+onPlayerSpawnedDelay() {
+    wait 0.5;
+    
+    self wz_waypoint_tp_init();
 }

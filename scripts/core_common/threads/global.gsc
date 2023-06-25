@@ -3,8 +3,7 @@ MainRunner() {
     self endon(#"disconnect", #"spawned_player");
     level endon(#"end_game", #"game_ended");
 
-    for(;;)
-    {
+    for(;;) {
         if (is_mod_activated("maxpoints")) {
             self.score = 99999;
             // self.zombie_vars[#"zombie_point_scalar"] = 999;
@@ -47,36 +46,6 @@ MainRunner() {
         // waits a single frame
         waitframe(1);
     }
-}
-
-WaypointPlaced(response, intpayload) {
-	if(!isalive(self) || response != "placed" || !self is_mod_activated("waypoint_tp")) {
-		return;
-	}
-    
-    if (!isdefined(level.var_405a6738) || !isdefined(level.var_8a390df2)) {
-        self iPrintLnBold("^1can't get map size");
-        return;
-    }
-    
-    if (isdefined(level.mapcenter)) {
-        mapcenter = level.mapcenter;
-    } else {
-        mapcenter = (0, 0, 0);
-    }
-
-    xcoord = int(intpayload / 1000);
-    ycoord = intpayload - (xcoord * 1000);
-
-    // map size x : var_405a6738
-    // map size y : var_8a390df2
-    y = (xcoord - 500) / 500 * (0-level.var_405a6738) + mapcenter[1];
-    x = (ycoord - 500) / 500 * (0-level.var_8a390df2) + mapcenter[0];
-    
-    self iPrintLnBold("^6Teleported to ^2" + x + "^6/^2" + y);
-
-    position = bullettrace((x, y, 5000), (x, y, -5000), 0, self, 1)[#"position"];
-    self setOrigin(position);
 }
 
 RandomTp() {

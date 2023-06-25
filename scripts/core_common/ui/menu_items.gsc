@@ -986,6 +986,4 @@ init_menus() {
         }
 */
     }
-
-    self thread menu_think();
 }

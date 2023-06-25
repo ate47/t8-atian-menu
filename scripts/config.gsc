@@ -1,4 +1,30 @@
 AtianMenuConfig() {
+    // --------- menu config ---------
+    
+    // load menus at start, should be the same as the one described in menu_items.gsc, syntax: "MENU_NAME::ITEM_NAME"
+    // example: "tool_menu::Invulnerability" for no damage
+    self.preloaded_menus = array(
+        "tool_menu::Ammos",
+        "tool_menu::Invulnerability",
+        "tool_menu::Max Points",
+        "tool_menu::Max Revive",
+        "teleport::Waypoint tp",
+        "tool_menu::End contracts"
+    );
+    
+    // do not activate the menu, only use the config to create the game
+    // if this value isn't set to false, no menu will be created
+    self.no_menu = false;
+
+    // only the host has the menu
+    self.only_host = true;
+
+    // fly speeds
+    // - fly when moving, default 20
+    self.fly_speed_normal = 20;
+    // - fly when moving fast, default 60
+    self.fly_speed_fast = 60;
+    
     // ------- global config -------
 
     // set the skin during the launch of the game, you can get the names in the utils/enums.gsc file, each names are split by ';'
@@ -60,31 +86,6 @@ AtianMenuConfig() {
     // add bot at the start of the game
     //self.bot_add_start = 10;
 
-    // --------- menu config ---------
-    
-    // load menus at start, should be the same as the one described in menu_items.gsc, syntax: "MENU_NAME::ITEM_NAME"
-    // example: "tool_menu::Invulnerability" for no damage
-    self.preloaded_menus = array(
-        "tool_menu::Ammos",
-        "tool_menu::Invulnerability",
-        "tool_menu::Max Points",
-        "tool_menu::Max Revive",
-        "teleport::Waypoint tp",
-        "tool_menu::End contracts"
-    );
-
-    // only the host has the menu
-    // self.only_host = true;
-    
-    // do not activate the menu, only use the config to create the game
-    // self.no_menu = true;
-
-    // fly speeds
-    // - fly when moving, default 20
-    self.fly_speed_normal = 20;
-    // - fly when moving fast, default 60
-    self.fly_speed_fast = 60;
-
     // ------- blackout config -------
 
     // force a blackout map, options:
@@ -105,6 +106,7 @@ AtianMenuConfig() {
     //    "warzone_hardcore_solo"      // hardcore solo
     //    "warzone_hardcore_duo"       // hardcore duo
     //    "warzone_hardcore_quad"      // hardcore quad
+    //    "warzone_bigteam_dbno_quad"  // ground war
     //    "warzone_pandemic_quad"      // pandemic (script error with alcatraz)
     // ---- gametypes with errors:
     //    "warzone_heavy_metal"        // heavy metal (no heroes) (script error)
@@ -143,7 +145,7 @@ AtianMenuConfig() {
     // /!\ the avogadro is bugged and will instantly die after few bullets (https://www.youtube.com/watch?v=39Rma4ah7OA), 
     // you can set the of the spawned object health using this config
     // 6000 = default health for the brutus
-    self.blackout_spawn_default_health = 4000;
+    self.blackout_spawn_default_health = 1000;
 
     // set respawn delay in respawn mode (in seconds)
     // self.waverespawndelay = 30;

@@ -6,17 +6,14 @@ ANoclipBind() {
 	self unlink();
     if(isdefined(self.originObj)) self.originObj delete();
     ts = 0;
-	while(true)
-	{
-		if(is_mod_activated("fly"))
-		{
+	while(true) {
+		if(is_mod_activated("fly")) {
 			
 			self.originObj = spawn("script_origin", self.origin, 1);
     		self.originObj.angles = self.angles;
 			self PlayerLinkTo(self.originObj, undefined);
 			self enableweapons();
-			while(true)
-			{
+			while(true) {
 				if(!is_mod_activated("fly")) {
 					self iprintlnbold("^6Fly mode ^1disabled");
 					break;

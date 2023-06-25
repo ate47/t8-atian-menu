@@ -1,17 +1,23 @@
 
 warzone_solo 35F8EE90CBFFA9E7
-
 warzone_duo 327338A0B51BD1E4
-
 warzone_quad 14de0f7fa012b74f
-
 warzone_hot_pursuit FB4C2B9CE4E66802
-
 wz_open_skyscrapers 2a0c04b4bcbed100
-
 wz_escape 4023b088683398e2
-
 wz_escape_alt 6c4fd4af9da9e4ca
+
+
+f0_local0.EModeData = {
+	[Enum.eModes[0x83EBA96F36BC4E5]] = {
+		assetName = 0x9E82E6A2962DD60
+	},
+	[Enum.eModes[0x3723205FAE52C4A]] = {
+		assetName = 0x9CA2B6A2949DAB8
+	},
+	[Enum.eModes[0xBF1DCC8138A9D39]] = {
+		assetName = 0x9D4406A295252EC
+	}
 
 What can cause a crash:
 
@@ -24,6 +30,11 @@ What can cause a crash:
 - 2006839707 -> array:add in bad ptr
 - Whiskey 110 Late tiger -> accessing array like a struct?
 - kilo 45 gold dove, usage of unset local var
+
+wzHideSpectatorsUI
+wzHidePlayersAliveUI
+wzHideKillsUI
+wzHideCleanupsUI
 
 kill: 50
 melee_kill: 100
@@ -84,5 +95,6 @@ level.var_79a3ba26 = [#"hash_6e237d1aec5ebae2":1, #"hash_28fb7b6581fc57fb":1, #"
 		level.var_f290f0ba = [#"hash_78f8f730158519ff":30, #"hospital_stash":29, #"hash_62810f3ef5d7c53b":28, #"hash_468067e2be6e3cfd":27, #"hash_4b49cb98f0fd776a":26, #"hash_6dea2e4afc816818":25, #"hash_2783dbab1f862606":24, #"hash_2141ecb8d2d86b22":23, #"hash_678a1efded2b597a":22, #"hash_1b83b702bbaae298":21, #"hash_7d028af90dad72ae":20, #"hash_a211476d10546c":19, #"hash_308758c2f91807aa":18, #"hash_550872d1d1938f94":17, #"hash_408b3ed7db6f9401":16, #"hash_734bf5054445e0df":15, #"hash_2a93e93b275c38ed":14, #"hash_75cc919e81dc8b19":13, #"hash_779cba7072600ad1":12, #"hash_47a63bc4a605b45f":11, #"hash_4ee6deffa30cc6e2":10, #"hash_ca8b234ad1fea38":9, #"hash_66f790c2630deace":8, #"hash_49e8a607ea22e650":7, #"hash_43647ef7af66f82f":6, #"hash_61373b747c6a21fd":5, #"hash_3ad3de90342f2d4b":4, #"hash_2b546c0315159617":3, #"hash_33f7121f70c3065f":2, #"hash_6a0d13acf3e5687d":1];
 
 
+it would be fun to test if the 3rd value is right:
 
-a maximum of 6 quacknarok zombies are used, maybe implementing it by ourself would be more permisive
+- `"wzplayerinsertiontypeindex"` - Respawn type, 0=helicopter,1=portals,2=direct freefall??

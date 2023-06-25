@@ -12,7 +12,7 @@ try {
     $base = (Get-Item $PSScriptRoot)
     Set-Location ($base.Fullname)
     
-    Set-Location scripts/utils
+    Set-Location scripts\core_common
 
     if ($Big) {
     @"

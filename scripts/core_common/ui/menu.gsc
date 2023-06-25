@@ -1,7 +1,7 @@
-init_menu() {
+init_menu(menu_title) {
     if (isdefined(self.menu_info)) {
         // ignore menu creation if already set
-        return;
+        return false;
     }
 
     self.menu_info = 
@@ -14,21 +14,9 @@ init_menu() {
         #mods: array()
     };
 
-    self add_menu("start_menu", "Atian Menu", "");
+    self add_menu("start_menu", menu_title, "");
 
-    self init_menus();
-
-    if ((isdefined(self.atianconfig_menu_preloaded) && self.atianconfig_menu_preloaded)
-        || !isdefined(self.atianconfig.preloaded_menus)) {
-        return;
-    }
-    for (i = 0; i < self.atianconfig.preloaded_menus.size; i++) {
-        preload_menu = strtok(self.atianconfig.preloaded_menus[i], "::");
-        if (preload_menu.size == 2) {
-            self ClickMenuButton(preload_menu[0], preload_menu[1]);
-        }
-    }
-    self.atianconfig_menu_preloaded = true;
+    return true;
 }
 
 toggle_mod(mod_name) {
