@@ -7,7 +7,7 @@ on_wz_zombie_spawn() {
         self thread wz_zombie_eye_glow_delay(color_id);
     }
     
-    if (level.atianconfig.blackout_quaknarok) {
+    if (isdefined(level.atianconfig.blackout_quaknarok) && level.atianconfig.blackout_quaknarok) {
         if (!isdefined(level.atianconfig.blackout_quacknarok_spawn_percentage)) {
             level.atianconfig.blackout_quacknarok_spawn_percentage = 0.3;
         }
