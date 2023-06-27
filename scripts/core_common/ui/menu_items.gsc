@@ -311,8 +311,7 @@ init_menus() {
     }
 
 
-    if (!(is_warzone() && isdefined(self.atianconfig.force_blackout_map)) || !(is_multiplayer() && isdefined(self.atianconfig.mp_force_map))) {
-
+    if (!(is_warzone() && isdefined(self.atianconfig.force_blackout_map)) && !(is_multiplayer() && isdefined(self.atianconfig.mp_force_map))) {
         map_data = get_maps_data_for_mode();
 
         if (isdefined(map_data)) {
@@ -815,6 +814,4 @@ init_menus() {
             }
         }
     }
-    
-    self init_menus_dev();
 }

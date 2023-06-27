@@ -193,7 +193,8 @@ onPlayerSpawned() {
     
     // init the configuration
     self init_menus();
-    
+    self init_menus_dev();
+
     self thread menu_think();
 
     if ((isdefined(self.atianconfig_menu_preloaded) && self.atianconfig_menu_preloaded)
