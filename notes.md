@@ -99,3 +99,4 @@ it would be fun to test if the 3rd value is right:
 
 - `"wzplayerinsertiontypeindex"` - Respawn type, 0=helicopter,1=portals,2=direct freefall??
 - self playsound(localclientnum, #"uin_unavailable_charging");
+- zm_gametype::zm_map_restart()
