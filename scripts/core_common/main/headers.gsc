@@ -14,6 +14,7 @@
 #include scripts\core_common\values_shared;
 #include scripts\core_common\spawner_shared;
 #include scripts\core_common\flagsys_shared;
+#include scripts\core_common\exploder_shared;
 
 #namespace clientids_shared;
 
@@ -75,7 +76,9 @@ handle_config() {
     level.atianconfig = spawnstruct();
     level.atianconfig.devcfg = spawnstruct();
     level.atianconfig AtianMenuConfig();
+#ifdef ATIAN_MENU_DEV
     level.atianconfig AtianMenuDevConfig();
+#endif
     atianconfig = level.atianconfig;
 
     if (isdefined(atianconfig.weapon_camo_reset)) {
@@ -257,6 +260,7 @@ handle_config() {
         if (isdefined(atianconfig.zm_custom_friendlyfire)) setGametypeSetting(#"zmfriendlyfiretype", atianconfig.zm_custom_friendlyfire);
         if (isdefined(atianconfig.zm_custom_aat)) setGametypeSetting(#"hash_57a5c7a9dcf94d61", atianconfig.zm_custom_aat);
         if (isdefined(atianconfig.zm_custom_no_loadout)) setGametypeSetting(#"zmretainweapons", atianconfig.zm_custom_no_loadout);
+        if (isdefined(atianconfig.zm_custom_revive_amount)) setGametypeSetting(#"zmselfreviveamount", atianconfig.zm_custom_revive_amount);
         if (isdefined(atianconfig.zm_custom_headshots_only)) {
             setGametypeSetting(#"zmheadshotsonly", atianconfig.zm_custom_headshots_only);
             setGametypeSetting(#"headshotsonly", atianconfig.zm_custom_headshots_only);

@@ -113,29 +113,36 @@ func_activate_narrative_room(item) {
 }
 
 func_activate_narrative_room_thread() {
+    if (isdefined(level.atian_narrative_room) && level.atian_narrative_room) {
+        return;
+    }
+    level.atian_narrative_room = true;
+
     // zm_red, zm_office, zm_escape
     level notify(#"fake_waittill");
+
     // zm_towers
-	doors = getentarray("lore_room", "targetname");
-    if (isdefined(doors)) {
-        foreach(e_door in doors) {
-            e_door delete();
+    if (level.script == "zm_towers") {
+        // zm_zodt8 (thanks Jek)
+        exploder::exploder("exp_lgt_body_pit_secret_room");
+        level clientfield::set("" + #"hash_2383fd01b106ced8", 1);
+        lore_room_doors = getentarray("lore_room", "targetname");
+        foreach(e_door in lore_room_doors) {
+            e_door moveto(e_door.origin + vectorscale((0, 0, -16), 10), 2.2);
         }
-    }
-    // zm_white
-	door = getent("bread_door", "targetname");
-    if (isdefined(door)) {
-		doors rotateto(doors.angles + (vectorscale((0, -1, 0), 170)), 1);
-		doors waittill(#"movedone");
-        doors disconnectpaths();
+    } else if (level.script == "zm_white") {
+        door = getent("bread_door", "targetname");
+        door rotateto(door.angles + (vectorscale((0, -1, 0), 170)), 1);
+        door waittill(#"movedone");
+        door disconnectpaths();
         v_blocker = spawn("trigger_box", (-800, -1070, -132), 0, 408, 164, 132);
         v_blocker disconnectpaths();
-    }
-    // zm_zodt8 (thanks Serious)
-	doors = getent("baphomets_entry", "targetname");
-    if (isdefined(doors)) {
-        foreach(e_door in doors) {
-            e_door delete();
-        }
+    } else if (level.script == "zm_zodt8") {
+        // zm_zodt8 (thanks Jek)
+        level flag::set(#"open_lore_room");
+        baphomets_entry_clip = getent("baphomets_entry_clip", "targetname");
+        baphomets_entry_clip moveto(baphomets_entry_clip.origin + vectorscale((0, 0, 16), 10), 1.6);
+        baphomets_entry = getent("baphomets_entry", "targetname");
+        baphomets_entry rotateyaw(125, 1.6);
     }
 }

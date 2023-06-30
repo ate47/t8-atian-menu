@@ -51,8 +51,9 @@ devInitGametype() {
 
 }
 debugln(str_line) {
-    if (is_dev_mode()) {
+    if (is_dev_mode() && isplayer(self)) {
         self iPrintLnBold("^2[DBG] " + str_line);
+        am_log(self.name + ":" + str_line);
     }
 }
 

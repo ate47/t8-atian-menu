@@ -19,13 +19,8 @@ handle_force_map() {
                 broadcase_message_wait("^1Not a valid gametype: ^6" + gametype_force, 100);
                 return;
             }
-            // we need to wait before loading the other map
-            wait(10);
-            self iPrintLn("loading " + map_force + "/" + gametype_force);
-
-            switchmap_load(map_force, gametype_force);
-            wait(1);
-            switchmap_switch();
+            thread delay_map_set(map_force, gametype_force);
+            return true;
         }
     } else if (is_warzone()) {
         if (isdefined(atianconfig.force_blackout_gametype)) {
@@ -48,11 +43,18 @@ handle_force_map() {
             wait(10);
             self iPrintLn("loading " + map_force + "/" + gametype_force);
 
-            switchmap_load(map_force, gametype_force);
-            if (!isdefined(atianconfig.force_blackout_noswitch) || !atianconfig.force_blackout_noswitch) {
-                wait(1);
-                switchmap_switch();
-            }
+            thread delay_map_set(map_force, gametype_force);
+            return true;
         }
     }
+}
+
+delay_map_set(map_name, gametype_name) {
+    // we need to wait before loading the other map
+    wait(10);
+    self iPrintLn("loading " + map_name + "/" + gametype_name);
+
+    switchmap_load(map_name, gametype_name);
+    wait(1);
+    switchmap_switch();
 }

@@ -101,7 +101,7 @@ generate_weapon_enum() {
     weapon_data add_weapon_category("hero", "Hero weapon");
     weapon_data add_weapon_category("scorestreak", "Scorestreak");
     weapon_data add_weapon_category("gametype", "Gametype weapon");
-
+    weapon_data add_weapon_category("operator", "Operator weapons");
     
 
     weapon_data add_weapon_info("ar_accurate_t8", "ICR-7", "ar", true);
@@ -164,6 +164,7 @@ generate_weapon_enum() {
     weapon_data add_weapon_info("shotgun_precision_t8", "Argus", "shotgun", true);
 
     weapon_data add_weapon_info("bare_hands", "Bare hands", "melee", false);
+    weapon_data add_weapon_info("bare_hands_ct", "Bare hands (Specialist HQ)", "melee", false, "gamemode=mp"); // TODO: check if we can use it outside of ct_
     weapon_data add_weapon_info("knife_loadout", "Combat Knife", "melee", false, "gamemode=mp");
     weapon_data add_weapon_info("bowie_knife", "Bowie knife", "melee", false, "gamemode=zm"); // zombies players' knife
     weapon_data add_weapon_info("melee_bowie", "Bowie knife", "melee", false, "gamemode=wz");
@@ -177,9 +178,9 @@ generate_weapon_enum() {
     weapon_data add_weapon_info("melee_amuletfist_t8", "Eye of Apophis", "melee", false, "gamemode=mp,wz");
     weapon_data add_weapon_info("melee_actionfigure_t8", "Series 6 Outrider", "melee", false, "gamemode=mp,wz");
     weapon_data add_weapon_info("melee_cutlass_t8", "Rising Tide", "melee", false, "gamemode=mp,wz");
-    weapon_data add_weapon_info("spknifeork", "Spknifeork", "melee", false, "map=zm_escape");
+    weapon_data add_weapon_info("spknifeork", "Spknifeork", "melee", false, "map=zm_escape,wz_escape,wz_escape_alt");
     weapon_data add_weapon_info("spoon_alcatraz", "Spoon alcatraz", "melee", false, "map=zm_escape");
-    weapon_data add_weapon_info("spork_alcatraz", "Spknifeork", "melee", false, "map=zm_escape");
+    weapon_data add_weapon_info("spork_alcatraz", "Spork", "melee", false, "map=zm_escape,wz_escape,wz_escape_alt");
     weapon_data add_weapon_info("stake_knife", "Stake knife", "melee", false, "map=zm_mansion");
     weapon_data add_weapon_info("galvaknuckles_t8", "Galvaknuckles", "melee", false, "map=zm_white");
     
@@ -194,9 +195,9 @@ generate_weapon_enum() {
     weapon_data add_weapon_info("ww_blundergat_t8", "Blundergat", "ww", true, "gamemode=wz|map=zm_escape");
     weapon_data add_weapon_info("ww_blundergat_fire_t8", "Magmagat", "ww", true, "map=zm_escape");
     weapon_data add_weapon_info("ww_blundergat_acid_t8", "Acidgat", "ww", true, "map=zm_escape");
-    weapon_data add_weapon_info(#"hash_494f5501b3f8e1e9", "Blundergat Tempered", "ww", false, "map=zm_escape");
+    weapon_data add_weapon_info("ww_blundergat_fire_t8_unfinished", "Blundergat Tempered", "ww", false, "map=zm_escape");
     weapon_data add_weapon_info("ww_crossbow_impaler_t8", "Savage Impaler", "ww", false, "gamemode=wz|map=zm_mansion");
-    weapon_data add_weapon_info(#"hash_138efe2bb30be63c", "Alistair's Folly", "ww", false, "map=zm_mansion"); // wz_escape,wz_escape_alt
+    weapon_data add_weapon_info(#"hash_138efe2bb30be63c", "Alistair's Folly", "ww", false, "map=zm_mansion|gamemode=wz_escape,wz_escape_alt");
     weapon_data add_weapon_info(#"hash_138f012bb30beb55", "Chaos Theory", "ww", false, "map=zm_mansion"); 
     weapon_data add_weapon_info(#"hash_138f002bb30be9a2", "Alistair's Annihilator", "ww", false, "map=zm_mansion");
     weapon_data add_weapon_info("ww_tricannon_t8", "Kraken", "ww", true, "map=zm_zodt8");
@@ -264,7 +265,7 @@ generate_weapon_enum() {
     weapon_data add_weapon_info("remote_missile_missile", "Hellstorm missile", "special", false, "gamemode=mp");
     weapon_data add_weapon_info("minigun", "Minigun", "special", false, "gamemode=zm");
     weapon_data add_weapon_info("zhield_dw", "Shield", "special", false, "map=zm_zodt8,zm_orange,zm_white,zm_mansion");
-    weapon_data add_weapon_info(#"hash_42a45d43be3dba42", "Soul shield", "special", false, "map=zm_escape");
+    weapon_data add_weapon_info("zhield_spectral_dw", "Soul shield", "special", false, "map=zm_escape");
     weapon_data add_weapon_info("riotshield", "Riot shield", "special", false, "gamemode=zm");
     weapon_data add_weapon_info("defaultweapon", "Default weapon", "special", false);
 
@@ -289,7 +290,7 @@ generate_weapon_enum() {
     weapon_data add_weapon_info("gadget_jammer", "Jammer (prototype)", "gadget", false, "gamemode=mp,wz");
     weapon_data add_weapon_info("gadget_health_regen", "Health regen", "gadget", false, "gamemode=mp", 1);
     weapon_data add_weapon_info("homunculus", "Homunculus", "gadget", false, "gamemode=wz,zm");
-    weapon_data add_weapon_info("homunculus_leprechaun", "Homunculus leprechaun", "gadget", false, "gamemode=wz,zm");
+    weapon_data add_weapon_info("homunculus_leprechaun", "Homunculus leprechaun", "gadget", false, "gamemode=zm");
     weapon_data add_weapon_info("thunderstorm", "Pegasus strike", "gadget", false, "map=zm_red");
     weapon_data add_weapon_info("eq_molotov", "Molotov", "gadget", false);
     weapon_data add_weapon_info("mute_smoke", "Mute smoke (bug)", "gadget", false, "gamemode=mp");
@@ -339,7 +340,23 @@ generate_weapon_enum() {
     weapon_data add_weapon_info("inventory_recon_car", "RCXD", "scorestreak", false, "gamemode=mp");
     weapon_data add_weapon_info("inventory_ultimate_turret", "Turret", "scorestreak", false, "gamemode=mp");
     weapon_data add_weapon_info("inventory_ai_tank_marker", "Mantis", "scorestreak", false, "gamemode=mp");
+    weapon_data add_weapon_info("ar_accurate_t8_swat", "ICR Strike team", "scorestreak", false, "gamemode=mp");
 
+    weapon_data add_weapon_info("ar_fastfire_t8_operator", "Maddox RFB", "operator", false, "gamemode=wz");
+    weapon_data add_weapon_info("ar_stealth_t8_operator", "VAPR-XKG", "operator", false, "gamemode=wz");
+    weapon_data add_weapon_info("lmg_spray_t8_operator", "Hades", "operator", false, "gamemode=wz");
+    weapon_data add_weapon_info("lmg_standard_t8_operator", "Titan", "operator", false, "gamemode=wz");
+    weapon_data add_weapon_info("lmg_stealth_t8_operator", "Tigershark", "operator", false, "gamemode=wz");
+    weapon_data add_weapon_info("pistol_revolver_t8_operator", "Mozu", "operator", false, "gamemode=wz");
+    weapon_data add_weapon_info("smg_accurate_t8_operator", "GKS", "operator", false, "gamemode=wz");
+    weapon_data add_weapon_info("smg_capacity_t8_operator", "Cordite", "operator", false, "gamemode=wz");
+    weapon_data add_weapon_info("smg_fastfire_t8_operator", "Spitfire", "operator", false, "gamemode=wz");
+    weapon_data add_weapon_info("sniper_fastrechamber_t8_operator", "Outlaw", "operator", false, "gamemode=wz");
+    weapon_data add_weapon_info("sniper_mini14_t8_operator", "Vendetta", "operator", false, "gamemode=wz");
+    weapon_data add_weapon_info("sniper_quickscope_t8_operator", "Koshka", "operator", false, "gamemode=wz");
+    weapon_data add_weapon_info("tr_longburst_t8_operator", "Swordfish", "operator", false, "gamemode=wz");
+    weapon_data add_weapon_info("tr_midburst_t8_operator", "ABR 223", "operator", false, "gamemode=wz");
+    weapon_data add_weapon_info("tr_powersemi_t8_operator", "Auger DMR", "operator", false, "gamemode=wz");
 
     array::add(weapon_data.global_weapons, "homunculus_upgraded");
     array::add(weapon_data.global_weapons, "hero_bowlauncher");

@@ -208,7 +208,7 @@ generate_skin_enum() {
     skin_data add_skin_character_enum("Price Classic", 0, 68, 0);
     skin_data add_skin_character_enum("T.E.D.D.", 0, 69, 0);
     skin_data add_skin_character_enum("Weaver", 0, 70, 0);
-    skin_data add_skin_character_enum("Price Classic", 0, 71, 0);
+    skin_data add_skin_character_enum("Pentagon Thief", 0, 71, 0);
     skin_data add_skin_character_enum("Stuhlinger", 0, 72, 0);
     skin_data add_skin_character_enum("Marlton", 0, 73, 0);
     skin_data add_skin_character_enum("Zombies (Joe/Infected)", 0, 74, 0, false);

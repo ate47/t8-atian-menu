@@ -115,10 +115,6 @@ AtianMenuConfig() {
     //    "warzone_ambush_duo"         // ambush duo (script error)
     //    "warzone_ambush_quads"       // ambush quad (script error)
     self.force_blackout_gametype = "warzone_escape_quad_dbno";
-
-    // force the gametype, but without switching, will be in the menu after quit
-    //self.force_blackout_noswitch = true;
-
     
     // duck zombies, example: https://www.youtube.com/watch?v=XphuwHYtSjk
     // new: it works on the avogadro (https://youtu.be/tUzdoK6g1V4)
@@ -251,11 +247,17 @@ AtianMenuConfig() {
     // bypass custom mutation no EE policy
     self.zm_custom_ee = true;
 
+    // set the health in zombies (you'll have render issues above 512HP)
+    // self.zm_max_health = 350;
+
     // activate Shamrock & Awe Event, if this value isn't set to true, you won't be able to get the Leprechaun Homunculus
     self.zm_holiday_event = true;
 
     // activate constant quaknarok
     //self.zm_quaknarok = true;
+
+    // revive amount
+    //self.zm_custom_revive_amount = 3;
 
     // start round
     //self.zm_custom_startround = 115;
@@ -362,7 +364,7 @@ AtianMenuConfig() {
     //           "newtoniannegation", "nowyouseeme", "nowherebutthere", "perkup", "perkaholic", "phantomreload", "phoenixup", 
     //           "pointdrops", "popshocks", "powerkeg", "powervacuum", "refreshmint", "reigndrops", "secretshopper", "shieldsup", 
     //           "shoppingfree", "sodafountain", "stockoption", "suitup", "swordflay", "talkinboutregeneration", "temporalgift", 
-    //           "undeadmanwalking", "wallpower", "whoskeepingscore", "quacknarok"
+    //           "undeadmanwalking", "wallpower", "whoskeepingscore", "quacknarok", "walltowall", "blooddebt" (thanks Jek for these 2)
     self.zm_custom_disable_elixir = array(
     );
     
