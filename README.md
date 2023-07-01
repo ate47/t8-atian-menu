@@ -65,6 +65,7 @@ You can config the mod menu in the [`scripts/config.gsc`](scripts/config.gsc) fi
   - Custom mutation like config to setup your own zombies
   - Set XP multiplier
   - Quaknarok
+  - Open narrative rooms
 
 ## Features
 
@@ -142,9 +143,9 @@ Using `iprintlnbold`:
 ### Hash lookup
 
 The `hash_lookup(hash_str)` function can be used to look for unhashed values, to add a string to this function,
-add it to the [`lookup.txt`](lookup.txt) file and run the [`build_lookup.ps1`](build_lookup.ps1) script. The array explorer tool is using the [`lookup_structs.txt`](lookup_structs.txt) file to search for structure elements.
+add it to the [`lookup/lookup.txt`](lookup/lookup.txt) file and run the [`build_lookup.ps1`](shell_scripts/build_lookup.ps1) script. The array explorer tool is using the [`lookup/lookup_structs.txt`](lookup/lookup_structs.txt) file to search for structure elements.
 
-You can create your own version by creating a file named lookup_big.txt and by running `.\build_lookup.ps1 -Big .\lookup_big.txt`, it won't be add to the repo.
+You can create your own version by creating a file named lookup_big.txt and by running `shell_scripts\build_lookup.ps1 -Big .\lookup_big.txt`, it won't be add to the repo.
 
 If the lookup is too big, the game won't start. TODO: split the switch.
 
@@ -169,7 +170,7 @@ is_multiplayer();
 
 ### Create menu
 
-The menu descriptions are usually put in the [`scripts/menu/menu_items.gsc`](scripts/menu/menu_items.gsc) script.
+The menu descriptions are usually put in the [`scripts/core_common/ui/menu_items.gsc`](scripts/core_common/ui/menu_items.gsc) script.
 
 To register a menu, you can call this method:
 
@@ -203,7 +204,7 @@ You can use this function to check if a mod is activated:
 
 ### Key manager
 
-The key manager is in the [`scripts/utils/key_mgr.gsc`](scripts/utils/key_mgr.gsc) script.
+The key manager is in the [`scripts/core_common/key_mgr.gsc`](scripts/core_common/key_mgr.gsc) script.
 
 You can register a key binding in the `key_mgr_init()` function, the syntax is:
 

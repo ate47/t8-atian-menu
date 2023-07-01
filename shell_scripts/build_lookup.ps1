@@ -1,6 +1,6 @@
 param(
-    $LookupFile = "$((Get-Item $PSScriptRoot).Fullname)/lookup.txt",
-    $LookupFileStruct = "$((Get-Item $PSScriptRoot).Fullname)/lookup_structs.txt",
+    $LookupFile = "$((Get-Item $PSScriptRoot).Parent.Fullname)/lookup/lookup.txt",
+    $LookupFileStruct = "$((Get-Item $PSScriptRoot).Parent.Fullname)/lookup/lookup_structs.txt",
     [switch]
     $Big
 )
@@ -10,7 +10,7 @@ $LookupFileData = Get-Content $LookupFile
 $prevPwd = $PWD
 
 try {
-    $base = (Get-Item $PSScriptRoot)
+    $base = (Get-Item $PSScriptRoot).Parent
     Set-Location ($base.Fullname)
     
     Set-Location scripts\core_common
@@ -78,7 +78,7 @@ finally {
 $LookupFileData = Get-Content $LookupFileStruct
 
 try {
-    $base = (Get-Item $PSScriptRoot)
+    $base = (Get-Item $PSScriptRoot).Parent
     Set-Location ($base.Fullname)
     
     Set-Location scripts\core_common\dev
