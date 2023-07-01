@@ -6,7 +6,9 @@ get_array_explorer_values() {
         create_array_explorer_value("self", self),
         create_array_explorer_value("game", game),
         create_array_explorer_value("Zombies vars", level.zombie_vars),
-        create_array_explorer_value("Blackout zones", level.var_5b357434)
+        create_array_explorer_value("Blackout zones", level.var_5b357434),
+        create_array_explorer_value("Zombies zones", level.zones),
+        create_array_explorer_value("Structs", level.var_77fe0a41)
     );
 }
 
@@ -81,8 +83,8 @@ func_array_explorer(menu, obj, searchfunc = false) {
                 level.am_struct_explorer_id++;
                 mid = "_struct_explorer_" + sid;
                 self add_menu(mid, get_object_type(key) + ":" + get_object_type(val), menu.id, true, func_array_explorer_ptr(), val);
-            } else if (is_valid_tpvec(obj)) {
-                self add_menu_item(menu.id, get_object_type(key) + ":" + get_object_type(val), &func_teleport, val);
+            } else if (is_valid_tpvec(val)) {
+                self add_menu_item(menu.id, get_object_type(key) + ":" + get_object_type(val) + " (Tel)", &func_teleport, val);
             } else {
                 self add_menu_item(menu.id, get_object_type(key) + ":" + get_object_type(val));
             }
@@ -103,7 +105,7 @@ func_array_explorer(menu, obj, searchfunc = false) {
                 level.am_struct_explorer_id++;
                 mid = "_struct_explorer_" + sid;
                 self add_menu(mid, name + ":" + get_object_type(objval), menu.id, true, func_array_explorer_ptr(), objval);
-            } else if (is_valid_tpvec(obj)) {
+            } else if (is_valid_tpvec(val)) {
                 self add_menu_item(menu.id, name + ":" + get_object_type(objval), &func_teleport, objval);
             } else {
                 self add_menu_item(menu.id, name + ":" + get_object_type(objval));

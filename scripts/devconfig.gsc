@@ -16,10 +16,9 @@ AtianMenuDevConfig() {
     self.mp_drafttime = 2;
     self.devcfg.wz_bots = true;
     self.devcfg.bypassweapon_script = true;
-    //self.force_blackout_map = "wz_open_skyscrapers";
-    //self.force_blackout_gametype = "warzone_bigteam_dbno_quad";
     self.global_max_health = 500;
-    self.force_blackout_map = "wz_escape";
+    self.force_blackout_map = "wz_open_skyscrapers";
+    self.force_blackout_gametype = undefined;
 }
 
 AtianMenuDevKeyConfig() {

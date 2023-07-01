@@ -82,6 +82,7 @@ get_struct_explorer_values(obj) {
     elements = add_struct_explorer_value(elements, "var_58ba2ab7", obj.var_58ba2ab7);
     elements = add_struct_explorer_value(elements, "var_6192eb0", obj.var_6192eb0);
     elements = add_struct_explorer_value(elements, "var_719d00b8", obj.var_719d00b8);
+    elements = add_struct_explorer_value(elements, "var_77fe0a41", obj.var_77fe0a41);
     elements = add_struct_explorer_value(elements, "var_7aa3cde7", obj.var_7aa3cde7);
     elements = add_struct_explorer_value(elements, "var_7bf9c18e", obj.var_7bf9c18e);
     elements = add_struct_explorer_value(elements, "var_7c620997", obj.var_7c620997);

@@ -175,6 +175,7 @@ init_menus() {
                 break;
             case "zm_mansion":
                 self add_menu_item("teleport", "Spawn", &func_teleport, (235, 1086, -7.875), (0, -50, 0));
+                self add_menu_item("teleport", "Ruins", &func_teleport, (13320, -7141, -1841.76), (0, -120, 0));
                 break;
             case "zm_white":
                 self add_menu_item("teleport", "Center", &func_teleport, (-149, 675, -61.125), (0, -100, 0));

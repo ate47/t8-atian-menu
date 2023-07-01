@@ -171,13 +171,14 @@ on_zombie_spawn() {
 }
 
 zm_bgb_is_enabled(name) {
-	if(!isdefined(self) || !isdefined(self.bgb)) {
-		return false;
-	}
-	return self.bgb === name;
+	return isdefined(self) && self.bgb === name;
 }
 
 zm_player_has_quacknarok() {
+    spawned = level flag::get("all_players_spawned");
+	if (!isdefined(spawned) || !spawned) {
+        return false;
+    }
     foreach (player in getplayers()) {
         if(player zm_bgb_is_enabled(#"zm_bgb_quacknarok")) {
             return true;

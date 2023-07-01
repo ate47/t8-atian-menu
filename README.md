@@ -126,6 +126,24 @@ This tool can be paired with the [t8-custom-ee mod](https://github.com/ate47/t8-
 
 ## Dev tools
 
+### Error codes
+
+This section is about the error codes you might have while working on GSC scripts, only the fist code is important:
+
+*Note that it's a guess from the way I resolve them and not a true answer*
+
+- `1670707254` - Error while linking the script, 
+  - call of an unknown function/method
+  - call of a dev function
+  - too many parameters for a call
+- `2006839707` - Call of array::add using a undefined or bad array
+- `4173088841` - xpak file does not contain a valid header
+- `541000416` - unknown
+- `Whiskey 110 Late tiger` - accessing array like a struct
+- `kilo 45 gold dove` - usage of unset local var
+- `Delta 320 Monster Tornado` - unknown
+- `Zulu 523 Electric Lion` - unknown
+
 ### Color
 
 Using `iprintln`: `^0`: red, `^1`: cyan, but only for the whole line.

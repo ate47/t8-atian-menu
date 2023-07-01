@@ -72,6 +72,7 @@ handle_config() {
     if (isdefined(level.atianconfig)) {
         return; // already set
     }
+    map_name = util::get_map_name();
     level.am_dev = spawnstruct();
     level.atianconfig = spawnstruct();
     level.atianconfig.devcfg = spawnstruct();
@@ -230,10 +231,8 @@ handle_config() {
                 setGametypeSetting(#"wzenable" + atianconfig.blackout_disable, false);
             }
         }
-    }
-    
-    if (is_zombies()) {
-        if (isdefined(atianconfig.zm_holiday_event) && atianconfig.zm_holiday_event) setdvar(#"zm_holiday_event", 1);
+    } else if (is_zombies()) {
+        setdvar(#"zm_holiday_event", map_name != "zm_red" && isdefined(atianconfig.zm_holiday_event) && atianconfig.zm_holiday_event);
         spawner::add_archetype_spawn_function(#"zombie", &on_zombie_spawn);
         if (isdefined(atianconfig.zm_custom_startround) && atianconfig.zm_custom_startround > 0) setGametypeSetting(#"startround", atianconfig.zm_custom_startround);
         if (isdefined(atianconfig.zm_custom_zmroundcap) && atianconfig.zm_custom_zmroundcap > 0) setGametypeSetting(#"zmroundcap", atianconfig.zm_custom_zmroundcap);
@@ -267,7 +266,6 @@ handle_config() {
         }
         if (isdefined(atianconfig.zm_max_drop_per_round) && atianconfig.zm_max_drop_per_round >= 0) 
             setGametypeSetting(#"hash_d46a4e7a41e005c", atianconfig.zm_max_drop_per_round);
-
         if (isdefined(atianconfig.zm_custom_health_regendelay)) {
             switch (atianconfig.zm_custom_health_regendelay) {
                 case "fast":
@@ -350,19 +348,19 @@ handle_config() {
 
         if (isdefined(atianconfig.zm_custom_disable_powerup)) {
             for (i = 0; i < atianconfig.zm_custom_disable_powerup.size; i++) {
-                setGametypeSetting(hash("zmpowerup" + atianconfig.zm_custom_disable_powerup[i]), false);
+                setGametypeSetting("zmpowerup" + atianconfig.zm_custom_disable_powerup[i], false);
             }
         }
 
         if (isdefined(atianconfig.zm_custom_disable_elixir)) {
             for (i = 0; i < atianconfig.zm_custom_disable_elixir.size; i++) {
-                setGametypeSetting(hash("zmelixir" + atianconfig.zm_custom_disable_elixir[i]), false);
+                setGametypeSetting("zmelixir" + atianconfig.zm_custom_disable_elixir[i], false);
             }
         }
 
         if (isdefined(atianconfig.zm_custom_disable_talisman)) {
             for (i = 0; i < atianconfig.zm_custom_disable_talisman.size; i++) {
-                setGametypeSetting(hash("zmtalisman" + atianconfig.zm_custom_disable_talisman[i]), false);
+                setGametypeSetting("zmtalisman" + atianconfig.zm_custom_disable_talisman[i], false);
             }
         }
         

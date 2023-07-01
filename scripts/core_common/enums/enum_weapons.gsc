@@ -102,6 +102,7 @@ generate_weapon_enum() {
     weapon_data add_weapon_category("scorestreak", "Scorestreak");
     weapon_data add_weapon_category("gametype", "Gametype weapon");
     weapon_data add_weapon_category("operator", "Operator weapons");
+    weapon_data add_weapon_category("gold", "Gold weapons");
     
 
     weapon_data add_weapon_info("ar_accurate_t8", "ICR-7", "ar", true);
@@ -357,6 +358,30 @@ generate_weapon_enum() {
     weapon_data add_weapon_info("tr_longburst_t8_operator", "Swordfish", "operator", false, "gamemode=wz");
     weapon_data add_weapon_info("tr_midburst_t8_operator", "ABR 223", "operator", false, "gamemode=wz");
     weapon_data add_weapon_info("tr_powersemi_t8_operator", "Auger DMR", "operator", false, "gamemode=wz");
+
+    weapon_data add_weapon_info("pistol_standard_t8_gold", "Strife", "gold", false, "gamemode=wz");
+    weapon_data add_weapon_info("pistol_burst_t8_gold", "RK-7 Garrison", "gold", false, "gamemode=wz");
+    weapon_data add_weapon_info("pistol_revolver_t8_gold", "Mozu", "gold", false, "gamemode=wz");
+    weapon_data add_weapon_info("pistol_fullauto_t8_gold", "KAP-45", "gold", false, "gamemode=wz");
+    weapon_data add_weapon_info("tr_powersemi_t8_gold", "Auger DMR", "gold", false, "gamemode=wz");
+    weapon_data add_weapon_info("tr_midburst_t8_gold", "ABR 223", "gold", false, "gamemode=wz");
+    weapon_data add_weapon_info("tr_longburst_t8_gold", "Swordfish", "gold", false, "gamemode=wz");
+    weapon_data add_weapon_info("sniper_quickscope_t8_gold", "Koshka", "gold", false, "gamemode=wz");
+    weapon_data add_weapon_info("sniper_fastrechamber_t8_gold", "Outlaw", "gold", false, "gamemode=wz");
+    weapon_data add_weapon_info("sniper_powersemi_t8_gold", "SDM", "gold", false, "gamemode=wz");
+    weapon_data add_weapon_info("sniper_powerbolt_t8_gold", "Paladin HB50", "gold", false, "gamemode=wz");
+    weapon_data add_weapon_info("sniper_mini14_t8_gold", "Vendetta", "gold", false, "gamemode=wz");
+    weapon_data add_weapon_info("smg_standard_t8_gold", "MX9", "gold", false, "gamemode=wz");
+    weapon_data add_weapon_info("smg_accurate_t8_gold", "GKS", "gold", false, "gamemode=wz");
+    weapon_data add_weapon_info("smg_fastfire_t8_gold", "Spitfire", "gold", false, "gamemode=wz");
+    weapon_data add_weapon_info("smg_capacity_t8_gold", "Cordite", "gold", false, "gamemode=wz");
+    weapon_data add_weapon_info("smg_handling_t8_gold", "Saug 9mm", "gold", false, "gamemode=wz");
+    weapon_data add_weapon_info("smg_fastburst_t8_gold", "Daemon 3XB", "gold", false, "gamemode=wz");
+    weapon_data add_weapon_info("smg_folding_t8_gold", "Switchblade X9", "gold", false, "gamemode=wz");
+    weapon_data add_weapon_info("lmg_standard_t8_gold", "Titan", "gold", false, "gamemode=wz");
+    weapon_data add_weapon_info("lmg_spray_t8_gold", "Hades", "gold", false, "gamemode=wz");
+    weapon_data add_weapon_info("lmg_heavy_t8_gold", "VKM-750", "gold", false, "gamemode=wz");
+    weapon_data add_weapon_info("lmg_stealth_t8_gold", "Tigershark", "gold", false, "gamemode=wz");
 
     array::add(weapon_data.global_weapons, "homunculus_upgraded");
     array::add(weapon_data.global_weapons, "hero_bowlauncher");
