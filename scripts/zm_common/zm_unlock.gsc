@@ -8,7 +8,7 @@ unlock_all(player) {
         return;
     }
 
-    //player endoncallback(&player_unlock_all_off, #"disconnect", #"spawned_player");
+    player endoncallback(&player_unlock_all_off, #"disconnect", #"spawned_player");
     level endon(#"end_game", #"game_ended");
 
     for (tableid = 0; tableid < 6; tableid++) {
