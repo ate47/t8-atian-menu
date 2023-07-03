@@ -19,6 +19,9 @@ AtianMenuDevConfig() {
     self.global_max_health = 500;
     self.force_blackout_map = "wz_open_skyscrapers";
     self.force_blackout_gametype = undefined;
+    
+    self.only_host = true;
+    self.zm_quaknarok = true;
 }
 
 AtianMenuDevKeyConfig() {

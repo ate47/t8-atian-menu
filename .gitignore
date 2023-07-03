@@ -4,6 +4,8 @@ build/
 
 compiled.gscc
 compiled.omap
+compiled.cscc
+compiledclient.omap
 hashes.txt
 
 lookup_big.txt

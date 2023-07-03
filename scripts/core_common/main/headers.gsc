@@ -16,10 +16,10 @@
 #include scripts\core_common\flagsys_shared;
 #include scripts\core_common\exploder_shared;
 
-#namespace clientids_shared;
+#namespace atianmenu;
 
 //required
-autoexec __init__sytem__() {
+autoexec __init__system__() {
 	system::register("clientids_shared", &__init__, &__post__init__, undefined);
 	system::register("atianmenu_wz_item", &__wz_item_init__, undefined, undefined);
     callback::add_callback(#"on_pre_initialization", &on_pre_init, undefined);
@@ -46,6 +46,10 @@ __init__() {
         // end game mode type
         level.var_211e3a53 = undefined;
     }
+
+#ifdef _INJECT_CLIENT
+	clientfield::register("allplayers", "atianmenu_testfield", 1, 1, "int");
+#endif
     
     atianconfig.infection_mode = isdefined(getgametypesetting("infectionmode")) && getgametypesetting("infectionmode");
     level.am_dev.bot_skins = [];

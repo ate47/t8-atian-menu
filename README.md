@@ -134,14 +134,23 @@ This section is about the error codes you might have while working on GSC script
 
 *Note that it's a guess from the way I resolve them and not a true answer*
 
+- `1661383768` - Stack overflow (max is 62)
+- `3021194485` - Internal Stack overflow
 - `1670707254` - Error while linking the script, 
   - call of an unknown function/method
   - call of a dev function
   - too many parameters for a call
 - `2006839707` - Call of array::add using a undefined or bad array
 - `4173088841` - xpak file does not contain a valid header
-- `541000416` - unknown
-- `Whiskey 110 Late tiger` - accessing array like a struct
+- `3126405504` - Server script error (set only host to false)
+- `541000416` - unknown (remove config function)
+- `2658987327` - (CSC) unknown
+- `C0000005` at 7ff76dca130c 276130C
+- `2681972741` - bad clientfield for name
+- `3367037665` - Cannot call SetWorldClientField on 'counter' type clientfield
+- `1609894461` - bad entity
+- `2104587190` - bad clientfield for name 
+- `Whiskey 110 Late tiger` - accessing array like a struct (or not)
 - `kilo 45 gold dove` - usage of unset local var
 - `Delta 320 Monster Tornado` - unknown
 - `Zulu 523 Electric Lion` - unknown

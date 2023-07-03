@@ -3,6 +3,9 @@ dev_init() {
         return;
     }
 
+#ifdef _INJECT_CLIENT
+    am_log("inject client");
+#endif
 
 
 }
@@ -58,6 +61,7 @@ debugln(str_line) {
 }
 
 func_dev_method1() {
+	self clientfield::set("atianmenu_testfield", 1);
 }
 func_dev_method2() {
 }
