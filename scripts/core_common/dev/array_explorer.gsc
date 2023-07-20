@@ -1,15 +1,21 @@
 get_array_explorer_values() {
     // add here things you want to explore
 
-    return array(
+    arr = array(
         create_array_explorer_value("level", level),
         create_array_explorer_value("self", self),
         create_array_explorer_value("game", game),
         create_array_explorer_value("Zombies vars", level.zombie_vars),
         create_array_explorer_value("Blackout zones", level.var_5b357434),
-        create_array_explorer_value("Zombies zones", level.zones),
-        create_array_explorer_value("Structs", level.var_77fe0a41)
+        create_array_explorer_value("Zombies zones", level.zones)
+        // create_array_explorer_value("Structs", level.var_77fe0a41) // 3126405504
     );
+
+    foreach (e in level.am_dev.array_add) {
+        array::add(arr, e);
+    }
+
+    return arr;
 }
 
 create_array_explorer_value(str_name, array_val) {

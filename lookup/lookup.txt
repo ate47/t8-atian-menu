@@ -208,6 +208,7 @@ death_circle
 deathicons
 debug
 decoygrenade
+default
 defend_complete
 defend_start
 demo
@@ -219,6 +220,7 @@ destructible_character
 dev
 devgui
 dialog_shared
+dirt
 dogstart
 door_interact
 doors
@@ -228,6 +230,7 @@ drawings
 drone_squadron
 drown
 duplicate_render
+dynent
 dynent_world
 edge_of_the_world
 ee_tundragun
@@ -235,6 +238,7 @@ electric_zombie
 elephant
 empgrenade
 end_game_flow
+entity
 entityheadicons
 eq_acid_bomb
 eq_cluster_semtex_grenade
@@ -262,6 +266,7 @@ fire_sale
 first_location
 flagsys
 flash_grenade
+fraction
 frag_grenade
 freeze_mode
 full_ammo
@@ -297,6 +302,8 @@ ghost
 give_ankh
 gladiator
 glaive
+glass
+glasscar
 global_fx
 globallogic
 globallogic_actor
@@ -382,6 +389,7 @@ killcam
 killstreak
 killstreaks
 knife_loadout
+ladder
 laststand
 laststand_mp
 laststand_warzone
@@ -446,6 +454,8 @@ melee_weapon
 melee_zombiearm_t8
 melee_zombiearm_t8_upgraded
 menus
+metal
+metalcar
 mg
 mid_igc
 mini_ai_quadtank
@@ -548,6 +558,7 @@ music
 music_box
 mute_smoke
 none
+normal
 nosferatu
 nova_6
 nova_crawler
@@ -599,6 +610,7 @@ player_role
 player_suv
 player_tank
 popups
+position
 postfx_bundle
 potm
 private_mannequin_program
@@ -630,6 +642,7 @@ rewindobjects
 rifle
 riotshield
 robot
+rock
 rocket
 rocketlauncher
 rotating_object
@@ -783,6 +796,7 @@ strategic_command
 supplydrop
 supplydrop_marker
 supplypod
+surfacetype
 swat
 swat_team
 tactical_raft_wz
@@ -853,12 +867,17 @@ visionset_mgr
 voice
 vortex
 vortex_shared
+walkable
 warden
 wardens
 warlord
 wasp
+water
 water_surface
 waterballoon
+waterbottom
+waterdepth
+watershallow
 wave_manager
 wave_spawn
 weapon

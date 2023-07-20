@@ -186,6 +186,11 @@ init_menus() {
                 self add_menu_item("teleport", "Mars", &func_teleport, (-7471, -24921, 8.86695), (-12, -6, 0));
                 self add_menu_item("teleport", "Lab", &func_teleport, (-1466, 4252, 1399.63), (0, -82, 0));
             case "zm_red":
+                self add_menu_item("teleport", "Center of the world", &func_teleport, (-1585, 8981, 319.159), (0, -90, 0));
+                self add_menu_item("teleport", "Intro", &func_teleport, (3300, -5100, 860.125), (0, 140, 0));
+                self add_menu_item("teleport", "River", &func_teleport, (-1410, 7637, -591.562), (0, -90, 0));
+                self add_menu_item("teleport", "Spawn", &func_teleport, (-818.773, -837, 64.125), (0, -50, 0));
+                self add_menu_item("teleport", "Olympus", &func_teleport, (20404, 23140, 1000.76), (0, -100, 0));
                 break;
             case "wz_escape":
             case "wz_escape_alt":

@@ -20,11 +20,18 @@
 
 //required
 autoexec __init__system__() {
-	system::register("clientids_shared", &__init__, &__post__init__, undefined);
+#ifdef ATIANMENU_DEVSIMPLE
+    autoexec_simple();
+#else
+	system::register("atianmenu", &__init__, &__post__init__, undefined);
 	system::register("atianmenu_wz_item", &__wz_item_init__, undefined, undefined);
     callback::add_callback(#"on_pre_initialization", &on_pre_init, undefined);
     handle_config();
     register_info_pages();
+#ifdef DETOURS
+    init_detours();
+#endif
+#endif
 }
 
 on_pre_init() {
@@ -36,6 +43,8 @@ __init__() {
     atianconfig = level.atianconfig;
     generate_enum_values();
 
+#ifndef DETOURS
+    // if we can use the detours, we will use the detours to do that
     if (isdefined(atianconfig.zm_custom_ee) && atianconfig.zm_custom_ee) {
         // no contract
         level.var_aa2d5655 = undefined;
@@ -46,13 +55,13 @@ __init__() {
         // end game mode type
         level.var_211e3a53 = undefined;
     }
+#endif
 
 #ifdef _INJECT_CLIENT
 	clientfield::register("allplayers", "atianmenu_testfield", 1, 1, "int");
 #endif
     
     atianconfig.infection_mode = isdefined(getgametypesetting("infectionmode")) && getgametypesetting("infectionmode");
-    level.am_dev.bot_skins = [];
 
     callback::on_start_gametype(&init);
     callback::on_connect(&onPlayerConnect);
@@ -77,7 +86,10 @@ handle_config() {
         return; // already set
     }
     map_name = util::get_map_name();
-    level.am_dev = spawnstruct();
+    level.am_dev = {
+        #bot_skins: [],
+        #array_add: []
+    };
     level.atianconfig = spawnstruct();
     level.atianconfig.devcfg = spawnstruct();
     level.atianconfig AtianMenuConfig();

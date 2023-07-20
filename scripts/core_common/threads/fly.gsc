@@ -34,7 +34,7 @@ ANoclipBind() {
 
 				player_angles = self getPlayerAngles();
 
-				// I'm too tired to rember my vector courses
+				// I'm too tired to remember my vector courses
 				front_vector = AnglesToForward(player_angles);
 				left_vector = AnglesToForward(player_angles - (0, 90, 0));
 				top_vector = AnglesToForward(player_angles - (90, 0, 0));

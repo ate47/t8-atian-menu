@@ -30,4 +30,5 @@ AtianMenuKeyConfig() {
     // special tool in the menu
     self.special_weapon_primary = "attack";
     self.special_weapon_secondary = "reload";
+    self.special_weapon_ternary = "use";
 }

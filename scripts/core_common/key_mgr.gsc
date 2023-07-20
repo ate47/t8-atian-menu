@@ -31,6 +31,7 @@ key_mgr_init() {
     self key_mgr_compile_key(#"fly_down_key", key_config.fly_down_key, #"stance");
     self key_mgr_compile_key(#"special_weapon_primary", key_config.special_weapon_primary, #"attack");
     self key_mgr_compile_key(#"special_weapon_secondary", key_config.special_weapon_secondary, #"reload");
+    self key_mgr_compile_key(#"special_weapon_ternary", key_config.special_weapon_ternary, #"use");
 }
 
 key_mgr_is_valid(key) {

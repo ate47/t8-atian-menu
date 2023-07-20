@@ -3,8 +3,10 @@ temp/
 build/
 
 compiled.gscc
-compiled.omap
 compiled.cscc
+compiled.gsic
+compiled.csic
+compiled.omap
 compiledclient.omap
 hashes.txt
 

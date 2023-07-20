@@ -1,6 +1,7 @@
 register_info_pages() {
     add_info_page("Main", 1000, &info_page_main);
     add_info_page("Look tool", 500, &info_page_looktool);
+    add_info_page("Look tool 2", 500, &info_page_looktool2);
     if (is_dev_mode()) {
         add_info_page("Dev", 500, &info_page_dev);
     }
@@ -90,8 +91,11 @@ info_page_looktool() {
         self iprintln("^1look el: no tag end");
         index_end++;
     } else {
-        self iprintln("^1look el: " + position_hit + " (press " + key_mgr_get_key_str(#"special_weapon_secondary") + " to tp)");
-        if (self key_mgr_has_key_pressed(#"special_weapon_secondary", true)) {
+        self iprintln("^1look el: " + position_hit + " (tp " + key_mgr_get_key_str(#"special_weapon_secondary") + " sv " + key_mgr_get_key_str(#"special_weapon_ternary") + ")");
+        if (self key_mgr_has_key_pressed(#"special_weapon_ternary", true)) {
+            array::add(level.am_dev.array_add, bullet_hit, false);
+            self iprintlnbold("^1Saved hit result to array");
+        } else if (self key_mgr_has_key_pressed(#"special_weapon_secondary", true)) {
             if (self is_mod_activated("fly") && isdefined(self.originObj)) {
                 // consider fly mode
                 self.originObj.origin = position_hit;
@@ -122,5 +126,30 @@ info_page_looktool() {
             index_end++;
         }
     }
+    return index_end;
+}
+
+
+info_page_looktool2() {
+    // look model
+    // entity.model
+    tag_origin = self geteye();
+    look = AnglesToForward(self GetPlayerAngles());
+    tag_end = tag_origin + vectorscale(look, 10000);
+    bullet_hit = bullettrace(tag_origin, tag_end, 1, self);
+
+    position_hit = bullet_hit[#"position"];
+    if (position_hit == tag_end) {
+        self iprintln("^1look el: no tag end");
+        return 1;
+    }
+
+    index_end = 0;
+
+    foreach (hit_key, hit_obj in bullet_hit) {
+        index_end += 1;
+        self iprintln("^1" + hash_lookup(hit_key) + ":" + get_object_type(hit_obj));
+    }
+
     return index_end;
 }

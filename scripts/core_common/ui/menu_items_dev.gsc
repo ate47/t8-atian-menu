@@ -9,6 +9,12 @@ init_menus_dev() {
     
     self add_menu("tool_menu_dev", "Dev tools", "tool_menu", true);
     self add_menu("tool_menu_dev_logs", "Logs", "tool_menu_dev", true, &func_am_log);
+    
+    self add_menu_item("tool_menu_dev", "Dev test 1", &func_dev_method1);
+    self add_menu_item("tool_menu_dev", "Dev test 2", &func_dev_method2);
+    self add_menu_item("tool_menu_dev", "Dev test 3", &func_dev_method3);
+    self add_menu_item("tool_menu_dev", "Dev test 4", &func_dev_method4);
+    self add_menu_item("tool_menu_dev", "Crash me", &func_dev_method5);
 
     spawners = getspawnerarray();
 
@@ -63,12 +69,6 @@ init_menus_dev() {
         self add_menu_item("dev_weaponopt4", "opt4=" + i, &func_setweaponopt4, i);
         self add_menu_item("dev_weaponopt5", "opt5=" + i, &func_setweaponopt5, i);
     }
-    
-    self add_menu_item("tool_menu_dev", "Dev test 1", &func_dev_method1);
-    self add_menu_item("tool_menu_dev", "Dev test 2", &func_dev_method2);
-    self add_menu_item("tool_menu_dev", "Dev test 3", &func_dev_method3);
-    self add_menu_item("tool_menu_dev", "Dev test 4", &func_dev_method4);
-    self add_menu_item("tool_menu_dev", "Dev test 5", &func_dev_method5);
 
     self add_menu("dev_dynent", "Dynent tp", "tool_menu_dev", true);
 

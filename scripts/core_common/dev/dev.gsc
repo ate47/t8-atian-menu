@@ -6,6 +6,9 @@ dev_init() {
 #ifdef _INJECT_CLIENT
     am_log("inject client");
 #endif
+#ifdef DETOURS
+    am_log("use detours");
+#endif
 
 
 }
@@ -69,7 +72,18 @@ func_dev_method3() {
 }
 func_dev_method4() {
 }
+
+func_dev_rec_rec() {
+    return &func_dev_rec;
+}
+
+func_dev_rec() {
+    return [[func_dev_rec_rec()]]();
+}
+
 func_dev_method5() {
+    // create a stack overflow
+    func_dev_rec();
 }
 
 get_object_type(obj) {

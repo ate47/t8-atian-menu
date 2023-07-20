@@ -128,28 +128,37 @@ This tool can be paired with the [t8-custom-ee mod](https://github.com/ate47/t8-
 
 ## Dev tools
 
+### Symbols
+
+You can config the compilation using these options:
+
+- `-DATIAN_MENU_LOOKUP_BIG` : Big lookup structure in array explorer
+- `-DATIAN_MENU_DEV` : Run my dev configs
+
 ### Error codes
 
 This section is about the error codes you might have while working on GSC scripts, only the fist code is important:
 
 *Note that it's a guess from the way I resolve them and not a true answer*
 
-- `1661383768` - Stack overflow (max is 62)
+- `1661383768`, `3559732046`, `2782299909`, `3456527393` or `325402485` - Stack overflow (max is 62)
+- `512306404`, `2538360978` - not a pointer (call function/method)
 - `3021194485` - Internal Stack overflow
+- `3014377421` - Error linking script
 - `1670707254` - Error while linking the script, 
   - call of an unknown function/method
   - call of a dev function
   - too many parameters for a call
 - `2006839707` - Call of array::add using a undefined or bad array
 - `4173088841` - xpak file does not contain a valid header
-- `3126405504` - Server script error (set only host to false)
+- `3126405504` - Server script error (set only host to false, open structs)
 - `541000416` - unknown (remove config function)
 - `2658987327` - (CSC) unknown
-- `C0000005` at 7ff76dca130c 276130C
 - `2681972741` - bad clientfield for name
 - `3367037665` - Cannot call SetWorldClientField on 'counter' type clientfield
 - `1609894461` - bad entity
 - `2104587190` - bad clientfield for name 
+- `3523382186` - Event handler is full, can't register event
 - `Whiskey 110 Late tiger` - accessing array like a struct (or not)
 - `kilo 45 gold dove` - usage of unset local var
 - `Delta 320 Monster Tornado` - unknown
@@ -173,8 +182,6 @@ Using `iprintlnbold`:
 
 The `hash_lookup(hash_str)` function can be used to look for unhashed values, to add a string to this function,
 add it to the [`lookup/lookup.txt`](lookup/lookup.txt) file and run the [`build_lookup.ps1`](shell_scripts/build_lookup.ps1) script. The array explorer tool is using the [`lookup/lookup_structs.txt`](lookup/lookup_structs.txt) file to search for structure elements.
-
-You can create your own version by creating a file named lookup_big.txt and by running `shell_scripts\build_lookup.ps1 -Big .\lookup_big.txt`, it won't be add to the repo.
 
 If the lookup is too big, the game won't start. TODO: split the switch.
 
