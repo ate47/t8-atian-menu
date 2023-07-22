@@ -58,7 +58,7 @@ __init__() {
 #endif
 
 #ifdef _INJECT_CLIENT
-	clientfield::register("allplayers", "atianmenu_testfield", 1, 1, "int");
+	clientfield::register("toplayer", "" + #"atianmenu_testfield", 99999, 1, "int");
 #endif
     
     atianconfig.infection_mode = isdefined(getgametypesetting("infectionmode")) && getgametypesetting("infectionmode");

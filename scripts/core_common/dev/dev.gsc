@@ -10,7 +10,20 @@ dev_init() {
     am_log("use detours");
 #endif
 
-
+#ifdef LAZYLINK
+    // ee206246::5dad450c <6C5B51F98CD04FA3>
+    start_func = @zm_sq<scripts\zm_common\zm_sq.gsc>::start;
+    compiler::nprintln("zm_sq::start: " + get_object_type(start_func));
+    
+    // 6bba65da::d2df61ee <06AC2D19409DBE5D>
+    util_is_objective_game = @util<scripts\mp_common\util.gsc>::is_objective_game;
+    compiler::nprintln("util::is_objective_game: " + get_object_type(util_is_objective_game));
+    if (isdefined(util_is_objective_game) && isscriptfunctionptr(util_is_objective_game)) {
+        waitframe(1);
+        compiler::nprintln("util::is_objective_game('clean'): " + [[ util_is_objective_game ]]("clean")); // false
+        compiler::nprintln("util::is_objective_game('dom'): " + [[ util_is_objective_game ]]("dom")); // true
+    }
+#endif
 }
 
 
@@ -64,7 +77,7 @@ debugln(str_line) {
 }
 
 func_dev_method1() {
-	self clientfield::set("atianmenu_testfield", 1);
+	self clientfield::set("" + #"atianmenu_testfield", 1);
 }
 func_dev_method2() {
 }

@@ -305,7 +305,16 @@ get_killstreak_give_func() {
 }
 
 give_killstreak(killstreak_type) {
-    self [[ get_killstreak_give_func() ]](killstreak_type);
+#ifdef LAZYLINK
+    func = @killstreaks<scripts\killstreaks\killstreaks_shared.gsc>::give;
+#else
+    func = get_killstreak_give_func();
+#endif
+    if (isdefined(func)) {
+        self [[ func ]](killstreak_type);
+    } else {
+        self debugln("^1missing give function");
+    }
 }
 
 func_clear_killstreaks(item) {

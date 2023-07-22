@@ -7,7 +7,9 @@
 #namespace atianmenu;
 
 autoexec __init__system__() {
+#ifndef ATIANMENU_DEVSIMPLE
 	system::register("atianmenu", &__init__, undefined, undefined);
+#endif
 #ifdef DETOURS
     init_detours();
 #endif
@@ -15,7 +17,7 @@ autoexec __init__system__() {
 
 __init__() {
 #ifdef _INJECT_SERVER
-	clientfield::register("allplayers", "atianmenu_testfield", 1, 1, "int", &atianmenu_testfield, 0, 0);
+	clientfield::register("toplayer", "" + #"atianmenu_testfield", 99999, 1, "int", &atianmenu_testfield, 0, 0);
 #endif
     callback::on_localplayer_spawned(&remove_oob_fx);
 }
