@@ -15,6 +15,11 @@ detour zm_utility<scripts\zm_common\zm_utility.gsc>::is_ee_enabled() {
             && level.atianconfig.zm_custom_ee;
 }
 
+detour zm_player<scripts\zm_common\zm_player.gsc>::player_out_of_playable_area_monitor() {
+	// disable previous call
+	self notify(#"stop_player_out_of_playable_area_monitor");
+}
+
 #ifdef ATIANMENU_SYSTEMS
 
 detour system<scripts\core_common\system_shared.gsc>::register(str_name, func_preinit, func_postinit, reqs) {

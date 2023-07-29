@@ -23,3 +23,26 @@ func_give_wzitem(item, item_id, item_title) {
 		return;
 	}
 }
+
+func_give_item_test(item, item_id = undefined, item_title = undefined) {
+#ifndef ATIANMENU_LAZYLINK
+    self iPrintLnBold("^1LAZYLINK DISABLED");
+#else
+	get_item = &function_4ba8fde; //@wz_loadouts<scripts\wz_common\wz_loadouts.gsc>::_get_item;
+	get_slotid = @item_inventory<scripts\mp_common\item_inventory.gsc>::function_e66dcff5;
+	give_item = @item_world<scripts\mp_common\item_world.gsc>::function_de2018e3;
+
+	if (!isdefined(get_item) || !isdefined(get_slotid) || !isdefined(give_item)) {
+		self iPrintLnBold("^1Can't find functions!");
+		return;
+	}
+
+	if (!isdefined(item_id)) {
+		item_id = #"hash_15bac43598d4827c";
+	}
+
+	itemobj = [[ get_item ]](item_id);
+	slotid = self [[ get_slotid ]](itemobj);
+	self [[ give_item ]](itemobj, self, slotid);
+#endif
+}

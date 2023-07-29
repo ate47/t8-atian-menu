@@ -10,6 +10,25 @@ init_menus_dev() {
     self add_menu("tool_menu_dev", "Dev tools", "tool_menu", true);
     self add_menu("tool_menu_dev_logs", "Logs", "tool_menu_dev", true, &func_am_log);
     
+    self add_menu_item("tool_menu_dev", "Wz test give", &func_give_item_test);
+    self add_menu_item("tool_menu_dev", "Enable all zones", &func_zm_zone_open_all);
+
+    if (is_warzone()) {
+        self add_menu("wzitems", "Blackout item", "tool_menu_dev", true);
+
+        wzitems_data = get_wzitems_enum_data();
+        foreach(category_key, cat_item in wzitems_data.categories) {
+            cat_menu_id = "wzitems_" + cat_item.name;
+            self add_menu(cat_menu_id, cat_item.title, "wzitems", true);
+
+            for (i = 0; i < cat_item.items.size; i++) {
+                item = cat_item.items[i];
+
+                self add_menu_item(cat_menu_id, item.title, &func_give_item_test, item.name, item.title);
+            }
+        }
+    }
+    
     self add_menu_item("tool_menu_dev", "Dev test 1", &func_dev_method1);
     self add_menu_item("tool_menu_dev", "Dev test 2", &func_dev_method2);
     self add_menu_item("tool_menu_dev", "Dev test 3", &func_dev_method3);
@@ -40,22 +59,6 @@ init_menus_dev() {
     foreach (group in group_elements) {
         self add_menu("dev_wog_" + group, group, "dev_wog", true, &func_weaponoption_search, group);
     }
-
-    //if (is_warzone()) {
-        self add_menu("wzitems", "Blackout item", "tool_menu_dev", true);
-
-        wzitems_data = get_wzitems_enum_data();
-        foreach(category_key, cat_item in wzitems_data.categories) {
-            cat_menu_id = "wzitems_" + cat_item.name;
-            self add_menu(cat_menu_id, cat_item.title, "wzitems", true);
-
-            for (i = 0; i < cat_item.items.size; i++) {
-                item = cat_item.items[i];
-
-                self add_menu_item(cat_menu_id, item.title + " (" + i + ")", &func_give_wzitem, item.name, item.title);
-            }
-        }
-    //}
 
     self add_menu("dev_array_explorer", "Array explorer", "tool_menu_dev", true, &func_array_explorer, &get_array_explorer_values, true);
 
