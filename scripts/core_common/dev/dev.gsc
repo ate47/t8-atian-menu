@@ -6,22 +6,22 @@ dev_init() {
 #ifdef _INJECT_CLIENT
     am_log("inject client");
 #endif
-#ifdef DETOURS
+#ifdef ATIANMENU_DETOURS
     am_log("use detours");
 #endif
 
-#ifdef LAZYLINK
+#ifdef ATIANMENU_LAZYLINK
     // ee206246::5dad450c <6C5B51F98CD04FA3>
     start_func = @zm_sq<scripts\zm_common\zm_sq.gsc>::start;
-    compiler::nprintln("zm_sq::start: " + get_object_type(start_func));
+    am_log("zm_sq::start: " + get_object_type(start_func));
     
     // 6bba65da::d2df61ee <06AC2D19409DBE5D>
     util_is_objective_game = @util<scripts\mp_common\util.gsc>::is_objective_game;
-    compiler::nprintln("util::is_objective_game: " + get_object_type(util_is_objective_game));
+    am_log("util::is_objective_game: " + get_object_type(util_is_objective_game));
     if (isdefined(util_is_objective_game) && isscriptfunctionptr(util_is_objective_game)) {
         waitframe(1);
-        compiler::nprintln("util::is_objective_game('clean'): " + [[ util_is_objective_game ]]("clean")); // false
-        compiler::nprintln("util::is_objective_game('dom'): " + [[ util_is_objective_game ]]("dom")); // true
+        am_log("util::is_objective_game('clean'): " + [[ util_is_objective_game ]]("clean")); // false
+        am_log("util::is_objective_game('dom'): " + [[ util_is_objective_game ]]("dom")); // true
     }
 #endif
 }
@@ -77,9 +77,10 @@ debugln(str_line) {
 }
 
 func_dev_method1() {
-	self clientfield::set("" + #"atianmenu_testfield", 1);
+    am_log("test cmd 1");
 }
 func_dev_method2() {
+	//self clientfield::set("" + #"atianmenu_testfield", 1);
 }
 func_dev_method3() {
 }
@@ -132,10 +133,14 @@ get_object_type(obj) {
 
 am_log(str) {
     if (!isdefined(level.am_messages)) {
-        level.am_messages = array();
+        level.am_messages = [];
     }
 
+#ifdef ATIANMENU_COMPILER_OPT
+    compiler::nprintln(str);
+#else
     array::add(level.am_messages, str, true);
+#endif
 }
 
 

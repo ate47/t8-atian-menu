@@ -1,5 +1,5 @@
 
-#ifdef DETOURS
+#ifdef ATIANMENU_DETOURS
 init_detours() {
     compiler::nprintln("Init Atian menu (Client)");
     compiler::detour();

@@ -23,14 +23,14 @@ autoexec __init__system__() {
 #ifdef ATIANMENU_DEVSIMPLE
     autoexec_simple();
 #else
+#ifdef ATIANMENU_DETOURS
+    init_detours();
+#endif
 	system::register("atianmenu", &__init__, &__post__init__, undefined);
 	system::register("atianmenu_wz_item", &__wz_item_init__, undefined, undefined);
     callback::add_callback(#"on_pre_initialization", &on_pre_init, undefined);
     handle_config();
     register_info_pages();
-#ifdef DETOURS
-    init_detours();
-#endif
 #endif
 }
 

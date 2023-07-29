@@ -153,12 +153,18 @@ This section is about the error codes you might have while working on GSC script
 - `4173088841` - xpak file does not contain a valid header
 - `3126405504` - Server script error (set only host to false, open structs)
 - `541000416` - unknown (remove config function)
-- `2658987327` - (CSC) unknown
+- `5409914266` - unknown
+- `5410000416` - unknown (dectop)
+- `2658987327` - Corrupt or invalid string reference
 - `2681972741` - bad clientfield for name
 - `3367037665` - Cannot call SetWorldClientField on 'counter' type clientfield
 - `1609894461` - bad entity
 - `2104587190` - bad clientfield for name 
 - `3523382186` - Event handler is full, can't register event
+- `2448966512` - Error plus operation, string too long (max 8192)
+- `2873910834` - string with len < 3 with ConvertToString
+- `3042707823` - unencrypted string with ConvertToString
+- `647662103` - can't be converted to const string (only string,int,float,vector)
 - `Whiskey 110 Late tiger` - accessing array like a struct (or not)
 - `kilo 45 gold dove` - usage of unset local var
 - `Delta 320 Monster Tornado` - unknown
