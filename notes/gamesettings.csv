@@ -1,0 +1,725 @@
+id,mode,type,desc
+zmweaponspistol,zm,bool,allow to buy pistol
+zmweaponsshotgun,zm,bool,allow to buy shotguns
+zmweaponssmg,zm,bool,allow to buy smg
+zmweaponsar,zm,bool,allow to buy assault
+zmweaponstr,zm,bool,allow to buy tactical
+zmweaponslmg,zm,bool,allow to buy lmg
+zmweaponssniper,zm,bool,allow to buy sniper
+zmweaponsknife,zm,bool,allow to buy knife
+zmdifficulty,zm,int[0-3],difficulty 0 = easy; 1 = normal; 2 = hard; 3 = insane
+zmtrialsvariant,zm,int,variant of a trials; 0 = default; 1 = hard?
+wzzombies,wz,bool,spawn zombies
+wzbrutus,wz,bool,spawn brutus
+wzblightfather,wz,bool,spawn blight father
+wzavogadro,wz,bool,spawn avogadro
+wzspectrerising,wz,bool,wz spectre rising operation
+wzhardcore,wz,bool,wz hardcore
+wzambush,wz,bool,ambush mode
+wzzombieapocalypse,wz,bool,wz pandemic
+wzbigteambattle,wz,bool,wz ground war
+infectionmode,core,bool,is infection mode
+hardcoremode,core,bool,hardcore mode
+hash_50b1121aee76a7e4,wz,bool,allow to unlock character
+hash_d084b5063bb0c55,wz,bool,allow to unlock ajax
+hash_4c66b817adba935c,wz,bool,allow to unlock crash
+hash_2cd26947d8f311fa,wz,bool,allow to unlock battery
+hash_75370c9c920502fc,wz,bool,allow to unlock firebreak
+hash_26843909f5fdef20,wz,bool,allow to unlock nomad
+hash_52d705a46da9e55f,wz,bool,allow to unlock outrider
+hash_7cf82cc41c0f0d5,wz,bool,allow to unlock prophet
+hash_6b1ec01fa78af670,wz,bool,allow to unlock reaper
+hash_34ea44c91776e52c,wz,bool,allow to unlock recon
+hash_4f0a6d1e98cdbf81,wz,bool,allow to unlock ruin
+hash_183bcc0f6737224a,wz,bool,allow to unlock seraph
+hash_6fe34e77ba14d86f,wz,bool,allow to unlock spectre
+hash_3d719d86f2f3f14d,wz,bool,allow to unlock torque
+hash_19c58d35b2ea8d15,wz,bool,allow to unlock zero
+hash_2dfb36064be05f03,wz,bool,allow to unlock bruno
+hash_4547b7ecb49469f0,wz,bool,allow to unlock bruno (ix)
+hash_7fc2867a4b8594bf,wz,bool,allow to unlock diego
+hash_ff653cbb1438270,wz,bool,allow to unlock diego (ix)
+hash_7049c01d7ddf9b35,wz,bool,allow to unlock scarlett
+hash_2b0f9caa00363ee8,wz,bool,allow to unlock scarlett (ix)
+hash_20f3ff8fbb8d8295,wz,bool,allow to unlock mason
+hash_1d50c09e8021ab1,wz,bool,allow to unlock menendez
+hash_47242abeaa29479b,wz,bool,allow to unlock reznov
+hash_265bdda9362c5a35,wz,bool,allow to unlock woods
+hash_2574d482086ec9d8,wz,bool,allow to unlock nikolai
+hash_1d4c395693ce04fe,wz,bool,allow to unlock dempsey
+hash_19667f3338ed6b1f,wz,bool,allow to unlock richtofen
+hash_26186b4e5dc9bb6f,wz,bool,allow to unlock takeo
+hash_5ea56d63c68b4396,wz,bool,allow to unlock shaw
+hash_1ec2d38a40e97c55,wz,bool,allow to unlock shaw (ix)
+waverespawndelay,core,int,respawn delay in seconds
+wzmeritkill,wz,int,xp per kill
+wzmeritwin,wz,int,xp per win
+wzmerittop5,wz,int,xp per top 5
+wzmerittop10,wz,int,xp per top 10
+wzmerittop15,wz,int,xp per top 15
+wzmerittop20,wz,int,xp per top 20
+wzmerittop25,wz,int,xp per top 25
+wzmerittop30,wz,int,xp per top 30
+wzmerittop50,wz,int,xp per top 50
+wzmerittop60,wz,int,xp per top 60
+wzmerittop75,wz,int,xp per top 75
+wzmeritlives,wz,int,xp per remaining lives (respawn modes)
+wzmeritinfectedkill,wz,int,xp per kill while infected (pandemic)
+hash_5596ee09efc44216,wz,int,xp per kill of non infected player (pandemic)
+hash_6551049476c7127c,wz,int,xp per kill of infected player (pandemic)
+wzmeritinfectedwin,wz,int,xp per infected win (pandemic)
+hash_35c2d850e39fa704,wz,int,max player count
+magic,zm,bool,enable magic
+hash_7695bdd7b20cdda,wz,bool,allow to convert the replacer's muscle car
+drafttime,mp,int,time to select specialists (seconds)
+wzbrutuseverywhere,wz,bool,set spawner brutus
+wzbrutuslargeeverywhere,wz,bool,set spawner brutus boss
+wzavogadroeverywhere,wz,bool,set spawner avogadro
+wzblightfatherseverywhere,wz,bool,set spawner blight father
+wzhellhoundseverywhere,wz,bool,set spawner dog (bugged)
+wzavogadro,wz,bool,spawn avogadro
+wzblightfather,wz,bool,spawn blight father
+wzhellhounds,wz,bool,spawn dog (bugged)
+startround,zm,int,start round
+zmroundcap,zm,int,maximum round
+zmtimecap,zm,int,maximum time
+zmpowerupsactive,zm,bool,allow powerups
+zmelixirsenabled,zm,bool,Allow elixirs
+hash_3ab7cedcfef7eacc,zm,bool,Allow elixir type loadout
+zmelixirscommon,zm,bool,Allow elixir type common
+zmelixirsrare,zm,bool,Allow elixir type rare
+zmelixirslegendary,zm,bool,Allow elixir type legendary
+zmelixirsepic,zm,bool,Allow elixir type epic
+zmtalismansenabled,zm,bool,Allow talismans
+zmtalismanscommon,zm,bool,Allow type common
+zmtalismansrare,zm,bool,Allow type rare
+zmtalismanslegendary,zm,bool,Allow type legendary
+zmtalismansepic,zm,bool,Allow type epic
+zmtalismansultra,zm,bool,Allow type ultra
+zmperksactive,zm,bool,Allow perks
+zmtrapsenabled,zm,bool,Allow traps
+zmcraftingkeyline,zm,bool,Highlight craftables items
+zmbarricadestate,zm,bool,no repair
+zmperkdecay,zm,bool,decay the perks
+zmperksactive,zm,bool,allow magic
+hash_57a5c7a9dcf94d61,zm,bool,allow AATs
+zmretainweapons,zm,bool,allow loadouts
+hash_1fed0d9afc0b0040,zm,bool,points percentage lost per down
+hash_1158d006a3913ef6,zm,bool,points percentage lost per death
+zmspecweaponisenabled,zm,bool,allow hero weapon
+zmfriendlyfiretype,core,bool,allow friendly fire
+zmminibossstate,zm,bool,allow miniboss entity
+zmheavystate,zm,bool,allow heavy entity
+zmpopcornstate,zm,bool,allow dog/tiger entity
+zmenhancedstate,zm,bool,allow enhanced entity
+zmpowerupnuke,zm,bool,allow powerup nuke
+zmpowerupdouble,zm,bool,allow powerup double
+zmpowerupinstakill,zm,bool,allow powerup instakill
+zmpowerupchaospoints,zm,bool,allow powerup chaospoints
+zmpowerupfiresale,zm,bool,allow powerup firesale
+zmpowerupspecialweapon,zm,bool,allow powerup specialweapon
+zmpowerupfreeperk,zm,bool,allow powerup freeperk
+zmpowerupmaxammo,zm,bool,allow powerup maxammo
+zmpowerupcarpenter,zm,bool,allow powerup carpenter
+zmelixirwalltowall,zm,bool,allow elixir wall to wall
+zmelixirblooddebt,zm,bool,allow elixir blood debt
+zmelixiraftertaste,zm,bool,allow elixir aftertaste
+zmelixiralchemicalantithesis,zm,bool,allow elixir alchemicalantithesis
+zmelixiralwaysdoneswiftly,zm,bool,allow elixir alwaysdoneswiftly
+zmelixirantientrapment,zm,bool,allow elixir antientrapment
+zmelixiranywherebuthere,zm,bool,allow elixir anywherebuthere
+zmelixirarsenalaccelerator,zm,bool,allow elixir arsenalaccelerator
+zmelixirboardgames,zm,bool,allow elixir boardgames
+zmelixirbulletboost,zm,bool,allow elixir bulletboost
+zmelixirburnedout,zm,bool,allow elixir burnedout
+zmelixircacheback,zm,bool,allow elixir cacheback
+zmelixirconflagrationliquidation,zm,bool,allow elixir conflagrationliquidation
+zmelixircrawlspace,zm,bool,allow elixir crawlspace
+zmelixirctrlz,zm,bool,allow elixir ctrlz
+zmelixirdangerclosest,zm,bool,allow elixir dangerclosest
+zmelixirdeadofnuclearwinter,zm,bool,allow elixir deadofnuclearwinter
+zmelixirdividendyield,zm,bool,allow elixir dividendyield
+zmelixirequipmint,zm,bool,allow elixir equipmint
+zmelixirextracredit,zm,bool,allow elixir extracredit
+zmelixirfreefire,zm,bool,allow elixir freefire
+zmelixirheaddrama,zm,bool,allow elixir headdrama
+zmelixirheadscan,zm,bool,allow elixir headscan
+zmelixirimmolationliquidation,zm,bool,allow elixir immolationliquidation
+zmelixirinplainsight,zm,bool,allow elixir inplainsight
+zmelixirjointheparty,zm,bool,allow elixir jointheparty
+zmelixirkilljoy,zm,bool,allow elixir killjoy
+zmelixirlicensedcontractor,zm,bool,allow elixir licensedcontractor
+zmelixirneardeathexperience,zm,bool,allow elixir neardeathexperience
+zmelixirnewtoniannegation,zm,bool,allow elixir newtoniannegation
+zmelixirnowyouseeme,zm,bool,allow elixir nowyouseeme
+zmelixirnowherebutthere,zm,bool,allow elixir nowherebutthere
+zmelixirperkup,zm,bool,allow elixir perkup
+zmelixirperkaholic,zm,bool,allow elixir perkaholic
+zmelixirphantomreload,zm,bool,allow elixir phantomreload
+zmelixirphoenixup,zm,bool,allow elixir phoenixup
+zmelixirpointdrops,zm,bool,allow elixir pointdrops
+zmelixirpopshocks,zm,bool,allow elixir popshocks
+zmelixirpowerkeg,zm,bool,allow elixir powerkeg
+zmelixirpowervacuum,zm,bool,allow elixir powervacuum
+zmelixirrefreshmint,zm,bool,allow elixir refreshmint
+zmelixirreigndrops,zm,bool,allow elixir reigndrops
+zmelixirsecretshopper,zm,bool,allow elixir secretshopper
+zmelixirshieldsup,zm,bool,allow elixir shieldsup
+zmelixirshoppingfree,zm,bool,allow elixir shoppingfree
+zmelixirsodafountain,zm,bool,allow elixir sodafountain
+zmelixirstockoption,zm,bool,allow elixir stockoption
+zmelixirsuitup,zm,bool,allow elixir suitup
+zmelixirswordflay,zm,bool,allow elixir swordflay
+zmelixirtalkinboutregeneration,zm,bool,allow elixir talkinboutregeneration
+zmelixirtemporalgift,zm,bool,allow elixir temporalgift
+zmelixirundeadmanwalking,zm,bool,allow elixir undeadmanwalking
+zmelixirwallpower,zm,bool,allow elixir wallpower
+zmelixirwhoskeepingscore,zm,bool,allow elixir whoskeepingscore
+zmtalismanboxguaranteeboxonly,zm,bool,allow talisman box guarantee box only
+zmtalismanboxguaranteelmg,zm,bool,allow talisman box guarantee lmg
+zmtalismancoagulant,zm,bool,allow talisman coagulant
+zmtalismanextraclaymore,zm,bool,allow talisman extra claymore
+zmtalismanextrafrag,zm,bool,allow talisman extra frag
+zmtalismanextraminiturret,zm,bool,allow talisman extra miniturret
+zmtalismanextramolotov,zm,bool,allow talisman extra molotov
+zmtalismanextrasemtex,zm,bool,allow talisman extra semtex
+zmtalismanimpatient,zm,bool,allow talisman impatient
+zmtalismanperkmodsingle,zm,bool,allow talisman perk modsingle
+zmtalismanperkpermanent1,zm,bool,allow talisman perk permanent 1
+zmtalismanperkpermanent2,zm,bool,allow talisman perk permanent 2
+zmtalismanperkpermanent3,zm,bool,allow talisman perk permanent 3
+zmtalismanperkpermanent4,zm,bool,allow talisman perk permanent 4
+zmtalismanperkreducecost1,zm,bool,allow talisman perk reducecost 1
+zmtalismanperkreducecost2,zm,bool,allow talisman perk reducecost 2
+zmtalismanperkreducecost3,zm,bool,allow talisman perk reducecost 3
+zmtalismanperkreducecost4,zm,bool,allow talisman perk reducecost 4
+zmtalismanperkstart1,zm,bool,allow talisman perks tart 1
+zmtalismanperkstart2,zm,bool,allow talisman perks tart 2
+zmtalismanperkstart3,zm,bool,allow talisman perks tart 3
+zmtalismanperkstart4,zm,bool,allow talisman perks tart 4
+zmtalismanshielddurabilitylegendary,zm,bool,allow talisman shield durability legendary
+zmtalismanshielddurabilityrare,zm,bool,allow talisman shield durability rare
+zmtalismanshieldprice,zm,bool,allow talisman shield price
+zmtalismanspecialstartlvl2,zm,bool,allow talisman special start level 2
+zmtalismanspecialstartlvl3,zm,bool,allow talisman special start level 3
+zmtalismanspecialxprate,zm,bool,allow talisman specialxprate
+zmtalismanstartweaponar,zm,bool,allow talisman start weapon assault rifle
+zmtalismanstartweaponlmg,zm,bool,allow talisman start weapon lmg
+zmtalismanstartweaponsmg,zm,bool,allow talisman start weapon smg
+zmtalismanreducepapcost,zm,bool,allow talisman reduce pap cost
+zmtalismanpermanentheroweaparmor,zm,bool,allow talisman permanent hero weapon armor
+zmtalismanextraselfrevive,zm,bool,allow talisman extra self revive
+zmperksjuggernaut,zm,bool,allow perk juggernaut
+zmperksspeed,zm,bool,allow perk speed
+zmperksquickrevive,zm,bool,allow perk quickrevive
+hash_557e3edd7fe168c3,zm,bool,allow perk widowswine
+zmperksstaminup,zm,bool,allow perk staminup
+zmperksmulekick,zm,bool,allow perk additionalprimaryweapon
+zmperkselectricburst,zm,bool,allow perk electric cherry
+zmperksdeadshot,zm,bool,allow perk deadshot
+zmperkscooldown,zm,bool,allow perk cooldown
+zmperksdyingwish,zm,bool,allow perk dying_wish
+zmperksphdslider,zm,bool,allow perk phdflopper
+hash_5690c4dcc61973ec,zm,bool,allow perk stronghold
+zmperksbandolier,zm,bool,allow perk extraammo
+zmperksdeathperception,zm,bool,allow perk awareness
+zmperksvictorious,zm,bool,allow perk shield
+zmperkssecretsauce,zm,bool,allow perk mystery
+zmperksetherealrazor,zm,bool,allow perk etherealrazor
+zmperkszombshell,zm,bool,allow perk zombshell
+zmperkswolfprotector,zm,bool,allow perk wolf_protector
+zmperksdeathdash,zm,bool,allow perk death_dash
+hash_3e2d2cf6b1cc6c68,wz,bool,Spawn zombies with duck floats
+hash_3a73deb0ca8c9aea,wz,bool,disable crosshair
+hash_697d65a68cc6c6f1,wz,bool,wz_escape enable some ee (nixie, spoon, icarus)
+hash_473fee16f796c84e,wz,bool,enable wz_escape fishing EE
+hash_30b11d064f146fcc,wz,bool,enable wz_escape spoon EE
+hash_11b79ec2ffb886c8,wz,bool,enable wz_escape nixie tube EE
+hash_5f842714fa80e5a9,wz,bool,enable wz_escape poster EE
+hash_33d1ac5e99fb0584,wz,bool,spawn water balloons
+wzsnowballsenabled,wz,bool,Spawn snowballs
+hash_6fbf57e2af153e5f,wz,bool,spawn homunculus ee
+hash_53b5887dea69a320,wz,bool,enable spring homunculus ee
+wzlootlockers,wz,bool,spawn blackjack crates
+hash_451245a24412d90f,all,int,time before checking for inactivity
+hash_410c5c7c1e60b534,all,int,values for inactivity checks (unknown)
+hash_6ae29c8144cb7659,all,int,values for inactivity checks (unknown)
+hash_35e9fc8eee6881e0,all,int,values for inactivity checks (unknown)
+hash_7adb62a64c6d963,all,int,values for inactivity checks (unknown)
+hash_1df445b9d1af641f,all,int,values for inactivity checks (unknown)
+wzenablebackpack,wz,bool,enable backpack
+wzenablehomunculus,wz,bool,enable homunculus
+wzenableblundergat,wz,bool,enable blundergat
+wzenablecymbalmonkey,wz,bool,enable cymbal monkey
+wzenablehawk,wz,bool,enable hawk
+wzenabledart,wz,bool,enable dart
+wzenableatv,wz,bool,enable atv
+wzenablesuv,wz,bool,enable suv
+wzenabletacticalraft,wz,bool,enable tactical raft
+wzenablecargotruck,wz,bool,enable cargo truck
+wzenabletank,wz,bool,enable tank
+wzenablepbr,wz,bool,enable pbr boat
+wzenablearav,wz,bool,enable arav
+wzenablemotorcycle,wz,bool,enable motorcycle
+wzenablemusclecar,wz,bool,enable musclecar
+wzenableicr,wz,bool,enable icr
+wzenablekn,wz,bool,enable kn
+wzenablegrav,wz,bool,enable grav
+wzenableswat,wz,bool,enable swat
+wzenablevapr,wz,bool,enable vapr
+wzenablemaddox,wz,bool,enable maddox
+wzenablean94,wz,bool,enable an94
+wzenablerampart,bool,enable rampart
+wzenabledoublebarrel,bool,enable echohawk
+wzenablegks,wz,bool,enable gks
+wzenablesaug,wz,bool,enable saug
+wzenablevmp,wz,bool,enable vmp
+wzenabledaemon,wz,bool,enable daemon
+wzenablemp40,wz,bool,enable mp40
+wzenablemx9,wz,bool,enable mx9
+wzenablecordite,wz,bool,enable cordite
+wzenablespitfire,wz,bool,enable spitfire
+wzenableminigun,wz,bool,enable minigun
+wzenableswitchblade,wz,bool,enable switchblade
+wzenablesdm,wz,bool,enable sdm
+wzenablekoshka,wz,bool,enable koshka
+wzenableoutlaw,wz,bool,enable outlaw
+wzenablepaladin,wz,bool,enable paladin
+wzenablevendetta,wz,bool,enable vendetta
+wzenablevkm,wz,bool,enable vkm
+wzenablehades,wz,bool,enable hades
+wzenabletitan,wz,bool,enable titan
+wzenablezweihander,wz,bool,enable zweihander
+wzenablemozu,wz,bool,enable mozu
+wzenablestrife,wz,bool,enable strife
+wzenablerk7,wz,bool,enable rk7
+wzenablekap45,wz,bool,enable kap45
+wzenableauger,wz,bool,enable auger
+wzenableabr,wz,bool,enable abr
+wzenableessex,wz,bool,enable essex
+wzenablem16,wz,bool,enable m16
+wzenableswordfish,wz,bool,enable swordfish
+wzenablesg12,wz,bool,enable sg12
+wzenablemog12,wz,bool,enable mog12
+wzenablerampage,wz,bool,enable rampage
+wzenableargus,wz,bool,enable argus
+wzenablelauncher,wz,bool,enable launcher
+wzenablebowieknife,wz,bool,enable bowieknife
+wzenablesecretsanta,wz,bool,enable secretsanta
+wzenableslaybell,wz,bool,enable slaybell
+wzenablestopsign,wz,bool,enable stopsign
+wzenablecoinbag,wz,bool,enable coinbag
+wzenablehomewrecker,wz,bool,enable homewrecker
+wzenablezombiearm,wz,bool,enable zombiearm
+wzenableamulet,wz,bool,enable amulet
+wzenableactionfigure,wz,bool,enable actionfigure
+wzenableraygun,wz,bool,enable raygun
+wzenableblade,wz,bool,enable blade
+wzenabletrophysystem,wz,bool,enable trophysystem
+wzenablefraggrenade,wz,bool,enable fraggrenade
+wzenablesmokegrenade,wz,bool,enable smokegrenade
+wzenableacidbomb,wz,bool,enable acidbomb
+wzenablewraithfire,wz,bool,enable wraithfire
+wzenablesparrow,wz,bool,enable sparrow
+wzenablewarmachine,wz,bool,enable warmachine
+wzenablemedkit,wz,bool,enable medkit
+wzenabletak5,wz,bool,enable tak5
+wzenablereflex,wz,bool,enable reflex
+wzenableholo,wz,bool,enable holo
+wzenablestock,wz,bool,enable stock
+wzenableextmag,wz,bool,enable extmag
+wzenableelo,wz,bool,enable elo
+wzenableempgrenade,wz,bool,enable empgrenade
+wzenablelv3armor,wz,bool,enable lv3armor
+wzenablelv2armor,wz,bool,enable lv2armor
+wzenablelv1armor,wz,bool,enable lv1armor
+wzenablefastmag,wz,bool,enable fastmag
+wzenablegrapple,wz,bool,enable grapple
+wzenablemolotov,wz,bool,enable molotov
+wzenableclustergrenade,wz,bool,enable cluster grenade
+wzenableperkawareness,wz,bool,enable perk awareness
+wzenableperkbrawler,wz,bool,enable perk brawler
+wzenableperkconsumer,wz,bool,enable perk consumer
+wzenableperkdeadsilence,wz,bool,enable perk deadsilence
+wzenableperkengineer,wz,bool,enable perk engineer
+wzenableperkironlungs,wz,bool,enable perk iron lungs
+wzenableperklooter,wz,bool,enable perk looter
+wzenableperkmedic,wz,bool,enable perk medic
+wzenableperkmobility,wz,bool,enable perk mobility
+wzenableperkoutlander,wz,bool,enable perk outlander
+wzenableperkparanoia,wz,bool,enable perk paranoia
+wzenableperkreinforced,wz,bool,enable perk reinforced
+wzenableperksquadlink,wz,bool,enable perk squadlink
+hash_9fa187740ff5e40,wz,bool,enable perk unknown (probably tracker)
+hash_78e459ad87509a46,wz,bool,enable perk unknown (probably skulker)
+wzwetworks,wz,bool,wetwork event settings
+wzenablelasersight,wz,bool,enable laster sight
+wztestallvehicles,wz,bool,enable all vehicles
+wzenablelittlebird,wz,bool,enable littlebird
+wzenablebountyhuntervehicles,wz,bool,enable bounty hunter vehicle
+wzenableattacklittlebird,wz,bool,vehicle spawn helicopter
+wzenablereplacercar,wz,bool,vehicle spawn enable replacer car
+wzenableheavymetalvehicles,wz,bool,vehicle spawn heavy metal vehicles
+hash_23e09b48546a7e3b,wz,bool,vehicle spawn related unknown
+wzenableannihilator,wz,bool,enable annihilator
+wzenabledeathoforion,wz,bool,enable death of orion
+wzenableannihilator,wz,bool,enable alistair s folly
+wzenablesentrygun,wz,bool,enable sentry gun
+wzenablesavageimpaler,wz,bool,enable savageimpaler
+wzenableconcussiongrenade,wz,bool,enable concussiongrenade
+wzenablesniperscope,wz,bool,enable sniperscope
+wzenablerazorwire,wz,bool,enable razorwire
+wzenablesensordart,wz,bool,enable sensordart
+wzenablecombataxe,wz,bool,enable combataxe
+wzenablesuppressor,wz,bool,enable suppressor
+hash_701bac755292fab2,wz,bool,spawn icarus
+wzenable4xscope,wz,bool,enable 4x scope
+wzenable3xscope,wz,bool,enable 3x scope
+wzenable2xscope,wz,bool,enable 2x scope
+wzenableextbarrel,wz,bool,enable extended barrel
+wzenableextfastmag,wz,bool,enable extended fast mag
+wzenableforegrip,wz,bool,enable foregrip
+wzenablepistolgrip,wz,bool,enable pistole foregrip
+zmdoorstate,zm,int,door state
+zmshowtimer,zm,bool,show game timer
+voipkillershearvictim,core,bool,killers hear victim voice chat
+voipeveryonehearseveryone,core,bool,everyone hears everyone voice chat
+voipdeadhearteamliving,core,bool,hear living team voice chat
+voipdeadhearkiller,core,bool,victim hear killer voice chat
+voipdeadhearallliving,core,bool,hear all living voice chat
+voipdeadchatwithteam,core,bool,dead chat with team
+voipdeadchatwithdead,core,bool,dead chat with dead
+timelimit,mp,int,time limit 0 for infinite
+multibomb,mp,bool,multiple bomb in sd
+defusetime,mp,int,defuse time in sd
+planttime,mp,int,plant time in sd
+bombtimer,mp,int,time before bomb explosion in sd
+drafteveryround,mp,bool,draft every round
+draftenabled,mp,bool,enable draft
+disableweapondrop,mp,bool,disable weapon drop
+disabletacinsert,mp,bool,disable tactical insertion
+disablecontracts,mp,bool,disable contracts
+disableclassselection,mp,bool,disable class selection
+disablecac,mp,bool,disable custom class
+disableattachments,mp,bool,disable attachments
+hash_464afa49c60793b7,wz,bool,detach gun from fav when shoot
+hash_3e111be61438fd22,wz,float,detach gun damage computation; default 1
+hash_5ba752e23e79af9d,wz,float,detach gun damage computation; default 5
+hash_36c2eeb3865325f2,wz,float,detach gun damage computation; default 0.25
+zmheadshotsonly,zm,bool,headshots only
+specialistfriendlyfire_allies_1,mp,int,friendly fire type
+friendlyfiretype,wz,int,friendly fire type
+roundstartfriendlyfiretype,mp,int,pre-timer friendly fire type
+hash_5d5f4ee35c9977c7,mp,int,friendly fire type timer 0 for none
+hash_68e3f54e05f57d85,mp,int,friendly fire kills before warning for type 4
+hash_51e989796c38cd87,mp,int,friendly fire kills after warning to be kick for type 4
+hash_5c918cbf75e16116,mp,int,friendly fire score compute element
+hash_ecf2124e9108fc4,mp,int,friendly fire score compute element
+wzzombiesmaxcount,wz,int,zombies count
+laststandrevivetime,mp,int,revive time
+wzspawnspecial,wz,bool,spawn special AI
+wzenablespraycans,wz,bool,enable spray cans
+wzheavymetalheroes,wz,bool,is wz heavy metal heroes
+zmhealthdrain,zm,int,health drain; 0=every 6s 1=every 3s 2=every 1s
+wzenablespectregrenade,wz,bool,enable spectre grenade
+wzbrutuslarge,wz,bool,allow brutus boss zombies
+wzenableheavymetal,wz,bool,enable heavy metal stuff
+wzaizones,wz,bool,create ai zones
+wzenablewallbuyasylum,wz,bool,enable wall buy asylum
+wzenablewallbuynuketown,wz,bool,enable wall buy nuketown
+wzenablewallbuycemetary,wz,bool,enable wallbuy cemetary
+wzenablewallbuydiner,wz,bool,enable wallbuy diner
+wzenablewallbuyfarm,wz,bool,enable wallbuy farm
+wzenablewallbuylighthouse,wz,bool,enable wallbuy lighthouse
+wzenablearmorplate,wz,bool,enable armor plates
+wzenablepurifier,wz,bool,enable purifier
+wzenablemeshmines,wz,bool,enable mesh mines
+wzzonerandom,wz,bool,random zones
+wzadddogs,wz,bool,add zombies dog
+wzenablebandages,wz,bool,enable bandages
+wzenablebarricade,wz,bool,enable barricade
+wzenableclustergrenade,wz,bool,enable clustergrenade
+wzenablecontrabandstash,wz,bool,enable contrabandstash
+wzenablecowardswayout,wz,bool,enable cowardswayout
+wzenableflareguns,wz,bool,enable flareguns
+wzenablegambit22,wz,bool,enable gambit22
+wzenablehellsretriever,wz,bool,enable hellsretriever
+wzenablehotpursuit,wz,bool,enable hotpursuit
+wzenableoperatorweapons,wz,bool,enable operatorweapons
+wzenableraygunmark2,wz,bool,enable raygun mk2
+wzenablereconcar,wz,bool,enable rcxd
+wzenabletraumakit,wz,bool,enable trauma kit
+wzenablewaverespawn,wz,bool,enable waverespawn
+wzenablewintersfury,wz,bool,enable winters fury
+wzgreeneyes,wz,bool,green eyes on zombies
+wzhighvaluetargets,wz,bool,
+wzintersectdeathcircle,wz,bool,
+wzminibosses,wz,bool,spawn minibosses
+wzplayerinsertionendoffset,wz,int,fly player insertion end offset from center
+wzplayerinsertionstartoffset,wz,bool,fly player insertion start offset from center
+wzplayerinsertiontypeindex,wz,bool,player re-insertion type
+wzrandomcamo,wz,bool,give random camo
+wzspawnanywhere,wz,bool,unknown
+wzweaponstest,wz,bool,weapon test items
+wzzombieapocalypsemusic,wz,bool,play z apocalypse music
+wzzoneindex,wz,bool,unknown
+zmelixirscooldown,zm,int,apply cooldown on elixirs 2=divided by 2; 0=multiply by 2
+zmequipmentisenabled,wz,bool,enable equipment
+hash_29d174e7d8ab76c8,zm,int,player health bar add 0=-150;1=-100;2=-50;3=0;4=+50;5=+100;6=+150
+zmhealthregendelay,zm,int,player health regen delay; 0=2;1=normal;2=8
+zmhealthregenrate,zm,int,player health regen rate 0=1;1=50;2=normal;3=12.5;4=0
+zmkillcap,zm,int,kill cap
+zmlaststandduration,zm,int,last stand time; 0=none;1=20s;2=60s
+zmpapenabled,zm,int,pap enable 0=none;1=no aat?;2=yes
+zmpowerdoorstate,zm,int,power door state
+zmpowerstate,zm,int,state 0=no;1=wait;2=activate
+zmpowerupfrequency,zm,int,unknown
+zmpowerupsislimitedround,zm,bool,limit drop per round
+hash_d46a4e7a41e005c,zm,int,set the maximum number of drop
+zmselfreviveamount,zm,int,revive amount
+zmshielddurability,zm,int,shield durability 0=x2; 1=normal;2=divided by 2
+zmshieldisenabled,zm,bool,enable shield
+zmstartingweaponenabled,zm,bool,allow starting weapon
+zmwallbuysenabled,zm,bool,enable wall buys
+zmwonderweaponisenabled,zm,bool,enable ww
+
+allowannouncer,unknown,unknown,unknown
+allowbattlechatter,unknown,unknown,unknown
+allowfinalkillcam,unknown,unknown,unknown
+allowhitmarkers,unknown,unknown,unknown
+allowingameteamchange,unknown,unknown,unknown
+allowkillcam,unknown,unknown,unknown
+allowlaststandforactiveclients,unknown,unknown,unknown
+allowplayofthematch,unknown,unknown,unknown
+antiboostdistance,unknown,unknown,unknown
+boastallowcam,unknown,unknown,unknown
+boastenabled,unknown,unknown,unknown
+bountybagomoneymoney,unknown,unknown,unknown
+bulletdamagescalar,unknown,unknown,unknown
+carrier_manualdrop,unknown,unknown,unknown
+cleandepositonlinetime,unknown,unknown,unknown
+cleandepositrotation,unknown,unknown,unknown
+competitivesettings,unknown,unknown,unknown
+competitiveteamlives,unknown,unknown,unknown
+contributionmin,unknown,unknown,unknown
+cratecapturetime,unknown,unknown,unknown
+cumulativeroundscores,unknown,unknown,unknown
+deathcircle,unknown,unknown,unknown
+deathcirclerespawn,unknown,unknown,unknown
+deathpointloss,unknown,unknown,unknown
+draftrequiredclients,unknown,unknown,unknown
+droppedtagrespawn,unknown,unknown,unknown
+ekiaresetondeath,unknown,unknown,unknown
+evolution_interval,unknown,unknown,unknown
+forceradar,unknown,unknown,unknown
+forwardspawnteamspecificspawns,unknown,unknown,unknown
+gameadvertisementruleround,unknown,unknown,unknown
+gameadvertisementruleroundswon,unknown,unknown,unknown
+gameadvertisementrulescorepercent,unknown,unknown,unknown
+gameadvertisementruletimeleft,unknown,unknown,unknown
+gunselection,unknown,unknown,unknown
+hash_104f124f56f0f20a,unknown,unknown,unknown
+hash_112e2ccb6a33c090,unknown,unknown,unknown
+hash_11a3265d74f0d51,unknown,unknown,unknown
+hash_11e1a0adebdab01a,unknown,unknown,unknown
+hash_14019eb043d9e43b,unknown,unknown,unknown
+hash_1513b70c43495cc0,unknown,unknown,unknown
+hash_154db5a1b2e9d757,unknown,unknown,unknown
+hash_1614b9cbe0df6f75,unknown,unknown,unknown
+hash_17f17e92c2654659,unknown,unknown,unknown
+hash_1b34b26470f4368,unknown,unknown,unknown
+hash_1b4a66a008f60927,unknown,unknown,unknown
+hash_1bcb7e5d76212b76,unknown,unknown,unknown
+hash_1d02e28ba907a343,unknown,unknown,unknown
+hash_1f3825ba2a669400,unknown,unknown,unknown
+hash_21ab1ca7e18bddcd,wz,bool,unknown
+hash_221008a2c793dfa1,unknown,unknown,unknown
+hash_22431a9369b5d7c0,unknown,unknown,unknown
+hash_230e67d5ddfb2c06,unknown,unknown,unknown
+hash_232750b87390cbff,wz,bool,wall buy related
+hash_234ae2f2ff58263f,unknown,unknown,unknown
+hash_24a3def3bbc35dfa,unknown,unknown,unknown
+hash_24e281e778894ac9,unknown,unknown,unknown
+hash_2560dae45cc112e3,mp,bool,?count killstreak in score
+hash_26f00de198472b81,unknown,unknown,unknown
+hash_28233b1037888945,unknown,unknown,unknown
+hash_2b2c167cf8889749,unknown,unknown,unknown
+hash_2b3e56efad3a1504,unknown,unknown,unknown
+hash_2b88c6ac064e9c59,unknown,unknown,unknown
+hash_2ce00db5cd5003ff,unknown,unknown,unknown
+hash_2d34a5d9024db85f,unknown,unknown,unknown
+hash_2d4ff63e866cdd74,unknown,unknown,unknown
+hash_2e25d475b271a700,unknown,unknown,unknown
+hash_2f03c6055447a6b1,unknown,unknown,unknown
+hash_3083d02ea0f5761c,unknown,unknown,unknown
+hash_3109a8794543000f,unknown,unknown,unknown
+hash_32da91b78e54e7b5,unknown,unknown,unknown
+hash_33bc6781006ae83d,unknown,unknown,unknown
+hash_3624143624604b4c,unknown,unknown,unknown
+hash_3668350e780332a3,unknown,unknown,unknown
+hash_36d000592fe3c302,unknown,unknown,unknown
+hash_3778ec3bd924f17c,unknown,unknown,unknown
+hash_3c5363541b97ca3e,unknown,unknown,unknown
+hash_3d9a364d54750dca,unknown,unknown,unknown
+hash_3da025c068c34bcb,unknown,unknown,unknown
+hash_3e13b420d6773b4c,unknown,unknown,unknown
+hash_3e62d9528eca0a13,unknown,unknown,unknown
+hash_4149d5d65eb07138,unknown,unknown,unknown
+hash_418adedc5cf0a538,unknown,unknown,unknown
+hash_42471cb0cbc19544,unknown,unknown,unknown
+hash_44533f4f290c5e77,unknown,unknown,unknown
+hash_446a66a4499c4e5d,unknown,unknown,unknown
+hash_44c7473eab6e5459,unknown,unknown,unknown
+hash_450463e38ea8bf1,unknown,unknown,unknown
+hash_46f957248efbd39a,unknown,unknown,unknown
+hash_48670d9509071424,unknown,unknown,unknown
+hash_4a035e3775089f40,unknown,unknown,unknown
+hash_4a6ef8940f4cbb83,unknown,unknown,unknown
+hash_4bdd1bd86b610871,unknown,unknown,unknown
+hash_4bf99a809542e4ea,unknown,unknown,unknown
+hash_4c7c8c4bd1b2a58b,unknown,unknown,unknown
+hash_4ca06c610b5d53bd,unknown,unknown,unknown
+hash_4d3b84d98e3a83d4,unknown,unknown,unknown
+hash_4d6cfd0b3ee4cc7d,unknown,unknown,unknown
+hash_4deb3ae7a73c87f3,unknown,unknown,unknown
+hash_4e0ec3fe56f08b47,unknown,unknown,unknown
+hash_4e4352bd1aaeedfe,unknown,unknown,unknown
+hash_4f4a73f236278ba8,unknown,unknown,unknown
+hash_4ffb80b47c049c61,unknown,unknown,unknown
+hash_50c10372c80d0a6b,unknown,unknown,unknown
+hash_5408e974098bc234,unknown,unknown,unknown
+hash_543954c3281a530f,unknown,unknown,unknown
+hash_54fe37a58b87c7a0,unknown,unknown,unknown
+hash_557cb4680634f585,unknown,unknown,unknown
+hash_567a288b2ca685f3,unknown,unknown,unknown
+hash_567db38226658dbf,unknown,unknown,unknown
+hash_59ab05f71c3789c7,unknown,unknown,unknown
+hash_5c6371ef701d7485,unknown,unknown,unknown
+hash_5cc4c3042b7d4935,unknown,unknown,unknown
+hash_5f76e2d55ad861ed,unknown,unknown,unknown
+hash_622b18585020f430,unknown,unknown,unknown
+hash_6269eb986d22cd37,unknown,unknown,unknown
+hash_62a4fd40810cb61,unknown,unknown,unknown
+hash_63f8d60d122e755b,unknown,unknown,unknown
+hash_64291919b16c489a,unknown,unknown,unknown
+hash_647310a2fe3554f7,unknown,unknown,unknown
+hash_64aba694bd70856c,unknown,unknown,unknown
+hash_661ee23f114191c1,unknown,unknown,unknown
+hash_67b94d37f2e44ee2,unknown,unknown,unknown
+hash_67d54bbc52811921,unknown,unknown,unknown
+hash_6873fc00b59bcd39,unknown,unknown,unknown
+hash_6881c7cab0dcef39,unknown,unknown,unknown
+hash_69ad073972c1c4ea,unknown,unknown,unknown
+hash_6a2434c947c86b9b,unknown,unknown,unknown
+hash_6aba2f652c6f4e07,unknown,unknown,unknown
+hash_6cc7b012775d9662,unknown,unknown,unknown
+hash_6cf5f53d1fbb1066,unknown,unknown,unknown
+hash_6e2abf2cc40e03f1,unknown,unknown,unknown
+hash_6fb11b1e304d533c,unknown,unknown,unknown
+hash_70072ee20a43ae21,unknown,unknown,unknown
+hash_712f4c2a96bca56e,unknown,unknown,unknown
+hash_71b2b43696e16252,unknown,unknown,unknown
+hash_731988b03dc6ee17,unknown,unknown,unknown
+hash_731aac1992af2669,unknown,unknown,unknown
+hash_7477eea36687a960,unknown,unknown,unknown
+hash_74f1260346e4198e,unknown,unknown,unknown
+hash_7532afe3ef8b4332,unknown,unknown,unknown
+hash_75a36f7e4a81c93,unknown,unknown,unknown
+hash_7684a70eb68f1ebb,unknown,unknown,unknown
+hash_76c2c603f164eb31,unknown,unknown,unknown
+hash_76fb3219916a09f2,unknown,unknown,unknown
+hash_77af5743dec010ae,wz,unknown,unknown
+hash_77b7734750cd75e9,unknown,unknown,unknown
+hash_7c0acf14fb1f4080,unknown,unknown,unknown
+hash_7c0dcff6ffb1e348,unknown,unknown,unknown
+hash_7d8c969e384dd1c9,unknown,unknown,unknown
+hash_82c01ef004ff0a3,unknown,unknown,unknown
+hash_83f11b8abac148f,unknown,unknown,unknown
+hash_926bf70c5a0d23b,unknown,unknown,unknown
+hash_ad6c0d1cd92c1fe,unknown,unknown,unknown
+hash_bd1199baafe11fe,unknown,unknown,unknown
+hash_d46a4e7a41e005c,unknown,unknown,unknown
+hash_f04393e2e028c01,unknown,unknown,unknown
+headshotsonly,unknown,unknown,unknown
+incrementalspawndelay,unknown,unknown,unknown
+killcamtime,unknown,unknown,unknown
+killeventscoremultiplier,unknown,unknown,unknown
+killstreaksgivegamescore,unknown,unknown,unknown
+leaderbonus,unknown,unknown,unknown
+loadoutkillstreaksenabled,unknown,unknown,unknown
+max_wait_time,unknown,unknown,unknown
+maxallocation,unknown,unknown,unknown
+maxplayofthematchevents,unknown,unknown,unknown
+maxsuicidesbeforekick,unknown,unknown,unknown
+maxteamplayers,unknown,unknown,unknown
+objectivepingtime,unknown,unknown,unknown
+oldschoolmode,unknown,unknown,unknown
+onlyheadshots,unknown,unknown,unknown
+perksenabled,unknown,unknown,unknown
+platoonassignment,unknown,unknown,unknown
+platooncount,unknown,unknown,unknown
+player_reduction,wz,int,unknown
+playerforcerespawn,unknown,unknown,unknown
+playerhealthregentime,unknown,unknown,unknown
+playerkillsmax,unknown,unknown,unknown
+playermaxhealth,unknown,unknown,unknown
+playernumlives,unknown,unknown,unknown
+playerobjectiveheldrespawndelay,unknown,unknown,unknown
+playerqueuedrespawn,unknown,unknown,unknown
+playerrespawndelay,unknown,unknown,unknown
+playersprinttime,unknown,unknown,unknown
+pregamedraftenabled,unknown,unknown,unknown
+pregameitemvoteenabled,unknown,unknown,unknown
+prematchperiod,unknown,unknown,unknown
+prematchrequirement,unknown,unknown,unknown
+preroundperiod,unknown,unknown,unknown
+roundlimit,unknown,unknown,unknown
+roundscorelimit,unknown,unknown,unknown
+roundstartexplosivedelay,unknown,unknown,unknown
+roundstartkillstreakdelay,unknown,unknown,unknown
+roundswitch,unknown,unknown,unknown
+roundwinlimit,unknown,unknown,unknown
+scoreheropowergainfactor,unknown,unknown,unknown
+scorelimit,unknown,unknown,unknown
+scoreresetondeath,unknown,unknown,unknown
+scorestreaksbarebones,unknown,unknown,unknown
+silentplant,unknown,unknown,unknown
+skiplaststand,unknown,unknown,unknown
+spawnprotectiontime,unknown,unknown,unknown
+spawnselectenabled,unknown,unknown,unknown
+spawnsuicidepenalty,unknown,unknown,unknown
+spawnteamkilledpenalty,unknown,unknown,unknown
+spawntraptriggertime,unknown,unknown,unknown
+specialistabilityenabled_allies_1,unknown,unknown,unknown
+specialistabilityreadyonrespawn_allies_1,unknown,unknown,unknown
+specialistequipmentenabled_allies_1,unknown,unknown,unknown
+specialistequipmentreadyonrespawn_allies_1,unknown,unknown,unknown
+specialisthealingenabled_allies_1,unknown,unknown,unknown
+specialisthealspeed_allies_1,unknown,unknown,unknown
+specialistmaxhealth_allies_1,unknown,unknown,unknown
+specialistonlyheadshots_allies_1,unknown,unknown,unknown
+specialistteamkillsallowed_allies_1,unknown,unknown,unknown
+spectatetype,unknown,unknown,unknown
+startplayers,unknown,unknown,unknown
+teamcount,unknown,unknown,unknown
+teamkillpenalty,unknown,unknown,unknown
+teamkillpointloss,unknown,unknown,unknown
+teamkillpunishcount,unknown,unknown,unknown
+teamkillreducedpenalty,unknown,unknown,unknown
+teamkillscore,unknown,unknown,unknown
+teamkillspawndelay,unknown,unknown,unknown
+teamnumlives,unknown,unknown,unknown
+teamscorepercleandeposit,unknown,unknown,unknown
+teamscoreperdeath,unknown,unknown,unknown
+teamscoreperheadshot,unknown,unknown,unknown
+teamscoreperkill,unknown,unknown,unknown
+ticketslostondeath,unknown,unknown,unknown
+ticketslostontimeamount,unknown,unknown,unknown
+ticketslostontimeinterval,unknown,unknown,unknown
+totalkillsmax,unknown,unknown,unknown
+usabledynents,unknown,unknown,unknown
+use_doors,unknown,unknown,unknown
+useitemspawns,unknown,unknown,unknown
+usespawngroups,unknown,unknown,unknown
+vehiclesenabled,unknown,unknown,unknown
+vehiclestimed,unknown,unknown,unknown

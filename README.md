@@ -128,12 +128,19 @@ This tool can be paired with the [t8-custom-ee mod](https://github.com/ate47/t8-
 
 ## Dev tools
 
+My notes are in the [notes](notes/) directory.
+
+You also have a doc about the game itself in the [doc](doc/) directory.
+
 ### Symbols
 
 You can config the compilation using these options:
 
 - `-DATIAN_MENU_LOOKUP_BIG` : Big lookup structure in array explorer
 - `-DATIAN_MENU_DEV` : Run my dev configs
+- `-DATIANMENU_LAZYLINK` : Can use Lazylink (your compiler **SHOULD** support it)
+- `-DATIANMENU_DETOURS` : Can use Detours (your compiler **SHOULD** support it)
+- `-DATIANMENU_COMPILER_OPT` : Can use builtin compiler functions (your compiler **SHOULD** support it)
 
 ### Error codes
 
