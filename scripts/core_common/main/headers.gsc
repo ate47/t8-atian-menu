@@ -221,7 +221,7 @@ handle_config() {
         }
         
         if (isdefined(atianconfig.blackout_spawn_snowballs) && atianconfig.blackout_spawn_snowballs && !(isdefined(atianconfig.blackout_quaknarok) && atianconfig.blackout_quaknarok)) {
-            setGametypeSetting(#"hash_437b759bd6885560", true);
+            setGametypeSetting(#"wzsnowballsenabled", true);
         }
         if (isdefined(atianconfig.blackout_spawn_waterballons) && atianconfig.blackout_spawn_waterballons) {
             setGametypeSetting(#"hash_33d1ac5e99fb0584", true);

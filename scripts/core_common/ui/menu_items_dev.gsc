@@ -19,12 +19,13 @@ init_menus_dev() {
         wzitems_data = get_wzitems_enum_data();
         foreach(category_key, cat_item in wzitems_data.categories) {
             cat_menu_id = "wzitems_" + cat_item.name;
+
             self add_menu(cat_menu_id, cat_item.title, "wzitems", true);
 
             for (i = 0; i < cat_item.items.size; i++) {
                 item = cat_item.items[i];
 
-                self add_menu_item(cat_menu_id, item.title, &func_give_item_test, item.name, item.title);
+                self add_menu_item(cat_menu_id, item.title, &func_give_item_test, item.name);
             }
         }
     }
@@ -131,7 +132,7 @@ init_menus_dev() {
     if (isdefined(level.var_5c9e1f9) && level.var_5c9e1f9) {
         self add_menu_item("dev_config", "spawn icarus");
     }
-    if (isdefined(getgametypesetting(#"hash_7c8ad12994670d63")) && getgametypesetting(#"hash_7c8ad12994670d63")) {
+    if (isdefined(getgametypesetting(#"wzlootlockers")) && getgametypesetting(#"wzlootlockers")) {
         self add_menu_item("dev_config", "spawn blackjack stash");
     }
 

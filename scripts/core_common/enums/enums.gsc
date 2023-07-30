@@ -499,7 +499,7 @@ get_wz_vehicles() {
         #"tactical_raft_wz",
         #"pbr_boat_wz",
         #"player_fav",
-        #"hash_4043fb66689f91c8"
+        #"veh_dart_wz"
     );
 }
 

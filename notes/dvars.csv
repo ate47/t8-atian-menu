@@ -2660,7 +2660,7 @@ ai_debugcoverentitynum,INT
 slide_subsequentslidescale,FLOAT
 ui_hud_hardcore,BOOL
 stats_version_check,BOOL
-hash_1989c6b82918fbcc,BOOL
+loot_enable_blackjack_reserves,BOOL
 spawnsystem_player_explored_radius,FLOAT
 hash_37f3d7f7ad823fcd,STRING
 cg_overheadnamessize,STRING
@@ -2778,7 +2778,7 @@ ui_lobbydebugoverlay,BOOL
 hash_68eb79e44f8157f9,FLOAT
 hash_23c5d7207ebc0bf9,BOOL
 hash_4e7a02edee964bf9,FLOAT
-hash_50650f8b9380cbfa,INT
+lobby_gestures_enabled,INT
 blackboxmode,ENUM
 ui_lobbydebugagreecountloc,FLOAT_2
 lobbysearchgamesecurityid,UINT64

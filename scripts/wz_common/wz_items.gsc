@@ -24,7 +24,7 @@ func_give_wzitem(item, item_id, item_title) {
 	}
 }
 
-func_give_item_test(item, item_id = undefined, item_title = undefined) {
+func_give_item_test(item, item_id = undefined) {
 #ifndef ATIANMENU_LAZYLINK
     self iPrintLnBold("^1LAZYLINK DISABLED");
 #else

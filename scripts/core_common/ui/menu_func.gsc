@@ -183,7 +183,7 @@ func_searchentities(menu) {
         if (!isdefined(e.origin)) {
             continue;
         }
-	    // e function_bf9d3071(#"hash_1978eff2ac047e65");
+	    // e playrenderoverridebundle(#"hash_1978eff2ac047e65");
 		// e function_78233d29(#"hash_1978eff2ac047e65", "", #"brightness", 1);
 
         self add_menu_item(menu.id, "" + i + ":" + get_object_type(e), &func_teleport, e);

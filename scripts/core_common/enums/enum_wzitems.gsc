@@ -62,8 +62,8 @@ generate_wzitems_enum() {
 
     wzitems add_wzitem_info(#"backpack_item", "Backpack", "other");
     wzitems add_wzitem_info(#"hash_5e9c3f9821e1ee0a", "Paint cans", "other");
-    wzitems add_wzitem_info(#"flare_gun_wz_item", "Flare gun (Supply)", "other"); // useless
-    wzitems add_wzitem_info(#"flare_gun_veh_wz_item", "Flare gun (Vehicle)", "other");
+    wzitems add_wzitem_info(#"flare_gun_wz_item", "Flare gun (Supply)", "other");
+    wzitems add_wzitem_info(#"flare_gun_veh_wz_item", "Flare gun (Vehicle)", "other"); // not for wz_escape lol
 
     wzitems add_wzitem_info(#"acid_bomb_wz_item", "Acid bomb", "eq");
     wzitems add_wzitem_info(#"trip_wire_wz_item", "Trip wire", "eq");
@@ -270,7 +270,6 @@ generate_wzitems_enum() {
     wzitems add_wzitem_info(#"shotgun_semiauto_t8_item", "SG-12", "weap_shotgun");
     wzitems add_wzitem_info(#"shotgun_semiauto_t8_gold_item", "SG-12 (Gold)", "weap_shotgun");
     wzitems add_wzitem_info(#"shotgun_fullauto_t8_item", "Rampage", "weap_shotgun");
-    wzitems add_wzitem_info(#"shotgun_fullauto_t8_gold_item", "Rampage (Gold)", "weap_shotgun");
     wzitems add_wzitem_info(#"shotgun_precision_t8_item", "Argus", "weap_shotgun");
 
     wzitems add_wzitem_info(#"smg_mp40_t8_item", "MP40", "weap_smg");
@@ -309,11 +308,16 @@ generate_wzitems_enum() {
     wzitems add_wzitem_info(#"sniper_damagesemi_t8_item", "Havelina AA50", "weap_sniper");
     wzitems add_wzitem_info(#"sniper_locus_t8_item", "Locus", "weap_sniper");
 
-
+#ifdef ATIAN_MENU_DEV
     // UNKNOWN ITEMS
 
+    
+    wzitems add_wzitem_info(#"hash_3c9e4970b3140181", "hash_3c9e4970b3140181", "unknown");
+    wzitems add_wzitem_info(#"hash_13ba73311ab5250f", "hash_13ba73311ab5250f", "unknown");
+    wzitems add_wzitem_info(#"hash_60ffe3aa992db93a", "hash_60ffe3aa992db93a", "unknown");
+    wzitems add_wzitem_info(#"hash_3aab463fff2b617", "hash_3aab463fff2b617", "unknown");
+    wzitems add_wzitem_info(#"hash_25409de8d2edefb7", "hash_25409de8d2edefb7", "unknown");
 
-    wzitems add_wzitem_info(#"hash_34fc35458ae105ac", "hash_34fc35458ae105ac", "unknown");
     wzitems add_wzitem_info(#"dualoptic_wz_item", "dualoptic_wz_item", "unknown");
     wzitems add_wzitem_info(#"seeker_mine_wz_item", "seeker_mine_wz_item", "unknown");
     wzitems add_wzitem_info(#"supply_pod_wz_item", "supply_pod_wz_item", "unknown");
@@ -321,7 +325,6 @@ generate_wzitems_enum() {
     wzitems add_wzitem_info(#"wz_snowball", "wz_snowball", "unknown");
     wzitems add_wzitem_info(#"spiked_barrier_wz_item", "spiked_barrier_wz_item", "unknown");
     wzitems add_wzitem_info(#"ar_mg1909_t8_item", "ar_mg1909_t8_item", "unknown");
-    wzitems add_wzitem_info(#"sniper_damagesemi_t8_gold_item", "Havelina AA50 (Gold)", "weap_sniper");
     wzitems add_wzitem_info(#"smg_drum_pistol_t8_item", "smg_drum_pistol_t8_item", "unknown");
     wzitems add_wzitem_info(#"smg_thompson_t8_item", "smg_thompson_t8_item", "unknown");
     wzitems add_wzitem_info(#"pistol_topbreak_t8_item", "pistol_topbreak_t8_item", "unknown");
@@ -331,4 +334,5 @@ generate_wzitems_enum() {
     wzitems add_wzitem_info(#"hash_6c0eed50f4c26acb", "hash_6c0eed50f4c26acb", "unknown");
     wzitems add_wzitem_info(#"hash_6cb371d07db8ad2f", "hash_6cb371d07db8ad2f", "unknown");
 
+#endif
 }

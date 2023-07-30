@@ -276,3 +276,4 @@ Function name	Segment	Start	Length	Locals	Arguments	R	F	L	M	S	B	T	=
 ScrStr_ConvertToString	.text	0000000002759030	000000EE	00001038		R	.	.	.	.	.	T	.
 ScrVar_CastString	.text	000000000275C170	000000FB	00000028	00000010	R	.	.	.	.	.	T	.
 
+drop_item ]](undefined, 1, 1, item_id, self GetOrigin()); 3e52e5

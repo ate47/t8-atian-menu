@@ -231,7 +231,7 @@ zmperkswolfprotector,zm,bool,allow perk wolf_protector
 zmperksdeathdash,zm,bool,allow perk death_dash
 hash_3e2d2cf6b1cc6c68,wz,bool,Spawn zombies with duck floats
 hash_3a73deb0ca8c9aea,wz,bool,disable crosshair
-hash_697d65a68cc6c6f1,wz,bool,wz_escape enable some ee (nixie, spoon, icarus)
+hash_697d65a68cc6c6f1,wz,bool,wz_escape enable some ee (nixie;spoon;icarus)
 hash_473fee16f796c84e,wz,bool,enable wz_escape fishing EE
 hash_30b11d064f146fcc,wz,bool,enable wz_escape spoon EE
 hash_11b79ec2ffb886c8,wz,bool,enable wz_escape nixie tube EE
@@ -431,6 +431,8 @@ wzenablewallbuycemetary,wz,bool,enable wallbuy cemetary
 wzenablewallbuydiner,wz,bool,enable wallbuy diner
 wzenablewallbuyfarm,wz,bool,enable wallbuy farm
 wzenablewallbuylighthouse,wz,bool,enable wallbuy lighthouse
+wzenablewallbuyboxinggym,wz,bool,enable wallbuy boxing gym
+wzenablewallbuyghosttown,wz,bool,enable wallbuy ghosttown
 wzenablearmorplate,wz,bool,enable armor plates
 wzenablepurifier,wz,bool,enable purifier
 wzenablemeshmines,wz,bool,enable mesh mines
@@ -463,6 +465,7 @@ wzspawnanywhere,wz,bool,unknown
 wzweaponstest,wz,bool,weapon test items
 wzzombieapocalypsemusic,wz,bool,play z apocalypse music
 wzzoneindex,wz,bool,unknown
+wzenablevivaldi,wz,bool,enable havelina
 zmelixirscooldown,zm,int,apply cooldown on elixirs 2=divided by 2; 0=multiply by 2
 zmequipmentisenabled,wz,bool,enable equipment
 hash_29d174e7d8ab76c8,zm,int,player health bar add 0=-150;1=-100;2=-50;3=0;4=+50;5=+100;6=+150
@@ -482,7 +485,6 @@ zmshieldisenabled,zm,bool,enable shield
 zmstartingweaponenabled,zm,bool,allow starting weapon
 zmwallbuysenabled,zm,bool,enable wall buys
 zmwonderweaponisenabled,zm,bool,enable ww
-
 allowannouncer,unknown,unknown,unknown
 allowbattlechatter,unknown,unknown,unknown
 allowfinalkillcam,unknown,unknown,unknown
@@ -557,7 +559,6 @@ hash_32da91b78e54e7b5,unknown,unknown,unknown
 hash_33bc6781006ae83d,unknown,unknown,unknown
 hash_3624143624604b4c,unknown,unknown,unknown
 hash_3668350e780332a3,unknown,unknown,unknown
-hash_36d000592fe3c302,unknown,unknown,unknown
 hash_3778ec3bd924f17c,unknown,unknown,unknown
 hash_3c5363541b97ca3e,unknown,unknown,unknown
 hash_3d9a364d54750dca,unknown,unknown,unknown
@@ -603,7 +604,6 @@ hash_62a4fd40810cb61,unknown,unknown,unknown
 hash_63f8d60d122e755b,unknown,unknown,unknown
 hash_64291919b16c489a,unknown,unknown,unknown
 hash_647310a2fe3554f7,unknown,unknown,unknown
-hash_64aba694bd70856c,unknown,unknown,unknown
 hash_661ee23f114191c1,unknown,unknown,unknown
 hash_67b94d37f2e44ee2,unknown,unknown,unknown
 hash_67d54bbc52811921,unknown,unknown,unknown
@@ -639,7 +639,6 @@ hash_926bf70c5a0d23b,unknown,unknown,unknown
 hash_ad6c0d1cd92c1fe,unknown,unknown,unknown
 hash_bd1199baafe11fe,unknown,unknown,unknown
 hash_d46a4e7a41e005c,unknown,unknown,unknown
-hash_f04393e2e028c01,unknown,unknown,unknown
 headshotsonly,unknown,unknown,unknown
 incrementalspawndelay,unknown,unknown,unknown
 killcamtime,unknown,unknown,unknown

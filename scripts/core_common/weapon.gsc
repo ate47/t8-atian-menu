@@ -148,7 +148,7 @@ Set_Camo(id, reticle) {
 
         self giveweapon(weapon, weapon_options);
         camo_index_var = getcamoindex(weapon_options);
-        camo_var2 = function_11c873a(camo_index_var);
+        camo_var2 = getactivecamo(camo_index_var);
         self iPrintLn("camo: " + camo_index_var + ", reticle: " + reticle);
         if (isdefined(camo_var2)) {
             self iPrintLn("var:camo: " + camo_var2);

@@ -42,7 +42,7 @@ onPlayerSpawned() {
     } else if (is_zombies()) {
         if (isdefined(atianconfig.zm_custom_health_onkill) && atianconfig.zm_custom_health_onkill > 0) {
             // bypass the setting zmhealthonkill to be more friendly
-            self.var_6162c5a7 = atianconfig.zm_custom_health_onkill;
+            self.n_health_on_kill = atianconfig.zm_custom_health_onkill;
         }
     }
 

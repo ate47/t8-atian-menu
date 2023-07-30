@@ -56,11 +56,9 @@ ee_hashname_resolve(name) {
         return undefined;
     }
     switch (name) {
-    case #"hash_4e21e987e2c0592d": return "(?)impaler quest";
     case #"hash_331f9ba64e2c2478": return "(?)stake knife quest";
-    case #"hash_637ceeb3bef1ea35": // zm_mansion
-    case #"hash_637ceeb3bef1ea35": // zm_red
-        return "(?)ee song";
+    case #"music_sq":
+        return "music_sq";
     case #"hash_559b7237b8acece2": return "(?)???";
     default:
         return hash_lookup(name);

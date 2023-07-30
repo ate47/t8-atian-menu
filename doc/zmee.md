@@ -102,7 +102,7 @@
 
 ## Quest logic
 
-The main logic behind zombies' step EEs is in the [zm_sq.gsc](../scripts/zm_common/zm_sq.gsc) in the `register()` and `start()` methods.
+The main logic behind zombies' step EEs is in the [zm_sq.gsc](https://github.com/ate47/t8-src/blob/main/scripts/zm_common/zm_sq.gsc) in the `register()` and `start()` methods.
 
 ### Register
 
