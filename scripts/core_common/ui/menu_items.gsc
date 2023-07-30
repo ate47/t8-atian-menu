@@ -461,6 +461,10 @@ init_menus() {
             self add_menu_item(cat_menu_id, camo_item.title, &func_set_camo, camo_item.id);
         }
     }
+
+    // --- Perks ----
+    self add_menu("perks", "Perks", "start_menu", true, &func_search_perks);
+
     // ---- Mastercrafts ----
     self add_menu("mastercrafts", "Mastercrafts", "start_menu", true);
     self add_menu_item("mastercrafts", "Random", &func_give_random_mastercraft);
