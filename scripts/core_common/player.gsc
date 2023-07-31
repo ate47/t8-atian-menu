@@ -11,8 +11,9 @@ onPlayerSpawned() {
     level endon(#"end_game", #"game_ended");
 
     self.atian = spawnStruct();
+    self.atian.wz = spawnStruct();
     atianconfig = level.atianconfig;
-
+    
     if (isbot(self)) {
         return self onBotSpawned(); // ignore bot
     }

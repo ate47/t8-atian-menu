@@ -11,3 +11,4 @@ Here is the list of the found hashes/strings/ids that can be used in Black ops 4
 - [Weapons customization](weaponscustom.md)
 - [Naming](naming.md)
 - [Zombies step EEs](zmee.md)
+- [Internal things](notes/)

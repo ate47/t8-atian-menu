@@ -78,6 +78,8 @@ init() {
                     break;
             }
         }
+        // loadouts
+        wz_item_applycustomfunction();
     }
 
     devInitGametype();

@@ -227,3 +227,116 @@ set_hint_string(ent, default_ref, cost) {
 		self sethintstring(hint);
 	}
 }
+
+func_give_zm_perk(item, perk_name, modifier) {
+    self give_zm_perk(perk_name, modifier);
+}
+
+give_zm_perk(perk_name, modifier = false) {
+#ifndef ATIANMENU_LAZYLINK
+    self iPrintLnBold("^1LAZYLINK DISABLED");
+#else
+    vending_trigger_post_think = @zm_perks<scripts\zm_common\zm_perks.gsc>::vending_trigger_post_think;
+
+    if (!isdefined(vending_trigger_post_think)) {
+        self iPrintLnBold("^1Can't find zm_perks::vending_trigger_post_think");
+        return;
+    }
+
+    // mock trigger to fake a power-on perk machine
+    level.am_dev.mock_zp_trigger thread [[ vending_trigger_post_think ]](self, perk_name);
+#endif
+}
+
+zm_perk_translate(hash_name) {
+    switch (hash_name) {
+    case #"specialty_zombshell": return "Zombshell";
+    case #"specialty_wolf_protector": return "Blood Wold Bite";
+    case #"specialty_widowswine": return "Winter's Wail";
+    case #"specialty_staminup": return "Stamin-Up";
+    case #"specialty_shield": return "Victorious Tortoise";
+    case #"specialty_quickrevive": return "Quick Revive";
+    case #"specialty_phdflopper": return "PHD Slider";
+    case #"specialty_mystery": return "Secret Sauce";
+    case #"specialty_extraammo": return "Bandolier Bandit";
+    case #"specialty_etherealrazor": return "Ethereal Razor";
+    case #"specialty_electriccherry": return "Electric burst";
+    case #"specialty_death_dash": return "Blaze Phase";
+    case #"specialty_deadshot": return "Deadshot Dealer";
+    case #"specialty_cooldown": return "Timeslip";
+    case #"specialty_camper": return "Stone Cold Stronghold";
+    case #"specialty_berserker": return "Dying Wish";
+    case #"specialty_awareness": return "Death Perception";
+    case #"specialty_additionalprimaryweapon": return "Mule Kick";
+    case #"specialty_mod_zombshell": return "Zombshell (Modifier)";
+    case #"specialty_mod_wolf_protector": return "Blood Wold Bite (Modifier)";
+    case #"specialty_mod_widowswine": return "Winter's Wail (Modifier)";
+    case #"specialty_mod_staminup": return "Stamin-Up (Modifier)";
+    case #"specialty_mod_shield": return "Victorious Tortoise (Modifier)";
+    case #"specialty_mod_quickrevive": return "Quick Revive (Modifier)";
+    case #"specialty_mod_phdflopper": return "PHD Slider (Modifier)";
+    case #"hash_23c63c9a3acb397": return "Secret Sauce (Modifier)";
+    case #"specialty_mod_extraammo": return "Bandolier Bandit (Modifier)";
+    case #"specialty_mod_etherealrazor": return "Ethereal Razor (Modifier)";
+    case #"specialty_mod_electriccherry": return "Electric burst (Modifier)";
+    case #"specialty_mod_death_dash": return "Blaze Phase (Modifier)";
+    case #"specialty_mod_deadshot": return "Deadshot Dealer (Modifier)";
+    case #"specialty_mod_cooldown": return "Timeslip (Modifier)";
+    case #"specialty_mod_camper": return "Stone Cold Stronghold (Modifier)";
+    case #"specialty_mod_berserker": return "Dying Wish (Modifier)";
+    case #"specialty_mod_awareness": return "Death Perception (Modifier)";
+    case #"specialty_mod_additionalprimaryweapon": return "Mule Kick (Modifier)";
+    default: return hash_lookup(hash_name);
+    }
+}
+
+func_zm_pwrp_spawn(item, powerup) {
+    self zm_pwrp_spawn(powerup);
+}
+
+zm_pwrp_spawn(powerup) {
+#ifndef ATIANMENU_LAZYLINK
+    self iPrintLnBold("^1LAZYLINK DISABLED");
+#else
+    specific_powerup_drop = @zm_powerups<scripts\zm_common\zm_powerups.gsc>::specific_powerup_drop;
+
+    if (!isdefined(specific_powerup_drop)) {
+        self iPrintLnBold("^1Can't find zm_powerups::specific_powerup_drop");
+        return;
+    }
+
+    look = get_look_position();
+    self thread [[ specific_powerup_drop ]](powerup, look, undefined, undefined, undefined, true);
+#endif
+}
+
+zm_pwrp_translate(hash_name) {
+    switch (hash_name) {
+    case "zombie_blood": return "Zombie blood";
+    case "zmarcade_key": return "Arcade key";
+    case "wolf_bonus_points": return "Bonus points (Wolf)";
+    case "wolf_bonus_hero_power": return "Bonus Heropower (Wolf)";
+    case "wolf_bonus_ammo": return "Bonus ammo (Wolf)";
+    case "small_ammo": return "Small ammo";
+    case "shield_charge": return "Shield charge";
+    case "nuke": return "Nuke";
+    case "minigun": return "Minigun";
+    case "insta_kill": return "Insta kill";
+    case "hero_weapon_power": return "Hero power";
+    case "full_ammo": return "Max ammo";
+    case "free_perk": return "Free perk";
+    case "fire_sale": return "Fire sale";
+    case "dung": return "Dung";
+    case "double_points": return "Double points";
+    case "carpenter": return "Carpenter";
+    case "bonus_points_team": return "Bonus points (team)";
+    case "bonus_points_player_shared": return "Bonus points (Player shared)";
+    case "bonus_points_player": return "Bonus points (Player)";
+    case "bonfire_sale": return "Bonfire sale";
+    default: 
+        if (isstring(hash_name)) {
+            return hash_name;
+        }
+        return hash_lookup(hash_name);
+    }
+}

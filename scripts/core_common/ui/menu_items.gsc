@@ -116,10 +116,15 @@ init_menus() {
                 self add_menu_item(menu_id, w_i.title, &func_setgadget, w_i.name, w_i.gadgetid);
             }
         } else if (cat_item.name == "scorestreak" && is_multiplayer()) {
-            self add_menu_item(menu_id, "Clear streaks", &func_clear_killstreaks);
+            //self add_menu_item(menu_id, "Clear streaks", &func_clear_killstreaks);
             for (i = 0; i < cat_item.weapons.size; i++) {
                 w_i = cat_item.weapons[i];
                 self add_menu_item(menu_id, w_i.title, &func_give_killstreak, w_i.name);
+            }
+        } else if (cat_item.name == "melee" && is_zombies()) {
+            for (i = 0; i < cat_item.weapons.size; i++) {
+                w_i = cat_item.weapons[i];
+                self add_menu_item(menu_id, w_i.title, &func_give_zm_melee, w_i.name);
             }
         } else {
             for (i = 0; i < cat_item.weapons.size; i++) {
@@ -316,33 +321,29 @@ init_menus() {
         }
     }
 
+    if (is_warzone()) {
+        self add_menu("wz_tools", "Blackout tools", "start_menu", true);
 
-    if (!(is_warzone() && isdefined(self.atianconfig.force_blackout_map)) && !(is_multiplayer() && isdefined(self.atianconfig.mp_force_map))) {
-        map_data = get_maps_data_for_mode();
+        self add_menu_item("wz_tools", "Wz test give", &func_give_item_test);
+        self add_menu("wzitems", "Blackout item", "wz_tools", true);
 
-        if (isdefined(map_data)) {
-            self add_menu("map_menu", "Set map " + map_data.title, "start_menu", true);
-            foreach(map_info in map_data.items) {
-                if (!map_info.playable) {
-                    if (!is_dev_mode()) {
-                        continue; // can't load this map
-                    }
-                    suffix = " (unp)";
-                } else {
-                    suffix = "";
-                }
-                if (level.script == map_info.name) {
-                    self add_menu_item("map_menu", map_info.title + suffix + " (current)");
-                } else {
-                    self add_menu_item("map_menu", map_info.title + suffix, &func_set_map, map_info.name);
-                }
+        wzitems_data = get_wzitems_enum_data();
+        foreach(category_key, cat_item in wzitems_data.categories) {
+            cat_menu_id = "wzitems_" + cat_item.name;
+
+            self add_menu(cat_menu_id, cat_item.title, "wzitems", true);
+
+            for (i = 0; i < cat_item.items.size; i++) {
+                item = cat_item.items[i];
+
+                self add_menu_item(cat_menu_id, item.title, &func_give_item_test, item.name);
             }
         }
-    }
 
-    if (is_warzone()) {
+        self add_menu_item("wz_tools", "Clear inventory", &func_wz_item_clear_inventory, true);
+
         if (can_spawn_vehicle()) {
-            self add_menu("vehicle_wz", "Spawn vehicle", "start_menu", true);
+            self add_menu("vehicle_wz", "Spawn vehicle", "wz_tools", true);
 
             wz_vehicles = get_wz_vehicles();
             for (i = 0; i < wz_vehicles.size; i++) {
@@ -407,6 +408,208 @@ init_menus() {
                 self add_menu_item("mode_mp", mode_mp[i], &func_set_gametype, mode_mp[i]);
             }
         }
+    } else if (is_zombies()) {
+        self add_menu("zm_tools", "Zombies tools", "start_menu", true);
+
+        if (isdefined(level._custom_perks)) {
+            self add_menu("zmperks", "Zombies Perk", "zm_tools", true);
+            self add_menu("zmperksmod", "Zombies Perk (Modifier)", "zm_tools", true);
+            foreach (key, perk_item in level._custom_perks) {
+                if (isdefined(level.var_5355c665) && isdefined(level.var_5355c665[key])) {
+                    // basic perk
+                    self add_menu_item("zmperks", zm_perk_translate(key), &func_give_zm_perk, key, false);
+                } else {
+                    self add_menu_item("zmperksmod", zm_perk_translate(key), &func_give_zm_perk, key, true);
+                }
+            }
+        }
+        if (isdefined(level.zombie_powerups)) {
+            fixup = array("small_ammo");
+            self add_menu("zmpowerups", "Powerups", "zm_tools", true);
+            foreach (key, pwup_item in level.zombie_powerups) {
+                if (isdefined(pwup_item.powerup_name)) {
+                    key = pwup_item.powerup_name;
+                }
+                if (array::contains(fixup, key)) {
+                    continue; // fixup
+                }
+                self add_menu_item("zmpowerups", zm_pwrp_translate(key), &func_zm_pwrp_spawn, key);
+            }
+        }
+
+        self add_menu_item("zm_tools", "Open Narrative room", &func_activate_narrative_room);
+        self add_menu("dev_ee", "ZM easter eggs", "zm_tools", true, &func_searchee);
+
+
+        self add_menu("dev_zmxp", "XP Info", "zm_tools", true);
+        
+        self add_menu("dev_zmxp_score_info", "Score info", "dev_zmxp", true, &func_array_explorer, level.scoreinfo);
+        
+        bundles = array("zm_base_difficulty", "zm_base_difficulty_zstandard");
+        foreach (bundle_str in bundles) {
+            bundle = getscriptbundle(bundle_str);
+
+            if (!isdefined(bundle)) {
+                continue;
+            }
+
+            menuid = "dev_zmxp_" + bundle_str;
+
+            self add_menu(menuid, bundle_str, "dev_zmxp", true);
+
+            self add_menu(menuid + "E", "Easy", menuid, true);
+            self add_menu(menuid + "N", "Normal", menuid, true);
+            self add_menu(menuid + "H", "Hard", menuid, true);
+            self add_menu(menuid + "I", "Insane", menuid, true);
+
+            self add_menu_item(menuid + "E", "zomMoveSpeedMult: " + get_object_type(bundle.zomMoveSpeedMult_E));
+            self add_menu_item(menuid + "E", "zomBaseHealth: " + get_object_type(bundle.zomBaseHealth_E));
+            self add_menu_item(menuid + "E", "zomHealthIncrease: " + get_object_type(bundle.zomHealthIncrease_E));
+            self add_menu_item(menuid + "E", "zomHealthIncreaseMult: " + get_object_type(bundle.zomHealthIncreaseMult_E));
+            self add_menu_item(menuid + "E", "zomSpawnDelay: " + get_object_type(bundle.zomSpawnDelay_E));
+            self add_menu_item(menuid + "E", "zomNewRunnerInt: " + get_object_type(bundle.zomNewRunnerInt_E));
+            self add_menu_item(menuid + "E", "zomMaxCount: " + get_object_type(bundle.zomMaxCount_E));
+            self add_menu_item(menuid + "E", "zomMaxCountPerPlayer: " + get_object_type(bundle.zomMaxCountPerPlayer_E));
+            self add_menu_item(menuid + "E", "zomCountScalar: " + get_object_type(bundle.zomCountScalar_E));
+            self add_menu_item(menuid + "E", "zomCountSoloMult: " + get_object_type(bundle.zomCountSoloMult_E));
+            self add_menu_item(menuid + "E", "zomPointScalar: " + get_object_type(bundle.zomPointScalar_E));
+            self add_menu_item(menuid + "E", "plyBaseHealth: " + get_object_type(bundle.plyBaseHealth_E));
+            self add_menu_item(menuid + "E", "plyPenaltyNoRevive: " + get_object_type(bundle.plyPenaltyNoRevive_E));
+            self add_menu_item(menuid + "E", "plyPenaltyDeath: " + get_object_type(bundle.plyPenaltyDeath_E));
+            self add_menu_item(menuid + "E", "plyPenaltyDowned: " + get_object_type(bundle.plyPenaltyDowned_E));
+            self add_menu_item(menuid + "E", "plyPenaltyDownedPointStep: " + get_object_type(bundle.plyPenaltyDownedPointStep_E));
+            self add_menu_item(menuid + "E", "plySelfReviveCountCoop: " + get_object_type(bundle.plySelfReviveCountCoop_E));
+            self add_menu_item(menuid + "E", "plySelfReviveCountSolo: " + get_object_type(bundle.plySelfReviveCountSolo_E));
+            self add_menu_item(menuid + "E", "zomMixedStart: " + get_object_type(bundle.zomMixedStart_E));
+            self add_menu_item(menuid + "E", "zomMixedStartSolo: " + get_object_type(bundle.zomMixedStartSolo_E));
+            self add_menu_item(menuid + "E", "zomCatalystStart: " + get_object_type(bundle.zomCatalystStart_E));
+            self add_menu_item(menuid + "E", "zomCatalystStartSolo: " + get_object_type(bundle.zomCatalystStartSolo_E));
+            self add_menu_item(menuid + "E", "zomStokerStart: " + get_object_type(bundle.zomStokerStart_E));
+            self add_menu_item(menuid + "E", "zomStokerStartSolo: " + get_object_type(bundle.zomStokerStartSolo_E));
+            self add_menu_item(menuid + "E", "plyShieldDamageMult: " + get_object_type(bundle.plyShieldDamageMult_E));
+            self add_menu_item(menuid + "E", "plyRetainWeapons: " + get_object_type(bundle.plyRetainWeapons_E));
+            self add_menu_item(menuid + "E", "plyPerksDecay: " + get_object_type(bundle.plyPerksDecay_E));
+            self add_menu_item(menuid + "E", "plyHealthRegenRate: " + get_object_type(bundle.plyHealthRegenRate_E));
+            self add_menu_item(menuid + "E", "plyHealthRegenDelay: " + get_object_type(bundle.plyHealthRegenDelay_E));
+            self add_menu_item(menuid + "E", "plyXPModfier: " + get_object_type(bundle.plyXPModfier_E));
+            self add_menu_item(menuid + "E", "plyHighlightCraftables: " + get_object_type(bundle.plyHighlightCraftables_E));
+            self add_menu_item(menuid + "N", "zomMoveSpeedMult: " + get_object_type(bundle.zomMoveSpeedMult_N));
+            self add_menu_item(menuid + "N", "zomBaseHealth: " + get_object_type(bundle.zomBaseHealth_N));
+            self add_menu_item(menuid + "N", "zomHealthIncrease: " + get_object_type(bundle.zomHealthIncrease_N));
+            self add_menu_item(menuid + "N", "zomHealthIncreaseMult: " + get_object_type(bundle.zomHealthIncreaseMult_N));
+            self add_menu_item(menuid + "N", "zomSpawnDelay: " + get_object_type(bundle.zomSpawnDelay_N));
+            self add_menu_item(menuid + "N", "zomNewRunnerInt: " + get_object_type(bundle.zomNewRunnerInt_N));
+            self add_menu_item(menuid + "N", "zomMaxCount: " + get_object_type(bundle.zomMaxCount_N));
+            self add_menu_item(menuid + "N", "zomMaxCountPerPlayer: " + get_object_type(bundle.zomMaxCountPerPlayer_N));
+            self add_menu_item(menuid + "N", "zomCountScalar: " + get_object_type(bundle.zomCountScalar_N));
+            self add_menu_item(menuid + "N", "zomCountSoloMult: " + get_object_type(bundle.zomCountSoloMult_N));
+            self add_menu_item(menuid + "N", "zomPointScalar: " + get_object_type(bundle.zomPointScalar_N));
+            self add_menu_item(menuid + "N", "plyBaseHealth: " + get_object_type(bundle.plyBaseHealth_N));
+            self add_menu_item(menuid + "N", "plyPenaltyNoRevive: " + get_object_type(bundle.plyPenaltyNoRevive_N));
+            self add_menu_item(menuid + "N", "plyPenaltyDeath: " + get_object_type(bundle.plyPenaltyDeath_N));
+            self add_menu_item(menuid + "N", "plyPenaltyDowned: " + get_object_type(bundle.plyPenaltyDowned_N));
+            self add_menu_item(menuid + "N", "plyPenaltyDownedPointStep: " + get_object_type(bundle.plyPenaltyDownedPointStep_N));
+            self add_menu_item(menuid + "N", "plySelfReviveCountCoop: " + get_object_type(bundle.plySelfReviveCountCoop_N));
+            self add_menu_item(menuid + "N", "plySelfReviveCountSolo: " + get_object_type(bundle.plySelfReviveCountSolo_N));
+            self add_menu_item(menuid + "N", "zomMixedStart: " + get_object_type(bundle.zomMixedStart_N));
+            self add_menu_item(menuid + "N", "zomMixedStartSolo: " + get_object_type(bundle.zomMixedStartSolo_N));
+            self add_menu_item(menuid + "N", "zomCatalystStart: " + get_object_type(bundle.zomCatalystStart_N));
+            self add_menu_item(menuid + "N", "zomCatalystStartSolo: " + get_object_type(bundle.zomCatalystStartSolo_N));
+            self add_menu_item(menuid + "N", "zomStokerStart: " + get_object_type(bundle.zomStokerStart_N));
+            self add_menu_item(menuid + "N", "zomStokerStartSolo: " + get_object_type(bundle.zomStokerStartSolo_N));
+            self add_menu_item(menuid + "N", "plyShieldDamageMult: " + get_object_type(bundle.plyShieldDamageMult_N));
+            self add_menu_item(menuid + "N", "plyRetainWeapons: " + get_object_type(bundle.plyRetainWeapons_N));
+            self add_menu_item(menuid + "N", "plyPerksDecay: " + get_object_type(bundle.plyPerksDecay_N));
+            self add_menu_item(menuid + "N", "plyHealthRegenRate: " + get_object_type(bundle.plyHealthRegenRate_N));
+            self add_menu_item(menuid + "N", "plyHealthRegenDelay: " + get_object_type(bundle.plyHealthRegenDelay_N));
+            self add_menu_item(menuid + "N", "plyXPModfier: " + get_object_type(bundle.plyXPModfier_N));
+            self add_menu_item(menuid + "N", "plyHighlightCraftables: " + get_object_type(bundle.plyHighlightCraftables_N));
+            self add_menu_item(menuid + "H", "zomMoveSpeedMult: " + get_object_type(bundle.zomMoveSpeedMult_H));
+            self add_menu_item(menuid + "H", "zomBaseHealth: " + get_object_type(bundle.zomBaseHealth_H));
+            self add_menu_item(menuid + "H", "zomHealthIncrease: " + get_object_type(bundle.zomHealthIncrease_H));
+            self add_menu_item(menuid + "H", "zomHealthIncreaseMult: " + get_object_type(bundle.zomHealthIncreaseMult_H));
+            self add_menu_item(menuid + "H", "zomSpawnDelay: " + get_object_type(bundle.zomSpawnDelay_H));
+            self add_menu_item(menuid + "H", "zomNewRunnerInt: " + get_object_type(bundle.zomNewRunnerInt_H));
+            self add_menu_item(menuid + "H", "zomMaxCount: " + get_object_type(bundle.zomMaxCount_H));
+            self add_menu_item(menuid + "H", "zomMaxCountPerPlayer: " + get_object_type(bundle.zomMaxCountPerPlayer_H));
+            self add_menu_item(menuid + "H", "zomCountScalar: " + get_object_type(bundle.zomCountScalar_H));
+            self add_menu_item(menuid + "H", "zomCountSoloMult: " + get_object_type(bundle.zomCountSoloMult_H));
+            self add_menu_item(menuid + "H", "zomPointScalar: " + get_object_type(bundle.zomPointScalar_H));
+            self add_menu_item(menuid + "H", "plyBaseHealth: " + get_object_type(bundle.plyBaseHealth_H));
+            self add_menu_item(menuid + "H", "plyPenaltyNoRevive: " + get_object_type(bundle.plyPenaltyNoRevive_H));
+            self add_menu_item(menuid + "H", "plyPenaltyDeath: " + get_object_type(bundle.plyPenaltyDeath_H));
+            self add_menu_item(menuid + "H", "plyPenaltyDowned: " + get_object_type(bundle.plyPenaltyDowned_H));
+            self add_menu_item(menuid + "H", "plyPenaltyDownedPointStep: " + get_object_type(bundle.plyPenaltyDownedPointStep_H));
+            self add_menu_item(menuid + "H", "plySelfReviveCountCoop: " + get_object_type(bundle.plySelfReviveCountCoop_H));
+            self add_menu_item(menuid + "H", "plySelfReviveCountSolo: " + get_object_type(bundle.plySelfReviveCountSolo_H));
+            self add_menu_item(menuid + "H", "zomMixedStart: " + get_object_type(bundle.zomMixedStart_H));
+            self add_menu_item(menuid + "H", "zomMixedStartSolo: " + get_object_type(bundle.zomMixedStartSolo_H));
+            self add_menu_item(menuid + "H", "zomCatalystStart: " + get_object_type(bundle.zomCatalystStart_H));
+            self add_menu_item(menuid + "H", "zomCatalystStartSolo: " + get_object_type(bundle.zomCatalystStartSolo_H));
+            self add_menu_item(menuid + "H", "zomStokerStart: " + get_object_type(bundle.zomStokerStart_H));
+            self add_menu_item(menuid + "H", "zomStokerStartSolo: " + get_object_type(bundle.zomStokerStartSolo_H));
+            self add_menu_item(menuid + "H", "plyShieldDamageMult: " + get_object_type(bundle.plyShieldDamageMult_H));
+            self add_menu_item(menuid + "H", "plyRetainWeapons: " + get_object_type(bundle.plyRetainWeapons_H));
+            self add_menu_item(menuid + "H", "plyPerksDecay: " + get_object_type(bundle.plyPerksDecay_H));
+            self add_menu_item(menuid + "H", "plyHealthRegenRate: " + get_object_type(bundle.plyHealthRegenRate_H));
+            self add_menu_item(menuid + "H", "plyHealthRegenDelay: " + get_object_type(bundle.plyHealthRegenDelay_H));
+            self add_menu_item(menuid + "H", "plyXPModfier: " + get_object_type(bundle.plyXPModfier_H));
+            self add_menu_item(menuid + "H", "plyHighlightCraftables: " + get_object_type(bundle.plyHighlightCraftables_H));
+            self add_menu_item(menuid + "I", "zomMoveSpeedMult: " + get_object_type(bundle.zomMoveSpeedMult_I));
+            self add_menu_item(menuid + "I", "zomBaseHealth: " + get_object_type(bundle.zomBaseHealth_I));
+            self add_menu_item(menuid + "I", "zomHealthIncrease: " + get_object_type(bundle.zomHealthIncrease_I));
+            self add_menu_item(menuid + "I", "zomHealthIncreaseMult: " + get_object_type(bundle.zomHealthIncreaseMult_I));
+            self add_menu_item(menuid + "I", "zomSpawnDelay: " + get_object_type(bundle.zomSpawnDelay_I));
+            self add_menu_item(menuid + "I", "zomNewRunnerInt: " + get_object_type(bundle.zomNewRunnerInt_I));
+            self add_menu_item(menuid + "I", "zomMaxCount: " + get_object_type(bundle.zomMaxCount_I));
+            self add_menu_item(menuid + "I", "zomMaxCountPerPlayer: " + get_object_type(bundle.zomMaxCountPerPlayer_I));
+            self add_menu_item(menuid + "I", "zomCountScalar: " + get_object_type(bundle.zomCountScalar_I));
+            self add_menu_item(menuid + "I", "zomCountSoloMult: " + get_object_type(bundle.zomCountSoloMult_I));
+            self add_menu_item(menuid + "I", "zomPointScalar: " + get_object_type(bundle.zomPointScalar_I));
+            self add_menu_item(menuid + "I", "plyBaseHealth: " + get_object_type(bundle.plyBaseHealth_I));
+            self add_menu_item(menuid + "I", "plyPenaltyNoRevive: " + get_object_type(bundle.plyPenaltyNoRevive_I));
+            self add_menu_item(menuid + "I", "plyPenaltyDeath: " + get_object_type(bundle.plyPenaltyDeath_I));
+            self add_menu_item(menuid + "I", "plyPenaltyDowned: " + get_object_type(bundle.plyPenaltyDowned_I));
+            self add_menu_item(menuid + "I", "plyPenaltyDownedPointStep: " + get_object_type(bundle.plyPenaltyDownedPointStep_I));
+            self add_menu_item(menuid + "I", "plySelfReviveCountCoop: " + get_object_type(bundle.plySelfReviveCountCoop_I));
+            self add_menu_item(menuid + "I", "plySelfReviveCountSolo: " + get_object_type(bundle.plySelfReviveCountSolo_I));
+            self add_menu_item(menuid + "I", "zomMixedStart: " + get_object_type(bundle.zomMixedStart_I));
+            self add_menu_item(menuid + "I", "zomMixedStartSolo: " + get_object_type(bundle.zomMixedStartSolo_I));
+            self add_menu_item(menuid + "I", "zomCatalystStart: " + get_object_type(bundle.zomCatalystStart_I));
+            self add_menu_item(menuid + "I", "zomCatalystStartSolo: " + get_object_type(bundle.zomCatalystStartSolo_I));
+            self add_menu_item(menuid + "I", "zomStokerStart: " + get_object_type(bundle.zomStokerStart_I));
+            self add_menu_item(menuid + "I", "zomStokerStartSolo: " + get_object_type(bundle.zomStokerStartSolo_I));
+            self add_menu_item(menuid + "I", "plyShieldDamageMult: " + get_object_type(bundle.plyShieldDamageMult_I));
+            self add_menu_item(menuid + "I", "plyRetainWeapons: " + get_object_type(bundle.plyRetainWeapons_I));
+            self add_menu_item(menuid + "I", "plyPerksDecay: " + get_object_type(bundle.plyPerksDecay_I));
+            self add_menu_item(menuid + "I", "plyHealthRegenRate: " + get_object_type(bundle.plyHealthRegenRate_I));
+            self add_menu_item(menuid + "I", "plyHealthRegenDelay: " + get_object_type(bundle.plyHealthRegenDelay_I));
+            self add_menu_item(menuid + "I", "plyXPModfier: " + get_object_type(bundle.plyXPModfier_I));
+            self add_menu_item(menuid + "I", "plyHighlightCraftables: " + get_object_type(bundle.plyHighlightCraftables_I));
+        }
+    }
+
+    if (!(is_warzone() && isdefined(self.atianconfig.force_blackout_map)) && !(is_multiplayer() && isdefined(self.atianconfig.mp_force_map))) {
+        map_data = get_maps_data_for_mode();
+
+        if (isdefined(map_data)) {
+            self add_menu("map_menu", "Set map " + map_data.title, "start_menu", true);
+            foreach(map_info in map_data.items) {
+                if (!map_info.playable) {
+                    if (!is_dev_mode()) {
+                        continue; // can't load this map
+                    }
+                    suffix = " (unp)";
+                } else {
+                    suffix = "";
+                }
+                if (level.script == map_info.name) {
+                    self add_menu_item("map_menu", map_info.title + suffix + " (current)");
+                } else {
+                    self add_menu_item("map_menu", map_info.title + suffix, &func_set_map, map_info.name);
+                }
+            }
+        }
     }
     self add_menu("random", "Random", "start_menu", true);
 
@@ -461,9 +664,6 @@ init_menus() {
             self add_menu_item(cat_menu_id, camo_item.title, &func_set_camo, camo_item.id);
         }
     }
-
-    // --- Perks ----
-    self add_menu("perks", "Perks", "start_menu", true, &func_search_perks);
 
     // ---- Mastercrafts ----
     self add_menu("mastercrafts", "Mastercrafts", "start_menu", true);
@@ -635,158 +835,8 @@ init_menus() {
     
     self add_menu("dev_csv", "CSV explorer", "internal", true, &func_csv_explorer_tab);
 
-
-    if (is_zombies()) {
-        self add_menu_item("internal", "Open Narrative room", &func_activate_narrative_room);
-        self add_menu("dev_ee", "ZM easter eggs", "internal", true, &func_searchee);
-
-        self add_menu("dev_zmxp", "XP Info", "internal", true);
-        
-        self add_menu("dev_zmxp_score_info", "Score info", "dev_zmxp", true, &func_array_explorer, level.scoreinfo);
-        
-        bundles = array("zm_base_difficulty", "zm_base_difficulty_zstandard");
-        foreach (bundle_str in bundles) {
-            bundle = getscriptbundle(bundle_str);
-
-            if (!isdefined(bundle)) {
-                continue;
-            }
-
-            menuid = "dev_zmxp_" + bundle_str;
-
-            self add_menu(menuid, bundle_str, "dev_zmxp", true);
-
-            self add_menu(menuid + "E", "Easy", menuid, true);
-            self add_menu(menuid + "N", "Normal", menuid, true);
-            self add_menu(menuid + "H", "Hard", menuid, true);
-            self add_menu(menuid + "I", "Insane", menuid, true);
-
-            self add_menu_item(menuid + "E", "zomMoveSpeedMult: " + get_object_type(bundle.zomMoveSpeedMult_E));
-            self add_menu_item(menuid + "E", "zomBaseHealth: " + get_object_type(bundle.zomBaseHealth_E));
-            self add_menu_item(menuid + "E", "zomHealthIncrease: " + get_object_type(bundle.zomHealthIncrease_E));
-            self add_menu_item(menuid + "E", "zomHealthIncreaseMult: " + get_object_type(bundle.zomHealthIncreaseMult_E));
-            self add_menu_item(menuid + "E", "zomSpawnDelay: " + get_object_type(bundle.zomSpawnDelay_E));
-            self add_menu_item(menuid + "E", "zomNewRunnerInt: " + get_object_type(bundle.zomNewRunnerInt_E));
-            self add_menu_item(menuid + "E", "zomMaxCount: " + get_object_type(bundle.zomMaxCount_E));
-            self add_menu_item(menuid + "E", "zomMaxCountPerPlayer: " + get_object_type(bundle.zomMaxCountPerPlayer_E));
-            self add_menu_item(menuid + "E", "zomCountScalar: " + get_object_type(bundle.zomCountScalar_E));
-            self add_menu_item(menuid + "E", "zomCountSoloMult: " + get_object_type(bundle.zomCountSoloMult_E));
-            self add_menu_item(menuid + "E", "zomPointScalar: " + get_object_type(bundle.zomPointScalar_E));
-            self add_menu_item(menuid + "E", "plyBaseHealth: " + get_object_type(bundle.plyBaseHealth_E));
-            self add_menu_item(menuid + "E", "plyPenaltyNoRevive: " + get_object_type(bundle.plyPenaltyNoRevive_E));
-            self add_menu_item(menuid + "E", "plyPenaltyDeath: " + get_object_type(bundle.plyPenaltyDeath_E));
-            self add_menu_item(menuid + "E", "plyPenaltyDowned: " + get_object_type(bundle.plyPenaltyDowned_E));
-            self add_menu_item(menuid + "E", "plyPenaltyDownedPointStep: " + get_object_type(bundle.plyPenaltyDownedPointStep_E));
-            self add_menu_item(menuid + "E", "plySelfReviveCountCoop: " + get_object_type(bundle.plySelfReviveCountCoop_E));
-            self add_menu_item(menuid + "E", "plySelfReviveCountSolo: " + get_object_type(bundle.plySelfReviveCountSolo_E));
-            self add_menu_item(menuid + "E", "zomMixedStart: " + get_object_type(bundle.zomMixedStart_E));
-            self add_menu_item(menuid + "E", "zomMixedStartSolo: " + get_object_type(bundle.zomMixedStartSolo_E));
-            self add_menu_item(menuid + "E", "zomCatalystStart: " + get_object_type(bundle.zomCatalystStart_E));
-            self add_menu_item(menuid + "E", "zomCatalystStartSolo: " + get_object_type(bundle.zomCatalystStartSolo_E));
-            self add_menu_item(menuid + "E", "zomStokerStart: " + get_object_type(bundle.zomStokerStart_E));
-            self add_menu_item(menuid + "E", "zomStokerStartSolo: " + get_object_type(bundle.zomStokerStartSolo_E));
-            self add_menu_item(menuid + "E", "plyShieldDamageMult: " + get_object_type(bundle.plyShieldDamageMult_E));
-            self add_menu_item(menuid + "E", "plyRetainWeapons: " + get_object_type(bundle.plyRetainWeapons_E));
-            self add_menu_item(menuid + "E", "plyPerksDecay: " + get_object_type(bundle.plyPerksDecay_E));
-            self add_menu_item(menuid + "E", "plyHealthRegenRate: " + get_object_type(bundle.plyHealthRegenRate_E));
-            self add_menu_item(menuid + "E", "plyHealthRegenDelay: " + get_object_type(bundle.plyHealthRegenDelay_E));
-            self add_menu_item(menuid + "E", "plyXPModfier: " + get_object_type(bundle.plyXPModfier_E));
-            self add_menu_item(menuid + "E", "plyHighlightCraftables: " + get_object_type(bundle.plyHighlightCraftables_E));
-            self add_menu_item(menuid + "N", "zomMoveSpeedMult: " + get_object_type(bundle.zomMoveSpeedMult_N));
-            self add_menu_item(menuid + "N", "zomBaseHealth: " + get_object_type(bundle.zomBaseHealth_N));
-            self add_menu_item(menuid + "N", "zomHealthIncrease: " + get_object_type(bundle.zomHealthIncrease_N));
-            self add_menu_item(menuid + "N", "zomHealthIncreaseMult: " + get_object_type(bundle.zomHealthIncreaseMult_N));
-            self add_menu_item(menuid + "N", "zomSpawnDelay: " + get_object_type(bundle.zomSpawnDelay_N));
-            self add_menu_item(menuid + "N", "zomNewRunnerInt: " + get_object_type(bundle.zomNewRunnerInt_N));
-            self add_menu_item(menuid + "N", "zomMaxCount: " + get_object_type(bundle.zomMaxCount_N));
-            self add_menu_item(menuid + "N", "zomMaxCountPerPlayer: " + get_object_type(bundle.zomMaxCountPerPlayer_N));
-            self add_menu_item(menuid + "N", "zomCountScalar: " + get_object_type(bundle.zomCountScalar_N));
-            self add_menu_item(menuid + "N", "zomCountSoloMult: " + get_object_type(bundle.zomCountSoloMult_N));
-            self add_menu_item(menuid + "N", "zomPointScalar: " + get_object_type(bundle.zomPointScalar_N));
-            self add_menu_item(menuid + "N", "plyBaseHealth: " + get_object_type(bundle.plyBaseHealth_N));
-            self add_menu_item(menuid + "N", "plyPenaltyNoRevive: " + get_object_type(bundle.plyPenaltyNoRevive_N));
-            self add_menu_item(menuid + "N", "plyPenaltyDeath: " + get_object_type(bundle.plyPenaltyDeath_N));
-            self add_menu_item(menuid + "N", "plyPenaltyDowned: " + get_object_type(bundle.plyPenaltyDowned_N));
-            self add_menu_item(menuid + "N", "plyPenaltyDownedPointStep: " + get_object_type(bundle.plyPenaltyDownedPointStep_N));
-            self add_menu_item(menuid + "N", "plySelfReviveCountCoop: " + get_object_type(bundle.plySelfReviveCountCoop_N));
-            self add_menu_item(menuid + "N", "plySelfReviveCountSolo: " + get_object_type(bundle.plySelfReviveCountSolo_N));
-            self add_menu_item(menuid + "N", "zomMixedStart: " + get_object_type(bundle.zomMixedStart_N));
-            self add_menu_item(menuid + "N", "zomMixedStartSolo: " + get_object_type(bundle.zomMixedStartSolo_N));
-            self add_menu_item(menuid + "N", "zomCatalystStart: " + get_object_type(bundle.zomCatalystStart_N));
-            self add_menu_item(menuid + "N", "zomCatalystStartSolo: " + get_object_type(bundle.zomCatalystStartSolo_N));
-            self add_menu_item(menuid + "N", "zomStokerStart: " + get_object_type(bundle.zomStokerStart_N));
-            self add_menu_item(menuid + "N", "zomStokerStartSolo: " + get_object_type(bundle.zomStokerStartSolo_N));
-            self add_menu_item(menuid + "N", "plyShieldDamageMult: " + get_object_type(bundle.plyShieldDamageMult_N));
-            self add_menu_item(menuid + "N", "plyRetainWeapons: " + get_object_type(bundle.plyRetainWeapons_N));
-            self add_menu_item(menuid + "N", "plyPerksDecay: " + get_object_type(bundle.plyPerksDecay_N));
-            self add_menu_item(menuid + "N", "plyHealthRegenRate: " + get_object_type(bundle.plyHealthRegenRate_N));
-            self add_menu_item(menuid + "N", "plyHealthRegenDelay: " + get_object_type(bundle.plyHealthRegenDelay_N));
-            self add_menu_item(menuid + "N", "plyXPModfier: " + get_object_type(bundle.plyXPModfier_N));
-            self add_menu_item(menuid + "N", "plyHighlightCraftables: " + get_object_type(bundle.plyHighlightCraftables_N));
-            self add_menu_item(menuid + "H", "zomMoveSpeedMult: " + get_object_type(bundle.zomMoveSpeedMult_H));
-            self add_menu_item(menuid + "H", "zomBaseHealth: " + get_object_type(bundle.zomBaseHealth_H));
-            self add_menu_item(menuid + "H", "zomHealthIncrease: " + get_object_type(bundle.zomHealthIncrease_H));
-            self add_menu_item(menuid + "H", "zomHealthIncreaseMult: " + get_object_type(bundle.zomHealthIncreaseMult_H));
-            self add_menu_item(menuid + "H", "zomSpawnDelay: " + get_object_type(bundle.zomSpawnDelay_H));
-            self add_menu_item(menuid + "H", "zomNewRunnerInt: " + get_object_type(bundle.zomNewRunnerInt_H));
-            self add_menu_item(menuid + "H", "zomMaxCount: " + get_object_type(bundle.zomMaxCount_H));
-            self add_menu_item(menuid + "H", "zomMaxCountPerPlayer: " + get_object_type(bundle.zomMaxCountPerPlayer_H));
-            self add_menu_item(menuid + "H", "zomCountScalar: " + get_object_type(bundle.zomCountScalar_H));
-            self add_menu_item(menuid + "H", "zomCountSoloMult: " + get_object_type(bundle.zomCountSoloMult_H));
-            self add_menu_item(menuid + "H", "zomPointScalar: " + get_object_type(bundle.zomPointScalar_H));
-            self add_menu_item(menuid + "H", "plyBaseHealth: " + get_object_type(bundle.plyBaseHealth_H));
-            self add_menu_item(menuid + "H", "plyPenaltyNoRevive: " + get_object_type(bundle.plyPenaltyNoRevive_H));
-            self add_menu_item(menuid + "H", "plyPenaltyDeath: " + get_object_type(bundle.plyPenaltyDeath_H));
-            self add_menu_item(menuid + "H", "plyPenaltyDowned: " + get_object_type(bundle.plyPenaltyDowned_H));
-            self add_menu_item(menuid + "H", "plyPenaltyDownedPointStep: " + get_object_type(bundle.plyPenaltyDownedPointStep_H));
-            self add_menu_item(menuid + "H", "plySelfReviveCountCoop: " + get_object_type(bundle.plySelfReviveCountCoop_H));
-            self add_menu_item(menuid + "H", "plySelfReviveCountSolo: " + get_object_type(bundle.plySelfReviveCountSolo_H));
-            self add_menu_item(menuid + "H", "zomMixedStart: " + get_object_type(bundle.zomMixedStart_H));
-            self add_menu_item(menuid + "H", "zomMixedStartSolo: " + get_object_type(bundle.zomMixedStartSolo_H));
-            self add_menu_item(menuid + "H", "zomCatalystStart: " + get_object_type(bundle.zomCatalystStart_H));
-            self add_menu_item(menuid + "H", "zomCatalystStartSolo: " + get_object_type(bundle.zomCatalystStartSolo_H));
-            self add_menu_item(menuid + "H", "zomStokerStart: " + get_object_type(bundle.zomStokerStart_H));
-            self add_menu_item(menuid + "H", "zomStokerStartSolo: " + get_object_type(bundle.zomStokerStartSolo_H));
-            self add_menu_item(menuid + "H", "plyShieldDamageMult: " + get_object_type(bundle.plyShieldDamageMult_H));
-            self add_menu_item(menuid + "H", "plyRetainWeapons: " + get_object_type(bundle.plyRetainWeapons_H));
-            self add_menu_item(menuid + "H", "plyPerksDecay: " + get_object_type(bundle.plyPerksDecay_H));
-            self add_menu_item(menuid + "H", "plyHealthRegenRate: " + get_object_type(bundle.plyHealthRegenRate_H));
-            self add_menu_item(menuid + "H", "plyHealthRegenDelay: " + get_object_type(bundle.plyHealthRegenDelay_H));
-            self add_menu_item(menuid + "H", "plyXPModfier: " + get_object_type(bundle.plyXPModfier_H));
-            self add_menu_item(menuid + "H", "plyHighlightCraftables: " + get_object_type(bundle.plyHighlightCraftables_H));
-            self add_menu_item(menuid + "I", "zomMoveSpeedMult: " + get_object_type(bundle.zomMoveSpeedMult_I));
-            self add_menu_item(menuid + "I", "zomBaseHealth: " + get_object_type(bundle.zomBaseHealth_I));
-            self add_menu_item(menuid + "I", "zomHealthIncrease: " + get_object_type(bundle.zomHealthIncrease_I));
-            self add_menu_item(menuid + "I", "zomHealthIncreaseMult: " + get_object_type(bundle.zomHealthIncreaseMult_I));
-            self add_menu_item(menuid + "I", "zomSpawnDelay: " + get_object_type(bundle.zomSpawnDelay_I));
-            self add_menu_item(menuid + "I", "zomNewRunnerInt: " + get_object_type(bundle.zomNewRunnerInt_I));
-            self add_menu_item(menuid + "I", "zomMaxCount: " + get_object_type(bundle.zomMaxCount_I));
-            self add_menu_item(menuid + "I", "zomMaxCountPerPlayer: " + get_object_type(bundle.zomMaxCountPerPlayer_I));
-            self add_menu_item(menuid + "I", "zomCountScalar: " + get_object_type(bundle.zomCountScalar_I));
-            self add_menu_item(menuid + "I", "zomCountSoloMult: " + get_object_type(bundle.zomCountSoloMult_I));
-            self add_menu_item(menuid + "I", "zomPointScalar: " + get_object_type(bundle.zomPointScalar_I));
-            self add_menu_item(menuid + "I", "plyBaseHealth: " + get_object_type(bundle.plyBaseHealth_I));
-            self add_menu_item(menuid + "I", "plyPenaltyNoRevive: " + get_object_type(bundle.plyPenaltyNoRevive_I));
-            self add_menu_item(menuid + "I", "plyPenaltyDeath: " + get_object_type(bundle.plyPenaltyDeath_I));
-            self add_menu_item(menuid + "I", "plyPenaltyDowned: " + get_object_type(bundle.plyPenaltyDowned_I));
-            self add_menu_item(menuid + "I", "plyPenaltyDownedPointStep: " + get_object_type(bundle.plyPenaltyDownedPointStep_I));
-            self add_menu_item(menuid + "I", "plySelfReviveCountCoop: " + get_object_type(bundle.plySelfReviveCountCoop_I));
-            self add_menu_item(menuid + "I", "plySelfReviveCountSolo: " + get_object_type(bundle.plySelfReviveCountSolo_I));
-            self add_menu_item(menuid + "I", "zomMixedStart: " + get_object_type(bundle.zomMixedStart_I));
-            self add_menu_item(menuid + "I", "zomMixedStartSolo: " + get_object_type(bundle.zomMixedStartSolo_I));
-            self add_menu_item(menuid + "I", "zomCatalystStart: " + get_object_type(bundle.zomCatalystStart_I));
-            self add_menu_item(menuid + "I", "zomCatalystStartSolo: " + get_object_type(bundle.zomCatalystStartSolo_I));
-            self add_menu_item(menuid + "I", "zomStokerStart: " + get_object_type(bundle.zomStokerStart_I));
-            self add_menu_item(menuid + "I", "zomStokerStartSolo: " + get_object_type(bundle.zomStokerStartSolo_I));
-            self add_menu_item(menuid + "I", "plyShieldDamageMult: " + get_object_type(bundle.plyShieldDamageMult_I));
-            self add_menu_item(menuid + "I", "plyRetainWeapons: " + get_object_type(bundle.plyRetainWeapons_I));
-            self add_menu_item(menuid + "I", "plyPerksDecay: " + get_object_type(bundle.plyPerksDecay_I));
-            self add_menu_item(menuid + "I", "plyHealthRegenRate: " + get_object_type(bundle.plyHealthRegenRate_I));
-            self add_menu_item(menuid + "I", "plyHealthRegenDelay: " + get_object_type(bundle.plyHealthRegenDelay_I));
-            self add_menu_item(menuid + "I", "plyXPModfier: " + get_object_type(bundle.plyXPModfier_I));
-            self add_menu_item(menuid + "I", "plyHighlightCraftables: " + get_object_type(bundle.plyHighlightCraftables_I));
-        }
-    }
+    // --- Perks ----
+    self add_menu("perks", "Perks", "internal", true, &func_search_perks);
 
     if (is_multiplayer()) {
         self add_menu("dev_gadgets", "Gadgets", "internal", true, &func_searchgadgets);

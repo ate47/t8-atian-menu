@@ -24,7 +24,11 @@ func_give_wzitem(item, item_id, item_title) {
 	}
 }
 
-func_give_item_test(item, item_id = undefined) {
+func_give_item_test(item, item_id = #"hash_15bac43598d4827c") {
+	self give_wzitem(item_id);
+}
+
+give_wzitem(item_id, count = 1) {
 #ifndef ATIANMENU_LAZYLINK
     self iPrintLnBold("^1LAZYLINK DISABLED");
 #else
@@ -37,12 +41,10 @@ func_give_item_test(item, item_id = undefined) {
 		return;
 	}
 
-	if (!isdefined(item_id)) {
-		item_id = #"hash_15bac43598d4827c";
+	for (i = 0; i < count; i++) {
+		itemobj = [[ get_item ]](item_id);
+		slotid = self [[ get_slotid ]](itemobj);
+		self [[ give_item ]](itemobj, self, slotid);
 	}
-
-	itemobj = [[ get_item ]](item_id);
-	slotid = self [[ get_slotid ]](itemobj);
-	self [[ give_item ]](itemobj, self, slotid);
 #endif
 }

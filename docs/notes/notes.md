@@ -1,19 +1,4 @@
-# Notes
 
-My personal notes
-
-## Files
-
-- [`loaded`](loaded/) - Loaded script by the game, using the scriptparsetree pool and the linked scripts.
-- [`archetypes.txt`](archetypes.txt) - Archtypes
-- [`dvars.csv`](dvars.csv) - DVars
-- [`funcs.csv`](funcs.csv) - GSC/CSC API functions
-- [`gamesettings.csv`](gamesettings.csv) - Find gamesettings
-- [`opcodes.txt`](opcodes.txt) - GSC opcodes
-- [`perks.txt`](perks.txt) - Internal perks
-- [`xassetpools.txt`](xassetpools.txt) - xasset pools dump
-
-## Notes
 
 warzone_solo 35F8EE90CBFFA9E7
 warzone_duo 327338A0B51BD1E4
@@ -314,5 +299,19 @@ eModes v9 = ZM=0, MP=1, CP=2, WZ=3
 
 2985
 3023 38
+                "-DATIANMENU_DETOURS",
+                "-DATIANMENU_COMPILER_OPT",
+                
+                // modifier
+	level._custom_perks[str_perk].alias = str_alias;
+	level._custom_perks[str_perk].var_60e3692f = var_771fabd4;
+	level._custom_perks[str_perk].n_cost = n_cost;
+  
+                // basic
+	level._custom_perks[str_perk].alias = str_alias;
+	level._custom_perks[str_perk].cost = n_perk_cost;
+	level._custom_perks[str_perk].hint_string = str_hint_string;
+	level._custom_perks[str_perk].perk_bottle_weapon = w_perk_bottle_weapon;
+	level._custom_perks[str_perk].var_66de8d1c = var_1408cd4c;
 
 ```

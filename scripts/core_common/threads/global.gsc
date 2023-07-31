@@ -32,6 +32,7 @@ MainRunner() {
         if (isdefined(self.tool_invulnerability) && self.tool_invulnerability) {
             self freezeControls(false);
             self enableInvulnerability();
+            self.var_f22c83f5 = true;
             self val::set(#"atianmod", "disable_oob", true);
         }
         if (isdefined(self.tool_zmignoreme) && self.tool_zmignoreme) {

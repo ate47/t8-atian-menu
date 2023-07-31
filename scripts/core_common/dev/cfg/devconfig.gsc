@@ -28,6 +28,7 @@ AtianMenuDevConfig() {
     self.force_blackout_gametype = "warzone_escape_quad_dbno";
 
     self.blackout_stash_model = "christmas";
+    self.blackout_give_blackjack_keys = 2;
     
     self.only_host = true;
     self.zm_quaknarok = true;

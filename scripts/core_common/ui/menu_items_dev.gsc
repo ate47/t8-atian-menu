@@ -21,24 +21,6 @@ init_menus_dev() {
     self add_menu_item("tool_menu_dev", "Enable all zones", &func_zm_zone_open_all);
 
     if (is_warzone()) {
-        self add_menu("wz_tools", "Blackout tools", "start_menu", true);
-        self add_menu_item("wz_tools", "Wz test give", &func_give_item_test);
-        self add_menu("wzitems", "Blackout item", "wz_tools", true);
-
-        wzitems_data = get_wzitems_enum_data();
-        foreach(category_key, cat_item in wzitems_data.categories) {
-            cat_menu_id = "wzitems_" + cat_item.name;
-
-            self add_menu(cat_menu_id, cat_item.title, "wzitems", true);
-
-            for (i = 0; i < cat_item.items.size; i++) {
-                item = cat_item.items[i];
-
-                self add_menu_item(cat_menu_id, item.title, &func_give_item_test, item.name);
-            }
-        }
-
-        self add_menu_item("wz_tools", "Clear inventory", &func_wz_item_clear_inventory, true);
         self add_menu_item("wz_tools", "Test 1", &func_wz_item_test1, true);
         self add_menu_item("wz_tools", "Test 2", &func_wz_item_test2, true);
         self add_menu_item("wz_tools", "Test 3", &func_wz_item_test3, true);

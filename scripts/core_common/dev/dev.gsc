@@ -14,9 +14,9 @@ dev_init() {
     foreach (e in item_names) {
         bundle = getscriptbundle(e);
         if (isdefined(bundle) && isdefined(bundle.name)) {
-            compiler::nprintln(bundle.name);
+            am_log(bundle.name);
         } else {
-            compiler::nprintln("missing for " + e);
+            am_log("missing for " + e);
         }
     }
 

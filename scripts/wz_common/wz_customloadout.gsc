@@ -57,3 +57,47 @@ wz_item_clear_inventory(waitclear = false) {
     }
 #endif
 }
+
+wz_item_applycustomfunction() {
+    level.am_dev.wz.old_loadout_func1 = level.var_5c14d2e6;
+    level.var_5c14d2e6 = &wz_item_loadout_func1;
+    level.am_dev.wz.old_loadout_func2 = level.var_317fb13c;
+    level.var_317fb13c = &wz_item_loadout_func2;
+
+    if (isdefined(level.atianconfig.blackout_give_blackjack_keys) && level.atianconfig.blackout_give_blackjack_keys > 0) {
+        level thread wz_item_fixupblackjack_keys(level.atianconfig.blackout_give_blackjack_keys);
+    }
+}
+
+wz_item_fixupblackjack_keys(keys) {
+	level flagsys::wait_till(#"item_world_reset");
+	while (isdefined(level.var_ab396c31) && level.var_ab396c31) {
+		waitframe(1); // wait until the reset is completed
+	}
+	util::wait_network_frame(2); // wait one frame for the end of the reset and another one for the default inventory
+    
+	foreach(player in getplayers()) {
+        player give_wzitem(#"resource_item_loot_locker_key", keys);
+	}
+}
+
+wz_item_loadout_func1() {
+    if (isdefined(level.am_dev.wz.old_loadout_func1)) {
+        self [[ level.am_dev.wz.old_loadout_func1 ]]();
+    }
+    if (isdefined(self.atian.wz.life_count)) {
+        self.atian.wz.life_count = 0;
+    }
+    self.atian.wz.life_count++;
+    // reinsert life 1
+}
+wz_item_loadout_func2() {
+    if (isdefined(level.am_dev.wz.old_loadout_func2)) {
+        self [[ level.am_dev.wz.old_loadout_func2 ]]();
+    }
+    if (isdefined(self.atian.wz.life_count)) {
+        self.atian.wz.life_count = 0;
+    } else {
+        self.atian.wz.life_count++;
+    }
+}

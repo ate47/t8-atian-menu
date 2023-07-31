@@ -87,12 +87,18 @@ handle_config() {
     }
     map_name = util::get_map_name();
     level.am_dev = {
-        #bot_skins: [],
-        #array_add: []
+        #bot_skins: [], // unused
+        #array_add: [], // array_explorer
+        #wz: spawnstruct(),
+        #mock_zp_trigger: { #stub: { #machine: { #power_on: true } } } // zm_utility
     };
     level.atianconfig = spawnstruct();
     level.atianconfig.devcfg = spawnstruct();
     level.atianconfig AtianMenuConfig();
+    level.atianconfig AtianMenuConfigBlackout();
+    level.atianconfig AtianMenuConfigZombies();
+    level.atianconfig AtianMenuConfigMultiplayer();
+    
 #ifdef ATIAN_MENU_DEV
     level.atianconfig AtianMenuDevConfig();
 #endif

@@ -4,9 +4,9 @@
 
 [![Compile scripts](https://github.com/ate47/t8-atian-menu/actions/workflows/compile.yml/badge.svg?branch=master)](https://github.com/ate47/t8-atian-menu/actions/workflows/compile.yml)
 
-Mod menu for T8 (Black ops 4) GSC scripts.
+Mod menu and notes for T8 (Black ops 4).
 
-Using the compiler: https://github.com/shiversoftdev/t7-compiler
+Using the compiler: https://github.com/shiversoftdev/t7-compiler (Some required features might not be implemented yet)
 
 Using the sources: https://github.com/ate47/t8-src
 
@@ -30,10 +30,11 @@ Posts or videos I've made using these scripts or the sources:
 - [Reddit - Stats for the care packages](https://www.reddit.com/r/Blackops4/comments/nhonhu/if_you_had_ever_wondered_the_probabilities_in_the/)
 - [Blackout Quaknarok](https://www.youtube.com/watch?v=XphuwHYtSjk)
 - [GSC Weapon tool](https://www.youtube.com/watch?v=hPBZrQQ7u4c)
+- [Reddit - TAK-5 Blackout cut content](https://www.reddit.com/r/Blackops4/comments/15ctalt/tak5_blackout_cut_content_description_translation/)
 
 ## Config
 
-If you don't want to use the menu and only use particular functions from the mod, you can set the value of `no_menu` to `true` in [scripts/config.gsc](scripts/config.gsc).
+If you don't want to use the menu and only use particular functions from the mod, you can set the value of `no_menu` to `true` in [scripts/config/global.gsc](scripts/config/global.gsc).
 
 If the config function is empty, nothing will happen in game.
 
@@ -41,16 +42,16 @@ If the config function is empty, nothing will happen in game.
 self.no_menu = true;
 ```
 
-You can config the mod keys in the [`scripts/keyconfig.gsc`](scripts/keyconfig.gsc) file, by default you open it with ADS+Melee.
+You can config the mod keys in the [`scripts/config/keys.gsc`](scripts/config/keys.gsc) file, by default you open it with ADS+Melee.
 
-You can config the mod menu in the [`scripts/config.gsc`](scripts/config.gsc) file, current tools:
+You can config the mod menu in the [`scripts/config`](scripts/config) directory, current tools:
 
-- general
+- General
   - Force character skin
   - Force weapon camo
   - Enable options at startup
   - Set random skin and camo on bots
-- blackout
+- Blackout
   - Force mode
   - Force map
   - Set the zombies spawner types (brutus, avogadro or zombies)
@@ -60,14 +61,20 @@ You can config the mod menu in the [`scripts/config.gsc`](scripts/config.gsc) fi
   - Spawn waterballons
   - Spawn snowballs
   - Zombies eyes
-- multiplayer
+  - Give items
+- Multiplayer
   - set draft time
-- zombies
+  - Give killstreaks
+- Zombies
   - Allow EEs in custom mutation
   - Custom mutation like config to setup your own zombies
   - Set XP multiplier
   - Quaknarok
   - Open narrative rooms
+  - Give perks
+  - Give powerups
+
+(and others)
 
 ## Features
 
@@ -131,6 +138,8 @@ This tool can be paired with the [t8-custom-ee mod](https://github.com/ate47/t8-
 My notes are in the [notes](notes/) directory.
 
 You also have a doc about the game itself in the [doc](doc/) directory.
+
+Some features might require some modification on the t8-compiler, you can get them [here](https://github.com/ate47/t7-compiler) (search the latest branch).
 
 ### Symbols
 
