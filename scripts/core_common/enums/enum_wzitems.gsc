@@ -53,6 +53,7 @@ generate_wzitems_enum() {
     wzitems add_wzitem_category("perk", "Perk");
     wzitems add_wzitem_category("att", "Attachment");
     wzitems add_wzitem_category("ee", "EE");
+    wzitems add_wzitem_category("hw", "Halloween Event");
     wzitems add_wzitem_category("eq", "Equipment");
     wzitems add_wzitem_category("health", "Health");
     wzitems add_wzitem_category("armor", "Armor");
@@ -66,6 +67,8 @@ generate_wzitems_enum() {
     wzitems add_wzitem_info(#"resource_item_loot_locker_key", "Blackjack key", "other");
     wzitems add_wzitem_info(#"flare_gun_wz_item", "Flare gun (Supply)", "other");
     wzitems add_wzitem_info(#"flare_gun_veh_wz_item", "Flare gun (Vehicle)", "other"); // not for wz_escape lol
+    wzitems add_wzitem_info(#"wz_ball", "Basketball", "other");
+    wzitems add_wzitem_info(#"cash_item_500", "$500", "other");
 
     wzitems add_wzitem_info(#"acid_bomb_wz_item", "Acid bomb", "eq");
     wzitems add_wzitem_info(#"trip_wire_wz_item", "Trip wire", "eq");
@@ -137,6 +140,13 @@ generate_wzitems_enum() {
     wzitems add_wzitem_info(#"ammo_type_50cal_item", "Cal .50", "ammo");
     wzitems add_wzitem_info(#"ammo_type_338_item", "Cal .338", "ammo");
     wzitems add_wzitem_info(#"ammo_type_rocket_item", "Rockets", "ammo");
+    wzitems add_wzitem_info(#"ammo_type_9mm_double_item", "9mm (Double)", "ammo");
+    wzitems add_wzitem_info(#"ammo_type_556_double_item", "5.56mm (Double)", "ammo");
+    wzitems add_wzitem_info(#"ammo_type_762_double_item", "7.62mm (Double)", "ammo");
+    wzitems add_wzitem_info(#"ammo_type_12ga_double_item", "Cal .12 (Double)", "ammo");
+    wzitems add_wzitem_info(#"ammo_type_45_double_item", "Cal .45 (Double)", "ammo");
+    wzitems add_wzitem_info(#"ammo_type_50cal_double_item", "Cal .50 (Double)", "ammo");
+    wzitems add_wzitem_info(#"ammo_type_338_double_item", "Cal .338 (Double)", "ammo");
     wzitems add_wzitem_info(#"ammo_type_rocket_double_item", "Rockets (Double)", "ammo");
 
     wzitems add_wzitem_info(#"health_item_small", "Bandages", "health");
@@ -159,9 +169,12 @@ generate_wzitems_enum() {
     wzitems add_wzitem_info(#"perk_item_reinforced", "Reinforced", "perk");
     wzitems add_wzitem_info(#"perk_item_drifter", "Shulker", "perk");
     wzitems add_wzitem_info(#"perk_item_squadlink", "Squad link", "perk");
+    wzitems add_wzitem_info(#"perk_item_bloody_tracker", "Tracker", "perk");
+    wzitems add_wzitem_info(#"perk_item_doublejump", "Double jump", "perk");
     
     wzitems add_wzitem_info(#"special_crossbow_t8_item", "Reaver C86", "weap_special");
     wzitems add_wzitem_info(#"launcher_standard_t8_item", "Hellion salvo", "weap_special");
+    wzitems add_wzitem_info(#"launcher_standard_operator_t8_item", "Hellion salvo (Operator)", "weap_special");
 
     wzitems add_wzitem_info(#"armor_shard_item", "Armor shard", "armor");
     wzitems add_wzitem_info(#"armor_item_small", "Armor tier 1", "armor");
@@ -196,6 +209,13 @@ generate_wzitems_enum() {
     wzitems add_wzitem_info(#"cu33_item", "Outrider", "ee");
     wzitems add_wzitem_info(#"cu34_item", "Spectre", "ee");
     wzitems add_wzitem_info(#"cu35_item", "Reaper", "ee");
+
+    wzitems add_wzitem_info(#"hw_event_item_mc", "mc", "hw");
+    wzitems add_wzitem_info(#"hw_event_item_kk", "kk", "hw");
+    wzitems add_wzitem_info(#"hw_event_item_wb", "wb", "hw");
+    wzitems add_wzitem_info(#"hw_event_item_th", "th", "hw");
+    wzitems add_wzitem_info(#"hw_event_item_tod", "tod", "hw");
+    wzitems add_wzitem_info(#"hw_event_item_jk", "jk", "hw");
 
     wzitems add_wzitem_info(#"ar_accurate_t8_item", "ICR-7", "weap_ar");
     wzitems add_wzitem_info(#"ar_accurate_t8_gold_item", "ICR-7 (Gold)", "weap_ar");
@@ -244,6 +264,7 @@ generate_wzitems_enum() {
     wzitems add_wzitem_info(#"melee_slaybell_t8_item", "Slay Bell", "weap_melee");
     wzitems add_wzitem_info(#"melee_amuletfist_t8_item", "Eye of Apophis", "weap_melee");
     wzitems add_wzitem_info(#"melee_cutlass_t8_item", "Rising Tide", "weap_melee");
+    wzitems add_wzitem_info(#"melee_spork_t8_item", "Alcatraz Spork", "weap_melee");
     
     wzitems add_wzitem_info(#"tr_longburst_t8_item", "Swordfish", "weap_tr");
     wzitems add_wzitem_info(#"tr_longburst_t8_gold_item", "Swordfish (Gold)", "weap_tr");
@@ -312,31 +333,68 @@ generate_wzitems_enum() {
     wzitems add_wzitem_info(#"sniper_damagesemi_t8_item", "Havelina AA50", "weap_sniper");
     wzitems add_wzitem_info(#"sniper_locus_t8_item", "Locus", "weap_sniper");
 
+    wzitems add_wzitem_info(#"zodiac_wz_vehicle_odg", "zodiac_wz_vehicle_odg", "unknown");
+    wzitems add_wzitem_info(#"zodiac_wz_vehicle_black", "zodiac_wz_vehicle_black", "unknown");
+    wzitems add_wzitem_info(#"zodiac_wz_vehicle_grey", "zodiac_wz_vehicle_grey", "unknown");
+
 #ifdef ATIAN_MENU_DEV
     // UNKNOWN ITEMS
 
-    
-    wzitems add_wzitem_info(#"blackjack_ammo_stash_parent_guns", "blackjack_ammo_stash_parent_guns", "unknown");
-    wzitems add_wzitem_info(#"blackjack_ammo_stash_parent_placeholder", "blackjack_ammo_stash_parent_placeholder", "unknown");
-    wzitems add_wzitem_info(#"resource_item_paint_list_furniture", "resource_item_paint_list_furniture", "unknown");
-    wzitems add_wzitem_info(#"resource_item_paint_list", "resource_item_paint_list", "unknown");
-    wzitems add_wzitem_info(#"resource_item_paint_list_solo", "resource_item_paint_list_solo", "unknown");
+/*
 
-    wzitems add_wzitem_info(#"dualoptic_wz_item", "dualoptic_wz_item", "unknown");
-    wzitems add_wzitem_info(#"seeker_mine_wz_item", "seeker_mine_wz_item", "unknown");
-    wzitems add_wzitem_info(#"supply_pod_wz_item", "supply_pod_wz_item", "unknown");
-    wzitems add_wzitem_info(#"vision_pulse_wz_item", "vision_pulse_wz_item", "unknown");
-    wzitems add_wzitem_info(#"wz_snowball", "wz_snowball", "unknown");
-    wzitems add_wzitem_info(#"spiked_barrier_wz_item", "spiked_barrier_wz_item", "unknown");
-    wzitems add_wzitem_info(#"ar_mg1909_t8_item", "ar_mg1909_t8_item", "unknown");
-    wzitems add_wzitem_info(#"smg_drum_pistol_t8_item", "smg_drum_pistol_t8_item", "unknown");
-    wzitems add_wzitem_info(#"smg_thompson_t8_item", "smg_thompson_t8_item", "unknown");
-    wzitems add_wzitem_info(#"pistol_topbreak_t8_item", "pistol_topbreak_t8_item", "unknown");
-    wzitems add_wzitem_info(#"shotgun_trenchgun_t8_item", "shotgun_trenchgun_t8_item", "unknown");
-    wzitems add_wzitem_info(#"hash_1b975e4c6ae8b190", "hash_1b975e4c6ae8b190", "unknown");
-    wzitems add_wzitem_info(#"hash_1bb3938ead724a68", "hash_1bb3938ead724a68", "unknown");
-    wzitems add_wzitem_info(#"hash_6c0eed50f4c26acb", "hash_6c0eed50f4c26acb", "unknown");
-    wzitems add_wzitem_info(#"hash_6cb371d07db8ad2f", "hash_6cb371d07db8ad2f", "unknown");
+11,cash_item_500,itemspawnentry,500,cash,None
+36,perk_item_doublejump,itemspawnentry,1,generic,None
+38,ammo_type_12ga_double_item,itemspawnentry,40,ammo,None
+69,ammo_type_45_double_item,itemspawnentry,100,ammo,None
+92,zodiac_wz_vehicle_odg,itemspawnentry,unknown,vehicle,None
+93,hw_event_item_mc,itemspawnentry,unknown,quest,None
+119,ammo_type_556_double_item,itemspawnentry,100,ammo,None
+130,zodiac_wz_vehicle_black,itemspawnentry,unknown,vehicle,None
+149,hw_event_item_kk,itemspawnentry,unknown,quest,None
+155,melee_spork_t8_item,itemspawnentry,1,weapon,Common
+158,ammo_type_9mm_double_item,itemspawnentry,100,ammo,None
+177,ammo_type_338_double_item,itemspawnentry,60,ammo,None
+196,zodiac_wz_vehicle_grey,itemspawnentry,unknown,vehicle,None
+224,hw_event_item_wb,itemspawnentry,unknown,quest,None
+231,hw_event_item_th,itemspawnentry,unknown,quest,None
+234,ammo_type_762_double_item,itemspawnentry,100,ammo,None
+236,ammo_type_50cal_double_item,itemspawnentry,60,ammo,None
+237,hw_event_item_tod,itemspawnentry,unknown,quest,None
+266,hw_event_item_jk,itemspawnentry,unknown,quest,None
+
+*/
+    // don't care
+    wzitems add_wzitem_info(#"ar_accurate_t8_wallbuy_item", "ar_accurate_t8_wallbuy_item", "unknown");
+    wzitems add_wzitem_info(#"ar_damage_t8_wallbuy_item", "ar_damage_t8_wallbuy_item", "unknown");
+    wzitems add_wzitem_info(#"ar_fastfire_t8_wallbuy_item", "ar_fastfire_t8_wallbuy_item", "unknown");
+    wzitems add_wzitem_info(#"ar_galil_t8_wallbuy_item", "ar_galil_t8_wallbuy_item", "unknown");
+    wzitems add_wzitem_info(#"ar_modular_t8_wallbuy_item", "ar_modular_t8_wallbuy_item", "unknown");
+    wzitems add_wzitem_info(#"ar_standard_t8_wallbuy_item", "ar_standard_t8_wallbuy_item", "unknown");
+    wzitems add_wzitem_info(#"ar_stealth_t8_wallbuy_item", "ar_stealth_t8_wallbuy_item", "unknown");
+    wzitems add_wzitem_info(#"lmg_double_t8_wallbuy_item", "lmg_double_t8_wallbuy_item", "unknown");
+    wzitems add_wzitem_info(#"lmg_heavy_t8_wallbuy_item", "lmg_heavy_t8_wallbuy_item", "unknown");
+    wzitems add_wzitem_info(#"lmg_spray_t8_wallbuy_item", "lmg_spray_t8_wallbuy_item", "unknown");
+    wzitems add_wzitem_info(#"lmg_standard_t8_wallbuy_item", "lmg_standard_t8_wallbuy_item", "unknown");
+    wzitems add_wzitem_info(#"shotgun_fullauto_t8_wallbuy_item", "shotgun_fullauto_t8_wallbuy_item", "unknown");
+    wzitems add_wzitem_info(#"shotgun_pump_t8_wallbuy_item", "shotgun_pump_t8_wallbuy_item", "unknown");
+    wzitems add_wzitem_info(#"shotgun_semiauto_t8_wallbuy_item", "shotgun_semiauto_t8_wallbuy_item", "unknown");
+    wzitems add_wzitem_info(#"smg_accurate_t8_wallbuy_item", "smg_accurate_t8_wallbuy_item", "unknown");
+    wzitems add_wzitem_info(#"smg_capacity_t8_wallbuy_item", "smg_capacity_t8_wallbuy_item", "unknown");
+    wzitems add_wzitem_info(#"smg_fastburst_t8_wallbuy_item", "smg_fastburst_t8_wallbuy_item", "unknown");
+    wzitems add_wzitem_info(#"smg_fastfire_t8_wallbuy_item", "smg_fastfire_t8_wallbuy_item", "unknown");
+    wzitems add_wzitem_info(#"smg_folding_t8_wallbuy_item", "smg_folding_t8_wallbuy_item", "unknown");
+    wzitems add_wzitem_info(#"smg_handling_t8_wallbuy_item", "smg_handling_t8_wallbuy_item", "unknown");
+    wzitems add_wzitem_info(#"smg_mp40_t8_wallbuy_item", "smg_mp40_t8_wallbuy_item", "unknown");
+    wzitems add_wzitem_info(#"smg_standard_t8_wallbuy_item", "smg_standard_t8_wallbuy_item", "unknown");
+    wzitems add_wzitem_info(#"sniper_fastrechamber_t8_wallbuy_item", "sniper_fastrechamber_t8_wallbuy_item", "unknown");
+    wzitems add_wzitem_info(#"sniper_powerbolt_t8_wallbuy_item", "sniper_powerbolt_t8_wallbuy_item", "unknown");
+    wzitems add_wzitem_info(#"sniper_powersemi_t8_wallbuy_item", "sniper_powersemi_t8_wallbuy_item", "unknown");
+    wzitems add_wzitem_info(#"sniper_quickscope_t8_wallbuy_item", "sniper_quickscope_t8_wallbuy_item", "unknown");
+    wzitems add_wzitem_info(#"tr_leveraction_t8_wallbuy_item", "tr_leveraction_t8_wallbuy_item", "unknown");
+    wzitems add_wzitem_info(#"tr_longburst_t8_wallbuy_item", "tr_longburst_t8_wallbuy_item", "unknown");
+    wzitems add_wzitem_info(#"tr_midburst_t8_wallbuy_item", "tr_midburst_t8_wallbuy_item", "unknown");
+    wzitems add_wzitem_info(#"tr_powersemi_t8_wallbuy_item", "tr_powersemi_t8_wallbuy_item", "unknown");
+
 
 #endif
 }

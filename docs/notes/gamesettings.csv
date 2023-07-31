@@ -350,8 +350,9 @@ wzenableperkoutlander,wz,bool,enable perk outlander
 wzenableperkparanoia,wz,bool,enable perk paranoia
 wzenableperkreinforced,wz,bool,enable perk reinforced
 wzenableperksquadlink,wz,bool,enable perk squadlink
-hash_9fa187740ff5e40,wz,bool,enable perk unknown (probably tracker)
-hash_78e459ad87509a46,wz,bool,enable perk unknown (probably skulker)
+hash_1d02e28ba907a343,wz,bool,enable perk tracker
+hash_9fa187740ff5e40,wz,bool,enable perk stimulant (cut)
+hash_78e459ad87509a46,wz,bool,enable perk skulker
 wzwetworks,wz,bool,wetwork event settings
 wzenablelasersight,wz,bool,enable laster sight
 wztestallvehicles,wz,bool,enable all vehicles
@@ -551,7 +552,6 @@ hash_1614b9cbe0df6f75,unknown,unknown,unknown
 hash_17f17e92c2654659,unknown,unknown,unknown
 hash_1b34b26470f4368,unknown,unknown,unknown
 hash_1b4a66a008f60927,unknown,unknown,unknown
-hash_1d02e28ba907a343,unknown,unknown,unknown
 hash_1f3825ba2a669400,unknown,unknown,unknown
 hash_221008a2c793dfa1,unknown,unknown,unknown
 hash_22431a9369b5d7c0,unknown,unknown,unknown

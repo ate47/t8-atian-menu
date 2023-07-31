@@ -20,6 +20,30 @@ dev_init() {
         }
     }
 
+#ifdef ATIANMENU_DUMP_WZITEMS
+    if (is_warzone()) {
+        count = function_c77ddcd6();
+        am_log("dump " + count + " wz items");
+        for (i = 0; i < count; i++) {
+            s_item = function_b1702735(i);
+            
+            amount = 0;
+            itemtype = "unknown";
+            name = "unknown";
+            rarity = "unknown";
+            type = "unknown";
+            if (isdefined(s_item) && isdefined(s_item.var_a6762160)) {
+                name = nullable_to_str(s_item.var_a6762160.name, "unknown");
+                type = nullable_to_str(s_item.var_a6762160.type, "unknown");
+                amount = nullable_to_str(s_item.var_a6762160.amount, "unknown");
+                itemtype = nullable_to_str(s_item.var_a6762160.itemtype, "unknown");
+                rarity = nullable_to_str(s_item.var_a6762160.rarity, "unknown");
+            }
+            am_log("WZITEM " + i + "," + name + "," + type + "," + amount + "," + itemtype + "," + rarity);
+        }
+    }
+#endif
+
 #endif
 
 #ifdef ATIANMENU_LAZYLINK

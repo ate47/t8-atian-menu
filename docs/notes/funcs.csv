@@ -897,12 +897,12 @@ GSC-Function-495f250,function_784b5aa6,0,0,0,sub_6961F0,
 GSC-Function-495f250,function_abaeb170,2,7,0,sub_696200,
 GSC-Function-495f250,function_6de8969b,2,7,0,sub_696350,
 GSC-Function-495f250,function_579fdc53,2,7,0,sub_696480,
-GSC-Function-495f250,function_4ba8fde,1,1,0,sub_6965C0,
-GSC-Function-495f250,function_a3975ce9,0,0,0,sub_696600,
-GSC-Function-495f250,function_a04d222e,0,0,0,sub_696620,
-GSC-Function-495f250,function_d634ed59,0,0,0,sub_696640,
-GSC-Function-495f250,function_c77ddcd6,0,0,0,sub_696660,
-GSC-Function-495f250,function_b1702735,1,1,0,sub_696670,
+GSC-Function-495f250,function_4ba8fde,1,1,0,sub_6965C0,get a item from its hash
+GSC-Function-495f250,function_a3975ce9,0,0,0,sub_696600,return 0x8000
+GSC-Function-495f250,function_a04d222e,0,0,0,sub_696620,return 0x7000
+GSC-Function-495f250,function_d634ed59,0,0,0,sub_696640,return 0x400
+GSC-Function-495f250,function_c77ddcd6,0,0,0,sub_696660,return the count of item point IDs
+GSC-Function-495f250,function_b1702735,1,1,0,sub_696670,get a item from its point ID
 GSC-Function-495f250,function_8322cf16,0,0,0,sub_696690,
 GSC-Function-495f250,function_d0dc448b,1,1,0,sub_6966A0,
 GSC-Function-495f250,function_91b29d2a,1,1,0,sub_6966E0,
@@ -1211,7 +1211,7 @@ GSC-Method-498dcf0,function_b568258e,0,0,0,sub_29166D0,
 GSC-Method-498dcf0,function_e1c06cd0,0,0,0,sub_291A9E0,
 GSC-Method-498dcf0,function_11d0e790,0,0,0,sub_291EC30,
 GSC-Method-498dcf0,function_9b48a8e5,1,1,0,sub_2939F80,
-GSC-Method-498dcf0,function_ab96a9b5,2,2,0,sub_294AAD0,
+GSC-Method-498dcf0,function_ab96a9b5(string part;int skinid),2,2,0,sub_294AAD0,set a part of a skin to skinid
 GSC-Method-498dcf0,function_fbc5a093,1,1,0,sub_29445C0,
 GSC-Method-498dcf0,function_7d5a3c48,2,2,0,sub_2953210,
 GSC-Method-498dcf0,getplayergendertype,0,1,0,sub_29594F0,
@@ -3059,12 +3059,12 @@ CSC-Function-495f250,function_784b5aa6,0,0,0,sub_6961F0,
 CSC-Function-495f250,function_abaeb170,2,7,0,sub_696200,
 CSC-Function-495f250,function_6de8969b,2,7,0,sub_696350,
 CSC-Function-495f250,function_579fdc53,2,7,0,sub_696480,
-CSC-Function-495f250,function_4ba8fde,1,1,0,sub_6965C0,
-CSC-Function-495f250,function_a3975ce9,0,0,0,sub_696600,
-CSC-Function-495f250,function_a04d222e,0,0,0,sub_696620,
-CSC-Function-495f250,function_d634ed59,0,0,0,sub_696640,
-CSC-Function-495f250,function_c77ddcd6,0,0,0,sub_696660,
-CSC-Function-495f250,function_b1702735,1,1,0,sub_696670,
+CSC-Function-495f250,function_4ba8fde,1,1,0,sub_6965C0,get a item from its hash
+CSC-Function-495f250,function_a3975ce9,0,0,0,sub_696600,return 0x8000
+CSC-Function-495f250,function_a04d222e,0,0,0,sub_696620,return 0x7000
+CSC-Function-495f250,function_d634ed59,0,0,0,sub_696640,return 0x400
+CSC-Function-495f250,function_c77ddcd6,0,0,0,sub_696660,return the count of item point IDs
+CSC-Function-495f250,function_b1702735,1,1,0,sub_696670,get a item from its point ID
 CSC-Function-495f250,function_8322cf16,0,0,0,sub_696690,
 CSC-Function-495f250,function_d0dc448b,1,1,0,sub_6966A0,
 CSC-Function-495f250,function_91b29d2a,1,1,0,sub_6966E0,

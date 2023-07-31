@@ -24,7 +24,7 @@ func_give_wzitem(item, item_id, item_title) {
 	}
 }
 
-func_give_item_test(item, item_id = #"hash_15bac43598d4827c") {
+func_give_item_test(item, item_id) {
 	self give_wzitem(item_id);
 }
 

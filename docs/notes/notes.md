@@ -296,6 +296,34 @@ level.var_fb9a8536 = (reset ? level.var_ee110db8 : level.var_db0e7b82); // -> ma
 
 eModes v9 = ZM=0, MP=1, CP=2, WZ=3
 
+// 3126405504
+        "-DATIANMENU_DETOURS",
+        "-DATIANMENU_COMPILER_OPT",
+        "'-Cdll.builtins=true'",
+        "'-Cdll.detours=true'"
+
+function_4ba8fde(#"allistairs_folly_t8_item") = {
+    #angles: (0, 0, 0),
+    #id: 160, // index
+    #origin: (0, 0, -64000),
+    #var_bd027dd9: 160, // also the index
+    #var_a6762160: {
+        #amount: 1,
+        #itemtype: "weapon",
+        #name: "allistairs_folly_t8_item",
+        #rarity: "Common",
+        #type: "itemspawnentry",
+        #weapon: getweapon("...")
+    }
+}
+
+5410000416
+
+// sub_3E5100(sinst_t inst, ulong* value)
+ulong pool = *(ulong*)(qword_B2232A0 + 80 + 8 * inst);
+ulong[2]* data = (ulong*)(pool + 0x80008);
+// sub_3E5230(int inst, int data_index)
+
 
 2985
 3023 38

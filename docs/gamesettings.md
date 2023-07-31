@@ -327,6 +327,7 @@ the logic behide the item list spawn are in the [`script_5014b7c0ca48e9a8.gsc`](
 - `"wzenableperksquadlink"` - Enable perk squadlink
 - `"wzenableperkstimulant"` - Enable perk stimulant (add 100 HP to the max health)
 - `"hash_78e459ad87509a46"` - Enable perk shulker
+- `"hash_1d02e28ba907a343"` - Enable perk tracker
 
 #### Attachments
 

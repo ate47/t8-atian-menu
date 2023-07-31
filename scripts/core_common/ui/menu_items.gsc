@@ -324,7 +324,7 @@ init_menus() {
     if (is_warzone()) {
         self add_menu("wz_tools", "Blackout tools", "start_menu", true);
 
-        self add_menu_item("wz_tools", "Wz test give", &func_give_item_test);
+        self add_menu_item("wz_tools", "Wz test give", &func_give_item_test, #"tomahawk_t8_wz_item_pandemic");
         self add_menu("wzitems", "Blackout item", "wz_tools", true);
 
         wzitems_data = get_wzitems_enum_data();

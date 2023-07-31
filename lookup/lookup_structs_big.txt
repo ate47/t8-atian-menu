@@ -1328,6 +1328,7 @@ hero_power_update
 heroweapon_kill_power
 hidden
 hide_owner
+hidetime
 hidewheninmenu
 highest_multiplier
 highest_version
@@ -2052,6 +2053,7 @@ onusecancel
 oob_timelimit_ms
 oobdisabled
 open_chest_location
+operator_weapons
 orbis
 orgmodel
 orig_origin
@@ -4954,7 +4956,6 @@ var_7987392b
 var_7988eee5
 var_7994da16
 var_79959866
-operator_weapons
 var_79a93566
 var_79b2615b
 var_79bbe09a
