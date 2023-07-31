@@ -5,6 +5,7 @@ My personal notes
 ## Files
 
 - [`loaded`](loaded/) - Loaded script by the game, using the scriptparsetree pool and the linked scripts.
+- [`wzitems`](wzitems) - Blackout Items
 - [`archetypes.txt`](archetypes.txt) - Archtypes
 - [`dvars.csv`](dvars.csv) - DVars
 - [`funcs.csv`](funcs.csv) - GSC/CSC API functions

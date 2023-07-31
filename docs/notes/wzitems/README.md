@@ -1,0 +1,2 @@
+- [wz_open_skyscrapers.csv](wz_open_skyscrapers.csv) - Base map items
+- [wz_escape.csv](wz_escape.csv) - Alcatraz items
