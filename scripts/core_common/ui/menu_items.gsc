@@ -148,7 +148,7 @@ init_menus() {
     // internal weapons
     self add_menu("weapons_internal", "Internal", "weapons", true, &menu_open_message, "^1Warning: Can crash the game with bad usage!");
     for (i = 0; i < weapon_data.global_weapons.size; i++) {
-        self add_menu_item("weapons_internal", weapon_data.global_weapons[i], &func_give_weapon, weapon_data.global_weapons[i]);
+        self add_menu_item("weapons_internal", "" + weapon_data.global_weapons[i], &func_give_weapon, weapon_data.global_weapons[i]);
     }
     
     self add_menu("weapons_attachment", "Set attachment", "weapons", true, &func_searchattachment);

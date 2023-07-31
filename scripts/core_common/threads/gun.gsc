@@ -48,7 +48,7 @@ GunModifier() {
         if (tool_tpgun) {
             if (self is_mod_activated("fly") && isdefined(self.originObj)) {
                 // consider fly mode
-                self.originObj.origin = bullet_hit;
+                self.originObj.future_tp = bullet_hit;
             } else {
                 self setorigin(bullet_hit);
             }

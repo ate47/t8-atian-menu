@@ -770,7 +770,7 @@ GSC-Function-49600d0,getminbitcountfornum,1,1,0,sub_69C160,
 GSC-Function-49600d0,mapfloat,5,5,0,sub_69B310,
 GSC-Function-49600d0,difftrack,4,4,0,sub_69B3D0,
 GSC-Function-49600d0,difftrackangle,4,4,0,sub_69B450,
-GSC-Function-49600d0,packrgba,4,4,0,sub_69B4D0,
+GSC-Function-49600d0,packrgba(float r;float g;float b;float a)->int,4,4,0,sub_69B4D0,pack rgba to int
 GSC-Function-49600d0,int(value)->int,1,1,0,sub_69AA20,cast to int
 GSC-Function-49600d0,float(value)->float,1,1,0,sub_69AAF0,cast to float
 GSC-Function-49600d0,hash(string|hash|integer value)->hash,1,1,0,sub_69AB90,cast to hash
@@ -903,22 +903,22 @@ GSC-Function-495f250,function_a04d222e,0,0,0,sub_696620,return 0x7000
 GSC-Function-495f250,function_d634ed59,0,0,0,sub_696640,return 0x400
 GSC-Function-495f250,function_c77ddcd6,0,0,0,sub_696660,return the count of item point IDs
 GSC-Function-495f250,function_b1702735,1,1,0,sub_696670,get a item from its point ID
-GSC-Function-495f250,function_8322cf16,0,0,0,sub_696690,
+GSC-Function-495f250,function_8322cf16,0,0,0,sub_696690,get the allocated item point IDs count
 GSC-Function-495f250,function_d0dc448b,1,1,0,sub_6966A0,
-GSC-Function-495f250,function_91b29d2a,1,1,0,sub_6966E0,
+GSC-Function-495f250,function_91b29d2a(hash target)->array<struct>,1,1,0,sub_6966E0,fetch the item points of a target list
 GSC-Function-495f250,function_682385e7,0,0,0,sub_696720,
-GSC-Function-495f250,function_3eab95b5,2,2,0,sub_696730,
-GSC-Function-495f250,function_54ca5536,2,2,0,sub_6967B0,
-GSC-Function-495f250,function_43cd95f4,2,2,0,sub_696800,
-GSC-Function-495f250,function_b97dfce0,2,2,0,sub_696850,
+GSC-Function-495f250,function_3eab95b5(int point_id; vector angles),2,2,0,sub_696730,
+GSC-Function-495f250,function_54ca5536(int point_id; bool ukn2),2,2,0,sub_6967B0,
+GSC-Function-495f250,function_43cd95f4(int point_id; hash name),2,2,0,sub_696800,
+GSC-Function-495f250,function_b97dfce0(int point_id; vector angles),2,2,0,sub_696850,
 GSC-Function-495f250,function_b2cf8bc6,2,2,0,sub_6968D0,
-GSC-Function-495f250,function_2ec6d222,0,0,0,sub_696910,
+GSC-Function-495f250,function_2ec6d222,0,0,0,sub_696910,nulled
 GSC-Function-495f250,function_d12fe2ad,2,2,0,sub_696FF0,
-GSC-Function-495f250,function_a2f05227,0,0,0,sub_6970F0,
-GSC-Function-495f250,getxpcap,0,0,0,sub_697120,
-GSC-Function-495f250,getprestigecap,0,0,0,sub_697150,
-GSC-Function-495f250,function_3a2469b8,1,1,0,sub_697180,
-GSC-Function-495f250,function_a9c3ae72,1,1,0,sub_6971C0,
+GSC-Function-495f250,getrankcap,0,0,0,sub_6970F0,get rank cap
+GSC-Function-495f250,getxpcap,0,0,0,sub_697120,get xp cap
+GSC-Function-495f250,getprestigecap,0,0,0,sub_697150,get prestige cap
+GSC-Function-495f250,getrankminxp,1,1,0,sub_697180,get min xp for the rank
+GSC-Function-495f250,getrankmaxxp,1,1,0,sub_6971C0,get max xp for the rank
 GSC-Function-495f250,getrankdisplaylevel,1,1,0,sub_697200,
 GSC-Function-495f250,function_f5b30206,1,1,0,sub_697240,
 GSC-Function-495f250,function_32cf98be,2,2,0,sub_697330,
@@ -2932,11 +2932,11 @@ CSC-Function-49600d0,getminbitcountfornum,1,1,0,sub_69C160,
 CSC-Function-49600d0,mapfloat,5,5,0,sub_69B310,
 CSC-Function-49600d0,difftrack,4,4,0,sub_69B3D0,
 CSC-Function-49600d0,difftrackangle,4,4,0,sub_69B450,
-CSC-Function-49600d0,packrgba,4,4,0,sub_69B4D0,
-CSC-Function-49600d0,int,1,1,0,sub_69AA20,
-CSC-Function-49600d0,float,1,1,0,sub_69AAF0,
-CSC-Function-49600d0,hash,1,1,0,sub_69AB90,
-CSC-Function-49600d0,string,1,1,0,sub_69ACB0,
+CSC-Function-49600d0,packrgba(float r;float g;float b;float a)->int,4,4,0,sub_69B4D0,pack rgba to int
+CSC-Function-49600d0,int(value)->int,1,1,0,sub_69AA20,cast to int
+CSC-Function-49600d0,float(value)->float,1,1,0,sub_69AAF0,cast to float
+CSC-Function-49600d0,hash(string|hash|integer value)->hash,1,1,0,sub_69AB90,cast to hash
+CSC-Function-49600d0,string(float|int|func|string value)->string,1,1,0,sub_69ACB0,cast to string
 CSC-Function-49600d0,function_9e72a96,1,1,1,sub_69AE30,to string?
 CSC-Function-49600d0,distance2dsquared,2,2,0,sub_69B6E0,
 CSC-Function-49600d0,anglelerp,3,3,0,sub_69C730,
@@ -3074,13 +3074,13 @@ CSC-Function-495f250,function_54ca5536,2,2,0,sub_6967B0,
 CSC-Function-495f250,function_43cd95f4,2,2,0,sub_696800,
 CSC-Function-495f250,function_b97dfce0,2,2,0,sub_696850,
 CSC-Function-495f250,function_b2cf8bc6,2,2,0,sub_6968D0,
-CSC-Function-495f250,function_2ec6d222,0,0,0,sub_696910,
+CSC-Function-495f250,function_2ec6d222,0,0,0,sub_696910,nulled
 CSC-Function-495f250,function_d12fe2ad,2,2,0,sub_696FF0,
-CSC-Function-495f250,function_a2f05227,0,0,0,sub_6970F0,
-CSC-Function-495f250,getxpcap,0,0,0,sub_697120,
-CSC-Function-495f250,getprestigecap,0,0,0,sub_697150,
-CSC-Function-495f250,function_3a2469b8,1,1,0,sub_697180,
-CSC-Function-495f250,function_a9c3ae72,1,1,0,sub_6971C0,
+CSC-Function-495f250,getrankcap,0,0,0,sub_6970F0,get rank cap
+CSC-Function-495f250,getxpcap,0,0,0,sub_697120,get xp cap
+CSC-Function-495f250,getprestigecap,0,0,0,sub_697150,get prestige cap
+CSC-Function-495f250,getrankminxp,1,1,0,sub_697180,get min xp for the rank
+CSC-Function-495f250,getrankmaxxp,1,1,0,sub_6971C0,get max xp for the rank
 CSC-Function-495f250,getrankdisplaylevel,1,1,0,sub_697200,
 CSC-Function-495f250,function_f5b30206,1,1,0,sub_697240,
 CSC-Function-495f250,function_32cf98be,2,2,0,sub_697330,

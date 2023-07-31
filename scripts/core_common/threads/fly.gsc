@@ -18,6 +18,12 @@ ANoclipBind() {
 					self iprintlnbold("^6Fly mode ^1disabled");
 					break;
 				}
+				if (isdefined(self.originObj.future_tp)) {
+					self.originObj.origin = self.originObj.future_tp;
+					self.originObj.future_tp = undefined;
+					waitframe(1);
+					continue;
+				}
 				
 				nts = GetTime();
 				if (nts > ts) {

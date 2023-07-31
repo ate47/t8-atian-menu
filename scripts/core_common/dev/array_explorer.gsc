@@ -118,8 +118,8 @@ func_array_explorer(menu, obj, searchfunc = false) {
                 level.am_struct_explorer_id++;
                 mid = "_struct_explorer_" + sid;
                 self add_menu(mid, name + ":" + get_object_type(objval), menu.id, true, func_array_explorer_ptr(), objval);
-            } else if (is_valid_tpvec(val)) {
-                self add_menu_item(menu.id, name + ":" + get_object_type(objval), &func_teleport, objval);
+            } else if (is_valid_tpvec(objval)) {
+                self add_menu_item(menu.id, name + ":" + get_object_type(objval) + " (Tel)", &func_teleport, objval);
             } else {
                 self add_menu_item(menu.id, name + ":" + get_object_type(objval));
             }

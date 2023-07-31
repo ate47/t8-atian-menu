@@ -144,6 +144,10 @@ func_teleport(item, origin, angles = undefined) {
     }
 
     self setOrigin(origin);
+
+    if (isdefined(self.originObj)) { // teleport if we are in fly more
+        self.originObj.future_tp = origin;
+    }
     if (isdefined(angles)) {
         self setPlayerAngles(angles);
     }
