@@ -236,7 +236,7 @@ hash_473fee16f796c84e,wz,bool,enable wz_escape fishing EE
 hash_30b11d064f146fcc,wz,bool,enable wz_escape spoon EE
 hash_11b79ec2ffb886c8,wz,bool,enable wz_escape nixie tube EE
 hash_5f842714fa80e5a9,wz,bool,enable wz_escape poster EE
-hash_33d1ac5e99fb0584,wz,bool,spawn water balloons
+wzwaterballoonsenabled,wz,bool,spawn water balloons
 wzsnowballsenabled,wz,bool,Spawn snowballs
 hash_6fbf57e2af153e5f,wz,bool,spawn homunculus ee
 hash_53b5887dea69a320,wz,bool,enable spring homunculus ee
@@ -269,8 +269,8 @@ wzenableswat,wz,bool,enable swat
 wzenablevapr,wz,bool,enable vapr
 wzenablemaddox,wz,bool,enable maddox
 wzenablean94,wz,bool,enable an94
-wzenablerampart,bool,enable rampart
-wzenabledoublebarrel,bool,enable echohawk
+wzenablerampart,wz,bool,enable rampart
+wzenabledoublebarrel,wz,bool,enable echohawk
 wzenablegks,wz,bool,enable gks
 wzenablesaug,wz,bool,enable saug
 wzenablevmp,wz,bool,enable vmp
@@ -485,6 +485,29 @@ zmshieldisenabled,zm,bool,enable shield
 zmstartingweaponenabled,zm,bool,allow starting weapon
 zmwallbuysenabled,zm,bool,enable wall buys
 zmwonderweaponisenabled,zm,bool,enable ww
+deathcircle,core,bool,enable death circle
+hash_70072ee20a43ae21,core,int,death circle index
+hash_21ab1ca7e18bddcd,core,bool,death circle unknown
+hash_3e62d9528eca0a13,core,int,death circle unknown
+hash_6873fc00b59bcd39,core,bool,death circle unknown
+hash_74f1260346e4198e,core,bool,death circle unknown
+hash_50c10372c80d0a6b,wz,int,iteration limit ai generatenavmeshpath (require hash_26f00de198472b81)
+hash_26f00de198472b81,wz,bool,zombies related
+hash_232750b87390cbff,wz,bool,wall buy related
+hash_1bcb7e5d76212b76,wz,bool,set 20% the luck of something (ai related)
+hash_2560dae45cc112e3,mp,bool,?count killstreak in score
+hash_28233b1037888945,wz,int,start related
+hash_2b2c167cf8889749,wz,bool,zm ai related
+hash_6cc7b012775d9662,wz,bool,enale bleed out
+hash_2b3e56efad3a1504,wz,int,bled out damage
+hash_557cb4680634f585,wz,int,bled out damage interval
+hash_44c7473eab6e5459,wz,bool,spawn zombies zone cellhouse
+hash_4d6cfd0b3ee4cc7d,wz,bool,spawn zombies zone new industries
+hash_76fb3219916a09f2,wz,bool,spawn zombies zone parade grounds
+hash_3624143624604b4c,wz,bool,spawn zombies zone global
+cratecapturetime,mp,int,supply drop capture time (seconds)
+forceradar,zm|mp,int,force the radar 1=uav 2=all
+usabledynents,mp,bool,activate usable dynents
 allowannouncer,unknown,unknown,unknown
 allowbattlechatter,unknown,unknown,unknown
 allowfinalkillcam,unknown,unknown,unknown
@@ -504,16 +527,13 @@ cleandepositrotation,unknown,unknown,unknown
 competitivesettings,unknown,unknown,unknown
 competitiveteamlives,unknown,unknown,unknown
 contributionmin,unknown,unknown,unknown
-cratecapturetime,unknown,unknown,unknown
 cumulativeroundscores,unknown,unknown,unknown
-deathcircle,unknown,unknown,unknown
 deathcirclerespawn,unknown,unknown,unknown
 deathpointloss,unknown,unknown,unknown
 draftrequiredclients,unknown,unknown,unknown
 droppedtagrespawn,unknown,unknown,unknown
 ekiaresetondeath,unknown,unknown,unknown
 evolution_interval,unknown,unknown,unknown
-forceradar,unknown,unknown,unknown
 forwardspawnteamspecificspawns,unknown,unknown,unknown
 gameadvertisementruleround,unknown,unknown,unknown
 gameadvertisementruleroundswon,unknown,unknown,unknown
@@ -531,22 +551,14 @@ hash_1614b9cbe0df6f75,unknown,unknown,unknown
 hash_17f17e92c2654659,unknown,unknown,unknown
 hash_1b34b26470f4368,unknown,unknown,unknown
 hash_1b4a66a008f60927,unknown,unknown,unknown
-hash_1bcb7e5d76212b76,unknown,unknown,unknown
 hash_1d02e28ba907a343,unknown,unknown,unknown
 hash_1f3825ba2a669400,unknown,unknown,unknown
-hash_21ab1ca7e18bddcd,wz,bool,unknown
 hash_221008a2c793dfa1,unknown,unknown,unknown
 hash_22431a9369b5d7c0,unknown,unknown,unknown
 hash_230e67d5ddfb2c06,unknown,unknown,unknown
-hash_232750b87390cbff,wz,bool,wall buy related
 hash_234ae2f2ff58263f,unknown,unknown,unknown
 hash_24a3def3bbc35dfa,unknown,unknown,unknown
 hash_24e281e778894ac9,unknown,unknown,unknown
-hash_2560dae45cc112e3,mp,bool,?count killstreak in score
-hash_26f00de198472b81,unknown,unknown,unknown
-hash_28233b1037888945,unknown,unknown,unknown
-hash_2b2c167cf8889749,unknown,unknown,unknown
-hash_2b3e56efad3a1504,unknown,unknown,unknown
 hash_2b88c6ac064e9c59,unknown,unknown,unknown
 hash_2ce00db5cd5003ff,unknown,unknown,unknown
 hash_2d34a5d9024db85f,unknown,unknown,unknown
@@ -557,20 +569,17 @@ hash_3083d02ea0f5761c,unknown,unknown,unknown
 hash_3109a8794543000f,unknown,unknown,unknown
 hash_32da91b78e54e7b5,unknown,unknown,unknown
 hash_33bc6781006ae83d,unknown,unknown,unknown
-hash_3624143624604b4c,unknown,unknown,unknown
 hash_3668350e780332a3,unknown,unknown,unknown
 hash_3778ec3bd924f17c,unknown,unknown,unknown
 hash_3c5363541b97ca3e,unknown,unknown,unknown
 hash_3d9a364d54750dca,unknown,unknown,unknown
 hash_3da025c068c34bcb,unknown,unknown,unknown
 hash_3e13b420d6773b4c,unknown,unknown,unknown
-hash_3e62d9528eca0a13,unknown,unknown,unknown
 hash_4149d5d65eb07138,unknown,unknown,unknown
 hash_418adedc5cf0a538,unknown,unknown,unknown
 hash_42471cb0cbc19544,unknown,unknown,unknown
 hash_44533f4f290c5e77,unknown,unknown,unknown
 hash_446a66a4499c4e5d,unknown,unknown,unknown
-hash_44c7473eab6e5459,unknown,unknown,unknown
 hash_450463e38ea8bf1,unknown,unknown,unknown
 hash_46f957248efbd39a,unknown,unknown,unknown
 hash_48670d9509071424,unknown,unknown,unknown
@@ -581,17 +590,14 @@ hash_4bf99a809542e4ea,unknown,unknown,unknown
 hash_4c7c8c4bd1b2a58b,unknown,unknown,unknown
 hash_4ca06c610b5d53bd,unknown,unknown,unknown
 hash_4d3b84d98e3a83d4,unknown,unknown,unknown
-hash_4d6cfd0b3ee4cc7d,unknown,unknown,unknown
 hash_4deb3ae7a73c87f3,unknown,unknown,unknown
 hash_4e0ec3fe56f08b47,unknown,unknown,unknown
 hash_4e4352bd1aaeedfe,unknown,unknown,unknown
 hash_4f4a73f236278ba8,unknown,unknown,unknown
 hash_4ffb80b47c049c61,unknown,unknown,unknown
-hash_50c10372c80d0a6b,unknown,unknown,unknown
 hash_5408e974098bc234,unknown,unknown,unknown
 hash_543954c3281a530f,unknown,unknown,unknown
 hash_54fe37a58b87c7a0,unknown,unknown,unknown
-hash_557cb4680634f585,unknown,unknown,unknown
 hash_567a288b2ca685f3,unknown,unknown,unknown
 hash_567db38226658dbf,unknown,unknown,unknown
 hash_59ab05f71c3789c7,unknown,unknown,unknown
@@ -599,7 +605,7 @@ hash_5c6371ef701d7485,unknown,unknown,unknown
 hash_5cc4c3042b7d4935,unknown,unknown,unknown
 hash_5f76e2d55ad861ed,unknown,unknown,unknown
 hash_622b18585020f430,unknown,unknown,unknown
-hash_6269eb986d22cd37,unknown,unknown,unknown
+hash_6269eb986d22cd37,core,unknown,unknown
 hash_62a4fd40810cb61,unknown,unknown,unknown
 hash_63f8d60d122e755b,unknown,unknown,unknown
 hash_64291919b16c489a,unknown,unknown,unknown
@@ -607,27 +613,22 @@ hash_647310a2fe3554f7,unknown,unknown,unknown
 hash_661ee23f114191c1,unknown,unknown,unknown
 hash_67b94d37f2e44ee2,unknown,unknown,unknown
 hash_67d54bbc52811921,unknown,unknown,unknown
-hash_6873fc00b59bcd39,unknown,unknown,unknown
 hash_6881c7cab0dcef39,unknown,unknown,unknown
 hash_69ad073972c1c4ea,unknown,unknown,unknown
 hash_6a2434c947c86b9b,unknown,unknown,unknown
 hash_6aba2f652c6f4e07,unknown,unknown,unknown
-hash_6cc7b012775d9662,unknown,unknown,unknown
 hash_6cf5f53d1fbb1066,unknown,unknown,unknown
-hash_6e2abf2cc40e03f1,unknown,unknown,unknown
+hash_6e2abf2cc40e03f1,core,unknown,unknown
 hash_6fb11b1e304d533c,unknown,unknown,unknown
-hash_70072ee20a43ae21,unknown,unknown,unknown
 hash_712f4c2a96bca56e,unknown,unknown,unknown
 hash_71b2b43696e16252,unknown,unknown,unknown
 hash_731988b03dc6ee17,unknown,unknown,unknown
 hash_731aac1992af2669,unknown,unknown,unknown
 hash_7477eea36687a960,unknown,unknown,unknown
-hash_74f1260346e4198e,unknown,unknown,unknown
 hash_7532afe3ef8b4332,unknown,unknown,unknown
 hash_75a36f7e4a81c93,unknown,unknown,unknown
 hash_7684a70eb68f1ebb,unknown,unknown,unknown
 hash_76c2c603f164eb31,unknown,unknown,unknown
-hash_76fb3219916a09f2,unknown,unknown,unknown
 hash_77af5743dec010ae,wz,unknown,unknown
 hash_77b7734750cd75e9,unknown,unknown,unknown
 hash_7c0acf14fb1f4080,unknown,unknown,unknown
@@ -638,7 +639,6 @@ hash_83f11b8abac148f,unknown,unknown,unknown
 hash_926bf70c5a0d23b,unknown,unknown,unknown
 hash_ad6c0d1cd92c1fe,unknown,unknown,unknown
 hash_bd1199baafe11fe,unknown,unknown,unknown
-hash_d46a4e7a41e005c,unknown,unknown,unknown
 headshotsonly,unknown,unknown,unknown
 incrementalspawndelay,unknown,unknown,unknown
 killcamtime,unknown,unknown,unknown
@@ -716,7 +716,6 @@ ticketslostondeath,unknown,unknown,unknown
 ticketslostontimeamount,unknown,unknown,unknown
 ticketslostontimeinterval,unknown,unknown,unknown
 totalkillsmax,unknown,unknown,unknown
-usabledynents,unknown,unknown,unknown
 use_doors,unknown,unknown,unknown
 useitemspawns,unknown,unknown,unknown
 usespawngroups,unknown,unknown,unknown

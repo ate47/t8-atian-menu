@@ -2,12 +2,24 @@ dev_init() {
     if (!is_dev_mode()) {
         return;
     }
-
 #ifdef _INJECT_CLIENT
     am_log("inject client");
 #endif
 #ifdef ATIANMENU_DETOURS
     am_log("use detours");
+
+    item_names = array(
+    );
+
+    foreach (e in item_names) {
+        bundle = getscriptbundle(e);
+        if (isdefined(bundle) && isdefined(bundle.name)) {
+            compiler::nprintln(bundle.name);
+        } else {
+            compiler::nprintln("missing for " + e);
+        }
+    }
+
 #endif
 
 #ifdef ATIANMENU_LAZYLINK
@@ -173,4 +185,10 @@ func_weaponoption_search(menu, group) {
     } else {
         self add_menu_item(menu.id, "no option for group " + group);
     }
+}
+
+func_spawnmodel(item, id) {
+	model = spawn("script_model", self.origin);
+
+	model setmodel(id);
 }

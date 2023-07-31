@@ -147,6 +147,7 @@ You can add `_upgraded` to most of the in-game weapons to have the zombies' upgr
 - `knife_loadout` - Default knife (mp)
 - `bowie_knife` - Bowie (zm)
 - `melee_bowie` - Bowie (wz)
+- `melee_bowie_bloody` - Bowie bloody (wz)
 - `stake_knife` - Stake knife (zm/dotn)
 - `zombie_fists` - Zombie fists
 - `galvaknuckles_t8` - Galvaknuckles (zm/tag)
@@ -292,6 +293,8 @@ In Blackout the operator weapons can be used using the suffix `_operator`
 - `snowball_upgraded` - snowball upgraded (zm/tag)
 - `snowball_yellow` - snowball yellow (zm/tag)
 - `snowball_yellow_upgraded` - snowball yellow upgraded (zm/tag)
+- `flare_gun_veh` - Flare gun vehicle (wz/core)
+- `flare_gun` - Flare gun (wz)
 
 ## Attachments
 

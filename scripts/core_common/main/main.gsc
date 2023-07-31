@@ -62,6 +62,23 @@ init() {
         }
     }
 
+    if (is_warzone()) {
+        // set the stash models
+        // value: "default", "christmas", "shamrock"
+        blackout_stash_model = level.atianconfig.blackout_stash_model;
+        if (isdefined(blackout_stash_model)) {
+            switch (tolower(blackout_stash_model)) {
+                case "christmas":
+                    // win
+                    level.var_65f7ae17 = true;
+                    break;
+                case "shamrock":
+                    // spd
+                    level.var_7b65cb7 = true;
+                    break;
+            }
+        }
+    }
 
     devInitGametype();
 }

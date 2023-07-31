@@ -26,10 +26,19 @@ AtianMenuDevConfig() {
     //self.force_blackout_gametype = "warzone_quad";
     self.force_blackout_map = "wz_escape_alt";
     self.force_blackout_gametype = "warzone_escape_quad_dbno";
+
+    self.blackout_stash_model = "christmas";
     
     self.only_host = true;
     self.zm_quaknarok = true;
-
+    self.devcfg.scriptbundleexpore = array(
+        "flare_gun_wz_item",
+        "flare_gun_veh_wz_item",
+        "smg_vmp_t8_item",
+        "cu33_item",
+        "perk_item_stimulant",
+        "resource_item_paint"
+    );
 }
 
 AtianMenuDevKeyConfig() {

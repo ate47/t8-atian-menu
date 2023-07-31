@@ -285,7 +285,7 @@ the logic behide the item list spawn are in the [`script_5014b7c0ca48e9a8.gsc`](
 
 #### Equipment and gadgets
 
-- `"hash_33d1ac5e99fb0584"` - Spawn water balloon, can't be used with `"hash_3e2d2cf6b1cc6c68"`
+- `"wzwaterballoonsenabled"` - Spawn water balloon, can't be used with `"hash_3e2d2cf6b1cc6c68"`
 - `"wzsnowballsenabled"` - Spawn snowballs
 - `"wzenablehomunculus"` - Enable Homunculus
 - `"wzenablecymbalmonkey"` - Enable Monkey bomb
@@ -309,8 +309,7 @@ the logic behide the item list spawn are in the [`script_5014b7c0ca48e9a8.gsc`](
 - `"wzenablespectregrenade"` Enable spectre grenade
 - `"wzenablehellsretriever"` Enable hell retriever
 - `"wzenableflareguns"` Enable flare guns
-- `"wzenablemeshmines"` Enable mesh mines
-- `"hash_2e25d475b271a700"` Enable unknown equipment
+- `"hash_2e25d475b271a700"` Replace smoke grenade by spring holiday grenade
 #### Perks
 
 - `"wzenableperkawareness"` - Enable perk awareness
@@ -326,7 +325,7 @@ the logic behide the item list spawn are in the [`script_5014b7c0ca48e9a8.gsc`](
 - `"wzenableperkparanoia"` - Enable perk paranoia
 - `"wzenableperkreinforced"` - Enable perk reinforced
 - `"wzenableperksquadlink"` - Enable perk squadlink
-- `"hash_9fa187740ff5e40"` - Enable perk health cut (add 100 HP to the max health)
+- `"wzenableperkstimulant"` - Enable perk stimulant (add 100 HP to the max health)
 - `"hash_78e459ad87509a46"` - Enable perk shulker
 
 #### Attachments

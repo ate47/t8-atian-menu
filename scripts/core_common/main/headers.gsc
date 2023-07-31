@@ -43,7 +43,7 @@ __init__() {
     atianconfig = level.atianconfig;
     generate_enum_values();
 
-#ifndef DETOURS
+#ifndef ATIANMENU_DETOURS
     // if we can use the detours, we will use the detours to do that
     if (isdefined(atianconfig.zm_custom_ee) && atianconfig.zm_custom_ee) {
         // no contract
@@ -138,14 +138,14 @@ handle_config() {
         if (wzall_ee || isdefined(atianconfig.blackout_spawn_icarus))
             setGametypeSetting(#"hash_701bac755292fab2", wzall_ee || atianconfig.blackout_spawn_icarus);
             // crash the game
-         if (wzall_ee || isdefined(atianconfig.blackout_ee_fishing))
-             setGametypeSetting(#"hash_473fee16f796c84e", wzall_ee || atianconfig.blackout_ee_fishing);
-         if (wzall_ee || isdefined(atianconfig.blackout_ee_spoon))
-             setGametypeSetting(#"hash_30b11d064f146fcc", wzall_ee || atianconfig.blackout_ee_spoon);
-         if (wzall_ee || isdefined(atianconfig.blackout_ee_nixie_tube))
-             setGametypeSetting(#"hash_11b79ec2ffb886c8", wzall_ee || atianconfig.blackout_ee_nixie_tube);
-         if (wzall_ee || isdefined(atianconfig.blackout_ee_poster))
-             setGametypeSetting(#"hash_5f842714fa80e5a9", wzall_ee || atianconfig.blackout_ee_poster);
+        if (wzall_ee || isdefined(atianconfig.blackout_ee_fishing))
+            setGametypeSetting(#"hash_473fee16f796c84e", wzall_ee || atianconfig.blackout_ee_fishing);
+        if (wzall_ee || isdefined(atianconfig.blackout_ee_spoon))
+            setGametypeSetting(#"hash_30b11d064f146fcc", wzall_ee || atianconfig.blackout_ee_spoon);
+        if (wzall_ee || isdefined(atianconfig.blackout_ee_nixie_tube))
+            setGametypeSetting(#"hash_11b79ec2ffb886c8", wzall_ee || atianconfig.blackout_ee_nixie_tube);
+        if (wzall_ee || isdefined(atianconfig.blackout_ee_poster))
+            setGametypeSetting(#"hash_5f842714fa80e5a9", wzall_ee || atianconfig.blackout_ee_poster);
         if (wzall_ee || isdefined(atianconfig.blackout_ee_homunculus))
             setGametypeSetting(#"hash_6fbf57e2af153e5f", wzall_ee || atianconfig.blackout_ee_homunculus);
         if (isdefined(atianconfig.blackout_ee_spring_homunculus))
@@ -179,7 +179,7 @@ handle_config() {
         if (isdefined(atianconfig.blackout_blackjack) && atianconfig.blackout_blackjack) {
             // the system is checking if we're in custom game and delete the spawn
             system::ignore(#"wz_stash_blackjack");
-            setGametypeSetting(#"wzlootlockers", true);
+            setgametypesetting(#"wzlootlockers", true);
             //setGametypeSetting(#"wzenablecontrabandstash", true);
         }
         if (isdefined(atianconfig.blackout_spawn_zombies) && atianconfig.blackout_spawn_zombies)
@@ -224,7 +224,7 @@ handle_config() {
             setGametypeSetting(#"wzsnowballsenabled", true);
         }
         if (isdefined(atianconfig.blackout_spawn_waterballons) && atianconfig.blackout_spawn_waterballons) {
-            setGametypeSetting(#"hash_33d1ac5e99fb0584", true);
+            setGametypeSetting(#"wzwaterballoonsenabled", true);
         }
         if (isdefined(atianconfig.numlives) && atianconfig.numlives > 0) {
             setGametypeSetting(#"playernumlives", atianconfig.numlives);

@@ -277,3 +277,42 @@ ScrStr_ConvertToString	.text	0000000002759030	000000EE	00001038		R	.	.	.	.	.	T	.
 ScrVar_CastString	.text	000000000275C170	000000FB	00000028	00000010	R	.	.	.	.	.	T	.
 
 drop_item ]](undefined, 1, 1, item_id, self GetOrigin()); 3e52e5
+
+Fixup locations:
+
+- ambush `script_730972fad7fffcf8.csc script_5283c6fac62ed56c.gsc`
+- heavymetalheroes `script_1ce69b7b3b848fb4.csc script_3d6c077b4d554a80.gsc`
+- heavymetal `script_3cef0194bec3c4d3.csc script_19029594aa0e2e07.gsc`
+- spectrerising `script_2c787723af076323.csc script_bf1cb239d348897.gsc`
+- bigteam `script_3a52c137b9090406.csc script_5ad86d37cada2b92.gsc`
+- hardcore `script_4c228700945748f2.csc script_2835db007fa14566.gsc`
+- weaponstest `script_372d9bb5ff3b27f1.csc script_5b1947b613ef787d.gsc`
+- hash_232750b87390cbff `script_2c290bc0b594991c.csc script_5014b7c0ca48e9a8.gsc`
+- hash_3109a8794543000f `script_4a8c0c251efe117c.csc script_6e78b82533b41508.gsc`
+- hot pursuit `script_761c28389965b406.csc script_16a1d438ab36db92.gsc`
+- infection `script_23c7980e18b44cc7.csc script_47b4040e2d69e393.gsc`
+- shamrock event `script_7d8d9a7dbeb7b6a7.csc script_217a067dd36d4d73.gsc`
+- vehicles `script_7ec566c942981bbd.csc script_5e3ebac930c54131.gsc`
+- empty `script_5ba6c084b03e7a1.csc script_264018085cd50f2d.gsc`
+
+function_bbc0b67f()
+
+var_a12b4736 = &item_world_fixup::function_96ff7b88(item); level.var_ee46a98d[item] = ""
+var_87d0eef8 = &item_world_fixup::remove_item(item); level.itemreplacement[item] = ""
+
+var_d2223309 = &item_world_fixup::function_261ab7f5(item, replacement_item); level.var_ee46a98d[item] = replacement_item
+var_74257310 = &item_world_fixup::add_item_replacement(item, replacement_item); level.itemreplacement[item] = replacement_item
+
+var_b5014996 = &item_world_fixup::function_19089c75(a,b); level.var_db0e7b82[a] = b
+var_f8a4c541 = &item_world_fixup::function_6991057(a,b); level.var_ee110db8[a] = b
+
+level.var_4afb8f5a = (reset ? level.itemreplacement : level.var_ee46a98d); // -> used when spawning or getting an item
+level.var_fb9a8536 = (reset ? level.var_ee110db8 : level.var_db0e7b82); // -> map bundle
+
+eModes v9 = ZM=0, MP=1, CP=2, WZ=3
+
+
+2985
+3023 38
+
+```

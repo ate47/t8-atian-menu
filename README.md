@@ -156,6 +156,7 @@ This section is about the error codes you might have while working on GSC script
   - call of an unknown function/method
   - call of a dev function
   - too many parameters for a call
+- `1427704235` - add to struct with a non pointer/struct value
 - `2006839707` - Call of array::add using a undefined or bad array
 - `4173088841` - xpak file does not contain a valid header
 - `3126405504` - Server script error (set only host to false, open structs)

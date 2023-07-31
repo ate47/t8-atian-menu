@@ -164,6 +164,10 @@ AtianMenuConfig() {
     // enable cowards way out in last stand
     self.blackout_laststand_enable_cowards_wayout = true;
 
+    // set the death stash model
+    // value: "default", "christmas", "shamrock"
+    self.blackout_stash_model = "default";
+
     // set the invulnerability time in last stand
     //self.blackout_laststand_invulnerability_time = 0.5;
 

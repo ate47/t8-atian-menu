@@ -7,12 +7,19 @@ get_array_explorer_values() {
         create_array_explorer_value("game", game),
         create_array_explorer_value("Zombies vars", level.zombie_vars),
         create_array_explorer_value("Blackout zones", level.var_5b357434),
-        create_array_explorer_value("Zombies zones", level.zones)
+        create_array_explorer_value("Zombies zones", level.zones),
+        create_array_explorer_value("dlc weapons", self function_cf9658ca())
         // create_array_explorer_value("Structs", level.var_77fe0a41) // 3126405504
     );
 
     foreach (e in level.am_dev.array_add) {
         array::add(arr, e);
+    }
+
+    if (isdefined(level.atianconfig.devcfg.scriptbundleexpore)) {
+        foreach (e in level.atianconfig.devcfg.scriptbundleexpore) {
+            array::add(arr, create_array_explorer_value("" + e, getscriptbundle(e)));
+        }
     }
 
     return arr;

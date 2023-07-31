@@ -169,6 +169,7 @@ generate_weapon_enum() {
     weapon_data add_weapon_info("knife_loadout", "Combat Knife", "melee", false, "gamemode=mp");
     weapon_data add_weapon_info("bowie_knife", "Bowie knife", "melee", false, "gamemode=zm"); // zombies players' knife
     weapon_data add_weapon_info("melee_bowie", "Bowie knife", "melee", false, "gamemode=wz");
+    weapon_data add_weapon_info("melee_bowie_bloody", "Bowie knife (Bloody)", "melee", false, "gamemode=wz");
     weapon_data add_weapon_info("melee_club_t8", "Nifo'oti", "melee", false, "gamemode=mp,wz");
     weapon_data add_weapon_info("melee_coinbag_t8", "Cha-Ching", "melee", false, "gamemode=mp,wz");
     weapon_data add_weapon_info("melee_demohammer_t8", "Home Wrecker", "melee", false, "gamemode=mp,wz");
