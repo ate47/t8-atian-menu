@@ -16,6 +16,15 @@ is_client() {
     return true;
 }
 
+is_dev_compiler() {
+#ifdef ATIANMENU_COMPILER_OPT
+    result = compiler::areAdvancedFeaturesSupported();
+    return isdefined(result) && result;
+#else
+    return false;
+#endif
+}
+
 get_gamemode() {
     // guess which mode is loaded by the function loaded
     if (is_warzone()) {

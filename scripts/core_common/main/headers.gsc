@@ -20,6 +20,7 @@
 
 //required
 autoexec __init__system__() {
+    level.script = util::get_map_name();
 #ifdef ATIANMENU_DEVSIMPLE
     autoexec_simple();
 #else

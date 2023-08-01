@@ -1,6 +1,8 @@
 dump_load_system() {
 #ifdef ATIANMENU_DUMP_SYSTEMS
-    am_log((is_client() ? "CLIENT" : "SERVER") + "name,ignored,reqs");
+    out_file = "dump/systems/" + level.script + "_" + (is_client() ? "client" : "server") + ".csv";
+
+    compiler::fnprintln(out_file, "w", "name,ignored,reqs");
     foreach (sys_key, sys_item in level.system_funcs) {
         reqs = sys_item.reqs;
         req_str = "";
@@ -14,7 +16,7 @@ dump_load_system() {
                 }
             }
         }
-        am_log((is_client() ? "CLIENT" : "SERVER") + "SYSTEM " + hash_or_string(sys_key) + "," + sys_item.ignore + "," + req_str);
+        compiler::fnprintln(out_file, "a", hash_or_string(sys_key) + "," + (sys_item.ignore ? "true" : "false") + "," + req_str);
     }
 #endif
     return undefined;
