@@ -11,7 +11,7 @@ autoexec __init__system__() {
     init_detours();
 #endif
 #ifndef ATIANMENU_DEVSIMPLE
-	system::register("atianmenu", &__init__, undefined, undefined);
+	system::register("atianmenu", &__init__, &__post__init__, undefined);
 #endif
     handle_config();
 }
@@ -22,10 +22,13 @@ __init__() {
 #endif
 }
 
+__post__init__() {
+    dump_load_system();
+}
+
 atianmenu_testfield(localclientnum, oldval, newval, bnewent, binitialsnap, fieldname, bwastimejump) {
     level.am_test = 2;
 }
-
 handle_config() {
     if (isdefined(level.atianconfig)) {
         return; // already set

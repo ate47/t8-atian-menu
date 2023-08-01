@@ -79,6 +79,7 @@ __post__init__() {
         }
         array::add(level.atianconfig.loaded_modules_elem, sys_item);
     }
+    dump_load_system();
 }
 
 handle_config() {
@@ -133,6 +134,29 @@ handle_config() {
     } else if (is_warzone()) {
         setGametypeSetting(#"wzenablespraycans", true); // useless
         
+        if (isdefined(atianconfig.blackout_character_unlock) && atianconfig.blackout_character_unlock) {
+            cus = array(
+                // halloween
+                #"hash_6fb11b1e304d533c",
+                // character
+                #"hash_50b1121aee76a7e4",
+                // characters
+                #"hash_d084b5063bb0c55",    #"hash_4c66b817adba935c",   #"hash_2cd26947d8f311fa",
+                #"hash_75370c9c920502fc",   #"hash_26843909f5fdef20",   #"hash_52d705a46da9e55f",
+                #"hash_7cf82cc41c0f0d5",    #"hash_6b1ec01fa78af670",   #"hash_34ea44c91776e52c",
+                #"hash_4f0a6d1e98cdbf81",   #"hash_183bcc0f6737224a",   #"hash_6fe34e77ba14d86f",
+                #"hash_3d719d86f2f3f14d",   #"hash_19c58d35b2ea8d15",   #"hash_2dfb36064be05f03",
+                #"hash_4547b7ecb49469f0",   #"hash_7fc2867a4b8594bf",   #"hash_ff653cbb1438270",
+                #"hash_7049c01d7ddf9b35",   #"hash_2b0f9caa00363ee8",   #"hash_20f3ff8fbb8d8295",
+                #"hash_1d50c09e8021ab1",    #"hash_47242abeaa29479b",   #"hash_265bdda9362c5a35",
+                #"hash_2574d482086ec9d8",   #"hash_1d4c395693ce04fe",   #"hash_19667f3338ed6b1f",
+                #"hash_26186b4e5dc9bb6f",   #"hash_5ea56d63c68b4396",   #"hash_1ec2d38a40e97c55"
+            );
+            foreach (cu in cus) {
+                setGametypeSetting(cu, true);
+            }
+        }
+
         if (isdefined(atianconfig.blackout_zombies_count) && atianconfig.blackout_zombies_count > 0) {
             // spawn custom zombies
             setGametypeSetting(#"hash_14019eb043d9e43b", true);

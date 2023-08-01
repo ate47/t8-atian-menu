@@ -165,6 +165,14 @@ get_object_type(obj) {
     return "unknown";
 }
 
+hash_or_string(obj) {
+    look = hash_lookup(obj);
+    if (ishash(look)) {
+        return "hash_" + look;
+    }
+    return look;
+}
+
 am_log(str) {
     if (!isdefined(level.am_messages)) {
         level.am_messages = [];

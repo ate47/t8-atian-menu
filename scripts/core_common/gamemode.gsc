@@ -28,6 +28,10 @@ can_spawn_vehicle() {
     return isdefined(level.atianconfig.loaded_modules) && array::contains(level.atianconfig.loaded_modules, "wz_vehicle") && is_dev_mode();
 }
 
+is_client() {
+    return false;
+}
+
 get_gamemode() {
     // guess which mode is loaded by the function loaded
     if (is_warzone()) {

@@ -41,7 +41,6 @@ handle_force_map() {
             }
             // we need to wait before loading the other map
             wait(10);
-            self iPrintLn("loading " + map_force + "/" + gametype_force);
 
             thread delay_map_set(map_force, gametype_force);
             return true;

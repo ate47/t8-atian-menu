@@ -21,14 +21,16 @@ detour zm_player<scripts\zm_common\zm_player.gsc>::player_out_of_playable_area_m
 	self notify(#"stop_player_out_of_playable_area_monitor");
 }
 
-#ifdef ATIANMENU_SYSTEMS
-
+#ifdef ATIANMENU_DUMP_SYSTEMS
 detour system<scripts\core_common\system_shared.gsc>::register(str_name, func_preinit, func_postinit, reqs) {
-	if(isdefined(level.system_funcs) && isdefined(level.system_funcs[str_name])) {
-        am_log("[Server/system::register] Registering ignored/double system " + hash_lookup(str_name) + " (" + str_name + ")" + ", ignored=" + level.system_funcs[str_name].ignore);
+	if (isdefined(level.system_funcs) && isdefined(level.system_funcs[str_name])) {
+        compiler::nprintln("[Server/system::register] Registering ignored/double system " + hash_lookup(str_name) + ", ignored=" + level.system_funcs[str_name].ignore);
 		return;
 	}
-    am_log("[Server/system::register] Registering system " + hash_lookup(str_name) + " (" + str_name + ")" );
+	if (!isdefined(level.system_funcs)) {
+		level.system_funcs = [];
+	}
+	compiler::nprintln("[Server/system::register] Registering system " + hash_lookup(str_name));
 	system::register(str_name, func_preinit, func_postinit, reqs);
 }
 

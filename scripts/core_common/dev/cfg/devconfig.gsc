@@ -22,13 +22,14 @@ AtianMenuDevConfig() {
     self.devcfg.wz_bots = true;
     self.devcfg.bypassweapon_script = true;
     //self.global_max_health = 500;
-    self.force_blackout_map = "wz_open_skyscrapers";
-    self.force_blackout_gametype = "warzone_quad";
-    //self.force_blackout_map = "wz_escape";
-    //self.force_blackout_gametype = "warzone_escape_quad_dbno";
+    //self.force_blackout_map = "wz_open_skyscrapers";
+    //self.force_blackout_gametype = "warzone_quad";
+    self.force_blackout_map = "wz_escape";
+    self.force_blackout_gametype = "warzone_escape_quad_dbno";
 
     self.blackout_stash_model = "christmas";
     self.blackout_give_blackjack_keys = 2;
+    //self.blackout_character_unlock = true;
     
     self.only_host = true;
     self.zm_quaknarok = true;

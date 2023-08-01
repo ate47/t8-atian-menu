@@ -509,6 +509,7 @@ hash_3624143624604b4c,wz,bool,spawn zombies zone global
 cratecapturetime,mp,int,supply drop capture time (seconds)
 forceradar,zm|mp,int,force the radar 1=uav 2=all
 usabledynents,mp,bool,activate usable dynents
+hash_6fb11b1e304d533c,wz,bool,Activate halloween blackout event
 allowannouncer,unknown,unknown,unknown
 allowbattlechatter,unknown,unknown,unknown
 allowfinalkillcam,unknown,unknown,unknown
@@ -619,7 +620,6 @@ hash_6a2434c947c86b9b,unknown,unknown,unknown
 hash_6aba2f652c6f4e07,unknown,unknown,unknown
 hash_6cf5f53d1fbb1066,unknown,unknown,unknown
 hash_6e2abf2cc40e03f1,core,unknown,unknown
-hash_6fb11b1e304d533c,unknown,unknown,unknown
 hash_712f4c2a96bca56e,unknown,unknown,unknown
 hash_71b2b43696e16252,unknown,unknown,unknown
 hash_731988b03dc6ee17,unknown,unknown,unknown

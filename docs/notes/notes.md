@@ -8,6 +8,7 @@ wz_open_skyscrapers 2a0c04b4bcbed100
 wz_escape 4023b088683398e2
 wz_escape_alt 6c4fd4af9da9e4ca
 
+N:\bo4hash\t8-src\
 
 f0_local0.EModeData = {
 	[Enum.eModes[0x83EBA96F36BC4E5]] = {
@@ -245,7 +246,7 @@ INT16 ScriptDetours::VM_OP_ScriptMethodCallSpoofOpCode = 0x4f;
 INT16 ScriptDetours::VM_OP_ScriptThreadCallSpoofOpCode = 0x50
 
 
-, "-DATIAN_MENU_DLL", "-DDETOURS", "-DLAZYLINK", "-DATIANMENU_SYSTEMS"
+, "-DATIAN_MENU_DLL", "-DDETOURS", "-DLAZYLINK"
 
 2733174671
 
