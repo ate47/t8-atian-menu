@@ -24,7 +24,7 @@ AtianMenuDevConfig() {
     //self.global_max_health = 500;
     //self.force_blackout_map = "wz_open_skyscrapers";
     //self.force_blackout_gametype = "warzone_quad";
-    self.force_blackout_map = "wz_escape";
+    self.force_blackout_map = "wz_escape_alt";
     self.force_blackout_gametype = "warzone_escape_quad_dbno";
 
     self.blackout_stash_model = "christmas";

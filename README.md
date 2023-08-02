@@ -171,6 +171,7 @@ This section is about the error codes you might have while working on GSC script
 - `3126405504` - Server script error (set only host to false, open structs)
 - `541000416` - unknown (remove config function)
 - `5409914266` - unknown
+- `5410083603` - unknown (use openluimenu csc/frontend)
 - `5410000416` - unknown (dectop)
 - `2658987327` - Corrupt or invalid string reference
 - `2681972741` - bad clientfield for name

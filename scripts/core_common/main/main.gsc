@@ -16,6 +16,10 @@ init() {
     
     
     if (is_zombies()) {
+        foreach (player in getplayers()) {
+			player openluimenu("Hud_ZM_Timer");
+        }
+
         if (isdefined(level.atianconfig.zm_custom_zombies_health_multiplier) && level.atianconfig.zm_custom_zombies_health_multiplier >= 0) 
             set_zvar(#"zombie_health_increase_multiplier", level.atianconfig.zm_custom_zombies_health_multiplier);
         if (isdefined(level.atianconfig.zm_custom_zombies_health_add) && level.atianconfig.zm_custom_zombies_health_add >= 0) 

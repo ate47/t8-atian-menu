@@ -510,6 +510,52 @@ cratecapturetime,mp,int,supply drop capture time (seconds)
 forceradar,zm|mp,int,force the radar 1=uav 2=all
 usabledynents,mp,bool,activate usable dynents
 hash_6fb11b1e304d533c,wz,bool,Activate halloween blackout event
+zmendonquest,zm,unknown,unknown default=0
+hash_5d65c0983698a539,zm,unknown,unknown default=0
+hash_23fe21eb92ffbc2c,zm,unknown,unknown default=0
+hash_751384283abde22c,zm,unknown,unknown default=0
+zmpowerupsharing,zm,unknown,unknown default=1
+zmrandomwallbuys,zm,unknown,unknown default=0
+zmelixirsindividual,zm,unknown,unknown default=1
+zmtalismansindividual,zm,unknown,unknown default=1
+zmweaponsmelee,zm,bool,allow melee default=1
+zmequipmentchargerate,zm,int,charge rate of the equipment; 1 = default; 2=x2; 3=x0.5 default=1
+scoreEquipmentPowerTimeFactor,core,int,equipment charge factor
+zmrunnerstate,zm,unknown,unknown default=0
+zmwalkerstate,zm,unknown,unknown default=0
+zmcrawlerstate,zm,unknown,unknown default=1
+zmzombiespread,zm,unknown,unknown default=1
+zmzombieminspeed,zm,unknown,unknown default=0
+zmzombiemaxspeed,zm,unknown,unknown default=3
+zmzombiedamagemult,zm,unknown,unknown default=1
+zmzombiehealthmult,zm,unknown,unknown default=1
+zmcrawlerdamagemult,zm,unknown,unknown default=1
+zmcrawlerhealthmult,zm,unknown,unknown default=1
+zmcrawleraggro,zm,unknown,unknown default=1
+zmheavydamagemult,zm,unknown,unknown default=1
+zmheavyhealthmult,zm,unknown,unknown default=1
+zmheavyaggro,zm,unknown,unknown default=1
+zmminibossdamagemult,zm,unknown,unknown default=1
+zmminibosshealthmult,zm,unknown,unknown default=1
+zmminibossaggro,zm,unknown,unknown default=1
+zmhealthonkill,zm,int,health on kill; 0=none;1=10;2=25;3=50 default=0
+zmpointsfixed,zm,bool,point fixed default=false
+zmpointsstarting,zm,int,start points divided by 100 default=5 for 500
+hash_5566698b97a6282e,zm,unknown,unused in gsc default=0
+hash_3326ed4311c47268,zm,unknown,unknown default=0
+hash_696b8f3671d2baf1,zm,unknown,unknown default=1
+hash_3b279133f5b3371,zm,unknown,unknown default=100
+hash_12f776f6bc579bb4,zm,unknown,unknown default=0
+hash_61695e52556ff2d1,zm,unknown,unknown default=1
+hash_429b520a87274afb,zm,unknown,unknown default=0
+hash_aa498eca8149e1c,zm,unknown,unknown default=1
+hash_5261400ecb67c787,zm,unknown,unknown default=1
+zmpopcorndamagemult,zm,unknown,unknown default=1
+zmpopcornhealthmult,zm,unknown,unknown default=1
+hash_1c31b8bc2b1996ca,zm,unknown,unknown default=1
+zmenhanceddamagemult,zm,unknown,unknown default=1
+zmenhancedhealthmult,zm,unknown,unknown default=1
+hash_600fdf6bc4d21353,zm,unknown,unknown default=1
 allowannouncer,unknown,unknown,unknown
 allowbattlechatter,unknown,unknown,unknown
 allowfinalkillcam,unknown,unknown,unknown
@@ -721,3 +767,4 @@ useitemspawns,unknown,unknown,unknown
 usespawngroups,unknown,unknown,unknown
 vehiclesenabled,unknown,unknown,unknown
 vehiclestimed,unknown,unknown,unknown
+

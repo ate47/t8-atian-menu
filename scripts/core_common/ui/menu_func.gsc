@@ -202,3 +202,43 @@ func_set_quacknarok(item, init = false) {
         item.activated = set_quacknarok_activated();
     }
 }
+
+func_show_hud(item) {
+	self val::set(#"atianmenu", "show_hud", 0);
+	self val::set(#"atianmenu", "show_weapon_hud", 0);
+
+    // disable the render
+    self disableweapons();
+    self disableoffhandweapons();
+    // toggle fly mode without hint
+    self.atian.fly_mode_no_hint = true;
+    self.atian.no_force_enable_weapon = true;
+    old = self is_mod_activated("fly");
+    if (!old) {
+        self toggle_mod("fly", true);
+    }
+    // clear the screen
+    for (i = 0; i < 9; i++) {
+        self iprintln("");
+    }
+    
+    while (!self key_mgr_has_key_pressed(#"parent_page")) {
+        waitframe(1);
+    }
+    while (self key_mgr_has_key_pressed(#"parent_page")) {
+        waitframe(1);
+    }
+
+    // reverse
+    if (!old) {
+        self toggle_mod("fly", old);
+    }
+    waitframe(2); // ignore hint message
+
+    self.atian.fly_mode_no_hint = false;
+    self.atian.no_force_enable_weapon = false;
+    self enableweapons();
+    self enableoffhandweapons();
+	self val::reset(#"atianmenu", "show_hud");
+	self val::reset(#"atianmenu", "show_weapon_hud");
+}

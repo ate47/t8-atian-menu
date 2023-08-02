@@ -12,10 +12,14 @@ ANoclipBind() {
 			self.originObj = spawn("script_origin", self.origin, 1);
     		self.originObj.angles = self.angles;
 			self PlayerLinkTo(self.originObj, undefined);
-			self enableweapons();
+			if (!isdefined(self.atian.no_force_enable_weapon) || !self.atian.no_force_enable_weapon) {
+				self enableweapons();
+			}
 			while(true) {
 				if(!is_mod_activated("fly")) {
-					self iprintlnbold("^6Fly mode ^1disabled");
+					if (!isdefined(self.atian.fly_mode_no_hint) || !self.atian.fly_mode_no_hint) {
+						self iprintlnbold("^6Fly mode ^1disabled");
+					}
 					break;
 				}
 				if (isdefined(self.originObj.future_tp)) {
@@ -25,11 +29,13 @@ ANoclipBind() {
 					continue;
 				}
 				
-				nts = GetTime();
-				if (nts > ts) {
-					ts = nts + 5000; // add 2s
-					self iprintlnbold("^6Fly mode ^2enabled");
-					self iprintlnbold("^5" + (self key_mgr_get_key_str(#"fly_fast_key")) + "^6: fly, ^5" + (self key_mgr_get_key_str(#"fly_up_key")) + "^6: up, ^5" + (self key_mgr_get_key_str(#"fly_down_key")) + "^6: down");
+				if (!isdefined(self.atian.fly_mode_no_hint) || !self.atian.fly_mode_no_hint) {
+					nts = GetTime();
+					if (nts > ts) {
+						ts = nts + 5000; // add 2s
+						self iprintlnbold("^6Fly mode ^2enabled");
+						self iprintlnbold("^5" + (self key_mgr_get_key_str(#"fly_fast_key")) + "^6: fly, ^5" + (self key_mgr_get_key_str(#"fly_up_key")) + "^6: up, ^5" + (self key_mgr_get_key_str(#"fly_down_key")) + "^6: down");
+					}
 				}
 
 				if(self key_mgr_has_key_pressed(#"fly_fast_key", false)) {

@@ -12,6 +12,8 @@ init_menus() {
     }
     self add_menu_item("tool_menu", "Invulnerability", &func_invulnerability);
 
+    self add_menu_item("tool_menu", "Camera mode", &func_show_hud);
+
     if (is_zombies()) {
         self add_menu_item("tool_menu", "Ignore me", &func_zmignoreme);
         self add_menu_item_modswitch("tool_menu", "Max Points", "maxpoints");
@@ -59,7 +61,6 @@ init_menus() {
             self add_menu_item("zm_xp_multiplier", "x4", &func_set_xp_multiplier, 4);
             self add_menu_item("zm_xp_multiplier", "x8", &func_set_xp_multiplier, 8);
             self add_menu_item("zm_xp_multiplier", "x9999", &func_set_xp_multiplier, 9999);
-            
         }
     }
 

@@ -21,6 +21,14 @@
 //required
 autoexec __init__system__() {
     level.script = util::get_map_name();
+#ifdef ATIANMENU_COMPILER_OPT
+    compiler::nprintln("(Server) linking script with " + level.script);
+#endif
+
+    if (level.script == "core_frontend") {
+        frontend_exec();
+        return;
+    }
 #ifdef ATIANMENU_DEVSIMPLE
     autoexec_simple();
 #else
@@ -28,7 +36,6 @@ autoexec __init__system__() {
     init_detours();
 #endif
 	system::register("atianmenu", &__init__, &__post__init__, undefined);
-	system::register("atianmenu_wz_item", &__wz_item_init__, undefined, undefined);
     callback::add_callback(#"on_pre_initialization", &on_pre_init, undefined);
     handle_config();
     register_info_pages();
@@ -36,11 +43,15 @@ autoexec __init__system__() {
 }
 
 on_pre_init() {
-    system_add_reqs("item_world", "atianmenu_wz_item");
+    // force our system to be first
+    system_all_reqs("atianmenu");
 }
 
 //required
 __init__() {
+#ifdef ATIANMENU_COMPILER_OPT
+    compiler::nprintln("(Server) pre-init game with " + level.script);
+#endif
     atianconfig = level.atianconfig;
     generate_enum_values();
 
@@ -59,10 +70,14 @@ __init__() {
 #endif
 
 #ifdef _INJECT_CLIENT
+#ifdef ATIANMENU_TEST_CLIENTFIELD
 	clientfield::register("toplayer", "" + #"atianmenu_testfield", 99999, 1, "int");
+#endif
 #endif
     
     atianconfig.infection_mode = isdefined(getgametypesetting("infectionmode")) && getgametypesetting("infectionmode");
+
+    __wz_item_init__();
 
     callback::on_start_gametype(&init);
     callback::on_connect(&onPlayerConnect);
@@ -70,6 +85,9 @@ __init__() {
 }
 
 __post__init__() {
+#ifdef ATIANMENU_COMPILER_OPT
+    compiler::nprintln("(Server) post-init game with " + level.script);
+#endif
     level.atianconfig.loaded_modules = [];
     level.atianconfig.loaded_modules_elem = [];
     // write all the systems

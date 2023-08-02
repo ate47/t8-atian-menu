@@ -33,6 +33,10 @@ What can cause a crash:
 - Whiskey 110 Late tiger -> accessing array like a struct?
 - kilo 45 gold dove, usage of unset local var
 
+ZMHudGlobal.trials.gameState
+2876dc918cc6666,zmshowtimer
+Hud_ZM_Timer
+
 3126405504 = 0xba592980,server script error
 Baker 917 Brute Goodnight
 [6316b397dd0fa158.3647551301.54:3031] (bytecode offset)
@@ -342,5 +346,26 @@ ulong[2]* data = (ulong*)(pool + 0x80008);
 	level._custom_perks[str_perk].hint_string = str_hint_string;
 	level._custom_perks[str_perk].perk_bottle_weapon = w_perk_bottle_weapon;
 	level._custom_perks[str_perk].var_66de8d1c = var_1408cd4c;
+menus:
 
+current 0x59F1B30
+
+Black_ops_4_AE_Narative_Room_Location.png
+Black_ops_4_AE_Narative_Room.png
+Black_ops_4_AO_Narative_Room_Location.png
+Black_ops_4_AO_Narative_Room.png
+Black_ops_4_Blackout_BOTD_Narative_Room_Location.png
+Black_ops_4_Blackout_BOTD_Narative_Room.png
+Black_ops_4_BOTD_Narative_Room_Location.png
+Black_ops_4_BOTD_Narative_Room.png
+Black_ops_4_Classified_Narative_Room_Location.png
+Black_ops_4_Classified_Narative_Room.png
+Black_ops_4_IX_Narative_Room_2.png
+Black_ops_4_IX_Narative_Room_Location.png
+Black_ops_4_IX_Narative_Room.png
+Black_ops_4_VOD_Narative_Room_Location.png
+Black_ops_4_VOD_Narative_Room_Papers.png
+Black_ops_4_VOD_Narative_Room.png
+
+offset 0x59F1B08
 ```

@@ -8,6 +8,14 @@
 
 autoexec __init__system__() {
     level.script = util::get_map_name();
+#ifdef ATIANMENU_COMPILER_OPT
+    compiler::nprintln("(Client) linking script with " + level.script);
+#endif
+
+    if (level.script == "core_frontend") {
+        // frontend, I don't want to crash again
+        return;
+    }
 #ifdef ATIANMENU_DETOURS
     init_detours();
 #endif
@@ -18,12 +26,27 @@ autoexec __init__system__() {
 }
 
 __init__() {
+#ifdef ATIANMENU_COMPILER_OPT
+    compiler::nprintln("(Client) pre-init game with " + level.script);
+#endif
 #ifdef _INJECT_SERVER
+#ifdef ATIANMENU_TEST_CLIENTFIELD
 	clientfield::register("toplayer", "" + #"atianmenu_testfield", 99999, 1, "int", &atianmenu_testfield, 0, 0);
 #endif
+#endif
+    thread test();
+}
+
+test() {
+    wait 30;
+    val = GetGametypeSetting("zmcraftingkeyline");
+    iPrintLnBold("^1hello from csc" + (isdefined(val) ? val : "undefined"));
 }
 
 __post__init__() {
+#ifdef ATIANMENU_COMPILER_OPT
+    compiler::nprintln("(Client) post-init game with " + level.script);
+#endif
     dump_load_system();
 }
 

@@ -12,6 +12,19 @@ get_array_explorer_values() {
         // create_array_explorer_value("Structs", level.var_77fe0a41) // 3126405504
     );
 
+    array::add(arr, create_array_explorer_value("is_ee_enabled (set)", GetGametypeSetting(#"hash_3c5363541b97ca3e")));
+    array::add(arr, create_array_explorer_value("is_ee_enabled (val)", level.var_73d1e054));
+    array::add(arr, create_array_explorer_value("is_ee_enabled (dvar)", getdvarint(#"zm_ee_enabled", 0)));
+    array::add(arr, create_array_explorer_value("difficulty", level.gamedifficulty));
+#ifdef ATIANMENU_LAZYLINK
+    is_ee_enabled = @zm_utility<scripts\zm_common\zm_utility.gsc>::is_ee_enabled;
+
+    if (isdefined(is_ee_enabled)) {
+        array::add(arr, create_array_explorer_value("is_ee_enabled (func)", [[ is_ee_enabled ]]()));
+    } else {
+        array::add(arr, create_array_explorer_value("is_ee_enabled", "can't find function"));
+    }
+#endif
     foreach (e in level.am_dev.array_add) {
         array::add(arr, e);
     }

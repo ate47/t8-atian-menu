@@ -21,3 +21,20 @@ system_add_reqs(target, reqs) {
         }
     }
 }
+
+system_all_reqs(reqs) {
+    foreach (key, system in level.system_funcs) {
+        // avoid recursion
+        if (isarray(reqs)) {
+            if (array::contains(reqs, key)) {
+                continue;
+            }
+        } else {
+            if (reqs == key) {
+                continue;
+            }
+        }
+
+        system_add_reqs(key, reqs);
+    }
+}

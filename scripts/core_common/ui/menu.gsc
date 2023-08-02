@@ -19,14 +19,21 @@ init_menu(menu_title) {
     return true;
 }
 
-toggle_mod(mod_name) {
+toggle_mod(mod_name, value = undefined) {
     if (!isdefined(self.menu_info)) {
         return;
     }
+
     if (array::contains(self.menu_info.mods, mod_name)) {
+        if (isdefined(value) && value) {
+            return true;
+        }
 	    arrayremovevalue(self.menu_info.mods, mod_name);
         return false;
     } else {
+        if (isdefined(value) && !value) {
+            return false;
+        }
         array::add(self.menu_info.mods, mod_name);
         return true;
     }
