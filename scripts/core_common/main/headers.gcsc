@@ -1,0 +1,17 @@
+__init__system_gcsc__() {
+    level.script = util::get_map_name();
+#ifdef _SUPPORTS_BUILTINS
+    compiler::nprintln("(" + get_instance_name() + ") linking script with " + level.script);
+#endif
+    
+}
+
+__init_gcsc__() {
+#ifdef _SUPPORTS_BUILTINS
+    compiler::nprintln("(" + get_instance_name() + ") pre-init game with " + level.script);
+#endif
+}
+
+__post__init_gcsc__() {
+    dump_load_system();
+}

@@ -233,7 +233,7 @@ func_give_zm_perk(item, perk_name, modifier) {
 }
 
 give_zm_perk(perk_name, modifier = false) {
-#ifndef ATIANMENU_LAZYLINK
+#ifndef _SUPPORTS_LAZYLINK
     self iPrintLnBold("^1LAZYLINK DISABLED");
 #else
     vending_trigger_post_think = @zm_perks<scripts\zm_common\zm_perks.gsc>::vending_trigger_post_think;
@@ -295,7 +295,7 @@ func_zm_pwrp_spawn(item, powerup) {
 }
 
 zm_pwrp_spawn(powerup) {
-#ifndef ATIANMENU_LAZYLINK
+#ifndef _SUPPORTS_LAZYLINK
     self iPrintLnBold("^1LAZYLINK DISABLED");
 #else
     specific_powerup_drop = @zm_powerups<scripts\zm_common\zm_powerups.gsc>::specific_powerup_drop;

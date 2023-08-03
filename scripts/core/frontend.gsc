@@ -15,11 +15,11 @@ frontend_exec_delay() {
 
 on_player_connect_frontend() {
     // handle previous values
-#ifdef ATIANMENU_COMPILER_OPT
+#ifdef _SUPPORTS_BUILTINS
     compiler::nprintln("playerconnect " + self.name);
 #endif
     wait 10;
-#ifdef ATIANMENU_COMPILER_OPT
+#ifdef _SUPPORTS_BUILTINS
     compiler::nprintln("playerconnect next " + self.name);
 #endif
     //self closeingamemenu();

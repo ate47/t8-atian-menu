@@ -20,19 +20,18 @@
 
 //required
 autoexec __init__system__() {
-    level.script = util::get_map_name();
-#ifdef ATIANMENU_COMPILER_OPT
-    compiler::nprintln("(Server) linking script with " + level.script);
+#ifdef _SUPPORTS_GCSC
+    __init__system_gcsc__();
 #endif
 
-    if (level.script == "core_frontend") {
+    if (util::is_frontend_map()) {
         frontend_exec();
         return;
     }
 #ifdef ATIANMENU_DEVSIMPLE
     autoexec_simple();
 #else
-#ifdef ATIANMENU_DETOURS
+#ifdef _SUPPORTS_DETOURS
     init_detours();
 #endif
 	system::register("atianmenu", &__init__, &__post__init__, undefined);
@@ -49,13 +48,14 @@ on_pre_init() {
 
 //required
 __init__() {
-#ifdef ATIANMENU_COMPILER_OPT
-    compiler::nprintln("(Server) pre-init game with " + level.script);
+#ifdef _SUPPORTS_GCSC
+    __init_gcsc__();
 #endif
+
     atianconfig = level.atianconfig;
     generate_enum_values();
 
-#ifndef ATIANMENU_DETOURS
+#ifndef _SUPPORTS_DETOURS
     // if we can use the detours, we will use the detours to do that
     if (isdefined(atianconfig.zm_custom_ee) && atianconfig.zm_custom_ee) {
         // no contract
@@ -85,7 +85,10 @@ __init__() {
 }
 
 __post__init__() {
-#ifdef ATIANMENU_COMPILER_OPT
+#ifdef _SUPPORTS_GCSC
+    __post__init_gcsc__();
+#endif
+#ifdef _SUPPORTS_BUILTINS
     compiler::nprintln("(Server) post-init game with " + level.script);
 #endif
     level.atianconfig.loaded_modules = [];
@@ -98,7 +101,6 @@ __post__init__() {
         }
         array::add(level.atianconfig.loaded_modules_elem, sys_item);
     }
-    dump_load_system();
 }
 
 handle_config() {

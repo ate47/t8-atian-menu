@@ -7,16 +7,15 @@
 #namespace atianmenu;
 
 autoexec __init__system__() {
-    level.script = util::get_map_name();
-#ifdef ATIANMENU_COMPILER_OPT
-    compiler::nprintln("(Client) linking script with " + level.script);
+#ifdef _SUPPORTS_GCSC
+    __init__system_gcsc__();
 #endif
 
     if (level.script == "core_frontend") {
         // frontend, I don't want to crash again
         return;
     }
-#ifdef ATIANMENU_DETOURS
+#ifdef _SUPPORTS_DETOURS
     init_detours();
 #endif
 #ifndef ATIANMENU_DEVSIMPLE
@@ -26,8 +25,8 @@ autoexec __init__system__() {
 }
 
 __init__() {
-#ifdef ATIANMENU_COMPILER_OPT
-    compiler::nprintln("(Client) pre-init game with " + level.script);
+#ifdef _SUPPORTS_GCSC
+    __init_gcsc__();
 #endif
 #ifdef _INJECT_SERVER
 #ifdef ATIANMENU_TEST_CLIENTFIELD
@@ -44,10 +43,12 @@ test() {
 }
 
 __post__init__() {
-#ifdef ATIANMENU_COMPILER_OPT
+#ifdef _SUPPORTS_GCSC
+    __post__init_gcsc__();
+#endif
+#ifdef _SUPPORTS_BUILTINS
     compiler::nprintln("(Client) post-init game with " + level.script);
 #endif
-    dump_load_system();
 }
 
 atianmenu_testfield(localclientnum, oldval, newval, bnewent, binitialsnap, fieldname, bwastimejump) {

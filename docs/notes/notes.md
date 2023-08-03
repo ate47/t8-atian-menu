@@ -302,8 +302,8 @@ level.var_fb9a8536 = (reset ? level.var_ee110db8 : level.var_db0e7b82); // -> ma
 eModes v9 = ZM=0, MP=1, CP=2, WZ=3
 
 // 3126405504
-        "-DATIANMENU_DETOURS",
-        "-DATIANMENU_COMPILER_OPT",
+        "-D_SUPPORTS_DETOURS",
+        "-D_SUPPORTS_BUILTINS",
         "'-Cdll.builtins=true'",
         "'-Cdll.detours=true'"
 
@@ -332,8 +332,8 @@ ulong[2]* data = (ulong*)(pool + 0x80008);
 
 2985
 3023 38
-                "-DATIANMENU_DETOURS",
-                "-DATIANMENU_COMPILER_OPT",
+                "-D_SUPPORTS_DETOURS",
+                "-D_SUPPORTS_BUILTINS",
                 
                 // modifier
 	level._custom_perks[str_perk].alias = str_alias;

@@ -1,5 +1,5 @@
 func_give_zm_melee(item, melee) {
-#ifndef ATIANMENU_LAZYLINK
+#ifndef _SUPPORTS_LAZYLINK
     // fallback to default implementation
     self func_give_weapon(item, melee);
 #else

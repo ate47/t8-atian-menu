@@ -12,12 +12,16 @@ is_multiplayer() {
     return sessionmodeismultiplayergame();
 }
 
+get_instance_name() {
+    return "client";
+}
+
 is_client() {
     return true;
 }
 
 is_dev_compiler() {
-#ifdef ATIANMENU_COMPILER_OPT
+#ifdef _SUPPORTS_BUILTINS
     result = compiler::areAdvancedFeaturesSupported();
     return isdefined(result) && result;
 #else

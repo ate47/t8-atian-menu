@@ -36,7 +36,7 @@ $(($LookupFileData | Sort-Object | ForEach-Object {
         default: return hash_value;
     }
 }
-"@ | Out-File -Encoding utf8 lookup.gsc
+"@ | Out-File -Encoding utf8 lookup.gcsc
 }
 finally {
     $prevPwd | Set-Location

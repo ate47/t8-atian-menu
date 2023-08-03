@@ -11,13 +11,8 @@ hash_or_string(obj) {
     return look;
 }
 
-hash_lookup(obj) {
-    // fake lookup
-    return obj;
-}
-
 am_log(str) {
-#ifdef ATIANMENU_COMPILER_OPT
+#ifdef _SUPPORTS_BUILTINS
     compiler::nprintln(str);
 #else
     iprintlnbold(str);

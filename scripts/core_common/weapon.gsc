@@ -305,7 +305,7 @@ get_killstreak_give_func() {
 }
 
 give_killstreak(killstreak_type) {
-#ifdef ATIANMENU_LAZYLINK
+#ifdef _SUPPORTS_LAZYLINK
     func = @killstreaks<scripts\killstreaks\killstreaks_shared.gsc>::give;
 #else
     func = get_killstreak_give_func();

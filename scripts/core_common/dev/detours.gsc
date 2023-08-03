@@ -1,5 +1,5 @@
 
-#ifdef ATIANMENU_DETOURS
+#ifdef _SUPPORTS_DETOURS
 init_detours() {
     am_log("Init Atian menu (Server)");
     //compiler::nprintln(42);

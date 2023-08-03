@@ -1,6 +1,6 @@
 dump_load_system() {
 #ifdef ATIANMENU_DUMP_SYSTEMS
-    out_file = "dump/systems/" + level.script + "_" + (is_client() ? "client" : "server") + ".csv";
+    out_file = "dump/systems/" + level.script + "_" + get_instance_name() + ".csv";
 
     compiler::fnprintln(out_file, "w", "name,ignored,reqs");
     foreach (sys_key, sys_item in level.system_funcs) {

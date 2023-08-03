@@ -3,7 +3,7 @@ func_zm_zone_open_all(item) {
         self iPrintLnBold("^1Can't find zones");
         return;
     }
-#ifndef ATIANMENU_LAZYLINK
+#ifndef _SUPPORTS_LAZYLINK
     self iPrintLnBold("^1LAZYLINK DISABLED");
 #else
     enable_zone_func = @zm_zonemgr<scripts\zm_common\zm_zonemgr.gsc>::enable_zone;

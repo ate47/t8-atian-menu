@@ -28,12 +28,17 @@ can_spawn_vehicle() {
     return isdefined(level.atianconfig.loaded_modules) && array::contains(level.atianconfig.loaded_modules, "wz_vehicle") && is_dev_mode();
 }
 
+get_instance_name() {
+    return "server";
+}
+
+
 is_client() {
     return false;
 }
 
 is_dev_compiler() {
-#ifdef ATIANMENU_COMPILER_OPT
+#ifdef _SUPPORTS_BUILTINS
     result = compiler::areAdvancedFeaturesSupported();
     return isdefined(result) && result;
 #else

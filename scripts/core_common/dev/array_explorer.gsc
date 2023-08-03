@@ -16,7 +16,7 @@ get_array_explorer_values() {
     array::add(arr, create_array_explorer_value("is_ee_enabled (val)", level.var_73d1e054));
     array::add(arr, create_array_explorer_value("is_ee_enabled (dvar)", getdvarint(#"zm_ee_enabled", 0)));
     array::add(arr, create_array_explorer_value("difficulty", level.gamedifficulty));
-#ifdef ATIANMENU_LAZYLINK
+#ifdef _SUPPORTS_LAZYLINK
     is_ee_enabled = @zm_utility<scripts\zm_common\zm_utility.gsc>::is_ee_enabled;
 
     if (isdefined(is_ee_enabled)) {
@@ -69,7 +69,11 @@ func_array_explorer_ptr() {
 }
 
 is_struct_like(obj) {
-    return isdefined(obj) && (isstruct(obj) || isentity(obj) || isweapon(obj));
+    return isdefined(obj) && (isstruct(obj) || isentity(obj) || isweapon(obj) 
+#ifdef _GSC
+    || ispathnode(obj) || isvehiclenode(obj)
+#endif
+    );
 }
 
 is_valid_tpvec(obj) {

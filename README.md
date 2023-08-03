@@ -147,9 +147,9 @@ You can config the compilation using these options:
 
 - `-DATIAN_MENU_LOOKUP_BIG` : Big lookup structure in array explorer
 - `-DATIAN_MENU_DEV` : Run my dev configs
-- `-DATIANMENU_LAZYLINK` : Can use Lazylink (your compiler **SHOULD** support it)
-- `-DATIANMENU_DETOURS` : Can use Detours (your compiler **SHOULD** support it)
-- `-DATIANMENU_COMPILER_OPT` : Can use builtin compiler functions (your compiler **SHOULD** support it)
+- `-D_SUPPORTS_LAZYLINK` : Can use Lazylink (your compiler **SHOULD** support it)
+- `-D_SUPPORTS_DETOURS` : Can use Detours (your compiler **SHOULD** support it)
+- `-D_SUPPORTS_BUILTINS` : Can use builtin compiler functions (your compiler **SHOULD** support it)
 
 ### Error codes
 
@@ -173,7 +173,8 @@ This section is about the error codes you might have while working on GSC script
 - `5409914266` - unknown
 - `5410083603` - unknown (use openluimenu csc/frontend)
 - `5410000416` - unknown (dectop)
-- `2658987327` - Corrupt or invalid string reference
+- `2658987327` - Corrupt or invalid string reference, Can't allocate more string (VM_OP_GetString)
+- `3222417139` - Usage of .size outside of a string or array
 - `2681972741` - bad clientfield for name
 - `3367037665` - Cannot call SetWorldClientField on 'counter' type clientfield
 - `1609894461` - bad entity

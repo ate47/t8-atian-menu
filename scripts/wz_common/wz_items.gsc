@@ -29,7 +29,7 @@ func_give_item_test(item, item_id) {
 }
 
 give_wzitem(item_id, count = 1) {
-#ifndef ATIANMENU_LAZYLINK
+#ifndef _SUPPORTS_LAZYLINK
     self iPrintLnBold("^1LAZYLINK DISABLED");
 #else
 	get_item = &function_4ba8fde; //@wz_loadouts<scripts\wz_common\wz_loadouts.gsc>::_get_item;

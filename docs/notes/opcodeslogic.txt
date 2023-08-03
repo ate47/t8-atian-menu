@@ -1,0 +1,30 @@
+Operator: (int32 instance, function_stack_t *fs_0, ScrVmContext_t *vmc, bool *terminate)
+instance : 0 = server / 1 = client
+fs_0 + 0x00 : byte *field_0 : bytecode location
+fs_0 + 0x08 : scrvar *top : stack top
+fs_0 + 0x10 : int thread_id
+fs_0 + 0x14 : uint localvar_count
+fs_0 + 0x18 : scrvar *start_top
+vmc : idc?
+terminate: stop vm
+
+main loop: ScrVm_Execute(int inst) 27709E0
+
+Common patterns
+
+the opcode(int16) write are 2 bytes aligned, this pattern is to align the value
+
+OpCodeLoc = *(uint16*)(fs_0->field_0 + 1) & 0xFFFFFFFFFFFFFFFEui64)
+
+Reading value form the operation declaration
+
+// align the reading on 16 bits number
+int16* base = (fs_0->field_0 + 1) & 0xFFFFFFFFFFFFFFFELL)
+// align the reading on 32 bits number
+int32* base = (fs_0->field_0 + 3) & 0xFFFFFFFFFFFFFFFCLL)
+// align the reading on 64 bits number
+int64* base = (fs_0->field_0 + 7) & 0xFFFFFFFFFFFFFFF8LL)
+
+// reading from the base
+
+fs_0->field_0 = (byte*)base + X; // here X is important, it's the size of the used by the declaration

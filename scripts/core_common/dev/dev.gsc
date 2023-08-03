@@ -5,7 +5,7 @@ dev_init() {
 #ifdef _INJECT_CLIENT
     am_log("inject client");
 #endif
-#ifdef ATIANMENU_DETOURS
+#ifdef _SUPPORTS_DETOURS
     am_log("use detours");
 
     item_names = array(
@@ -44,7 +44,7 @@ dev_init() {
 
 #endif
 
-#ifdef ATIANMENU_LAZYLINK
+#ifdef _SUPPORTS_LAZYLINK
     // ee206246::5dad450c <6C5B51F98CD04FA3>
     start_func = @zm_sq<scripts\zm_common\zm_sq.gsc>::start;
     am_log("zm_sq::start: " + get_object_type(start_func));
@@ -140,14 +140,22 @@ get_object_type(obj) {
         if (isdefined(obj.name)) return "bot[" + hash_lookup(obj.name) + "]";
         return "bot";
     }
+#ifdef _GSC
     if (isplayer(obj)) {
         if (isdefined(obj.name)) return "player[" + hash_lookup(obj.name) + "]";
         return "player";
+    }
+    if (ispathnode(obj)) {
+        return "pathnode";
+    }
+    if (isvehiclenode(obj)) {
+        return "vehiclenode";
     }
     if (isentity(obj)) {
         if (isdefined(obj.archetype)) return "entity[" + hash_lookup(obj.archetype) + "]";
         return "entity";
     }
+#endif
     if (isstruct(obj)) return "struct";
     if (isvec(obj)) return "vec" + obj;
     if (isstring(obj)) return "string[" + obj + "]";
@@ -178,7 +186,7 @@ am_log(str) {
         level.am_messages = [];
     }
 
-#ifdef ATIANMENU_COMPILER_OPT
+#ifdef _SUPPORTS_BUILTINS
     compiler::nprintln(str);
 #else
     array::add(level.am_messages, str, true);
