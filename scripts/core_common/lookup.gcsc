@@ -332,7 +332,7 @@ hash_lookup(hash_value) {
         case #"grenades": return "grenades";
         case #"hackable": return "hackable";
         case #"hacker_tool": return "hacker_tool";
-        case #"hash_165d4f75a46540bb": return "hash_165d4f75a46540bb";
+        case #"elephant_rider": return "elephant_rider";
         case #"hatchet": return "hatchet";
         case #"hawk": return "hawk";
         case #"hawk_mp": return "hawk_mp";

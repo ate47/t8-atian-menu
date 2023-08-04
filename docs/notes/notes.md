@@ -9,6 +9,7 @@ wz_escape 4023b088683398e2
 wz_escape_alt 6c4fd4af9da9e4ca
 
 N:\bo4hash\t8-src\
+H:\Vuze Downloads\GSC\Default Project\
 
 f0_local0.EModeData = {
 	[Enum.eModes[0x83EBA96F36BC4E5]] = {
@@ -367,5 +368,112 @@ Black_ops_4_VOD_Narative_Room_Location.png
 Black_ops_4_VOD_Narative_Room_Papers.png
 Black_ops_4_VOD_Narative_Room.png
 
+scrVmPub_t scrVmPub // 10 shifted
+000008307aa0 0x0     void* unknown1;
+000008307aa8 0x8     void* unknown2;
+000008307ab0 0x10    void* executionQueueHeap;
+000008307ab8 0x18    void* timeByValueQueue;
+000008307ac0 0x20    void* timeByThreadQueue[1024];
+000008309ac0 0x2020  void* frameByValueQueue;
+000008309ac8 0x2028  void* frameByThreadQueue[1024];
+00000830bac8 0x4028  void* timeoutByValueList;
+00000830bad0 0x4030  void* timeoutByThreadList[1024];
+00000830dad0 0x6030  void* notifyByObjectQueue[1024];
+00000830fad0 0x8030  void* notifyByThreadQueue[1024];
+000008311ad0 0xa030  void* endonByObjectList[1024];
+000008313ad0 0xc030  void* endonByThreadList[1024];
+000008315ad0 0xe030  ScrVarIndex_t* localVars;
+000008315ad8 0xe038  ScrVarValue_t* maxstack;
+000008315ae0 0xe040  function_frame_t* function_frame;
+000008315ae8 0xe048  ScrVarValue_t* top;
+000008315af0 0xe050  function_frame_t function_frame_start[64] = 0x800 / 64 = 0x20
+0000083162f0 0xe850  ScrVarValue_t stack[2048] = [..., 7FF623C462F8 7FF623C46300 7FF623C46308 ?? ];
+00000831e2f0 0x16850 uint time;
+00000831e2f4 0x16854 uint frame;
+00000831e2f8 0x16858 int  function_count;
+00000831e2fc 0x1685C uint  inparamcount;
+00000831e300 0x16860 uint outparamcount;
+00000831e304 0x16864 bool showError;
+00000831e305 0x16866 bool systemInitialized;
+
+0000082EFCD0 objFileInfo_t gObjFileInfo[2][650];
+0000082F76B0 uint32_t gObjFileInfoCount[2];
+
+GSCOBJ
+0x00 int64 magic
+0x08 int32 crc;
+0x10 int64 name
+0x18 int32 include_offset -> uint64[]
+0x1C uint16 string_count
+0x1E uint16 exports_count
+0x2A uint16 fixup_count
+0x24 int32 string_offset -> GSC_STRINGTABLE_ITEM
+0x30 int32 export_table_offset -> GSC_EXPORT_ITEM
+0x38 int32 imports_offset -> GSC_IMPORT_ITEM
+0x40 int32 fixup_offset -> GSC_FIXUP_ITEM
+0x44 int32 globalvar_offset -> GSC_GLOBALVAR_ITEM
+
+                "'-Cdll.builtins=true'",
+GSCOBJ_export* export table = object_data + (int32)object_data[0x30]
+
+export size 
+
+uint64* includes = object_data + (int32)object_data[0x18]
+
+export flags: 
+HGFEDCBA
+- A 0x01 linked
+- B 0x02 autoexec
+- C 0x04 ukn
+- D 0x08 ukn
+- E 0x10 ukn
+- F 0x20 ukn
+- G 0x40 event
+- H 0x80 unk
+
+import flags:
+HGFEAAAA
+- AAAA 0x0F
+  - 1: function/method
+  - 2: function
+  - 3: ukn
+  - 4: ukn
+  - 5: ukn
+  - 6: ukn
+  - 7: ukn
+  - default: error linking
+- E 0x10 dev import
+- F 0x20 api import namespace "sys" or ""; need search
+- G 0x40 unk
+- H 0x80 unk
+
+0000000007D9BC10     ; SCREVENT_MAP g_ScrEventMapPoolBuffer[2][512]
+SCREVENT_MAP 0x18
+{
+  SCREVENT_MAP* next; // 0x08
+  SCREVENT_HANDLER *handler; // 0x10
+  uint32 eventName; // 0x14
+  bool gameSideRegistered; // 0x15
+  bool pad0; // 0x16
+  short pad02; // 0x18
+}
+
+strings:
+
+object_data + object_data[str.string] = ENCRYPTED_STRING
+str.type = 0x00 or error(483405794)
+
+----linking function:
+
+-------imports:
+
+foreach import -> check address and 
+
+
+fixup on linking
+
 offset 0x59F1B08
 ```
+
+
+						player function_cce105c8(#"tier_skip", 1, 1, 2, modeindex);

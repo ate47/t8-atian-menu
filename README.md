@@ -162,7 +162,7 @@ This section is about the error codes you might have while working on GSC script
 - `3021194485` - Internal Stack overflow
 - `3014377421` - Error linking script
 - `1670707254` - Error while linking the script, 
-  - call of an unknown function/method
+  - Unresolved external (call of an unknown function/method)
   - call of a dev function
   - too many parameters for a call
 - `1427704235` - add to struct with a non pointer/struct value
@@ -183,6 +183,8 @@ This section is about the error codes you might have while working on GSC script
 - `2448966512` - Error plus operation, string too long (max 8192)
 - `2873910834` - string with len < 3 with ConvertToString
 - `3042707823` - unencrypted string with ConvertToString
+- `483405794` - Unexpected string type in stringtable
+- `3654063291` - ScrEvent map is full, unable to register new event
 - `647662103` - can't be converted to const string (only string,int,float,vector)
 - `Whiskey 110 Late tiger` - accessing array like a struct (or not)
 - `kilo 45 gold dove` - usage of unset local var

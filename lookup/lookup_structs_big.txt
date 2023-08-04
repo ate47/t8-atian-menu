@@ -3105,7 +3105,7 @@ var_12af4e08
 var_12b59dee
 var_12b6c455
 var_12c9426e
-var_12e6af58
+e_ingredient
 var_12ec333b
 var_131284b6
 var_13138acf
@@ -3120,7 +3120,7 @@ var_138b37c4
 var_139ab759
 var_13a302d2
 var_13a6af33
-var_13aacf99
+e_chalk
 var_13bc407f
 var_13c55557
 var_13dd099c
@@ -3287,7 +3287,7 @@ var_1cbdb7bb
 var_1cc18005
 var_1cd9760e
 var_1ce249af
-var_1ce67448
+a_e_elevator1
 var_1cfbbe3d
 var_1cfdd45e
 var_1d02a216
@@ -3314,7 +3314,7 @@ var_1e7e5205
 var_1e7ed591
 var_1e8d9480
 var_1e8f5c4b
-var_1e9a96f7
+is_special
 var_1ea3f886
 var_1eb98fb1
 var_1eba264f
@@ -3329,7 +3329,7 @@ var_1f17f9bb
 var_1f1de1ef
 var_1f23fe79
 var_1f5e01af
-var_1f7db45b
+e_bludy
 var_1f856570
 var_1f8802c9
 var_1f9dff37
@@ -3375,7 +3375,7 @@ var_223d9df6
 var_22514848
 var_22569770
 var_22677da8
-var_22796fad
+a_e_books
 var_229f30cd
 var_22a393d4
 var_22aacd56
@@ -3451,7 +3451,7 @@ var_26a0bda1
 var_26a5066b
 var_26f25576
 var_26fb93b4
-var_270241e9
+crafting_melee
 var_2703428f
 var_2723e767
 var_2751df72
@@ -3472,7 +3472,7 @@ var_27f2245a
 var_27f4ef2f
 var_280e196b
 var_2839b015
-var_283bf712
+spawn_anchor
 var_28411f6f
 var_28433a54
 var_2843d3cc
@@ -3503,7 +3503,7 @@ var_29a8e07
 var_29aa427b
 var_29ab88df
 var_29b322f2
-var_29c7dbd6
+e_snd
 var_29e62693
 var_29e8cce2
 var_29f1fc2d
@@ -3537,7 +3537,7 @@ var_2bcd3d7c
 var_2bd4c60
 var_2be01485
 var_2beadf7
-var_2c0d31a5
+a_s_panels
 var_2c19331b
 var_2c2980d3
 var_2c5f83d
@@ -3595,7 +3595,7 @@ var_2f2478f2
 var_2f2b78fb
 var_2f3339f0
 var_2f3960f5
-var_2f3fae68
+w_freezegun_upgraded
 var_2f477020
 var_2f4d7df0
 var_2f57e2d2
@@ -3633,7 +3633,7 @@ var_30ec2c9a
 var_30ee603f
 var_31004a80
 var_31212fac
-var_31286808
+item_gravity
 var_314051a1
 var_3140c814
 var_31560d97
@@ -3721,7 +3721,7 @@ var_36473c0a
 var_369be743
 var_36a111f3
 var_36a93d1
-var_36a9f8ba
+is_global
 var_36c260a2
 var_36d3ad0b
 var_36d60c16
@@ -3829,7 +3829,7 @@ var_3d8b20c0
 var_3d984b4c
 var_3d9e751c
 var_3d9e8e0c
-var_3dac5f67
+a_e_users
 var_3dc6358c
 var_3dc92b90
 var_3dd1c71a
@@ -3913,7 +3913,7 @@ var_41437b5
 var_415347ee
 var_4154aa8f
 var_4156bf58
-var_41580343
+e_crank
 var_415fc88
 var_4182b94e
 var_41858f75
@@ -4094,7 +4094,7 @@ var_4a17c2cb
 var_4a24e8f0
 var_4a31d48a
 var_4a4174e9
-var_4a4e3bdc
+a_e_hellpools
 var_4a7b80c6
 var_4a87444e
 var_4a8b8254
@@ -4154,7 +4154,7 @@ var_4d1d25b5
 var_4d50be8e
 var_4d532f57
 var_4d6c53ca
-var_4d75e9c1
+a_s_beaker
 var_4d771f19
 var_4d7e8438
 var_4d7e8b66
@@ -4184,7 +4184,7 @@ var_4ed95eb7
 var_4ed9c192
 var_4ee2e2ab
 var_4ee74b24
-var_4eed727b
+e_stone
 var_4eee81de
 var_4f0ea1b5
 var_4f17d729
@@ -4284,7 +4284,7 @@ var_5391c404
 var_539f36cd
 var_53a02e35
 var_53b28340
-var_53b4b2f6
+e_totem
 var_53b73ccf
 var_53b8e41f
 var_53ba8670
@@ -4298,7 +4298,7 @@ var_5417136
 var_541ec669
 var_5427d523
 var_54345fd6
-var_5443c57
+e_photo
 var_544c05c6
 var_54596501
 var_54800463
@@ -4358,7 +4358,7 @@ var_57352595
 var_573d289
 var_573d960c
 var_574b5261
-var_575ef853
+dropping_item
 var_575f3097
 var_5762241e
 var_576a8cab
@@ -4371,7 +4371,7 @@ var_57badb98
 var_57c1d146
 var_57c1fd86
 var_57cc29f3
-var_57ce903d
+e_partner
 var_57e6338c
 var_57eb02e
 var_57f2374d
@@ -4413,7 +4413,7 @@ var_59cdb7b9
 var_59d3631c
 var_59f1d079
 var_59f4d3a6
-var_59f7dee9
+a_s_spotlights
 var_5a047886
 var_5a069e6
 var_5a099a2d
@@ -4504,7 +4504,7 @@ var_5f00964
 var_5f1a7000
 var_5f2726dc
 var_5f360c48
-var_5f4eaf85
+e_weeper
 var_5f531c0f
 var_5f694f04
 var_5f911d8e
@@ -4537,7 +4537,7 @@ var_613576ad
 var_61435d9
 var_61541a89
 var_6156031a
-var_6162c5a7
+n_health_on_kill
 var_61768419
 var_6189feaf
 var_6192eb0
@@ -4603,7 +4603,7 @@ var_64801233
 var_6481a9af
 var_6486fc00
 var_648b1679
-var_64c09f7f
+e_activator
 var_64e17761
 var_64eb729e
 var_64f51f65
@@ -4705,7 +4705,7 @@ var_6aa46602
 var_6ab98264
 var_6ad5a223
 var_6adb7c8f
-var_6adbdb63
+wound_disabled
 var_6af9e868
 var_6afa034c
 var_6b0fde88
@@ -4892,7 +4892,7 @@ var_7652563c
 var_765eb0c3
 var_76660b3a
 var_766deb67
-var_7671b967
+devgui_stop_move
 var_7672d70d
 var_7672fb41
 var_76859bbd
@@ -5029,7 +5029,7 @@ var_7d39ec6a
 var_7d46fb46
 var_7d4c9076
 var_7d57cb9d
-var_7d81025
+e_powerup
 var_7d8225fa
 var_7d8bf93f
 var_7d8da246
@@ -5074,7 +5074,7 @@ var_800f306a
 var_8016c0d8
 var_801efcc7
 var_8020a7f2
-var_80221a28
+e_spray
 var_80360a02
 var_803e161e
 var_805b8325
@@ -5161,7 +5161,7 @@ var_841cdb3
 var_84280a99
 var_8442091f
 var_844453ff
-var_847ab632
+custom_melee_fire
 var_848df2ac
 var_849c3bcf
 var_84b2907f
@@ -5192,7 +5192,7 @@ var_8640f511
 var_86513cd0
 var_8656a4f1
 var_865ea9f
-var_86698449
+a_s_path
 var_868c98df
 var_8691c7d4
 var_869ea5a
@@ -5230,7 +5230,7 @@ var_88aa74e
 var_88b0c4c3
 var_88b0fd29
 var_88bac0b7
-var_88bd96a9
+melee_cooldown
 var_88c7d6c3
 var_88d88318
 var_88ebd633
@@ -5252,7 +5252,7 @@ var_899f5cb
 var_89b5e1e
 var_89d523af
 var_89d8285
-var_89e9a4ce
+e_seeker
 var_89ed7b39
 var_89fda7e
 var_8a15167f
@@ -5265,7 +5265,7 @@ var_8a64ef3a
 var_8a74f7fc
 var_8a96267d
 var_8aa74ff0
-var_8ac20606
+e_vessel
 var_8ac7cc49
 var_8ad92463
 var_8aea3d8d
@@ -5343,7 +5343,7 @@ var_8ec9550d
 var_8ed0f199
 var_8edd57b6
 var_8ef176f3
-var_8efe799b
+a_s_spigots
 var_8f0c164f
 var_8f145772
 var_8f14a19
@@ -5392,7 +5392,7 @@ var_91ea09e0
 var_91f96fcd
 var_92043a49
 var_92177fec
-var_922c0c5c
+show_function
 var_9235b607
 var_923e8cb4
 var_925854c7
@@ -5470,7 +5470,7 @@ var_961fed16
 var_966835e3
 var_966bfd1b
 var_968b0184
-var_96903f72
+active_zipline
 var_969e8ac2
 var_969fe3f1
 var_96a3f4c7
@@ -5491,7 +5491,7 @@ var_975e7731
 var_9778da1
 var_97881ccb
 var_979273e3
-var_97a22974
+can_phase
 var_97a44fdd
 var_97a5d82f
 var_97c36aa4
@@ -5604,7 +5604,7 @@ var_9d9575a4
 var_9d992ed1
 var_9d9b2113
 var_9db63456
-var_9dd10753
+e_lid
 var_9de1a3d2
 var_9e09931e
 var_9e0e74ff
@@ -5642,7 +5642,7 @@ var_a05737eb
 var_a0639b8c
 var_a067b105
 var_a06c0ea0
-var_a08217e1
+shield_streaming
 var_a08be993
 var_a0a1475c
 var_a0a8631e
@@ -5749,7 +5749,7 @@ var_a70d2cfe
 var_a71296ac
 var_a7333ca8
 var_a73770b4
-var_a74b14d0
+lock_zone
 var_a768e132
 var_a776839a
 var_a7a96a2
@@ -5772,7 +5772,7 @@ var_a86b6f54
 var_a89923e8
 var_a89d0c1a
 var_a8c60b0e
-var_a8cf273e
+a_cachinas
 var_a8d3f80b
 var_a8da9faf
 var_a8f3f795
@@ -5792,7 +5792,7 @@ var_a9ae3ceb
 var_a9b2d989
 var_a9c40fde
 var_a9d9d11b
-var_aa069b5
+a_sp_catalyst
 var_aa0d72d4
 var_aa1a7f2e
 var_aa273e8b
@@ -5925,7 +5925,7 @@ var_b0cde18d
 var_b0d99f6
 var_b0df5e59
 var_b0ebbc69
-var_b0fe1e03
+e_drip
 var_b10399e
 var_b106cd7a
 var_b11272e3
@@ -6161,7 +6161,7 @@ var_c02e63
 var_c032ff64
 var_c0362ae9
 var_c047d899
-var_c0498fe5
+devgui_ignoreme
 var_c04a6a5d
 var_c060d2c8
 var_c0620ae0
@@ -6182,7 +6182,7 @@ var_c1273f91
 var_c13233ee
 var_c142c34f
 var_c145bf0d
-var_c153f587
+e_zombshell
 var_c15ad546
 var_c164e6c7
 var_c1713f0a
@@ -6328,7 +6328,7 @@ var_c9d177e8
 var_c9d375dc
 var_c9daf540
 var_c9f12812
-var_c9f26594
+s_records
 var_c9f5947d
 var_c9fce264
 var_ca015b6f
@@ -6419,7 +6419,7 @@ var_ce51262c
 var_ce53172d
 var_ce5d8e8f
 var_ce5ed2e9
-var_ce68e849
+e_wisp
 var_ce72b8cb
 var_ce83fefe
 var_ce84dde9
@@ -6471,7 +6471,7 @@ var_d187874c
 var_d1a9acf9
 var_d1b3ec4e
 var_d1c70689
-var_d1cdd613
+e_drawer
 var_d1cf60c8
 var_d1e11af4
 var_d1e98ce7
@@ -6549,7 +6549,7 @@ var_d5bd7049
 var_d5c65c5e
 var_d5cd88c2
 var_d5d1ddd5
-var_d5d631ad
+server_found
 var_d5e64932
 var_d5e9528
 var_d5ea18bf
@@ -6582,7 +6582,7 @@ var_d6f059f7
 var_d6fe2916
 var_d71fc7c
 var_d7209a5f
-var_d733e01c
+can_control
 var_d7374603
 var_d748689e
 var_d7522ea
@@ -6608,7 +6608,7 @@ var_d867b9f3
 var_d86e9c27
 var_d879215
 var_d880e556
-var_d8a093b8
+a_e_elevator
 var_d8caf335
 var_d8cb9364
 var_d8ceeba3
@@ -6676,7 +6676,7 @@ var_dc37311e
 var_dc3a898e
 var_dc60105c
 var_dc6158cc
-var_dc646e84
+s_code4
 var_dc656db3
 var_dc6fce4f
 var_dc89435f
@@ -6698,7 +6698,7 @@ var_dd761cc9
 var_dd9bd473
 var_dd9c5dbb
 var_ddcd74c6
-var_ddcda303
+a_e_barriers
 var_ddd04c77
 var_dde557d5
 var_ddf7e6bc
@@ -6718,7 +6718,7 @@ var_dee92db3
 var_def266a8
 var_def62862
 var_df0a0911
-var_df3991a
+a_mees
 var_df3d62aa
 var_df62490a
 var_df8480a0
@@ -6726,7 +6726,7 @@ var_df8c6469
 var_df9f1a00
 var_dfcc5d82
 var_dfd1a1c0
-var_e007f14b
+mdl_item
 var_e0146859
 var_e01b92bb
 var_e01bb56
@@ -6842,7 +6842,7 @@ var_e729ffb
 var_e745455
 var_e75517b1
 var_e76fb9a5
-var_e770eb55
+a_s_locations
 var_e77eadb7
 var_e7823894
 var_e7918020
@@ -6921,7 +6921,7 @@ var_eae524c4
 var_eb15d3ac
 var_eb319d10
 var_eb37cc87
-var_eb3ff149
+e_glidin
 var_eb4e4182
 var_eb58e513
 var_eb5ed779
@@ -6973,7 +6973,7 @@ var_edae191d
 var_edaf085e
 var_edbe6a7f
 var_edd0b994
-var_edd3eb35
+n_regen_delay
 var_ededa1
 var_edf07bbf
 var_ee09b3bf
@@ -6985,7 +6985,7 @@ var_ee6c4739
 var_ee6f38fb
 var_ee7ca64
 var_ee833cd6
-var_ee92bf8c
+e_shard
 var_ee9b8af0
 var_eeb66e64
 var_eeb98313
@@ -7055,7 +7055,7 @@ var_f290f0ba
 var_f2bbd457
 var_f2c84b6b
 var_f2cd3aad
-var_f2dc2287
+s_remus
 var_f2e76de4
 var_f2e7f46a
 var_f2f67d17
@@ -7134,7 +7134,7 @@ var_f7acb793
 var_f7c11d3b
 var_f7c29bc4
 var_f7c822b5
-var_f7d08898
+a_e_paintings
 var_f7d17867
 var_f7d93c4e
 var_f7e95a13
@@ -7168,7 +7168,7 @@ var_f97921ea
 var_f97a6ba3
 var_f995ece6
 var_f99e168f
-var_f9a12c59
+has_awareness
 var_f9a31f04
 var_f9a57be7
 var_f9b38410
@@ -7178,7 +7178,7 @@ var_f9c892e3
 var_f9d35f81
 var_f9d7afa3
 var_f9e5f55a
-var_f9fe0920
+a_e_canister
 var_fa22c7ec
 var_fa38e985
 var_fa3df1eb
@@ -7213,7 +7213,7 @@ var_fbcb1d5b
 var_fbe120be
 var_fbec06fa
 var_fc11268c
-var_fc14780a
+a_e_participants
 var_fc1f5422
 var_fc36786e
 var_fc40818b
@@ -7273,7 +7273,7 @@ var_ffb89532
 var_ffda9f5d
 var_ffdf490c
 var_ffe2c4d7
-var_ffeecdb6
+hide_function
 var_fffac33
 variant
 variant_type

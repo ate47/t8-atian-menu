@@ -351,7 +351,7 @@ wzenableperkparanoia,wz,bool,enable perk paranoia
 wzenableperkreinforced,wz,bool,enable perk reinforced
 wzenableperksquadlink,wz,bool,enable perk squadlink
 hash_1d02e28ba907a343,wz,bool,enable perk tracker
-hash_9fa187740ff5e40,wz,bool,enable perk stimulant (cut)
+wzenableperkstimulant,wz,bool,enable perk stimulant (cut)
 hash_78e459ad87509a46,wz,bool,enable perk skulker
 wzwetworks,wz,bool,wetwork event settings
 wzenablelasersight,wz,bool,enable laster sight

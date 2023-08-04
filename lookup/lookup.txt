@@ -318,7 +318,7 @@ gravity_spikes
 grenades
 hackable
 hacker_tool
-hash_165d4f75a46540bb
+elephant_rider
 hatchet
 hawk
 hawk_mp

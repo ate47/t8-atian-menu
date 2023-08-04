@@ -3109,7 +3109,7 @@ get_struct_explorer_values(obj) {
     elements = add_struct_explorer_value(elements, "var_12b59dee", obj.var_12b59dee);
     elements = add_struct_explorer_value(elements, "var_12b6c455", obj.var_12b6c455);
     elements = add_struct_explorer_value(elements, "var_12c9426e", obj.var_12c9426e);
-    elements = add_struct_explorer_value(elements, "var_12e6af58", obj.var_12e6af58);
+    elements = add_struct_explorer_value(elements, "e_ingredient", obj.e_ingredient);
     elements = add_struct_explorer_value(elements, "var_12ec333b", obj.var_12ec333b);
     elements = add_struct_explorer_value(elements, "var_131284b6", obj.var_131284b6);
     elements = add_struct_explorer_value(elements, "var_13138acf", obj.var_13138acf);
@@ -3124,7 +3124,7 @@ get_struct_explorer_values(obj) {
     elements = add_struct_explorer_value(elements, "var_139ab759", obj.var_139ab759);
     elements = add_struct_explorer_value(elements, "var_13a302d2", obj.var_13a302d2);
     elements = add_struct_explorer_value(elements, "var_13a6af33", obj.var_13a6af33);
-    elements = add_struct_explorer_value(elements, "var_13aacf99", obj.var_13aacf99);
+    elements = add_struct_explorer_value(elements, "e_chalk", obj.e_chalk);
     elements = add_struct_explorer_value(elements, "var_13bc407f", obj.var_13bc407f);
     elements = add_struct_explorer_value(elements, "var_13c55557", obj.var_13c55557);
     elements = add_struct_explorer_value(elements, "var_13dd099c", obj.var_13dd099c);
@@ -3291,7 +3291,7 @@ get_struct_explorer_values(obj) {
     elements = add_struct_explorer_value(elements, "var_1cc18005", obj.var_1cc18005);
     elements = add_struct_explorer_value(elements, "var_1cd9760e", obj.var_1cd9760e);
     elements = add_struct_explorer_value(elements, "var_1ce249af", obj.var_1ce249af);
-    elements = add_struct_explorer_value(elements, "var_1ce67448", obj.var_1ce67448);
+    elements = add_struct_explorer_value(elements, "a_e_elevator1", obj.a_e_elevator1);
     elements = add_struct_explorer_value(elements, "var_1cfbbe3d", obj.var_1cfbbe3d);
     elements = add_struct_explorer_value(elements, "var_1cfdd45e", obj.var_1cfdd45e);
     elements = add_struct_explorer_value(elements, "var_1d02a216", obj.var_1d02a216);
@@ -3318,7 +3318,7 @@ get_struct_explorer_values(obj) {
     elements = add_struct_explorer_value(elements, "var_1e7ed591", obj.var_1e7ed591);
     elements = add_struct_explorer_value(elements, "var_1e8d9480", obj.var_1e8d9480);
     elements = add_struct_explorer_value(elements, "var_1e8f5c4b", obj.var_1e8f5c4b);
-    elements = add_struct_explorer_value(elements, "var_1e9a96f7", obj.var_1e9a96f7);
+    elements = add_struct_explorer_value(elements, "is_special", obj.is_special);
     elements = add_struct_explorer_value(elements, "var_1ea3f886", obj.var_1ea3f886);
     elements = add_struct_explorer_value(elements, "var_1eb98fb1", obj.var_1eb98fb1);
     elements = add_struct_explorer_value(elements, "var_1eba264f", obj.var_1eba264f);
@@ -3333,7 +3333,7 @@ get_struct_explorer_values(obj) {
     elements = add_struct_explorer_value(elements, "var_1f1de1ef", obj.var_1f1de1ef);
     elements = add_struct_explorer_value(elements, "var_1f23fe79", obj.var_1f23fe79);
     elements = add_struct_explorer_value(elements, "var_1f5e01af", obj.var_1f5e01af);
-    elements = add_struct_explorer_value(elements, "var_1f7db45b", obj.var_1f7db45b);
+    elements = add_struct_explorer_value(elements, "e_bludy", obj.e_bludy);
     elements = add_struct_explorer_value(elements, "var_1f856570", obj.var_1f856570);
     elements = add_struct_explorer_value(elements, "var_1f8802c9", obj.var_1f8802c9);
     elements = add_struct_explorer_value(elements, "var_1f9dff37", obj.var_1f9dff37);
@@ -3379,7 +3379,7 @@ get_struct_explorer_values(obj) {
     elements = add_struct_explorer_value(elements, "var_22514848", obj.var_22514848);
     elements = add_struct_explorer_value(elements, "var_22569770", obj.var_22569770);
     elements = add_struct_explorer_value(elements, "var_22677da8", obj.var_22677da8);
-    elements = add_struct_explorer_value(elements, "var_22796fad", obj.var_22796fad);
+    elements = add_struct_explorer_value(elements, "a_e_books", obj.a_e_books);
     elements = add_struct_explorer_value(elements, "var_229f30cd", obj.var_229f30cd);
     elements = add_struct_explorer_value(elements, "var_22a393d4", obj.var_22a393d4);
     elements = add_struct_explorer_value(elements, "var_22aacd56", obj.var_22aacd56);
@@ -3455,7 +3455,7 @@ get_struct_explorer_values(obj) {
     elements = add_struct_explorer_value(elements, "var_26a5066b", obj.var_26a5066b);
     elements = add_struct_explorer_value(elements, "var_26f25576", obj.var_26f25576);
     elements = add_struct_explorer_value(elements, "var_26fb93b4", obj.var_26fb93b4);
-    elements = add_struct_explorer_value(elements, "var_270241e9", obj.var_270241e9);
+    elements = add_struct_explorer_value(elements, "crafting_melee", obj.crafting_melee);
     elements = add_struct_explorer_value(elements, "var_2703428f", obj.var_2703428f);
     elements = add_struct_explorer_value(elements, "var_2723e767", obj.var_2723e767);
     elements = add_struct_explorer_value(elements, "var_2751df72", obj.var_2751df72);
@@ -3476,7 +3476,7 @@ get_struct_explorer_values(obj) {
     elements = add_struct_explorer_value(elements, "var_27f4ef2f", obj.var_27f4ef2f);
     elements = add_struct_explorer_value(elements, "var_280e196b", obj.var_280e196b);
     elements = add_struct_explorer_value(elements, "var_2839b015", obj.var_2839b015);
-    elements = add_struct_explorer_value(elements, "var_283bf712", obj.var_283bf712);
+    elements = add_struct_explorer_value(elements, "spawn_anchor", obj.spawn_anchor);
     elements = add_struct_explorer_value(elements, "var_28411f6f", obj.var_28411f6f);
     elements = add_struct_explorer_value(elements, "var_28433a54", obj.var_28433a54);
     elements = add_struct_explorer_value(elements, "var_2843d3cc", obj.var_2843d3cc);
@@ -3507,7 +3507,7 @@ get_struct_explorer_values(obj) {
     elements = add_struct_explorer_value(elements, "var_29aa427b", obj.var_29aa427b);
     elements = add_struct_explorer_value(elements, "var_29ab88df", obj.var_29ab88df);
     elements = add_struct_explorer_value(elements, "var_29b322f2", obj.var_29b322f2);
-    elements = add_struct_explorer_value(elements, "var_29c7dbd6", obj.var_29c7dbd6);
+    elements = add_struct_explorer_value(elements, "e_snd", obj.e_snd);
     elements = add_struct_explorer_value(elements, "var_29e62693", obj.var_29e62693);
     elements = add_struct_explorer_value(elements, "var_29e8cce2", obj.var_29e8cce2);
     elements = add_struct_explorer_value(elements, "var_29f1fc2d", obj.var_29f1fc2d);
@@ -3541,7 +3541,7 @@ get_struct_explorer_values(obj) {
     elements = add_struct_explorer_value(elements, "var_2bd4c60", obj.var_2bd4c60);
     elements = add_struct_explorer_value(elements, "var_2be01485", obj.var_2be01485);
     elements = add_struct_explorer_value(elements, "var_2beadf7", obj.var_2beadf7);
-    elements = add_struct_explorer_value(elements, "var_2c0d31a5", obj.var_2c0d31a5);
+    elements = add_struct_explorer_value(elements, "a_s_panels", obj.a_s_panels);
     elements = add_struct_explorer_value(elements, "var_2c19331b", obj.var_2c19331b);
     elements = add_struct_explorer_value(elements, "var_2c2980d3", obj.var_2c2980d3);
     elements = add_struct_explorer_value(elements, "var_2c5f83d", obj.var_2c5f83d);
@@ -3599,7 +3599,7 @@ get_struct_explorer_values(obj) {
     elements = add_struct_explorer_value(elements, "var_2f2b78fb", obj.var_2f2b78fb);
     elements = add_struct_explorer_value(elements, "var_2f3339f0", obj.var_2f3339f0);
     elements = add_struct_explorer_value(elements, "var_2f3960f5", obj.var_2f3960f5);
-    elements = add_struct_explorer_value(elements, "var_2f3fae68", obj.var_2f3fae68);
+    elements = add_struct_explorer_value(elements, "w_freezegun_upgraded", obj.w_freezegun_upgraded);
     elements = add_struct_explorer_value(elements, "var_2f477020", obj.var_2f477020);
     elements = add_struct_explorer_value(elements, "var_2f4d7df0", obj.var_2f4d7df0);
     elements = add_struct_explorer_value(elements, "var_2f57e2d2", obj.var_2f57e2d2);
@@ -3637,7 +3637,7 @@ get_struct_explorer_values(obj) {
     elements = add_struct_explorer_value(elements, "var_30ee603f", obj.var_30ee603f);
     elements = add_struct_explorer_value(elements, "var_31004a80", obj.var_31004a80);
     elements = add_struct_explorer_value(elements, "var_31212fac", obj.var_31212fac);
-    elements = add_struct_explorer_value(elements, "var_31286808", obj.var_31286808);
+    elements = add_struct_explorer_value(elements, "item_gravity", obj.item_gravity);
     elements = add_struct_explorer_value(elements, "var_314051a1", obj.var_314051a1);
     elements = add_struct_explorer_value(elements, "var_3140c814", obj.var_3140c814);
     elements = add_struct_explorer_value(elements, "var_31560d97", obj.var_31560d97);
@@ -3725,7 +3725,7 @@ get_struct_explorer_values(obj) {
     elements = add_struct_explorer_value(elements, "var_369be743", obj.var_369be743);
     elements = add_struct_explorer_value(elements, "var_36a111f3", obj.var_36a111f3);
     elements = add_struct_explorer_value(elements, "var_36a93d1", obj.var_36a93d1);
-    elements = add_struct_explorer_value(elements, "var_36a9f8ba", obj.var_36a9f8ba);
+    elements = add_struct_explorer_value(elements, "is_global", obj.is_global);
     elements = add_struct_explorer_value(elements, "var_36c260a2", obj.var_36c260a2);
     elements = add_struct_explorer_value(elements, "var_36d3ad0b", obj.var_36d3ad0b);
     elements = add_struct_explorer_value(elements, "var_36d60c16", obj.var_36d60c16);
@@ -3833,7 +3833,7 @@ get_struct_explorer_values(obj) {
     elements = add_struct_explorer_value(elements, "var_3d984b4c", obj.var_3d984b4c);
     elements = add_struct_explorer_value(elements, "var_3d9e751c", obj.var_3d9e751c);
     elements = add_struct_explorer_value(elements, "var_3d9e8e0c", obj.var_3d9e8e0c);
-    elements = add_struct_explorer_value(elements, "var_3dac5f67", obj.var_3dac5f67);
+    elements = add_struct_explorer_value(elements, "a_e_users", obj.a_e_users);
     elements = add_struct_explorer_value(elements, "var_3dc6358c", obj.var_3dc6358c);
     elements = add_struct_explorer_value(elements, "var_3dc92b90", obj.var_3dc92b90);
     elements = add_struct_explorer_value(elements, "var_3dd1c71a", obj.var_3dd1c71a);
@@ -3917,7 +3917,7 @@ get_struct_explorer_values(obj) {
     elements = add_struct_explorer_value(elements, "var_415347ee", obj.var_415347ee);
     elements = add_struct_explorer_value(elements, "var_4154aa8f", obj.var_4154aa8f);
     elements = add_struct_explorer_value(elements, "var_4156bf58", obj.var_4156bf58);
-    elements = add_struct_explorer_value(elements, "var_41580343", obj.var_41580343);
+    elements = add_struct_explorer_value(elements, "e_crank", obj.e_crank);
     elements = add_struct_explorer_value(elements, "var_415fc88", obj.var_415fc88);
     elements = add_struct_explorer_value(elements, "var_4182b94e", obj.var_4182b94e);
     elements = add_struct_explorer_value(elements, "var_41858f75", obj.var_41858f75);
@@ -4098,7 +4098,7 @@ get_struct_explorer_values(obj) {
     elements = add_struct_explorer_value(elements, "var_4a24e8f0", obj.var_4a24e8f0);
     elements = add_struct_explorer_value(elements, "var_4a31d48a", obj.var_4a31d48a);
     elements = add_struct_explorer_value(elements, "var_4a4174e9", obj.var_4a4174e9);
-    elements = add_struct_explorer_value(elements, "var_4a4e3bdc", obj.var_4a4e3bdc);
+    elements = add_struct_explorer_value(elements, "a_e_hellpools", obj.a_e_hellpools);
     elements = add_struct_explorer_value(elements, "var_4a7b80c6", obj.var_4a7b80c6);
     elements = add_struct_explorer_value(elements, "var_4a87444e", obj.var_4a87444e);
     elements = add_struct_explorer_value(elements, "var_4a8b8254", obj.var_4a8b8254);
@@ -4158,7 +4158,7 @@ get_struct_explorer_values(obj) {
     elements = add_struct_explorer_value(elements, "var_4d50be8e", obj.var_4d50be8e);
     elements = add_struct_explorer_value(elements, "var_4d532f57", obj.var_4d532f57);
     elements = add_struct_explorer_value(elements, "var_4d6c53ca", obj.var_4d6c53ca);
-    elements = add_struct_explorer_value(elements, "var_4d75e9c1", obj.var_4d75e9c1);
+    elements = add_struct_explorer_value(elements, "a_s_beaker", obj.a_s_beaker);
     elements = add_struct_explorer_value(elements, "var_4d771f19", obj.var_4d771f19);
     elements = add_struct_explorer_value(elements, "var_4d7e8438", obj.var_4d7e8438);
     elements = add_struct_explorer_value(elements, "var_4d7e8b66", obj.var_4d7e8b66);
@@ -4188,7 +4188,7 @@ get_struct_explorer_values(obj) {
     elements = add_struct_explorer_value(elements, "var_4ed9c192", obj.var_4ed9c192);
     elements = add_struct_explorer_value(elements, "var_4ee2e2ab", obj.var_4ee2e2ab);
     elements = add_struct_explorer_value(elements, "var_4ee74b24", obj.var_4ee74b24);
-    elements = add_struct_explorer_value(elements, "var_4eed727b", obj.var_4eed727b);
+    elements = add_struct_explorer_value(elements, "e_stone", obj.e_stone);
     elements = add_struct_explorer_value(elements, "var_4eee81de", obj.var_4eee81de);
     elements = add_struct_explorer_value(elements, "var_4f0ea1b5", obj.var_4f0ea1b5);
     elements = add_struct_explorer_value(elements, "var_4f17d729", obj.var_4f17d729);
@@ -4288,7 +4288,7 @@ get_struct_explorer_values(obj) {
     elements = add_struct_explorer_value(elements, "var_539f36cd", obj.var_539f36cd);
     elements = add_struct_explorer_value(elements, "var_53a02e35", obj.var_53a02e35);
     elements = add_struct_explorer_value(elements, "var_53b28340", obj.var_53b28340);
-    elements = add_struct_explorer_value(elements, "var_53b4b2f6", obj.var_53b4b2f6);
+    elements = add_struct_explorer_value(elements, "e_totem", obj.e_totem);
     elements = add_struct_explorer_value(elements, "var_53b73ccf", obj.var_53b73ccf);
     elements = add_struct_explorer_value(elements, "var_53b8e41f", obj.var_53b8e41f);
     elements = add_struct_explorer_value(elements, "var_53ba8670", obj.var_53ba8670);
@@ -4302,7 +4302,7 @@ get_struct_explorer_values(obj) {
     elements = add_struct_explorer_value(elements, "var_541ec669", obj.var_541ec669);
     elements = add_struct_explorer_value(elements, "var_5427d523", obj.var_5427d523);
     elements = add_struct_explorer_value(elements, "var_54345fd6", obj.var_54345fd6);
-    elements = add_struct_explorer_value(elements, "var_5443c57", obj.var_5443c57);
+    elements = add_struct_explorer_value(elements, "e_photo", obj.e_photo);
     elements = add_struct_explorer_value(elements, "var_544c05c6", obj.var_544c05c6);
     elements = add_struct_explorer_value(elements, "var_54596501", obj.var_54596501);
     elements = add_struct_explorer_value(elements, "var_54800463", obj.var_54800463);
@@ -4362,7 +4362,7 @@ get_struct_explorer_values(obj) {
     elements = add_struct_explorer_value(elements, "var_573d289", obj.var_573d289);
     elements = add_struct_explorer_value(elements, "var_573d960c", obj.var_573d960c);
     elements = add_struct_explorer_value(elements, "var_574b5261", obj.var_574b5261);
-    elements = add_struct_explorer_value(elements, "var_575ef853", obj.var_575ef853);
+    elements = add_struct_explorer_value(elements, "dropping_item", obj.dropping_item);
     elements = add_struct_explorer_value(elements, "var_575f3097", obj.var_575f3097);
     elements = add_struct_explorer_value(elements, "var_5762241e", obj.var_5762241e);
     elements = add_struct_explorer_value(elements, "var_576a8cab", obj.var_576a8cab);
@@ -4375,7 +4375,7 @@ get_struct_explorer_values(obj) {
     elements = add_struct_explorer_value(elements, "var_57c1d146", obj.var_57c1d146);
     elements = add_struct_explorer_value(elements, "var_57c1fd86", obj.var_57c1fd86);
     elements = add_struct_explorer_value(elements, "var_57cc29f3", obj.var_57cc29f3);
-    elements = add_struct_explorer_value(elements, "var_57ce903d", obj.var_57ce903d);
+    elements = add_struct_explorer_value(elements, "e_partner", obj.e_partner);
     elements = add_struct_explorer_value(elements, "var_57e6338c", obj.var_57e6338c);
     elements = add_struct_explorer_value(elements, "var_57eb02e", obj.var_57eb02e);
     elements = add_struct_explorer_value(elements, "var_57f2374d", obj.var_57f2374d);
@@ -4417,7 +4417,7 @@ get_struct_explorer_values(obj) {
     elements = add_struct_explorer_value(elements, "var_59d3631c", obj.var_59d3631c);
     elements = add_struct_explorer_value(elements, "var_59f1d079", obj.var_59f1d079);
     elements = add_struct_explorer_value(elements, "var_59f4d3a6", obj.var_59f4d3a6);
-    elements = add_struct_explorer_value(elements, "var_59f7dee9", obj.var_59f7dee9);
+    elements = add_struct_explorer_value(elements, "a_s_spotlights", obj.a_s_spotlights);
     elements = add_struct_explorer_value(elements, "var_5a047886", obj.var_5a047886);
     elements = add_struct_explorer_value(elements, "var_5a069e6", obj.var_5a069e6);
     elements = add_struct_explorer_value(elements, "var_5a099a2d", obj.var_5a099a2d);
@@ -4508,7 +4508,7 @@ get_struct_explorer_values(obj) {
     elements = add_struct_explorer_value(elements, "var_5f1a7000", obj.var_5f1a7000);
     elements = add_struct_explorer_value(elements, "var_5f2726dc", obj.var_5f2726dc);
     elements = add_struct_explorer_value(elements, "var_5f360c48", obj.var_5f360c48);
-    elements = add_struct_explorer_value(elements, "var_5f4eaf85", obj.var_5f4eaf85);
+    elements = add_struct_explorer_value(elements, "e_weeper", obj.e_weeper);
     elements = add_struct_explorer_value(elements, "var_5f531c0f", obj.var_5f531c0f);
     elements = add_struct_explorer_value(elements, "var_5f694f04", obj.var_5f694f04);
     elements = add_struct_explorer_value(elements, "var_5f911d8e", obj.var_5f911d8e);
@@ -4541,7 +4541,7 @@ get_struct_explorer_values(obj) {
     elements = add_struct_explorer_value(elements, "var_61435d9", obj.var_61435d9);
     elements = add_struct_explorer_value(elements, "var_61541a89", obj.var_61541a89);
     elements = add_struct_explorer_value(elements, "var_6156031a", obj.var_6156031a);
-    elements = add_struct_explorer_value(elements, "var_6162c5a7", obj.var_6162c5a7);
+    elements = add_struct_explorer_value(elements, "n_health_on_kill", obj.n_health_on_kill);
     elements = add_struct_explorer_value(elements, "var_61768419", obj.var_61768419);
     elements = add_struct_explorer_value(elements, "var_6189feaf", obj.var_6189feaf);
     elements = add_struct_explorer_value(elements, "var_6192eb0", obj.var_6192eb0);
@@ -4607,7 +4607,7 @@ get_struct_explorer_values(obj) {
     elements = add_struct_explorer_value(elements, "var_6481a9af", obj.var_6481a9af);
     elements = add_struct_explorer_value(elements, "var_6486fc00", obj.var_6486fc00);
     elements = add_struct_explorer_value(elements, "var_648b1679", obj.var_648b1679);
-    elements = add_struct_explorer_value(elements, "var_64c09f7f", obj.var_64c09f7f);
+    elements = add_struct_explorer_value(elements, "e_activator", obj.e_activator);
     elements = add_struct_explorer_value(elements, "var_64e17761", obj.var_64e17761);
     elements = add_struct_explorer_value(elements, "var_64eb729e", obj.var_64eb729e);
     elements = add_struct_explorer_value(elements, "var_64f51f65", obj.var_64f51f65);
@@ -4709,7 +4709,7 @@ get_struct_explorer_values(obj) {
     elements = add_struct_explorer_value(elements, "var_6ab98264", obj.var_6ab98264);
     elements = add_struct_explorer_value(elements, "var_6ad5a223", obj.var_6ad5a223);
     elements = add_struct_explorer_value(elements, "var_6adb7c8f", obj.var_6adb7c8f);
-    elements = add_struct_explorer_value(elements, "var_6adbdb63", obj.var_6adbdb63);
+    elements = add_struct_explorer_value(elements, "wound_disabled", obj.wound_disabled);
     elements = add_struct_explorer_value(elements, "var_6af9e868", obj.var_6af9e868);
     elements = add_struct_explorer_value(elements, "var_6afa034c", obj.var_6afa034c);
     elements = add_struct_explorer_value(elements, "var_6b0fde88", obj.var_6b0fde88);
@@ -4896,7 +4896,7 @@ get_struct_explorer_values(obj) {
     elements = add_struct_explorer_value(elements, "var_765eb0c3", obj.var_765eb0c3);
     elements = add_struct_explorer_value(elements, "var_76660b3a", obj.var_76660b3a);
     elements = add_struct_explorer_value(elements, "var_766deb67", obj.var_766deb67);
-    elements = add_struct_explorer_value(elements, "var_7671b967", obj.var_7671b967);
+    elements = add_struct_explorer_value(elements, "devgui_stop_move", obj.devgui_stop_move);
     elements = add_struct_explorer_value(elements, "var_7672d70d", obj.var_7672d70d);
     elements = add_struct_explorer_value(elements, "var_7672fb41", obj.var_7672fb41);
     elements = add_struct_explorer_value(elements, "var_76859bbd", obj.var_76859bbd);
@@ -5033,7 +5033,7 @@ get_struct_explorer_values(obj) {
     elements = add_struct_explorer_value(elements, "var_7d46fb46", obj.var_7d46fb46);
     elements = add_struct_explorer_value(elements, "var_7d4c9076", obj.var_7d4c9076);
     elements = add_struct_explorer_value(elements, "var_7d57cb9d", obj.var_7d57cb9d);
-    elements = add_struct_explorer_value(elements, "var_7d81025", obj.var_7d81025);
+    elements = add_struct_explorer_value(elements, "e_powerup", obj.e_powerup);
     elements = add_struct_explorer_value(elements, "var_7d8225fa", obj.var_7d8225fa);
     elements = add_struct_explorer_value(elements, "var_7d8bf93f", obj.var_7d8bf93f);
     elements = add_struct_explorer_value(elements, "var_7d8da246", obj.var_7d8da246);
@@ -5078,7 +5078,7 @@ get_struct_explorer_values(obj) {
     elements = add_struct_explorer_value(elements, "var_8016c0d8", obj.var_8016c0d8);
     elements = add_struct_explorer_value(elements, "var_801efcc7", obj.var_801efcc7);
     elements = add_struct_explorer_value(elements, "var_8020a7f2", obj.var_8020a7f2);
-    elements = add_struct_explorer_value(elements, "var_80221a28", obj.var_80221a28);
+    elements = add_struct_explorer_value(elements, "e_spray", obj.e_spray);
     elements = add_struct_explorer_value(elements, "var_80360a02", obj.var_80360a02);
     elements = add_struct_explorer_value(elements, "var_803e161e", obj.var_803e161e);
     elements = add_struct_explorer_value(elements, "var_805b8325", obj.var_805b8325);
@@ -5165,7 +5165,7 @@ get_struct_explorer_values(obj) {
     elements = add_struct_explorer_value(elements, "var_84280a99", obj.var_84280a99);
     elements = add_struct_explorer_value(elements, "var_8442091f", obj.var_8442091f);
     elements = add_struct_explorer_value(elements, "var_844453ff", obj.var_844453ff);
-    elements = add_struct_explorer_value(elements, "var_847ab632", obj.var_847ab632);
+    elements = add_struct_explorer_value(elements, "custom_melee_fire", obj.custom_melee_fire);
     elements = add_struct_explorer_value(elements, "var_848df2ac", obj.var_848df2ac);
     elements = add_struct_explorer_value(elements, "var_849c3bcf", obj.var_849c3bcf);
     elements = add_struct_explorer_value(elements, "var_84b2907f", obj.var_84b2907f);
@@ -5196,7 +5196,7 @@ get_struct_explorer_values(obj) {
     elements = add_struct_explorer_value(elements, "var_86513cd0", obj.var_86513cd0);
     elements = add_struct_explorer_value(elements, "var_8656a4f1", obj.var_8656a4f1);
     elements = add_struct_explorer_value(elements, "var_865ea9f", obj.var_865ea9f);
-    elements = add_struct_explorer_value(elements, "var_86698449", obj.var_86698449);
+    elements = add_struct_explorer_value(elements, "a_s_path", obj.a_s_path);
     elements = add_struct_explorer_value(elements, "var_868c98df", obj.var_868c98df);
     elements = add_struct_explorer_value(elements, "var_8691c7d4", obj.var_8691c7d4);
     elements = add_struct_explorer_value(elements, "var_869ea5a", obj.var_869ea5a);
@@ -5234,7 +5234,7 @@ get_struct_explorer_values(obj) {
     elements = add_struct_explorer_value(elements, "var_88b0c4c3", obj.var_88b0c4c3);
     elements = add_struct_explorer_value(elements, "var_88b0fd29", obj.var_88b0fd29);
     elements = add_struct_explorer_value(elements, "var_88bac0b7", obj.var_88bac0b7);
-    elements = add_struct_explorer_value(elements, "var_88bd96a9", obj.var_88bd96a9);
+    elements = add_struct_explorer_value(elements, "melee_cooldown", obj.melee_cooldown);
     elements = add_struct_explorer_value(elements, "var_88c7d6c3", obj.var_88c7d6c3);
     elements = add_struct_explorer_value(elements, "var_88d88318", obj.var_88d88318);
     elements = add_struct_explorer_value(elements, "var_88ebd633", obj.var_88ebd633);
@@ -5256,7 +5256,7 @@ get_struct_explorer_values(obj) {
     elements = add_struct_explorer_value(elements, "var_89b5e1e", obj.var_89b5e1e);
     elements = add_struct_explorer_value(elements, "var_89d523af", obj.var_89d523af);
     elements = add_struct_explorer_value(elements, "var_89d8285", obj.var_89d8285);
-    elements = add_struct_explorer_value(elements, "var_89e9a4ce", obj.var_89e9a4ce);
+    elements = add_struct_explorer_value(elements, "e_seeker", obj.e_seeker);
     elements = add_struct_explorer_value(elements, "var_89ed7b39", obj.var_89ed7b39);
     elements = add_struct_explorer_value(elements, "var_89fda7e", obj.var_89fda7e);
     elements = add_struct_explorer_value(elements, "var_8a15167f", obj.var_8a15167f);
@@ -5269,7 +5269,7 @@ get_struct_explorer_values(obj) {
     elements = add_struct_explorer_value(elements, "var_8a74f7fc", obj.var_8a74f7fc);
     elements = add_struct_explorer_value(elements, "var_8a96267d", obj.var_8a96267d);
     elements = add_struct_explorer_value(elements, "var_8aa74ff0", obj.var_8aa74ff0);
-    elements = add_struct_explorer_value(elements, "var_8ac20606", obj.var_8ac20606);
+    elements = add_struct_explorer_value(elements, "e_vessel", obj.e_vessel);
     elements = add_struct_explorer_value(elements, "var_8ac7cc49", obj.var_8ac7cc49);
     elements = add_struct_explorer_value(elements, "var_8ad92463", obj.var_8ad92463);
     elements = add_struct_explorer_value(elements, "var_8aea3d8d", obj.var_8aea3d8d);
@@ -5347,7 +5347,7 @@ get_struct_explorer_values(obj) {
     elements = add_struct_explorer_value(elements, "var_8ed0f199", obj.var_8ed0f199);
     elements = add_struct_explorer_value(elements, "var_8edd57b6", obj.var_8edd57b6);
     elements = add_struct_explorer_value(elements, "var_8ef176f3", obj.var_8ef176f3);
-    elements = add_struct_explorer_value(elements, "var_8efe799b", obj.var_8efe799b);
+    elements = add_struct_explorer_value(elements, "a_s_spigots", obj.a_s_spigots);
     elements = add_struct_explorer_value(elements, "var_8f0c164f", obj.var_8f0c164f);
     elements = add_struct_explorer_value(elements, "var_8f145772", obj.var_8f145772);
     elements = add_struct_explorer_value(elements, "var_8f14a19", obj.var_8f14a19);
@@ -5396,7 +5396,7 @@ get_struct_explorer_values(obj) {
     elements = add_struct_explorer_value(elements, "var_91f96fcd", obj.var_91f96fcd);
     elements = add_struct_explorer_value(elements, "var_92043a49", obj.var_92043a49);
     elements = add_struct_explorer_value(elements, "var_92177fec", obj.var_92177fec);
-    elements = add_struct_explorer_value(elements, "var_922c0c5c", obj.var_922c0c5c);
+    elements = add_struct_explorer_value(elements, "show_function", obj.show_function);
     elements = add_struct_explorer_value(elements, "var_9235b607", obj.var_9235b607);
     elements = add_struct_explorer_value(elements, "var_923e8cb4", obj.var_923e8cb4);
     elements = add_struct_explorer_value(elements, "var_925854c7", obj.var_925854c7);
@@ -5474,7 +5474,7 @@ get_struct_explorer_values(obj) {
     elements = add_struct_explorer_value(elements, "var_966835e3", obj.var_966835e3);
     elements = add_struct_explorer_value(elements, "var_966bfd1b", obj.var_966bfd1b);
     elements = add_struct_explorer_value(elements, "var_968b0184", obj.var_968b0184);
-    elements = add_struct_explorer_value(elements, "var_96903f72", obj.var_96903f72);
+    elements = add_struct_explorer_value(elements, "active_zipline", obj.active_zipline);
     elements = add_struct_explorer_value(elements, "var_969e8ac2", obj.var_969e8ac2);
     elements = add_struct_explorer_value(elements, "var_969fe3f1", obj.var_969fe3f1);
     elements = add_struct_explorer_value(elements, "var_96a3f4c7", obj.var_96a3f4c7);
@@ -5495,7 +5495,7 @@ get_struct_explorer_values(obj) {
     elements = add_struct_explorer_value(elements, "var_9778da1", obj.var_9778da1);
     elements = add_struct_explorer_value(elements, "var_97881ccb", obj.var_97881ccb);
     elements = add_struct_explorer_value(elements, "var_979273e3", obj.var_979273e3);
-    elements = add_struct_explorer_value(elements, "var_97a22974", obj.var_97a22974);
+    elements = add_struct_explorer_value(elements, "can_phase", obj.can_phase);
     elements = add_struct_explorer_value(elements, "var_97a44fdd", obj.var_97a44fdd);
     elements = add_struct_explorer_value(elements, "var_97a5d82f", obj.var_97a5d82f);
     elements = add_struct_explorer_value(elements, "var_97c36aa4", obj.var_97c36aa4);
@@ -5608,7 +5608,7 @@ get_struct_explorer_values(obj) {
     elements = add_struct_explorer_value(elements, "var_9d992ed1", obj.var_9d992ed1);
     elements = add_struct_explorer_value(elements, "var_9d9b2113", obj.var_9d9b2113);
     elements = add_struct_explorer_value(elements, "var_9db63456", obj.var_9db63456);
-    elements = add_struct_explorer_value(elements, "var_9dd10753", obj.var_9dd10753);
+    elements = add_struct_explorer_value(elements, "e_lid", obj.e_lid);
     elements = add_struct_explorer_value(elements, "var_9de1a3d2", obj.var_9de1a3d2);
     elements = add_struct_explorer_value(elements, "var_9e09931e", obj.var_9e09931e);
     elements = add_struct_explorer_value(elements, "var_9e0e74ff", obj.var_9e0e74ff);
@@ -5646,7 +5646,7 @@ get_struct_explorer_values(obj) {
     elements = add_struct_explorer_value(elements, "var_a0639b8c", obj.var_a0639b8c);
     elements = add_struct_explorer_value(elements, "var_a067b105", obj.var_a067b105);
     elements = add_struct_explorer_value(elements, "var_a06c0ea0", obj.var_a06c0ea0);
-    elements = add_struct_explorer_value(elements, "var_a08217e1", obj.var_a08217e1);
+    elements = add_struct_explorer_value(elements, "shield_streaming", obj.shield_streaming);
     elements = add_struct_explorer_value(elements, "var_a08be993", obj.var_a08be993);
     elements = add_struct_explorer_value(elements, "var_a0a1475c", obj.var_a0a1475c);
     elements = add_struct_explorer_value(elements, "var_a0a8631e", obj.var_a0a8631e);
@@ -5753,7 +5753,7 @@ get_struct_explorer_values(obj) {
     elements = add_struct_explorer_value(elements, "var_a71296ac", obj.var_a71296ac);
     elements = add_struct_explorer_value(elements, "var_a7333ca8", obj.var_a7333ca8);
     elements = add_struct_explorer_value(elements, "var_a73770b4", obj.var_a73770b4);
-    elements = add_struct_explorer_value(elements, "var_a74b14d0", obj.var_a74b14d0);
+    elements = add_struct_explorer_value(elements, "lock_zone", obj.lock_zone);
     elements = add_struct_explorer_value(elements, "var_a768e132", obj.var_a768e132);
     elements = add_struct_explorer_value(elements, "var_a776839a", obj.var_a776839a);
     elements = add_struct_explorer_value(elements, "var_a7a96a2", obj.var_a7a96a2);
@@ -5776,7 +5776,7 @@ get_struct_explorer_values(obj) {
     elements = add_struct_explorer_value(elements, "var_a89923e8", obj.var_a89923e8);
     elements = add_struct_explorer_value(elements, "var_a89d0c1a", obj.var_a89d0c1a);
     elements = add_struct_explorer_value(elements, "var_a8c60b0e", obj.var_a8c60b0e);
-    elements = add_struct_explorer_value(elements, "var_a8cf273e", obj.var_a8cf273e);
+    elements = add_struct_explorer_value(elements, "a_cachinas", obj.a_cachinas);
     elements = add_struct_explorer_value(elements, "var_a8d3f80b", obj.var_a8d3f80b);
     elements = add_struct_explorer_value(elements, "var_a8da9faf", obj.var_a8da9faf);
     elements = add_struct_explorer_value(elements, "var_a8f3f795", obj.var_a8f3f795);
@@ -5796,7 +5796,7 @@ get_struct_explorer_values(obj) {
     elements = add_struct_explorer_value(elements, "var_a9b2d989", obj.var_a9b2d989);
     elements = add_struct_explorer_value(elements, "var_a9c40fde", obj.var_a9c40fde);
     elements = add_struct_explorer_value(elements, "var_a9d9d11b", obj.var_a9d9d11b);
-    elements = add_struct_explorer_value(elements, "var_aa069b5", obj.var_aa069b5);
+    elements = add_struct_explorer_value(elements, "a_sp_catalyst", obj.a_sp_catalyst);
     elements = add_struct_explorer_value(elements, "var_aa0d72d4", obj.var_aa0d72d4);
     elements = add_struct_explorer_value(elements, "var_aa1a7f2e", obj.var_aa1a7f2e);
     elements = add_struct_explorer_value(elements, "var_aa273e8b", obj.var_aa273e8b);
@@ -5929,7 +5929,7 @@ get_struct_explorer_values(obj) {
     elements = add_struct_explorer_value(elements, "var_b0d99f6", obj.var_b0d99f6);
     elements = add_struct_explorer_value(elements, "var_b0df5e59", obj.var_b0df5e59);
     elements = add_struct_explorer_value(elements, "var_b0ebbc69", obj.var_b0ebbc69);
-    elements = add_struct_explorer_value(elements, "var_b0fe1e03", obj.var_b0fe1e03);
+    elements = add_struct_explorer_value(elements, "e_drip", obj.e_drip);
     elements = add_struct_explorer_value(elements, "var_b10399e", obj.var_b10399e);
     elements = add_struct_explorer_value(elements, "var_b106cd7a", obj.var_b106cd7a);
     elements = add_struct_explorer_value(elements, "var_b11272e3", obj.var_b11272e3);
@@ -6165,7 +6165,7 @@ get_struct_explorer_values(obj) {
     elements = add_struct_explorer_value(elements, "var_c032ff64", obj.var_c032ff64);
     elements = add_struct_explorer_value(elements, "var_c0362ae9", obj.var_c0362ae9);
     elements = add_struct_explorer_value(elements, "var_c047d899", obj.var_c047d899);
-    elements = add_struct_explorer_value(elements, "var_c0498fe5", obj.var_c0498fe5);
+    elements = add_struct_explorer_value(elements, "devgui_ignoreme", obj.devgui_ignoreme);
     elements = add_struct_explorer_value(elements, "var_c04a6a5d", obj.var_c04a6a5d);
     elements = add_struct_explorer_value(elements, "var_c060d2c8", obj.var_c060d2c8);
     elements = add_struct_explorer_value(elements, "var_c0620ae0", obj.var_c0620ae0);
@@ -6186,7 +6186,7 @@ get_struct_explorer_values(obj) {
     elements = add_struct_explorer_value(elements, "var_c13233ee", obj.var_c13233ee);
     elements = add_struct_explorer_value(elements, "var_c142c34f", obj.var_c142c34f);
     elements = add_struct_explorer_value(elements, "var_c145bf0d", obj.var_c145bf0d);
-    elements = add_struct_explorer_value(elements, "var_c153f587", obj.var_c153f587);
+    elements = add_struct_explorer_value(elements, "e_zombshell", obj.e_zombshell);
     elements = add_struct_explorer_value(elements, "var_c15ad546", obj.var_c15ad546);
     elements = add_struct_explorer_value(elements, "var_c164e6c7", obj.var_c164e6c7);
     elements = add_struct_explorer_value(elements, "var_c1713f0a", obj.var_c1713f0a);
@@ -6332,7 +6332,7 @@ get_struct_explorer_values(obj) {
     elements = add_struct_explorer_value(elements, "var_c9d375dc", obj.var_c9d375dc);
     elements = add_struct_explorer_value(elements, "var_c9daf540", obj.var_c9daf540);
     elements = add_struct_explorer_value(elements, "var_c9f12812", obj.var_c9f12812);
-    elements = add_struct_explorer_value(elements, "var_c9f26594", obj.var_c9f26594);
+    elements = add_struct_explorer_value(elements, "s_records", obj.s_records);
     elements = add_struct_explorer_value(elements, "var_c9f5947d", obj.var_c9f5947d);
     elements = add_struct_explorer_value(elements, "var_c9fce264", obj.var_c9fce264);
     elements = add_struct_explorer_value(elements, "var_ca015b6f", obj.var_ca015b6f);
@@ -6423,7 +6423,7 @@ get_struct_explorer_values(obj) {
     elements = add_struct_explorer_value(elements, "var_ce53172d", obj.var_ce53172d);
     elements = add_struct_explorer_value(elements, "var_ce5d8e8f", obj.var_ce5d8e8f);
     elements = add_struct_explorer_value(elements, "var_ce5ed2e9", obj.var_ce5ed2e9);
-    elements = add_struct_explorer_value(elements, "var_ce68e849", obj.var_ce68e849);
+    elements = add_struct_explorer_value(elements, "e_wisp", obj.e_wisp);
     elements = add_struct_explorer_value(elements, "var_ce72b8cb", obj.var_ce72b8cb);
     elements = add_struct_explorer_value(elements, "var_ce83fefe", obj.var_ce83fefe);
     elements = add_struct_explorer_value(elements, "var_ce84dde9", obj.var_ce84dde9);
@@ -6475,7 +6475,7 @@ get_struct_explorer_values(obj) {
     elements = add_struct_explorer_value(elements, "var_d1a9acf9", obj.var_d1a9acf9);
     elements = add_struct_explorer_value(elements, "var_d1b3ec4e", obj.var_d1b3ec4e);
     elements = add_struct_explorer_value(elements, "var_d1c70689", obj.var_d1c70689);
-    elements = add_struct_explorer_value(elements, "var_d1cdd613", obj.var_d1cdd613);
+    elements = add_struct_explorer_value(elements, "e_drawer", obj.e_drawer);
     elements = add_struct_explorer_value(elements, "var_d1cf60c8", obj.var_d1cf60c8);
     elements = add_struct_explorer_value(elements, "var_d1e11af4", obj.var_d1e11af4);
     elements = add_struct_explorer_value(elements, "var_d1e98ce7", obj.var_d1e98ce7);
@@ -6553,7 +6553,7 @@ get_struct_explorer_values(obj) {
     elements = add_struct_explorer_value(elements, "var_d5c65c5e", obj.var_d5c65c5e);
     elements = add_struct_explorer_value(elements, "var_d5cd88c2", obj.var_d5cd88c2);
     elements = add_struct_explorer_value(elements, "var_d5d1ddd5", obj.var_d5d1ddd5);
-    elements = add_struct_explorer_value(elements, "var_d5d631ad", obj.var_d5d631ad);
+    elements = add_struct_explorer_value(elements, "server_found", obj.server_found);
     elements = add_struct_explorer_value(elements, "var_d5e64932", obj.var_d5e64932);
     elements = add_struct_explorer_value(elements, "var_d5e9528", obj.var_d5e9528);
     elements = add_struct_explorer_value(elements, "var_d5ea18bf", obj.var_d5ea18bf);
@@ -6586,7 +6586,7 @@ get_struct_explorer_values(obj) {
     elements = add_struct_explorer_value(elements, "var_d6fe2916", obj.var_d6fe2916);
     elements = add_struct_explorer_value(elements, "var_d71fc7c", obj.var_d71fc7c);
     elements = add_struct_explorer_value(elements, "var_d7209a5f", obj.var_d7209a5f);
-    elements = add_struct_explorer_value(elements, "var_d733e01c", obj.var_d733e01c);
+    elements = add_struct_explorer_value(elements, "can_control", obj.can_control);
     elements = add_struct_explorer_value(elements, "var_d7374603", obj.var_d7374603);
     elements = add_struct_explorer_value(elements, "var_d748689e", obj.var_d748689e);
     elements = add_struct_explorer_value(elements, "var_d7522ea", obj.var_d7522ea);
@@ -6612,7 +6612,7 @@ get_struct_explorer_values(obj) {
     elements = add_struct_explorer_value(elements, "var_d86e9c27", obj.var_d86e9c27);
     elements = add_struct_explorer_value(elements, "var_d879215", obj.var_d879215);
     elements = add_struct_explorer_value(elements, "var_d880e556", obj.var_d880e556);
-    elements = add_struct_explorer_value(elements, "var_d8a093b8", obj.var_d8a093b8);
+    elements = add_struct_explorer_value(elements, "a_e_elevator", obj.a_e_elevator);
     elements = add_struct_explorer_value(elements, "var_d8caf335", obj.var_d8caf335);
     elements = add_struct_explorer_value(elements, "var_d8cb9364", obj.var_d8cb9364);
     elements = add_struct_explorer_value(elements, "var_d8ceeba3", obj.var_d8ceeba3);
@@ -6680,7 +6680,7 @@ get_struct_explorer_values(obj) {
     elements = add_struct_explorer_value(elements, "var_dc3a898e", obj.var_dc3a898e);
     elements = add_struct_explorer_value(elements, "var_dc60105c", obj.var_dc60105c);
     elements = add_struct_explorer_value(elements, "var_dc6158cc", obj.var_dc6158cc);
-    elements = add_struct_explorer_value(elements, "var_dc646e84", obj.var_dc646e84);
+    elements = add_struct_explorer_value(elements, "s_code4", obj.s_code4);
     elements = add_struct_explorer_value(elements, "var_dc656db3", obj.var_dc656db3);
     elements = add_struct_explorer_value(elements, "var_dc6fce4f", obj.var_dc6fce4f);
     elements = add_struct_explorer_value(elements, "var_dc89435f", obj.var_dc89435f);
@@ -6702,7 +6702,7 @@ get_struct_explorer_values(obj) {
     elements = add_struct_explorer_value(elements, "var_dd9bd473", obj.var_dd9bd473);
     elements = add_struct_explorer_value(elements, "var_dd9c5dbb", obj.var_dd9c5dbb);
     elements = add_struct_explorer_value(elements, "var_ddcd74c6", obj.var_ddcd74c6);
-    elements = add_struct_explorer_value(elements, "var_ddcda303", obj.var_ddcda303);
+    elements = add_struct_explorer_value(elements, "a_e_barriers", obj.a_e_barriers);
     elements = add_struct_explorer_value(elements, "var_ddd04c77", obj.var_ddd04c77);
     elements = add_struct_explorer_value(elements, "var_dde557d5", obj.var_dde557d5);
     elements = add_struct_explorer_value(elements, "var_ddf7e6bc", obj.var_ddf7e6bc);
@@ -6722,7 +6722,7 @@ get_struct_explorer_values(obj) {
     elements = add_struct_explorer_value(elements, "var_def266a8", obj.var_def266a8);
     elements = add_struct_explorer_value(elements, "var_def62862", obj.var_def62862);
     elements = add_struct_explorer_value(elements, "var_df0a0911", obj.var_df0a0911);
-    elements = add_struct_explorer_value(elements, "var_df3991a", obj.var_df3991a);
+    elements = add_struct_explorer_value(elements, "a_mees", obj.a_mees);
     elements = add_struct_explorer_value(elements, "var_df3d62aa", obj.var_df3d62aa);
     elements = add_struct_explorer_value(elements, "var_df62490a", obj.var_df62490a);
     elements = add_struct_explorer_value(elements, "var_df8480a0", obj.var_df8480a0);
@@ -6730,7 +6730,7 @@ get_struct_explorer_values(obj) {
     elements = add_struct_explorer_value(elements, "var_df9f1a00", obj.var_df9f1a00);
     elements = add_struct_explorer_value(elements, "var_dfcc5d82", obj.var_dfcc5d82);
     elements = add_struct_explorer_value(elements, "var_dfd1a1c0", obj.var_dfd1a1c0);
-    elements = add_struct_explorer_value(elements, "var_e007f14b", obj.var_e007f14b);
+    elements = add_struct_explorer_value(elements, "mdl_item", obj.mdl_item);
     elements = add_struct_explorer_value(elements, "var_e0146859", obj.var_e0146859);
     elements = add_struct_explorer_value(elements, "var_e01b92bb", obj.var_e01b92bb);
     elements = add_struct_explorer_value(elements, "var_e01bb56", obj.var_e01bb56);
@@ -6846,7 +6846,7 @@ get_struct_explorer_values(obj) {
     elements = add_struct_explorer_value(elements, "var_e745455", obj.var_e745455);
     elements = add_struct_explorer_value(elements, "var_e75517b1", obj.var_e75517b1);
     elements = add_struct_explorer_value(elements, "var_e76fb9a5", obj.var_e76fb9a5);
-    elements = add_struct_explorer_value(elements, "var_e770eb55", obj.var_e770eb55);
+    elements = add_struct_explorer_value(elements, "a_s_locations", obj.a_s_locations);
     elements = add_struct_explorer_value(elements, "var_e77eadb7", obj.var_e77eadb7);
     elements = add_struct_explorer_value(elements, "var_e7823894", obj.var_e7823894);
     elements = add_struct_explorer_value(elements, "var_e7918020", obj.var_e7918020);
@@ -6925,7 +6925,7 @@ get_struct_explorer_values(obj) {
     elements = add_struct_explorer_value(elements, "var_eb15d3ac", obj.var_eb15d3ac);
     elements = add_struct_explorer_value(elements, "var_eb319d10", obj.var_eb319d10);
     elements = add_struct_explorer_value(elements, "var_eb37cc87", obj.var_eb37cc87);
-    elements = add_struct_explorer_value(elements, "var_eb3ff149", obj.var_eb3ff149);
+    elements = add_struct_explorer_value(elements, "e_glidin", obj.e_glidin);
     elements = add_struct_explorer_value(elements, "var_eb4e4182", obj.var_eb4e4182);
     elements = add_struct_explorer_value(elements, "var_eb58e513", obj.var_eb58e513);
     elements = add_struct_explorer_value(elements, "var_eb5ed779", obj.var_eb5ed779);
@@ -6977,7 +6977,7 @@ get_struct_explorer_values(obj) {
     elements = add_struct_explorer_value(elements, "var_edaf085e", obj.var_edaf085e);
     elements = add_struct_explorer_value(elements, "var_edbe6a7f", obj.var_edbe6a7f);
     elements = add_struct_explorer_value(elements, "var_edd0b994", obj.var_edd0b994);
-    elements = add_struct_explorer_value(elements, "var_edd3eb35", obj.var_edd3eb35);
+    elements = add_struct_explorer_value(elements, "n_regen_delay", obj.n_regen_delay);
     elements = add_struct_explorer_value(elements, "var_ededa1", obj.var_ededa1);
     elements = add_struct_explorer_value(elements, "var_edf07bbf", obj.var_edf07bbf);
     elements = add_struct_explorer_value(elements, "var_ee09b3bf", obj.var_ee09b3bf);
@@ -6989,7 +6989,7 @@ get_struct_explorer_values(obj) {
     elements = add_struct_explorer_value(elements, "var_ee6f38fb", obj.var_ee6f38fb);
     elements = add_struct_explorer_value(elements, "var_ee7ca64", obj.var_ee7ca64);
     elements = add_struct_explorer_value(elements, "var_ee833cd6", obj.var_ee833cd6);
-    elements = add_struct_explorer_value(elements, "var_ee92bf8c", obj.var_ee92bf8c);
+    elements = add_struct_explorer_value(elements, "e_shard", obj.e_shard);
     elements = add_struct_explorer_value(elements, "var_ee9b8af0", obj.var_ee9b8af0);
     elements = add_struct_explorer_value(elements, "var_eeb66e64", obj.var_eeb66e64);
     elements = add_struct_explorer_value(elements, "var_eeb98313", obj.var_eeb98313);
@@ -7059,7 +7059,7 @@ get_struct_explorer_values(obj) {
     elements = add_struct_explorer_value(elements, "var_f2bbd457", obj.var_f2bbd457);
     elements = add_struct_explorer_value(elements, "var_f2c84b6b", obj.var_f2c84b6b);
     elements = add_struct_explorer_value(elements, "var_f2cd3aad", obj.var_f2cd3aad);
-    elements = add_struct_explorer_value(elements, "var_f2dc2287", obj.var_f2dc2287);
+    elements = add_struct_explorer_value(elements, "s_remus", obj.s_remus);
     elements = add_struct_explorer_value(elements, "var_f2e76de4", obj.var_f2e76de4);
     elements = add_struct_explorer_value(elements, "var_f2e7f46a", obj.var_f2e7f46a);
     elements = add_struct_explorer_value(elements, "var_f2f67d17", obj.var_f2f67d17);
@@ -7138,7 +7138,7 @@ get_struct_explorer_values(obj) {
     elements = add_struct_explorer_value(elements, "var_f7c11d3b", obj.var_f7c11d3b);
     elements = add_struct_explorer_value(elements, "var_f7c29bc4", obj.var_f7c29bc4);
     elements = add_struct_explorer_value(elements, "var_f7c822b5", obj.var_f7c822b5);
-    elements = add_struct_explorer_value(elements, "var_f7d08898", obj.var_f7d08898);
+    elements = add_struct_explorer_value(elements, "a_e_paintings", obj.a_e_paintings);
     elements = add_struct_explorer_value(elements, "var_f7d17867", obj.var_f7d17867);
     elements = add_struct_explorer_value(elements, "var_f7d93c4e", obj.var_f7d93c4e);
     elements = add_struct_explorer_value(elements, "var_f7e95a13", obj.var_f7e95a13);
@@ -7172,7 +7172,7 @@ get_struct_explorer_values(obj) {
     elements = add_struct_explorer_value(elements, "var_f97a6ba3", obj.var_f97a6ba3);
     elements = add_struct_explorer_value(elements, "var_f995ece6", obj.var_f995ece6);
     elements = add_struct_explorer_value(elements, "var_f99e168f", obj.var_f99e168f);
-    elements = add_struct_explorer_value(elements, "var_f9a12c59", obj.var_f9a12c59);
+    elements = add_struct_explorer_value(elements, "has_awareness", obj.has_awareness);
     elements = add_struct_explorer_value(elements, "var_f9a31f04", obj.var_f9a31f04);
     elements = add_struct_explorer_value(elements, "var_f9a57be7", obj.var_f9a57be7);
     elements = add_struct_explorer_value(elements, "var_f9b38410", obj.var_f9b38410);
@@ -7182,7 +7182,7 @@ get_struct_explorer_values(obj) {
     elements = add_struct_explorer_value(elements, "var_f9d35f81", obj.var_f9d35f81);
     elements = add_struct_explorer_value(elements, "var_f9d7afa3", obj.var_f9d7afa3);
     elements = add_struct_explorer_value(elements, "var_f9e5f55a", obj.var_f9e5f55a);
-    elements = add_struct_explorer_value(elements, "var_f9fe0920", obj.var_f9fe0920);
+    elements = add_struct_explorer_value(elements, "a_e_canister", obj.a_e_canister);
     elements = add_struct_explorer_value(elements, "var_fa22c7ec", obj.var_fa22c7ec);
     elements = add_struct_explorer_value(elements, "var_fa38e985", obj.var_fa38e985);
     elements = add_struct_explorer_value(elements, "var_fa3df1eb", obj.var_fa3df1eb);
@@ -7217,7 +7217,7 @@ get_struct_explorer_values(obj) {
     elements = add_struct_explorer_value(elements, "var_fbe120be", obj.var_fbe120be);
     elements = add_struct_explorer_value(elements, "var_fbec06fa", obj.var_fbec06fa);
     elements = add_struct_explorer_value(elements, "var_fc11268c", obj.var_fc11268c);
-    elements = add_struct_explorer_value(elements, "var_fc14780a", obj.var_fc14780a);
+    elements = add_struct_explorer_value(elements, "a_e_participants", obj.a_e_participants);
     elements = add_struct_explorer_value(elements, "var_fc1f5422", obj.var_fc1f5422);
     elements = add_struct_explorer_value(elements, "var_fc36786e", obj.var_fc36786e);
     elements = add_struct_explorer_value(elements, "var_fc40818b", obj.var_fc40818b);
@@ -7277,7 +7277,7 @@ get_struct_explorer_values(obj) {
     elements = add_struct_explorer_value(elements, "var_ffda9f5d", obj.var_ffda9f5d);
     elements = add_struct_explorer_value(elements, "var_ffdf490c", obj.var_ffdf490c);
     elements = add_struct_explorer_value(elements, "var_ffe2c4d7", obj.var_ffe2c4d7);
-    elements = add_struct_explorer_value(elements, "var_ffeecdb6", obj.var_ffeecdb6);
+    elements = add_struct_explorer_value(elements, "hide_function", obj.hide_function);
     elements = add_struct_explorer_value(elements, "var_fffac33", obj.var_fffac33);
     elements = add_struct_explorer_value(elements, "variant", obj.variant);
     elements = add_struct_explorer_value(elements, "variant_type", obj.variant_type);
@@ -7715,7 +7715,7 @@ get_struct_explorer_values(obj) {
     elements = add_struct_explorer_value(elements, "var_2209cb79", obj.var_2209cb79);
     elements = add_struct_explorer_value(elements, "var_2b466bb0", obj.var_2b466bb0);
     elements = add_struct_explorer_value(elements, "var_336d2f53", obj.var_336d2f53);
-    elements = add_struct_explorer_value(elements, "var_36a9f8ba", obj.var_36a9f8ba);
+    elements = add_struct_explorer_value(elements, "is_global", obj.is_global);
     elements = add_struct_explorer_value(elements, "var_41e86d33", obj.var_41e86d33);
     elements = add_struct_explorer_value(elements, "var_53644a82", obj.var_53644a82);
     elements = add_struct_explorer_value(elements, "var_58ba2ab7", obj.var_58ba2ab7);

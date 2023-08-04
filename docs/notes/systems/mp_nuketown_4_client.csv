@@ -58,7 +58,7 @@ ambient,false,
 global_fx,false,
 multi_extracam,false,
 rotating_object,false,
-hash_6803a03f8581335c,false,
+classicmode,false,
 blood,false,
 infection,false,
 globallogic_actor,false,
@@ -75,7 +75,7 @@ gadget_health_regen,false,
 gadget_icepick,false,
 gadget_jammer,false,
 gadget_radiation_field,false,
-hash_1c163cd2be5a27f8,false,
+shroud,false,
 dart,false,killstreaks
 gadget_smart_cover,false,
 supplypod,false,killstreaks
@@ -83,14 +83,14 @@ gadget_tripwire,false,
 gadget_vision_pulse,false,
 counteruav,false,killstreaks
 ac130,false,killstreaks
-hash_1e534a864e77c682,false,killstreaks
+killstreak_dog,false,killstreaks
 planemortar,false,killstreaks
 recon_car,false,killstreaks
 remotemissile,false,killstreaks
 supplydrop,false,killstreaks
 seeker_mine_mp,false,
 swat_team,false,killstreaks
-hash_238a199edd3ea220,false,killstreaks
+ai_tank,false,killstreaks
 sensor_dart,false,
 ultimate_turret,false,killstreaks
 tracker,false,

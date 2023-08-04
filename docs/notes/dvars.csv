@@ -176,7 +176,7 @@ dwfilefetchtrymaxattempts,INT
 hash_47850567865df03d,FLOAT
 hash_87850c4c80de83d,FLOAT_3
 hash_900627dfe4ebc3e,INT
-hash_74323bf8006c003f,STRING
+zm_active_event_calling,STRING
 hash_6ace0ce0720e5c3f,BOOL
 hash_365ba1922372483f,BOOL
 hash_6877d897496bc40,INT
