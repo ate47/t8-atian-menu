@@ -16,6 +16,11 @@ AtianMenuDevConfig() {
     if (!isdefined(self.preloaded_menus)) {
         self.preloaded_menus = [];
     }
+    self.preloaded_menus = array(
+        "tool_menu::Ammos",
+        "tool_menu::Invulnerability",
+        "tool_menu::End contracts"
+    );
     array::add(self.preloaded_menus, "tool_menu::Ignore me");
 
     self.mp_drafttime = 2;

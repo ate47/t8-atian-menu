@@ -30,13 +30,14 @@ Using the sources: https://github.com/ate47/t8-src
 
 ## Posts
 
-Posts or videos I've made using these scripts or the sources:
+Posts or videos I've made using these scripts, notes or the sources:
 
-- [Reddit - Camo we can't buy anymore](https://www.reddit.com/r/Blackops4/comments/10y963t/if_someone_wants_to_see_the_camos_we_cant_buy/)
 - [Reddit - Stats for the care packages](https://www.reddit.com/r/Blackops4/comments/nhonhu/if_you_had_ever_wondered_the_probabilities_in_the/)
 - [Blackout Quaknarok](https://www.youtube.com/watch?v=XphuwHYtSjk)
 - [GSC Weapon tool](https://www.youtube.com/watch?v=hPBZrQQ7u4c)
-- [Reddit - TAK-5 Blackout cut content](https://www.reddit.com/r/Blackops4/comments/15ctalt/tak5_blackout_cut_content_description_translation/)
+- [Some changes of the Black Ops 4 Fandom](https://callofduty.fandom.com/wiki/Cut_Content/Call_of_Duty:_Black_Ops_4)
+- [t8-custom-ee](https://github.com/ate47/t8-custom-ee) - A tool to enable EEs in custom mutations, offline or casual
+- [t8-tools](https://github.com/ate47/t8-tools) - A dump tool
 
 ## Config
 
@@ -373,7 +374,7 @@ Defined by the symbol `_SUPPORTS_EVENTFUNC`, it allows to listen to an internal 
 
 **Syntax**
 ```c++
-// this function will be call using YOUR_EVENT as an event, 
+// this function will be called using YOUR_EVENT as the event, 
 // if you don't know the unhashed name, you can use <event_ffffff> where ffffff is the 32bits hash.
 event<YOUR_EVENT> func_name(eventstruct) {
     // your code

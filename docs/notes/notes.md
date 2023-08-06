@@ -351,22 +351,18 @@ menus:
 
 current 0x59F1B30
 
-Black_ops_4_AE_Narative_Room_Location.png
-Black_ops_4_AE_Narative_Room.png
-Black_ops_4_AO_Narative_Room_Location.png
-Black_ops_4_AO_Narative_Room.png
-Black_ops_4_Blackout_BOTD_Narative_Room_Location.png
-Black_ops_4_Blackout_BOTD_Narative_Room.png
-Black_ops_4_BOTD_Narative_Room_Location.png
-Black_ops_4_BOTD_Narative_Room.png
-Black_ops_4_Classified_Narative_Room_Location.png
-Black_ops_4_Classified_Narative_Room.png
-Black_ops_4_IX_Narative_Room_2.png
-Black_ops_4_IX_Narative_Room_Location.png
-Black_ops_4_IX_Narative_Room.png
-Black_ops_4_VOD_Narative_Room_Location.png
-Black_ops_4_VOD_Narative_Room_Papers.png
-Black_ops_4_VOD_Narative_Room.png
+Black_Ops_4_Cut_Minigun_Hud.png
+Black_Ops_4_Cut_Minigun_No_Hud.png
+Black_Ops_4_Cut_Molotov_Hud.png
+Black_Ops_4_Cut_Molotov_No_Hud.png
+Black_Ops_4_Cut_Riot_Shield_Drop_Back.png
+Black_Ops_4_Cut_Riot_Shield_Drop.png
+Black_Ops_4_Cut_Riot_Shield_Hud.png
+Black_Ops_4_Cut_Riot_Shield_No_Hud.png
+Black_Ops_4_Cut_Tesla_Gun_Hud.png
+Black_Ops_4_Cut_Tesla_Gun_No_Hud.png
+Black_Ops_4_Cut_Tesla_Gun_Upgraded_Hud.png
+Black_Ops_4_Cut_Tesla_Gun_Upgraded_No_Hud.png
 
 scrVmPub_t scrVmPub // 10 shifted
 000008307aa0 0x0     void* unknown1;

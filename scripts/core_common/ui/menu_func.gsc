@@ -203,6 +203,22 @@ func_set_quacknarok(item, init = false) {
     }
 }
 
+func_toggle_hud(item) {
+    if (!isdefined(self.atian.showhud)) {
+        self.atian.showhud = false;
+    }
+    self.atian.showhud = !self.atian.showhud;
+
+    if (self.atian.showhud) {
+        self val::set(#"atianmenu2", "show_hud", 0);
+        self val::set(#"atianmenu2", "show_weapon_hud", 0);
+    } else {
+        self val::reset(#"atianmenu2", "show_hud");
+        self val::reset(#"atianmenu2", "show_weapon_hud");
+    }
+    item.activated = self.atian.showhud;
+}
+
 func_show_hud(item) {
 	self val::set(#"atianmenu", "show_hud", 0);
 	self val::set(#"atianmenu", "show_weapon_hud", 0);

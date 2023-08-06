@@ -12,6 +12,7 @@ init_menus() {
     }
     self add_menu_item("tool_menu", "Invulnerability", &func_invulnerability);
 
+    self add_menu_item("tool_menu", "No hud", &func_toggle_hud);
     self add_menu_item("tool_menu", "Camera mode", &func_show_hud);
 
     if (is_zombies()) {
