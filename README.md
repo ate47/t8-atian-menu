@@ -15,11 +15,17 @@ Using the sources: https://github.com/ate47/t8-src
   - [Config](#config)
   - [Features](#features)
   - [Dev tools](#dev-tools)
+    - [Symbols](#symbols)
+    - [Error codes](#error-codes)
     - [Color](#color)
     - [Hash lookup](#hash-lookup)
     - [Functions](#functions)
     - [Create menu](#create-menu)
     - [Key manager](#key-manager)
+    - [Advanced compiler features](#advanced-compiler-features)
+      - [Lazy links](#lazy-links)
+      - [Detours](#detours)
+      - [Event function](#event-function)
 
 
 ## Posts
@@ -147,13 +153,10 @@ You can config the compilation using these options:
 
 - `-DATIAN_MENU_LOOKUP_BIG` : Big lookup structure in array explorer
 - `-DATIAN_MENU_DEV` : Run my dev configs
-- `-D_SUPPORTS_LAZYLINK` : Can use Lazylink (your compiler **SHOULD** support it)
-- `-D_SUPPORTS_DETOURS` : Can use Detours (your compiler **SHOULD** support it)
-- `-D_SUPPORTS_BUILTINS` : Can use builtin compiler functions (your compiler **SHOULD** support it)
 
 ### Error codes
 
-This section is about the error codes you might have while working on GSC scripts, only the fist code is important:
+This section is about the error codes you might have while working on GSC scripts:
 
 *Note that it's a guess from the way I resolve them and not a true answer*
 
@@ -166,6 +169,12 @@ This section is about the error codes you might have while working on GSC script
   - call of a dev function
   - too many parameters for a call
 - `1427704235` - add to struct with a non pointer/struct value
+- `1461218623`, `753299086` - Usage of `[index]` on a string/vector with `index >= size(element)` (3 for vector)
+- `3314084408`, `3446625973` - Usage of `[index]` on a string/vector with index not an integer.
+- `2942156629`, `3488519410` - Usage of the `[]` operator without using a string/vector/array.
+- `2572009355` - usage of `vectorscale(vector,scale)` with a non vector for the vector
+- `2269096660` - usage of `vectorscale(vector,scale)` with a non float/int for the scale factor
+- `2751867714` - usage of `self` as an object, but wasn't
 - `2006839707` - Call of array::add using a undefined or bad array
 - `4173088841` - xpak file does not contain a valid header
 - `3126405504` - Server script error (set only host to false, open structs)
@@ -185,7 +194,13 @@ This section is about the error codes you might have while working on GSC script
 - `3042707823` - unencrypted string with ConvertToString
 - `483405794` - Unexpected string type in stringtable
 - `3654063291` - ScrEvent map is full, unable to register new event
+- `1190254947` - waittill must have at least one valid argument
+- `1601358697`, `4032788023` - waittill used without passing a pointer/object value
+- `2346900383`, `1668598749` - waittillmatchtimeout used without passing a pointer/object as param1
+- `369972438` - waittillmatchtimeout used without passing a pointer/struct as param2
+- `240121690` - waittillmatchtimeout must have at least one valid argument
 - `647662103` - can't be converted to const string (only string,int,float,vector)
+- `179749049` - usage of VM_OP_JumpOnTrue with non float/int value
 - `Whiskey 110 Late tiger` - accessing array like a struct (or not)
 - `kilo 45 gold dove` - usage of unset local var
 - `Delta 320 Monster Tornado` - unknown
@@ -210,7 +225,7 @@ Using `iprintlnbold`:
 The `hash_lookup(hash_str)` function can be used to look for unhashed values, to add a string to this function,
 add it to the [`lookup/lookup.txt`](lookup/lookup.txt) file and run the [`build_lookup.ps1`](shell_scripts/build_lookup.ps1) script. The array explorer tool is using the [`lookup/lookup_structs.txt`](lookup/lookup_structs.txt) file to search for structure elements.
 
-If the lookup is too big, the game won't start. TODO: split the switch.
+If the lookup is too big, the game won't start.
 
 You can explore CSV files from the game using the method `get_known_csv_files()` in [enums.gsc](scripts/enums/enums.gsc).
 
@@ -229,6 +244,10 @@ is_warzone();
 is_zombies();
 // test if we are in multiplayer
 is_multiplayer();
+// dynamic version of #ifdef _CSC
+is_client();
+// log message using compiler::nprintln or using the menu log system.
+am_log(str);
 ```
 
 ### Create menu
@@ -288,3 +307,85 @@ You can then use the key as you want using these 2 functions:
 // test if a key is pressed and if asked, wait until its release
 <player> key_mgr_has_key_pressed(hash key_name, bool wait_release = false) -> bool;
 ```
+
+### Advanced compiler features
+
+Some features are used in this project, I wasn't able to find any explanation outside the ZBR codebase and the t8-compiler code, so here are some explanations.
+
+#### Lazy links
+
+Defined by the symbol `_SUPPORTS_LAZYLINK`, it allows to search at runtime for a function, this is useful to avoid having to include a script to your includes,
+in my menu it's mostly to make it cross-compatible between the modes (zm/mp/bo). It can also allow to avoid crashing when a script isn't linked in the frontend,
+for example the item-related scripts of Blackout.
+
+**Syntax**
+```c++
+function_ptr = @TARGET_NAMESPACE<TARGET_SCRIPT>::TARGET_FUNCTION;
+
+[[ function_ptr ]](...);
+```
+
+**Example**
+```c++
+award_melee_weapon = @zm_melee_weapon<scripts\zm_common\zm_melee_weapon.gsc>::award_melee_weapon;
+
+<player> [[ award_melee_weapon ]](#"bowie_knife");
+```
+
+#### Detours
+
+Defined by the symbol `_SUPPORTS_DETOURS` (bo4), it allows to replace a function/method it is called, it can have multiple advantages:
+
+- Add callback to a function
+- Replace a function behaviors
+
+The detours can't be applied to functions called using autoexec due to the linker.
+
+**Syntax**
+```c++
+autoexec __init__system__() {
+    // apply detours
+    compiler::detour();
+
+    // rest of your function
+}
+
+detour TARGET_NAMESPACE<TARGET_SCRIPT>::TARGET_FUNCTION() {
+    // replace code of the target function
+    
+    // you can call the function when you want, note that the target script isn't included 
+    // by default, so you need to include the script or by using a lazy link.
+    
+    TARGET_NAMESPACE::TARGET_FUNCTION();
+}
+```
+
+**Example** (Equivalent of [t8-custom-ee](https://github.com/ate47/t8-custom-ee/))
+```c++
+detour zm_utility<scripts\zm_common\zm_utility.gsc>::is_ee_enabled() {
+    return true;
+}
+```
+
+#### Event functions
+
+Defined by the symbol `_SUPPORTS_EVENTFUNC`, it allows to listen to an internal game event, most of them are handled by the callbacks core module, but you may want to add yours.
+
+**Syntax**
+```c++
+// this function will be call using YOUR_EVENT as an event, 
+// if you don't know the unhashed name, you can use <event_ffffff> where ffffff is the 32bits hash.
+event<YOUR_EVENT> func_name(eventstruct) {
+    // your code
+}
+```
+
+**Example**
+```c++
+event<player_connect> codecallback_player_co(eventstruct) {
+    // called every time a player is connected
+    
+    // self is the player
+}
+```
+

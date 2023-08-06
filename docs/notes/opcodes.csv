@@ -7,23 +7,23 @@ Unknown,000000000274EA60,0,0,,Empty
 Unknown,000000000274ECB0,0,0,,Empty
 Unknown,000000000274EB80,0,0,,Empty
 Unknown,000000000274EC90,0,0,,Empty
-Unknown,000000000274EA80,ukn,ukn,unk,
-Unknown,000000000274EAF0,ukn,ukn,unk,
+Unknown,000000000274EA80,4,4,uint32 ref,push eval variable ref
+Unknown,000000000274EAF0,4,4,uint32 ukn,
 Unknown,000000000274EC60,0,0,,Empty
 Unknown,000000000274EC30,0,0,,Empty
-Unknown,000000000274BBC0,ukn,ukn,unk,
-CheckClearParams,000000000274BB60,ukn,ukn,unk,
-PreScriptCall,000000000274BEB0,ukn,ukn,unk,
-ScriptFunctionCall,000000000274BA00,ukn,ukn,unk,
-ScriptMethodCall,000000000274B930,ukn,ukn,unk,
-End,000000000274BCE0,ukn,ukn,unk,
-Nop,000000000276BDD0,ukn,ukn,unk,
-Unknown,000000000274F3F0,ukn,ukn,unk,
-WaitTill,0000000002755510,ukn,ukn,unk,
-Unknown,000000000274F1E0,ukn,ukn,unk,
-ClearArray,000000000274F1A0,ukn,ukn,unk,
+ReleaseUntilPos,000000000274BBC0,0,0,,Release the stack until the top isn't a PRECODEPOS
+CheckClearParams,000000000274BB60,0,0,,Set top to CODEPOS if type = PRECODEPOS else crash with 7E24B94D
+PreScriptCall,000000000274BEB0,0,0,,Push (PRECODEPOS)field_0 on the stack
+ScriptFunctionCall,000000000274BA00,9,address,byte params;uintptr address,Call address with params
+ScriptMethodCall,000000000274B930,9,address,byte params;uintptr address,Call address with params
+End,000000000274BCE0,0,0,,End function
+Nop,000000000276BDD0,0,0,,Nop
+EmptyArray,000000000274F3F0,0,0,,Push new array on stack
+WaitTill,0000000002755510,1,1,byte count,crash if top not ptr/object; must have at least one argument(count>0);release count value from stack and wait
+ClearFieldVariableOnStack,000000000274F1E0,0,0,,Pop and clear a pointer on stack
+ClearArray,000000000274F1A0,0,0,,Pop and clear array on stack
 ScriptMethodThreadCallPointer,000000000274DCA0,ukn,ukn,unk,
-Unknown,0000000002754420,ukn,ukn,unk,
+WaitTillMatchTimeout,0000000002754420,1,1,byte count,count is the number of param + 1;release count value from stack and wait
 GetHash,0000000002749F00,8,8,ulong hash,Push hash on stack
 WaitFrame,00000000027540D0,ukn,ukn,unk,
 ScriptMethodThreadCallPointer2,000000000274D7C0,ukn,ukn,unk,
@@ -32,103 +32,103 @@ ScriptThreadCall2,000000000274C900,ukn,ukn,unk,
 Switch,000000000274B110,ukn,ukn,unk,
 ScriptFunctionCallPointer,000000000274CDF0,ukn,ukn,unk,
 DevblockBegin,0000000002749C50,2,2,int16 delta,shift the bytecodelocation by delta
-NotEqual,000000000274AE30,ukn,ukn,unk,
+NotEqual,000000000274AE30,0,0,,Pop 2 values and push the result
 ScriptMethodCallPointer,000000000274D2A0,ukn,ukn,unk,
-JumpOnTrue,000000000274A9B0,ukn,ukn,unk,
-Unknown,0000000002752F50,ukn,ukn,unk,
+JumpOnTrue,000000000274A9B0,2,2,uint16 loc,Pop value from stack; jump to loc if != 0 or 0f
+Unknown,0000000002752F50,0,0,,
 ScriptMethodThreadCall2,000000000274DA60,ukn,ukn,unk,
 SafeCreateLocalVariables,000000000274C0D0,ukn,ukn,unk,
-Unknown,000000000274EBF0,ukn,ukn,unk,
+GetUndefined38,000000000274EBF0,0,0,,Push undefined on the stack
 GetNegUnsignedShort,000000000274A070,2,2,uint value,Push (int)(-value) on the stack
 ClassFunctionCall,000000000274CB90,ukn,ukn,unk,
-Return,000000000274BF00,ukn,ukn,unk,
+Return,000000000274BF00,0,0,,Release stack and push return value
 EvalFieldVariableRef,000000000274FCB0,4,4,uint ref,
 DecTopNoCodePos,00000000027531B0,0,0,,release top if not a CODEPOS
 Bit_Or,0000000002749920,0,0,,Pop a;b and push a | b
 ScriptThreadCall,000000000274E610,ukn,ukn,unk,
 Bit_Xor,0000000002749980,0,0,,Pop a;b and push a ^ b
-GetSelfObject,0000000002750800,ukn,ukn,unk,
+GetSelfObject,0000000002750800,0,0,,Get self as object;2751867714 if not
 GetNegByte,0000000002749FC0,1,1,byte value,push (int)(-value) on the stack
 ScriptThreadCallPointer2,000000000274C690,ukn,ukn,unk,
 Bit_Not,00000000027499D0,0,0,,Pop elem and push ~elem
-IsDefined,0000000002752800,ukn,ukn,unk,
+IsDefined,0000000002752800,0,0,,Pop value and push bool isdefined(value)
 AddToArray,000000000274ED50,ukn,ukn,unk,
 Wait,0000000002755920,ukn,ukn,unk,
-SuperEqual,000000000274AFD0,ukn,ukn,unk,
-GetUndefined,000000000274A240,0,0,,Push undefined on the stack
+SuperEqual,000000000274AFD0,0,0,,Pop 2 values and compute super equal
+GetUndefined56,000000000274A240,0,0,,Push undefined on the stack
 Unknown,000000000274D080,ukn,ukn,unk,
 EvalFieldVariableOnStackRef,000000000274FA60,ukn,ukn,unk,
-JumpOnTrueExpr,000000000274A910,ukn,ukn,unk,
-GetEmptyArray,000000000274F260,0,0,,Alloc array; push the (x01_POINTER)ref on the stack; addref to inst and release it
-Inc,000000000274A610,ukn,ukn,unk,
-ShiftLeft,000000000274AEF0,ukn,ukn,unk,
-JumpOnGreaterThan,000000000274AB10,ukn,ukn,unk,
-Plus,000000000274AE90,ukn,ukn,unk,
+JumpOnTrueExpr,000000000274A910,2,2,uint16 loc,Pop value from stack; jump to loc if bool cast is true
+CreateArray,000000000274F260,0,0,,Alloc array; push the (x01_POINTER)ref on the stack; addref to inst and release it
+Inc,000000000274A610,0,0,,Increase value of the ref on top of the stack (++)
+ShiftLeft,000000000274AEF0,0,0,,pop 2 values and shift left
+JumpOnGreaterThan,000000000274AB10,2,2,int16 delta,Pop 2 values from stack; jump to delta if greater
+Plus,000000000274AE90,0,0,,pop 2 values and push plus
 CastAndEvalFieldVariable,000000000274EFE0,ukn,ukn,unk,
-ShiftRight,000000000274AF50,ukn,ukn,unk,
-CreateStruct,000000000274F2F0,ukn,ukn,unk,
-CastVariableName,0000000002749A90,ukn,ukn,unk,
-GreaterThanOrEqualTo,000000000274A540,ukn,ukn,unk,
+ShiftRight,000000000274AF50,0,0,,pop 2 values and push shift right
+CreateStruct,000000000274F2F0,0,0,,push struct
+CastCanon,0000000002749A90,0,0,,pop str and push Hash32(str) as Int
+GreaterThanOrEqualTo,000000000274A540,0,0,,Pop 2 values and compute greater or equal
 SetVariableFieldRef,000000000274FBC0,ukn,ukn,unk,
 GetUIntPtr,000000000274A1E0,8,8,uintptr value,Push (x07_UINTPTR)value on the stack
 GetLongInteger,0000000002749F60,8,8,long value,Push (int)value on the stack
-EvalArray,000000000274F9E0,ukn,ukn,unk,
+EvalArray,000000000274F9E0,0,0,,Pop array(0) and index(1) and push ref
 WaitTillFrameEnd,0000000002754200,ukn,ukn,unk,
 EndOnCallback,00000000027535C0,ukn,ukn,unk,
 Unknown,00000000027502D0,0,0,,
 SetVariableField,0000000002753340,ukn,ukn,unk,
 EndOn,00000000027539C0,ukn,ukn,unk,
-SuperNotEqual,000000000274B050,ukn,ukn,unk,
+SuperNotEqual,000000000274B050,0,0,,pop 2 values and push super not equal
 GetFloat,0000000002749EA0,4,4,float value,Push (float)value on stack
-ProfileStart,0000000002749880,ukn,ukn,unk,
+ProfileStart,0000000002749880,0,0,,push
 GetString,000000000274A0D0,4,4,uint stringref,Push (string)mt_stringref on the stack; create 2658987327 when too many
-BoolNot,0000000002749A10,ukn,ukn,unk,
-CastBool,0000000002749A50,ukn,ukn,unk,
-Unknown,000000000274F550,ukn,ukn,unk,
-Equal,0000000002749E00,ukn,ukn,unk,
+BoolNot,0000000002749A10,0,0,,push value and pop bool not
+CastBool,0000000002749A50,0,0,,cast stack to bool
+Unknown,000000000274F550,0,0,,
+Equal,0000000002749E00,0,0,,pop 2 values and push equal
 GetUnsignedInteger,000000000274A280,4,4,uint value,Push (int)value on stack
 WaittillTimeout,0000000002754F70,ukn,ukn,unk,
-Unknown,0000000002753120,ukn,ukn,unk,
-GreaterThan,000000000274A5C0,ukn,ukn,unk,
-Jump,000000000274AA70,ukn,ukn,unk,
-Divide,0000000002749CB0,ukn,ukn,unk,
-EndSwitch,0000000002749D50,ukn,ukn,unk,
+Unknown,0000000002753120,1,1,byte ,
+GreaterThan,000000000274A5C0,0,0,,Pop 2 values and push if greater
+Jump,000000000274AA70,2,2,int16 delta,jump to delta with the base data as an origin
+Divide,0000000002749CB0,0,0,,Pop 2 values and push the divide
+EndSwitch,0000000002749D50,12,4+8,int case_cout;uintptr ptr,move to ptr[case_cout * 16]
 Unknown,0000000002753230,0,0,,
-Unknown,0000000002752D40,ukn,ukn,unk,
-JumpOnFalse,000000000274A820,ukn,ukn,unk,
-JumpOnFalseExpr,000000000274A780,ukn,ukn,unk,
+Unknown,0000000002752D40,1,1,byte val,
+JumpOnFalse,000000000274A820,2,2,uint16 loc,Pop value from stack; jump to loc if == 0 or 0f
+JumpOnFalseExpr,000000000274A780,2,2,uint16 loc,Pop value from stack; jump to loc if bool cast is false
 EvalSelfFieldVariable,00000000027506F0,ukn,ukn,unk,
-Minus,000000000274ACF0,ukn,ukn,unk,
-ProfileStop,0000000002749D10,ukn,ukn,unk,
+Minus,000000000274ACF0,0,0,,Pop 2 values and push the minus
+ProfileStop,0000000002749D10,0,0,,pop
 GetInteger,000000000274A010,4,4,int value,Push value on stack
 ClassFunctionThreadCall,000000000274E160,ukn,ukn,unk,
-VectorScale,000000000274B3E0,ukn,ukn,unk,
+VectorScale,000000000274B3E0,0,0,,Pop vector vec(0) and factor f(1) and push new vector = vec*f
 Modulus,000000000274AD50,0,0,,Pop 2 values and push the modulus
 VectorConstant,000000000274B2E0,1,1,byte flag,Allocate a vector and set flag values 0b00XXYYZZ VV: 00=0; 01=-1; 10=1
 SizeOf,00000000027533E0,0,0,,Pop an element and push the size; error 3222417139 if not a string or an array
 Notify,0000000002753E60,ukn,ukn,unk,
 Vector,000000000274B540,0,0,,Pop 3 elements; Alloc and push a vector from them
-Dec,0000000002749B10,ukn,ukn,unk,
-JumpOnLessThan,000000000274A440,ukn,ukn,unk,
-Bit_And,00000000027498C0,ukn,ukn,unk,
-GetObjectType,0000000002752910,ukn,ukn,unk,
-Unknown,0000000002749AD0,ukn,ukn,unk,
-Multiply,000000000274ADB0,ukn,ukn,unk,
-EvalFieldVariableOnStack,000000000274FAC0,ukn,ukn,unk,
+Dec,0000000002749B10,0,0,,Decrease value of the ref on top of the stack (--)
+JumpOnLessThan,000000000274A440,2,2,int16 delta,Pop 2 values from stack; jump to delta if not greater
+Bit_And,00000000027498C0,0,0,,Pop 2 int values and compute BitwiseAnd
+GetObjectType,0000000002752910,4,4,uint32 ,
+Unknown10e,0000000002749AD0,2,2,ignored,move 2 bytes after the pointer; probably dev operators
+Multiply,000000000274ADB0,0,0,,Pop 2 values and push the eval
+EvalFieldVariableOnStack,000000000274FAC0,0,0,,pop variable ptr and push evaluated variable
 GetTime,00000000027508F0,0,0,,Push integer (int)off_9353E94 on the stack
 SetLocalVariableCached,0000000002750150,ukn,ukn,unk,
-AddToStruct,000000000274EE90,ukn,ukn,unk,
+AddToStruct,000000000274EE90,0,0,,pop canon id(0); struct(1) and val(2) and push val
 ClassFunctionThreadCall2,000000000274C430,ukn,ukn,unk,
-LessThanOrEqualTo,000000000274AC10,ukn,ukn,unk,
+LessThanOrEqualTo,000000000274AC10,0,0,,pop 2 values and push less than
 FirstArrayKeyCached,000000000274FE90,ukn,ukn,unk,
-Unknown,000000000274B2A0,ukn,ukn,unk,
-GetGlobalObject,00000000027505F0,ukn,ukn,unk,
+Unknown126,000000000274B2A0,2,2,ignored,move 2 bytes after the pointer; probably dev operators
+GetGlobalObject,00000000027505F0,2,2,uint16 gvar_ref,push gvar_ref ptr
 GetZero,000000000274A3A0,0,0,,Push (int)0 on the stack
 EvalLocalVariableRefCached,0000000002750290,ukn,ukn,unk,
-ClearFieldVariable,000000000274F210,ukn,ukn,unk,
+ClearFieldVariable,000000000274F210,4,4,uint name,Clear field variable with name
 EvalGlobalObjectFieldVariable,00000000027504F0,ukn,ukn,unk,
 Unknown,000000000274FDD0,ukn,ukn,unk,
-GetSelf,0000000002750880,ukn,ukn,unk,
+GetSelf,0000000002750880,0,0,,Push self
 GetAPIFunction,0000000002750470,8,8,void* func_ptr,Push (x0C_SCRIPT_FUNCTION)func_ptr on the stack
 GetGlobalObjectRef,0000000002750580,ukn,ukn,unk,
 GetByte,0000000002749E50,1,1,byte value,Push (int)value on the stack
@@ -141,9 +141,9 @@ DecTop,000000000274F370,0,0,,Pop and release a value of the stack
 GetVector,000000000274A340,4,12,float x;float y; float z,Push (vector)&x on the stack (use the asm value to describe it)
 ScriptMethodThreadCall,000000000274DF20,ukn,ukn,unk,
 SetNextArrayKeyCached,0000000002752AC0,ukn,ukn,unk,
-Unknown,000000000274EBA0,ukn,ukn,unk,
+JumpPush,000000000274EBA0,8,8,uintptr location,Jump to align(8; location + 8) and push undefined on the stack (wtf?)
 GetUnsignedShort,000000000274A2E0,2,2,uint16 value,Push (int)value on the stack
-EvalLocalVariableCached,0000000002750210,ukn,ukn,unk,
-EvalArrayRef,000000000274F7C0,ukn,ukn,unk,
-EvalFieldVariable,000000000274FD20,ukn,ukn,unk,
+EvalLocalVariableCached,0000000002750210,1,1,byte localvar,Push localvar value on stack
+EvalArrayRef,000000000274F7C0,0,0,,pop (hash|int|str) and unk
+EvalFieldVariable,000000000274FD20,4,4,uint32 variable,evaluate field variable and push it on the stack
 GetFunction,0000000002750410,8,8,void* func_ptr,Push (x0B_API_FUNCTION)func_ptr on the stack

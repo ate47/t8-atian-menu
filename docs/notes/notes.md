@@ -399,19 +399,36 @@ scrVmPub_t scrVmPub // 10 shifted
 0000082EFCD0 objFileInfo_t gObjFileInfo[2][650];
 0000082F76B0 uint32_t gObjFileInfoCount[2];
 
+59F5930     encryptiontable
+11c
+1f
+
 GSCOBJ
-0x00 int64 magic
+0x00 byte magic[8]
 0x08 int32 crc;
 0x10 int64 name
 0x18 int32 include_offset -> uint64[]
 0x1C uint16 string_count
 0x1E uint16 exports_count
+0x20 int32 ukn
+0x24 int32 string_offset -> GSC_STRINGTABLE_ITEM[]
+0x28 int16 imports_count
 0x2A uint16 fixup_count
-0x24 int32 string_offset -> GSC_STRINGTABLE_ITEM
-0x30 int32 export_table_offset -> GSC_EXPORT_ITEM
-0x38 int32 imports_offset -> GSC_IMPORT_ITEM
-0x40 int32 fixup_offset -> GSC_FIXUP_ITEM
-0x44 int32 globalvar_offset -> GSC_GLOBALVAR_ITEM
+0x2c int32 ukn2c
+0x30 int32 export_table_offset -> GSC_EXPORT_ITEM[]
+0x34 int32 ukn34
+0x38 int32 imports_offset -> GSC_IMPORT_ITEM[]
+0x3C uint16 globalvar_count
+0x40 int32 fixup_offset -> GSC_FIXUP_ITEM[]
+0x44 int32 globalvar_offset -> GSC_GLOBALVAR_ITEM[]
+0x48 int32 script_size;
+0x4C int32_t ukn4c -> hash uint64[]
+0x50 int32_t ukn50
+0x54 int32_t ukn54
+0x58 uint16 include_count
+0x5b int8 ukn_4c_count // sub_2748240
+
+global vars: level, game, classes, mission, anim, world, memory
 
                 "'-Cdll.builtins=true'",
 GSCOBJ_export* export table = object_data + (int32)object_data[0x30]

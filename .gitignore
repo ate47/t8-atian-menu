@@ -6,6 +6,10 @@ compiled.gscc
 compiled.cscc
 compiled.gsic
 compiled.csic
+compiled.gsccasm
+compiled.csccasm
+compiled.gsicasm
+compiled.csicasm
 compiled.omap
 compiledclient.omap
 hashes.txt
