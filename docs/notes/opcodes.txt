@@ -10,7 +10,7 @@
 (9) Unknown, 000000000274EAF0 9 -> {9}
 (a) Unknown, 000000000274EC60 a -> {a}
 (b) Unknown, 000000000274EC30 b -> {b}
-(c) Unknown, 000000000274BBC0 c -> {c}
+(c) ReleaseUntilPos, 000000000274BBC0 c -> {c}
 (d) CheckClearParams, 000000000274BB60 d -> {d}
 (e) PreScriptCall, 000000000274BEB0 e -> {e}
 (f) ScriptFunctionCall, 000000000274BA00 f -> {f}
@@ -25,7 +25,7 @@
 (18) WaitTillMatchTimeout, 0000000002754420 1d -> {1d, 81, 1f5, 283, 2a3, 3b8, 452, 58a, 60c, 643, 65e, 694, 811, 878, 8a4, 8ef, 8f8, aa4, c70, ccc, cda, d2d, db1, eaa}
 (19) GetHash, 0000000002749F00 1f -> {1f, 85, 107, 28f, 3b1, 4b0, 4ba, 4da, 5b3, 63f, 6d2, 7e0, 8a6, 8eb, 904, 96d, a28, a77, aff, be9, c23, c39, c9d, d31, e1f, e69, ed2, ff7}
 (1a) WaitFrame, 00000000027540D0 20 -> {20, c5, 16d, 20f, 264, 280, 33a, 3b9, 4be, 4e4, 5a3, 716, 765, 898, 914, 96c, a3e, a92, b13, b90, cac, d14, d8c, fab, fb1}
-(1b) ScriptMethodThreadCallPointer2, 000000000274D7C0 22 -> {22, a2, a6, 1cf, 1da, 2c0, 2e2, 30c, 35e, 37b, 37d, 396, 3c9, 3f6, 4c4, 5ec, 76a, 89f, 8d3, 906, 948, bcf, c6a, c6f, cc9, e9b, fbe}
+(1b) ScriptMethodThreadCallPointerEndOn, 000000000274D7C0 22 -> {22, a2, a6, 1cf, 1da, 2c0, 2e2, 30c, 35e, 37b, 37d, 396, 3c9, 3f6, 4c4, 5ec, 76a, 89f, 8d3, 906, 948, bcf, c6a, c6f, cc9, e9b, fbe}
 (1c) WaitTillMatch, 0000000002754A00 24 -> {24, 47, 58, 70, dd, 21f, 251, 296, 2d9, 391, 4b7, 503, 57d, 6a0, 7a2, 97d, 991, a48, b58, b9d, bf5, cec, d72, d7c, e47, e93, ef5}
 (1d) ScriptThreadCall2, 000000000274C900 26 -> {26, fe, 23f, 2a2, 3c8, 4d8, 4eb, 526, 629, 688, 70b, 788, 868, a1f, a64, aeb, bb8, bd3, c4d, d1f, d35, db3, e42, eb3, eb8, f7f, fe2}
 (1e) Switch, 000000000274B110 29 -> {29, 2a, a0, 2f6, 4b9, 7f5, 83b, 918, 9ad, 9cc, 9f7, ac6, b38, b92, bf7, c02, e87, ee5, f58, f73}

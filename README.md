@@ -161,7 +161,7 @@ This section is about the error codes you might have while working on GSC script
 
 *Note that it's a guess from the way I resolve them and not a true answer*
 
-- `1661383768`, `3559732046`, `2782299909`, `3456527393` or `325402485` - Stack overflow (max is 62)
+- `1661383768`, `3559732046`, `2782299909`, `3456527393`, `325402485`, `655503056` - Stack overflow (max is 62)
 - `512306404`, `2538360978` - not a pointer (call function/method)
 - `3021194485` - Internal Stack overflow
 - `3014377421` - Error linking script
@@ -169,39 +169,45 @@ This section is about the error codes you might have while working on GSC script
   - Unresolved external (call of an unknown function/method)
   - call of a dev function
   - too many parameters for a call
-- `1427704235` - add to struct with a non pointer/struct value
+- `1427704235` - add to struct with a non pointer/struct value.
 - `1461218623`, `753299086` - Usage of `[index]` on a string/vector with `index >= size(element)` (3 for vector)
 - `3314084408`, `3446625973` - Usage of `[index]` on a string/vector with index not an integer.
 - `2942156629`, `3488519410` - Usage of the `[]` operator without using a string/vector/array.
-- `2572009355` - usage of `vectorscale(vector,scale)` with a non vector for the vector
-- `2269096660` - usage of `vectorscale(vector,scale)` with a non float/int for the scale factor
-- `2751867714` - usage of `self` as an object, but wasn't
-- `2006839707` - Call of array::add using a undefined or bad array
-- `4173088841` - xpak file does not contain a valid header
-- `3126405504` - Server script error (set only host to false, open structs)
+- `4106063796` - Usage of the `[index]` operator without on an array without `type(index)=HASH|INTEGER`.
+- `2572009355` - usage of `vectorscale(vector,scale)` with a non vector for the vector.
+- `2269096660` - usage of `vectorscale(vector,scale)` with a non float/int for the scale factor.
+- `2751867714` - usage of `self` as an object, but wasn't.
+- `3797948576`, `285416523`, `1642120921` - usage of `notify` without a pointer/object(param0) hash/string(param1).
+- `2006839707` - Call of array::add using a undefined or bad array.
+- `829015102` - var type isn't a field object
+- `4173088841` - xpak file does not contain a valid header.
+- `3126405504` - Server script error. (set only host to false, open structs)
 - `541000416` - unknown (remove config function)
 - `5409914266` - unknown
 - `5410083603` - unknown (use openluimenu csc/frontend)
 - `5410000416` - unknown (dectop)
-- `2658987327` - Corrupt or invalid string reference, Can't allocate more string (VM_OP_GetString)
-- `3222417139` - Usage of .size outside of a string or array
-- `2681972741` - bad clientfield for name
-- `3367037665` - Cannot call SetWorldClientField on 'counter' type clientfield
-- `1609894461` - bad entity
-- `2104587190` - bad clientfield for name 
-- `3523382186` - Event handler is full, can't register event
-- `2448966512` - Error plus operation, string too long (max 8192)
-- `2873910834` - string with len < 3 with ConvertToString
-- `3042707823` - unencrypted string with ConvertToString
-- `483405794` - Unexpected string type in stringtable
-- `3654063291` - ScrEvent map is full, unable to register new event
-- `1190254947` - waittill must have at least one valid argument
-- `1601358697`, `4032788023` - waittill used without passing a pointer/object value
-- `2346900383`, `1668598749` - waittillmatchtimeout used without passing a pointer/object as param1
-- `369972438` - waittillmatchtimeout used without passing a pointer/struct as param2
-- `240121690` - waittillmatchtimeout must have at least one valid argument
+- `2658987327` - Corrupt or invalid string reference, Can't allocate more string .(VM_OP_GetString)
+- `3222417139` - Usage of .size outside of a string or array.
+- `2681972741` - bad clientfield for name.
+- `3367037665` - Cannot call SetWorldClientField on 'counter' type clientfield.
+- `1609894461` - bad entity.
+- `2104587190` - bad clientfield for name .
+- `3523382186` - Event handler is full, can't register event.
+- `2448966512` - Error plus operation, string too long. (max 8192)
+- `2873910834` - string with len < 3 with ConvertToString.
+- `3042707823` - unencrypted string with ConvertToString.
+- `483405794` - Unexpected string type in stringtable.
+- `3654063291` - ScrEvent map is full, unable to register new event.
+- `1190254947` - waittill must have at least one valid argument.
+- `1601358697`, `4032788023` - waittill used without passing a pointer/object value.
+- `2346900383`, `1668598749` - waittillmatchtimeout used without passing a pointer/object as param1.
+- `369972438` - waittillmatchtimeout used without passing a pointer/struct as param2.
+- `240121690` - waittillmatchtimeout must have at least one valid argument.
+- `3875481145` - waittillmatch used without passing a pointer/struct as param2.
+- `2379198149` - waittillmatch must have at least one valid argument.
 - `647662103` - can't be converted to const string (only string,int,float,vector)
 - `179749049` - usage of VM_OP_JumpOnTrue with non float/int value
+- `2489324310` - Usage of switch with var string|hash|int
 - `Whiskey 110 Late tiger` - accessing array like a struct (or not)
 - `kilo 45 gold dove` - usage of unset local var
 - `Delta 320 Monster Tornado` - unknown
