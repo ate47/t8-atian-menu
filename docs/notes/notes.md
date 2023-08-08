@@ -434,31 +434,34 @@ export size
 uint64* includes = object_data + (int32)object_data[0x18]
 
 export flags: 
+
+0x86 = Class def?
+
 HGFEDCBA
 - A 0x01 linked
 - B 0x02 autoexec
-- C 0x04 ukn
-- D 0x08 ukn
-- E 0x10 ukn
-- F 0x20 ukn
+- C 0x04 private
+- D 0x08 class_member
+- E 0x10 class_destructor
+- F 0x20 ve
 - G 0x40 event
-- H 0x80 unk
+- H 0x80 class_linked
 
 import flags:
 HGFEAAAA
 - AAAA 0x0F
-  - 1: function/method
+  - 1: getfunction/getmethod 
   - 2: function
-  - 3: ukn
-  - 4: ukn
-  - 5: ukn
-  - 6: ukn
-  - 7: ukn
+  - 3: function_thread
+  - 4: function_endon
+  - 5: method
+  - 6: method_thread
+  - 7: method_endon
   - default: error linking
 - E 0x10 dev import
-- F 0x20 api import namespace "sys" or ""; need search
-- G 0x40 unk
-- H 0x80 unk
+- F 0x20 get ; api import namespace "sys" or "" or need find
+- G 0x40 unk40
+- H 0x80 unk80
 
 0000000007D9BC10     ; SCREVENT_MAP g_ScrEventMapPoolBuffer[2][512]
 SCREVENT_MAP 0x18
@@ -470,6 +473,25 @@ SCREVENT_MAP 0x18
   bool pad0; // 0x16
   short pad02; // 0x18
 }
+
+Abort
+AutoBreakpoint
+Breakpoint
+ErrorBreakpoint
+ThreadEndBreakpoint
+WatchBreakpoint
+GetIString
+
+New
+NextArrayKey
+SafeDecTop
+PushEntityVar
+PushVar
+SafeSetWaittillVariableFieldCached
+SelfEvalFieldVariable
+SelfEvalFieldVariableRef
+
+
 
 strings:
 

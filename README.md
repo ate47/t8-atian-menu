@@ -179,6 +179,8 @@ This section is about the error codes you might have while working on GSC script
 - `2751867714` - usage of `self` as an object, but wasn't.
 - `3797948576`, `285416523`, `1642120921` - usage of `notify` without a pointer/object(param0) hash/string(param1).
 - `2006839707` - Call of array::add using a undefined or bad array.
+- `4126096467` - Var ByRef only supported for array types
+- `4048135393` - Cannot create a new local variable in the debugger
 - `829015102` - var type isn't a field object
 - `4173088841` - xpak file does not contain a valid header.
 - `3126405504` - Server script error. (set only host to false, open structs)
@@ -396,3 +398,87 @@ event<player_connect> codecallback_player_co(eventstruct) {
 }
 ```
 
+#### Thread endon calls
+
+Defined by the symbol `_SUPPORTS_THREADENDON`, these special calls allow to call a function using thread, but by keeping the current function endon list, so if the current function receive an endon event, the called function will also receive it. You only need to replace the `thread` in your call to `threadendon`
+
+
+**Example**
+```gsc
+
+demo_threadendon() {
+    // using this function as example
+    self iprintln("start");
+    self thread primary_function();
+
+    // we wait 5s
+    wait 5.1;
+    self iprintln("send notify");
+    self notify(#"demo_endonevent");
+    wait 5.1;
+
+    self iprintln("end");
+}
+
+primary_function() {
+    self endon(#"demo_endonevent");
+
+    // using threadendon, secondary will keep the #"demo_endonevent" endon.
+    self threadendon secondary_function();
+    
+    for (i = 0; i < 10; i++) {
+        self iprintln("Hello from primary " + i);
+        wait 1;
+    }
+}
+
+secondary_function() {
+    // we don't need to write an endon because it is made in the threadendon
+
+    for (i = 0; i < 10; i++) {
+        self iprintln("Hello from secondary " + i);
+        wait 1;
+    }
+}
+```
+
+The output is 
+
+```
+start
+Hello from secondary 0
+Hello from primary 0
+Hello from secondary 1
+Hello from primary 1
+Hello from secondary 2
+Hello from primary 2
+Hello from secondary 3
+Hello from primary 3
+Hello from secondary 4
+Hello from primary 4
+send notify
+end
+```
+
+Notice that both functions stop after the notify, by doing the experiment again with a `thread` instead of a `threadendon` the output is different
+
+```
+start
+Hello from secondary 0
+Hello from primary 0
+Hello from secondary 1
+Hello from primary 1
+Hello from secondary 2
+Hello from primary 2
+Hello from secondary 3
+Hello from primary 3
+Hello from secondary 4
+Hello from primary 4
+send notify
+Hello from secondary 5
+Hello from secondary 6
+Hello from secondary 7
+Hello from secondary 8
+Hello from secondary 9
+end
+```

@@ -27,6 +27,10 @@ init_menus_dev() {
         self add_menu_item("wz_tools", "Test 4", &func_wz_item_test4, true);
     }
     
+    self add_menu_item("tool_menu_dev", "Thread endon 1", &test_thread_endon, true, false);
+    self add_menu_item("tool_menu_dev", "Thread no endon 1", &test_thread_endon, false, false);
+    self add_menu_item("tool_menu_dev", "Thread endon 2", &test_thread_endon, true, true);
+    self add_menu_item("tool_menu_dev", "Thread no endon 2", &test_thread_endon, false, true);
     self add_menu_item("tool_menu_dev", "Dev test 1", &func_dev_method1);
     self add_menu_item("tool_menu_dev", "Dev test 2", &func_dev_method2);
     self add_menu_item("tool_menu_dev", "Dev test 3", &func_dev_method3);
