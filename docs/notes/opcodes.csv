@@ -15,16 +15,13 @@ GetUndefined56,000000000274A240,0,0,,Push undefined on the stack
 Unknown10e,0000000002749AD0,2,2,ignored,move 2 bytes after the pointer; probably dev operators
 Unknown126,000000000274B2A0,2,2,ignored,move 2 bytes after the pointer; probably dev operators
 End,000000000274BCE0,0,0,,End function
-EvalLocalVariableCachedDebug,000000000274EA80,4,4,uint32 ref,push eval variable ref
-EvalLocalVariableRefCachedDebug,000000000274EAF0,4,4,uint32 name,find var name in the debug cache
 ClearParams,000000000274BBC0,0,0,,Release the stack until the top isn't a PRECODEPOS
 CheckClearParams,000000000274BB60,0,0,,Set top to CODEPOS if type = PRECODEPOS else crash with 7E24B94D
 PreScriptCall,000000000274BEB0,0,0,,Push (PRECODEPOS)field_0 on the stack
-CallBuiltinFunction,000000000274BA00,9,address,byte params;uintptr address,Call address with params
-CallBuiltinMethod,000000000274B930,9,address,byte params;uintptr address,Call address with params
+CallBuiltinFunction,000000000274BA00,9,8,byte params;uintptr address,Call address with params
+CallBuiltinMethod,000000000274B930,9,8,byte params;uintptr address,Call address with params
 EmptyArray,000000000274F3F0,0,0,,Push new array on stack
 WaitTill,0000000002755510,1,1,byte count,crash if top not ptr/object; must have at least one argument(count>0);release count value from stack and wait
-ClearFieldVariableOnStack,000000000274F1E0,0,0,,Pop and clear a pointer on stack
 ClearArray,000000000274F1A0,0,0,,Pop and clear array on stack
 ScriptMethodThreadCallPointer,000000000274DCA0,1,1,byte params,pop loc ; call script method from loc use stack[-params] as thread
 WaitTillMatchTimeout,0000000002754420,1,1,byte count,count is the number of param + 1;release count value from stack and archive stack
@@ -40,11 +37,9 @@ NotEqual,000000000274AE30,0,0,,Pop 2 values and push the result
 ScriptMethodCallPointer,000000000274D2A0,1,1,byte params,Pop pointer(0); self(1) call method from pointer(with self); push result
 JumpOnTrue,000000000274A9B0,2,2,uint16 loc,Pop value from stack; jump to loc if != 0 or 0f
 ScriptMethodThreadCallEndOn,000000000274DA60,9,1+8,byte params;uintptr ptr,Pop self; PushToEndonList the parent use stack[-params] as thread
-SafeCreateLocalVariables,000000000274C0D0,1 + 5 * count,1 + (4+1) * count,byte count;(uint32 name;byte flag)[count],create new var by canon id name flag&2!=0? (pop var until vaar->type == PRECODEPOS and construct array ref with it); if pop->type == PRECODEPOS set UNDEFINED else if flag&1!=0 && top == ARRAY allocate array and copy the content of the array to the var; else error.
 GetNegUnsignedShort,000000000274A070,2,2,uint value,Push (int)(-value) on the stack
 ClassFunctionCall,000000000274CB90,5,1+4,byte unused;uint funcName,Pop class object; Lookup class funcName and call it
 Return,000000000274BF00,0,0,,Release stack and push return value
-EvalFieldVariableRef,000000000274FCB0,4,4,uint ref,
 SafeDecTop,00000000027531B0,0,0,,release top if not a CODEPOS
 Bit_Or,0000000002749920,0,0,,Pop a;b and push a | b
 ScriptThreadCall,000000000274E610,9,1+8,byte params;uintptr location,allocate a thread and call function  use stack[-params] as thread
@@ -54,24 +49,19 @@ GetNegByte,0000000002749FC0,1,1,byte value,push (int)(-value) on the stack
 ScriptThreadCallPointerEndOn,000000000274C690,1,1,byte params,Pop pointer(0);PushToEndonList the parent call function from pointer(with same self as caller)
 BoolComplement,00000000027499D0,0,0,,Pop elem and push ~elem
 IsDefined,0000000002752800,0,0,,Pop value and push bool isdefined(value)
-AddToArray,000000000274ED50,0,0,,Pop index(0) ; value(1) and array(2); set variable in array at index to value and push value
 Wait,0000000002755920,0,0,,Pop float|int from stack and wait
 SuperEqual,000000000274AFD0,0,0,,Pop 2 values and compute super equal
-ScriptFunctionThreadCall,000000000274D080,9,1+8,byte unused;uintptr ptr,Call function; use current self as self
+ScriptFunctionCall,000000000274D080,9,1+8,byte unused;uintptr ptr,Call function; use current self as self
 JumpOnTrueExpr,000000000274A910,2,2,uint16 loc,Pop value from stack; jump to loc if bool cast is true
-CreateArray,000000000274F260,0,0,,Alloc array; push the (x01_POINTER)ref on the stack; addref to inst and release it
 Inc,000000000274A610,0,0,,Increase value of the ref on top of the stack (++)
 ShiftLeft,000000000274AEF0,0,0,,pop 2 values and shift left
 JumpOnGreaterThan,000000000274AB10,2,2,int16 delta,Pop 2 values from stack; jump to delta if greater
 Plus,000000000274AE90,0,0,,pop 2 values and push plus
-CastAndEvalFieldVariable,000000000274EFE0,4,4,uint32 variable,Pop ref; eval field object from it and eval variable from the field object then push the var on the stack
 ShiftRight,000000000274AF50,0,0,,pop 2 values and push shift right
-CreateStruct,000000000274F2F0,0,0,,push struct
 CastCanon,0000000002749A90,0,0,,pop str and push Hash32(str) as Int
 GreaterThanOrEqualTo,000000000274A540,0,0,,Pop 2 values and compute greater or equal
 GetUIntPtr,000000000274A1E0,8,8,uintptr value,Push (x07_UINTPTR)value on the stack
 GetLongInteger,0000000002749F60,8,8,long value,Push (int)value on the stack
-EvalArray,000000000274F9E0,0,0,,Pop array(0) and index(1) and push ref
 WaitTillFrameEnd,0000000002754200,0,0,,store stack and wait for frame
 EndOnCallback,00000000027535C0,1,1,byte count,Pop caller(0) and event names[count] then add thread PushToEndonList
 EndOn,00000000027539C0,1,1,byte count,Pop caller(0) and event names[count] then add thread PushToEndonList
@@ -105,20 +95,15 @@ JumpOnLessThan,000000000274A440,2,2,int16 delta,Pop 2 values from stack; jump to
 Bit_And,00000000027498C0,0,0,,Pop 2 int values and compute BitwiseAnd
 GetObjectType,0000000002752910,4,4,uint32 classname,
 Multiply,000000000274ADB0,0,0,,Pop 2 values and push the eval
-EvalFieldVariableOnStack,000000000274FAC0,0,0,,pop variable ptr and push evaluated variable
 GetTime,00000000027508F0,0,0,,Push integer (int)off_9353E94 on the stack
-AddToStruct,000000000274EE90,0,0,,pop canon id(0); struct(1) and val(2) and push val
 ClassFunctionThreadCallEndOn,000000000274C430,5,1+4,byte params;uint32 funcName,Pop class object; PushToEndonList the parent Lookup class funcName and call it use stack[-params] as thread
 LessThanOrEqualTo,000000000274AC10,0,0,,pop 2 values and push less than
 GetGlobal,00000000027505F0,2,2,uint16 gvar_ref,push gvar_ref ptr
 GetZero,000000000274A3A0,0,0,,Push (int)0 on the stack
-ClearFieldVariable,000000000274F210,4,4,uint name,Clear field variable with name
-EvalFieldObjectFromRef,000000000274FDD0,1,1,byte ref,Eval a variable and eval it to objectId
 GetSelf,0000000002750880,0,0,,Push self
-GetAPIFunction,0000000002750470,8,8,void* func_ptr,Push (x0C_SCRIPT_FUNCTION)func_ptr on the stack
+GetResolveFunction,0000000002750470,8,8,void* func_ptr,Push (x0C_SCRIPT_FUNCTION)func_ptr on the stack
 GetGlobalObject,0000000002750580,2,2,uint16 ref,set global id as ref
 GetByte,0000000002749E50,1,1,byte value,Push (int)value on the stack
-CastFieldObject,000000000274F0F0,0,0,,Pop field object and set objectId to it
 ScriptThreadCallPointer,000000000274E3B0,1,1,byte params,Pop pointer(0); call function from pointer(with same self as caller)
 LessThan,000000000274AC90,0,0,,Pop 2 values and push less than
 ScriptMethodCall,000000000274D570,9,1+8,byte ignored;uintptr ptr,Pop self; call method
@@ -127,23 +112,38 @@ GetVector,000000000274A340,4,12,float x;float y; float z,Push (vector)&x on the 
 ScriptMethodThreadCall,000000000274DF20,9,1+8,byte params;uintptr ptr,Pop self;use stack[-params] as thread
 JumpPush,000000000274EBA0,8,8,uintptr location,Jump to align(8; location + 8) and push undefined on the stack (wtf?)
 GetUnsignedShort,000000000274A2E0,2,2,uint16 value,Push (int)value on the stack
-EvalLocalVariableCached,0000000002750210,1,1,byte localvar,Push localvar value on stack
-EvalFieldVariable,000000000274FD20,4,4,uint32 variable,evaluate field variable and push it on the stack
 GetFunction,0000000002750410,8,8,void* func_ptr,Push (x0B_API_FUNCTION)func_ptr on the stack
-EvalArrayRef,000000000274F7C0,0,0,,pop (hash|int|str) and unk
-SetNextArrayKeyCached,0000000002752AC0,1,1,byte ukn,
-Unknown9e,000000000274F550,0,0,,Unknown
-Unknownad,0000000002753120,1,1,byte unk,Unknown
-Unknownc4,0000000002753230,1,1,byte localVar,Unknown
-Unknownc7,0000000002752D40,1,1,byte val,Unknown
-Unknown35,0000000002752F50,0,0,unk,Unknown
-FirstArrayKey,00000000027502D0,0,0,unk,Unknown
-EvalFieldVariableOnStackRef,000000000274FA60,0,0,,Unknown
-SetVariableFieldRef,000000000274FBC0,4,4,int32 ref,Unknown
-SetVariableField,0000000002753340,0,0,,Unknown
-EvalSelfFieldVariable,00000000027506F0,4,4,uint32 name,Unknown
-SetLocalVariableCached,0000000002750150,1,1,byte localvar,Unknown
-FirstArrayKeyCached,000000000274FE90,1,1,byte localvar,Unknown
-EvalLocalVariableRefCached,0000000002750290,1,1,byte localvar,Unknown
-EvalGlobalObjectFieldVariable,00000000027504F0,6,2 + 4,uint16 objectId;uint32 var,Unknown
-EvalLocalVariableDefined,0000000002750000,1,1,byte localvar,Unknown
+Unknownc7,0000000002752D40,1,1,byte localvar,Unknown; seem unused  ; Pop v1(0); v2(1); release v1/v2; set fieldValueId to localvar; unk
+Unknown35,0000000002752F50,0,0,,Unknown; seem unused SetNextArrayKey related
+Unknown9e,000000000274F550,0,0,,Unknown; seem unused
+EvalLocalVariableCachedDebug,000000000274EA80,4,4,uint32 ref,push eval variable ref; seem unused
+EvalLocalVariableRefCachedDebug,000000000274EAF0,4,4,uint32 name,find var name in the debug cache; seem unused
+SafeCreateLocalVariables,000000000274C0D0,1 + 5 * count,1 + (4+1) * count,byte count;(uint32 name;byte flag)[count],create new var by canon id name flag&2!=0? (pop var until vaar->type == PRECODEPOS and construct array ref with it); if pop->type == PRECODEPOS set UNDEFINED else if flag&1!=0 && top == ARRAY allocate array and copy the content of the array to the var; else error.
+EvalSelfFieldVariable,00000000027506F0,4,4,uint32 name,Set objectId as self; if self isn't an object crash; otherwise push self->$name
+ClearFieldVariable,000000000274F210,4,4,uint ref,clear the field ref of the object in objectId
+ClearFieldVariableOnStack,000000000274F1E0,0,0,,Pop ref; clear the field ref of the object in objectId
+EvalGlobalObjectFieldVariable,00000000027504F0,6,2 + 4,uint16 gvar;uint32 ref,Set global var gvar as objectid; compute field ref and push it
+CastAndEvalFieldVariable,000000000274EFE0,4,4,uint32 ref,Pop object; eval it in objectid (temp); and eval and push object->$ref
+EvalFieldVariable,000000000274FD20,4,4,uint32 ref,evaluate objectId->$ref and push it on the stack
+EvalFieldVariableRef,000000000274FCB0,4,4,uint32 ref,Compute objectId->$ref fieldid and put in fieldid
+EvalFieldVariableOnStack,000000000274FAC0,0,0,,pop variable ref; evaluate objectId->$ref and push it on the stack
+EvalFieldVariableOnStackRef,000000000274FA60,0,0,,pop variable ref; search fieldid of objectId->$ref and put it in fieldValueId
+SetVariableFieldRef,000000000274FBC0,4,4,int32 name,Set fieldId as objectId->$name; pop value; if isdefined(value) set value else clear field
+SetVariableField,0000000002753340,0,0,,Pop value; Set field value of fieldValueId or entId to value
+EvalLocalVariableCached,0000000002750210,1,1,byte localvar,Push localvar value on stack
+EvalLocalVariableCachedSafe,0000000002753120,1,1,byte localvar,Push precodepos; then Push localvar value on stack
+SetLocalVariableCachedOnStack,0000000002753230,1,1,byte localVar,If stack CODEPOS release the local var; else set it to the value on the stack
+SetLocalVariableCached,0000000002750150,1,1,byte localvar,Set fieldValueId to localvar; pop value; if value == undefined clear the variable else setvalue 
+FirstArrayKey,00000000027502D0,0,0,,Pop array and push first array key or undefined if no first key
+FirstArrayKeyCached,000000000274FE90,1,1,byte localvar,Eval localvar as array and push first array key or undefined if no first key
+SetNextArrayKeyCached,0000000002752AC0,1,1,byte localvar,Pop array; set the next array var from localvar into localvar or undefined if no next key
+EvalArray,000000000274F9E0,0,0,,Pop array(0) and index(1) and push ref
+EvalArrayRef,000000000274F7C0,0,0,,set fieldValueId into objectId (array ref); pop (hash|int|str) val and set fieldValueId to the ref inside the array
+EvalFieldObjectFromRef,000000000274FDD0,1,1,byte localvar,Eval localvar into a temp fieldobject and set it to objectId
+EvalLocalVariableRefCached,0000000002750290,1,1,byte localvar,Put localvar in fieldValueId 
+EvalLocalVariableDefined,0000000002750000,1,1,byte localvar,Eval localvar; push if the result is defined
+CreateArray,000000000274F260,0,0,,Alloc array; push the (x01_POINTER)ref on the stack; addref to inst and release it
+AddToArray,000000000274ED50,0,0,,Pop index(0) ; value(1) and array(2); set variable in array at index to value and push value
+CreateStruct,000000000274F2F0,0,0,,push struct
+AddToStruct,000000000274EE90,0,0,,pop canon id(0); struct(1) and val(2) and push val
+CastFieldObject,000000000274F0F0,0,0,,Pop field object and set objectId to it

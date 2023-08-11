@@ -55,7 +55,7 @@ AddToArray, 000000000274ED50 51 -> {51, 119, 146, 180, 4e1, 510, 60a, 64f, 6d5, 
 Wait, 0000000002755920 54 -> {54, 10c, 17d, 324, 3e6, 67d, 6ec, 809, 923, c5b, c64, ded, e5a, ee9, f49, f5f, fc0}
 SuperEqual, 000000000274AFD0 55 -> {55, cc, 1bd, 30b, 31c, 361, 4a4, 522, 7b7, 7e1, 8c5, 93a, 9b0, 9c5, a3d, a45, a69, b72, bdf, d27, d6a, d8b, dae, dd1, dd8, e16, ed4, f3b, f4d, ff6}
 GetUndefined56, 000000000274A240 56 -> {56, 1a3, 1cd, 358, 739, 84a, 9f6, b6b, def, e3c, f92, fa5, ff4}
-ScriptFunctionThreadCall, 000000000274D080 5c -> {5c, 68, a7, 17e, 24c, 327, 37c, 75c, 814, 834, 880, 97f, ac8, bb6, c0e, c9b, cb5, cf1, de4, eca, fd3}
+ScriptFunctionCall, 000000000274D080 5c -> {5c, 68, a7, 17e, 24c, 327, 37c, 75c, 814, 834, 880, 97f, ac8, bb6, c0e, c9b, cb5, cf1, de4, eca, fd3}
 EvalFieldVariableOnStackRef, 000000000274FA60 5f -> {5f, 65, 93, 1d2, 219, 28c, 40e, 448, 450, 4d5, 6ac, 877, 970, 97a, 9b5, b31, bc7, c4f, db4, e15, e8c, e96, f64}
 JumpOnTrueExpr, 000000000274A910 61 -> {61, 10a, 170, 17c, 2a9, 2fc, 303, 3bd, 618, 69f, 7bb, 8fa, 9f1, a6d, af6, b12, b27, be8, bfa, ca6, cc7, e1c, e78, ef8, f06, f98}
 CreateArray, 000000000274F260 62 -> {62, 1fb, 255, 2fb, 39c, 461, 505, 58d, 6ba, 6ff, 75d, 832, 8e0, 9c8, 9cb, 9e3, ab6, b5c, b63, b83, bce, c09, d1c, d58, e37, e5e, f70, f7c}
@@ -87,12 +87,12 @@ Unknown9e, 000000000274F550 9e -> {9e, e7, 1a5, 1b1, 1f8, 274, 287, 28d, 31a, 37
 Equal, 0000000002749E00 9f -> {9f, 11c, 21d, 24e, 2e5, 531, 5bb, 627, 717, 7db, 93f, 95e, aa8, b0c, c8f, ddb, ea8, f2e}
 GetUnsignedInteger, 000000000274A280 a1 -> {a1, 15a, 1bf, 330, 44e, 591, 5d9, 637, 768, 76d, 7fd, 80e, 879, 90a, 972, d1e, d6d, d6f, df7, e91, f2a}
 WaittillTimeout, 0000000002754F70 a9 -> {a9, b7, 149, 189, 198, 293, 360, 3f8, 57b, 5f8, 703, 723, 7d8, 81b, 859, 8b8, 989, 9f8, a79, b59, baf, bbd, be3, d71, db6, df4, eb2, f8d}
-Unknownad, 0000000002753120 ad -> {ad, 10f, 12d, 141, 696, 77d, a3c, b2a, bfd, dcb, fbd}
+EvalLocalVariableCachedSafe, 0000000002753120 ad -> {ad, 10f, 12d, 141, 696, 77d, a3c, b2a, bfd, dcb, fbd}
 GreaterThan, 000000000274A5C0 bb -> {bb, 110, 2dd, 3cf, 3f7, 4d1, 534, 5b2, 8bd, a19, b5b, cb3, dab, f25, fb3}
 Jump, 000000000274AA70 c0 -> {c0, 151, 16a, 502, 5c8, 5f9, 73a, 75a, 86d, 8ca, 900, 924, 942, 9d0, af8, caa, cdb, dcc, dfe, fe9}
 Divide, 0000000002749CB0 c1 -> {c1, 2ca, 3c0, 469, 486, 826, 9e6, c90, e61, ea9, fe4}
 EndSwitch, 0000000002749D50 c2 -> {c2, 200, 23e, 2ef, 314, 386, 394, 40f, 41f, 43e, 462, 46d, 4b5, 574, 6d3, 792, 7a9, 7f8, 7fb, 81f, 86e, ad9, b53, c3e, cc2, e45, f4b, fef}
-Unknownc4, 0000000002753230 c4 -> {c4, cf, d0, 224, 26e, 2a8, 337, 349, 365, 4a2, 4f2, 54e, 647, 72e, 760, 91f, 998, 99e, a6c, a8f, b6f, c82, ec1, f59, fa8}
+SetLocalVariableCachedOnStack, 0000000002753230 c4 -> {c4, cf, d0, 224, 26e, 2a8, 337, 349, 365, 4a2, 4f2, 54e, 647, 72e, 760, 91f, 998, 99e, a6c, a8f, b6f, c82, ec1, f59, fa8}
 Unknownc7, 0000000002752D40 c7 -> {c7, 3a7, 50c, 567, 624, 67c, 708, 776, 778, 780, 842, 88a, 8bb, a2b, a7c, ae2, ae9, ba4, bb5, c43, daf, dcf, e46, e54, e6d, eae, eb5, f99}
 JumpOnFalse, 000000000274A820 c9 -> {c9, 1c2, 204, 2d3, 3cc, 3dc, 430, 4e0, 6b6, 6da, 757, 7dc, a08, b25, b4e, c1b, cc4, dfd, e22, e77, e8d, f0d, f12, fee}
 JumpOnFalseExpr, 000000000274A780 ce -> {ce, 275, 347, 594, 59d, 63a, 95d, 996, 9db, afb, b23, b84, cd0, d20, d5b, e35, e67, e90, ea6, f7e}

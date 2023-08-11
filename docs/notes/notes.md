@@ -79,6 +79,23 @@ Zebra 112 Vicious Stallion
 // 487d0473700e6140,scripts/core_common/clientfield_shared.gsc
 // 124cecff7280be52,scripts/core_common/clientids_shared.gsc
 
+mp error:
+Can't read pooled buffer at address 1276a281ea0 of size 10460 for file scriptparsetree/hashed-2/script_131d10be788.gscbin
+Can't read pooled buffer at address 1276a287b40 of size 4224 for file scriptparsetree/hashed-1/script_131d10be928.gscbin
+Can't read pooled buffer at address 1276a2a0580 of size 96 for file scriptparsetree/hashed-3/script_131d10c2248.gscbin
+
+PRECODEPOS:
+
+EvalLocalVariableCachedSafe -> Push PRECODEPOS before
+CheckClearParams -> Convert top PRECODEPOST to CODEPOS or error
+ClearParams -> Clear params until find CODEPOS or PRECODEPOS
+SafeDecTop -> ignore if top->type == CODEPOS (but seem unused)
+SetLocalVariableCachedOnStack -> set undefined if == CODEPOS (but seem unused)
+Notify -> if stack[-2] isn't a pointer allocstruct, stack[-2] seem to be created by PreScriptCall (PRECODEPOS)
+PreScriptCall -> Push PRECODEPOS -> Before sending information to vm, done by:
+  - script calls(+pointer), can be paired f1(f2(2)) -> PSC;PSC;GC(2)
+  - notify
+
 ```c++
 // GSC datatypes
 enum ScrVarType_t : unsigned __int32
@@ -459,7 +476,7 @@ HGFEAAAA
   - 7: method_endon
   - default: error linking
 - E 0x10 dev import
-- F 0x20 get ; api import namespace "sys" or "" or need find
+- F 0x20 to resolve import ; api import namespace "sys" or "" or using the same namespace
 - G 0x40 unk40
 - H 0x80 unk80
 
@@ -490,6 +507,27 @@ PushVar
 SafeSetWaittillVariableFieldCached
 SelfEvalFieldVariable
 SelfEvalFieldVariableRef
+
+struct __declspec(align(8)) scrVarPub_t
+{
+  const char *fieldBuffer;
+  const char *error_message;
+  byte *programBuffer;
+  byte *endScriptBuffer;
+  HunkUser *programHunkUser;
+  scrVarGlobalVars_t globalVars[16];
+  ScrVarNameIndex_t entFieldNameIndex;
+  ScrVarIndex_t freeEntList;
+  ScrVarIndex_t tempVariable;
+  unsigned int checksum;
+  unsigned int entId;
+  unsigned int varHighWatermark;
+  unsigned int numScriptThreads;
+  unsigned int numVarAllocations;
+  //int varHighWatermarkId;
+  //bool developer;
+  //bool evaluate;
+};
 
 
 

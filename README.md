@@ -210,6 +210,7 @@ This section is about the error codes you might have while working on GSC script
 - `647662103` - can't be converted to const string (only string,int,float,vector)
 - `179749049` - usage of VM_OP_JumpOnTrue with non float/int value
 - `2489324310` - Usage of switch with var string|hash|int
+- `245612264` - Usage of a foreach using something that isn't an array
 - `Whiskey 110 Late tiger` - accessing array like a struct (or not)
 - `kilo 45 gold dove` - usage of unset local var
 - `Delta 320 Monster Tornado` - unknown
