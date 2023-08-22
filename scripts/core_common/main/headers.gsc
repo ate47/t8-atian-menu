@@ -15,6 +15,7 @@
 #include scripts\core_common\spawner_shared;
 #include scripts\core_common\flagsys_shared;
 #include scripts\core_common\exploder_shared;
+#include scripts\core_common\vehicle_shared.gsc;
 
 #namespace atianmenu;
 
@@ -52,9 +53,13 @@ __init__() {
     __init_gcsc__();
 #endif
 
+    
+
     atianconfig = level.atianconfig;
     generate_enum_values();
 
+
+    atianconfig.rg_dis = getdvarint(#"raygun_disintegrate", 0);
 #ifndef _SUPPORTS_DETOURS
     // if we can use the detours, we will use the detours to do that
     if (isdefined(atianconfig.zm_custom_ee) && atianconfig.zm_custom_ee) {
@@ -74,6 +79,10 @@ __init__() {
 	clientfield::register("toplayer", "" + #"atianmenu_testfield", 99999, 1, "int");
 #endif
 #endif
+
+    if (isdefined(atianconfig.custom_damage_effect)) {
+        level._effect[#"atianmenu_damage_effect"] = atianconfig.custom_damage_effect;
+    }
     
     atianconfig.infection_mode = isdefined(getgametypesetting("infectionmode")) && getgametypesetting("infectionmode");
 
@@ -82,6 +91,9 @@ __init__() {
     callback::on_start_gametype(&init);
     callback::on_connect(&onPlayerConnect);
     callback::on_spawned(&onPlayerSpawned);
+    callback::on_ai_spawned(&onAiSpawned);
+
+    streak_vehicle_callback();
 }
 
 __post__init__() {
@@ -100,6 +112,9 @@ __post__init__() {
             array::add(level.atianconfig.loaded_modules, sys_item.name);
         }
         array::add(level.atianconfig.loaded_modules_elem, sys_item);
+    }
+    if (isdefined(level.atianconfig.raygun_dis) && level.atianconfig.raygun_dis) {
+        zm_raygun_dis_init();
     }
 }
 
@@ -276,6 +291,7 @@ handle_config() {
         }
         if (isdefined(atianconfig.blackout_spawn_waterballons) && atianconfig.blackout_spawn_waterballons) {
             setGametypeSetting(#"wzwaterballoonsenabled", true);
+            system::ignore(#"hash_502d65acd9829223"); // ??
         }
         if (isdefined(atianconfig.numlives) && atianconfig.numlives > 0) {
             setGametypeSetting(#"playernumlives", atianconfig.numlives);

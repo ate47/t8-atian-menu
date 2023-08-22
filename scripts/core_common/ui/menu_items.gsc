@@ -628,6 +628,9 @@ init_menus() {
         self add_menu_item("random_bot", "Remove bot", &func_spawn_remove_bot);
         self add_menu("random_bot_remove", "Remove bot (list)", "random_bot", true, &func_bot_search, #"remove");
         self add_menu_item("random_bot", "Remove bot (all)", &func_spawn_remove_bot, true);
+        if (is_multiplayer()) {
+            self add_menu("random_bot_killstreak", "Use scorestreaks", "random_bot", true, &func_bot_useks_search);
+        }
     }
 
     if (is_zombies() || is_warzone()) {

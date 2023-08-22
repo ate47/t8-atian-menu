@@ -26,15 +26,19 @@ AtianMenuDevConfig() {
     self.mp_drafttime = 2;
     self.devcfg.wz_bots = true;
     self.devcfg.bypassweapon_script = true;
+    self.rg_disintegrate = false; // zm_white only?
     //self.global_max_health = 500;
-    //self.force_blackout_map = "wz_open_skyscrapers";
-    //self.force_blackout_gametype = "warzone_quad";
-    self.force_blackout_map = "wz_escape";
-    self.force_blackout_gametype = "warzone_escape_quad_dbno";
+    self.force_blackout_map = "wz_open_skyscrapers";
+    self.force_blackout_gametype = "warzone_quad";
+    //self.force_blackout_map = "wz_escape_alt";
+    //self.force_blackout_gametype = "warzone_escape_quad_dbno";
 
-   // self.blackout_stash_model = "christmas";
-   // self.blackout_give_blackjack_keys = 2;
+    self.blackout_stash_model = "christmas";
+    self.blackout_give_blackjack_keys = 2;
     //self.blackout_character_unlock = true;
+    self.watchdamage = false;
+    self.raygun_dis = false;
+    self.custom_damage_effect = #"maps/zm_office/fx8_teleporter_destination";
     
     self.no_menu = false;
     self.only_host = true;
@@ -47,6 +51,9 @@ AtianMenuDevConfig() {
         "perk_item_stimulant",
         "resource_item_paint"
     );
+    
+    self.blackout_spawn_waterballons = true;
+    self.blackout_spawn_snowballs = false;
 }
 
 AtianMenuDevKeyConfig() {

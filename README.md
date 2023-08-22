@@ -37,7 +37,7 @@ Posts or videos I've made using these scripts, notes or the sources:
 - [GSC Weapon tool](https://www.youtube.com/watch?v=hPBZrQQ7u4c)
 - [Some changes of the Black Ops 4 Fandom](https://callofduty.fandom.com/wiki/Cut_Content/Call_of_Duty:_Black_Ops_4)
 - [t8-custom-ee](https://github.com/ate47/t8-custom-ee) - A tool to enable EEs in custom mutations, offline or casual
-- [t8-tools](https://github.com/ate47/t8-tools) - A dump tool
+- [atian-cod-tools](https://github.com/ate47/atian-cod-tools) - Some tools related to Call of Duty (with [bo4-source](https://github.com/ate47/bo4-source))
 
 ## Config
 
@@ -177,6 +177,7 @@ This section is about the error codes you might have while working on GSC script
 - `2572009355` - usage of `vectorscale(vector,scale)` with a non vector for the vector.
 - `2269096660` - usage of `vectorscale(vector,scale)` with a non float/int for the scale factor.
 - `2751867714` - usage of `self` as an object, but wasn't.
+- `3410121757` - usage of `if`, `||` or `&&` without float|int object
 - `3797948576`, `285416523`, `1642120921` - usage of `notify` without a pointer/object(param0) hash/string(param1).
 - `2006839707` - Call of array::add using a undefined or bad array.
 - `4126096467` - Var ByRef only supported for array types

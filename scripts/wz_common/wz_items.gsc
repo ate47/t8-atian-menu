@@ -45,6 +45,7 @@ give_wzitem(item_id, count = 1) {
 		itemobj = [[ get_item ]](item_id);
 		slotid = self [[ get_slotid ]](itemobj);
 		self [[ give_item ]](itemobj, self, slotid);
+		waitframe(1);
 	}
 #endif
 }

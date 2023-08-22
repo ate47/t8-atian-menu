@@ -556,6 +556,10 @@ hash_1c31b8bc2b1996ca,zm,unknown,unknown default=1
 zmenhanceddamagemult,zm,unknown,unknown default=1
 zmenhancedhealthmult,zm,unknown,unknown default=1
 hash_600fdf6bc4d21353,zm,unknown,unknown default=1
+hash_1b34b26470f4368,mp,int,Heist cost multiplier
+hash_71b2b43696e16252,mp,int,Heist ammo cost multiplier
+bountybagomoneymoney,mp,int,Heist money in the bag
+hash_63f8d60d122e755b,mp,int,Heist money in the bag diviser
 allowannouncer,unknown,unknown,unknown
 allowbattlechatter,unknown,unknown,unknown
 allowfinalkillcam,unknown,unknown,unknown
@@ -567,7 +571,6 @@ allowplayofthematch,unknown,unknown,unknown
 antiboostdistance,unknown,unknown,unknown
 boastallowcam,unknown,unknown,unknown
 boastenabled,unknown,unknown,unknown
-bountybagomoneymoney,unknown,unknown,unknown
 bulletdamagescalar,unknown,unknown,unknown
 carrier_manualdrop,unknown,unknown,unknown
 cleandepositonlinetime,unknown,unknown,unknown
@@ -597,7 +600,6 @@ hash_1513b70c43495cc0,unknown,unknown,unknown
 hash_154db5a1b2e9d757,unknown,unknown,unknown
 hash_1614b9cbe0df6f75,unknown,unknown,unknown
 hash_17f17e92c2654659,unknown,unknown,unknown
-hash_1b34b26470f4368,unknown,unknown,unknown
 hash_1b4a66a008f60927,unknown,unknown,unknown
 hash_1f3825ba2a669400,unknown,unknown,unknown
 hash_221008a2c793dfa1,unknown,unknown,unknown
@@ -654,7 +656,6 @@ hash_5f76e2d55ad861ed,unknown,unknown,unknown
 hash_622b18585020f430,unknown,unknown,unknown
 hash_6269eb986d22cd37,core,unknown,unknown
 hash_62a4fd40810cb61,unknown,unknown,unknown
-hash_63f8d60d122e755b,unknown,unknown,unknown
 hash_64291919b16c489a,unknown,unknown,unknown
 hash_647310a2fe3554f7,unknown,unknown,unknown
 hash_661ee23f114191c1,unknown,unknown,unknown
@@ -667,7 +668,6 @@ hash_6aba2f652c6f4e07,unknown,unknown,unknown
 hash_6cf5f53d1fbb1066,unknown,unknown,unknown
 hash_6e2abf2cc40e03f1,core,unknown,unknown
 hash_712f4c2a96bca56e,unknown,unknown,unknown
-hash_71b2b43696e16252,unknown,unknown,unknown
 hash_731988b03dc6ee17,unknown,unknown,unknown
 hash_731aac1992af2669,unknown,unknown,unknown
 hash_7477eea36687a960,unknown,unknown,unknown

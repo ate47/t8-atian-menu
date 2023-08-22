@@ -20,9 +20,12 @@ GunModifier() {
             array("zmgegenees", "gegenees_spear_projectile"),
             array("zmgegenees_golden", "gegenees_golden_spear_projectile"),
             array("zmelephant_rider", "rider_spear_projectile"),
-            array("zmdart", "hash_3de0926b89369160"),
+            array("zmdart", #"hash_3de0926b89369160"),
             array("rocketgun", "launcher_standard_t8"),
-            array("rocketgun_upgraded", "launcher_standard_t8_upgraded")
+            array("rocketgun_upgraded", "launcher_standard_t8_upgraded"),
+            array("test_rg1", #"hash_5a4246956faa187e"),
+            array("test_rg2", #"hash_43989578a576ae26"),
+            array("test_rg3", #"hash_43b39078a58d6d5f")
         );
 
         activated = array();

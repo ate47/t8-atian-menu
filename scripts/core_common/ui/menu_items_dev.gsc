@@ -10,6 +10,9 @@ init_menus_dev() {
     self add_menu("tool_menu_dev", "Dev tools", "tool_menu", true);
     self add_menu("tool_menu_dev_logs", "Logs", "tool_menu_dev", true, &func_am_log);
 
+    self add_menu_item_modswitch("tool_weapon", "Test ray gun 1", "test_rg1");
+    self add_menu_item_modswitch("tool_weapon", "Test ray gun 2", "test_rg2");
+    self add_menu_item_modswitch("tool_weapon", "Test ray gun 3", "test_rg3");
     
     self add_menu("dev_model", "Test model", "tool_menu_dev", true);
 
@@ -79,6 +82,7 @@ init_menus_dev() {
 
     dynents = array("zombie_apoc_homunculus", "spring_event_homunculus", "nixie_tube_cage");
     
+    self add_menu("dev_dynent_unk_blackout", "Unk blackout", "dev_dynent", true, &func_searchdynent, #"hash_25e69fa10c944661");
     self add_menu("dev_dynent_fishing_rock", "Fishing rock", "dev_dynent", true, &func_searchdynent, "fishing_rock");
     self add_menu("dev_dynent_blackjack", "Stash blackjack", "dev_dynent", true, &func_searchdynent, #"wz_stash_blackjack");
     self add_menu("dev_dynent_spring_event_homunculus", "Spring event homunculus", "dev_dynent", true, &func_searchdynent, "spring_event_homunculus");

@@ -4,7 +4,17 @@ onPlayerConnect() {
         level.var_3426461d = &get_xp_multiplier;
     }
 }
+onAiSpawned() {
+    self endon(#"disconnect", #"spawned_player");
+    level endon(#"end_game", #"game_ended");
 
+    self.atian = spawnStruct();
+    self.atian.wz = spawnStruct();
+    atianconfig = level.atianconfig;
+
+    
+    self thread watchdamage();
+}
 
 onPlayerSpawned() {
     self endon(#"disconnect", #"spawned_player");
@@ -14,6 +24,8 @@ onPlayerSpawned() {
     self.atian.wz = spawnStruct();
     atianconfig = level.atianconfig;
     
+    self thread watchdamage();
+
     if (isbot(self)) {
         return self onBotSpawned(); // ignore bot
     }

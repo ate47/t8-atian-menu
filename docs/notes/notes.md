@@ -550,3 +550,10 @@ offset 0x59F1B08
 
 
 						player function_cce105c8(#"tier_skip", 1, 1, 2, modeindex);
+
+
+
+weird stuff
+
+script_39347d985163e17::function_ebd0491e() (t8-src decompilation)
+script_31e56101095f174b.gsc::_planprocessstack() (a continue in a switch)
