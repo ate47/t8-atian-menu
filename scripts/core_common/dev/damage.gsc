@@ -4,7 +4,7 @@ watchdamage() {
         waitresult = undefined;
         waitresult = self waittill(#"damage", #"death");
         if (waitresult._notify == #"death") {
-            if (isdefined(atianconfig.watchdamage) && atianconfig.watchdamage) {
+            if (isdefined(level.atianconfig.watchdamage) && level.atianconfig.watchdamage) {
                 broadcast_message("^2" + name + "^5/^1dead^5/^2" + nullable_to_str(waitresult.name, "noname"));
             }
             return;
@@ -13,7 +13,7 @@ watchdamage() {
         position = waitresult.position;
         direction = waitresult.direction;
 
-        if (isdefined(atianconfig.custom_damage_effect) && isdefined(position)) {
+        if (isdefined(level.atianconfig.custom_damage_effect) && isdefined(position)) {
             if (isdefined(direction)) {
                 playfx(level._effect[#"atianmenu_damage_effect"], position, direction);
             } else {
@@ -21,7 +21,7 @@ watchdamage() {
             }
         }
         
-        if (isdefined(atianconfig.watchdamage) && atianconfig.watchdamage) {
+        if (isdefined(level.atianconfig.watchdamage) && level.atianconfig.watchdamage) {
             attacker = waitresult.attacker;
             mod = waitresult.mod;
             damage = waitresult.amount;
