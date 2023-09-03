@@ -56,7 +56,7 @@ ee_hashname_resolve(name) {
         return undefined;
     }
     switch (name) {
-    case #"hash_331f9ba64e2c2478": return "(?)stake knife quest";
+    case #"zm_mansion_a_skeet_fink": return "(?)stake knife quest";
     case #"music_sq":
         return "music_sq";
     case #"hash_559b7237b8acece2": return "(?)???";

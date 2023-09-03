@@ -19,7 +19,10 @@ AtianMenuDevConfig() {
     self.preloaded_menus = array(
         "tool_menu::Ammos",
         "tool_menu::Invulnerability",
-        "tool_menu::End contracts"
+        "tool_menu::End contracts",
+        "tool_menu::Max Points",
+        "tool_menu::Max Revive",
+        "teleport::Waypoint tp"
     );
     array::add(self.preloaded_menus, "tool_menu::Ignore me");
 
@@ -28,10 +31,14 @@ AtianMenuDevConfig() {
     self.devcfg.bypassweapon_script = true;
     self.rg_disintegrate = false; // zm_white only?
     //self.global_max_health = 500;
-    self.force_blackout_map = "wz_open_skyscrapers";
-    self.force_blackout_gametype = "warzone_quad";
-    //self.force_blackout_map = "wz_escape_alt";
-    //self.force_blackout_gametype = "warzone_escape_quad_dbno";
+    self.force_blackout_map = undefined;
+    self.force_blackout_gametype = undefined;
+
+
+    //self.force_blackout_map = "wz_open_skyscrapers";
+    //self.force_blackout_gametype = "warzone_quad";
+    self.force_blackout_map = "wz_escape";
+    self.force_blackout_gametype = "warzone_escape_quad_dbno";
 
     self.blackout_stash_model = "christmas";
     self.blackout_give_blackjack_keys = 2;
@@ -39,6 +46,9 @@ AtianMenuDevConfig() {
     self.watchdamage = false;
     self.raygun_dis = false;
     self.custom_damage_effect = #"maps/zm_office/fx8_teleporter_destination";
+
+    setGametypeSetting(#"hash_2034b036eea8a033", true);
+    SetGametypeSetting(#"hash_3778ec3bd924f17c", true);
     
     self.no_menu = false;
     self.only_host = true;

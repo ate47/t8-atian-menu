@@ -269,26 +269,6 @@ get_all_maps_wz() {
     );
 }
 
-get_wz_vehicles() {
-    return array(
-        #"helicopter_light",
-        #"helicopter_utility",
-        #"vehicle_t8_mil_helicopter_transport_dark_wz",
-        #"player_atv",
-        #"player_tank",
-        #"player_suv",
-        #"player_muscle",
-        #"veh_muscle_car_convertible_player_wz_replacer",
-        #"player_motorcycle",
-        #"recon_wz",
-        #"cargo_truck_wz",
-        #"tactical_raft_wz",
-        #"pbr_boat_wz",
-        #"player_fav",
-        #"veh_dart_wz"
-    );
-}
-
 get_csv_file_title(hash_csv) {
     hash_csv = hash_lookup(hash_csv);
     if (ishash(hash_csv)) {

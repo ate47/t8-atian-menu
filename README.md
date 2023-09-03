@@ -61,8 +61,9 @@ You can config the mod menu in the [`scripts/config`](scripts/config) directory,
 - Blackout
   - Force mode
   - Force map
+  - Spawn vehicles
   - Set the zombies spawner types (brutus, avogadro or zombies)
-  - Spawn the Icarus
+  - Spawn the Icarus (config)
   - Quaknarok
   - Set the health of the avogadro
   - Spawn waterballons
@@ -212,7 +213,10 @@ This section is about the error codes you might have while working on GSC script
 - `179749049` - usage of VM_OP_JumpOnTrue with non float/int value
 - `2489324310` - Usage of switch with var string|hash|int
 - `245612264` - Usage of a foreach using something that isn't an array
+- `754846421` - spawnvehicle with bad origin
+- `897625509` - unknown
 - `Whiskey 110 Late tiger` - accessing array like a struct (or not)
+- `Echo 828 Hurst Scorpio` - tool many vehicles
 - `kilo 45 gold dove` - usage of unset local var
 - `Delta 320 Monster Tornado` - unknown
 - `Zulu 523 Electric Lion` - unknown

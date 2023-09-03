@@ -8,18 +8,9 @@ get_array_explorer_values() {
         create_array_explorer_value("Zombies vars", level.zombie_vars),
         create_array_explorer_value("Blackout zones", level.var_5b357434),
         create_array_explorer_value("Zombies zones", level.zones),
-        create_array_explorer_value("DLC Weapons", self function_cf9658ca())
-        // create_array_explorer_value("Structs", level.var_77fe0a41) // 3126405504
+        create_array_explorer_value("buoy_stash", struct::get_array("buoy_stash", "targetname"))
+        
     );
-
-    if (level.script == "mp_hacienda") {
-        array::add(arr, create_array_explorer_value("Hacienda hidden_door_button", struct::get_array("hidden_door_button")));
-    }
-
-    array::add(arr, create_array_explorer_value("is_ee_enabled (set)", GetGametypeSetting(#"hash_3c5363541b97ca3e")));
-    array::add(arr, create_array_explorer_value("is_ee_enabled (val)", level.var_73d1e054));
-    array::add(arr, create_array_explorer_value("is_ee_enabled (dvar)", getdvarint(#"zm_ee_enabled", 0)));
-    array::add(arr, create_array_explorer_value("difficulty", level.gamedifficulty));
 #ifdef _SUPPORTS_LAZYLINK
     is_ee_enabled = @zm_utility<scripts\zm_common\zm_utility.gsc>::is_ee_enabled;
 

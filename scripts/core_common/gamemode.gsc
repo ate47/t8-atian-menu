@@ -25,7 +25,7 @@ is_ct() {
 }
 
 can_spawn_vehicle() {
-    return isdefined(level.atianconfig.loaded_modules) && array::contains(level.atianconfig.loaded_modules, "wz_vehicle") && is_dev_mode();
+    return is_warzone();
 }
 
 get_instance_name() {

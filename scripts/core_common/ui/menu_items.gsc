@@ -347,9 +347,9 @@ init_menus() {
         if (can_spawn_vehicle()) {
             self add_menu("vehicle_wz", "Spawn vehicle", "wz_tools", true);
 
-            wz_vehicles = get_wz_vehicles();
+            wz_vehicles = get_vehicles_enum_data().vehicles;
             for (i = 0; i < wz_vehicles.size; i++) {
-                self add_menu_item("vehicle_wz", hash_lookup(wz_vehicles[i]), &func_spawn_vehicle, wz_vehicles[i]);
+                self add_menu_item("vehicle_wz", wz_vehicles[i].title, &func_spawn_vehicle, wz_vehicles[i].name);
             }
         }
 

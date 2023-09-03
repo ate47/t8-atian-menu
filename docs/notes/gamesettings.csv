@@ -560,6 +560,7 @@ hash_1b34b26470f4368,mp,int,Heist cost multiplier
 hash_71b2b43696e16252,mp,int,Heist ammo cost multiplier
 bountybagomoneymoney,mp,int,Heist money in the bag
 hash_63f8d60d122e755b,mp,int,Heist money in the bag diviser
+hash_1f840366731cc3e,wz,int,spawn buoy stash (dock under water stash)
 allowannouncer,unknown,unknown,unknown
 allowbattlechatter,unknown,unknown,unknown
 allowfinalkillcam,unknown,unknown,unknown

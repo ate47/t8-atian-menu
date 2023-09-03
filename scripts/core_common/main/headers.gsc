@@ -248,6 +248,10 @@ handle_config() {
             setgametypesetting(#"wzlootlockers", true);
             //setGametypeSetting(#"wzenablecontrabandstash", true);
         }
+        if (isdefined(atianconfig.blackout_unk1)) {
+            // crash "Summer 213 Good Invasion"
+            setGametypeSetting(#"hash_72594454f1c833aa", atianconfig.blackout_unk1);
+        }
         if (isdefined(atianconfig.blackout_spawn_zombies) && atianconfig.blackout_spawn_zombies)
             setGametypeSetting(#"wzzombies", true);
         if (isdefined(atianconfig.blackout_spawn)) {
@@ -257,28 +261,31 @@ handle_config() {
                 spawn_elem = atianconfig.blackout_spawn;
             }
             switch (spawn_elem) {
-                case "brutus":
+                case #"brutus":
                     setGametypeSetting(#"wzbrutuseverywhere", true);
                     setGametypeSetting(#"wzbrutus", true);
                     break;
-                case "brutus_boss":
+                case #"brutus_boss":
                     setGametypeSetting(#"wzbrutuslargeeverywhere", true);
                     setGametypeSetting(#"wzbrutuslarge", true);
                     break;
-                case "avogadro":
+                case #"avogadro":
                     spawner::add_archetype_spawn_function(#"avogadro", &on_wz_avogadro_spawn);
                     setGametypeSetting(#"wzavogadroeverywhere", true);
                     setGametypeSetting(#"wzavogadro", true);
                     break;
-                case "blightfather":
+                case #"blightfather":
                     // script error
                     // setGametypeSetting(#"wzblightfatherseverywhere", true);
                     // setGametypeSetting(#"wzblightfather", true);
                     break;
-                case "zdog":
+                case #"zdog":
                     // spawn brutus boss (not working)
                     // setGametypeSetting(#"wzhellhoundseverywhere", true);
                     // setGametypeSetting(#"wzhellhounds", true);
+                    break;
+                case #"alcatraz_night":
+                    setGametypeSetting(#"hash_3624143624604b4c", true);
                     break;
                 default:
                     spawner::add_archetype_spawn_function(#"zombie", &on_wz_zombie_spawn);

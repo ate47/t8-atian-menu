@@ -45,9 +45,10 @@ AtianMenuConfigBlackout() {
     // zombie spawn
     self.blackout_spawn_zombies = true;
 
-    // zombie secondary spawn functions, options: "zombies" "brutus" "brutus_boss" "avogadro"
+    // zombie secondary spawn functions, options: "zombies" "brutus" "brutus_boss" "avogadro" "alcatraz_night"
+    // alcatraz_night is only available on alcatraz
     // if this element is an array, a random value will be used in it, the avogadro gives 60 damages/shot
-    self.blackout_spawn = "zombies"; //array("brutus", "zombies", "avogadro");
+    self.blackout_spawn = "alcatraz_night";
 
     // set the number of zombies per zone (only for the blackout_spawn="zombies")
     // the game set a maximum of 25 zombies at the same time on the map (https://www.youtube.com/watch?v=gGfDjTgJxQU)

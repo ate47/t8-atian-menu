@@ -23,7 +23,7 @@ gsc,level_finalizeinit,true
 gsc,gametype_start,true
 gsc,player_connect,true
 gsc,player_disconnect,true
-gsc,event_dcce952e,false
+gsc,hostmigration_setupgametype,false
 gsc,hostmigration,true
 gsc,hostmigration_save,true
 gsc,hostmigration_premigrationsave,true
@@ -59,8 +59,8 @@ gsc,sidemission_launch,true
 gsc,ui_fadeblackscreen,true
 gsc,event_40f83b44,true
 gsc,glass_smash,true
-gsc,event_9debee73,true
-gsc,event_d036f708,true
+gsc,freefall,true
+gsc,parachute,true
 gsc,swimming,true
 gsc,underwater,true
 gsc,event_d6f9e6ad,true
@@ -125,7 +125,7 @@ csc,createstruct,true
 csc,findstruct,true
 csc,death,true
 csc,melee,true
-csc,event_8831378d,true
+csc,culled,true
 csc,systemstatechange,true
 csc,maprestart,true
 csc,localclient_connect,true
@@ -195,9 +195,9 @@ csc,event_a5e70678,true
 csc,trigger,true
 csc,event_bd0cdda0,true
 csc,event_723bdd1b,true
-csc,event_9debee73,true
+csc,freefall,true
 csc,updateactivecamo,true
-csc,event_d036f708,true
+csc,parachute,true
 csc,weapon_change,true
 csc,event_41480c76,true
 csc,event_6e84b1b1,true
