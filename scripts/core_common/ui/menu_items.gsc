@@ -344,15 +344,6 @@ init_menus() {
 
         self add_menu_item("wz_tools", "Clear inventory", &func_wz_item_clear_inventory, true);
 
-        if (can_spawn_vehicle()) {
-            self add_menu("vehicle_wz", "Spawn vehicle", "wz_tools", true);
-
-            wz_vehicles = get_vehicles_enum_data().vehicles;
-            for (i = 0; i < wz_vehicles.size; i++) {
-                self add_menu_item("vehicle_wz", wz_vehicles[i].title, &func_spawn_vehicle, wz_vehicles[i].name);
-            }
-        }
-
         if (!(isdefined(self.atianconfig.force_blackout_map) && isdefined(self.atianconfig.force_blackout_gametype))) {
             self add_menu("gmap_wz", "Set map/gametype", "start_menu", true);
 
@@ -588,6 +579,14 @@ init_menus() {
             self add_menu_item(menuid + "I", "plyHealthRegenDelay: " + get_object_type(bundle.plyHealthRegenDelay_I));
             self add_menu_item(menuid + "I", "plyXPModfier: " + get_object_type(bundle.plyXPModfier_I));
             self add_menu_item(menuid + "I", "plyHighlightCraftables: " + get_object_type(bundle.plyHighlightCraftables_I));
+        }
+    }
+    
+    if (can_spawn_vehicle()) {
+        self add_menu("vehicle_wz", "Spawn vehicle", "start_menu", true);
+
+        foreach (key, veh_item in get_vehicles_enum_data().vehicles) {
+            self add_menu_item("vehicle_wz", veh_item.title, &func_spawn_vehicle, veh_item.name);
         }
     }
 

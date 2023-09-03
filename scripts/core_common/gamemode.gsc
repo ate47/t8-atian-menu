@@ -25,7 +25,7 @@ is_ct() {
 }
 
 can_spawn_vehicle() {
-    return is_warzone();
+    return get_vehicles_enum_data().vehicles.size != 0;
 }
 
 get_instance_name() {

@@ -1,4 +1,11 @@
 func_spawn_vehicle(item, vehicule_type) {
+
+    load = isassetloaded("vehicle", vehicule_type);
+
+    if (!isdefined(load) || !load) {
+        self iPrintLnBold("^1Asset not loaded");
+        return;
+    }
     look = self get_look_position();
 
     veh = spawnvehicle(vehicule_type, look, (0, 0, 0));
