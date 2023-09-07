@@ -214,6 +214,7 @@ This section is about the error codes you might have while working on GSC script
 - `2489324310` - Usage of switch with var string|hash|int
 - `245612264` - Usage of a foreach using something that isn't an array
 - `754846421` - spawnvehicle with bad origin
+- `4104994143` - Can't allocate more script variables
 - `897625509` - unknown
 - `Whiskey 110 Late tiger` - accessing array like a struct (or not)
 - `Echo 828 Hurst Scorpio` - tool many vehicles

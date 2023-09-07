@@ -262,6 +262,7 @@ In Blackout the operator weapons can be used using the suffix `_operator`
 - `incendiary_fire`
 - `destructible_car`
 - `explodable_barrel`
+- `hash_48206b17d50533c2` PBR weapon
 
 ## Easter eggs
 

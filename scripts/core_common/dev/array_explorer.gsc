@@ -7,8 +7,7 @@ get_array_explorer_values() {
         create_array_explorer_value("game", game),
         create_array_explorer_value("Zombies vars", level.zombie_vars),
         create_array_explorer_value("Blackout zones", level.var_5b357434),
-        create_array_explorer_value("Zombies zones", level.zones),
-        create_array_explorer_value("vehicle_assets", function_951b4205())
+        create_array_explorer_value("Zombies zones", level.zones)
     );
 #ifdef _SUPPORTS_LAZYLINK
     is_ee_enabled = @zm_utility<scripts\zm_common\zm_utility.gsc>::is_ee_enabled;

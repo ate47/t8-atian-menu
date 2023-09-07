@@ -108,26 +108,16 @@ generate_wzvehicle_enum() {
     vehicles add_vehicle_info(#"spawner_bo3_mini_raps", "spawner_bo3_mini_raps");
     vehicles add_vehicle_info(#"spawner_bo3_wasp_enemy", "spawner_bo3_wasp_enemy");
     vehicles add_vehicle_info(#"archetype_mini_quadtank_mp", "archetype_mini_quadtank_mp");
-    vehicles add_vehicle_info(#"veh_flak_drone_mp", "veh_flak_drone_mp");
+    vehicles add_vehicle_info(#"veh_flak_drone_mp", "Turret");
     vehicles add_vehicle_info(#"qrdrone_mp", "qrdrone_mp");
     vehicles add_vehicle_info(#"veh_ultimate_turret_cp", "veh_ultimate_turret_cp");
     vehicles add_vehicle_info(#"veh_ultimate_turret", "veh_ultimate_turret");
-    vehicles add_vehicle_info(#"counteruav", "counteruav");
-    vehicles add_vehicle_info(#"veh_dart_mp", "veh_dart_mp");
-    vehicles add_vehicle_info(#"veh_drone_squadron_mp", "veh_drone_squadron_mp");
-    vehicles add_vehicle_info(#"spawner_boct_mp_wing_drone", "spawner_boct_mp_wing_drone");
-    vehicles add_vehicle_info(#"vehicle_straferun_mp", "vehicle_straferun_mp");
     vehicles add_vehicle_info(#"vehicle_t8_mil_helicopter_swat_transport", "vehicle_t8_mil_helicopter_swat_transport");
     vehicles add_vehicle_info(#"vehicle_t8_mil_helicopter_transport_dark_wz_infiltration", "vehicle_t8_mil_helicopter_transport_dark_wz_infiltration");
-    vehicles add_vehicle_info(#"vehicle_t8_mil_helicopter_transport_mp", "vehicle_t8_mil_helicopter_transport_mp");
-    vehicles add_vehicle_info(#"archetype_mini_quadtank_ct", "archetype_mini_quadtank_ct");
-    vehicles add_vehicle_info(#"veh_t8_helicopter_gunship_mp", "veh_t8_helicopter_gunship_mp");
-    vehicles add_vehicle_info(#"vehicle_t8_mil_helicopter_transport_mp_escort", "vehicle_t8_mil_helicopter_transport_mp_escort");
     // vehicles add_vehicle_info(#"veh_seeker_mine_mp", "veh_seeker_mine_mp"); // stack overflow
     vehicles add_vehicle_info(#"veh_dart_wz", "veh_dart_wz");
     vehicles add_vehicle_info(#"veh_hawk_player_wz", "veh_hawk_player_wz");
     //vehicles add_vehicle_info(#"veh_mini_turret_zm", "veh_mini_turret_zm");
-
     vehicles add_vehicle_info(#"hash_77ac4aa97a8b5aa2", "hash_77ac4aa97a8b5aa2");
     vehicles add_vehicle_info(#"hash_232abda4e81275f4", "hash_232abda4e81275f4");
     vehicles add_vehicle_info(#"hash_2f8d60a5381870ee", "hash_2f8d60a5381870ee");
@@ -139,4 +129,19 @@ generate_wzvehicle_enum() {
     vehicles add_vehicle_info(#"hash_32e4c0a7619f03a9", "hash_32e4c0a7619f03a9");
     vehicles add_vehicle_info(#"hash_22d9b5a7a0d9dd73", "hash_22d9b5a7a0d9dd73");
     vehicles add_vehicle_info(#"hash_275b12ca9b3cc010", "hash_275b12ca9b3cc010");
+
+    vehicles add_vehicle_info(#"veh_dart_mp", "Dart");
+    vehicles add_vehicle_info(#"veh_drone_squadron_mp", "Drone squadron");
+    vehicles add_vehicle_info(#"spawner_boct_mp_wing_drone", "Drone squadron (Wing)");
+    vehicles add_vehicle_info(#"vehicle_t8_mil_helicopter_transport_mp", "Transport helicopter");
+    vehicles add_vehicle_info(#"vehicle_t8_mil_helicopter_transport_mp_escort", "Transport helicopter (Escort)");
+    vehicles add_vehicle_info(#"archetype_mini_quadtank_ct", "Mantis (CT)");
+    vehicles add_vehicle_info(#"veh_t8_helicopter_gunship_mp", "Attack helicopter");
+    vehicles add_vehicle_info(#"vehicle_straferun_mp", "Straferun A-10");
+    vehicles add_vehicle_info(#"veh_t8_ac130_gunship_mp", "Gunship");
+    vehicles add_vehicle_info(#"veh_bo3_mil_gunship_mp", "Mothership");
+    vehicles add_vehicle_info(#"vehicle_t8_drone_recon", "UAV");
+    vehicles add_vehicle_info(#"vehicle_t8_drone_cuav_mp", "C-UAV");
+    vehicles add_vehicle_info(#"vehicle_t8_mil_helicopter_overwatch", "Helicopter");
+
 }

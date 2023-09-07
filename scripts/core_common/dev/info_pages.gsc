@@ -24,6 +24,13 @@ info_page_dev() {
                 self iprintln("^1veh script: " + hash_lookup(vehicle.scriptvehicletype));
                 index_end++;
             }
+
+            seat_weap = vehicle seatgetweapon(vehicle getoccupantseat(self));
+    
+            if (isdefined(seat_weap) && isdefined(seat_weap.name)) {
+                self iprintln("^1vehicle weapon: " + hash_lookup(seat_weap.name));
+                index_end++;
+            }
         } else {
             self iprintln("^1no veh");
             index_end++;
@@ -45,7 +52,6 @@ info_page_main() {
     weapon = self GetCurrentWeapon();
     
     if (isdefined(weapon) && isdefined(weapon.name)) {
-        str_weapon = weapon.name;
         self iprintln("^1weapon: " + hash_lookup(weapon.name));
         index_end++;
     }
@@ -114,7 +120,15 @@ info_page_looktool() {
             index_end++;
             if (isvehicle(entity_hit)) {
                 self iprintln("^1veh: " + nullable_to_str(entity_hit.scriptvehicletype));
-                index_end++;
+
+                for (n_seat = 0; n_seat < 12; n_seat++) {
+                    e = entity_hit function_dcef0ba1(n_seat);
+                    if (!isdefined(e) || !e) {
+                        break;
+                    }
+                }
+                self iprintln("^1seats: " + (n_seat + 1));
+                index_end += 2;
             }
         }
         if (isdefined(dynent_hit)) {

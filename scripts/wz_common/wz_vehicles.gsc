@@ -19,9 +19,25 @@ func_spawn_vehicle(item, vehicule_type) {
     }
     if (isdefined(veh.vehicleclass) && veh.vehicleclass == #"helicopter") {
         veh.origin = veh.origin + (0, 0, veh.height);
+        // you spin me
+    }
+    if (isairborne(veh)) {
+        veh setrotorspeed(1.0);
     }
 }
 
+func_enter_vehicle(item, slot) {
+    trace = self get_look_trace();
+
+    entity = trace[#"entity"];
+
+
+    if (isdefined(entity) && isvehicle(entity)) {
+        entity usevehicle(self, 0);
+    } else {
+        self iprintlnbold("^1No vehicle found");
+    }
+}
 
 func_set_vehicle(item, data) {
     tag_origin = self geteye();

@@ -9,6 +9,7 @@ My personal notes
 - [`archetypes.txt`](archetypes.txt) - Archtypes
 - [`dvars.csv`](dvars.csv) - DVars
 - [`funcs.csv`](funcs.csv) - GSC/CSC API functions
+- [`cfuncs.csv`](cfuncs.csv) - command functions
 - [`gamesettings.csv`](gamesettings.csv) - Find gamesettings
 - [`opcodes.txt`](opcodes.txt) - GSC opcodes
 - [`perks.txt`](perks.txt) - Internal perks

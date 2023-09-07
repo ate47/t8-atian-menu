@@ -10,9 +10,18 @@ init_menus_dev() {
     self add_menu("tool_menu_dev", "Dev tools", "tool_menu", true);
     self add_menu("tool_menu_dev_logs", "Logs", "tool_menu_dev", true, &func_am_log);
 
-    self add_menu_item_modswitch("tool_weapon", "Test ray gun 1", "test_rg1");
-    self add_menu_item_modswitch("tool_weapon", "Test ray gun 2", "test_rg2");
-    self add_menu_item_modswitch("tool_weapon", "Test ray gun 3", "test_rg3");
+    self add_menu("actor_tool", "Actor tool", "start_menu", true);
+
+    self add_menu_item("vehicle_wz", "Enter vehicle", &func_enter_vehicle);
+    
+    self add_menu_item("actor_tool", "ST male t1", &func_spawn_actor, "spawner_mp_swat_gunner_team1_male", "swat_gunner");
+    self add_menu_item("actor_tool", "ST female t1", &func_spawn_actor, "spawner_mp_swat_gunner_team1_female", "swat_gunner");
+    self add_menu_item("actor_tool", "ST male t2", &func_spawn_actor, "spawner_mp_swat_gunner_team2_male", "swat_gunner");
+    self add_menu_item("actor_tool", "ST female t2", &func_spawn_actor, "spawner_mp_swat_gunner_team2_female", "swat_gunner");
+
+    //self add_menu_item_modswitch("tool_weapon", "Test ray gun 1", "test_rg1");
+    //self add_menu_item_modswitch("tool_weapon", "Test ray gun 2", "test_rg2");
+    //self add_menu_item_modswitch("tool_weapon", "Test ray gun 3", "test_rg3");
     
     self add_menu("dev_model", "Test model", "tool_menu_dev", true);
 
@@ -30,10 +39,11 @@ init_menus_dev() {
         self add_menu_item("wz_tools", "Test 4", &func_wz_item_test4, true);
     }
     
-    self add_menu_item("tool_menu_dev", "Thread endon 1", &test_thread_endon, true, false);
-    self add_menu_item("tool_menu_dev", "Thread no endon 1", &test_thread_endon, false, false);
-    self add_menu_item("tool_menu_dev", "Thread endon 2", &test_thread_endon, true, true);
-    self add_menu_item("tool_menu_dev", "Thread no endon 2", &test_thread_endon, false, true);
+    // works
+    //self add_menu_item("tool_menu_dev", "Thread endon 1", &test_thread_endon, true, false);
+    //self add_menu_item("tool_menu_dev", "Thread no endon 1", &test_thread_endon, false, false);
+    //self add_menu_item("tool_menu_dev", "Thread endon 2", &test_thread_endon, true, true);
+    //self add_menu_item("tool_menu_dev", "Thread no endon 2", &test_thread_endon, false, true);
     self add_menu_item("tool_menu_dev", "Dev test 1", &func_dev_method1);
     self add_menu_item("tool_menu_dev", "Dev test 2", &func_dev_method2);
     self add_menu_item("tool_menu_dev", "Dev test 3", &func_dev_method3);

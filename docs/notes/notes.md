@@ -8,6 +8,52 @@ wz_open_skyscrapers 2a0c04b4bcbed100
 wz_escape 4023b088683398e2
 wz_escape_alt 6c4fd4af9da9e4ca
 
+.rdata:00000000049612D0     ; const BuiltinFunctionDef stru_49612D0
+.rdata:00000000049612D0     stru_49612D0    dd 68A76B47h            ; [0].canonId
+.rdata:00000000049612D0                                             ; DATA XREF: sub_6A2460↑o
+.rdata:00000000049612D0                                             ; sub_6A24B0+25↑o
+.rdata:00000000049612D0                     dd 1                    ; [0].min_args ; BGScr_EnumerateWeapons(scriptInstance_t)
+.rdata:00000000049612D0                     dd 1                    ; [0].max_args
+.rdata:00000000049612D0                     db 0                    ; 0
+.rdata:00000000049612D0                     db 0                    ; 0
+.rdata:00000000049612D0                     db 0                    ; 0
+.rdata:00000000049612D0                     db 0                    ; 0
+.rdata:00000000049612D0                     dq offset _ZL22BGScr_EnumerateWeapons16scriptInstance_t; [0].actionFunc
+.rdata:00000000049612D0                     dd 1                    ; [0].type
+.rdata:00000000049612D0                     db 0                    ; 0
+.rdata:00000000049612D0                     db 0                    ; 0
+.rdata:00000000049612D0                     db 0                    ; 0
+.rdata:00000000049612D0                     db 0                    ; 0
+.rdata:00000000049612D0                     dd 0A16A090Dh           ; [1].canonId
+.rdata:00000000049612D0                     dd 1                    ; [1].min_args
+.rdata:00000000049612D0                     dd 1                    ; [1].max_args
+.rdata:00000000049612D0                     db 0                    ; 1
+.rdata:00000000049612D0                     db 0                    ; 1
+.rdata:00000000049612D0                     db 0                    ; 1
+.rdata:00000000049612D0                     db 0                    ; 1
+.rdata:00000000049612D0                     dq offset sub_6A1C30    ; [1].actionFunc
+.rdata:00000000049612D0                     dd 1                    ; [1].type <<---- to test
+.rdata:00000000049612D0                     db 0                    ; 1
+.rdata:00000000049612D0                     db 0                    ; 1
+.rdata:00000000049612D0                     db 0                    ; 1
+.rdata:00000000049612D0                     db 0                    ; 1
+.rdata:00000000049612D0                     dd 0F2C99E09h           ; [2].canonId
+.rdata:00000000049612D0                     dd 1                    ; [2].min_args
+.rdata:00000000049612D0                     dd 1                    ; [2].max_args
+.rdata:00000000049612D0                     db 0                    ; 2
+.rdata:00000000049612D0                     db 0                    ; 2
+.rdata:00000000049612D0                     db 0                    ; 2
+.rdata:00000000049612D0                     db 0                    ; 2
+.rdata:00000000049612D0                     dq offset sub_6A1C60    ; [2].actionFunc 
+.rdata:00000000049612D0                     dd 0                    ; [2].type
+.rdata:00000000049612D0                     db 0                    ; 2
+.rdata:00000000049612D0                     db 0                    ; 2
+.rdata:00000000049612D0                     db 0                    ; 2
+.rdata:00000000049612D0                     db 0                    ; 2
+.rdata:00000000049612D0                     dd 1242E467h            ; [3].canonId
+.rdata:00000000049612D0                     dd 1                    ; [3].min_args
+.rdata:00000000049612D0                     dd 1                    ; [3].max_args
+
 556f98c49d3271e2
 
 N:\bo4hash\t8-src\
@@ -98,8 +144,21 @@ PreScriptCall -> Push PRECODEPOS -> Before sending information to vm, done by:
   - script calls(+pointer), can be paired f1(f2(2)) -> PSC;PSC;GC(2)
   - notify
 
+struct __declspec(align(8)) VmContext
+{
+  ScrVarIndex_t fieldValueId;
+  ScrVarIndex_t objectId;
+  byte *lastGoodPos;
+  ScrVarValue_t *lastGoodTop;
+  OP_TYPE breakOpcode;
+  OP_TYPE localOpcode;
+};
+
+0000000004EED230 ; ScrClassStruct_t *gScrClassMap[2]
+
 ```c++
 // GSC datatypes
+// 0x4EED240 char *var_typename[29]
 enum ScrVarType_t : unsigned __int32
 {
   TYPE_UNDEFINED = 0x0,
@@ -548,7 +607,6 @@ foreach import -> check address and
 fixup on linking
 
 offset 0x59F1B08
-```
 
 
 						player function_cce105c8(#"tier_skip", 1, 1, 2, modeindex);
@@ -559,3 +617,68 @@ weird stuff
 
 script_39347d985163e17::function_ebd0491e() (t8-src decompilation)
 script_31e56101095f174b.gsc::_planprocessstack() (a continue in a switch)
+
+fetch root thread
+
+VM_ArchiveStack(scriptInstance_t,ScrVarValue_t *,ScrVarValue_t *,uchar *,uint,uint *,bool)	.text	0000000002753410	00000152	00000048	00000030	R	.	.	.	.	.	T	.
+
+ScrVarIndex_t __fastcall ScrVar_RootThread(scriptInstance_t inst, ScrVarIndex_t id)
+{
+  ScrVarIndex_t parentId; // r9d
+  __int64 v3; // r8
+  scrVarGlob_t *v4; // r10
+  ScrVarType_t type; // eax
+
+  parentId = id;
+  v3 = inst;
+  v4 = &gScrVarGlob[v3];
+  type = gScrVarGlob[v3].scriptValues[id].type;
+  while ( type == TYPE_CHILD_THREAD || type == TYPE_REMOVED_THREAD )
+  {
+    type = gScrVarGlob[v3].scriptValues[v4->scriptVariables[parentId].parentId].type;
+    if ( type - 14 > 4 && type != TYPE_REMOVED_THREAD )
+      break;
+    parentId = v4->scriptVariables[parentId].parentId;
+  }
+  return parentId;
+}
+
+
+Archive stack:
+
+allocate ScrVarStackBuffer object, buffer[object->size * 9]
+
+buffer[i] = {
+  // 0x0
+  union {
+    BYTE* codePos; // if type == TYPE_CODEPOS
+    ScrVar var; // otherwise
+  } val;
+  // 0x8
+  BYTE type;
+}
+
+Put the allocated object inside a scriptValue of type TYPE_STACK
+```
+scrvar sizes:
+
+Function name	Segment	Start	Length	Locals	Arguments	R	F	L	M	S	B	T	=
+ScrVar_Init(scriptInstance_t)	.text	000000000275FCF0	0000019D	00000058	00000020	R	.	.	.	.	.	T	.
+ScrVar_InitVariables(scriptInstance_t)	.text	000000000275FF80	000001AD	00000028	00000020	R	.	.	.	.	.	T	.
+ScrVar_InitVariables(scriptInstance_t)	.text	0000000002761840	00000005	00000000		R	.	.	.	.	.	T	.
+
+
+| name                        | server  | client  | decl type           | itemsize |
+|-----------------------------|---------|---------|---------------------|----------|
+| scriptVariables             | 160000  | 100000  | ScrVar_t            | 32       |
+| scriptNameSearchHashList    | 0x80000 | 0x80000 | ScrVarIndex_t       | 4        |
+| scriptVariablesObjectInfo1  | 160000  | 100000  | ScrVarObjectInfo1_t | 8        |
+| scriptVariablesObjectInfo2  | 160000  | 100000  | ScrVarObjectInfo2_t | 4        |
+| scriptValues                | 80000   | 50000   | ScrVarValue_t       | 32       |
+
+BlackOps4.exe+f99b188,hash_2072776920646d63,20646d630a302032???
+```c++
+70D75463B2B9CA00 bool
+3D9919379A615120 int 500k
+
+```
