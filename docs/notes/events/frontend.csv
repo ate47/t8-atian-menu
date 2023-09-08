@@ -12,7 +12,7 @@ gsc,player_gibbothlegsvel,true
 gsc,player_loadoutchanged,true
 gsc,mission_start,true
 gsc,mission_stop,true
-gsc,event_b100b913,true
+gsc,voice_event,true
 gsc,level_preinit,true
 gsc,level_finalizeinit,true
 gsc,gametype_start,true
@@ -33,7 +33,7 @@ gsc,event_1294e3a7,true
 gsc,event_eb7e11e4,true
 gsc,event_bf57d5bb,true
 gsc,event_e9b4bb47,true
-gsc,event_9a0e3f85,true
+gsc,player_boast,true
 gsc,event_8451509a,true
 gsc,player_melee,true
 gsc,actor_spawned,true

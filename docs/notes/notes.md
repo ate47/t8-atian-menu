@@ -57,6 +57,7 @@ wz_escape_alt 6c4fd4af9da9e4ca
 556f98c49d3271e2
 
 N:\bo4hash\t8-src\
+N:\bo4hash\t8wip\bo4-source\
 H:\Vuze Downloads\GSC\Default Project\
 
 f0_local0.EModeData = {
@@ -531,10 +532,10 @@ HGFEAAAA
   - 1: getfunction/getmethod 
   - 2: function
   - 3: function_thread
-  - 4: function_endon
+  - 4: function_childthread
   - 5: method
   - 6: method_thread
-  - 7: method_endon
+  - 7: method_childthread
   - default: error linking
 - E 0x10 dev import
 - F 0x20 to resolve import ; api import namespace "sys" or "" or using the same namespace
@@ -611,6 +612,11 @@ offset 0x59F1B08
 
 						player function_cce105c8(#"tier_skip", 1, 1, 2, modeindex);
 
+
+entity type:
+
+
+6: weapon
 
 
 weird stuff

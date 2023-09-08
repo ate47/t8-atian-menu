@@ -1,6 +1,8 @@
 
 temp/
 build/
+# Some big boys
+docs/notes/gvars
 
 compiled.gscc
 compiled.cscc
