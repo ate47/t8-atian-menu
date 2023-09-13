@@ -52,7 +52,7 @@ AtianMenuDevConfig() {
     
     self.no_menu = false;
     self.only_host = true;
-    self.zm_quaknarok = true;
+    self.zm_quaknarok = false;
     self.devcfg.scriptbundleexpore = array(
         "flare_gun_wz_item",
         "flare_gun_veh_wz_item",

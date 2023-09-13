@@ -127,8 +127,13 @@ handle_config() {
         #bot_skins: [], // unused
         #array_add: [], // array_explorer
         #wz: spawnstruct(),
-        #mock_zp_trigger: { #stub: { #machine: { #power_on: true } } } // zm_utility
+        #mock_zp_trigger: { #stub: { #machine: { #power_on: true } } }, // zm_utility
+        #pea_gun: [],
+        #pea_gun_high: 0
     };
+    for (i = 0; i < 75; i++) {
+        level.am_dev.pea_gun[i] = 0;
+    }
     level.atianconfig = spawnstruct();
     level.atianconfig.devcfg = spawnstruct();
     level.atianconfig AtianMenuConfig();

@@ -116,7 +116,7 @@ info_page_looktool() {
         dynent_hit = bullet_hit[#"dynent"];
 
         if (isdefined(entity_hit)) {
-            self iprintln("^1en: " + hash_lookup(nullable_to_str(entity_hit.model)) + " " + nullable_to_str(entity_hit.origin) + " ar:" + nullable_to_str(hash_lookup(entity_hit.archetype)));
+            self iprintln("^1en: " + hash_lookup(nullable_to_str(entity_hit.model)) + " " + nullable_to_str(entity_hit.origin) + " ar:" + nullable_to_str(hash_lookup(entity_hit.archetype)) + " voice:" + nullable_to_str(entity_hit.voiceprefix));
             index_end++;
             if (isvehicle(entity_hit)) {
                 self iprintln("^1veh: " + nullable_to_str(entity_hit.scriptvehicletype));

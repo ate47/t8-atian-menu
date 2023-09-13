@@ -100,6 +100,10 @@ init_menus() {
         }
     }
 
+    if (is_warzone() || is_zombies() || is_dev_mode()) {
+        self add_menu_item_modswitch("tool_weapon", "Pea's gun", "pea_gun");
+    }
+
     // ---- Give weapon ----
     self add_menu("weapons", "Give weapon", "start_menu", true);
 

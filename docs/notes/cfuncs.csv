@@ -75,7 +75,7 @@ BlackOps4.exe+f761888,notifystatschanged,BlackOps4.exe+3cde870
 BlackOps4.exe+f761828,checkpoint_restart,BlackOps4.exe+3cde870
 BlackOps4.exe+f7617c8,mission_restart,BlackOps4.exe+3cde870
 BlackOps4.exe+f761768,hash_1e01c22e54a1841f,BlackOps4.exe+3cde870
-BlackOps4.exe+f761708,hash_3c258453c54bc43e,BlackOps4.exe+3cde870
+BlackOps4.exe+f761708,reinit_restart,BlackOps4.exe+3cde870
 BlackOps4.exe+f7616a8,mychanges_restart,BlackOps4.exe+3cde870
 BlackOps4.exe+f761648,fast_restart,BlackOps4.exe+3cde870
 BlackOps4.exe+f7615e8,full_restart,BlackOps4.exe+3cde870
@@ -83,7 +83,7 @@ BlackOps4.exe+f761588,dumpuser,BlackOps4.exe+3cde870
 BlackOps4.exe+f761528,systeminfo,BlackOps4.exe+3cde870
 BlackOps4.exe+f7614c8,serverinfo,BlackOps4.exe+3cde870
 BlackOps4.exe+f761468,teamstatus,BlackOps4.exe+3cde870
-BlackOps4.exe+f761408,hash_335926c22397b615,BlackOps4.exe+3cde870
+BlackOps4.exe+f761408,dumpents,BlackOps4.exe+3cde870
 BlackOps4.exe+f7613a8,status,BlackOps4.exe+3cde870
 BlackOps4.exe+f761348,clientkick_for_reason,BlackOps4.exe+3cde870
 BlackOps4.exe+f7612e8,clientkick,BlackOps4.exe+3cde870
@@ -124,7 +124,7 @@ BlackOps4.exe+d4c7150,loadcrmmessages,BlackOps4.exe+37dafb0
 BlackOps4.exe+da059b0,hash_593d1f289d304ae6,BlackOps4.exe+37f8810
 BlackOps4.exe+da05980,dumpallspecialitemskus,BlackOps4.exe+37f6150
 BlackOps4.exe+da05950,hash_2a5ee30fdf60b917,BlackOps4.exe+37f8890
-BlackOps4.exe+da05920,hash_4786151cf4d0df3b,BlackOps4.exe+37f5be0
+BlackOps4.exe+da05920,applyconversion,BlackOps4.exe+37f5be0
 BlackOps4.exe+da058f0,refetchbalances,BlackOps4.exe+37f8b50
 BlackOps4.exe+da058c0,refetchinventory,BlackOps4.exe+37f8ba0
 BlackOps4.exe+64455d0,bbdisable,BlackOps4.exe+6e1ec0
@@ -135,7 +135,7 @@ BlackOps4.exe+dacb548,vote_gethistory,BlackOps4.exe+381d3e0
 BlackOps4.exe+dacb518,vote_submitdislike,BlackOps4.exe+381d910
 BlackOps4.exe+dacb4e8,vote_submitlike,BlackOps4.exe+381d920
 BlackOps4.exe+da24d40,hash_912c950a9467b2e,BlackOps4.exe+3811770
-BlackOps4.exe+da24d10,hash_3ea2c593564c38cc,BlackOps4.exe+380ff90
+BlackOps4.exe+da24d10,leaderboards_finalize,BlackOps4.exe+380ff90
 BlackOps4.exe+da24ce0,hash_52f98b825c502ea9,BlackOps4.exe+3811f70
 BlackOps4.exe+da24cb0,hash_599510b7a911937d,BlackOps4.exe+380d9d0
 BlackOps4.exe+da24c80,hash_19a830857cfac200,BlackOps4.exe+380daa0
@@ -310,7 +310,7 @@ BlackOps4.exe+f92b098,storageclear,BlackOps4.exe+3cae130
 BlackOps4.exe+b1eab20,savegamerestore,BlackOps4.exe+31205e0
 BlackOps4.exe+b1eaaf0,savegamecreate,BlackOps4.exe+31200d0
 BlackOps4.exe+e176e30,lobby_errorshutdown,BlackOps4.exe+38e36c0
-BlackOps4.exe+e192f70,hash_6a54f16f86d61ec0,BlackOps4.exe+38f1c40
+BlackOps4.exe+e192f70,lobby_test,BlackOps4.exe+38f1c40
 BlackOps4.exe+e16bfa0,lobbyloadspecificdemo,BlackOps4.exe+38d8640
 BlackOps4.exe+e16bf70,lobbystopdemo,BlackOps4.exe+38d8b20
 BlackOps4.exe+e16bf40,lobbylaunchdemo,BlackOps4.exe+38d8420
@@ -486,7 +486,7 @@ BlackOps4.exe+956e650,dumpqos,BlackOps4.exe+2dd0e00
 BlackOps4.exe+a837460,fakewhitelist,BlackOps4.exe+2ed1d00
 BlackOps4.exe+e01b0a0,hash_6dc4db9bd585c404,BlackOps4.exe+38c25b0
 BlackOps4.exe+d4bd8e8,answertotp,BlackOps4.exe+37d7470
-BlackOps4.exe+d4bea60,hash_614e39e41a1d9246,BlackOps4.exe+37d8160
+BlackOps4.exe+d4bea60,bancheck,BlackOps4.exe+37d8160
 BlackOps4.exe+a8380d0,dwtesthash,BlackOps4.exe+2edfb50
 BlackOps4.exe+a8380a0,dwprintaddrs,BlackOps4.exe+2ed50c0
 BlackOps4.exe+d4beb28,fakedwdisconnect,BlackOps4.exe+37da330
@@ -503,7 +503,7 @@ BlackOps4.exe+f9f8fe8,tcc,BlackOps4.exe+3cdf7b0
 BlackOps4.exe+f9f8fb8,loadside,BlackOps4.exe+3cdf7b0
 BlackOps4.exe+f9f8f88,setcca,BlackOps4.exe+3cdf7b0
 BlackOps4.exe+f9f8f58,mrp,BlackOps4.exe+3cdf7b0
-BlackOps4.exe+f9f8f28,hash_8a94c07b550305e,BlackOps4.exe+3cdf7b0
+BlackOps4.exe+f9f8f28,mr,BlackOps4.exe+3cdf7b0
 BlackOps4.exe+f9f8ef8,followprev,BlackOps4.exe+3cdf7b0
 BlackOps4.exe+f9f8ec8,follownext,BlackOps4.exe+3cdf7b0
 BlackOps4.exe+f9f8e98,say_team,BlackOps4.exe+3cdf7b0

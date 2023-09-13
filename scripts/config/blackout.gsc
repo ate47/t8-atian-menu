@@ -33,6 +33,7 @@ AtianMenuConfigBlackout() {
     //    "warzone_ambush_solo"        // ambush solo (script error)
     //    "warzone_ambush_duo"         // ambush duo (script error)
     //    "warzone_ambush_quads"       // ambush quad (script error)
+    //    "warzone_deposit"            // hot pursuit (nothing)
     self.force_blackout_gametype = "warzone_escape_quad_dbno";
     
     // duck zombies, example: https://www.youtube.com/watch?v=XphuwHYtSjk
