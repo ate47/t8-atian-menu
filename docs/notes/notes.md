@@ -806,4 +806,33 @@ enum loadoutSlot_t : __int32 {
   LOADOUTSLOT_FIRST_SELECTED_CHARACTER_INDEX = 0x37,
   LOADOUTSLOT_COUNT = 0x38,
 
+csv reader: (STRINGTABLE assets)
+
+// ????
+
+struct __declspec(align(8)) StringTableCell
+{
+  const char *string;
+  const char *hash;
+};
+
+/*
+item size ... 40
+count ....... dc
+*/
+
+
+struct StringTable {
+  UINT64 name;
+  int unk8;
+  int unk10;
+  int columnCount;
+  int rowCount;
+  int cellscount;
+  int unk24;
+  StringTableCell *cells;
+  StringTableCell *values;
+};
+
+
 ```

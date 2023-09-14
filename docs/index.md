@@ -6,6 +6,7 @@ Here is the list of the found hashes/strings/ids that can be used in Black ops 4
 
 - [Blackout item](wzitems.md)
 - [Characters](characters.md)
+- [Game events](game_events.md)
 - [Game settings](gamesettings.md)
 - [Map and gametypes](mapgametypes.md)
 - [Weapons](weapons.md)

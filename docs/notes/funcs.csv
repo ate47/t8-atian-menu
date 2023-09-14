@@ -982,7 +982,7 @@ GSC-Function-49608a0,tablelookupfindcoreasset,1,1,0,sub:69F330,
 GSC-Function-49608a0,tablelookuprowcount,1,1,0,sub:69F380,
 GSC-Function-49608a0,tablelookupcolumncount,1,1,0,sub:69F390,
 GSC-Function-49608a0,tablelookuprow,2,2,0,sub:69F3A0,
-GSC-Function-49608a0,function_3f6a828c,2,2,0,sub:69F370,
+GSC-Function-49608a0,function_3f6a828c(tablename;string rowname)->string,2,2,0,sub:69F370,
 GSC-Function-49608a0,openfile,2,2,1,sub:69F3B0,nulled
 GSC-Function-49608a0,closefile,1,1,1,sub:69F3C0,nulled
 GSC-Function-49608a0,fprintln,2,2,1,sub:69F3D0,nulled
