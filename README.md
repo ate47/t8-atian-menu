@@ -31,8 +31,8 @@ Using the sources: https://github.com/ate47/t8-src
 
 ## FAQ
 
-- `No test task to run found` -> You need to create a `.vscode/tasks.json` file, I do not ship it with the menu, you can copy the default one created with a default project.
-- `something LAZYLINK` -> This menu is using experimental features that might not be implemented in your compiler, they are probably implemented my version of the [t8-compiler repo](https://github.com/shiversoftdev/t7-compiler) in the latest branch, you need to compile the compiler yourself. (I won't help on how to do it)
+- `No test task to run found` -> You need to create a `.vscode/tasks.json` file, I do not ship it with the menu by default, you can copy the default one in the `default` directory, the .
+- `something LAZYLINK` -> This menu is using experimental features that might not be implemented in your compiler, they are probably implemented my version of the [t8-compiler repo](https://github.com/ate47/t7-compiler) in the latest branch, you need to compile the compiler yourself. (I won't help on how to do it)
 - `How to change the default map in blackout` -> You Can read the README or you can simply change it in the [`scripts/config/blackout.gsc`](scripts/config/blackout.gsc) file.
 - Error `1670707254` -> Try to redownload the menu completly, otherwise you can create an issue [here](https://github.com/ate47/t8-atian-menu/issues/new?assignees=&labels=bug&projects=&template=bug.yml).
 
