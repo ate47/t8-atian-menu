@@ -129,7 +129,8 @@ handle_config() {
         #wz: spawnstruct(),
         #mock_zp_trigger: { #stub: { #machine: { #power_on: true } } }, // zm_utility
         #pea_gun: [],
-        #pea_gun_high: 0
+        #pea_gun_high: 0,
+        #explore_vectors: []
     };
     for (i = 0; i < 75; i++) {
         level.am_dev.pea_gun[i] = 0;

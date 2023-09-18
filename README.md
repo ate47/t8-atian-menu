@@ -4,13 +4,14 @@
 
 [![Compile scripts](https://github.com/ate47/t8-atian-menu/actions/workflows/compile.yml/badge.svg?branch=master)](https://github.com/ate47/t8-atian-menu/actions/workflows/compile.yml)
 
-Mod menu and notes for T8 (Black ops 4).
+Mod menu and notes for T8 (Black ops 4). IF YOU HAVE ANY ISSUE READ THE [FAQ](#faq) FIRST.
 
 Using the compiler: https://github.com/shiversoftdev/t7-compiler (Some required features might not be implemented yet)
 
 Using the sources: https://github.com/ate47/t8-src
 
 - [Atian menu](#atian-menu)
+  - [FAQ](#faq)
   - [Posts](#posts)
   - [Config](#config)
   - [Features](#features)
@@ -25,8 +26,15 @@ Using the sources: https://github.com/ate47/t8-src
     - [Advanced compiler features](#advanced-compiler-features)
       - [Lazy links](#lazy-links)
       - [Detours](#detours)
-      - [Event function](#event-function)
+      - [Event functions](#event-functions)
+      - [Thread endon calls](#thread-endon-calls)
 
+## FAQ
+
+- `No test task to run found` -> You need to create a `.vscode/tasks.json` file, I do not ship it with the menu, you can copy the default one created with a default project.
+- `something LAZYLINK` -> This menu is using experimental features that might not be implemented in your compiler, they are probably implemented my version of the [t8-compiler repo](https://github.com/shiversoftdev/t7-compiler) in the latest branch, you need to compile the compiler yourself. (I won't help on how to do it)
+- `How to change the default map in blackout` -> You Can read the README or you can simply change it in the [`scripts/config/blackout.gsc`](scripts/config/blackout.gsc) file.
+- Error `1670707254` -> Try to redownload the menu completly, otherwise you can create an issue [here](https://github.com/ate47/t8-atian-menu/issues/new?assignees=&labels=bug&projects=&template=bug.yml).
 
 ## Posts
 
@@ -215,6 +223,7 @@ This section is about the error codes you might have while working on GSC script
 - `245612264` - Usage of a foreach using something that isn't an array
 - `754846421` - spawnvehicle with bad origin
 - `4104994143` - Can't allocate more script variables
+- `2186811377` - Empty paintshopIconPositions.csv
 - `897625509` - unknown
 - `Whiskey 110 Late tiger` - accessing array like a struct (or not)
 - `Echo 828 Hurst Scorpio` - tool many vehicles

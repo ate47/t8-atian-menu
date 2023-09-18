@@ -11,14 +11,20 @@ init_menus_dev() {
     self add_menu("tool_menu_dev_logs", "Logs", "tool_menu_dev", true, &func_am_log);
 
     self add_menu("actor_tool", "Actor tool", "start_menu", true);
-
-    self add_menu_item("vehicle_wz", "Enter vehicle", &func_enter_vehicle);
     
     self add_menu_item("actor_tool", "ST male t1", &func_spawn_actor, "spawner_mp_swat_gunner_team1_male", "swat_gunner");
     self add_menu_item("actor_tool", "ST female t1", &func_spawn_actor, "spawner_mp_swat_gunner_team1_female", "swat_gunner");
     self add_menu_item("actor_tool", "ST male t2", &func_spawn_actor, "spawner_mp_swat_gunner_team2_male", "swat_gunner");
     self add_menu_item("actor_tool", "ST female t2", &func_spawn_actor, "spawner_mp_swat_gunner_team2_female", "swat_gunner");
 
+    self add_menu_item("vehicle_wz", "Enter vehicle", &func_enter_vehicle);
+
+    self add_menu("dev_model_search", "Model search", "tool_menu_dev", true);
+    foreach (e in array (
+        #"hash_2c0078538e398b4f", "p8_zm_zod_light_morse_lamp"
+    )) {
+        self add_menu_item("dev_model_search", e, &func_search_model, e);
+    }
     //self add_menu_item_modswitch("tool_weapon", "Test ray gun 1", "test_rg1");
     //self add_menu_item_modswitch("tool_weapon", "Test ray gun 2", "test_rg2");
     //self add_menu_item_modswitch("tool_weapon", "Test ray gun 3", "test_rg3");
@@ -38,6 +44,7 @@ init_menus_dev() {
         self add_menu_item("wz_tools", "Test 3", &func_wz_item_test3, true);
         self add_menu_item("wz_tools", "Test 4", &func_wz_item_test4, true);
     }
+
     
     // works
     //self add_menu_item("tool_menu_dev", "Thread endon 1", &test_thread_endon, true, false);

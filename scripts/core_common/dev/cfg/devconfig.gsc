@@ -45,7 +45,7 @@ AtianMenuDevConfig() {
     //self.blackout_character_unlock = true;
     self.watchdamage = false;
     self.raygun_dis = false;
-    self.custom_damage_effect = #"maps/zm_office/fx8_teleporter_destination";
+    //self.custom_damage_effect = #"maps/zm_office/fx8_teleporter_destination";
 
     setGametypeSetting(#"hash_2034b036eea8a033", true);
     SetGametypeSetting(#"hash_3778ec3bd924f17c", true);

@@ -103,6 +103,7 @@ generate_weapon_enum() {
     weapon_data add_weapon_category("gametype", "Gametype weapon");
     weapon_data add_weapon_category("operator", "Operator weapons");
     weapon_data add_weapon_category("gold", "Gold weapons");
+    weapon_data add_weapon_category("test", "Test weapons");
     
 
     weapon_data add_weapon_info(#"ar_accurate_t8", "ICR-7", #"ar", true);
@@ -191,7 +192,8 @@ generate_weapon_enum() {
     weapon_data add_weapon_info(#"ray_gun", "Ray gun", #"ww", true, "gamemode=wz,mp|map=zm_office,zm_orange,zm_escape,zm_white");
     weapon_data add_weapon_info(#"ray_gun_mk2", "Ray gun MK2", #"ww", true, "map=zm_office,zm_orange,zm_escape,zm_white,wz_escape,wz_escape_alt"); // crash the game on the main map
     weapon_data add_weapon_info(#"ray_gun_mk2v", "Ray gun MK2 V", #"ww", true, "map=zm_white,wz_escape,wz_escape_alt");
-    weapon_data add_weapon_info(#"ray_gun_mk2x", "Ray gun MK2 X", #"ww", true, "map=zm_white,wz_escape,wz_escape_alt");
+    weapon_data add_weapon_info(#"ray_gun_mk2x", "Ray gun MK2 X", #"ww", false, "map=zm_white,wz_escape,wz_escape_alt");
+    weapon_data add_weapon_info(#"ray_gun_mk2x_dw", "Ray gun MK2 X (Upgraded)", #"ww", false, "map=zm_white");
     weapon_data add_weapon_info(#"ray_gun_mk2y", "Ray gun MK2 Y", #"ww", true, "map=zm_white,wz_escape,wz_escape_alt");
     weapon_data add_weapon_info(#"ray_gun_mk2z", "Ray gun MK2 Z", #"ww", true, "map=zm_white,wz_escape,wz_escape_alt");
     weapon_data add_weapon_info(#"ww_freezegun_t8", "Winter's Howl", #"ww", true, "map=zm_office,zm_white,zm_orange,wz_escape,wz_escape_alt");
@@ -262,13 +264,17 @@ generate_weapon_enum() {
 
     weapon_data add_weapon_info(#"basketball", "Basketball", #"special", false, "gamemode=wz");
     weapon_data add_weapon_info(#"special_ballisticknife_t8_dw", "Ballistic Knife", #"special", true);
+    weapon_data add_weapon_info(#"hash_7c4b0fe54383386d", "Glacial Ballistic Knife", #"special", false, "map=zm_white");
     weapon_data add_weapon_info(#"special_crossbow_t8", "Reaver C86", #"special", true);
     weapon_data add_weapon_info(#"special_crossbow_t8_sas", "Reaver C86 (S&S)", #"special", false, "gamemode=mp"); // ;gametype=sas
     weapon_data add_weapon_info(#"launcher_standard_t8", "Hellion Salvo", #"special", true);
     weapon_data add_weapon_info(#"remote_missile_missile", "Hellstorm missile", #"special", false, "gamemode=mp");
     weapon_data add_weapon_info(#"minigun", "Minigun", #"special", false, "gamemode=zm");
-    weapon_data add_weapon_info(#"zhield_dw", "Shield", #"special", false, "map=zm_zodt8,zm_orange,zm_white,zm_mansion");
+    weapon_data add_weapon_info(#"zhield_dw", "Shield", #"special", false, "map=zm_zodt8,zm_orange,zm_mansion");
+    weapon_data add_weapon_info(#"hash_603fdd2e4ae5b2b0", "Shield", #"special", false, "map=zm_white");
+    weapon_data add_weapon_info(#"zhield_zword_dw", "Shield", #"special", false, "map=zm_towers");
     weapon_data add_weapon_info(#"zhield_spectral_dw", "Soul shield", #"special", false, "map=zm_escape");
+    weapon_data add_weapon_info(#"zhield_zpear_dw", "Appolo shield", #"special", false, "map=zm_red");
     weapon_data add_weapon_info(#"riotshield", "Riot shield", #"special", false, "gamemode=zm");
     weapon_data add_weapon_info(#"defaultweapon", "Default weapon", #"special", false);
 
@@ -383,5 +389,6 @@ generate_weapon_enum() {
     weapon_data add_weapon_info(#"lmg_spray_t8_gold", "Hades", #"gold", false, "gamemode=wz");
     weapon_data add_weapon_info(#"lmg_heavy_t8_gold", "VKM-750", #"gold", false, "gamemode=wz");
     weapon_data add_weapon_info(#"lmg_stealth_t8_gold", "Tigershark", #"gold", false, "gamemode=wz");
+
 
 }

@@ -230,3 +230,21 @@ func_spawnmodel(item, id) {
 
 	model setmodel(id);
 }
+
+func_search_model(item, model_name) {
+    hmn = hash(model_name);
+    find = 0;
+    count = 0;
+    foreach (entity in getentities()) {
+        count++;
+        if (!isdefined(entity.model) || entity.model != hmn) {
+            continue;
+        }
+
+        // add entity
+        find++;
+        array::add(level.am_dev.explore_vectors, entity, false);
+    }
+    
+    self iprintlnbold("find " + find + "/" + count + " entity(s)");
+}
