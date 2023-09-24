@@ -775,7 +775,7 @@ GSC-Function-49600d0,int(value)->int,1,1,0,sub:69AA20,cast to int
 GSC-Function-49600d0,float(value)->float,1,1,0,sub:69AAF0,cast to float
 GSC-Function-49600d0,hash(string|hash|integer value)->hash,1,1,0,sub:69AB90,cast to hash
 GSC-Function-49600d0,string(float|int|func|string value)->string,1,1,0,sub:69ACB0,cast to string
-GSC-Function-49600d0,function_9e72a96,1,1,1,sub:69AE30,to string?
+GSC-Function-49600d0,function_9e72a96,1,1,1,sub:69AE30,hash to string (without lookup)
 GSC-Function-49600d0,distance2dsquared,2,2,0,sub:69B6E0,
 GSC-Function-49600d0,anglelerp,3,3,0,sub:69C730,
 GSC-Function-49600d0,rotatepoint,2,2,0,sub:69C8D0,
@@ -972,7 +972,7 @@ GSC-Function-49608a0,strisnumber,1,1,0,sub:69F020,
 GSC-Function-49608a0,strisfloat,1,1,0,sub:69F0D0,
 GSC-Function-49608a0,strisint,1,1,0,sub:69F180,
 GSC-Function-49608a0,strstrip,1,1,0,sub:69F220,
-GSC-Function-49608a0,makelocalizedstring,1,1,1,sub:69F510,translate string
+GSC-Function-49608a0,makelocalizedstring(key)->string,1,1,1,sub:69F510,Translate the key
 GSC-Function-49608a0,sprintf,1,7fffffff,0,sub:69F5B0,
 GSC-Function-49608a0,getlocalizedstringindexbitcount,0,0,0,sub:69F5A0,
 GSC-Function-49608a0,tablelookup,4,8,0,sub:69F360,
@@ -2937,7 +2937,7 @@ CSC-Function-49600d0,int(value)->int,1,1,0,sub:69AA20,cast to int
 CSC-Function-49600d0,float(value)->float,1,1,0,sub:69AAF0,cast to float
 CSC-Function-49600d0,hash(string|hash|integer value)->hash,1,1,0,sub:69AB90,cast to hash
 CSC-Function-49600d0,string(float|int|func|string value)->string,1,1,0,sub:69ACB0,cast to string
-CSC-Function-49600d0,function_9e72a96,1,1,1,sub:69AE30,to string?
+CSC-Function-49600d0,function_9e72a96,1,1,1,sub:69AE30,hash to string (without lookup)
 CSC-Function-49600d0,distance2dsquared,2,2,0,sub:69B6E0,
 CSC-Function-49600d0,anglelerp,3,3,0,sub:69C730,
 CSC-Function-49600d0,rotatepoint,2,2,0,sub:69C8D0,
@@ -3134,7 +3134,7 @@ CSC-Function-49608a0,strisnumber,1,1,0,sub:69F020,
 CSC-Function-49608a0,strisfloat,1,1,0,sub:69F0D0,
 CSC-Function-49608a0,strisint,1,1,0,sub:69F180,
 CSC-Function-49608a0,strstrip,1,1,0,sub:69F220,
-CSC-Function-49608a0,makelocalizedstring,1,1,1,sub:69F510,
+CSC-Function-49608a0,makelocalizedstring(key)->string,1,1,1,sub:69F510,Translate the key
 CSC-Function-49608a0,sprintf,1,7fffffff,0,sub:69F5B0,
 CSC-Function-49608a0,getlocalizedstringindexbitcount,0,0,0,sub:69F5A0,
 CSC-Function-49608a0,tablelookup,4,8,0,sub:69F360,

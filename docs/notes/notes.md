@@ -149,6 +149,7 @@ struct __declspec(align(8)) VmContext
 {
   ScrVarIndex_t fieldValueId;
   ScrVarIndex_t objectId;
+  //bool fieldValueRemoveOk;
   byte *lastGoodPos;
   ScrVarValue_t *lastGoodTop;
   OP_TYPE breakOpcode;
@@ -847,6 +848,26 @@ MODE_WARZONE = 0x3,
 41d51c19898976f = #hash_44588d37c7fe1bf3+_control.csv
 
 missing csv file to search (later): #"hash_287942b71dbfe24f"
+gamedata/loot/mplootemblems.csv
+gamedata/loot/mpUnreleasedLoot.csv
+gamedata/tables/common/music_player.csv
+gamedata/events/reserve_deals_schedule_xbox.csv
+gamedata/events/reserve_deals_schedule_ps4.csv
+gamedata/loot/mplootitems.csv
+gamedata/tables/cp/cp_vehicleHacks.csv
+gamedata/tables/common/consumables.csv
+gamedata/events/itemshop_slot_1_ps4.csv
+gamedata/events/itemshop_slot_2_ps4.csv
+gamedata/events/itemshop_slot_3_ps4.csv
+gamedata/events/itemshop_slot_4_ps4.csv
+gamedata/events/itemshop_slot_5_ps4.csv
+gamedata/events/itemshop_slot_6_ps4.csv
+gamedata/events/itemshop_slot_1_xbox.csv
+gamedata/events/itemshop_slot_2_xbox.csv
+gamedata/events/itemshop_slot_3_xbox.csv
+gamedata/events/itemshop_slot_4_xbox.csv
+gamedata/events/itemshop_slot_5_xbox.csv
+gamedata/events/itemshop_slot_6_xbox.csv
 
 file_4fbbf46e0c82bc10.csv black market items?
 

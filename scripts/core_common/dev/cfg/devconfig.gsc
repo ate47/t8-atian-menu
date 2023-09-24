@@ -37,7 +37,7 @@ AtianMenuDevConfig() {
 
     //self.force_blackout_map = "wz_open_skyscrapers";
     //self.force_blackout_gametype = "warzone_quad";
-    //self.force_blackout_map = "wz_escape";
+    self.force_blackout_map = "wz_escape";
     //self.force_blackout_gametype = "warzone_escape_quad_dbno";
 
     self.blackout_stash_model = "christmas";
@@ -45,6 +45,7 @@ AtianMenuDevConfig() {
     //self.blackout_character_unlock = true;
     self.watchdamage = false;
     self.raygun_dis = false;
+    self.zm_custom_startround = 30;
     //self.custom_damage_effect = #"maps/zm_office/fx8_teleporter_destination";
 
     setGametypeSetting(#"hash_2034b036eea8a033", true);

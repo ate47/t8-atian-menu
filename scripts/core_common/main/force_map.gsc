@@ -19,7 +19,7 @@ handle_force_map() {
                 broadcase_message_wait("^1Not a valid gametype: ^6" + gametype_force, 100);
                 return;
             }
-            thread delay_map_set(map_force, gametype_force);
+            self thread delay_map_set(map_force, gametype_force);
             return true;
         }
     } else if (is_warzone()) {
@@ -42,7 +42,7 @@ handle_force_map() {
             // we need to wait before loading the other map
             wait(10);
 
-            thread delay_map_set(map_force, gametype_force);
+            self thread delay_map_set(map_force, gametype_force);
             return true;
         }
     }

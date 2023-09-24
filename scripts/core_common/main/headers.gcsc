@@ -3,7 +3,12 @@ __init__system_gcsc__() {
 #ifdef _SUPPORTS_BUILTINS
     compiler::nprintln("(" + get_instance_name() + ") linking script with " + level.script);
 #endif
-    
+
+    // custom ACTS builtin tests, do not uncomment except using the ACTS DLL (or equivalent)
+    //ActsHello();
+    //compiler::nprintln(function_9e72a96(#"hash_138f002bb30be9a2"));
+    //compiler::nprintln(makelocalizedstring(#"hash_62624077b19f54bb"));
+
 }
 
 __init_gcsc__() {

@@ -7,6 +7,27 @@ get_known_csv_files() {
 
 
     res = array(
+        "gamedata/loot/mplootemblems.csv",
+        "gamedata/loot/mpUnreleasedLoot.csv",
+        "gamedata/tables/common/music_player.csv",
+        "gamedata/events/reserve_deals_schedule_xbox.csv",
+        "gamedata/events/reserve_deals_schedule_ps4.csv",
+        "gamedata/loot/mplootitems.csv",
+        "gamedata/tables/cp/cp_vehicleHacks.csv",
+        "gamedata/tables/common/consumables.csv",
+        "gamedata/events/itemshop_slot_1_ps4.csv",
+        "gamedata/events/itemshop_slot_2_ps4.csv",
+        "gamedata/events/itemshop_slot_3_ps4.csv",
+        "gamedata/events/itemshop_slot_4_ps4.csv",
+        "gamedata/events/itemshop_slot_5_ps4.csv",
+        "gamedata/events/itemshop_slot_6_ps4.csv",
+        "gamedata/events/itemshop_slot_1_xbox.csv",
+        "gamedata/events/itemshop_slot_2_xbox.csv",
+        "gamedata/events/itemshop_slot_3_xbox.csv",
+        "gamedata/events/itemshop_slot_4_xbox.csv",
+        "gamedata/events/itemshop_slot_5_xbox.csv",
+        "gamedata/events/itemshop_slot_6_xbox.csv",
+
         "gamedata/tables/sp/badwords.csv",
         "gamedata/tables/common/badclantags.csv",
         "gamedata/tables/common/goodwords.csv",

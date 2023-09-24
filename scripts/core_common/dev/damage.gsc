@@ -5,7 +5,7 @@ watchdamage() {
         waitresult = self waittill(#"damage", #"death");
         if (waitresult._notify == #"death") {
             if (isdefined(level.atianconfig.watchdamage) && level.atianconfig.watchdamage) {
-                broadcast_message("^2" + name + "^5/^1dead^5/^2" + nullable_to_str(waitresult.name, "noname"));
+                broadcast_message("^2" + name + "^5/^1dead^5/^2" + nullable_to_str(waitresult.name, "noname") + " / " + nullable_to_str(self, "undefined"));
             }
             return;
         }

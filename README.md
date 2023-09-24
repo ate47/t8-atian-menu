@@ -224,6 +224,10 @@ This section is about the error codes you might have while working on GSC script
 - `754846421` - spawnvehicle with bad origin
 - `4104994143` - Can't allocate more script variables
 - `2186811377` - Empty paintshopIconPositions.csv
+- `1681512511` - Invalid Api Function (Client VM)
+- `3467911470` - Invalid Api Function (Server VM)
+- `1252503459` (`West 728 Rocky Goat`) - caller is not an entity
+- `3122940489` - caller is not an entity
 - `897625509` - unknown
 - `Whiskey 110 Late tiger` - accessing array like a struct (or not)
 - `Echo 828 Hurst Scorpio` - tool many vehicles
