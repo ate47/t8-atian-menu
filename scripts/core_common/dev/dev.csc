@@ -12,9 +12,16 @@ hash_or_string(obj) {
 }
 
 am_log(str) {
+#ifdef ATIAN_COD_TOOL
+    ACTSLogPrint(str);
+#else
+    if (!isString(str)) {
+        str = "" + str;
+    }
 #ifdef _SUPPORTS_BUILTINS
     compiler::nprintln(str);
 #else
     iprintlnbold(str);
+#endif
 #endif
 }

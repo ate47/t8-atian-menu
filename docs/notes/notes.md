@@ -869,97 +869,20 @@ gamedata/events/itemshop_slot_4_xbox.csv
 gamedata/events/itemshop_slot_5_xbox.csv
 gamedata/events/itemshop_slot_6_xbox.csv
 
-file_4fbbf46e0c82bc10.csv black market items?
 
-// start blackout
-194: gamedata/tables/mp/arena_seasons.csv (columns: 2, rows:120/1b1445ed3d0) into pool/stringtables/gamedata/tables/mp/arena_seasons.csv (new)
+sub_289C720(a1, code, false)
+->sub_289C8A0(a1, code, words=4u, false)
 
-// start ZM
+fetch 4 words:
 
-194: file_4f7719df6461925 (columns: 14, rows:76/1b1445ed3d0) into pool/stringtables/4f7719df6461925.csv (new)
-195: file_7431a9d67f30199 (columns: 14, rows:36/1b1445ed3f0) into pool/stringtables/7431a9d67f30199.csv (new)
-196: file_147bce024fc4074a (columns: 14, rows:36/1b1445ed410) into pool/stringtables/147bce024fc4074a.csv (new)
-197: file_189183776b53eba8 (columns: 14, rows:37/1b1445ed430) into pool/stringtables/189183776b53eba8.csv (new)
-198: file_21b0b26bfa5d29d5 (columns: 14, rows:37/1b1445ed450) into pool/stringtables/21b0b26bfa5d29d5.csv (new)
-199: file_22c17d75c55ff6b7 (columns: 14, rows:38/1b1445ed470) into pool/stringtables/22c17d75c55ff6b7.csv (new)
-200: file_3647e27f46b58dcb (columns: 14, rows:39/1b1445ed490) into pool/stringtables/3647e27f46b58dcb.csv (new)
-201: file_41c3d60c9fdc1c1a (columns: 9, rows:106/1b1445ed4b0) into pool/stringtables/41c3d60c9fdc1c1a.csv (new)
-202: gamedata/tables/zm/zm_factiontable.csv (columns: 5, rows:3/1b1445ed4d0) into pool/stringtables/gamedata/tables/zm/zm_factiontable.csv (new)
-203: file_5ec0117993b20eba (columns: 14, rows:35/1b1445ed4f0) into pool/stringtables/5ec0117993b20eba.csv (new)
-204: file_608ff1808c20c06f (columns: 14, rows:35/1b1445ed510) into pool/stringtables/608ff1808c20c06f.csv (new)
+log2_size = {6, 10, 8, 8}[word_set]
+row=code_format & ((1 << log2_size) - 1)
 
-// start VOD
-140: file_3180c9ba4da02927 (columns: 20, rows:9/1b1445ecd10) into pool/stringtables/3180c9ba4da02927.csv (new)
-148: file_34c18561cc19c360 (columns: 9, rows:66/1b1445ece10) into pool/stringtables/34c18561cc19c360.csv (new)
-105: file_5963a3db3032ab46 (columns: 9, rows:38/1b1445ec8b0) into pool/stringtables/5963a3db3032ab46.csv (new)
+word string tables
 
-// start dotn
-142: file_67972fca091f2c13 (columns: 20, rows:7/1b1445ecd50) into pool/stringtables/67972fca091f2c13.csv (new)
-145: file_c79aaf74e007b22 (columns: 9, rows:38/1b1445ecdb0) into pool/stringtables/c79aaf74e007b22.csv (new)
-131: file_74c49b8d4f407798 (columns: 9, rows:107/1b1445ecbf0) into pool/stringtables/74c49b8d4f407798.csv (new)
+46D538729ABE6952
+2A06FE632CCB5067
+59A56450857003D8
+4BD2C66723787045
 
-// open arena/mp?
-
-194: file_ddf9826f618f9c (columns: 11, rows:14/1b1445ed3d0) into pool/stringtables/ddf9826f618f9c.csv (new)
-196: file_5109699a179cab30 (columns: 11, rows:11/1b1445ed410) into pool/stringtables/5109699a179cab30.csv (new)
-197: gamedata/tables/mp/mp_factiontable.csv (columns: 5, rows:3/1b1445ed430) into pool/stringtables/gamedata/tables/mp/mp_factiontable.csv (new)
-198: file_31b5b5f0d807b5fb (columns: 11, rows:14/1b1445ed450) into pool/stringtables/31b5b5f0d807b5fb.csv (new)
-199: file_8aef49448dd712b (columns: 11, rows:14/1b1445ed470) into pool/stringtables/8aef49448dd712b.csv (new)
-200: file_1bdf4b594a97d128 (columns: 11, rows:15/1b1445ed490) into pool/stringtables/1bdf4b594a97d128.csv (new)
-202: file_36bba6081ec35357 (columns: 11, rows:12/1b1445ed4d0) into pool/stringtables/36bba6081ec35357.csv (new)
-203: file_1b3323b9d497bacb (columns: 11, rows:14/1b1445ed4f0) into pool/stringtables/1b3323b9d497bacb.csv (new)
-204: file_5ea7c516b5a89fab (columns: 11, rows:22/1b1445ed510) into pool/stringtables/5ea7c516b5a89fab.csv (new)
-205: file_66ec1bbed01c3ff7 (columns: 11, rows:13/1b1445ed530) into pool/stringtables/66ec1bbed01c3ff7.csv (new)
-206: file_6e29788ac7f02b55 (columns: 11, rows:12/1b1445ed550) into pool/stringtables/6e29788ac7f02b55.csv (new)
-207: file_760267e254b6aec5 (columns: 11, rows:14/1b1445ed570) into pool/stringtables/760267e254b6aec5.csv (new)
-208: file_7678e100786d956a (columns: 11, rows:12/1b1445ed590) into pool/stringtables/7678e100786d956a.csv (new)
-209: file_7e56179074aff183 (columns: 11, rows:18/1b1445ed5b0) into pool/stringtables/7e56179074aff183.csv (new)
-
-// start mp seaside
-102: file_221e4d0430cf1e3 (columns: 2, rows:89/1b1445ec850) into pool/stringtables/221e4d0430cf1e3.csv (new)
-107: file_635a4a5de6bfd0cb (columns: 2, rows:89/1b1445ec8f0) into pool/stringtables/635a4a5de6bfd0cb.csv (new)
-109: file_753302a50c5b7937 (columns: 2, rows:89/1b1445ec930) into pool/stringtables/753302a50c5b7937.csv (new)
-112: file_6686f3684fc0c6e8 (columns: 2, rows:89/1b1445ec990) into pool/stringtables/6686f3684fc0c6e8.csv (new)
-117: file_2a9083415f859a44 (columns: 2, rows:89/1b1445eca30) into pool/stringtables/2a9083415f859a44.csv (new)
-132: file_54b3eae4a20227c1 (columns: 2, rows:89/1b1445ecc10) into pool/stringtables/54b3eae4a20227c1.csv (new)
-142: file_2a3a9fb31c390bba (columns: 2, rows:89/1b1445ecd50) into pool/stringtables/2a3a9fb31c390bba.csv (new)
-152: file_2b0613e3ec15b907 (columns: 2, rows:89/1b1445ece90) into pool/stringtables/2b0613e3ec15b907.csv (new)
-153: file_4443976f69a38efa (columns: 2, rows:89/1b1445eceb0) into pool/stringtables/4443976f69a38efa.csv (new)
-157: file_1a2077a6f99894ae (columns: 2, rows:89/1b1445ecf30) into pool/stringtables/1a2077a6f99894ae.csv (new)
-159: file_44d054f622901937 (columns: 2, rows:89/1b1445ecf70) into pool/stringtables/44d054f622901937.csv (new)
-163: file_5dbf511e9e3b520f (columns: 2, rows:89/1b1445ecff0) into pool/stringtables/5dbf511e9e3b520f.csv (new)
-167: file_19b8bc7451fde653 (columns: 2, rows:89/1b1445ed070) into pool/stringtables/19b8bc7451fde653.csv (new)
-170: file_59a68e3674fbe8d (columns: 2, rows:89/1b1445ed0d0) into pool/stringtables/59a68e3674fbe8d.csv (new)
-
-// start mp urban
-98: file_9cfc3e58ef84e4a (columns: 2, rows:89/1b1445ec7d0) into pool/stringtables/file_9cfc3e58ef84e4a.csv (new)
-102: file_58f4dc3a37373914 (columns: 2, rows:89/1b1445ec850) into pool/stringtables/file_58f4dc3a37373914.csv (new)
-104: file_71093d9ddae19987 (columns: 2, rows:89/1b1445ec890) into pool/stringtables/file_71093d9ddae19987.csv (new)
-113: file_28240fc2d54e2bc3 (columns: 2, rows:89/1b1445ec9b0) into pool/stringtables/file_28240fc2d54e2bc3.csv (new)
-122: file_5b67fe3dedf5a3c7 (columns: 2, rows:89/1b1445ecad0) into pool/stringtables/file_5b67fe3dedf5a3c7.csv (new)
-123: file_34ae37320a02f41b (columns: 2, rows:89/1b1445ecaf0) into pool/stringtables/file_34ae37320a02f41b.csv (new)
-124: file_6342a32433c4b89e (columns: 2, rows:89/1b1445ecb10) into pool/stringtables/file_6342a32433c4b89e.csv (new)
-128: file_3f6fb536f6cab357 (columns: 2, rows:89/1b1445ecb90) into pool/stringtables/file_3f6fb536f6cab357.csv (new)
-147: file_53d5bb1e3740d3df (columns: 2, rows:89/1b1445ecdf0) into pool/stringtables/file_53d5bb1e3740d3df.csv (new)
-148: file_27b61a1463b72e8a (columns: 2, rows:89/1b1445ece10) into pool/stringtables/file_27b61a1463b72e8a.csv (new)
-155: file_2beba645db3b0773 (columns: 2, rows:89/1b1445ecef0) into pool/stringtables/file_2beba645db3b0773.csv (new)
-158: file_5179de03226c74d8 (columns: 2, rows:89/1b1445ecf50) into pool/stringtables/file_5179de03226c74d8.csv (new)
-159: file_7369d4116e04b6f1 (columns: 2, rows:89/1b1445ecf70) into pool/stringtables/file_7369d4116e04b6f1.csv (new)
-167: file_4fbd904a6e04b6bd (columns: 2, rows:89/1b1445ed070) into pool/stringtables/file_4fbd904a6e04b6bd.csv (new)
-
-// start mp frenetic
-99: file_6171b41879e8940e (columns: 2, rows:89/1b1445ec7f0) into pool/stringtables/file_6171b41879e8940e.csv (new)
-105: file_70fc1fc044a1e351 (columns: 2, rows:89/1b1445ec8b0) into pool/stringtables/file_70fc1fc044a1e351.csv (new)
-107: file_4b21de3e56b58b25 (columns: 2, rows:89/1b1445ec8f0) into pool/stringtables/file_4b21de3e56b58b25.csv (new)
-112: file_2575e0e63d1e3ad (columns: 2, rows:89/1b1445ec990) into pool/stringtables/file_2575e0e63d1e3ad.csv (new)
-121: file_6aedc4f407b9fe59 (columns: 2, rows:89/1b1445ecab0) into pool/stringtables/file_6aedc4f407b9fe59.csv (new)
-122: file_1ae0900c6934590d (columns: 2, rows:89/1b1445ecad0) into pool/stringtables/file_1ae0900c6934590d.csv (new)
-128: file_30e4bca1cf512921 (columns: 2, rows:89/1b1445ecb90) into pool/stringtables/file_30e4bca1cf512921.csv (new)
-148: file_1b745fa6b1f6add (columns: 2, rows:89/1b1445ece10) into pool/stringtables/file_1b745fa6b1f6add.csv (new)
-153: file_992f10000c49b4 (columns: 2, rows:89/1b1445eceb0) into pool/stringtables/file_992f10000c49b4.csv (new)
-156: file_fa3277b5c89e2ba (columns: 2, rows:89/1b1445ecf10) into pool/stringtables/file_fa3277b5c89e2ba.csv (new)
-162: file_6054beb66bf3f758 (columns: 2, rows:89/1b1445ecfd0) into pool/stringtables/file_6054beb66bf3f758.csv (new)
-170: file_6035387c9f1d3ed7 (columns: 2, rows:89/1b1445ed0d0) into pool/stringtables/file_6035387c9f1d3ed7.csv (new)
-172: file_5fd8a3da51cefd1c (columns: 2, rows:89/1b1445ed110) into pool/stringtables/file_5fd8a3da51cefd1c.csv (new)
-201: file_1bbfb5c38463d66f (columns: 2, rows:89/1b1445ed4b0) into pool/stringtables/file_1bbfb5c38463d66f.csv (new)
 ```

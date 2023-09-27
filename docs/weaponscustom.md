@@ -155,11 +155,11 @@ You don't need to be in Zombies to use these camos.
 | Dead of the night red | 282 |
 | Dead of the night blue | 283 |
 | Dead of the night orange | 284 |
-| Ancien Evil purple | 74 |
-| Ancien Evil blue | 75 |
-| Ancien Evil orange | 76 |
-| Ancien Evil yellow | 77 |
-| Ancien Evil green | 78 |
+| Ancient Evil purple | 74 |
+| Ancient Evil blue | 75 |
+| Ancient Evil orange | 76 |
+| Ancient Evil yellow | 77 |
+| Ancient Evil green | 78 |
 | Alpha Omega | 345 |
 | Tag der toten | 394 |
 

@@ -20,7 +20,7 @@ AtianMenuConfigZombies() {
     // self.zm_max_health = 350;
 
     // activate Shamrock & Awe Event, if this value isn't set to true, you won't be able to get the Leprechaun Homunculus
-    // (doesn't work on Ancien Evil and with multiple players)
+    // (doesn't work on Ancient Evil and with multiple players)
     //self.zm_holiday_event = true;
 
     // activate constant quaknarok

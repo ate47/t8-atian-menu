@@ -66,7 +66,7 @@ generate_mapenum_enum() {
     maps add_mapenum_info("zm_mansion", "Dead of the Night", "zm");
     maps add_mapenum_info("zm_office", "Classified", "zm");
     maps add_mapenum_info("zm_white", "Alpha Omega", "zm");
-    maps add_mapenum_info("zm_red", "Ancien Evil", "zm");
+    maps add_mapenum_info("zm_red", "Ancient Evil", "zm");
     maps add_mapenum_info("zm_orange", "Tag der Toten", "zm");
 
     maps add_mapenum_info("wz_open_skyscrapers", "Blackout Core Map", "wz");

@@ -1,6 +1,10 @@
 ﻿// this file was created using the build_lookup.ps1 script, do no write in it!!!
 // a basic lookup function, not all the hashes are here, but enough to give information
 hash_lookup(hash_value) {
+    
+#ifdef ATIAN_COD_TOOL
+    return ACTSLookup(hash_value);
+#else
     if (isdefined(level.hash_lookup_big)) {
         // checking big version (is described)
         res = [[ level.hash_lookup_big ]](hash_value);
@@ -250,6 +254,7 @@ hash_lookup(hash_value) {
         case #"ee_tundragun": return "ee_tundragun";
         case #"electric_zombie": return "electric_zombie";
         case #"elephant": return "elephant";
+        case #"elephant_rider": return "elephant_rider";
         case #"empgrenade": return "empgrenade";
         case #"end_game_flow": return "end_game_flow";
         case #"entity": return "entity";
@@ -332,7 +337,6 @@ hash_lookup(hash_value) {
         case #"grenades": return "grenades";
         case #"hackable": return "hackable";
         case #"hacker_tool": return "hacker_tool";
-        case #"elephant_rider": return "elephant_rider";
         case #"hatchet": return "hatchet";
         case #"hawk": return "hawk";
         case #"hawk_mp": return "hawk_mp";
@@ -1219,4 +1223,5 @@ hash_lookup(hash_value) {
         case #"zombie_quad": return "zombie_quad";
         default: return hash_value;
     }
+#endif
 }

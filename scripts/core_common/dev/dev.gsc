@@ -2,6 +2,13 @@ dev_init() {
     if (!is_dev_mode()) {
         return;
     }
+
+#ifdef ATIAN_COD_TOOL
+    //am_log("test lookup1: " + ACTSLookup(#"ar_accurate_t8"));
+    //am_log("test lookup2: " + ACTSLookup(#"azertyuiopqsdf123789"));
+
+#endif
+
 #ifdef _INJECT_CLIENT
     am_log("inject client");
 #endif
@@ -10,15 +17,6 @@ dev_init() {
 
     item_names = array(
     );
-
-    foreach (e in item_names) {
-        bundle = getscriptbundle(e);
-        if (isdefined(bundle) && isdefined(bundle.name)) {
-            am_log(bundle.name);
-        } else {
-            am_log("missing for " + e);
-        }
-    }
 
 #ifdef ATIANMENU_DUMP_WZITEMS
     count = function_c77ddcd6();
@@ -110,15 +108,23 @@ debugln(str_line) {
     }
 }
 
-func_dev_method1() {
-    am_log("test cmd 1");
+func_dev_method1(item) {
+
+#ifdef ATIAN_COD_TOOL
+    //ACTSLookup(4222);
+    z = 2 == [];
+#endif
+    return undefined;
 }
-func_dev_method2() {
+func_dev_method2(item) {
 	//self clientfield::set("" + #"atianmenu_testfield", 1);
+    return undefined;
 }
-func_dev_method3() {
+func_dev_method3(item) {
+    return undefined;
 }
-func_dev_method4() {
+func_dev_method4(item) {
+    return undefined;
 }
 
 func_dev_rec_rec() {
@@ -129,7 +135,7 @@ func_dev_rec() {
     return [[func_dev_rec_rec()]]();
 }
 
-func_dev_method5() {
+func_dev_method5(item) {
     // create a stack overflow
     func_dev_rec();
 }
@@ -182,14 +188,17 @@ hash_or_string(obj) {
 }
 
 am_log(str) {
-    if (!isdefined(level.am_messages)) {
-        level.am_messages = [];
+#ifdef ATIAN_COD_TOOL
+    ACTSLogPrint(str);
+#else
+    if (!isstring(str)) {
+        str = "" + nullable_to_str(str, "undefined");
     }
-
 #ifdef _SUPPORTS_BUILTINS
     compiler::nprintln(str);
 #else
     array::add(level.am_messages, str, true);
+#endif
 #endif
 }
 

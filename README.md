@@ -226,14 +226,16 @@ This section is about the error codes you might have while working on GSC script
 - `2186811377` - Empty paintshopIconPositions.csv
 - `1681512511` - Invalid Api Function (Client VM)
 - `3467911470` - Invalid Api Function (Server VM)
-- `1252503459` (`West 728 Rocky Goat`) - caller is not an entity
-- `3122940489` - caller is not an entity
 - `897625509` - unknown
-- `Whiskey 110 Late tiger` - accessing array like a struct (or not)
-- `Echo 828 Hurst Scorpio` - tool many vehicles
-- `kilo 45 gold dove` - usage of unset local var
+- `1252503459` (`West 728 Rocky Goat`) - caller is not an entity
+- `3122940489` (`Uniform 587 Nickel Breakfast`) - caller is not an entity
+- `2116335949` (`Yorker 721 Nickel Platoon`) - function called with too many parameters
+- `317100267` (`Whiskey 110 Late Tiger`) - Unmatching type error
+- `744499668` (`Echo 828 Hurt Scorpio`) - too many vehicles
+- `219686544` (`Kilo 45 Gold Dove`) - object is not an array index
 - `Delta 320 Monster Tornado` - unknown
 - `Zulu 523 Electric Lion` - unknown
+- `1114190337` (`Juliett 694 Boiling Bison`) - Atian Tools custom error, see your logs
 
 ### Color
 

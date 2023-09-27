@@ -59,7 +59,7 @@
       - [`#"zm_storage_billiards"`](#zm_storage_billiards)
       - [`#"hash_578d0d7709a00e6e"`](#hash_578d0d7709a00e6e)
       - [`#"hash_559b7237b8acece2"`](#hash_559b7237b8acece2)
-    - [Ancien Evil (`zm_red`)](#ancien-evil-zm_red)
+    - [Ancient Evil (`zm_red`)](#ancien-evil-zm_red)
       - [`#"boss_battle"`](#boss_battle)
       - [`#"main_quest"`](#main_quest)
       - [`#"prophecy"`](#prophecy)
@@ -611,7 +611,7 @@ TODO
   - name: `#"step_3"`, flag name: `#"hash_2388f67d8d90c161"`
   - name: `#"step_4"`, flag name: `#"hash_2388f77d8d90c314"`
 
-### Ancien Evil (`zm_red`)
+### Ancient Evil (`zm_red`)
 
 #### `#"boss_battle"`
 

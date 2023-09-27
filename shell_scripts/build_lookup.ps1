@@ -18,6 +18,10 @@ try {
 // this file was created using the build_lookup.ps1 script, do no write in it!!!
 // a basic lookup function, not all the hashes are here, but enough to give information
 hash_lookup(hash_value) {
+    
+#ifdef ATIAN_COD_TOOL
+    return ACTSLookup(hash_value);
+#else
     if (isdefined(level.hash_lookup_big)) {
         // checking big version (is described)
         res = [[ level.hash_lookup_big ]](hash_value);
@@ -35,6 +39,7 @@ $(($LookupFileData | Sort-Object | ForEach-Object {
 }) -join "`n")
         default: return hash_value;
     }
+#endif
 }
 "@ | Out-File -Encoding utf8 lookup.gcsc
 }

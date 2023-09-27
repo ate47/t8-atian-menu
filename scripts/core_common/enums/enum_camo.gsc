@@ -104,11 +104,11 @@ generate_camo_enum() {
     camo_data add_camo_enum(#"pap", "Dead of the night red", 282);
     camo_data add_camo_enum(#"pap", "Dead of the night blue", 283);
     camo_data add_camo_enum(#"pap", "Dead of the night orange", 284);
-    camo_data add_camo_enum(#"pap", "Ancien Evil purple", 74);
-    camo_data add_camo_enum(#"pap", "Ancien Evil blue", 75);
-    camo_data add_camo_enum(#"pap", "Ancien Evil orange", 76);
-    camo_data add_camo_enum(#"pap", "Ancien Evil yellow", 77);
-    camo_data add_camo_enum(#"pap", "Ancien Evil green", 78);
+    camo_data add_camo_enum(#"pap", "Ancient Evil purple", 74);
+    camo_data add_camo_enum(#"pap", "Ancient Evil blue", 75);
+    camo_data add_camo_enum(#"pap", "Ancient Evil orange", 76);
+    camo_data add_camo_enum(#"pap", "Ancient Evil yellow", 77);
+    camo_data add_camo_enum(#"pap", "Ancient Evil green", 78);
     camo_data add_camo_enum(#"pap", "Alpha Omega", 345);
     camo_data add_camo_enum(#"pap", "Tag der toten", 394);
 
