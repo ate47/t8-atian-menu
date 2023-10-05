@@ -842,6 +842,9 @@ init_menus() {
     self add_menu("internal", "Internal", "start_menu", true);
     
     self add_menu("dev_csv", "CSV explorer", "internal", true, &func_csv_explorer_tab);
+#ifdef ATIAN_COD_TOOL
+    self add_menu("dev_csv2", "CSV explorer ACTS", "internal", true, &func_csv_explorer_tab2);
+#endif
 
     // --- Perks ----
     self add_menu("perks", "Perks", "internal", true, &func_search_perks);

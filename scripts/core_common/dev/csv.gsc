@@ -2,6 +2,7 @@
 get_known_csv_files() {
     // add here the custom CSV you want:
     custom_csv = array(
+        "acts/test_injection.csv",
         "gamedata/weapons/common/weaponoptions.csv"
     );
 
@@ -204,6 +205,14 @@ get_known_csv_files() {
     }
     return res;
 }
+func_csv_explorer_tab2(menu) {
+    menu.sub_menus = array();
+    // dynamically loaded script, we can't assume no runtime update
+#ifdef ATIAN_COD_TOOL
+    self add_menu(menu.id + "_c_acts", "acts/test_injection.csv", menu.id, true, &func_csv_explorer, "acts/test_injection.csv");
+    self add_menu(menu.id + "_c_acts", "events_schedule.csv", menu.id, true, &func_csv_explorer, "gamedata/events/schedule_pc.csv");
+#endif
+}
 
 func_csv_explorer_tab(menu) {
     if (isdefined(menu.sub_menus) && menu.sub_menus.size != 0) {
@@ -211,6 +220,10 @@ func_csv_explorer_tab(menu) {
         return; 
     }
     menu.sub_menus = array();
+
+#ifdef ATIAN_COD_TOOL
+    self add_menu(menu.id + "_c_acts", "acts/test_injection.csv", menu.id, true, &func_csv_explorer, "acts/test_injection.csv");
+#endif
 
     csv_files = get_known_csv_files();
 

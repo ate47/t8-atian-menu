@@ -885,4 +885,39 @@ word string tables
 59A56450857003D8
 4BD2C66723787045
 
+// fast file:
+
+.ff : header[2112]
+.fd : header[4264]
+
+// fd patch the ff file
+
+byte magic[8]:  ()
+uint32 version: 
+struct XFile
+{
+  uint8_t magic[8]; // = 0x3030303066664154 "0000ffAT"
+  uint32_t version; // = 0x27F
+  uint8_t server;   // server only?
+  uint8_t compression;
+  uint8_t platform; // 0 = pc?
+  uint8_t encrypted;
+  uint64_t timestamp;
+  uint32_t changelist;
+  uint32_t archiveChecksum[4]; // checksum test
+  char builder[32];
+  uint32_t metaVersion;
+  char mergeFastfile[64];
+  char missionFastFiles[16][64];
+  uint64_t size;
+  uint64_t externalSize;
+  uint64_t memMappedOffset;
+  uint64_t blockSize[8];
+  int8_t fastfileName[64]; // 6F0
+  uint8_t signature[256];
+  uint8_t aesIV[16];
+};
+
+season 1 -> file_4627c92be5fdcdd0.csv
+
 ```

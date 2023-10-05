@@ -157,7 +157,7 @@ GSC-Function-4f437c0,setmatchtalkflag,2,2,0,sub:335D4F0,
 GSC-Function-4f437c0,setarchive,ffffffff,ffffffff,0,sub:336C420,
 GSC-Function-4f437c0,allclientsprint,1,1,0,sub:3363C50,
 GSC-Function-4f437c0,clientprint,2,2,0,sub:336C390,
-GSC-Function-4f437c0,mapexists,1,1,0,sub:3365DE0,
+GSC-Function-4f437c0,mapexists(string name)->bool,1,1,0,sub:3365DE0,return true
 GSC-Function-4f437c0,isvalidgametype,1,1,0,sub:3365E10,
 GSC-Function-4f437c0,skillupdate,0,2,0,sub:3372810,
 GSC-Function-4f437c0,function_ecfc02d0,0,0,0,sub:338E520,
@@ -251,14 +251,14 @@ GSC-Function-4f437c0,visionsetnaked,1,2,0,sub:33494D0,
 GSC-Function-4f437c0,visionsetlaststand,1,2,0,sub:334BAB0,
 GSC-Function-4f437c0,setgravity,1,1,0,sub:32D8650,
 GSC-Function-4f437c0,setwavewatergeneratoramplitude,2,2,0,sub:32D8680,
-GSC-Function-4f437c0,getlobbyclientcount,0,0,0,sub:3307F30,
-GSC-Function-4f437c0,enablelobbyjoins,1,1,0,sub:3307FD0,
+GSC-Function-4f437c0,getlobbyclientcount()->int,0,0,0,sub:3307F30,client count + join count
+GSC-Function-4f437c0,enablelobbyjoins(bool v),1,1,0,sub:3307FD0,
 GSC-Function-4f437c0,clientsysregister,1,1,0,sub:330F4B0,
 GSC-Function-4f437c0,clientsyssetstate,2,2,0,sub:330F800,
 GSC-Function-4f437c0,getsnapshotindexarray,0,0,0,sub:330FBC0,
 GSC-Function-4f437c0,snapshotacknowledged,1,1,0,sub:330FCE0,
 GSC-Function-4f437c0,getaitriggerflags,0,0,0,sub:3312A50,
-GSC-Function-4f437c0,getmaxvehicles,0,0,0,sub:3312AE0,
+GSC-Function-4f437c0,getmaxvehicles()->int,0,0,0,sub:3312AE0,return 108
 GSC-Function-4f437c0,disabledestructiblepieces,1,1,0,sub:3312AF0,
 GSC-Function-4f437c0,enablealldestructiblepieces,0,0,0,sub:3312B60,
 GSC-Function-4f437c0,createdynentandlaunch(string ent;vector pos;vector angles;vector hitpos;vector force;hash fx=undefined),5,6,0,sub:3345580,
@@ -928,15 +928,15 @@ GSC-Function-49608a0,getdvarint,2,2,0,sub:69CEF0,
 GSC-Function-49608a0,getdvarfloat,2,2,0,sub:69CFF0,
 GSC-Function-49608a0,getdvarvector,2,2,0,sub:69D0E0,
 GSC-Function-49608a0,getdvar,1,2,0,sub:69D220,
-GSC-Function-49608a0,throw,0,0,1,sub:69D4D0,crash the vm with 2687742442
+GSC-Function-49608a0,throw,0,0,1,sub:69D4D0,crash the vm with 2687742442 (Forced script exception.)
 GSC-Function-49608a0,array,0,100,0,sub:69D4F0,
 GSC-Function-49608a0,associativearray,0,200,0,sub:69D680,
 GSC-Function-49608a0,arrayremovevalue,2,3,0,sub:69D920,
 GSC-Function-49608a0,arrayremoveindex,2,3,0,sub:69D9E0,
-GSC-Function-49608a0,arrayinsert,3,3,0,sub:69DBB0,
-GSC-Function-49608a0,arraycombine,4,4,0,sub:69DC40,
-GSC-Function-49608a0,arraycopy,1,1,0,sub:69DD30,
-GSC-Function-49608a0,isinarray,2,2,0,sub:69DF10,
+GSC-Function-49608a0,arrayinsert(array arr; object obj; int index),3,3,0,sub:69DBB0,Insert obj in arr at index
+GSC-Function-49608a0,arraycombine(array a1; array a2; bool allowDuplicateValues; bool preserveKeys),4,4,0,sub:69DC40,Combine 2 arrays
+GSC-Function-49608a0,arraycopy(array a)->array,1,1,0,sub:69DD30,Copy an array
+GSC-Function-49608a0,isinarray(array arr; object obj)->bool,2,2,0,sub:69DF10,check if obj is in array
 GSC-Function-49608a0,getarraykeys,1,1,0,sub:69DFA0,
 GSC-Function-49608a0,getfirstarraykey,1,1,0,sub:69E030,
 GSC-Function-49608a0,getnextarraykey,2,2,0,sub:69E090,
@@ -991,14 +991,14 @@ GSC-Function-49608a0,freadln,1,1,1,sub:69F3F0,nulled
 GSC-Function-49608a0,fgetarg,2,2,1,sub:69F400,nulled
 GSC-Function-49608a0,debugbreak,0,0,1,sub:69F4A0,crash vm with 1850691545
 GSC-Function-49608a0,assert(bool val;object message = undefined),1,2,1,sub:69F410,crash vm with 2344222932 if val false; with 2737681163 if message is set
-GSC-Function-49608a0,assertmsg,1,1,1,sub:69F460,crash vm with 1385570291
+GSC-Function-49608a0,assertmsg(object message),1,1,1,sub:69F460,crash vm with 1385570291
 GSC-Function-49608a0,errormsg,1,1,1,sub:69F480,crash vm with 2532286589
-GSC-Function-49608a0,ispc,0,0,0,sub:69F4C0,
+GSC-Function-49608a0,ispc()->bool,0,0,0,sub:69F4C0,Push if we are on pc
 GSC-Function-49608a0,function_8b1a219a,0,0,0,sub:69F4D0,
-GSC-Function-49608a0,isprofilebuild,0,0,0,sub:69F4E0,
-GSC-Function-49608a0,isshipbuild,0,0,0,sub:69F4F0,
+GSC-Function-49608a0,isprofilebuild()->bool,0,0,0,sub:69F4E0,Push if we are on a profile build (false)
+GSC-Function-49608a0,isshipbuild()->bool,0,0,0,sub:69F4F0,Push if we are on a ship build (true)
 GSC-Function-49608a0,function_2ee076a7,0,0,0,sub:69F500,
-GSC-Function-49612d0,enumerateweapons,1,1,1,sub:6A1C20,nulled
+GSC-Function-49612d0,enumerateweapons(object un),1,1,1,sub:6A1C20,nulled
 GSC-Function-49612d0,function_a16a090d(Weapon w)->string,1,1,1,sub:6A1C30,
 GSC-Function-49612d0,weapon,1,1,0,sub:6A1C60,
 GSC-Function-49612d0,function_1242e467,1,1,0,sub:6A1CA0,
@@ -1012,11 +1012,11 @@ GSC-Function-49612d0,function_8b51d9d1,1,1,0,sub:6A1FB0,
 GSC-Function-49612d0,function_57411076(string ukn1)->string|undefined,1,1,1,sub:6A20B0,
 GSC-Function-49612d0,function_2c48197b,0,0,0,sub:6A1EA0,
 GSC-Function-49612d0,function_ea647602,1,2,0,sub:6A2340,
-GSC-Function-49b5590,randomint,1,1,0,sub:3198480,
-GSC-Function-49b5590,randomfloat,1,1,0,sub:31984D0,
-GSC-Function-49b5590,randomintrange,2,2,0,sub:3198500,
+GSC-Function-49b5590,randomint(int max)->int,1,1,0,sub:3198480,Return a random int between 0 and max
+GSC-Function-49b5590,randomfloat(float max)->float,1,1,0,sub:31984D0,Return a random float between 0 and max
+GSC-Function-49b5590,randomintrange(int min; int max)->int,2,2,0,sub:3198500,Return a random int between min and max
 GSC-Function-49b5590,function_21a3a673,2,2,0,sub:3198560,
-GSC-Function-49b5590,randomfloatrange,2,2,0,sub:31985C0,
+GSC-Function-49b5590,randomfloatrange(float min; float max)->float,2,2,0,sub:31985C0,Return a random float between min and max
 GSC-Function-49b5590,function_fc3f770b,3,3,0,sub:3198630,
 GSC-Function-49b5590,function_6151a62c,4,4,0,sub:31986B0,
 GSC-Function-49b5590,function_1f4464c0,1,1,0,sub:3198740,
@@ -3235,18 +3235,18 @@ CSC-Function-4ed01a0,function_140a6212,6,9,0,sub:EFC010,
 CSC-Function-4ed01a0,findvolumedecalindexarray,1,1,0,sub:EFC040,
 CSC-Function-4ed01a0,hidevolumedecal,1,1,0,sub:EFC120,
 CSC-Function-4ed01a0,unhidevolumedecal,1,1,0,sub:EFC180,
-CSC-Function-4ed01a0,print,1,7fffffff,1,sub:EFC1E0,
-CSC-Function-4ed01a0,print3d,2,6,1,sub:EFC250,
-CSC-Function-4ed01a0,println,1,7fffffff,1,sub:EFC1F0,
-CSC-Function-4ed01a0,profileprintln,1,7fffffff,0,sub:EFC200,
-CSC-Function-4ed01a0,printtoprightln,1,3,1,sub:EFC210,
+CSC-Function-4ed01a0,print,1,7fffffff,1,sub:EFC1E0,nulled
+CSC-Function-4ed01a0,print3d,2,6,1,sub:EFC250,nulled
+CSC-Function-4ed01a0,println,1,7fffffff,1,sub:EFC1F0,nulled
+CSC-Function-4ed01a0,profileprintln,1,7fffffff,0,sub:EFC200,nulled
+CSC-Function-4ed01a0,printtoprightln,1,3,1,sub:EFC210,nulled
 CSC-Function-4ed01a0,iprintlnbold,1,7fffffff,0,sub:EFC220,
-CSC-Function-4ed01a0,line,2,6,1,sub:EFC4A0,
-CSC-Function-4ed01a0,box,1,8,1,sub:EFC590,
-CSC-Function-4ed01a0,debugstar,1,3,1,sub:EFC700,
-CSC-Function-4ed01a0,circle,1,6,1,sub:EFC7A0,
-CSC-Function-4ed01a0,sphere,1,7,1,sub:EFE6C0,
-CSC-Function-4ed01a0,debug2dtext,2,8,1,sub:EFC340,
+CSC-Function-4ed01a0,line,2,6,1,sub:EFC4A0,nulled
+CSC-Function-4ed01a0,box,1,8,1,sub:EFC590,nulled
+CSC-Function-4ed01a0,debugstar,1,3,1,sub:EFC700,nulled
+CSC-Function-4ed01a0,circle,1,6,1,sub:EFC7A0,nulled
+CSC-Function-4ed01a0,sphere,1,7,1,sub:EFE6C0,nulled
+CSC-Function-4ed01a0,debug2dtext,2,8,1,sub:EFC340,nulled
 CSC-Function-4ed01a0,isstereoon,0,0,0,sub:EFE790,
 CSC-Function-4ed01a0,getsurfacestrings,0,0,0,sub:EFE7B0,
 CSC-Function-4ed01a0,issplitscreenhost,1,1,0,sub:EFE7F0,

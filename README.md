@@ -8,7 +8,7 @@ Mod menu and notes for T8 (Black ops 4). IF YOU HAVE ANY ISSUE READ THE [FAQ](#f
 
 Using the compiler: https://github.com/shiversoftdev/t7-compiler (Some required features might not be implemented yet)
 
-Using the sources: https://github.com/ate47/t8-src
+Using the sources: https://github.com/ate47/bo4-source
 
 - [Atian menu](#atian-menu)
   - [FAQ](#faq)
