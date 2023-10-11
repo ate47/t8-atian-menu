@@ -18,20 +18,20 @@ jobs:
         shell: pwsh
         run: "shell_scripts/compile.ps1"
       - name: Save PC artefact
-        if: github.repository_owner == 'ate47' && github.ref == 'refs/heads/main'
+        if: github.repository_owner == 'ate47' && github.ref == 'refs/heads/master'
         run: cp compiled.gscc deploy/atianmenu_pc.gscc
       - name: Compile PS4
-        if: github.repository_owner == 'ate47' && github.ref == 'refs/heads/main'
+        if: github.repository_owner == 'ate47' && github.ref == 'refs/heads/master'
         shell: pwsh
         run: |
           "[Convert]::FromBase64String(\"${{ secrets.PS4_VMCODES_B64 }}\") | Out-File .\build\compiler\t7compiler\vm_codes.db2
           "shell_scripts/compile.ps1 -PS4"
       - name: Save PS4 artefact
-        if: github.repository_owner == 'ate47' && github.ref == 'refs/heads/main'
+        if: github.repository_owner == 'ate47' && github.ref == 'refs/heads/master'
         run: cp compiled.gscc deploy/atianmenu_ps4.gscc
       - name: Upload release
         uses: ncipollo/release-action@v1
-        if: github.repository_owner == 'ate47' && github.ref == 'refs/heads/main'
+        if: github.repository_owner == 'ate47' && github.ref == 'refs/heads/master'
         with:
           commit: ${{ github.sha }}
           token: ${{ secrets.GITHUB_TOKEN }}
