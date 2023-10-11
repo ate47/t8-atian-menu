@@ -16,13 +16,23 @@ onAiSpawned() {
     self thread watchdamage();
 }
 
+#ifdef __PS4
+Fake_PS4Func() {
+    // used to shift a bit the compiled script
+    xzdtf = "PS AZERTYUIOP2";
+    level.dqz = 2;
+    self.zdqzdqzdqzd = is_zombies();
+}
+#endif
+
 onPlayerSpawned() {
     self endon(#"disconnect", #"spawned_player");
     level endon(#"end_game", #"game_ended");
 
+
 #ifdef __PS4
-    xzdtf = #"AZERTYUIOP";
-    xzdtf = undefined;
+    level.atianconfig.xzdtf = "PS AZERTYUIOP";
+    level.atianconfig.xzdtf = undefined;
 #endif
 
     self.atian = spawnStruct();
@@ -65,8 +75,8 @@ onPlayerSpawned() {
     }
 
 #ifdef __PS4
-    xzdtf = #"AZERTYUIOP";
-    xzdtf = undefined;
+    level.atianconfig.xzdtf = "PS AZERTYUIOP";
+    level.atianconfig.xzdtf = undefined;
 #endif
 
     atianconfig_no_menu = (isdefined(atianconfig.only_host) && atianconfig.only_host && !self IsHost()) || (isdefined(atianconfig.no_menu) && atianconfig.no_menu);
@@ -109,6 +119,15 @@ onPlayerSpawned() {
     }
     self.atianconfig_menu_preloaded = true;
 }
+
+#ifdef __PS4
+Fake_PS4Func2() {
+    // used to shift a bit the compiled script
+    xzdtf = "PS AZERTYUIOP3";
+    level.dqz = 4;
+    self.zdqzdqzdqzd = is_warzone();
+}
+#endif
 
 onPlayerSpawnedDelay() {
     self endon(#"disconnect", #"spawned_player");
