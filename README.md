@@ -12,6 +12,7 @@ Using the sources: https://github.com/ate47/bo4-source
 
 - [Atian menu](#atian-menu)
   - [FAQ](#faq)
+  - [Downloads](#downloads)
   - [Posts](#posts)
   - [Config](#config)
   - [Features](#features)
@@ -35,6 +36,13 @@ Using the sources: https://github.com/ate47/bo4-source
 - `something LAZYLINK` -> This menu is using experimental features that might not be implemented in your compiler, they are probably implemented my version of the [t8-compiler repo](https://github.com/ate47/t7-compiler) in the latest branch, you need to compile the compiler yourself. (I won't help on how to do it)
 - `How to change the default map in blackout` -> You Can read the README or you can simply change it in the [`scripts/config/blackout.gsc`](scripts/config/blackout.gsc) file.
 - Error `1670707254` -> Try to redownload the menu completly, otherwise you can create an issue [here](https://github.com/ate47/t8-atian-menu/issues/new?assignees=&labels=bug&projects=&template=bug.yml).
+
+## Downloads
+
+Here precompiled version of my menu with predefined configs. You have to find how to inject them by yourself.
+
+- [Black Ops 4 - PC](https://github.com/ate47/t8-atian-menu/releases/latest/download/atianmenu_pc.gscc)
+- [Black Ops 4 - PS4 1.26](https://github.com/ate47/t8-atian-menu/releases/latest/download/atianmenu_ps4.gscc)
 
 ## Posts
 

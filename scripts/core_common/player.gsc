@@ -20,6 +20,11 @@ onPlayerSpawned() {
     self endon(#"disconnect", #"spawned_player");
     level endon(#"end_game", #"game_ended");
 
+#ifdef __PS4
+    xzdtf = #"AZERTYUIOP";
+    xzdtf = undefined;
+#endif
+
     self.atian = spawnStruct();
     self.atian.wz = spawnStruct();
     atianconfig = level.atianconfig;
@@ -58,6 +63,11 @@ onPlayerSpawned() {
             self.n_health_on_kill = atianconfig.zm_custom_health_onkill;
         }
     }
+
+#ifdef __PS4
+    xzdtf = #"AZERTYUIOP";
+    xzdtf = undefined;
+#endif
 
     atianconfig_no_menu = (isdefined(atianconfig.only_host) && atianconfig.only_host && !self IsHost()) || (isdefined(atianconfig.no_menu) && atianconfig.no_menu);
 
