@@ -1,0 +1,13 @@
+name: Compile scripts (PR)
+
+on: [pull_request]
+
+jobs:
+  compile_scripts:
+    name: Compile scripts
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Compile
+        shell: pwsh
+        run: "shell_scripts/compile.ps1"

@@ -67,7 +67,7 @@ ee_hashname_resolve(name) {
 
 should_fail_ee_nostart(name) {
     if (!is_ee_start(name)) {
-        self iPrintLnBold(guess_why_ee_not_started());
+        self menu_drawing_secondary(guess_why_ee_not_started());
         return true;
     }
     return false;
@@ -100,7 +100,7 @@ func_complete_ee() {
             level notify(#"main_quest_complete");
             break;
         default:
-        self iPrintLnBold("^1Not yet implemented: ^3" + level.script);
+        self menu_drawing_secondary("^1Not yet implemented: ^3" + level.script);
             break;
     }
 }

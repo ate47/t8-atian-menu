@@ -21,7 +21,24 @@ am_log(str) {
 #ifdef _SUPPORTS_BUILTINS
     compiler::nprintln(str);
 #else
-    iprintlnbold(str);
+    menu_drawing_secondary(str);
 #endif
+#endif
+}
+
+
+menu_drawing_function(txt) {
+#ifdef __PS4
+    self iprintlnbold(txt);
+#else
+    self iprintln(txt);
+#endif
+}
+
+menu_drawing_secondary(txt) {
+#ifdef __PS4
+    self iprintln(txt);
+#else
+    self iprintlnbold(txt);
 #endif
 }

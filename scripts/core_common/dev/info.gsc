@@ -1,7 +1,7 @@
 
 func_infomenu(item) {
     if (!isdefined(level.atian_info_pages)) {
-        self iPrintLnBold("^1no info page defined!");
+        self menu_drawing_secondary("^1no info page defined!");
         return;
     }
     ts = 0;
@@ -35,14 +35,20 @@ func_infomenu(item) {
         page = level.atian_info_pages[self.atian_info_pages_cursor];
         ts = nts + page.timeout; // add timeout
 
-        self iprintln("--- " + page.page_name + " (" + (self.atian_info_pages_cursor + 1) + "/" + level.atian_info_pages.size + ") ---");
+        self menu_drawing_function("--- " + page.page_name + " (" + (self.atian_info_pages_cursor + 1) + "/" + level.atian_info_pages.size + ") ---");
 
         index_end = self [[ page.page_print_func ]]();
 
-        end_space = (8 - (index_end % 8));
-        if (end_space !== 8) {
+        #ifdef __PS4
+            menu_size_count = 5;
+        #else
+            menu_size_count = 8;
+        #endif
+        
+        end_space = (menu_size_count - (index_end % menu_size_count));
+        if (end_space !== menu_size_count) {
             for (i = 0; i < end_space; i++) {
-                self iprintln("");
+                self menu_drawing_function("");
             }
         }
         waitframe(1);

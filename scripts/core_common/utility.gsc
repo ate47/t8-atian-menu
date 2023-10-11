@@ -1,7 +1,7 @@
 broadcast_message(str_message) {
     players = getplayers();
     foreach(player in players) {
-        player iPrintLnBold(str_message);
+        player menu_drawing_secondary(str_message);
     }
 }
 broadcase_message_wait(str_message, ttw) {

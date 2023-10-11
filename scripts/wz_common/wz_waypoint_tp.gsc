@@ -9,7 +9,7 @@ wz_waypoint_tp_callback(response, intpayload) {
 	}
     
     if (!isdefined(level.var_405a6738) || !isdefined(level.var_8a390df2)) {
-        self iPrintLnBold("^1can't get map size");
+        self menu_drawing_secondary("^1can't get map size");
         return;
     }
     
@@ -27,7 +27,7 @@ wz_waypoint_tp_callback(response, intpayload) {
     y = (xcoord - 500) / 500 * (0-level.var_405a6738) + mapcenter[1];
     x = (ycoord - 500) / 500 * (0-level.var_8a390df2) + mapcenter[0];
     
-    self iPrintLnBold("^6Teleported to ^2" + x + "^6/^2" + y);
+    self menu_drawing_secondary("^6Teleported to ^2" + x + "^6/^2" + y);
 
     position = bullettrace((x, y, 5000), (x, y, -5000), 0, self, 1)[#"position"];
     self setOrigin(position);

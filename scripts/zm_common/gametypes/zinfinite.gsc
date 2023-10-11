@@ -32,6 +32,6 @@ zinfinite_round_wait() {
 }
 zinfinite_on_spawn_player() {
     wait(0.5);
-    self iPrintLnBold("^6Teleported to ^2" + level.zinfinite.spawn_location);
+    self menu_drawing_secondary("^6Teleported to ^2" + level.zinfinite.spawn_location);
     self setOrigin(level.zinfinite.spawn_location);
 }

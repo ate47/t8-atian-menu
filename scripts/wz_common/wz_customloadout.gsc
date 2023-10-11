@@ -4,15 +4,15 @@ func_wz_item_clear_inventory(item, waitclear = false) {
 }
 func_wz_item_test1(item) {
 #ifndef _SUPPORTS_LAZYLINK
-    self iPrintLnBold("^1LAZYLINK DISABLED");
+    self menu_drawing_secondary("^1LAZYLINK DISABLED");
 #else
     scr = getscriptbundle(#"flare_gun_veh_wz_item");
     if (!isdefined(scr)) {
-        self iPrintLnBold("^1Can't find scr");
+        self menu_drawing_secondary("^1Can't find scr");
         return;
     }
     if (!isdefined(scr.model)) {
-        self iPrintLnBold("^1Can't find scr.model");
+        self menu_drawing_secondary("^1Can't find scr.model");
         return;
     }
 	model = spawn("script_model", self.origin + (0, 0, 33));
@@ -21,21 +21,21 @@ func_wz_item_test1(item) {
 }
 func_wz_item_test2(item) {
 #ifndef _SUPPORTS_LAZYLINK
-    self iPrintLnBold("^1LAZYLINK DISABLED");
+    self menu_drawing_secondary("^1LAZYLINK DISABLED");
 #else
     
 #endif
 }
 func_wz_item_test3(item) {
 #ifndef _SUPPORTS_LAZYLINK
-    self iPrintLnBold("^1LAZYLINK DISABLED");
+    self menu_drawing_secondary("^1LAZYLINK DISABLED");
 #else
     
 #endif
 }
 func_wz_item_test4(item) {
 #ifndef _SUPPORTS_LAZYLINK
-    self iPrintLnBold("^1LAZYLINK DISABLED");
+    self menu_drawing_secondary("^1LAZYLINK DISABLED");
 #else
     
 #endif
@@ -43,11 +43,11 @@ func_wz_item_test4(item) {
 
 wz_item_clear_inventory(waitclear = false) {
 #ifndef _SUPPORTS_LAZYLINK
-    self iPrintLnBold("^1LAZYLINK DISABLED");
+    self menu_drawing_secondary("^1LAZYLINK DISABLED");
 #else
     reset_inventory = @item_inventory<scripts\mp_common\item_inventory.gsc>::reset_inventory;
     if (!isdefined(reset_inventory)) {
-		self iPrintLnBold("^1Can't find function!");
+		self menu_drawing_secondary("^1Can't find function!");
     }
 
     if (waitclear) {

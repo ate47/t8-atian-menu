@@ -1,7 +1,9 @@
 param(
     $DownloadLink = "https://github.com/shiversoftdev/t7-compiler/releases/latest/download/update.zip",
     [switch]
-    $NoDownload
+    $NoDownload,
+    [switch]
+    $Ps4
 )
 
 $prevPwd = $PWD
@@ -31,7 +33,12 @@ try {
 
     Write-Host "Compiling project"
 
-    .\build\compiler\t7compiler\DebugCompiler.exe --compile --noupdate -DCI
+    if ($Ps4) {
+        .\build\compiler\t7compiler\DebugCompiler.exe --compile --noupdate -DCI -D__PS4
+    }
+    else {
+        .\build\compiler\t7compiler\DebugCompiler.exe --compile --noupdate -DCI
+    }
 
     if (!$?) {
         Write-Error "Issue when compiling the project"

@@ -3,14 +3,14 @@ func_spawn_vehicle(item, vehicule_type) {
     load = isassetloaded("vehicle", vehicule_type);
 
     if (!isdefined(load) || !load) {
-        self iPrintLnBold("^1Asset not loaded");
+        self menu_drawing_secondary("^1Asset not loaded");
         return;
     }
     look = self get_look_position();
 
     veh = spawnvehicle(vehicule_type, look, (0, 0, 0));
     if (!isdefined(veh)) {
-        self iprintlnbold("^1bad vehicle");
+        self menu_drawing_secondary("^1bad vehicle");
         return;
     }
     veh makeusable();
@@ -35,7 +35,7 @@ func_enter_vehicle(item, slot) {
     if (isdefined(entity) && isvehicle(entity)) {
         entity usevehicle(self, 0);
     } else {
-        self iprintlnbold("^1No vehicle found");
+        self menu_drawing_secondary("^1No vehicle found");
     }
 }
 
@@ -50,6 +50,6 @@ func_set_vehicle(item, data) {
     if (isdefined(entity_hit) && isvehicle(entity_hit)) {
         entity_hit setvehicletype(data);
     } else {
-        self iPrintLnBold("^1You need to aim a vehicle!");
+        self menu_drawing_secondary("^1You need to aim a vehicle!");
     }
 }

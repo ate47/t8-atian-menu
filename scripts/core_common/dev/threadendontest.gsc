@@ -53,7 +53,7 @@ test_thread_endon_secondary() {
 #else
 
 test_thread_endon(it, val, val2) {
-    self iprintlnbold("^1not implemented");
+    self menu_drawing_secondary("^1not implemented");
 }
 
 

@@ -43,7 +43,7 @@ unlock_all(player) {
             player addweaponstat(weapon.weapon, #"crawlerkills", 5000);
             player addweaponstat(weapon.weapon, #"instakills", 5000);
             player addweaponstat(weapon.weapon, #"hash_657e22dcdd18da77", 5000); // pop shocks
-            player iprintlnbold("^5Camo unlocked for ^6" + hash_lookup(weapon.weapon.name));
+            player menu_drawing_secondary("^5Camo unlocked for ^6" + hash_lookup(weapon.weapon.name));
             waitframe(1);
         }
     }

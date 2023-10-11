@@ -18,7 +18,7 @@ ANoclipBind() {
 			while(true) {
 				if(!is_mod_activated("fly")) {
 					if (!isdefined(self.atian.fly_mode_no_hint) || !self.atian.fly_mode_no_hint) {
-						self iprintlnbold("^6Fly mode ^1disabled");
+						self menu_drawing_secondary("^6Fly mode ^1disabled");
 					}
 					break;
 				}
@@ -33,8 +33,8 @@ ANoclipBind() {
 					nts = GetTime();
 					if (nts > ts) {
 						ts = nts + 5000; // add 2s
-						self iprintlnbold("^6Fly mode ^2enabled");
-						self iprintlnbold("^5" + (self key_mgr_get_key_str(#"fly_fast_key")) + "^6: fly, ^5" + (self key_mgr_get_key_str(#"fly_up_key")) + "^6: up, ^5" + (self key_mgr_get_key_str(#"fly_down_key")) + "^6: down");
+						self menu_drawing_secondary("^6Fly mode ^2enabled");
+						self menu_drawing_secondary("^5" + (self key_mgr_get_key_str(#"fly_fast_key")) + "^6: fly, ^5" + (self key_mgr_get_key_str(#"fly_up_key")) + "^6: up, ^5" + (self key_mgr_get_key_str(#"fly_down_key")) + "^6: down");
 					}
 				}
 

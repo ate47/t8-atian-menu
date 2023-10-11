@@ -137,10 +137,14 @@ handle_config() {
     }
     level.atianconfig = spawnstruct();
     level.atianconfig.devcfg = spawnstruct();
+#ifdef CI
+    level.atianconfig AtianMenuConfigContinuousIntegration();
+#else
     level.atianconfig AtianMenuConfig();
     level.atianconfig AtianMenuConfigBlackout();
     level.atianconfig AtianMenuConfigZombies();
     level.atianconfig AtianMenuConfigMultiplayer();
+#endif
     
 #ifdef ATIAN_MENU_DEV
     level.atianconfig AtianMenuDevConfig();

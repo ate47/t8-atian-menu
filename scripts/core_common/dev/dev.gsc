@@ -103,7 +103,7 @@ devInitGametype() {
 }
 debugln(str_line) {
     if (is_dev_mode() && isplayer(self)) {
-        self iPrintLnBold("^2[DBG] " + str_line);
+        self menu_drawing_secondary("^2[DBG] " + str_line);
         am_log(self.name + ":" + str_line);
     }
 }
@@ -197,6 +197,9 @@ am_log(str) {
 #ifdef _SUPPORTS_BUILTINS
     compiler::nprintln(str);
 #else
+    if (!isdefined(level.am_messages)) {
+        level.am_messages = [];
+    }
     array::add(level.am_messages, str, true);
 #endif
 #endif
@@ -255,5 +258,5 @@ func_search_model(item, model_name) {
         array::add(level.am_dev.explore_vectors, entity, false);
     }
     
-    self iprintlnbold("find " + find + "/" + count + " entity(s)");
+    self menu_drawing_secondary("find " + find + "/" + count + " entity(s)");
 }

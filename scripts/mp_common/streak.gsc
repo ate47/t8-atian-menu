@@ -6,7 +6,7 @@ func_bot_usestreak(item, bot, weapon) {
 bot_usestreak(bot, weapon) {
 #ifndef _SUPPORTS_LAZYLINK
     if (isdefined(self)) {
-        self iPrintLnBold("^1LAZYLINK DISABLED");
+        self menu_drawing_secondary("^1LAZYLINK DISABLED");
     }
 #else
     gkfw = @killstreaks<scripts\killstreaks\killstreaks_shared.gsc>::get_killstreak_for_weapon;
@@ -14,7 +14,7 @@ bot_usestreak(bot, weapon) {
 
     if (!(isdefined(gkfw) && isdefined(uk))) {
         if (isdefined(self)) {
-            self iPrintLnBold("^1Can't find use functions, see logs.");
+            self menu_drawing_secondary("^1Can't find use functions, see logs.");
         }
         return;
     }

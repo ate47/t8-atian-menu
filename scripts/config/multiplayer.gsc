@@ -8,7 +8,7 @@ AtianMenuConfigMultiplayer() {
     // ------ multiplayer config -----
 
     // time to select a specialist
-    //self.mp_drafttime = 30;
+    self.mp_drafttime = 2;
     
     // set the invulnerability time in last stand
     //self.mp_laststand_invulnerability_time = 0.5;

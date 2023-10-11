@@ -3,7 +3,7 @@ func_dynent_tp(item, name) {
     if (isdefined(entity) && isdefined(entity.origin)) {
         self setOrigin(entity.origin);
     } else {
-        self iPrintLnBold("^1Can't tp to ^4" + name + "^2(exist:" + isdefined(entity) + ", origin:" + isdefined(entity.origin) + ")");
+        self menu_drawing_secondary("^1Can't tp to ^4" + name + "^2(exist:" + isdefined(entity) + ", origin:" + isdefined(entity.origin) + ")");
     }
 }
 
@@ -13,7 +13,7 @@ func_searchdynent(menu, array_name) {
     menu.sub_menus = array();
 
     if (!isdefined(self.origin)) {
-        self iPrintLnBold("^1bad origin for player");
+        self menu_drawing_secondary("^1bad origin for player");
     }
 
     a_dynents = getdynentarray(array_name);

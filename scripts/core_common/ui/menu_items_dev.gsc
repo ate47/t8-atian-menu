@@ -35,7 +35,9 @@ init_menus_dev() {
     foreach (model in models) {
         self add_menu_item("dev_model", "" + model, &func_spawnmodel, model);
     }
-    
+
+
+#ifdef _SUPPORTS_LAZYLINK
     self add_menu_item("tool_menu_dev", "Enable all zones", &func_zm_zone_open_all);
 
     if (is_warzone()) {
@@ -44,6 +46,7 @@ init_menus_dev() {
         self add_menu_item("wz_tools", "Test 3", &func_wz_item_test3, true);
         self add_menu_item("wz_tools", "Test 4", &func_wz_item_test4, true);
     }
+#endif
 
     
     // works

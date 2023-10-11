@@ -32,10 +32,10 @@ func_echobold(item, data) {
     if (isdefined(data)) {
         if (isarray(data)) {
             foreach (l in data) {
-                self iprintlnbold(l);
+                self menu_drawing_secondary(l);
             }
         } else {
-            self iprintlnbold(data);
+            self menu_drawing_secondary(data);
         }
     }
     return true;
@@ -84,14 +84,14 @@ func_echo_dev_color() {
 
 
 func_set_mapgametype(item, map_name, gametype) {
-    self iPrintLn("loading map " + map_name + " with mode " + gametype);
+    self menu_drawing_function("loading map " + map_name + " with mode " + gametype);
     switchmap_preload(map_name, gametype);
     wait(1);
     switchmap_switch();
 }
 
 func_set_map(item, map_name) {
-    self iPrintLn("loading " + map_name);
+    self menu_drawing_function("loading " + map_name);
 
     map(map_name);
     wait(1);
@@ -99,7 +99,7 @@ func_set_map(item, map_name) {
 }
 func_set_gametype(item, gametype) {
     map_name = util::get_map_name();
-    self iPrintLn("loading mode " + gametype);
+    self menu_drawing_function("loading mode " + gametype);
 
     switchmap_load(map_name, gametype);
     wait(1);
@@ -118,17 +118,26 @@ func_invulnerability(item) {
 }
 
 func_end_contracts(item) {
-    foreach(index, contract in self.pers["contracts"]) {
+    if (!isdefined(self.pers[#"contracts"]) || !isarray(self.pers[#"contracts"])) return;
+
+    foreach(index, contract in self.pers[#"contracts"]) {
         contractValue = contract.target_value;
         if(isdefined(contractValue) && contractValue) {
             contract.current_value = contractValue;
         }
     }
+    TableLookupColumnCount(#"gamedata/events/schedule_pc.csv");
+    TableLookupColumnCount(#"gamedata/events/schedule_xbox.csv");
+    TableLookupColumnCount(#"gamedata/events/schedule_ps4.csv");
     return true;
 }
 
+func_tier_skip(item) {
+    self function_cce105c8(#"tier_skip", 1, 1, 2, 3);
+}
+
 func_test(item) {
-    self iPrintLnBold("^8test");
+    self menu_drawing_secondary("^8test");
     return false;
 }
 
@@ -151,7 +160,7 @@ func_teleport(item, origin, angles = undefined) {
     if (isdefined(angles)) {
         self setPlayerAngles(angles);
     }
-    self iPrintLnBold("^6Teleported to ^2" + origin);
+    self menu_drawing_secondary("^6Teleported to ^2" + origin);
 }
 
 func_searchentities_compare(e1, e2, player_origin) {
@@ -173,7 +182,7 @@ func_searchentities(menu) {
     menu.sub_menus = array();
 
     if (!isdefined(self.origin)) {
-        self iPrintLnBold("^1bad origin for player");
+        self menu_drawing_secondary("^1bad origin for player");
     }
 
     entities = getentitiesinradius(self.origin, 10000);
@@ -235,7 +244,7 @@ func_show_hud(item) {
     }
     // clear the screen
     for (i = 0; i < 9; i++) {
-        self iprintln("");
+        self menu_drawing_function("");
     }
     
     while (!self key_mgr_has_key_pressed(#"parent_page")) {

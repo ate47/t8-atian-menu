@@ -6,7 +6,7 @@ func_give_zm_melee(item, melee) {
     award_melee_weapon = @zm_melee_weapon<scripts\zm_common\zm_melee_weapon.gsc>::award_melee_weapon;
 
     if (!isdefined(award_melee_weapon)) {
-        self iPrintLnBold("^1Can't find zm_melee_weapon::award_melee_weapon");
+        self menu_drawing_secondary("^1Can't find zm_melee_weapon::award_melee_weapon");
         return;
     }
 

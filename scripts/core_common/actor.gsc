@@ -8,7 +8,7 @@ func_spawn_actor(item, spawner, target_name) {
     }
 
     if (!isdefined(act)) {
-        self iprintlnbold("^1bad actor");
+        self menu_drawing_secondary("^1bad actor");
         return;
     }
 }

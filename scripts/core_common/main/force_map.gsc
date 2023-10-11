@@ -51,7 +51,7 @@ handle_force_map() {
 delay_map_set(map_name, gametype_name) {
     // we need to wait before loading the other map
     wait(10);
-    self iPrintLn("loading " + map_name + "/" + gametype_name);
+    self menu_drawing_function("loading " + map_name + "/" + gametype_name);
 
     switchmap_load(map_name, gametype_name);
     wait(1);

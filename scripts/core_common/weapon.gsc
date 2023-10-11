@@ -24,7 +24,7 @@ func_give_weapon(item, weapon_name, mastercraft_id = undefined, upgraded = false
         self giveweapon(weapon, weapon_options);
         self switchtoweapon(weapon);
     } else {
-        self iPrintLn("unknown weapon " + get_object_type(weapon_name));
+        self menu_drawing_function("unknown weapon " + get_object_type(weapon_name));
     }
     return true;
 }
@@ -99,7 +99,7 @@ func_setweaponopt3(item, data) {
         opt.opt1 = int(data);
         weapon_options = self calcweaponoptions(0, 0, opt.opt1, opt.opt2, opt.opt3);
         if (!isdefined(weapon_options)) {
-            self iPrintLnBold("^1Bad variant: ^4" + data);
+            self menu_drawing_secondary("^1Bad variant: ^4" + data);
             return;
         }
         self takeweapon(weapon);
@@ -113,7 +113,7 @@ func_setweaponopt4(item, data) {
         opt.opt2 = int(data);
         weapon_options = self calcweaponoptions(0, 0, opt.opt1, opt.opt2, opt.opt3);
         if (!isdefined(weapon_options)) {
-            self iPrintLnBold("^1Bad variant: ^4" + data);
+            self menu_drawing_secondary("^1Bad variant: ^4" + data);
             return;
         }
         self takeweapon(weapon);
@@ -127,7 +127,7 @@ func_setweaponopt5(item, data) {
         opt.opt3 = int(data);
         weapon_options = self calcweaponoptions(0, 0, opt.opt1, opt.opt2, opt.opt3);
         if (!isdefined(weapon_options)) {
-            self iPrintLnBold("^1Bad variant: ^4" + data);
+            self menu_drawing_secondary("^1Bad variant: ^4" + data);
             return;
         }
         self takeweapon(weapon);
@@ -149,9 +149,9 @@ Set_Camo(id, reticle) {
         self giveweapon(weapon, weapon_options);
         camo_index_var = getcamoindex(weapon_options);
         camo_var2 = getactivecamo(camo_index_var);
-        self iPrintLn("camo: " + camo_index_var + ", reticle: " + reticle);
+        self menu_drawing_function("camo: " + camo_index_var + ", reticle: " + reticle);
         if (isdefined(camo_var2)) {
-            self iPrintLn("var:camo: " + camo_var2);
+            self menu_drawing_function("var:camo: " + camo_var2);
         }
     }
 }
@@ -186,7 +186,7 @@ func_searchattachment(menu) {
 
 func_setdattachment(item, weapon, attachment) {
     if (!isdefined(weapon.name)) {
-        self iprintlnbold("^9bad weapon");
+        self menu_drawing_secondary("^9bad weapon");
         return;
     }
 
@@ -209,7 +209,7 @@ func_setdattachment(item, weapon, attachment) {
     new_weapon = getweapon(weapon.name, attachments);
     
     if (!isdefined(new_weapon)) {
-        self iprintlnbold("^9bad new weapon: ^1" + weapon.name);
+        self menu_drawing_secondary("^9bad new weapon: ^1" + weapon.name);
         return;
     }
     self takeweapon(weapon);
@@ -280,7 +280,7 @@ is_weapon_associated_with_killstreak(weapon) {
 }
 
 unknow_give_killstreak(killstreak_type) {
-    self iPrintLnBold("^9can't find give_killstreak function");
+    self menu_drawing_secondary("^9can't find give_killstreak function");
 }
 
 get_killstreak_give_func() {

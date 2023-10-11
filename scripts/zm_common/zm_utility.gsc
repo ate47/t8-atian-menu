@@ -117,10 +117,10 @@ set_zvar(zvar, value) {
 func_set_xp_multiplier(item, value = undefined) {
     if (isdefined(value) && value >= 0) {
         level.atianconfig.xp_multiplier = value;
-        self iPrintLnBold("^5XP multiplier set to ^6" + value);
+        self menu_drawing_secondary("^5XP multiplier set to ^6" + value);
     } else {
         level.atianconfig.xp_multiplier = undefined;
-        self iPrintLnBold("^5XP multiplier set to normal");
+        self menu_drawing_secondary("^5XP multiplier set to normal");
     }
 }
 
@@ -234,12 +234,12 @@ func_give_zm_perk(item, perk_name, modifier) {
 
 give_zm_perk(perk_name, modifier = false) {
 #ifndef _SUPPORTS_LAZYLINK
-    self iPrintLnBold("^1LAZYLINK DISABLED");
+    self menu_drawing_secondary("^1LAZYLINK DISABLED");
 #else
     vending_trigger_post_think = @zm_perks<scripts\zm_common\zm_perks.gsc>::vending_trigger_post_think;
 
     if (!isdefined(vending_trigger_post_think)) {
-        self iPrintLnBold("^1Can't find zm_perks::vending_trigger_post_think");
+        self menu_drawing_secondary("^1Can't find zm_perks::vending_trigger_post_think");
         return;
     }
 
@@ -296,12 +296,12 @@ func_zm_pwrp_spawn(item, powerup) {
 
 zm_pwrp_spawn(powerup) {
 #ifndef _SUPPORTS_LAZYLINK
-    self iPrintLnBold("^1LAZYLINK DISABLED");
+    self menu_drawing_secondary("^1LAZYLINK DISABLED");
 #else
     specific_powerup_drop = @zm_powerups<scripts\zm_common\zm_powerups.gsc>::specific_powerup_drop;
 
     if (!isdefined(specific_powerup_drop)) {
-        self iPrintLnBold("^1Can't find zm_powerups::specific_powerup_drop");
+        self menu_drawing_secondary("^1Can't find zm_powerups::specific_powerup_drop");
         return;
     }
 

@@ -19,6 +19,22 @@ init_menu(menu_title) {
     return true;
 }
 
+menu_drawing_function(txt) {
+//#ifdef __PS4
+//    self iprintlnbold(txt);
+//#else
+    self iprintln(txt);
+//#endif
+}
+
+menu_drawing_secondary(txt) {
+//#ifdef __PS4
+//    self iprintln(txt);
+//#else
+    self iprintlnbold(txt);
+//#endif
+}
+
 toggle_mod(mod_name, value = undefined) {
     if (!isdefined(self.menu_info)) {
         return;
@@ -67,7 +83,7 @@ add_menu(menu_id, menu_name, parent_id, create_switch = false, menuenterfunc = u
 }
 add_menu_item(menu_id, item_name, action, actiondata = undefined, actiondata2 = undefined, actiondata3 = undefined, actiondata4 = undefined, actiondata5 = undefined) {
     if (!isdefined(self.menu_info.menus[menu_id])) {
-        self iPrintLnBold("^1bad menu config " + menu_id + " isn't set!");
+        self menu_drawing_secondary("^1bad menu config " + menu_id + " isn't set!");
         return;
     }
 
@@ -141,6 +157,16 @@ menu_think() {
     self endon(#"disconnect");
     level endon(#"end_game", #"game_ended");
     
+    #ifdef __PS4
+        menu_size_count = 3;
+    #else
+        menu_size_count = 8;
+    #endif
+
+    for (i = 0; i < menu_size_count + 1; i++) {
+        self menu_drawing_function("");
+    }
+
     ts = 0;
     while (true) {
         menu_info = self.menu_info;
@@ -262,44 +288,61 @@ menu_think() {
             menu = self get_current_menu();
             if (isdefined(menu)) {
                 if (menu.sub_menus.size === 0) {
-                    self iprintln("^1---- " + menu.name + " (empty) ----");
+                    self menu_drawing_function("^1---- " + menu.name + " (empty) ----");
                     index_end = 1;
                 } else {
-                    //page = int(menu_info.cursor / 8);
-                    page = int(menu.cursor / 8);
-                    maxpage = int((menu.sub_menus.size - 1) / 8) + 1;
-                    self iprintln("^1---- " + menu.name + " (" + (page + 1) + "/" + maxpage + ") ----");
+                    //page = int(menu_info.cursor / menu_size_count);
+                    page = int(menu.cursor / menu_size_count);
+                    maxpage = int((menu.sub_menus.size - 1) / menu_size_count) + 1;
+                    self menu_drawing_function("^1---- " + menu.name + " (" + (page + 1) + "/" + maxpage + ") ----");
 
-                    index_start = 8 * page;
-                    index_end = int(min(8 * (page + 1), menu.sub_menus.size));
+                    index_start = menu_size_count * page;
+                    index_end = int(min(menu_size_count * (page + 1), menu.sub_menus.size));
                     for (i = index_start; i < index_end; i++) {
                         //if (menu_info.cursor === i) {
                         if (menu.cursor === i) {
                             if (menu.sub_menus[i].activated) {
-                                self iprintln("^0-> ^1" + (menu.sub_menus[i].name) + "^0 (ON)");
+
+#ifdef __PS4
+                                self menu_drawing_function("^6->" + (menu.sub_menus[i].name) + "^2 (ON)");
+#else
+                                self menu_drawing_function("^0-> ^1" + (menu.sub_menus[i].name) + "^0 (ON)");
+#endif
                             } else {
-                                self iprintln("^0-> ^1" + (menu.sub_menus[i].name));
+#ifdef __PS4
+                                self menu_drawing_function("^6" + (menu.sub_menus[i].name));
+#else
+                                self menu_drawing_function("^0-> ^1" + (menu.sub_menus[i].name));
+#endif
                             }
                             
                         } else {
                             if (menu.sub_menus[i].activated) {
-                                self iprintln("^1- " + (menu.sub_menus[i].name) + "^0 (ON)");
+#ifdef __PS4
+                                self menu_drawing_function("^3- " + (menu.sub_menus[i].name) + "^2 (ON)");
+#else
+                                self menu_drawing_function("^1- " + (menu.sub_menus[i].name) + "^0 (ON)");
+#endif
                             } else {
-                                self iprintln("^1- " + (menu.sub_menus[i].name));
+#ifdef __PS4
+                                self menu_drawing_function("^3- " + (menu.sub_menus[i].name));
+#else
+                                self menu_drawing_function("^1- " + (menu.sub_menus[i].name));
+#endif
                             }
                         }
                     }
                 }
 
-                end_space = (8 - (index_end % 8));
-                if (end_space !== 8) {
+                end_space = (menu_size_count - (index_end % menu_size_count));
+                if (end_space !== menu_size_count) {
                     for (i = 0; i < end_space; i++) {
-                        self iprintln("");
+                        self menu_drawing_function("");
                     }
                 }
             } else {
-                for (i = 0; i < 9; i++) {
-                    self iprintln("");
+                for (i = 0; i < menu_size_count + 1; i++) {
+                    self menu_drawing_function("");
                 }
             }
         }
@@ -341,7 +384,7 @@ ClickMenuButton(menu_id, menu_item_name) {
 menu_open_message(menu, message, func, data1, data2) {
 
     if (isdefined(message)) {
-        self iPrintLnBold(message);
+        self menu_drawing_secondary(message);
     }
 
     if (!isdefined(func)) {

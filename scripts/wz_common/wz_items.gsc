@@ -3,7 +3,7 @@ func_give_wzitem(item, item_id, item_title) {
 
 	supplydrop = spawn("script_model", self.origin);
 	if(!isdefined(supplydrop)) {
-        self iPrintLnBold("^9can't spawn model");
+        self menu_drawing_secondary("^9can't spawn model");
 		return;
 	}
 	supplydrop.targetname = "supply_drop";
@@ -19,7 +19,7 @@ func_give_wzitem(item, item_id, item_title) {
 	supplydrop.supplydropveh = undefined;
 	supplydrop.var_b91441dd = getscriptbundle(#"hash_696141fcc5f2e372");
 	if(!isdefined(supplydrop.var_b91441dd)) {
-        self iPrintLnBold("^9can't find script bundle");
+        self menu_drawing_secondary("^9can't find script bundle");
 		return;
 	}
 }
@@ -30,14 +30,14 @@ func_give_item_test(item, item_id) {
 
 give_wzitem(item_id, count = 1) {
 #ifndef _SUPPORTS_LAZYLINK
-    self iPrintLnBold("^1LAZYLINK DISABLED");
+    self menu_drawing_secondary("^1LAZYLINK DISABLED");
 #else
 	get_item = &function_4ba8fde; //@wz_loadouts<scripts\wz_common\wz_loadouts.gsc>::_get_item;
 	get_slotid = @item_inventory<scripts\mp_common\item_inventory.gsc>::function_e66dcff5;
 	give_item = @item_world<scripts\mp_common\item_world.gsc>::function_de2018e3;
 
 	if (!isdefined(get_item) || !isdefined(get_slotid) || !isdefined(give_item)) {
-		self iPrintLnBold("^1Can't find functions!");
+		self menu_drawing_secondary("^1Can't find functions!");
 		return;
 	}
 

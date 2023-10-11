@@ -59,7 +59,7 @@ RandomTp() {
     x = randomfloatrange(0, 2 * level.var_405a6738) - level.var_405a6738 + mapcenter[1];
     y = randomfloatrange(0, 2 * level.var_8a390df2) - level.var_8a390df2 + mapcenter[0];
     
-    self iPrintLnBold("^6Teleported to ^4" + x + "^6/^4" + y);
+    self menu_drawing_secondary("^6Teleported to ^4" + x + "^6/^4" + y);
 
     position = bullettrace((x, y, 5000), (x, y, -5000), 0, self, 1)[#"position"];
     self setOrigin(position);

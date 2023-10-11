@@ -68,7 +68,7 @@ GunModifier() {
                     self PlayerLinkTo(self.rocketman_rocket, undefined);
                 }
             } else {
-                self iPrintLnBold("^1fly mode can't be used with rocket man!");
+                self menu_drawing_secondary("^1fly mode can't be used with rocket man!");
             }
         }
         if (tool_rocket_armageddon) {
@@ -85,7 +85,7 @@ GunModifier() {
             bullet_hit = bullet_hit + (0, 0, 4); // remove ground issue
 
             if (!isdefined(rocket_launcher)) {
-                self iPrintLnBold("^1weapon undefined (armageddon)");
+                self menu_drawing_secondary("^1weapon undefined (armageddon)");
             } else {
                 for (i = 0; i < rocket_count; i++) {
                     // pick random angle/height
@@ -174,12 +174,12 @@ PhysicGunTool() {
 SendRocket(weapon_name, look) {
     tank_turret = getweapon(hash(weapon_name));
     if (!isdefined(tank_turret)) {
-        self iPrintLnBold("^1weapon undefined: " + weapon_name);
+        self menu_drawing_secondary("^1weapon undefined: " + weapon_name);
     } else {
         // we add 40 to the origin to avoid blowing up the player
         rocket = magicbullet(tank_turret, self.origin + vectorscale(look, 40) + (0, 0, 40), self.origin + vectorscale(look, 1000), self);
         if (!isdefined(rocket)) {
-            self iPrintLnBold("^1rocket undefined for weapon " + weapon_name);
+            self menu_drawing_secondary("^1rocket undefined for weapon " + weapon_name);
         }
         return rocket;
     }

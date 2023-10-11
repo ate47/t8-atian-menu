@@ -9,6 +9,7 @@ init_menus() {
     self add_menu_item_modswitch("tool_menu", "Ammos", "maxammo");
     if (is_zombies()) {
         self add_menu_item("tool_menu", "End contracts", &func_end_contracts);
+        self add_menu_item("tool_menu", "Tier skip", &func_tier_skip);
     }
     self add_menu_item("tool_menu", "Invulnerability", &func_invulnerability);
 
@@ -130,7 +131,9 @@ init_menus() {
         } else if (cat_item.name == "melee" && is_zombies()) {
             for (i = 0; i < cat_item.weapons.size; i++) {
                 w_i = cat_item.weapons[i];
+#ifdef _SUPPORTS_LAZYLINK
                 self add_menu_item(menu_id, w_i.title, &func_give_zm_melee, w_i.name);
+#endif
             }
         } else {
             for (i = 0; i < cat_item.weapons.size; i++) {
@@ -330,6 +333,8 @@ init_menus() {
     if (is_warzone()) {
         self add_menu("wz_tools", "Blackout tools", "start_menu", true);
 
+
+#ifdef _SUPPORTS_LAZYLINK
         self add_menu_item("wz_tools", "Wz test give", &func_give_item_test, #"tomahawk_t8_wz_item_pandemic");
         self add_menu("wzitems", "Blackout item", "wz_tools", true);
 
@@ -347,6 +352,7 @@ init_menus() {
         }
 
         self add_menu_item("wz_tools", "Clear inventory", &func_wz_item_clear_inventory, true);
+#endif
 
         if (!(isdefined(self.atianconfig.force_blackout_map) && isdefined(self.atianconfig.force_blackout_gametype))) {
             self add_menu("gmap_wz", "Set map/gametype", "start_menu", true);
@@ -408,6 +414,8 @@ init_menus() {
     } else if (is_zombies()) {
         self add_menu("zm_tools", "Zombies tools", "start_menu", true);
 
+
+#ifdef _SUPPORTS_LAZYLINK
         if (isdefined(level._custom_perks)) {
             self add_menu("zmperks", "Zombies Perk", "zm_tools", true);
             self add_menu("zmperksmod", "Zombies Perk (Modifier)", "zm_tools", true);
@@ -433,6 +441,7 @@ init_menus() {
                 self add_menu_item("zmpowerups", zm_pwrp_translate(key), &func_zm_pwrp_spawn, key);
             }
         }
+#endif
 
         self add_menu_item("zm_tools", "Open Narrative room", &func_activate_narrative_room);
         self add_menu("dev_ee", "ZM easter eggs", "zm_tools", true, &func_searchee);
