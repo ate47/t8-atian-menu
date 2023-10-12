@@ -39,14 +39,14 @@ Using the sources: https://github.com/ate47/bo4-source
 
 ## Downloads
 
-Here precompiled version of my menu with predefined configs. You have to find how to inject them by yourself.
+Here precompiled versions of my menu with predefined configs. You have to find how to inject them by yourself.
 
 - [Black Ops 4 - PC](https://github.com/ate47/t8-atian-menu/releases/latest/download/atianmenu_pc.gscc)
 - [Black Ops 4 - PS4 1.26](https://github.com/ate47/t8-atian-menu/releases/latest/download/atianmenu_ps4.gscc)
 
 ## Posts
 
-Posts or videos I've made using these scripts, notes or the sources:
+Posts or videos I've made using these scripts, my notes or the sources:
 
 - [Reddit - Stats for the care packages](https://www.reddit.com/r/Blackops4/comments/nhonhu/if_you_had_ever_wondered_the_probabilities_in_the/)
 - [Blackout Quaknarok](https://www.youtube.com/watch?v=XphuwHYtSjk)
@@ -56,6 +56,8 @@ Posts or videos I've made using these scripts, notes or the sources:
 - [atian-cod-tools](https://github.com/ate47/atian-cod-tools) - Some tools related to Call of Duty (with [bo4-source](https://github.com/ate47/bo4-source))
 
 ## Config
+
+*No available in the precompiled builds*
 
 If you don't want to use the menu and only use particular functions from the mod, you can set the value of `no_menu` to `true` in [scripts/config/global.gsc](scripts/config/global.gsc).
 
@@ -102,7 +104,7 @@ You can config the mod menu in the [`scripts/config`](scripts/config) directory,
 
 ## Features
 
-This tool can be paired with the [t8-custom-ee mod](https://github.com/ate47/t8-custom-ee/tree/main) to run EE in casual or offline, you don't need it for custom mutations.
+This tool can be paired with the [t8-custom-ee mod (PC)](https://github.com/ate47/t8-custom-ee/tree/main) to run EE in casual or offline, you don't need it for custom mutations.
 
 - Tools
   - 3rd person
