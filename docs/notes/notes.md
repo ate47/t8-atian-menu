@@ -926,4 +926,35 @@ dday
 2868993
 1868993
 
+'\x8A'GSC\r\n0
+
+magic: 0x0A0D4353478A
+
+000000008B5C4C8 69? (nice)
+
+array error {
+  12506, // can't find script
+  12503, // find dev string in script
+  12502, // can't link script
+}
+
+import flags:
+- AAAA 0x0F
+  - 1, 2, 3, 4, 6, 7 -> true? ru 2A5F1D0
+  - 5 -> false? ru 2A5F1D0
+  - 8, 10 -> ?? 2A5DFA0
+  - 9, 11 -> ?? 2A5E030
+  - default: error linking
+- E 0x10 dev import
+- F 0x20 unk20, link with the resolve, 20 = check ns10, !20 = check ns20
+- G 0x40 unk40
+- H 0x80 unk80
+
+export flags: 
+
+0x86 = Class def?
+
+HGFEDCBA
+- A 0x02 linked
+
 ```
