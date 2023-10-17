@@ -10,13 +10,12 @@ try {
     $base = (Get-Item $PSScriptRoot).Parent
     Set-Location ($base.Fullname)
 
-    $compilerPath = (Get-Item (Get-Command debugcompiler.exe).Source).Parent
+    $compilerPath = (Get-Item ((Get-Command debugcompiler.exe).Source)).FullName | split-path -parent
 
     # Set the ps4 opcodes
     Copy-Item "$compilerPath/vm_codes_ps4.db2" "$compilerPath/vm_codes.db2" -Force
 
-    debugcompiler.exe --compile --noupdate -D__PS4
-
+    debugcompiler.exe --compile --noupdate -D__PS4 -DATIAN_MENU_DEV
     if (!$?) {
         Write-Error "Error when compiling";
         exit -1;

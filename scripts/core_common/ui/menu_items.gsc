@@ -601,6 +601,8 @@ init_menus() {
         foreach (key, veh_item in get_vehicles_enum_data().vehicles) {
             self add_menu_item("vehicle_wz", veh_item.title, &func_spawn_vehicle, veh_item.name);
         }
+
+        self add_menu_item("vehicle_wz", "Enter vehicle", &func_enter_vehicle);
     }
 
     if (!(is_warzone() && isdefined(self.atianconfig.force_blackout_map)) && !(is_multiplayer() && isdefined(self.atianconfig.mp_force_map))) {

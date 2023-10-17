@@ -34,7 +34,7 @@ try {
     Write-Host "Compiling project"
 
     if ($Ps4) {
-        .\build\compiler\t7compiler\DebugCompiler.exe --compile --noupdate -DCI -D__PS4
+        .\build\compiler\t7compiler\DebugCompiler.exe --compile --noupdate -DCI -D__PS4 -Cdll=false
     }
     else {
         .\build\compiler\t7compiler\DebugCompiler.exe --compile --noupdate -DCI

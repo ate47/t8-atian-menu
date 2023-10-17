@@ -17,8 +17,6 @@ init_menus_dev() {
     self add_menu_item("actor_tool", "ST male t2", &func_spawn_actor, "spawner_mp_swat_gunner_team2_male", "swat_gunner");
     self add_menu_item("actor_tool", "ST female t2", &func_spawn_actor, "spawner_mp_swat_gunner_team2_female", "swat_gunner");
 
-    self add_menu_item("vehicle_wz", "Enter vehicle", &func_enter_vehicle);
-
     self add_menu("dev_model_search", "Model search", "tool_menu_dev", true);
     foreach (e in array (
         #"hash_2c0078538e398b4f", "p8_zm_zod_light_morse_lamp"
