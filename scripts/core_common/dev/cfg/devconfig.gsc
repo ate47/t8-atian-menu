@@ -65,6 +65,7 @@ AtianMenuDevConfig() {
     
     self.blackout_spawn_waterballons = true;
     self.blackout_spawn_snowballs = false;
+    self.zm_custom_ee = true;
 }
 
 AtianMenuDevKeyConfig() {

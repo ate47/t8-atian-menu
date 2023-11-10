@@ -5,6 +5,7 @@ Bravo 659 Operation Bear	57350207	 Unknown perk
 Cast 335 Midas Stallion	952690413	 parameter can't be cast to a boolean
 Cast 501 Chief Werewolf	962032109	 Entity does not exist.
 Charlie 1009 War Leviathan	4163774148	 Optional argument must be a float or integer type
+Charlie 285 Military Gorilla	359760836	G_Spawn: no free entities
 David 180 Camouflaged Asset	2572009355	 vector scale expecting vector
 David 658 Battle Mole	2737681163	 assert fail (with message)
 David 888 Patient Bayonet	1517473035	 Value out of range.  Allowed values: 0 to 2

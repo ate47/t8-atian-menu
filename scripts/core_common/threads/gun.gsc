@@ -9,6 +9,7 @@ GunModifier() {
         tool_rocket_armageddon = self is_mod_activated("rocket_armageddon");
         tool_explosion_gun = self is_mod_activated("explosion_gun");
         tool_pea = self is_mod_activated("pea_gun");
+        tool_pea_v2 = self is_mod_activated("tool_pea_v2");
 
         tools = array(
             array("tankgun", #"tank_robot_launcher_turret"),
@@ -38,7 +39,7 @@ GunModifier() {
             }
         }
 
-        if (!(tool_tpgun || activated.size != 0 || tool_rocketman || tool_rocket_armageddon || tool_explosion_gun || tool_pea)) {
+        if (!(tool_tpgun || activated.size != 0 || tool_rocketman || tool_rocket_armageddon || tool_explosion_gun || tool_pea || tool_pea_v2)) {
             continue;
         }
         // at least one tool is activated
@@ -138,6 +139,34 @@ GunModifier() {
             if (is_zombies()) {
                 ducks[loc] playsound("zmb_vocals_zombie_death_quack");
             }
+        }
+        if (tool_pea_v2) {
+            ducks = level.am_dev.pea_gun;
+            high = level.am_dev.pea_gun_high;
+
+            // allocate candidate
+            loc = -1;
+            for (i = 0; i < ducks.size; i++) {
+                duck = ducks[(high + i) % ducks.size];
+                if (!isdefined(duck) || isint(duck)) {
+                    loc = (high + i) % ducks.size;
+                    break;
+                }
+            }
+
+            if (loc == -1) {
+                // can't find location, find the first one
+                loc = high;
+                ducks[loc] delete(); // delete old
+            }
+
+            level.am_dev.pea_gun_high = (loc + 1) % ducks.size;
+            
+            tag = bullet_trace[#"hitloc"];
+            angles = self GetPlayerAngles();
+            spn = self.origin + (0, 0, 40) + vectorscale(look, 60);
+            ducks[loc] = util::spawn_model(#"p8_zm_red_floatie_duck", spn, angles);
+            ducks[loc] setvelocity(vectorscale(angles, 7)); // Option 129 Knockout Rescue
         }
         for (i = 0; i < activated.size; i++) {
             self SendRocket(activated[i], look);

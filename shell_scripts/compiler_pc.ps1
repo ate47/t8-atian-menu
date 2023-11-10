@@ -1,4 +1,7 @@
-param()
+param(
+    [switch]
+    $Compile
+)
 
 $prevPwd = $PWD
 
@@ -11,7 +14,11 @@ try {
     # Set the pc opcodes
     Copy-Item "$compilerPath/vm_codes_pc.db2" "$compilerPath/vm_codes.db2" -Force
 
-    debugcompiler.exe --build --noupdate -Cclient=true -Cdll=true -Cdll.lazylink=true
+    $arg = if ($Compile){ "--compile" } else { "--build" };
+
+    debugcompiler.exe $arg --noupdate `
+        "-Cclient=false" "-Cdll=true" "-Cdll.lazylink=true" "-Cdll.builtins=true" "-Cdll.detours=true" `
+        "-DATIAN_MENU_DEV" #"-DATIAN_MENU_LOOKUP_BIG"
 
     if (!$?) {
         Write-Error "Error when compiling";

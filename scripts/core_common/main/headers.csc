@@ -22,6 +22,10 @@ autoexec __init__system__() {
 	system::register("atianmenu", &__init__, &__post__init__, undefined);
 #endif
     handle_config();
+
+#ifdef ATIAN_MENU_DEV
+    dev_init();
+#endif
 }
 
 __init__() {

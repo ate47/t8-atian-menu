@@ -6,7 +6,10 @@ init_detours() {
 }
 
 detour zm_utility<scripts\zm_common\zm_utility.csc>::is_ee_enabled() {
-    return true;
+	if (isdefined(level.atianconfig) && isdefined(level.atianconfig.zm_custom_ee)) {
+    	return level.atianconfig.zm_custom_ee;
+	}
+	return true;
 }
 
 #ifdef ATIANMENU_DUMP_SYSTEMS

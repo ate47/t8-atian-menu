@@ -132,7 +132,7 @@ handle_config() {
         #pea_gun_high: 0,
         #explore_vectors: []
     };
-    for (i = 0; i < 75; i++) {
+    for (i = 0; i < 100; i++) {
         level.am_dev.pea_gun[i] = 0;
     }
     level.atianconfig = spawnstruct();
