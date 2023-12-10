@@ -14,6 +14,58 @@ init_menu(menu_title) {
         #mods: array()
     };
 
+#ifdef SHIELD_GSC
+    size = get_menu_size_count();
+
+    ShieldClearHudElems();
+
+    text_size = 31;
+    menu_width = 400;
+
+    top = (size + 1) * text_size / 2;
+    left = -6 - menu_width;
+
+    ShieldRegisterHudElem(
+        #"atianmenu_background",
+        "",
+        0,
+        left, top,
+        2, 1,
+        1, 1,
+        0.5,
+        menu_width, (size + 1) * text_size,
+        0
+    );
+
+    ShieldRegisterHudElem(
+        #"atianmenu_title",
+        "",
+        0,
+        left, top,
+        2, 1,
+        1, 1,
+        0.5
+    );
+
+    top += text_size;
+
+    for (i = 0; i < size; i++) {
+        ShieldRegisterHudElem(
+            #"atianmenu_line_" + ("" + i),
+            "",
+            0,
+            left, top,
+            2, 1,
+            1, 1,
+            0.5
+        );
+
+        top += text_size;
+    }
+
+#endif
+
+
     self add_menu("start_menu", menu_title, "");
 
     return true;
@@ -149,6 +201,19 @@ get_current_menu() {
     return self.menu_info.menus[self.menu_info.current_menu];
 }
 
+get_menu_size_count() {
+    #ifdef __PS4
+        menu_size_count = 3;
+    #else
+    #ifdef SHIELD_GSC
+        menu_size_count = 10;
+    #else
+        menu_size_count = 8;
+    #endif
+    #endif
+    return menu_size_count;
+}
+
 menu_think() {
     if (!isdefined(self.menu_info)) {
         // ignore menu creation if already set
@@ -157,11 +222,7 @@ menu_think() {
     self endon(#"disconnect");
     level endon(#"end_game", #"game_ended");
     
-    #ifdef __PS4
-        menu_size_count = 3;
-    #else
-        menu_size_count = 8;
-    #endif
+    menu_size_count = get_menu_size_count();
 
     for (i = 0; i < menu_size_count + 1; i++) {
         self menu_drawing_function("");

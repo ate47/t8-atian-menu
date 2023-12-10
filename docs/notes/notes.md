@@ -956,5 +956,118 @@ export flags:
 
 HGFEDCBA
 - A 0x02 linked
+struct Manifest
+{
+  uint32_t version;
+  uint32_t numFiles;
+  LPCFileInfo files[128];
+};
 
+
+struct __declspec(align(8)) LPCFileInfo
+{
+  uint version;
+  LPCFileStatus status;
+  LPCFileCategory category;
+  uint modes;
+  uint size;
+  uint128_t checksum;
+  char padding[20];
+  char fullPath[65];
+};
+
+struct __declspec(align(4)) GfxImage
+{
+  byte *pixels;
+  byte *fallbackPixels;
+  const char *name;
+  GfxStreamedPartInfo streamedParts[4];
+  GfxTexture texture;
+  GfxTexture fallbackTexture;
+  unsigned int flags;
+  int alignment;
+  unsigned int hash;
+  uint totalSize;
+  uint fallbackSize;
+  GfxPixelFormat format;
+  unsigned __int16 width;
+  unsigned __int16 height;
+  unsigned __int16 depth;
+  GfxImageSemantic semantic;
+  MapType mapType;
+  GfxImageCategory category;
+  byte levelCount;
+  byte fallbackLevel;
+  byte useFallback;
+  byte streaming;
+  byte streamedPartCount;
+};
+
+
+Offset	Xref	Function	Line	Column	Pseudocode line
+00000009	r	sub_22B8D40	5	68	  if ( !***(_BYTE ***)a3 || (v6 = *(_OWORD *)(a1 + 32), sub_2EB8150(ASSET_TYPE_IMAGE, &v6, 256)) )
+00000009	r	sub_22B8F50	5	68	  if ( !***(_BYTE ***)a3 || (v6 = *(_OWORD *)(a1 + 32), sub_2EB8150(ASSET_TYPE_IMAGE, &v6, 256)) )
+00000009	r	sub_22B93B0	21	72	      if ( !***(_BYTE ***)a1 || (v9 = *(_OWORD *)(v6 + 32), sub_2EB8150(ASSET_TYPE_IMAGE, &v9, 256)) )
+00000009	r	sub_22B96E0	49	14	        v11 = ASSET_TYPE_IMAGE;
+00000009	r	sub_22B96E0	76	16	    if ( v11 == ASSET_TYPE_IMAGE )
+00000009	r	sub_22BACA0	26	44	    result.physPreset = DB_FindXAssetHeader(ASSET_TYPE_IMAGE, name, 0, 0).physPreset;
+00000009	r	db_allocate_element	33	17	    if ( type == ASSET_TYPE_IMAGE || (unsigned __int8)type == ASSET_TYPE_STREAMKEY )
+00000009	r	DB_FindXAssetHeader(XAssetType,char const*,bool,int)	115	0	    case ASSET_TYPE_IMAGE:
+00000009	r	sub_35BA300	46	29	  return DB_FindXAssetHeader(ASSET_TYPE_IMAGE, name, 1, -1);
+00000009	r	sub_35BA3B0	6	29	  return DB_FindXAssetHeader(ASSET_TYPE_IMAGE, name, 1, -1);
+00000009	r	sub_35BA570	145	47	  qword_BD6E410 = (__int64)DB_FindXAssetHeader(ASSET_TYPE_IMAGE, (uint64_t *)name, 1, -1).physPreset;
+00000009	r	sub_35BA570	161	47	  qword_BD6E418 = (__int64)DB_FindXAssetHeader(ASSET_TYPE_IMAGE, (uint64_t *)name, 1, -1).physPreset;
+00000009	r	sub_35BA570	177	47	  qword_BD6E420 = (__int64)DB_FindXAssetHeader(ASSET_TYPE_IMAGE, (uint64_t *)name, 1, -1).physPreset;
+00000009	r	sub_35BA570	193	47	  qword_BD6E428 = (__int64)DB_FindXAssetHeader(ASSET_TYPE_IMAGE, (uint64_t *)name, 1, -1).physPreset;
+00000009	r	sub_35BA570	209	47	  qword_BD6E430 = (__int64)DB_FindXAssetHeader(ASSET_TYPE_IMAGE, (uint64_t *)name, 1, -1).physPreset;
+00000009	r	sub_35BA570	225	47	  qword_BD6E438 = (__int64)DB_FindXAssetHeader(ASSET_TYPE_IMAGE, (uint64_t *)name, 1, -1).physPreset;
+00000009	r	sub_35BA570	241	47	  qword_BD6E440 = (__int64)DB_FindXAssetHeader(ASSET_TYPE_IMAGE, (uint64_t *)name, 1, -1).physPreset;
+00000009	r	sub_35BA570	257	47	  qword_BD6E448 = (__int64)DB_FindXAssetHeader(ASSET_TYPE_IMAGE, (uint64_t *)name, 1, -1).physPreset;
+00000009	r	sub_35BA570	273	47	  qword_BD6E450 = (__int64)DB_FindXAssetHeader(ASSET_TYPE_IMAGE, (uint64_t *)name, 1, -1).physPreset;
+00000009	r	sub_35BA570	289	47	  qword_BD6E458 = (__int64)DB_FindXAssetHeader(ASSET_TYPE_IMAGE, (uint64_t *)name, 1, -1).physPreset;
+00000009	r	sub_35BA570	305	47	  qword_BD6E460 = (__int64)DB_FindXAssetHeader(ASSET_TYPE_IMAGE, (uint64_t *)name, 1, -1).physPreset;
+00000009	r	sub_35BA570	322	47	  qword_BD6E480 = (__int64)DB_FindXAssetHeader(ASSET_TYPE_IMAGE, (uint64_t *)name, 1, -1).physPreset;
+00000009	r	sub_35BA570	338	47	  qword_BD6E488 = (__int64)DB_FindXAssetHeader(ASSET_TYPE_IMAGE, (uint64_t *)name, 1, -1).physPreset;
+00000009	r	sub_35BA570	354	47	  qword_BD6E490 = (__int64)DB_FindXAssetHeader(ASSET_TYPE_IMAGE, (uint64_t *)name, 1, -1).physPreset;
+00000009	r	sub_35BA570	370	47	  qword_BD6E498 = (__int64)DB_FindXAssetHeader(ASSET_TYPE_IMAGE, (uint64_t *)name, 1, -1).physPreset;
+00000009	r	sub_35BA570	387	47	  qword_BD6E4A8 = (__int64)DB_FindXAssetHeader(ASSET_TYPE_IMAGE, (uint64_t *)name, 1, -1).physPreset;
+00000009	r	sub_35BA570	404	47	  qword_BD6E4B0 = (__int64)DB_FindXAssetHeader(ASSET_TYPE_IMAGE, (uint64_t *)name, 1, -1).physPreset;
+00000009	r	sub_35BA570	421	47	  qword_BD6E4B8 = (__int64)DB_FindXAssetHeader(ASSET_TYPE_IMAGE, (uint64_t *)name, 1, -1).physPreset;
+00000009	r	sub_35BA570	436	47	  qword_BD6E4C0 = (__int64)DB_FindXAssetHeader(ASSET_TYPE_IMAGE, (uint64_t *)name, 1, -1).physPreset;
+00000009	r	sub_35BA570	451	47	  qword_BD6E4C8 = (__int64)DB_FindXAssetHeader(ASSET_TYPE_IMAGE, (uint64_t *)name, 1, -1).physPreset;
+00000009	r	sub_35BA570	466	47	  qword_BD6E4D0 = (__int64)DB_FindXAssetHeader(ASSET_TYPE_IMAGE, (uint64_t *)name, 1, -1).physPreset;
+00000009	r	sub_35BA570	482	47	  qword_BD6E468 = (__int64)DB_FindXAssetHeader(ASSET_TYPE_IMAGE, (uint64_t *)name, 1, -1).physPreset;
+00000009	r	sub_35BA570	498	47	  qword_BD6E470 = (__int64)DB_FindXAssetHeader(ASSET_TYPE_IMAGE, (uint64_t *)name, 1, -1).physPreset;
+00000009	r	sub_35BA570	514	47	  qword_BD6E4D8 = (__int64)DB_FindXAssetHeader(ASSET_TYPE_IMAGE, (uint64_t *)name, 1, -1).physPreset;
+00000009	r	sub_35BA570	530	47	  qword_BD6E4E0 = (__int64)DB_FindXAssetHeader(ASSET_TYPE_IMAGE, (uint64_t *)name, 1, -1).physPreset;
+00000009	r	sub_35BA570	546	47	  qword_BD6E4E8 = (__int64)DB_FindXAssetHeader(ASSET_TYPE_IMAGE, (uint64_t *)name, 1, -1).physPreset;
+00000009	r	sub_35BA570	562	47	  qword_BD6E4F0 = (__int64)DB_FindXAssetHeader(ASSET_TYPE_IMAGE, (uint64_t *)name, 1, -1).physPreset;
+00000009	r	sub_35BA570	578	47	  qword_BD6E4F8 = (__int64)DB_FindXAssetHeader(ASSET_TYPE_IMAGE, (uint64_t *)name, 1, -1).physPreset;
+00000009	r	sub_35BA570	593	47	  qword_BD6E500 = (__int64)DB_FindXAssetHeader(ASSET_TYPE_IMAGE, (uint64_t *)name, 1, -1).physPreset;
+00000009	r	sub_3711C60	7	37	  if ( !(unsigned __int8)sub_2EB6C90(ASSET_TYPE_IMAGE, (uint64_t)name) )
+00000009	r	sub_3711C60	10	38	  v3.physPreset = DB_FindXAssetHeader(ASSET_TYPE_IMAGE, name, 1, -1).physPreset;
+00000009	r	sub_372F8C0	196	47	          v26.physPreset = DB_FindXAssetHeader(ASSET_TYPE_IMAGE, (uint64_t *)&name, 0, 0).physPreset;
+00000009	r	UI_CoD_Init(bool)	87	63	…                               ASSET_TYPE_IMAGE,
+00000009	r	UI_CoD_Init(bool)	98	63	…                               ASSET_TYPE_IMAGE,
+00000009	r	sub_39B5320	10	39	    if ( !(unsigned __int8)sub_2EB6C90(ASSET_TYPE_IMAGE, (uint64_t)name) )
+00000009	r	sub_39B5320	14	39	  a3->physPreset = DB_FindXAssetHeader(ASSET_TYPE_IMAGE, name, 1, -1).physPreset;
+00000009	r	sub_4188690	34	36	  if ( (unsigned __int8)sub_2EB6C90(ASSET_TYPE_IMAGE, (uint64_t)hash) )
+00000009	r	sub_4188E60	42	48	              if ( (unsigned __int8)sub_2EB6C90(ASSET_TYPE_IMAGE, (uint64_t)hash) )
+00000009	r	sub_4189120	36	37	  if ( !(unsigned __int8)sub_2EB6C90(ASSET_TYPE_IMAGE, (uint64_t)hash) )
+00000009	r	sub_4189120	56	37	  if ( !(unsigned __int8)sub_2EB6C90(ASSET_TYPE_IMAGE, (uint64_t)hash) )
+
+
+
+Tommy 439 Tin Highway 3592841213 cannot directly set the origin on AI.  Use the teleport command instead.
+Frank 620 Proper Giant 887228744 origin being set to NAN.
+Sierra 54 Found Treasure 4178589916 Model was not cached by the linker.
+ 
+Adam 564 Stealth Zombie 904544970 Attempt to register Client Field post finalization of Client Field registration period failed.
+Rush 280 Extinct Storm 1403832952 Attempt to register ClientField failed.  Client Field set either already contains a field, or a hash collision has occurred.
+November 990 Fake Operator 1480821566 Error registering client field.  Attempted field size is not acceptable bit number range 1->32
+Ida 635 Rightful Elephant 467754466 Error registering client field.  bCallbacksFor0WhenNew (CF_CALLBACK_ZERO_ON_NEW_ENT) is disallowed for CF_SCRIPTMOVERFIELDS.
+India 579 Deadly Gemini 657813230 Error registering client field.  bCallbacksFor0WhenNew (CF_CALLBACK_ZERO_ON_NEW_ENT) is disallowed for counter type clientfields. Due to it's treatment of the old and new val as a ring buffer, the counter type is not valid on a new snapshot, new ent, or demojump
+Zulu 523 Electric Lion 247375020 Attempting to register client field in client field set using bits, but system is out of space.
+Hotel 173 Tragic Goblin 3459949409 Failed to alloc client field - MAX_CLIENTFIELD_FIELDS_IN_SET=512 exceeded.
+Zulu 339 Red Dementor 3221522156 Failed to alloc client field
 ```

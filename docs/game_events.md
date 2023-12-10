@@ -10,6 +10,8 @@ All the dates are with the format YEAR/MONTH/DAY.
 
 Data from the file [schedule_xbox.csv](https://github.com/ate47/bo4-source/blob/main/gamedata/events/schedule_xbox.csv) (see [schedule_pc.csv](https://github.com/ate47/bo4-source/blob/main/gamedata/events/schedule_pc.csv) / [schedule_ps4.csv](https://github.com/ate47/bo4-source/blob/main/gamedata/events/schedule_ps4.csv)). (last update: 2023/09/14)
 
+[Here the playlist rotation by u/apples919](https://www.reddit.com/r/Blackops4/comments/uxf82v/its_been_a_while_in_the_making_but_here_is_a_full/)
+
 ## Names
 
 | Name                               | Description                           |
