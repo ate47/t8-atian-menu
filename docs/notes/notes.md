@@ -1069,5 +1069,147 @@ Ida 635 Rightful Elephant 467754466 Error registering client field.  bCallbacksF
 India 579 Deadly Gemini 657813230 Error registering client field.  bCallbacksFor0WhenNew (CF_CALLBACK_ZERO_ON_NEW_ENT) is disallowed for counter type clientfields. Due to it's treatment of the old and new val as a ring buffer, the counter type is not valid on a new snapshot, new ent, or demojump
 Zulu 523 Electric Lion 247375020 Attempting to register client field in client field set using bits, but system is out of space.
 Hotel 173 Tragic Goblin 3459949409 Failed to alloc client field - MAX_CLIENTFIELD_FIELDS_IN_SET=512 exceeded.
-Zulu 339 Red Dementor 3221522156 Failed to alloc client field
+Zulu 339 Red
+
+Script bundles:
+
+
+struct ScriptBundle
+{
+  Hash name; // <- output
+  uint32t unk10;
+  uint32t unk14;
+  uint64t unk18;
+  SB_ObjectsArray sbObjectsArray; // <- read
+};
+
+struct SB_ObjectsArray
+{
+  uint64_t sbObjectCount;
+  SB_Object *sbObjects;
+};
+
+struct SB_Object
+{
+  ScrString_t name;
+  ScrString_t fullKey;
+  uint kvpCount;
+  ScriptBundleKVP *kvps;
+  SB_ObjectsArray sbObjectsArray;
+  SB_Type type;
+  union SB_Val {
+    int int_value,
+    float float_value
+  } val;
+};
+
+enum SB_Type : uint32_t
+{
+  SBT_INT = 2,
+  SBT_FLOAT = 3,
+  SBT_UNK20 = 20,
+  SBT_UNK22 = 22,
+  SBT_UNK25 = 25,
+}
+897625509 <- Could not find xasset
+
+enum HksType : unsigned __int32
+{
+  HKST_TNIL = 0x0,
+  HKST_TBOOLEAN = 0x1,
+  HKST_TLIGHTUSERDATA = 0x2,
+  HKST_TNUMBER = 0x3,
+  HKST_TSTRING = 0x4,
+  HKST_TTABLE = 0x5,
+  HKST_TFUNCTION = 0x6,
+  HKST_TUSERDATA = 0x7,
+  HKST_TTHREAD = 0x8,
+  HKST_TIFUNCTION = 0x9,
+  HKST_TCFUNCTION = 0xA,
+  HKST_TUI64 = 0xB,
+  HKST_TSTRUCT = 0xC,
+  HKST_TXHASH = 0xD,
+  HKST_COUNT = 0xE,
+};
+
+struct __declspec(align(4)) LUIElement
+{
+  LUIAnimationState currentAnimationState;
+  LUIElement *parent;
+  LUIElement *prevSibling;
+  LUIElement *nextSibling;
+  LUIElement *firstChild;
+  LUIElement *lastChild;
+  LUIElementLayoutFunction layoutFunction;
+  LUIElementRenderFunction renderFunction;
+  LUIElementMouseFunction mouseFunction;
+  LUIElementCloseFunction closeFunction;
+  LUIAnimationState *prevAnimationState;
+  LUIAnimationState *nextAnimationState;
+  int cacheRef;
+  UIQuadCache *cache;
+  int priority;
+  int textRef;
+  int animationTimeLeft;
+  int animationDuration;
+  int strongLuaReference;
+  float left;
+  float top;
+  float right;
+  float bottom;
+  LUIElement::$C4ABE194573AF402BCC947A60729C646 _anon_0;
+  LUIElement::$3F3D4AB6D9209469EE6676535BC976BB _anon_1;
+  LUIElement::$5DD91E8C5F43C9F95B3D72C7D7E9684A _anon_2;
+  float textDimBottom;
+  LUIElement::$D6C9215D993092FBE07E662A6FAC5A1A _anon_3;
+  LUIElement::$A45ED59354BB6FB3558170006C28F313 _anon_4;
+  UIModelIndex model;
+};
+
+Offset	Xref	Function	Line	Column	Pseudocode line
+// unk
+00000000	r	sub_2748240	27	41	      activeVersion = gObjFileInfo[0][v4].activeVersion;
+
+// export
+00000000	r	sub_27483D0	18	24	      activeVersion = v3->activeVersion;
+00000000	r	sub_2748680	22	24	      activeVersion = v8->activeVersion;
+00000000	o	sub_2748680	24	15	      v11 = &v8->activeVersion->magic[v8->activeVersion->export_table_offset];
+00000000	o	sub_2748680	24	40	      v11 = &v8->activeVersion->magic[v8->activeVersion->export_table_offset];
+00000000	r	sub_2748680	25	13	      if ( v8->activeVersion->exports_count )
+00000000	r	sub_2748680	38	34	      if ( (unsigned int)v10 >= v8->activeVersion->exports_count )
+00000000	r	sub_2749210	62	31	      if ( gObjFileInfo[0][v13].activeVersion == v6 && 24 * v13 != -137297104 )
+00000000	r	sub_2749210	65	44	        activeVersion = gObjFileInfo[0][v13].activeVersion;
+00000000	r	sub_2749580	22	45	      activeVersion = gObjFileInfo[0][result].activeVersion;
+
+// unk20
+00000000	r	sub_2748760	29	25	      activeVersion = v13->activeVersion;
+00000000	r	sub_2748760	30	31	      ukn20 = (unsigned int)v13->activeVersion->ukn20;
+00000000	o	sub_2748760	31	32	      if ( a2 >= (GSC_OBJ *)&v13->activeVersion->magic[ukn20]
+00000000	r	sub_27488D0	30	25	      activeVersion = v13->activeVersion;
+00000000	r	sub_27488D0	31	31	      ukn20 = (unsigned int)v13->activeVersion->ukn20;
+00000000	o	sub_27488D0	32	32	      if ( a2 >= (GSC_OBJ *)&v13->activeVersion->magic[ukn20]
+
+
+sub_5CEC20
+sub_5CEC20(int, Hash*) -> candidate?
+sub_5CD900
+
+bgCached:
+vehicle=1?
+model=2
+aitype=3
+Shellshocks = 11
+trigger string = 25
+lui event name = 26
+vehicle = 35
+unk = 39
+
+i64 C4
+i64 CC
+
+uint64_t unk0;
+uint64_t unk8;
+
+FA20D48
+FA24D48
 ```
