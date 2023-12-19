@@ -23,6 +23,7 @@ Foxtrot 187 Aggressive Ordnance	2078816051	not a valid name for a clientfield se
 Foxtrot 345 Strange Pig	1385570291	assert fail (with message)
 Foxtrot 56 Small Dementor	3222417139	size cannot be applied to type
 Frank 175 General Stockade	2479879368	RegisterClientField can only accept bit ranges between 1 and 32.
+Frank 575 Unlimited Salvo	2331090760	stack does not have the pool
 Frank 620 Proper Giant	887228744	origin being set to NAN.
 Hotel 173 Tragic Goblin	3459949409	Failed to alloc client field - MAX_CLIENTFIELD_FIELDS_IN_SET=512 exceeded.
 Ida 635 Rightful Elephant	467754466	Error registering client field.  bCallbacksFor0WhenNew (CF_CALLBACK_ZERO_ON_NEW_ENT) is disallowed for CF_SCRIPTMOVERFIELDS.
@@ -31,6 +32,7 @@ India 579 Deadly Gemini	657813230	Error registering client field.  bCallbacksFor
 Kilo 45 Gold Dove	219686544	object is not an array index
 Kilo 717 Clockwork Refuge	4220857104	Cannot call IncrementClientField on a 'counter' type clientfield on the frame it is spawned, since newEnts on the clientside will not process 'counter' type clientfields.
 King 1002 Fast Linebacker	3059411687	Argument and parameter count mismatch for LUINotifyEvent
+King 220 Wartorn Fury	2940210599	Invalid Version Handling. Grab Bat !!!
 May 1009 Torched Sunrise	3699844858	parameter does not exist
 Mike 419 Violet Tank	3288551912	expected array type to add value pair
 Mike 664 Steel Lion	245612264	foreach should be used with an array
@@ -42,13 +44,17 @@ North 272 Hannibal Defense	1670707254	linking error
 November 670 Boiling Avalanche	829015102	var isn't a field object
 November 990 Fake Operator	1480821566	Error registering client field.  Attempted field size is not acceptable bit number range 1->32
 Ocean 270 Grounded Infantry	1850691545	Debug Break
+Ocean 529 Broken Lamprey	3967909977	Trying to get version of a demo when the demo system is idle.
 Option 365 Old Ghoul	2687742442	Forced script exception.
+Option 961 Blue Whisper	3523382186	ScrEvent map is full, unable to register new event
+Papa 1018 Rocky Beastmaster	3030895505	Whitelist failure for title
 Papa 656 Area Jaguar	1088278929	Raw file is not a file of the right type
 Papa 810 Right Case	2606724305	parameter does not exist
 Papa 859 Fierce Python	1047729873	exitlevel already called
 Prep 367 Solar Activity	4039057166	LUINotifyEvent: entity must be a player entity
 Quebec 126 Kinetic Mortar	1999906612	type is not a integer or float
 Quebec 387 Poison Goodnight	4106063796	key value provided for array is not valid
+Queen 19 Furious Cipher	2626909173	exceeded maximum number of script strings
 Roger 356 Gray Pig	1377489376	Gesture key can't have the higher bit set
 Roger 753 Fake Outlaw	4047738848	Invalid opcode (Recovery)
 Roger 850 Grey Whisper	3524483616	Ammo count must not be negative
@@ -60,6 +66,7 @@ Rush 280 Extinct Storm	1403832952	Attempt to register ClientField failed.  Clien
 Sail 312 Extreme Boa	1072585573	Raw file is not a file of the right type
 Sierra 54 Found Treasure	4178589916	Model was not cached by the linker.
 South 1020 Calm Potato	2538360978	not a function pointer
+South 209 Shadow Stallion	949934674	Invalid Version Handling. Grab Bat !!!
 Spring 361 Right Mauler	3143575744	parameter does not exist
 Spring 805 Apollo Valentine	1099145600	Can't find asset
 Spring 81 Snap Soldier	2408700928	not a valid name for a clientfield set.
@@ -76,6 +83,8 @@ Tommy 478 Determined Volley	2532286589	error message
 Uniform 31 Empty Jet	1915758537	RegisterClientField can only accept bit ranges between 1 and 32.
 Uniform 587 Nickel Breakfast	3122940489	caller is not an entity
 Union 908 Evil Giant	876169112	key value provided for struct is not valid
+Vic 366 Crystal Lion	249068885	Failed to allocate from state pool
+Vic 415 Aggressive Pisces	619241173	Failed to allocate from element pool
 Vic 520 Barren Scorpio	754846421	invalid vehicle spawn origin
 Vic 820 Nitro Goodnight	4103906837	Entity is not an item.
 Vice 697 Metal Service	2355618801	Gesture table key can't have the higher bit set
@@ -106,11 +115,3 @@ Zed 737 United Parole	2751867714	self isn't a field object
 Zulu 339 Red Dementor	3221522156	Failed to alloc client field
 Zulu 523 Electric Lion	247375020	Attempting to register client field in client field set using bits, but system is out of space.
 Zulu 53 Heavy Cause	3016026156	Can't find asset
-Ocean 529 Broken Lamprey	3967909977	Trying to get version of a demo when the demo system is idle.
-South 209 Shadow Stallion	949934674	Invalid Version Handling. Grab Bat !!!
-King 220 Wartorn Fury	2940210599	Invalid Version Handling. Grab Bat !!!
-Frank 575 Unlimited Salvo	2331090760	stack does not have the pool
-Vic 415 Aggressive Pisces	619241173	Failed to allocate from element pool
-Vic 366 Crystal Lion	249068885	Failed to allocate from state pool
-Option 961 Blue Whisper	3523382186	ScrEvent map is full, unable to register new event
-Papa 1018 Rocky Beastmaster	3030895505	Whitelist failure for title

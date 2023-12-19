@@ -1167,7 +1167,7 @@ struct __declspec(align(4)) LUIElement
 };
 
 Offset	Xref	Function	Line	Column	Pseudocode line
-// unk
+// requires_implements???
 00000000	r	sub_2748240	27	41	      activeVersion = gObjFileInfo[0][v4].activeVersion;
 
 // export
@@ -1212,4 +1212,52 @@ uint64_t unk8;
 
 FA20D48
 FA24D48
+
+xmmword_FA20D48[535]
+494C318
+494FB30                     dq offset sub_8AD50
+4957388
+160E
+hash_6a2c0104e062b67e -> exe/transmiterror
+
+hash_103d9fc5251a961b -> exe/timeout
+hash_10e55ca47aa702c3 -> exe/configstringmismatch
+hash_14a1a00c94c4aa00 -> exe/servermessageoverflow
+hash_18b754eabe4607a3 -> exe/err_client_cmd_overflow
+hash_1b71195d6dba5a8a -> exe/uploadingstats
+hash_1e6cab271952c006 -> exe/servercommandoverflow
+hash_239fe9d0cb0c6f0f -> exe/loading_clip
+hash_2c073c698c80eb59 -> exe/awaitinggamestate
+hash_2cee3167c5923366 -> exe/playerkicked
+hash_2eaf2c7c7baf900b -> exe/serverrestarttimewrap
+hash_310c507cbbe41ae6 -> exe/awaitingtextures
+hash_3675b7028ccd96e -> exe/wrongluachecksum
+hash_3a7ff639695057ee -> exe/lobby_active_client_error
+hash_3bbcc4747fa3cf17 -> exe/needstats
+hash_3bd6a55fecd1a197 -> exe/migrationaborted
+hash_3d71f94fabd6f837 -> exe/bad_stats
+hash_45895821cf15538 -> exe/bad_clantag
+hash_47676d10fc1de4f6 -> exe/err_bg_cache
+hash_4986e3e6bf31972a -> exe/awaitingconnection
+hash_4b63c34d02714cb3 -> exe/leftgame
+hash_4c4d59ca7e4b6732 -> exe/serverkilled
+hash_5357dcd85be8116a -> exe/migrationdropped
+hash_56f89543edc68d21 -> exe/synchronizing
+hash_5982772af1396777 -> exe/err_max_local_players
+hash_5cbf5b7c69c9fdd0 -> exe/configstringmismatch3
+hash_5cbf5c7c69c9ff83 -> exe/configstringmismatch2
+hash_5d738f67984f550a -> exe/lostreliablecommands
+hash_5e8105fa89aa601f -> exe/loading_film
+hash_5ef6c5324c5818b8 -> exe/awaitinghost
+hash_5ffc68ffd6d40f4f -> exe/err_server_timeout
+hash_61540b0651498092 -> exe/serverrestartmisc
+hash_64ce2ab0ed71fa9f -> exe/gamesettings
+hash_6f78f378dccda017 -> exe/default_player
+hash_705ab151af343885 -> exe/serverdisconnectreason
+hash_75a2556c857105fa -> exe/err_reliable_cycled_out
+hash_75adfbf9d8aab527 -> exe/awaitingchallenge
+hash_7827a283793d8efa -> exe/err_invalid_demo_file
+hash_7c1344299ade6eb5 -> exe/disconnectedfromownlistenserver
+hash_7e8a0ea9eec82d3f -> exe/matchended
+hash_c5a876452271179 -> exe/err_not_received
 ```
