@@ -36,4 +36,11 @@ detour system<scripts\core_common\system_shared.gsc>::register(str_name, func_pr
 
 #endif
 
+detour swat_team<scripts\killstreaks\mp\swat_team.gsc>::function_e69272bf() {
+	if (!isdefined(self.script_owner)) {
+		return; // bug created when we spawn a custom character
+	}
+	self [[ @swat_team<scripts\killstreaks\mp\swat_team.gsc>::function_e69272bf ]]();
+}
+
 #endif

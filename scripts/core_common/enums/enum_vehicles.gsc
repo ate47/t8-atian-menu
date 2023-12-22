@@ -91,6 +91,7 @@ generate_wzvehicle_enum() {
     vehicles add_vehicle_info(#"vehicle_t8_mil_helicopter_transport_dark_wz", "Drop helicopter");
     vehicles add_vehicle_info(#"vehicle_t8_mil_air_transport_infiltration", "Drop plane");
     vehicles add_vehicle_info(#"veh_ultimate_turret_wz", "Turret");
+    vehicles add_vehicle_info(#"vehicle_t8_drone_recon_wz", "RC Car");
     
 
     vehicleassets = function_951b4205(); // return undefined
@@ -133,6 +134,8 @@ generate_wzvehicle_enum() {
     vehicles add_vehicle_info(#"veh_dart_mp", "Dart");
     vehicles add_vehicle_info(#"veh_drone_squadron_mp", "Drone squadron");
     vehicles add_vehicle_info(#"spawner_boct_mp_wing_drone", "Drone squadron (Wing)");
+    vehicles add_vehicle_info(#"hash_444804d03bdda785", "Drone squadron (Old model)");
+    vehicles add_vehicle_info(#"hash_472293f2e996f42d", "RASP Helicopter");
     vehicles add_vehicle_info(#"vehicle_t8_mil_helicopter_transport_mp", "Transport helicopter");
     vehicles add_vehicle_info(#"vehicle_t8_mil_helicopter_transport_mp_escort", "Transport helicopter (Escort)");
     vehicles add_vehicle_info(#"archetype_mini_quadtank_ct", "Mantis (CT)");
@@ -143,5 +146,37 @@ generate_wzvehicle_enum() {
     vehicles add_vehicle_info(#"vehicle_t8_drone_recon", "UAV");
     vehicles add_vehicle_info(#"vehicle_t8_drone_cuav_mp", "C-UAV");
     vehicles add_vehicle_info(#"vehicle_t8_mil_helicopter_overwatch", "Helicopter");
+    vehicles add_vehicle_info(#"hash_3b01d9d0e5525c7e", "Helicopter");
+    vehicles add_vehicle_info(#"heli_ai_mp", "Helicopter (BO3)");
+    vehicles add_vehicle_info(#"ai_tank_drone_mp", "AGR");
+    //vehicles add_vehicle_info(#"hash_c821e639849e9d1", "AGR");
+
+    
+    //vehicles add_vehicle_info(#"hash_7dd2944ddf7cc7e9", "RCXD");
+    vehicles add_vehicle_info(#"hash_54963978f132acb4", "hash_54963978f132acb4");
+    vehicles add_vehicle_info(#"hash_14329b1ac8be8c31", "hash_14329b1ac8be8c31");
+    vehicles add_vehicle_info(#"hash_d53cf8d457e65cc", "hash_d53cf8d457e65cc");
+    vehicles add_vehicle_info(#"veh_hawk_player_far_range_wz", "veh_hawk_player_far_range_wz");
+    vehicles add_vehicle_info(#"hash_78dd32ab931eca7", "hash_78dd32ab931eca7");
+    vehicles add_vehicle_info(#"spawner_bo3_ai_tank_mp_player", "spawner_bo3_ai_tank_mp_player");
+    //vehicles add_vehicle_info(#"hash_d68bd8d4590a340", "Hawk");
+    //vehicles add_vehicle_info(#"hash_110fe8f8060e54b7", "RCXD");
+    //vehicles add_vehicle_info(#"hash_20e06c183c712964", "Mantis");
+    vehicles add_vehicle_info(#"hash_3004c1c4f4ecad7f", "hash_3004c1c4f4ecad7f");
+    //vehicles add_vehicle_info(#"veh_hawk_player_mp", "Hawk");
+    //vehicles add_vehicle_info(#"hash_38d9199d406b1678", "Dart");
+    vehicles add_vehicle_info(#"hash_3bb947606bf1b8d0", "hash_3bb947606bf1b8d0");
+    vehicles add_vehicle_info(#"veh_hawk_player_far_range_mp", "veh_hawk_player_far_range_mp");
+    vehicles add_vehicle_info(#"hash_4d02ed4acb0023bb", "hash_4d02ed4acb0023bb");
+    vehicles add_vehicle_info(#"hash_6efac14362579f4c", "hash_6efac14362579f4c");
+    vehicles add_vehicle_info(#"hash_71c0242cc114b503", "Minigun");
+    //vehicles add_vehicle_info(#"hash_7a8464e9c68da660", "Mantis");
+    //vehicles add_vehicle_info(#"hash_cc0da768150d81", "hash_cc0da768150d81"); // teleporter?
+    //vehicles add_vehicle_info(#"hash_1c2b9b1000deeaa9", "hash_1c2b9b1000deeaa9"); // thing in tag to move between the map
+    vehicles add_vehicle_info(#"hash_72c6c555ef9bc8e5", "Nosferatu");
+    vehicles add_vehicle_info(#"hash_2ff4ca6a9e3e7b04", "Elevator classified 1");
+    vehicles add_vehicle_info(#"hash_2ff4cd6a9e3e801d", "Elevator classified 2");
+    //vehicles add_vehicle_info(#"hash_2e67a436e47d1f84", "hash_2e67a436e47d1f84");
+    //vehicles add_vehicle_info(#"hash_741d76f17830f464", "hash_741d76f17830f464"); // 3126405504 + Baker 917 Brute Goodnight
 
 }

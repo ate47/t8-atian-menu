@@ -1,4 +1,4 @@
-id,name,xasset,unkc,registerfunc,unregisterFunc,hash,unk30,unk38,unk3C,checksum,b1,b2,b3,b4
+id,name,xasset,unkc,registerfunc,unregisterFunc,hash,unk30,start,unk3C,checksum,b1,b2,b3,b4
 0,,<none>,0,NULL,NULL,,0,0,1,0,0,0,0,0
 1,vehicle,vehicle,128,BlackOps4.exe+5ce770,NULL,defaultvehicle_mp,100000000,0,2,39cd81ee,0,0,0,0
 2,model,xmodel,8192,NULL,NULL,,0,128,5132,4115693976,0,0,0,0

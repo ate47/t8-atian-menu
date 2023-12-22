@@ -10,9 +10,11 @@ Charlie 285 Military Gorilla	359760836	G_Spawn: no free entities
 David 180 Camouflaged Asset	2572009355	vector scale expecting vector
 David 658 Battle Mole	2737681163	assert fail (with message)
 David 888 Patient Bayonet	1517473035	Value out of range.  Allowed values: 0 to 2
+Delta 18 Foolish Mamba	1273214009	CScr_PlayFX: invalid effect
 Dog 415 Dry Owl	409067247	No clientfield named found in set.
 East 1005 Found Badger	269518924	Ammo count must not be negative
 Echo 51 Emerald Section	2344222932	assert fail
+Echo 530 Undercover Contraband	2706458388	Trying to get a local client index for a client that is not a local client.
 Echo 782 Shellshocked Artillery	2269096660	vector scale expecting vector
 Echo 828 Hurt Scorpio	744499668	too many vehicles
 Edward 388 Embattled Ultra	2855209542	Cannot call IncrementClientField on a non-'counter' type clientfield.
@@ -34,6 +36,7 @@ Kilo 717 Clockwork Refuge	4220857104	Cannot call IncrementClientField on a 'coun
 King 1002 Fast Linebacker	3059411687	Argument and parameter count mismatch for LUINotifyEvent
 King 220 Wartorn Fury	2940210599	Invalid Version Handling. Grab Bat !!!
 May 1009 Torched Sunrise	3699844858	parameter does not exist
+May 612 Snow Obelisk	1333649786	IsMature can only be called on a player.
 Mike 419 Violet Tank	3288551912	expected array type to add value pair
 Mike 664 Steel Lion	245612264	foreach should be used with an array
 Nora 261 Marsh Blizzard	1412130119	parameter can't be cast to a hash
@@ -41,6 +44,7 @@ Nora 264 Dangerous Homerun	4196473479	parameter does not exist
 Nora 669 Shade Goodnight	4100218247	Error sending LUI notify event: LUI event name is not precached.
 Nora 871 Orange Mirage	3255107847	LUINotifyEvent: entity must be a player entity
 North 272 Hannibal Defense	1670707254	linking error
+November 116 Mythic Scorpio	750896894	Invalid bgCache type
 November 670 Boiling Avalanche	829015102	var isn't a field object
 November 990 Fake Operator	1480821566	Error registering client field.  Attempted field size is not acceptable bit number range 1->32
 Ocean 270 Grounded Infantry	1850691545	Debug Break
@@ -54,7 +58,10 @@ Papa 859 Fierce Python	1047729873	exitlevel already called
 Prep 367 Solar Activity	4039057166	LUINotifyEvent: entity must be a player entity
 Quebec 126 Kinetic Mortar	1999906612	type is not a integer or float
 Quebec 387 Poison Goodnight	4106063796	key value provided for array is not valid
+Queen 114 Rocky Medal	1957162421	Can't find bgCache entry
+Queen 117 Weak Octopus	71894325	CamAnimScripted or ExtraCamAnimScripted can only be called on a player.
 Queen 19 Furious Cipher	2626909173	exceeded maximum number of script strings
+Queen 235 Wicked Libra	732489269	Non-player entity passed to UploadStats()
 Roger 356 Gray Pig	1377489376	Gesture key can't have the higher bit set
 Roger 753 Fake Outlaw	4047738848	Invalid opcode (Recovery)
 Roger 850 Grey Whisper	3524483616	Ammo count must not be negative
@@ -67,6 +74,7 @@ Sail 312 Extreme Boa	1072585573	Raw file is not a file of the right type
 Sierra 54 Found Treasure	4178589916	Model was not cached by the linker.
 South 1020 Calm Potato	2538360978	not a function pointer
 South 209 Shadow Stallion	949934674	Invalid Version Handling. Grab Bat !!!
+South 263 Confused Artillery	2279633554	SV_SetConfigstring: bad index
 Spring 361 Right Mauler	3143575744	parameter does not exist
 Spring 805 Apollo Valentine	1099145600	Can't find asset
 Spring 81 Snap Soldier	2408700928	not a valid name for a clientfield set.
@@ -83,22 +91,26 @@ Tommy 478 Determined Volley	2532286589	error message
 Uniform 31 Empty Jet	1915758537	RegisterClientField can only accept bit ranges between 1 and 32.
 Uniform 587 Nickel Breakfast	3122940489	caller is not an entity
 Union 908 Evil Giant	876169112	key value provided for struct is not valid
+Union 958 Mad Retreat	2253722136	CamAnimScripted can only be called on a player.
 Vic 366 Crystal Lion	249068885	Failed to allocate from state pool
 Vic 415 Aggressive Pisces	619241173	Failed to allocate from element pool
 Vic 520 Barren Scorpio	754846421	invalid vehicle spawn origin
 Vic 820 Nitro Goodnight	4103906837	Entity is not an item.
 Vice 697 Metal Service	2355618801	Gesture table key can't have the higher bit set
 Vice 70 Grim Storm	1402557361	bad opcode
+Vice 804 Axiom Conquest	3385008561	cannot set field on type
 Victor 629 Frozen Gemini	665902298	Parameter must be an array
 Victor 768 Golden Wolverine	1137123674	GScr_LUINotifyEvent: Expected Istrings, hash or integers only
 West 728 Rocky Goat	1252503459	caller is not an entity
 Whiskey 110 Late Tiger	317100267	unmatching types
 Whiskey 13 Copper Menace	1427704235	expected struct type to add value pair
 Whiskey 159 Calm Python	1045192683	Scr_RandomFloatRange's second parameter must be greater than the first.
+Whiskey 230 Destructive Guardian	3086288875	playFx called with (0 0 0) forward direction
 Whiskey 456 Blazing Cause	3015158315	getperks() can only be called on local players
 Whiskey 960 Emerald Werewolf	968521323	player hasperk(<localClientNum>, <perk>): localClientNum out of range
 Winter 6 Almighty Badger	280703902	parameter does not exist
 XRay 274 Sub-zero Dawn	4088624643	Can't find asset
+XRay 353 Earth Abyss	3189465155	Invalid bgCache type
 XRay 552 Burned Station	2792722947	RegisterClientField can only accept 5 parameters
 Yankee 220 Divided Intelligence	1895566756	dvar is not a 3d vector, but GetDvarVector3D has been called on it
 Yankee 444 Nitro Spartan	580674660	Unknown ent type in GScr_GetFieldSetForEntityType.
