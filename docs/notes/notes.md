@@ -1260,4 +1260,43 @@ hash_7827a283793d8efa -> exe/err_invalid_demo_file
 hash_7c1344299ade6eb5 -> exe/disconnectedfromownlistenserver
 hash_7e8a0ea9eec82d3f -> exe/matchended
 hash_c5a876452271179 -> exe/err_not_received
+
+old:
+struct msg_t
+{
+  bool overflowed;
+  bool readOnly;
+  byte *data;
+  byte *splitData;
+  int maxsize;
+  int cursize;
+  int splitSize;
+  int readcount;
+  int bit;
+  int lastEntityRef;
+  bool flush;
+  netsrc_t targetLocalNetID;
+  PacketMode analysis;
+};
+
+i_mtl_t8_camo_i_mtl_t8_camo_dlc3_spacedust_04_c
+i_mtl_wpn_t8_camo_topology_01_g
+i_mtl_wpn_t8_camo_topology_04_c
+i_mtl_wpn_t8_camo_topology_04_c
+i_mtl_wpn_t8_camo_geometric_08_c
+ximage_3265d7f73b57c73
+ximage_f58160ce51d8124
+
+Offset	Xref	Function	Line	Column	Pseudocode line
+0000006C	r	Mark_XAssetHeader(void)	1855	0	    case ASSET_TYPE_PLAYLISTS:
+0000006C	r	Mark_XAssetHeader(void)	1861	31	        Mark_SimpleAsset(v159, ASSET_TYPE_PLAYLISTS);
+0000006C	r	Playlist_LoadAssets(void)	29	38	  v1.physPreset = DB_FindXAssetHeader(ASSET_TYPE_PLAYLISTS, assetName, 1, -1).physPreset;
+0000006C	r	Playlist_LoadAssets(void)	54	38	  v6.physPreset = DB_FindXAssetHeader(ASSET_TYPE_PLAYLISTS, assetName, 1, -1).physPreset;
+0000006C	r	Playlist_LoadAssets(void)	79	39	  v11.physPreset = DB_FindXAssetHeader(ASSET_TYPE_PLAYLISTS, assetName, 1, -1).physPreset;
+
+ximage_ce8f8ad3c930512 dice cod18
+
+i_mtl_wpn_t8_camo_topology_04_c
+
+ximage_ee83883ec8d08f topology 1
 ```

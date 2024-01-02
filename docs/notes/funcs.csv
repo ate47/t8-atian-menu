@@ -819,8 +819,8 @@ GSC-Function-495f250,function_934db9a0,2,2,0,sub:697730,
 GSC-Function-495f250,getcharacterclassindex,1,1,0,sub:6978A0,
 GSC-Function-495f250,getplayerrolecategory,2,2,0,sub:6978F0,
 GSC-Function-495f250,getplayerrolecategoryinfo,1,1,0,sub:697B00,
-GSC-Function-495f250,function_f4bf7e3f,1,2,0,sub:6979A0,
-GSC-Function-495f250,function_b14806c6,2,2,0,sub:697A40,
+GSC-Function-495f250,function_f4bf7e3f(int role;int mode = <current_mode>)->bool,1,2,0,sub:6979A0,return if a playerrole is enabled
+GSC-Function-495f250,function_b14806c6(int role;int mode = <current_mode>)->hash|undefined,2,2,0,sub:697A40,retrun the name of a player role
 GSC-Function-495f250,getplayerroletemplatecount,1,1,0,sub:697BD0,
 GSC-Function-495f250,function_d299ef16,2,2,0,sub:696920,
 GSC-Function-495f250,function_d7c3cf6c,3,3,1,sub:6969A0,

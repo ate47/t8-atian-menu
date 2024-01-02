@@ -37,7 +37,7 @@ AtianMenuDevConfig() {
 
     //self.force_blackout_map = "wz_open_skyscrapers";
     //self.force_blackout_gametype = "warzone_quad";
-    self.force_blackout_map = "wz_escape";
+    //self.force_blackout_map = "wz_escape";
     //self.force_blackout_gametype = "warzone_escape_quad_dbno";
 
     self.blackout_stash_model = "christmas";

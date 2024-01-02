@@ -19,6 +19,9 @@ get_array_explorer_values() {
         array::add(arr, create_array_explorer_value("is_ee_enabled", "can't find function"));
     }
 #endif
+    if (level.script == "zm_orange") {
+        array::add(arr, create_array_explorer_value("edge_flinger_spot", getent("edge_flinger_spot", "targetname")));
+    }
     foreach (e in level.am_dev.array_add) {
         array::add(arr, e);
     }
