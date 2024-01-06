@@ -26,7 +26,7 @@ AtianMenuKeyConfig() {
     self.next_item = "attack";
 
     // select an item, default "use"
-    self.select_item = "use";
+    self.select_item = "reload"; // use
 
     // fly in fly mode, cancel fly in rocketman mode, default "sprint"
     self.fly_fast_key = "sprint";

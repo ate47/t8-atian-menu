@@ -303,9 +303,9 @@ menu_think() {
                         if (menu.cursor === i) {
                             if (menu.sub_menus[i].activated) {
 
-                                self menu_drawing_function("^0-> ^1" + (menu.sub_menus[i].name) + "^0 (ON)");
+                                self menu_drawing_function("^2-> ^1" + (menu.sub_menus[i].name) + "^0 (ON)");
                             } else {
-                                self menu_drawing_function("^0-> ^1" + (menu.sub_menus[i].name));
+                                self menu_drawing_function("^2-> ^1" + (menu.sub_menus[i].name));
                             }
                             
                         } else {

@@ -10,13 +10,22 @@
 #namespace atianmenu;
 
 autoexec __init__system__() {
+    load_cfg();
     system::register(#"atianmenu", &__pre_init__, undefined, undefined, undefined);
 }
 
 __pre_init__() {
     callback::on_connect(&on_player_connect);
 
-    level.player_starting_points = 40000;
+    if (isdefined(level.atianconfig.player_starting_points)) {
+        level.player_starting_points = level.atianconfig.player_starting_points;
+    }
+}
+
+load_cfg() {
+    level.atian = spawnstruct();
+    level.atianconfig = spawnstruct();
+    level.atianconfig AtianMenuConfig();
 }
 
 /*
@@ -50,28 +59,69 @@ on_player_connect() {
         return;
     }
     
-    self.atianconfig = spawnstruct();
-    self.atianconfig AtianMenuConfig();
+    self.atianconfig = level.atianconfig;
 
     // init the configuration
     self key_mgr_init();
     self init_menus();
 
+
+    if ((isdefined(self.atianconfig_menu_preloaded) && self.atianconfig_menu_preloaded)
+        || !isdefined(self.atianconfig.preloaded_menus)) {
+        return;
+    }
+    for (i = 0; i < self.atianconfig.preloaded_menus.size; i++) {
+        preload_menu = strtok(self.atianconfig.preloaded_menus[i], "::");
+        if (preload_menu.size == 2) {
+            self ClickMenuButton(preload_menu[0], preload_menu[1]);
+        }
+    }
+    self.atianconfig_menu_preloaded = true;
+
     self thread menu_think();
 
     self childthread ANoclipBind();
+	self childthread InfiniteAmmo();
     self childthread godmode();
 }
 
 godmode() {
     while (true) {
-        self freezeControls(false);
-        self enableInvulnerability();
-        self.var_f22c83f5 = true;
-        self val::set(#"atianmod", "disable_oob", true);
-        self val::set(#"atianmod", "ignoreme", true);
+        if (is_mod_activated("maxpoints")) {
+            self.score = 99999;
+        }
+
+        if (isdefined(self.tool_invulnerability) && self.tool_invulnerability) {
+            self freezeControls(false);
+            self enableInvulnerability();
+            self.var_f22c83f5 = true;
+            self val::set(#"atianmod", "disable_oob", true);
+        }
+        if (isdefined(self.tool_zmignoreme) && self.tool_zmignoreme) {
+            self val::set(#"atianmod", "ignoreme", true);
+        }
 
         waitframe(1);
+    }
+}
+
+InfiniteAmmo() {
+    while(true) {
+        if (is_mod_activated("maxammo")) {
+            weapon  = self GetCurrentWeapon();
+            offhand = self GetCurrentOffhand();
+            if(!(!isdefined(weapon) || weapon === level.weaponNone || !isdefined(weapon.clipSize) || weapon.clipSize < 1))
+            {
+                self SetWeaponAmmoClip(weapon, 1337);
+                self givemaxammo(weapon);
+                self givemaxammo(offhand);
+                self gadgetpowerset(2, 100);
+                self gadgetpowerset(1, 100);
+                self gadgetpowerset(0, 100);
+            }
+            if(isdefined(offhand) && offhand !== level.weaponNone) self givemaxammo(offhand);
+        }
+        result = self waittill(#"weapon_fired", #"grenade_fire", #"missile_fire", #"weapon_change", #"melee");
     }
 }
 
