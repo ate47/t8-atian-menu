@@ -85,19 +85,18 @@ wz_item_loadout_func1() {
     if (isdefined(level.am_dev.wz.old_loadout_func1)) {
         self [[ level.am_dev.wz.old_loadout_func1 ]]();
     }
-    if (isdefined(self.atian.wz.life_count)) {
+    if (!isdefined(self.atian.wz.life_count)) {
         self.atian.wz.life_count = 0;
     }
-    self.atian.wz.life_count++;
     // reinsert life 1
+    self.atian.wz.life_count++;
 }
 wz_item_loadout_func2() {
     if (isdefined(level.am_dev.wz.old_loadout_func2)) {
         self [[ level.am_dev.wz.old_loadout_func2 ]]();
     }
-    if (isdefined(self.atian.wz.life_count)) {
+    if (!isdefined(self.atian.wz.life_count)) {
         self.atian.wz.life_count = 0;
-    } else {
-        self.atian.wz.life_count++;
     }
+    self.atian.wz.life_count++;
 }
