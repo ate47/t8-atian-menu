@@ -34,7 +34,7 @@ BlackOps4.exe+6598a50,hash_43546bbf707145bc,BlackOps4.exe+7f3250
 BlackOps4.exe+6598a20,cgprintentities,BlackOps4.exe+7faef0
 BlackOps4.exe+65989f0,togglebandwidthprofile,BlackOps4.exe+804c30
 BlackOps4.exe+65989c0,playrumble,BlackOps4.exe+7fae00
-BlackOps4.exe+6598990,hash_7e00cb01448dfa08,BlackOps4.exe+804d30
+BlackOps4.exe+6598990,cg_toggleinventory,BlackOps4.exe+804d30
 BlackOps4.exe+6598960,cg_togglemap,BlackOps4.exe+804f20
 BlackOps4.exe+6598930,cg_togglescores,BlackOps4.exe+805150
 BlackOps4.exe+6598900,voiceteamchat,BlackOps4.exe+802d10

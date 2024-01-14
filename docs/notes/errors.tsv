@@ -1,8 +1,11 @@
 Adam 156 Sub-zero Abyss	3199439626	Can't register dvar
 Adam 564 Stealth Zombie	904544970	Attempt to register Client Field post finalization of Client Field registration period failed.
 Adam 614 Steel Retreat	2258850890	No clientfield named found in set.
+Alfa 559 Metallic Python	1046896252	not an entity
+Alfa 597 Sapphire Missile	1991549692	Error initializing lzma
 Baker 223 Meridian Absolution	3990130335	player getperks(<localClientNum>): localClientNum out of range
 Baker 917 Brute Goodnight	4104994143	can't allocate more script variables
+Boy 108 Sapphire Sagittarius	766802866	Invalid fastfile header
 Boy 601 Everest Tiger	312545010	not a vector
 Bravo 659 Operation Bear	57350207	Unknown perk
 Bravo 822 Grizzly Cover	2658987327	Invalid string
@@ -18,12 +21,15 @@ Charlie 285 Military Gorilla	359760836	G_Spawn: no free entities
 Charlie 530 Cut Security	2036025092	formatting can only be used with player entity, string, hash, int or float
 Charlie 555 Acid Jackpot	3812357892	script stack overflow (too many embedded function calls)
 Charlie 643 Ace Alligator	1167526340	invalid session mode
+Collar 543 Satellite Fort	1756043215	Usage: kill( <source position>, <attacker>, <inflictor>, <weapon>)
 Collar 772 Flying Shell	2378228303	invalid session mode
 David 180 Camouflaged Asset	2572009355	vector scale expecting vector
 David 658 Battle Mole	2737681163	assert fail (with message)
 David 888 Patient Bayonet	1517473035	Value out of range.  Allowed values: 0 to 2
 Delta 18 Foolish Mamba	1273214009	CScr_PlayFX: invalid effect
 Delta 233 Desolate Yeti	3875481145	First argument of a match call must be a pointer to a struct
+Delta 29 Desert Bandit	3205256249	Kill failed
+Delta 291 Operation Stockade	2473308409	Execution Queue out of memory
 Delta 320 Monster Tornado	179749049	cannot cast to bool
 Delta 515 United Mauler	3137736761	script stack overflow (too many embedded function calls)
 Delta 694 Fierce Fort	1752379961	param is not an object
@@ -54,6 +60,8 @@ Frank 175 General Stockade	2479879368	RegisterClientField can only accept bit ra
 Frank 25 Good Fort	1746959112	script stack overflow (too many embedded function calls)
 Frank 575 Unlimited Salvo	2331090760	stack does not have the pool
 Frank 620 Proper Giant	887228744	origin being set to NAN.
+Golf 643 Earth Specialist	2417691091	Execution Queue out of memory
+Hotel 151 Guerrilla Jackpot	3815761761	Error when loading fastfile
 Hotel 173 Tragic Goblin	3459949409	Failed to alloc client field - MAX_CLIENTFIELD_FIELDS_IN_SET=512 exceeded.
 Hotel 39 Weak Outlaw	4048135393	Can't find variable
 Hotel 460 United Goblin	3456527393	script stack overflow (too many embedded function calls)
@@ -61,6 +69,7 @@ Hotel 511 Meridian Boar	114609313	USAGE: GetInfluencerPreset could not find infl
 Hotel 621 Dry Greyhound	476151073	invalid session mode
 Ida 309 Barricaded Bandit	3210502050	not an object
 Ida 635 Rightful Elephant	467754466	Error registering client field.  bCallbacksFor0WhenNew (CF_CALLBACK_ZERO_ON_NEW_ENT) is disallowed for CF_SCRIPTMOVERFIELDS.
+Ida 736 Quick Lamprey	3964856290	kill called on an entity with magic bullet shield (FL_DISABLE_DEATH)
 Ida 941 Gray Mustang	3894031202	Can't find gamedata/playeranim/playeranimtypes.txt
 India 36 Skyline Overlord	2903034222	Invalid mode id
 India 441 Stealth Star	3857374126	caller is not an object
@@ -81,6 +90,7 @@ May 1009 Torched Sunrise	3699844858	parameter does not exist
 May 612 Snow Obelisk	1333649786	IsMature can only be called on a player.
 May 706 Due Sagittarius	768316282	script stack overflow (too many embedded function calls)
 Mike 419 Violet Tank	3288551912	expected array type to add value pair
+Mike 434 Discovered Garrison	1777362536	Could not allocate memory for zone
 Mike 664 Steel Lion	245612264	foreach should be used with an array
 Mike 988 Gold Lion	236473384	invalid session mode
 Negative 184 Fake Locker	2202233143	waittill_timeout must have at least one valid argument
@@ -115,12 +125,14 @@ Papa 889 Tall Fury	2940376721	Cannot call SetClientField on 'counter' type clien
 Prep 347 Morning Jackpot	3819578766	not a script function pointer
 Prep 367 Solar Activity	4039057166	LUINotifyEvent: entity must be a player entity
 Prep 374 Aggressive Breakfast	3135792078	Invalid type passed in from array into waittill parameter list
+Prep 390 Iron Bison	1109633678	Execution Queue out of memory
 Prep 633 October Menace	1438198158	Can't use wait with profiler
 Prep 941 Battle Gravedigger	3559732046	script stack overflow (too many embedded function calls)
 Quebec 126 Kinetic Mortar	1999906612	type is not a integer or float
 Quebec 387 Poison Goodnight	4106063796	key value provided for array is not valid
 Quebec 529 Knockout Headquarters	1804370036	Failed to verify file type 
 Quebec 794 Bog Fleet	1697447028	Can't use wait with profiler
+Quebec 873 Midnight Operator	1487510644	Could not load gsc object
 Quebec 965 Dangerous Jackpot	3810601716	undefined param
 Queen 114 Rocky Medal	1957162421	Can't find bgCache entry
 Queen 116 Classic Rattlesnake	124438261	not a script function pointer
@@ -132,9 +144,11 @@ Queen 47 Sick Eagle	325402485	script stack overflow (too many embedded function 
 Queen 577 Weak Manuever	1967731701	Invalid type passed in from array into waittill parameter list
 Queen 964 Shellshocked Rank	2185211445	Can't register dvar
 Roger 356 Gray Pig	1377489376	Gesture key can't have the higher bit set
+Roger 391 Emerald Refuge	4223282976	Error loading fastfile patch header
 Roger 440 Unlimited Fox	3723589344	not a function pointer
 Roger 753 Fake Outlaw	4047738848	Invalid opcode (Recovery)
 Roger 850 Grey Whisper	3524483616	Ammo count must not be negative
+Roger 853 Lone Platoon	2122198496	The sound globals have been overwritten
 Romeo 459 Battle Traffic	2838301872	Gesture table key can't have the higher bit set
 Romeo 569 Clipped Squad	2448966512	string too long
 Romeo 671 Iron Stallion	941828720	exitlevel already called
@@ -145,6 +159,7 @@ Sail 312 Extreme Boa	1072585573	Raw file is not a file of the right type
 Sail 397 Skyline Firestarter	3423138661	not a script function pointer
 Sail 543 Earth Whisper	3524990949	not an array key
 Sail 630 Nuclear Bug	2894056997	DEV: CL_SetCGameTime: !cl->snap.valid
+Sierra 190 Knight Thunder	530250396	Source Damage vector is invalid.
 Sierra 54 Found Treasure	4178589916	Model was not cached by the linker.
 South 1020 Calm Potato	2538360978	caller is not an object
 South 1020 Calm Potato	2538360978	not a function pointer
@@ -153,8 +168,10 @@ South 209 Shadow Stallion	949934674	Invalid Version Handling. Grab Bat !!!
 South 263 Confused Artillery	2279633554	SV_SetConfigstring: bad index
 South 379 Orange Clover	3657806674	invalid character index
 Spring 361 Right Mauler	3143575744	parameter does not exist
+Spring 741 Area Outlander	3923586368	Kill failed
 Spring 805 Apollo Valentine	1099145600	Can't find asset
 Spring 81 Snap Soldier	2408700928	not a valid name for a clientfield set.
+Summer 146 Satellite Ultra	2863351045	bad vm instance
 Summer 164 Brass Dove	219569925	hasperk() can only be called on local players
 Summer 490 Defiant Eel	48546501	not a function pointer
 Summer 494 General Shell	2379198149	waittill must have at least one valid argument
@@ -173,6 +190,7 @@ Tommy 833 Rightful Hippo	987874813	self isn't a field object
 Uniform 31 Empty Jet	1915758537	RegisterClientField can only accept bit ranges between 1 and 32.
 Uniform 587 Nickel Breakfast	3122940489	caller is not an entity
 Union 152 Midas Werewolf	969461336	The setHintStringForPlayer command only works on trigger or script mover entities.
+Union 296 Poison Luck	3837625752	abort
 Union 326 Boiling Ice	3630798232	caller is not an object
 Union 344 Blue Headquarters	1795335576	not a pointer
 Union 701 Sick Eclipse	1013305560	Pointer types passed into waittill expressions must evaluate as arrays
@@ -226,6 +244,7 @@ Zebra 32 Grizzly Lizard	377246011	invalid session mode
 Zebra 909 Aurora Wave	3654063291	ScrEvent map is full, unable to register new event
 Zed 105 Riptide Volley	2517242050	parameter does not exist
 Zed 251 Silent Scorpio	753495682	RandomIntRange's second parameter must be greater than the first.
+Zed 453 Kinetic Devil	1211376898	DEV: Could not load level fastfile for level
 Zed 606 Tin Refuge	4213634562	precacheLeaderboards must be called before any wait statements in the gametype or level script
 Zed 711 Resolute Raven	446529346	the function can only be used with string or hash
 Zed 737 United Parole	2751867714	self isn't a field object
@@ -236,6 +255,3 @@ Zulu 442 Silver Cage	3105354540	Can't register dvar
 Zulu 523 Electric Lion	247375020	Attempting to register client field in client field set using bits, but system is out of space.
 Zulu 53 Heavy Cause	3016026156	Can't find asset
 Zulu 540 Grim Refuge	4221135532	Optional argument must be a string type
-Roger 853 Lone Platoon	2122198496	The sound globals have been overwritten
-Summer 146 Satellite Ultra	2863351045	bad vm instance
-Quebec 873 Midnight Operator	1487510644	Could not load gsc object

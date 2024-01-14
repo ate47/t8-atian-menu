@@ -115,6 +115,17 @@ init_menus() {
         self add_menu_item("camo_menu", "camo " + i, &func_camo, i);
     }
     
+    self add_menu("dev", "Dev", "start_menu", true);
+    self add_menu_item("dev", "test dev 1", &func_dev_1);
+}
+
+func_dev_1(item) {
+    bundle = getscriptbundle("zombie_vars_settings");
+
+    self iprintln("^1Enabled: ^2" + isdefined(bundle));
+    if (isdefined(bundle)) {
+        self iprintln("^1Name:    ^2" + (isdefined(bundle.name) ? bundle.name : "undefined"));
+    }
 }
 
 func_give_weapon(item, weapon_name) {
