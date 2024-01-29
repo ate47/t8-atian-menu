@@ -1300,5 +1300,7 @@ i_mtl_wpn_t8_camo_topology_04_c
 
 ximage_ee83883ec8d08f topology 1
 
+ASSET_TYPE_UNLOCKABLE_ITEM_TABLE -> sub_6B63F0
+
 music zm_frontend
 ```

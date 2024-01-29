@@ -20,22 +20,26 @@ init_menu(menu_title) {
 }
 
 menu_drawing_function(txt) {
-//#ifdef __PS4
-//    self iprintlnbold(txt);
-//#else
-    self iprintlnbold(txt);
-//#endif
+    if (sessionmodeiszombiesgame()) {
+        self iprintlnbold(txt);
+    } else {
+        self iprintln(txt);
+    }
 }
 
 menu_drawing_secondary(txt) {
-//#ifdef __PS4
-//    self iprintln(txt);
-//#else
-    self iprintln(txt);
-//#endif
+    if (sessionmodeiszombiesgame()) {
+        self iprintln(txt);
+    } else {
+        self iprintlnbold(txt);
+    }
 }
 get_menu_size_count() {
-    return 5;
+    if (sessionmodeiszombiesgame()) {
+        return 5;
+    } else {
+        return 2;
+    }
 }
 
 

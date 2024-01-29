@@ -44,6 +44,10 @@ get_look_trace() {
     look = AnglesToForward(self GetPlayerAngles());
     return bullettrace(tag_origin, tag_origin + vectorscale(look, 10000), 1, self);
 }
+get_look_position() {
+    return get_look_trace()[#"position"];
+}
+
 
 on_player_connect() {
     self.atian = spawnStruct();

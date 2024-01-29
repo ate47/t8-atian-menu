@@ -9,12 +9,10 @@ try {
     $base = (Get-Item $PSScriptRoot).Parent
     Set-Location ($base.Fullname)
 
-    $compilerPath = (Get-Item ((Get-Command debugcompiler.exe).Source)).FullName | split-path -parent
-
     $arg = if ($Compile){ "--compile" } else { "--build" };
 
     debugcompiler.exe $arg --noupdate `
-        "-platform=PC" `
+        "-Cplatform=PC" `
         "-Cclient=false" "-Cdll=true" "-Cdll.lazylink=true" "-Cdll.builtins=true" "-Cdll.detours=true" `
         "-DATIAN_MENU_DEV" #"-DATIAN_MENU_LOOKUP_BIG"
 

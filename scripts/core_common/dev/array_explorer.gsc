@@ -8,6 +8,9 @@ get_array_explorer_values() {
         create_array_explorer_value("Zombies vars", level.zombie_vars),
         create_array_explorer_value("Blackout zones", level.var_5b357434),
         create_array_explorer_value("Zombies zones", level.zones),
+        //create_array_explorer_value("blackout item characters", getgametypesetting(#"hash_50b1121aee76a7e4")), // 1
+        //create_array_explorer_value("blackout unlock scarlett", getgametypesetting(#"hash_7049c01d7ddf9b35")), // 1
+        //create_array_explorer_value("scarlett count", getgametypesetting(#"hash_3d9a364d54750dca")), // 3
         create_array_explorer_value("Vector location", level.am_dev.explore_vectors)
     );
 #ifdef _SUPPORTS_LAZYLINK

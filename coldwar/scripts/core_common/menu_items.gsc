@@ -114,9 +114,115 @@ init_menus() {
     for (i = 0; i < 512; i++) {
         self add_menu_item("camo_menu", "camo " + i, &func_camo, i);
     }
-    
+
+    self add_menu("vehicle", "Vehicle", "start_menu", true);
+    self add_menu_item("vehicle", "Enter vehicle", &func_enter_vehicle);
+    self add_vehicle_obj("ADAV", #"hash_10e49116dd0a922f");
+    self add_vehicle_obj("Anti-Air missiles", #"veh_missile_turret");
+    self add_vehicle_obj("ATV (Red)", #"hash_3efa223f4a0bffcd");
+    self add_vehicle_obj("ATV", #"hash_555e089964330582");
+    self add_vehicle_obj("BO3 Helicopter", #"heli_ai_mp");
+    self add_vehicle_obj("Care package helicopter", #"vehicle_t9_mil_helicopter_care_package");
+    self add_vehicle_obj("Drone squad 2", #"hash_3effd1dd89ee3d36");
+    self add_vehicle_obj("Drone squad 3", #"hash_3a28e8bcf12e1d74");
+    self add_vehicle_obj("Drone squad", #"hash_444804d03bdda785");
+    self add_vehicle_obj("Drop plane", #"vehicle_t9_mil_air_transport_hpc_intro");
+    self add_vehicle_obj("fake_vehicle", #"fake_vehicle");
+    self add_vehicle_obj("Fav light 2", #"hash_1b33573a29a71bc3");
+    self add_vehicle_obj("Fav light", #"vehicle_t9_mil_fav_light");
+    self add_vehicle_obj("Gunship", #"veh_t8_ac130_gunship_mp");
+    self add_vehicle_obj("Heavy Helicopter", #"veh_t8_helicopter_gunship_mp_guard");
+    self add_vehicle_obj("Helicopter", #"hash_3f738a621add7f21");
+    self add_vehicle_obj("Helicopter", #"hash_6595f5efe62a4ec");
+    self add_vehicle_obj("Jeep", #"hash_7d6a6c54d3f08d43");
+    self add_vehicle_obj("Jeep", #"vehicle_t9_mil_ru_truck_light_player");
+    self add_vehicle_obj("Large helicopter", #"hash_4209c5ff3b969c7a");
+    self add_vehicle_obj("Large transport vehicle", #"hash_4bfd80fe09072db3");
+    self add_vehicle_obj("Motorbike 2", #"hash_4eb33555df990431");
+    self add_vehicle_obj("Motorbike", #"vehicle_motorcycle_mil_us_offroad");
+    self add_vehicle_obj("Napalm strike", #"hash_3d2bbfdb89093d91");
+    self add_vehicle_obj("Omega Helicopter", #"hash_669d01ea5db4e10c");
+    self add_vehicle_obj("Racing RCXD alternative", #"vehicle_t9_rcxd_racing_alt");
+    self add_vehicle_obj("Racing RCXD", #"vehicle_t9_rcxd_racing");
+    self add_vehicle_obj("RCXD (Zombies)", #"vehicle_t9_rcxd_racing_zm");
+    self add_vehicle_obj("RCXD", #"hash_7dd2944ddf7cc7e9");
+    self add_vehicle_obj("Requiem Helicopter", #"hash_437293ae239af1ab");
+    self add_vehicle_obj("Sedan russian", #"vehicle_t9_civ_ru_sedan_80s_player");
+    self add_vehicle_obj("Sedan White", #"hash_27f92469d9c8c8");
+    self add_vehicle_obj("Straferun", #"vehicle_straferun_mp");
+    self add_vehicle_obj("Tank", #"hash_28d512b739c9d9c1");
+    self add_vehicle_obj("Tank", #"hash_6296120b45d0c0b9");
+    self add_vehicle_obj("Tank", #"vehicle_t9_mil_ru_tank_t72_sr");
+    self add_vehicle_obj("Transport truck", #"hash_1c63d67929319598");
+    self add_vehicle_obj("Transport Truck", #"hash_62197ae3451b23c");
+    self add_vehicle_obj("Transport truck", #"vehicle_t9_mil_ru_truck_transport_player_obj_sr");
+    self add_vehicle_obj("Turret", #"veh_ultimate_turret");
+    self add_vehicle_obj("Yuri (Requiem)", #"hash_50b5a1068a7647d3");
+    self add_vehicle_obj("Yuri 2", #"hash_631691623ad368bd");
+    self add_vehicle_obj("Yuri 3", #"hash_58cc8ce25d32031f");
+    self add_vehicle_obj("Yuri", #"veh_t9_mil_us_helicopter_large_chopper_gunner");
+
+    //self add_vehicle_obj("hash_d069dee6a0076c8", #"hash_d069dee6a0076c8");
+    //self add_vehicle_obj("hash_d57fa1b1aacffc7", #"hash_d57fa1b1aacffc7");
+    //self add_vehicle_obj("veh_ultimate_turret_wz", #"veh_ultimate_turret_wz");
+    //self add_vehicle_obj("defaultvehicle_mp", #"defaultvehicle_mp");
+
     self add_menu("dev", "Dev", "start_menu", true);
     self add_menu_item("dev", "test dev 1", &func_dev_1);
+}
+
+func_set_mapgametype(item, map_name, gametype) {
+    self menu_drawing_function("loading map " + map_name + " with mode " + gametype);
+    switchmap_preload(map_name, gametype);
+    wait(1);
+    switchmap_switch();
+}
+
+add_vehicle_obj(title, vehicule_type) {
+    if (!isassetloaded("vehicle", vehicule_type)) {
+        return; // vehicle not loaded or already in the enum
+    }
+    self add_menu_item("vehicle", title, &func_spawn_vehicle, vehicule_type);
+}
+func_spawn_vehicle(item, vehicule_type) {
+
+    load = isassetloaded("vehicle", vehicule_type);
+
+    if (!isdefined(load) || !load) {
+        self menu_drawing_secondary("^1Asset not loaded");
+        return;
+    }
+    look = self get_look_position();
+
+    veh = spawnvehicle(vehicule_type, look, (0, 0, 0));
+    if (!isdefined(veh)) {
+        self menu_drawing_secondary("^1bad vehicle");
+        return;
+    }
+    veh makeusable();
+    if (isdefined(veh.isphysicsvehicle) && veh.isphysicsvehicle) {
+        veh setbrake(1);
+    }
+    if (isdefined(veh.vehicleclass) && veh.vehicleclass == #"helicopter") {
+        veh.origin = veh.origin + (0, 0, veh.height);
+        // you spin me
+    }
+    if (isairborne(veh)) {
+        veh setrotorspeed(1.0);
+    }
+}
+
+func_enter_vehicle(item, slot) {
+    trace = self get_look_trace();
+
+    entity = trace[#"entity"];
+
+
+    if (isdefined(entity) && isvehicle(entity)) {
+        entity usevehicle(self, 0);
+    } else {
+        self menu_drawing_secondary("^1No vehicle found");
+    }
 }
 
 func_dev_1(item) {

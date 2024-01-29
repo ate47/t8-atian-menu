@@ -255,3 +255,12 @@ Zulu 442 Silver Cage	3105354540	Can't register dvar
 Zulu 523 Electric Lion	247375020	Attempting to register client field in client field set using bits, but system is out of space.
 Zulu 53 Heavy Cause	3016026156	Can't find asset
 Zulu 540 Grim Refuge	4221135532	Optional argument must be a string type
+Bravo 727 Marble Missile	1982281215	exceeded message limit
+Cast 422 Cloaked Firestarter	3429737773	getweaponaccuracy must be called on an AI only
+Winter 564 Goodbye Specialist	2429764318	GetRandomCompatibleAttachmentsForWeapon: Weapon has more than allowed number attachments
+Romeo 534 Axiom Asset	2579736624	Incorrect number of parameters.
+Option 102 Grounded Thunder	525308842	GetBaseWeaponItemIndex: invalid weapon named passed.
+Queen 254 Unfriendly Python	1053986869	GScr_UseBuildKitWeaponModel: called with weapon 'none'
+XRay 373 Firebrand Mamba	1267091843	GScr_UseBuildKitWeaponModel: when specifying that the weapon is upgraded, a valid camoIndex MUST be specified
+Cast 82 Disguised Python	1047459117	Entity is not a rocket
+Hotel 874 Gray Ordnance	2065311777	Entity is not of guidance type Drone
