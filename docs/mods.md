@@ -11,7 +11,7 @@
 
 # Atian Menu
 
-Atian menu is my custom GSC menu for Black Ops 4, you can find the sources [here](https://github.com/ate47/t8-atian-menu).
+Atian menu is my custom GSC menu for Black Ops 4/Cold War, you can find the sources [here](https://github.com/ate47/t8-atian-menu).
 
 You can download the menu or compile it yourself, by compiling it yourself you can control the configs.
 
@@ -19,8 +19,9 @@ You can download the menu or compile it yourself, by compiling it yourself you c
 
 Here precompiled versions of my menu with predefined configs. You have to find how to inject them by yourself.
 
-- [Black Ops 4 - PC](https://github.com/ate47/t8-atian-menu/releases/latest/download/atianmenu_pc.gscc)
-- [Black Ops 4 - PS4 1.26](https://github.com/ate47/t8-atian-menu/releases/latest/download/atianmenu_ps4.gscc)
+- [Black Ops 4 - PC](https://github.com/ate47/t8-atian-menu/releases/latest/download/BlackOps4_atianmenu_pc.gscc)
+- [Black Ops 4 - PS4 1.26](https://github.com/ate47/t8-atian-menu/releases/latest/download/BlackOps4_atianmenu_ps4.gscc)
+- [Black Ops 4 - PC VM38](https://github.com/ate47/t8-atian-menu/releases/latest/download/BlackOpsColdWar_atianmenu_pc.gscc)
 
 # T8CustomEE
 
