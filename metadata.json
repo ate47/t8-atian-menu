@@ -1,0 +1,19 @@
+{
+    "name": "Atian Menu",
+    "data": [
+        {
+            "type": "hashes",
+            "path": "hashes.txt",
+            "format": "serious_compiler",
+            "ignore_error": true
+        },
+        {
+            "type": "scriptparsetree",
+            "name": "scripts/core_common/atianmenu.gsc",
+            "path": "atianmenu_shield.gsic",
+            "hooks": [
+                "scripts/core_common/load_shared.gsc"
+            ]
+        }
+    ]
+}

@@ -46,6 +46,23 @@ try {
         exit -1
     }
 
+    Write-Host "Shield PC / BO4"
+    New-Item -ItemType Directory build/atianmenu -ErrorAction Ignore > $null
+    Copy-Item metadata.json build/atianmenu
+    .\build\compilercustom\DebugCompiler.exe --compile -DCI -Cplatform=PC `
+        "-Cclient=false" "-Cdll=true" "-Cdll.lazylink=true" "-Cdll.builtins=true" "-Cdll.detours=true" `
+        '-DSHIELD_GSC_DEPLOY' `
+        '-Coutputname=build/atianmenu/atianmenu_shield'
+    if (!$?) {
+        Write-Error "Issue when compiling the project"
+        exit -1
+    }
+    Copy-Item hashes.txt build/atianmenu
+    Set-Location build
+    Compress-Archive atianmenu -DestinationPath "../deploy/BlackOps4_shield_atianmenu.zip" -Force
+    Set-Location ..
+
+
     Write-Host "PS4 / BO4"
     .\build\compilercustom\DebugCompiler.exe --compile -DCI -D__PS4 -Cplatform=PS4 '-Coutputname=deploy/BlackOps4_atianmenu_ps4' -Cdll=false
 
