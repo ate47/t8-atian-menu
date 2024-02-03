@@ -21,7 +21,7 @@ Here precompiled versions of my menu with predefined configs. You have to find h
 
 - [Black Ops 4 - PC](https://github.com/ate47/t8-atian-menu/releases/latest/download/BlackOps4_atianmenu_pc.gscc)
 - [Black Ops 4 - PS4 1.26](https://github.com/ate47/t8-atian-menu/releases/latest/download/BlackOps4_atianmenu_ps4.gscc)
-- [Black Ops 4 - PC VM38](https://github.com/ate47/t8-atian-menu/releases/latest/download/BlackOpsColdWar_atianmenu_pc.gscc)
+- [Black Ops Cold War - PC VM38](https://github.com/ate47/t8-atian-menu/releases/latest/download/BlackOpsColdWar_atianmenu_pc.gscc)
 
 # T8CustomEE
 
