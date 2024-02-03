@@ -11,6 +11,10 @@ try {
 
     $arg = if ($Compile) { "--compile" } else { "--build" };
 
+    if (!$Compile) {
+        acts mod t9cee
+    }
+
     debugcompiler.exe $arg --noupdate
 
     if (!$?) {

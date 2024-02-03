@@ -12,26 +12,13 @@ jobs:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Create deploy dir
-        run: mkdir deploy
       - name: Compile
         shell: pwsh
         run: "shell_scripts/compile.ps1"
-      - name: Save PC artefact
-        if: github.repository_owner == 'ate47' && github.ref == 'refs/heads/master'
-        run: cp compiled.gscc deploy/atianmenu_pc.gscc
-      - name: Compile PS4
+      - name: Deploy all
         if: github.repository_owner == 'ate47' && github.ref == 'refs/heads/master'
         shell: pwsh
-        run: |
-          $bytes = [Convert]::FromBase64String("${{ secrets.PS4_VMCODES_B64 }}")
-          $output = (gci ".\build\compiler\t7compiler\vm_codes.db2").FullName
-          [io.file]::WriteAllBytes($output, $bytes)
-          shell_scripts/compile.ps1 -PS4
-          "" > build\compiler\t7compiler\vm_codes.db2
-      - name: Save PS4 artefact
-        if: github.repository_owner == 'ate47' && github.ref == 'refs/heads/master'
-        run: cp compiled.gscc deploy/atianmenu_ps4.gscc
+        run: "shell_scripts/deploy.ps1 -Token \"${{ secrets.T7_CUSTOM_COMPILER_TOKEN }}\""
       - name: Upload release
         uses: ncipollo/release-action@v1
         if: github.repository_owner == 'ate47' && github.ref == 'refs/heads/master'

@@ -999,7 +999,7 @@ GSC-Function-49608a0,isprofilebuild()->bool,0,0,0,BlackOps4.exe+69F4E0,Push if w
 GSC-Function-49608a0,isshipbuild()->bool,0,0,0,BlackOps4.exe+69F4F0,Push if we are on a ship build (true)
 GSC-Function-49608a0,function_2ee076a7,0,0,0,BlackOps4.exe+69F500,
 GSC-Function-49612d0,enumerateweapons(object un),1,1,1,BlackOps4.exe+6A1C20,nulled
-GSC-Function-49612d0,function_a16a090d(Weapon w)->string,1,1,1,BlackOps4.exe+6A1C30,
+GSC-Function-49612d0,getweaponname(Weapon w)->string,1,1,1,BlackOps4.exe+6A1C30,get weapon name
 GSC-Function-49612d0,weapon,1,1,0,BlackOps4.exe+6A1C60,
 GSC-Function-49612d0,function_1242e467,1,1,0,BlackOps4.exe+6A1CA0,
 GSC-Function-49612d0,function_711c258,3,3,0,BlackOps4.exe+6A21A0,
@@ -3161,7 +3161,7 @@ CSC-Function-49608a0,isprofilebuild,0,0,0,BlackOps4.exe+69F4E0,
 CSC-Function-49608a0,isshipbuild,0,0,0,BlackOps4.exe+69F4F0,
 CSC-Function-49608a0,function_2ee076a7,0,0,0,BlackOps4.exe+69F500,
 CSC-Function-49612d0,enumerateweapons,1,1,1,BlackOps4.exe+6A1C20,
-CSC-Function-49612d0,function_a16a090d,1,1,1,BlackOps4.exe+6A1C30,
+CSC-Function-49612d0,getweaponname,1,1,1,BlackOps4.exe+6A1C30,
 CSC-Function-49612d0,weapon,1,1,0,BlackOps4.exe+6A1C60,
 CSC-Function-49612d0,function_1242e467,1,1,0,BlackOps4.exe+6A1CA0,
 CSC-Function-49612d0,function_711c258,3,3,0,BlackOps4.exe+6A21A0,

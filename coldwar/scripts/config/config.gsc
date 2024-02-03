@@ -6,12 +6,12 @@ AtianMenuConfig() {
     self.fly_speed_fast = 60;
 
     self.preloaded_menus = array(
-        "tool_menu::Ammos",
-        "tool_menu::Max Points",
-        "tool_menu::Ignore me",
-        "tool_menu::Invulnerability"
+       //"tool_menu::Ammos",
+       //"tool_zm::Max Points",
+       //"tool_zm::Ignore me",
+       //"tool_menu::Invulnerability"
     );
 
     // set starting points
-    self.player_starting_points = 123450;
+    //self.player_starting_points = 123450;
 }

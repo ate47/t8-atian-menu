@@ -8,13 +8,16 @@ Baker 917 Brute Goodnight	4104994143	can't allocate more script variables
 Boy 108 Sapphire Sagittarius	766802866	Invalid fastfile header
 Boy 601 Everest Tiger	312545010	not a vector
 Bravo 659 Operation Bear	57350207	Unknown perk
+Bravo 727 Marble Missile	1982281215	exceeded message limit
 Bravo 822 Grizzly Cover	2658987327	Invalid string
 Cast 166 Quick Menace	1431456749	not a script function
 Cast 222 Rapid Operator	1492330861	script stack overflow (too many embedded function calls)
 Cast 245 Classic Retreat	2255127213	Parameter must be an array
 Cast 335 Midas Stallion	952690413	parameter can't be cast to a boolean
+Cast 422 Cloaked Firestarter	3429737773	getweaponaccuracy must be called on an AI only
 Cast 496 Cloaked Legend	2725053485	caller is not an object
 Cast 501 Chief Werewolf	962032109	Entity does not exist.
+Cast 82 Disguised Python	1047459117	Entity is not a rocket
 Charlie 1009 War Leviathan	4163774148	Optional argument must be a float or integer type
 Charlie 19 Loud Arrow	1498641348	not an array
 Charlie 285 Military Gorilla	359760836	G_Spawn: no free entities
@@ -67,6 +70,7 @@ Hotel 39 Weak Outlaw	4048135393	Can't find variable
 Hotel 460 United Goblin	3456527393	script stack overflow (too many embedded function calls)
 Hotel 511 Meridian Boar	114609313	USAGE: GetInfluencerPreset could not find influencer with name
 Hotel 621 Dry Greyhound	476151073	invalid session mode
+Hotel 874 Gray Ordnance	2065311777	Entity is not of guidance type Drone
 Ida 309 Barricaded Bandit	3210502050	not an object
 Ida 635 Rightful Elephant	467754466	Error registering client field.  bCallbacksFor0WhenNew (CF_CALLBACK_ZERO_ON_NEW_ENT) is disallowed for CF_SCRIPTMOVERFIELDS.
 Ida 736 Quick Lamprey	3964856290	kill called on an entity with magic bullet shield (FL_DISABLE_DEATH)
@@ -74,6 +78,7 @@ Ida 941 Gray Mustang	3894031202	Can't find gamedata/playeranim/playeranimtypes.t
 India 36 Skyline Overlord	2903034222	Invalid mode id
 India 441 Stealth Star	3857374126	caller is not an object
 India 579 Deadly Gemini	657813230	Error registering client field.  bCallbacksFor0WhenNew (CF_CALLBACK_ZERO_ON_NEW_ENT) is disallowed for counter type clientfields. Due to it's treatment of the old and new val as a ring buffer, the counter type is not valid on a new snapshot, new ent, or demojump
+India 811 Max Thunder	530300974	divide by 0
 Juliett 791 Null Lantern	3678699265	not a pointer
 June 426 Hurt Tactics	2489324310	cannot switch on type
 June 951 Prepared Cover	2655465686	not a script function pointer
@@ -113,6 +118,7 @@ November 670 Boiling Avalanche	829015102	var isn't a field object
 November 990 Fake Operator	1480821566	Error registering client field.  Attempted field size is not acceptable bit number range 1->32
 Ocean 270 Grounded Infantry	1850691545	Debug Break
 Ocean 529 Broken Lamprey	3967909977	Trying to get version of a demo when the demo system is idle.
+Option 102 Grounded Thunder	525308842	GetBaseWeaponItemIndex: invalid weapon named passed.
 Option 365 Old Ghoul	2687742442	Forced script exception.
 Option 961 Blue Whisper	3523382186	ScrEvent map is full, unable to register new event
 Oscar 771 Central Zeus	3329708710	Unable to find default bitfield, dropping
@@ -139,6 +145,7 @@ Queen 116 Classic Rattlesnake	124438261	not a script function pointer
 Queen 117 Weak Octopus	71894325	CamAnimScripted or ExtraCamAnimScripted can only be called on a player.
 Queen 19 Furious Cipher	2626909173	exceeded maximum number of script strings
 Queen 235 Wicked Libra	732489269	Non-player entity passed to UploadStats()
+Queen 254 Unfriendly Python	1053986869	GScr_UseBuildKitWeaponModel: called with weapon 'none'
 Queen 427 Apocalyptic Treasure	4182670005	invalid session mode
 Queen 47 Sick Eagle	325402485	script stack overflow (too many embedded function calls)
 Queen 577 Weak Manuever	1967731701	Invalid type passed in from array into waittill parameter list
@@ -150,15 +157,18 @@ Roger 753 Fake Outlaw	4047738848	Invalid opcode (Recovery)
 Roger 850 Grey Whisper	3524483616	Ammo count must not be negative
 Roger 853 Lone Platoon	2122198496	The sound globals have been overwritten
 Romeo 459 Battle Traffic	2838301872	Gesture table key can't have the higher bit set
+Romeo 534 Axiom Asset	2579736624	Incorrect number of parameters.
 Romeo 569 Clipped Squad	2448966512	string too long
 Romeo 671 Iron Stallion	941828720	exitlevel already called
 Romeo 836 Deadly Scythe	3761634992	not a pointer
+Rush 114 Camouflaged Management	4232965560	divide by 0
 Rush 280 Extinct Storm	1403832952	Attempt to register ClientField failed.  Client Field set either already contains a field, or a hash collision has occurred.
 Sail 1020 Clean Goodnight	4101525669	Can't use wait with profiler
 Sail 312 Extreme Boa	1072585573	Raw file is not a file of the right type
 Sail 397 Skyline Firestarter	3423138661	not a script function pointer
 Sail 543 Earth Whisper	3524990949	not an array key
 Sail 630 Nuclear Bug	2894056997	DEV: CL_SetCGameTime: !cl->snap.valid
+Sail 692 Sapphire Avalanche	833940261	divide by 0
 Sierra 190 Knight Thunder	530250396	Source Damage vector is invalid.
 Sierra 54 Found Treasure	4178589916	Model was not cached by the linker.
 South 1020 Calm Potato	2538360978	caller is not an object
@@ -176,6 +186,7 @@ Summer 164 Brass Dove	219569925	hasperk() can only be called on local players
 Summer 490 Defiant Eel	48546501	not a function pointer
 Summer 494 General Shell	2379198149	waittill must have at least one valid argument
 Summer 534 Winning Escort	2681972741	bad clientfield for name
+Summer 603 Midas Fort	1757941509	divide by 0
 Summer 607 Binary Godfather	3251676101	Could not load raw file
 Summer 620 Split Legend	2734491973	Error need at least one argument for LUINotifyEvent.
 Summer 738 Barracuda Pattern	2782299909	script stack overflow (too many embedded function calls)
@@ -218,9 +229,11 @@ Whiskey 159 Calm Python	1045192683	Scr_RandomFloatRange's second parameter must 
 Whiskey 230 Destructive Guardian	3086288875	playFx called with (0 0 0) forward direction
 Whiskey 456 Blazing Cause	3015158315	getperks() can only be called on local players
 Whiskey 960 Emerald Werewolf	968521323	player hasperk(<localClientNum>, <perk>): localClientNum out of range
+Winter 564 Goodbye Specialist	2429764318	GetRandomCompatibleAttachmentsForWeapon: Weapon has more than allowed number attachments
 Winter 6 Almighty Badger	280703902	parameter does not exist
 XRay 274 Sub-zero Dawn	4088624643	Can't find asset
 XRay 353 Earth Abyss	3189465155	Invalid bgCache type
+XRay 373 Firebrand Mamba	1267091843	GScr_UseBuildKitWeaponModel: when specifying that the weapon is upgraded, a valid camoIndex MUST be specified
 XRay 373 Hurt Agent	2556447107	script stack overflow (too many embedded function calls)
 XRay 384 Metallic Apocalypse	3362159427	++ can only be used with integer type
 XRay 470 Screaming Justice	2974839555	invalid session mode
@@ -255,12 +268,4 @@ Zulu 442 Silver Cage	3105354540	Can't register dvar
 Zulu 523 Electric Lion	247375020	Attempting to register client field in client field set using bits, but system is out of space.
 Zulu 53 Heavy Cause	3016026156	Can't find asset
 Zulu 540 Grim Refuge	4221135532	Optional argument must be a string type
-Bravo 727 Marble Missile	1982281215	exceeded message limit
-Cast 422 Cloaked Firestarter	3429737773	getweaponaccuracy must be called on an AI only
-Winter 564 Goodbye Specialist	2429764318	GetRandomCompatibleAttachmentsForWeapon: Weapon has more than allowed number attachments
-Romeo 534 Axiom Asset	2579736624	Incorrect number of parameters.
-Option 102 Grounded Thunder	525308842	GetBaseWeaponItemIndex: invalid weapon named passed.
-Queen 254 Unfriendly Python	1053986869	GScr_UseBuildKitWeaponModel: called with weapon 'none'
-XRay 373 Firebrand Mamba	1267091843	GScr_UseBuildKitWeaponModel: when specifying that the weapon is upgraded, a valid camoIndex MUST be specified
-Cast 82 Disguised Python	1047459117	Entity is not a rocket
-Hotel 874 Gray Ordnance	2065311777	Entity is not of guidance type Drone
+	3126405504	Com_Error entered

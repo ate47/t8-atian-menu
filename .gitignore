@@ -1,6 +1,7 @@
 
 temp/
 build/
+deploy/
 # Some big boys
 docs/notes/gvars
 

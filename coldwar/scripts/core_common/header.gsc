@@ -25,7 +25,11 @@ __pre_init__() {
 load_cfg() {
     level.atian = spawnstruct();
     level.atianconfig = spawnstruct();
+#ifdef CI
+    level.atianconfig AtianMenuConfigContinuousIntegration();
+#else
     level.atianconfig AtianMenuConfig();
+#endif
 }
 
 /*
@@ -84,15 +88,37 @@ on_player_connect() {
 
     self thread menu_think();
 
-    self childthread ANoclipBind();
-	self childthread InfiniteAmmo();
-    self childthread godmode();
+    // wait some frames to avoid init things
+    waitframe(20);
+
+    level.var_ef1a71b3 = &count_zombies;
+
+    self childthread fly_mode();
+	self childthread infinite_ammo();
+    self childthread god_mode();
 }
 
-godmode() {
+count_zombies() {
+    return 99999999;
+}
+
+god_mode() {
     while (true) {
-        if (is_mod_activated("maxpoints")) {
+        if (self is_mod_activated("maxpoints")) {
             self.score = 99999;
+
+            oldcommon = self.var_595a11bc;
+            oldrare = self.var_72d64cfd;
+            self.var_595a11bc = 9999; // common savages
+            self.var_72d64cfd = 9999; // rare savages
+
+            // update the UI
+            if (oldcommon != self.var_595a11bc) {
+                self clientfield::set_player_uimodel("hudItems.scrap", self.var_595a11bc);
+            }
+            if (oldrare != self.var_72d64cfd) {
+                self clientfield::set_player_uimodel("hudItems.rareScrap", self.var_72d64cfd);
+            }
         }
 
         if (isdefined(self.tool_invulnerability) && self.tool_invulnerability) {
@@ -109,9 +135,9 @@ godmode() {
     }
 }
 
-InfiniteAmmo() {
+infinite_ammo() {
     while(true) {
-        if (is_mod_activated("maxammo")) {
+        if (self is_mod_activated("maxammo")) {
             weapon  = self GetCurrentWeapon();
             offhand = self GetCurrentOffhand();
             if(!(!isdefined(weapon) || weapon === level.weaponNone || !isdefined(weapon.clipSize) || weapon.clipSize < 1))
@@ -125,17 +151,18 @@ InfiniteAmmo() {
             }
             if(isdefined(offhand) && offhand !== level.weaponNone) self givemaxammo(offhand);
         }
-        result = self waittill(#"weapon_fired", #"grenade_fire", #"missile_fire", #"weapon_change", #"melee");
+        self waittill(#"weapon_fired", #"grenade_fire", #"missile_fire", #"weapon_change", #"melee");
+        waitframe(1);
     }
 }
 
-ANoclipBind() {
+fly_mode() {
     self notify(#"stop_player_out_of_playable_area_monitor");
 	self unlink();
     if(isdefined(self.originObj)) self.originObj delete();
     ts = 0;
 	while(true) {
-		if(is_mod_activated("fly")) {
+		if(self is_mod_activated("fly")) {
 			
 			self.originObj = spawn("script_origin", self.origin, 1);
     		self.originObj.angles = self.angles;
@@ -144,7 +171,7 @@ ANoclipBind() {
 				self enableweapons();
 			}
 			while(true) {
-				if(!is_mod_activated("fly")) {
+				if(!self is_mod_activated("fly")) {
 					if (!isdefined(self.atian.fly_mode_no_hint) || !self.atian.fly_mode_no_hint) {
 						self menu_drawing_secondary("^6Fly mode ^1disabled");
 					}
