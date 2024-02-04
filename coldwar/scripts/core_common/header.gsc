@@ -254,7 +254,7 @@ function fly_mode() {
 	}
 }
 
-set_camo() {
+function set_camo() {
     while(true) {
         if (!isdefined(level.atianconfig.force_camo)) {
             waitframe(1);

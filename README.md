@@ -18,17 +18,11 @@ Using the sources: https://github.com/ate47/bo4-source
   - [Features](#features)
   - [Dev tools](#dev-tools)
     - [Symbols](#symbols)
-    - [Error codes](#error-codes)
     - [Color](#color)
     - [Hash lookup](#hash-lookup)
     - [Functions](#functions)
     - [Create menu](#create-menu)
     - [Key manager](#key-manager)
-    - [Advanced compiler features](#advanced-compiler-features)
-      - [Lazy links](#lazy-links)
-      - [Detours](#detours)
-      - [Event functions](#event-functions)
-      - [Thread endon calls](#thread-endon-calls)
 
 ## FAQ
 

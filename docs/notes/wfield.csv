@@ -1,6 +1,6 @@
 name,type,readonly,offset,size,weaponType,getter
 aifusetime,int,true,0xb64,0x4,properties,NULL
-projexplosionsound,hash,true,0x0,0x0,invalid,BlackOps4.exe+6c12e0
+projexplosionsound,hash,true,0x780,0x10,def,BlackOps4.exe+6c12e0
 projexplosionsoundplayer,hash,true,0x0,0x0,invalid,BlackOps4.exe+6c1310
 projsmokestartsound,hash,true,0x7a0,0x10,def,NULL
 projsmokeloopsound,hash,true,0x7b0,0x10,def,NULL
@@ -14,7 +14,7 @@ var_6262fd11,byte,true,0x1180,0x1,properties,NULL
 doblowback,byte,true,0x1182,0x1,properties,NULL
 var_36c76157,float,true,0x8c0,0x4,properties,NULL
 maxgibdistance,float,true,0x950,0x4,properties,NULL
-clipmodel,xmodel,true,0x0,0x0,invalid,BlackOps4.exe+6c1630
+clipmodel,xmodel,true,0xce0,0x8,def,BlackOps4.exe+6c1630
 projectilemodel,xmodel,true,0x0,0x0,invalid,BlackOps4.exe+6c1690
 fightdist,float,true,0x83c,0x4,properties,NULL
 maxdist,float,true,0x94c,0x4,properties,NULL
