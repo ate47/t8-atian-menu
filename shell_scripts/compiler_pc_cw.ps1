@@ -15,7 +15,7 @@ try {
         acts mod t9cee
     }
 
-    debugcompiler.exe $arg --noupdate
+    debugcompiler.exe $arg "-DATIAN_MENU_DEV"
 
     if (!$?) {
         Write-Error "Error when compiling";

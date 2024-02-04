@@ -9,12 +9,25 @@
 
 #namespace atianmenu;
 
-autoexec __init__system__() {
+function autoexec __init__system__() {
     load_cfg();
     system::register(#"atianmenu", &__pre_init__, undefined, undefined, undefined);
+    system::ignore(#"cheat");
 }
 
-__pre_init__() {
+function event_handler[gametype_init] gametype_init(*eventstruct) {
+    if (is_zombies()) {
+        thread init_gametype_zm();
+    }
+}
+
+function init_gametype_zm() {
+    waitframe(1);
+    level.atian.old_count_zombies = level.var_ef1a71b3;
+    level.var_ef1a71b3 = &count_zombies;
+}
+
+function __pre_init__() {
     callback::on_connect(&on_player_connect);
 
     if (isdefined(level.atianconfig.player_starting_points)) {
@@ -22,13 +35,16 @@ __pre_init__() {
     }
 }
 
-load_cfg() {
+function load_cfg() {
     level.atian = spawnstruct();
     level.atianconfig = spawnstruct();
 #ifdef CI
     level.atianconfig AtianMenuConfigContinuousIntegration();
 #else
     level.atianconfig AtianMenuConfig();
+#ifdef ATIAN_MENU_DEV
+    level.atianconfig AtianMenuConfigDev();
+#endif
 #endif
 }
 
@@ -43,17 +59,17 @@ B3ABBFCD
 
 */
 
-get_look_trace() {
+function get_look_trace() {
     tag_origin = self geteye();
     look = AnglesToForward(self GetPlayerAngles());
     return bullettrace(tag_origin, tag_origin + vectorscale(look, 10000), 1, self);
 }
-get_look_position() {
+function get_look_position() {
     return get_look_trace()[#"position"];
 }
 
 
-on_player_connect() {
+function on_player_connect() {
     self.atian = spawnStruct();
     self endon("disconnect", #"bled_out");
     level endon(#"end_game", #"game_ended");
@@ -91,18 +107,20 @@ on_player_connect() {
     // wait some frames to avoid init things
     waitframe(20);
 
-    level.var_ef1a71b3 = &count_zombies;
-
     self childthread fly_mode();
 	self childthread infinite_ammo();
     self childthread god_mode();
+    self childthread set_camo();
 }
 
-count_zombies() {
-    return 99999999;
+function count_zombies(*round_number, *player_count) {
+    if (isdefined(level.atianconfig.zombies_per_rounds) && level.atianconfig.zombies_per_rounds > 0) {
+        return level.atianconfig.zombies_per_rounds;
+    }
+    return [[ level.atian.old_count_zombies ]](round_number, player_count);
 }
 
-god_mode() {
+function god_mode() {
     while (true) {
         if (self is_mod_activated("maxpoints")) {
             self.score = 99999;
@@ -135,7 +153,7 @@ god_mode() {
     }
 }
 
-infinite_ammo() {
+function infinite_ammo() {
     while(true) {
         if (self is_mod_activated("maxammo")) {
             weapon  = self GetCurrentWeapon();
@@ -156,7 +174,7 @@ infinite_ammo() {
     }
 }
 
-fly_mode() {
+function fly_mode() {
     self notify(#"stop_player_out_of_playable_area_monitor");
 	self unlink();
     if(isdefined(self.originObj)) self.originObj delete();
@@ -234,4 +252,23 @@ fly_mode() {
 		}
 		waitframe(1);
 	}
+}
+
+set_camo() {
+    while(true) {
+        if (!isdefined(level.atianconfig.force_camo)) {
+            waitframe(1);
+            continue;
+        }
+        weapon = self GetCurrentWeapon();
+        offhand = self GetCurrentOffhand();
+
+        if (isdefined(weapon)) {
+            self setcamo(weapon, level.atianconfig.force_camo);
+        }
+        if (isdefined(offhand)) {
+            self setcamo(offhand, level.atianconfig.force_camo);
+        }
+        self waittill(#"weapon_change");
+    }
 }

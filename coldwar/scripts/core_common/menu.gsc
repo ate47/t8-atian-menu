@@ -1,4 +1,4 @@
-init_menu(menu_title) {
+function init_menu(menu_title) {
     if (isdefined(self.menu_info)) {
         // ignore menu creation if already set
         return false;
@@ -19,7 +19,7 @@ init_menu(menu_title) {
     return true;
 }
 
-menu_drawing_function(txt) {
+function menu_drawing_function(txt) {
     if (sessionmodeiszombiesgame()) {
         self iprintlnbold(txt);
     } else {
@@ -27,14 +27,15 @@ menu_drawing_function(txt) {
     }
 }
 
-menu_drawing_secondary(txt) {
+function menu_drawing_secondary(txt) {
     if (sessionmodeiszombiesgame()) {
         self iprintln(txt);
     } else {
         self iprintlnbold(txt);
     }
 }
-get_menu_size_count() {
+
+function get_menu_size_count() {
     if (sessionmodeiszombiesgame()) {
         return 5;
     } else {
@@ -43,7 +44,7 @@ get_menu_size_count() {
 }
 
 
-toggle_mod(mod_name, value = undefined) {
+function toggle_mod(mod_name, value = undefined) {
     if (!isdefined(self.menu_info)) {
         return;
     }
@@ -63,11 +64,11 @@ toggle_mod(mod_name, value = undefined) {
     }
 }
 
-is_mod_activated(mod_name) {
+function is_mod_activated(mod_name) {
     return isdefined(self.menu_info) && isdefined(self.menu_info.mods) && array::contains(self.menu_info.mods, mod_name);
 }
 
-add_menu(menu_id, menu_name, parent_id, create_switch = false, menuenterfunc = undefined, menuenterfuncdata1 = undefined, menuenterfuncdata2 = undefined, menuenterfuncdata3 = undefined, menuenterfuncdata4 = undefined) {
+function add_menu(menu_id, menu_name, parent_id, create_switch = false, menuenterfunc = undefined, menuenterfuncdata1 = undefined, menuenterfuncdata2 = undefined, menuenterfuncdata3 = undefined, menuenterfuncdata4 = undefined) {
     menu = 
     {
         #id: menu_id,
@@ -89,7 +90,7 @@ add_menu(menu_id, menu_name, parent_id, create_switch = false, menuenterfunc = u
     }
     return menu;
 }
-add_menu_item(menu_id, item_name, action, actiondata = undefined, actiondata2 = undefined, actiondata3 = undefined, actiondata4 = undefined, actiondata5 = undefined) {
+function add_menu_item(menu_id, item_name, action, actiondata = undefined, actiondata2 = undefined, actiondata3 = undefined, actiondata4 = undefined, actiondata5 = undefined) {
     if (!isdefined(self.menu_info.menus[menu_id])) {
         self menu_drawing_secondary("^1bad menu config " + menu_id + " isn't set!");
         return;
@@ -114,12 +115,12 @@ add_menu_item(menu_id, item_name, action, actiondata = undefined, actiondata2 = 
 }
 
 
-mod_switch(item, mod_name) {
+function mod_switch(item, mod_name) {
     item.activated = toggle_mod(mod_name);
     return true;
 }
 
-menu_switch(item, menu_id) {
+function menu_switch(item, menu_id) {
     if (!isdefined(menu_id)) {
         menu_id = "";
     }
@@ -145,19 +146,19 @@ menu_switch(item, menu_id) {
     return true;
 }
 
-add_menu_item_menuswitch(menu_id, item_name, new_menu_id) {
+function add_menu_item_menuswitch(menu_id, item_name, new_menu_id) {
     self add_menu_item(menu_id, item_name, &menu_switch, new_menu_id);
 }
 
-add_menu_item_modswitch(menu_id, item_name, mod_name) {
+function add_menu_item_modswitch(menu_id, item_name, mod_name) {
     self add_menu_item(menu_id, item_name, &mod_switch, mod_name);
 }
 
-get_current_menu() {
+function get_current_menu() {
     return self.menu_info.menus[self.menu_info.current_menu];
 }
 
-menu_think() {
+function menu_think() {
     if (!isdefined(self.menu_info)) {
         // ignore menu creation if already set
         return;
@@ -340,11 +341,11 @@ menu_think() {
     
 }
 
-ClickMenuButtonIsMenuNameEqual(menu_item, menu_name) {
+function ClickMenuButtonIsMenuNameEqual(menu_item, menu_name) {
     return menu_item.name == menu_name;
 }
 
-ClickMenuButton(menu_id, menu_item_name) {
+function ClickMenuButton(menu_id, menu_item_name) {
     menu = self.menu_info.menus[menu_id];
     if (isdefined(menu)) {
         menu_item_index = array::find(menu.sub_menus, menu_item_name, &ClickMenuButtonIsMenuNameEqual);
@@ -369,7 +370,7 @@ ClickMenuButton(menu_id, menu_item_name) {
     }
 }
 
-menu_open_message(menu, message, func, data1, data2) {
+function menu_open_message(menu, message, func, data1, data2) {
 
     if (isdefined(message)) {
         self menu_drawing_secondary(message);

@@ -1,6 +1,6 @@
 
 
-func_toggle_hud(item) {
+function func_toggle_hud(item) {
     if (!isdefined(self.atian.showhud)) {
         self.atian.showhud = false;
     }
@@ -16,8 +16,26 @@ func_toggle_hud(item) {
     item.activated = self.atian.showhud;
 }
 
+function func_dev_1(item) {
+    bundle = getscriptbundle("zombie_vars_settings");
 
-func_show_hud(item) {
+    self iprintln("^1Enabled: ^2" + isdefined(bundle));
+    if (isdefined(bundle)) {
+        self iprintln("^1Name:    ^2" + (isdefined(bundle.name) ? bundle.name : "undefined"));
+    }
+}
+
+function func_testvarargs(item) {
+    self test_varargs("aaa", "bbb", "ccc");
+}
+
+function test_varargs(...) {
+    for (i = 0; i < vararg.size; i++) {
+        self iprintln(i + " " + vararg[i]);
+    }
+}
+
+function func_show_hud(item) {
 	self val::set(#"atianmenu", "show_hud", 0);
 	self val::set(#"atianmenu", "show_weapon_hud", 0);
 
@@ -58,14 +76,14 @@ func_show_hud(item) {
 }
 
 
-func_set_mapgametype(item, map_name, gametype) {
+function func_set_mapgametype(item, map_name, gametype) {
     self menu_drawing_function("loading map " + map_name + " with mode " + gametype);
     switchmap_preload(map_name, gametype);
     wait(1);
     switchmap_switch();
 }
 
-func_spawn_vehicle(item, vehicule_type) {
+function func_spawn_vehicle(item, vehicule_type) {
 
     load = isassetloaded("vehicle", vehicule_type);
 
@@ -93,7 +111,7 @@ func_spawn_vehicle(item, vehicule_type) {
     }
 }
 
-func_enter_vehicle(item, slot) {
+function func_enter_vehicle(item, slot) {
     trace = self get_look_trace();
 
     entity = trace[#"entity"];
@@ -106,16 +124,7 @@ func_enter_vehicle(item, slot) {
     }
 }
 
-func_dev_1(item) {
-    bundle = getscriptbundle("zombie_vars_settings");
-
-    self iprintln("^1Enabled: ^2" + isdefined(bundle));
-    if (isdefined(bundle)) {
-        self iprintln("^1Name:    ^2" + (isdefined(bundle.name) ? bundle.name : "undefined"));
-    }
-}
-
-func_give_weapon(item, weapon_name) {
+function func_give_weapon(item, weapon_name) {
     weapon = getweapon(ishash(weapon_name) ? weapon_name : hash(weapon_name));
     if (isdefined(weapon)) {
         self giveweapon(weapon);
@@ -126,7 +135,7 @@ func_give_weapon(item, weapon_name) {
     return true;
 }
 
-func_zmignoreme(item) {
+function func_zmignoreme(item) {
     if (isdefined(self.tool_zmignoreme) && self.tool_zmignoreme) {
         self.tool_zmignoreme = false;
         self disableinvulnerability();
@@ -138,7 +147,7 @@ func_zmignoreme(item) {
     return true;
 }
 
-func_invulnerability(item) {
+function func_invulnerability(item) {
     if (isdefined(self.tool_invulnerability) && self.tool_invulnerability) {
         self.tool_invulnerability = false;
         self disableinvulnerability();
@@ -150,21 +159,21 @@ func_invulnerability(item) {
     return true;
 }
 
-func_drop(item) {
+function func_drop(item) {
     weapon = self getcurrentweapon();
     if (isdefined(weapon) && self hasweapon(weapon)) {
         self takeweapon(weapon);
     }
 }
 
-func_camo(item, id) {
+function func_camo(item, id) {
     currentweapon = self getcurrentweapon();
     if (isdefined(currentweapon)) {
         self setcamo(currentweapon, id);
     }
 }
 
-func_skin(item, id) {
+function func_skin(item, id) {
     self setspecialistindex(id);
     self setcharacteroutfit(0);
     self setcharacterwarpaintoutfit(0);
@@ -178,7 +187,7 @@ func_skin(item, id) {
     self function_ab96a9b5("decal", 0);
 }
 
-func_outfit(item, id) {
+function func_outfit(item, id) {
     self setcharacteroutfit(id);
     self setcharacterwarpaintoutfit(0);
     self function_ab96a9b5("head", 0);
@@ -191,7 +200,7 @@ func_outfit(item, id) {
     self function_ab96a9b5("decal", 0);
 }
 
-func_kill_zombies(item, loop = false) {
+function func_kill_zombies(item, loop = false) {
     if (!isdefined(level.zombie_team)) {
         return;
     }
@@ -212,7 +221,7 @@ func_kill_zombies(item, loop = false) {
     }
 }
 
-func_zombies_speed(item, speed) {
+function func_zombies_speed(item, speed) {
     if (!isdefined(speed)) {
         level.var_43fb4347 = undefined; 
         level.var_102b1301 = undefined;
@@ -235,7 +244,7 @@ func_zombies_speed(item, speed) {
     }
 }
 
-func_zombie_open_sesame(item) {
+function func_zombie_open_sesame(item) {
     setdvar(#"zombie_unlock_all", 1);
     level flag::set("power_on");
     level clientfield::set("zombie_power_on", 1);

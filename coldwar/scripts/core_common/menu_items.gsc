@@ -1,4 +1,4 @@
-init_menus() {
+function init_menus() {
     self add_menu("tool_menu", "Tools", "start_menu", true);
     self add_menu_item_modswitch("tool_menu", "Fly", "fly");
     self add_menu_item_modswitch("tool_menu", "Ammos", "maxammo");
@@ -310,11 +310,14 @@ init_menus() {
     //self add_vehicle_obj("veh_ultimate_turret_wz", #"veh_ultimate_turret_wz");
     //self add_vehicle_obj("defaultvehicle_mp", #"defaultvehicle_mp");
 
-    //self add_menu("dev", "Dev", "start_menu", true);
-    //self add_menu_item("dev", "test dev 1", &func_dev_1);
+    if (is_dev_mode()) {
+        self add_menu("dev", "Dev", "start_menu", true);
+        self add_menu_item("dev", "test dev 1", &func_dev_1);
+        self add_menu_item("dev", "test varargs", &func_testvarargs);
+    }
 }
 
-add_vehicle_obj(title, vehicule_type) {
+function add_vehicle_obj(title, vehicule_type) {
     if (!isassetloaded("vehicle", vehicule_type)) {
         return; // vehicle not loaded or already in the enum
     }

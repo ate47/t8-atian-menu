@@ -1,13 +1,20 @@
 
-is_warzone() {
+function is_warzone() {
     return sessionmodeiswarzonegame();
 }
 
-is_zombies() {
+function is_zombies() {
     return sessionmodeiszombiesgame();
 }
 
-is_multiplayer() {
+function is_multiplayer() {
     return sessionmodeismultiplayergame();
 }
 
+function is_dev_mode() {
+#ifdef ATIAN_MENU_DEV
+    return true;
+#else
+    return false;
+#endif
+}

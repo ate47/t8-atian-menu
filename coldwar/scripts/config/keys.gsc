@@ -4,7 +4,7 @@
  * These configurations are used to control the keys inside the menu.
  *
  */
-AtianMenuKeyConfig() {
+function AtianMenuKeyConfig() {
     // key config, options:
     // "action", "actionslotfour", "actionslotone", "actionslotthree", "actionslottwo", "ads", "attack", 
     // "changeseat", "frag", "jump", "melee", "offhandspecial", "reload", "secondaryoffhand", "sprint", 

@@ -1,4 +1,4 @@
-key_mgr_init() {
+function key_mgr_init() {
     if (isdefined(self.key_mgr)) {
         // ignore menu creation if already set
         return;
@@ -31,12 +31,12 @@ key_mgr_init() {
     self key_mgr_compile_key(#"special_weapon_ternary", key_config.special_weapon_ternary, #"use");
 }
 
-key_mgr_is_valid(key) {
+function key_mgr_is_valid(key) {
     key_mgr_init();
     return array::contains(self.key_mgr.valid, key);
 }
 
-key_mgr_compile_key(id, config, default_config) {
+function key_mgr_compile_key(id, config, default_config) {
     if (!isdefined(config)) {
         // no config, use default
         // force array
@@ -60,7 +60,7 @@ key_mgr_compile_key(id, config, default_config) {
     self.key_mgr.config[id] = cfg;
 }
 
-key_mgr_get_key_str(id) {
+function key_mgr_get_key_str(id) {
     key_mgr_init();
 
     if (!isdefined(self.key_mgr.config[id])) {
@@ -80,7 +80,7 @@ key_mgr_get_key_str(id) {
 
     return s;
 }
-key_mgr_has_key_pressed(id, wait_release = false) {
+function key_mgr_has_key_pressed(id, wait_release = false) {
     key_mgr_init();
 
     if (!isdefined(self.key_mgr.config[id])) {
@@ -114,7 +114,7 @@ key_mgr_has_key_pressed(id, wait_release = false) {
     return true;
 }
 
-key_mgr_get_key_str_id(id) {
+function key_mgr_get_key_str_id(id) {
     switch (id) {
         case #"action": return "[{+action}]";
         case #"actionslotfour": return "[{+actionslot 4}]";
@@ -140,7 +140,7 @@ key_mgr_get_key_str_id(id) {
         default: return "??";
     }
 }
-key_mgr_has_key_pressed_id(id) {
+function key_mgr_has_key_pressed_id(id) {
     switch (id) {
         case #"action":
             return self actionbuttonpressed();
