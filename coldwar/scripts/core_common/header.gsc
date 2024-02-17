@@ -6,6 +6,7 @@
 #include scripts\core_common\flag_shared;
 #include scripts\core_common\values_shared;
 #include scripts\core_common\util_shared;
+#include scripts\core_common\player\player_stats;
 
 #namespace atianmenu;
 

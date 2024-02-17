@@ -1,6 +1,6 @@
 #pragma once
 
-// void __fastcall sub_6C12E0(scriptInstance_t inst, WeaponDef * weap, scr_weapon_field_t * field)
+// void __fastcall sub_6C12E0(scriptInstance_t inst, Weapon weap, scr_weapon_field_t * field)
 
 namespace weaponfield
 {

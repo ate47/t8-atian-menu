@@ -4,9 +4,14 @@ Adam 614 Steel Retreat	2258850890	No clientfield named found in set.
 Alfa 559 Metallic Python	1046896252	not an entity
 Alfa 597 Sapphire Missile	1991549692	Error initializing lzma
 Baker 223 Meridian Absolution	3990130335	player getperks(<localClientNum>): localClientNum out of range
+Baker 441 Proper Section	2346900383	not an object
 Baker 917 Brute Goodnight	4104994143	can't allocate more script variables
 Boy 108 Sapphire Sagittarius	766802866	Invalid fastfile header
+Boy 145 Destructive Tank	3304446514	not an entity
 Boy 601 Everest Tiger	312545010	not a vector
+Boy 856 Burner Eclipse	1015938482	not an entity
+Boy 986 Extreme Crossbones	3488519410	object is not an array, string, or vector
+Bravo 421 Gold Marauder	1461218623	string index out of range
 Bravo 659 Operation Bear	57350207	Unknown perk
 Bravo 727 Marble Missile	1982281215	exceeded message limit
 Bravo 822 Grizzly Cover	2658987327	Invalid string
@@ -27,6 +32,7 @@ Charlie 643 Ace Alligator	1167526340	invalid session mode
 Collar 543 Satellite Fort	1756043215	Usage: kill( <source position>, <attacker>, <inflictor>, <weapon>)
 Collar 772 Flying Shell	2378228303	invalid session mode
 David 180 Camouflaged Asset	2572009355	vector scale expecting vector
+David 368 Fast Highway	3596277323	endoncallback must have at least one valid argument
 David 658 Battle Mole	2737681163	assert fail (with message)
 David 888 Patient Bayonet	1517473035	Value out of range.  Allowed values: 0 to 2
 Delta 18 Foolish Mamba	1273214009	CScr_PlayFX: invalid effect
@@ -36,11 +42,14 @@ Delta 291 Operation Stockade	2473308409	Execution Queue out of memory
 Delta 320 Monster Tornado	179749049	cannot cast to bool
 Delta 515 United Mauler	3137736761	script stack overflow (too many embedded function calls)
 Delta 694 Fierce Fort	1752379961	param is not an object
+Delta 796 Nightshade Artillery	2274889209	Invalid type passed in from array into waittill parameter list
 Delta 899 Urban Claw	2955023929	not an object
 Dog 415 Dry Owl	409067247	No clientfield named found in set.
 East 1005 Found Badger	269518924	Ammo count must not be negative
 East 481 Knockout Crossbones	3482075788	caller is not an object
+Echo 428 Camouflaged Goat	1246623636	not an entity
 Echo 51 Emerald Section	2344222932	assert fail
+Echo 526 Cut Bridge	2589667284	invalid velocity parameter in moveslide command
 Echo 530 Undercover Contraband	2706458388	Invalid localclientnum
 Echo 530 Undercover Contraband	2706458388	Trying to get a local client index for a client that is not a local client.
 Echo 782 Shellshocked Artillery	2269096660	vector scale expecting vector
@@ -51,7 +60,10 @@ Edward 522 Risky Wolverine	1132507782	bad opcode
 Edward 807 Revolutionary Cover	2667191558	Unknown ent type in GScr_GetFieldSetForEntityType.
 Fall 242 Resolute Force	1721606685	script stack overflow (too many embedded function calls)
 Fall 29 Tall Undertow	3410121757	cannot cast to bool
+Fall 313 Nickel Operator	1478783005	Pointer types passed into waittill_timeout expressions must evaluate as arrays
+Fall 344 Camouflaged Cover	2655888797	endon must have at least one valid argument
 Fall 388 Quick Conflict	1364331101	Object must be an array
+Fall 508 Solo Defense	1668598749	 not an object
 Fall 52 Air Spear	2921226909	Can't register dvar
 Fall 78 Sub-zero Serpent	3098745181	invalid character index
 Foxtrot 14 Nuclear Cobra	209668787	RandomInt parm must be positive integer.
@@ -62,7 +74,9 @@ Foxtrot 56 Small Dementor	3222417139	size cannot be applied to type
 Frank 175 General Stockade	2479879368	RegisterClientField can only accept bit ranges between 1 and 32.
 Frank 25 Good Fort	1746959112	script stack overflow (too many embedded function calls)
 Frank 575 Unlimited Salvo	2331090760	stack does not have the pool
+Frank 581 Rocky Taurus	648498056	Can't use wait with profiler
 Frank 620 Proper Giant	887228744	origin being set to NAN.
+Frank 654 Knockout Ice	3633073800	parameter does not exist
 Golf 643 Earth Specialist	2417691091	Execution Queue out of memory
 Hotel 151 Guerrilla Jackpot	3815761761	Error when loading fastfile
 Hotel 173 Tragic Goblin	3459949409	Failed to alloc client field - MAX_CLIENTFIELD_FIELDS_IN_SET=512 exceeded.
@@ -79,8 +93,11 @@ India 36 Skyline Overlord	2903034222	Invalid mode id
 India 441 Stealth Star	3857374126	caller is not an object
 India 579 Deadly Gemini	657813230	Error registering client field.  bCallbacksFor0WhenNew (CF_CALLBACK_ZERO_ON_NEW_ENT) is disallowed for counter type clientfields. Due to it's treatment of the old and new val as a ring buffer, the counter type is not valid on a new snapshot, new ent, or demojump
 India 811 Max Thunder	530300974	divide by 0
+Juliett 283 Apocalyptic Vulture	424587329	not a pathnode
 Juliett 791 Null Lantern	3678699265	not a pointer
+Juliett 859 Small Rookie	554833601	Can only do this call for node_turret
 June 426 Hurt Tactics	2489324310	cannot switch on type
+June 503 Swamp Lizard	369972438	First argument of a match call must be a struct
 June 951 Prepared Cover	2655465686	not a script function pointer
 Kilo 45 Gold Dove	219686544	object is not an array index
 Kilo 538 Patient Sagittarius	762454160	not a pointer
@@ -88,9 +105,12 @@ Kilo 56 Small Gemini	655503056	script stack overflow (too many embedded function
 Kilo 717 Clockwork Refuge	4220857104	Cannot call IncrementClientField on a 'counter' type clientfield on the frame it is spawned, since newEnts on the clientside will not process 'counter' type clientfields.
 King 1002 Fast Linebacker	3059411687	Argument and parameter count mismatch for LUINotifyEvent
 King 220 Wartorn Fury	2940210599	Invalid Version Handling. Grab Bat !!!
+King 30 Tough Asset	2577695271	SetModel can only be called on a script mover
 Lima 486 Flat Apocalypse	3361905947	Pointer is not an entity
 Lima 495 Old Security	2033447003	not an array key
+Lima 510 Bogus Rescue	2235303131	not a player entity
 Lima 886 Flat Jaguar	1080214043	caller is not an object
+May 1009 Torched Sunrise	3699844858	model not precached
 May 1009 Torched Sunrise	3699844858	parameter does not exist
 May 612 Snow Obelisk	1333649786	IsMature can only be called on a player.
 May 706 Due Sagittarius	768316282	script stack overflow (too many embedded function calls)
@@ -100,6 +120,7 @@ Mike 664 Steel Lion	245612264	foreach should be used with an array
 Mike 988 Gold Lion	236473384	invalid session mode
 Negative 184 Fake Locker	2202233143	waittill_timeout must have at least one valid argument
 Negative 274 Right Activity	4032788023	param is not an object
+Negative 780 Bad Security	2033364407	Failed to link entity
 Negative 8 Tough Doppelganger	4255418935	Pointer types passed into waittill expressions must evaluate as arrays
 Nora 205 Almighty Cipher	2629548679	Entity is not a player
 Nora 261 Marsh Blizzard	1412130119	parameter can't be cast to a hash
@@ -114,13 +135,16 @@ November 116 Mythic Scorpio	750896894	Invalid bgCache type
 November 268 Wild Greyhound	475330046	Invalid dvar type
 November 417 Silver Sunrise	3692510654	Invalid type passed in from array into waittill parameter list
 November 588 Barren Carrier	1593720126	Can't register dvar
+November 670 Boiling Avalanche	829015102	not a pointer
 November 670 Boiling Avalanche	829015102	var isn't a field object
 November 990 Fake Operator	1480821566	Error registering client field.  Attempted field size is not acceptable bit number range 1->32
 Ocean 270 Grounded Infantry	1850691545	Debug Break
 Ocean 529 Broken Lamprey	3967909977	Trying to get version of a demo when the demo system is idle.
 Option 102 Grounded Thunder	525308842	GetBaseWeaponItemIndex: invalid weapon named passed.
+Option 173 Camouflaged Mauler	3142427498	not an object
 Option 365 Old Ghoul	2687742442	Forced script exception.
 Option 961 Blue Whisper	3523382186	ScrEvent map is full, unable to register new event
+Oscar 1009 Emerald Invasion	1908025062	parameter isn't a string
 Oscar 771 Central Zeus	3329708710	Unable to find default bitfield, dropping
 Papa 1018 Rocky Beastmaster	3030895505	Whitelist failure for title
 Papa 209 Grey Cadet	1544804945	script stack overflow (too many embedded function calls)
@@ -128,6 +152,8 @@ Papa 656 Area Jaguar	1088278929	Raw file is not a file of the right type
 Papa 810 Right Case	2606724305	parameter does not exist
 Papa 859 Fierce Python	1047729873	exitlevel already called
 Papa 889 Tall Fury	2940376721	Cannot call SetClientField on 'counter' type clientfield
+Prep 161 Nova Discovery	3881402958	not an entity
+Prep 251 Late Scorpio	753299086	vector index out of range
 Prep 347 Morning Jackpot	3819578766	not a script function pointer
 Prep 367 Solar Activity	4039057166	LUINotifyEvent: entity must be a player entity
 Prep 374 Aggressive Breakfast	3135792078	Invalid type passed in from array into waittill parameter list
@@ -143,6 +169,7 @@ Quebec 965 Dangerous Jackpot	3810601716	undefined param
 Queen 114 Rocky Medal	1957162421	Can't find bgCache entry
 Queen 116 Classic Rattlesnake	124438261	not a script function pointer
 Queen 117 Weak Octopus	71894325	CamAnimScripted or ExtraCamAnimScripted can only be called on a player.
+Queen 119 Guerrilla Gremlin	3446625973	not a vector index
 Queen 19 Furious Cipher	2626909173	exceeded maximum number of script strings
 Queen 235 Wicked Libra	732489269	Non-player entity passed to UploadStats()
 Queen 254 Unfriendly Python	1053986869	GScr_UseBuildKitWeaponModel: called with weapon 'none'
@@ -153,6 +180,7 @@ Queen 964 Shellshocked Rank	2185211445	Can't register dvar
 Roger 356 Gray Pig	1377489376	Gesture key can't have the higher bit set
 Roger 391 Emerald Refuge	4223282976	Error loading fastfile patch header
 Roger 440 Unlimited Fox	3723589344	not a function pointer
+Roger 630 Shadow Zombie	899599904	first arg to waittill_timeout must evaluate to an integer or float value
 Roger 753 Fake Outlaw	4047738848	Invalid opcode (Recovery)
 Roger 850 Grey Whisper	3524483616	Ammo count must not be negative
 Roger 853 Lone Platoon	2122198496	The sound globals have been overwritten
@@ -163,9 +191,11 @@ Romeo 671 Iron Stallion	941828720	exitlevel already called
 Romeo 836 Deadly Scythe	3761634992	not a pointer
 Rush 114 Camouflaged Management	4232965560	divide by 0
 Rush 280 Extinct Storm	1403832952	Attempt to register ClientField failed.  Client Field set either already contains a field, or a hash collision has occurred.
+Rush 755 Light Gladiator	3314084408	not a string index
 Sail 1020 Clean Goodnight	4101525669	Can't use wait with profiler
 Sail 312 Extreme Boa	1072585573	Raw file is not a file of the right type
 Sail 397 Skyline Firestarter	3423138661	not a script function pointer
+Sail 506 Blink Alligator	1167129573	key does not internally belong to generic entities
 Sail 543 Earth Whisper	3524990949	not an array key
 Sail 630 Nuclear Bug	2894056997	DEV: CL_SetCGameTime: !cl->snap.valid
 Sail 692 Sapphire Avalanche	833940261	divide by 0
@@ -178,11 +208,14 @@ South 209 Shadow Stallion	949934674	Invalid Version Handling. Grab Bat !!!
 South 263 Confused Artillery	2279633554	SV_SetConfigstring: bad index
 South 379 Orange Clover	3657806674	invalid character index
 Spring 361 Right Mauler	3143575744	parameter does not exist
+Spring 633 Nova Breakfast	3126405504	Com_Error entered
 Spring 741 Area Outlander	3923586368	Kill failed
+Spring 756 Right Lizard	375374976	Can't use wait with profiler
 Spring 805 Apollo Valentine	1099145600	Can't find asset
 Spring 81 Snap Soldier	2408700928	not a valid name for a clientfield set.
 Summer 146 Satellite Ultra	2863351045	bad vm instance
 Summer 164 Brass Dove	219569925	hasperk() can only be called on local players
+Summer 332 River Rank	2183812485	getent used with more than one entity
 Summer 490 Defiant Eel	48546501	not a function pointer
 Summer 494 General Shell	2379198149	waittill must have at least one valid argument
 Summer 534 Winning Escort	2681972741	bad clientfield for name
@@ -203,7 +236,7 @@ Uniform 587 Nickel Breakfast	3122940489	caller is not an entity
 Union 152 Midas Werewolf	969461336	The setHintStringForPlayer command only works on trigger or script mover entities.
 Union 296 Poison Luck	3837625752	abort
 Union 326 Boiling Ice	3630798232	caller is not an object
-Union 344 Blue Headquarters	1795335576	not a pointer
+Union 344 Blue Headquarters	1795335576	not an object
 Union 701 Sick Eclipse	1013305560	Pointer types passed into waittill expressions must evaluate as arrays
 Union 908 Evil Giant	876169112	key value provided for struct is not valid
 Union 958 Mad Retreat	2253722136	CamAnimScripted can only be called on a player.
@@ -221,6 +254,7 @@ Vice 804 Axiom Conquest	3385008561	cannot set field on type
 Victor 616 Barricaded Fort	1750886746	The setHintString command only works on triggers, script mover entities, or players.
 Victor 629 Frozen Gemini	665902298	Parameter must be an array
 Victor 768 Golden Wolverine	1137123674	GScr_LUINotifyEvent: Expected Istrings, hash or integers only
+Victor 851 Grounded Lion	240121690	waittill_timeout must have at least one valid argument
 West 728 Rocky Goat	1252503459	caller is not an entity
 West 9 Unlimited Rat	1190254947	waittill must have at least one valid argument
 Whiskey 110 Late Tiger	317100267	unmatching types
@@ -231,6 +265,7 @@ Whiskey 456 Blazing Cause	3015158315	getperks() can only be called on local play
 Whiskey 960 Emerald Werewolf	968521323	player hasperk(<localClientNum>, <perk>): localClientNum out of range
 Winter 564 Goodbye Specialist	2429764318	GetRandomCompatibleAttachmentsForWeapon: Weapon has more than allowed number attachments
 Winter 6 Almighty Badger	280703902	parameter does not exist
+Winter 70 Sleeper Wolf	8016798	not an object
 XRay 274 Sub-zero Dawn	4088624643	Can't find asset
 XRay 353 Earth Abyss	3189465155	Invalid bgCache type
 XRay 373 Firebrand Mamba	1267091843	GScr_UseBuildKitWeaponModel: when specifying that the weapon is upgraded, a valid camoIndex MUST be specified
@@ -239,6 +274,7 @@ XRay 384 Metallic Apocalypse	3362159427	++ can only be used with integer type
 XRay 470 Screaming Justice	2974839555	invalid session mode
 XRay 552 Burned Station	2792722947	RegisterClientField can only accept 5 parameters
 XRay 775 Split Python	1056823939	Invalid type passed in from array into waittill parameter list
+Yankee 13 United Wombat	84281764	not a field object
 Yankee 220 Divided Intelligence	1895566756	dvar is not a 3d vector, but GetDvarVector3D has been called on it
 Yankee 444 Nitro Spartan	580674660	Unknown ent type in GScr_GetFieldSetForEntityType.
 Yankee 541 Numbered Boar	104978404	cannot cast type to canon
@@ -246,14 +282,16 @@ Yankee 687 Screech Snake	512306404	caller is not an object
 Yankee 687 Screech Snake	512306404	not a function pointer
 Yankee 780 Bad Shell	2368908708	invalid session mode
 Yankee 913 Evil Libra	725202020	caller is not an object
+Yankee 921 Gothic Navy	2055356644	entity is not a script_brushmodel, script_model, script_origin, probe, or light
 Yorker 553 Broken Lion	243367053	The setHintStringForPlayer command can only change prompts for players.
 Yorker 721 Nickel Platoon	2116335949	function called with too many parameters
-Young 100 Skyline Pavement	3607664937	not a script function
+Young 100 Skyline Pavement	3607664937	first arg to endon_callback must evaluate to a function value
 Young 137 Blind Lantern	3679846953	LUINotifyEvent: entity must be a player entity
 Young 598 Patient Command	1601358697	param is not an object
 Young 886 Major Payday	3346055721	GetWeapon: array can only contain strings or hashes
 Zebra 112 Vicious Stallion	946363963	Invalid opcode
 Zebra 32 Grizzly Lizard	377246011	invalid session mode
+Zebra 84 World Bayonet	1524410875	Execution Queue out of memory
 Zebra 909 Aurora Wave	3654063291	ScrEvent map is full, unable to register new event
 Zed 105 Riptide Volley	2517242050	parameter does not exist
 Zed 251 Silent Scorpio	753495682	RandomIntRange's second parameter must be greater than the first.
@@ -268,4 +306,4 @@ Zulu 442 Silver Cage	3105354540	Can't register dvar
 Zulu 523 Electric Lion	247375020	Attempting to register client field in client field set using bits, but system is out of space.
 Zulu 53 Heavy Cause	3016026156	Can't find asset
 Zulu 540 Grim Refuge	4221135532	Optional argument must be a string type
-	3126405504	Com_Error entered
+Zulu 636 Conflicted Conflict	1363519084	key is not internally a string

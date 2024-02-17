@@ -73,7 +73,7 @@ try {
     
     Write-Host "PC / CW"
     Set-Location coldwar
-    ..\build\compilercustom\DebugCompiler.exe --compile -DCI -Cplatform=PC '-Coutputname=../deploy/BlackOpsColdWar_atianmenu_pc'
+    ..\build\compilercustom\DebugCompiler.exe --compile -DCI -Cplatform=PC -Cgame=T9 '-Coutputname=../deploy/BlackOpsColdWar_atianmenu_pc'
     Set-Location ..
     if (!$?) {
         Write-Error "Issue when compiling the project"

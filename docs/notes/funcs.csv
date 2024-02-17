@@ -1015,7 +1015,7 @@ GSC-Function-49612d0,function_ea647602,1,2,0,BlackOps4.exe+6A2340,
 GSC-Function-49b5590,randomint(int max)->int,1,1,0,BlackOps4.exe+3198480,Return a random int between 0 and max
 GSC-Function-49b5590,randomfloat(float max)->float,1,1,0,BlackOps4.exe+31984D0,Return a random float between 0 and max
 GSC-Function-49b5590,randomintrange(int min; int max)->int,2,2,0,BlackOps4.exe+3198500,Return a random int between min and max
-GSC-Function-49b5590,randomintrangeinclusive,2,2,0,BlackOps4.exe+3198560,
+GSC-Function-49b5590,randomintrangeinclusive(int min; int max)->int,2,2,0,BlackOps4.exe+3198560,
 GSC-Function-49b5590,randomfloatrange(float min; float max)->float,2,2,0,BlackOps4.exe+31985C0,Return a random float between min and max
 GSC-Function-49b5590,function_fc3f770b,3,3,0,BlackOps4.exe+3198630,
 GSC-Function-49b5590,function_6151a62c,4,4,0,BlackOps4.exe+31986B0,
@@ -2838,8 +2838,8 @@ CSC-Function-4ed3470,physicsexplosioncylinder,5,5,0,BlackOps4.exe+1AB2EC0,
 CSC-Function-4ed3470,function_a1c09ed,1,1,0,BlackOps4.exe+1CF5DA0,
 CSC-Function-4ed3470,preloadfrontend,0,0,0,BlackOps4.exe+1AD61E0,
 CSC-Function-4ed3470,forcestreamxmodel(string|hash|int model;int lod;int mip)->bool,1,3,0,BlackOps4.exe+1AD61F0,Stream a model and set (lod = 0=NO; 1..8=LOD0..LOD7;-1=EXCLUDE_HIGHEST / mip = 0=NO; 1..5=MIP0..MIP4; -1=EXCLUDE_HIGHEST)
-CSC-Function-4ed3470,function_12f0cc0d,1,1,0,BlackOps4.exe+1AD6350,
-CSC-Function-4ed3470,function_4b51b406,1,1,0,BlackOps4.exe+1AD6450,
+CSC-Function-4ed3470,function_12f0cc0d(string|hash streamkey)->bool,1,1,0,BlackOps4.exe+1AD6350,
+CSC-Function-4ed3470,function_4b51b406(string|hash streamkey),1,1,0,BlackOps4.exe+1AD6450,
 CSC-Function-4ed3470,function_fcbd0b25,1,1,0,BlackOps4.exe+1B09460,
 CSC-Function-4ed3470,function_19968fd9,1,1,0,BlackOps4.exe+1B09580,
 CSC-Function-4ed3470,function_2fefd219,1,1,0,BlackOps4.exe+1B096A0,

@@ -314,6 +314,7 @@ function init_menus() {
         self add_menu("dev", "Dev", "start_menu", true);
         self add_menu_item("dev", "test dev 1", &func_dev_1);
         self add_menu_item("dev", "test varargs", &func_testvarargs);
+        self add_menu_item("dev", "test unlock all", &func_unlock_all);
     }
 }
 
