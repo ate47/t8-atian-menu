@@ -32,6 +32,7 @@ Charlie 643 Ace Alligator	1167526340	invalid session mode
 Collar 543 Satellite Fort	1756043215	Usage: kill( <source position>, <attacker>, <inflictor>, <weapon>)
 Collar 772 Flying Shell	2378228303	invalid session mode
 David 180 Camouflaged Asset	2572009355	vector scale expecting vector
+David 246 Violet Axe	285416523	not an object
 David 368 Fast Highway	3596277323	endoncallback must have at least one valid argument
 David 658 Battle Mole	2737681163	assert fail (with message)
 David 888 Patient Bayonet	1517473035	Value out of range.  Allowed values: 0 to 2
@@ -138,6 +139,7 @@ November 588 Barren Carrier	1593720126	Can't register dvar
 November 670 Boiling Avalanche	829015102	not a pointer
 November 670 Boiling Avalanche	829015102	var isn't a field object
 November 990 Fake Operator	1480821566	Error registering client field.  Attempted field size is not acceptable bit number range 1->32
+Ocean 116 Confused Corps	1642120921	1st param should be a hash or a string
 Ocean 270 Grounded Infantry	1850691545	Debug Break
 Ocean 529 Broken Lamprey	3967909977	Trying to get version of a demo when the demo system is idle.
 Option 102 Grounded Thunder	525308842	GetBaseWeaponItemIndex: invalid weapon named passed.
@@ -177,6 +179,7 @@ Queen 427 Apocalyptic Treasure	4182670005	invalid session mode
 Queen 47 Sick Eagle	325402485	script stack overflow (too many embedded function calls)
 Queen 577 Weak Manuever	1967731701	Invalid type passed in from array into waittill parameter list
 Queen 964 Shellshocked Rank	2185211445	Can't register dvar
+Roger 304 Hurt Honey	3797948576	not an object
 Roger 356 Gray Pig	1377489376	Gesture key can't have the higher bit set
 Roger 391 Emerald Refuge	4223282976	Error loading fastfile patch header
 Roger 440 Unlimited Fox	3723589344	not a function pointer

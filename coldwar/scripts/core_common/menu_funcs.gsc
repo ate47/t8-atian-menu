@@ -419,3 +419,16 @@ function func_unlock_all(item) {
     }
 #endif
 }
+
+func_3rdperson(item) {
+    if (!isdefined(self.thirdperson)) {
+        self.thirdperson = false;
+    }
+
+    self.thirdperson = !self.thirdperson;
+
+    item.activated = self.thirdperson;
+    
+    self setclientthirdperson(self.thirdperson);
+    return true;
+}

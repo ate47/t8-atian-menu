@@ -13,5 +13,7 @@ function AtianMenuConfigDev() {
        "tool_menu::Invulnerability"
     );
     
+    // zm halloween
+    setgametypesetting(#"hash_4751990deae37e66", true);
 }
 #endif

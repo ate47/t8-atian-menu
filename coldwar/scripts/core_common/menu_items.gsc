@@ -1,6 +1,7 @@
 function init_menus() {
     self add_menu("tool_menu", "Tools", "start_menu", true);
     self add_menu_item_modswitch("tool_menu", "Fly", "fly");
+    self add_menu_item("tool_menu", "Third person", &func_3rdperson);
     self add_menu_item_modswitch("tool_menu", "Ammos", "maxammo");
     
     self add_menu_item("tool_menu", "Invulnerability", &func_invulnerability);
