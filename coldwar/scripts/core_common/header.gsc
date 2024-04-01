@@ -11,7 +11,14 @@
 #namespace atianmenu;
 
 function autoexec __init__system__() {
+    level.script = util::get_map_name();
     load_cfg();
+
+    switch (hash(level.script)) {
+    case #"mp_nuketown6":
+        init_mp_nuketown6();
+        break;
+    }
     system::register(#"atianmenu", &__pre_init__, undefined, undefined, undefined);
     system::ignore(#"cheat");
 }
@@ -22,18 +29,10 @@ function event_handler[gametype_init] gametype_init(*eventstruct) {
     }
 }
 
-function init_gametype_zm() {
-    waitframe(1);
-    level.atian.old_count_zombies = level.var_ef1a71b3;
-    level.var_ef1a71b3 = &count_zombies;
-}
-
 function __pre_init__() {
     callback::on_connect(&on_player_connect);
 
-    if (isdefined(level.atianconfig.player_starting_points)) {
-        level.player_starting_points = level.atianconfig.player_starting_points;
-    }
+    __pre_init_zm__();
 }
 
 function load_cfg() {
@@ -112,13 +111,6 @@ function on_player_connect() {
 	self childthread infinite_ammo();
     self childthread god_mode();
     self childthread set_camo();
-}
-
-function count_zombies(*round_number, *player_count) {
-    if (isdefined(level.atianconfig.zombies_per_rounds) && level.atianconfig.zombies_per_rounds > 0) {
-        return level.atianconfig.zombies_per_rounds;
-    }
-    return [[ level.atian.old_count_zombies ]](round_number, player_count);
 }
 
 function god_mode() {

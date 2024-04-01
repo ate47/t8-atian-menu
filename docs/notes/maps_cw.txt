@@ -23,10 +23,6 @@ cp_ger_hub_post_cuba
 cp_ger_hub_post_yamantau
 cp_ger_hub_post_kgb
 cp_ger_hub_post_armada
-scripts/cp/cp_ger_hub_post_yamantau.gsc
-scripts/cp/cp_ger_hub_post_cuba.gsc
-scripts/cp/cp_ger_hub_post_kgb.gsc
-scripts/cp/cp_ger_hub_post_armada.gsc
 chapter
 selections
 selection

@@ -311,11 +311,70 @@ function init_menus() {
     //self add_vehicle_obj("veh_ultimate_turret_wz", #"veh_ultimate_turret_wz");
     //self add_vehicle_obj("defaultvehicle_mp", #"defaultvehicle_mp");
 
+
+    self add_menu("map", "Map", "start_menu", true);
+    if (is_multiplayer()) {
+        self add_menu_item("map", "mp_amerika", &func_set_map, "mp_amerika");
+        self add_menu_item("map", "mp_apocalypse", &func_set_map, "mp_apocalypse");
+        self add_menu_item("map", "mp_black_sea", &func_set_map, "mp_black_sea");
+        self add_menu_item("map", "mp_cartel", &func_set_map, "mp_cartel");
+        self add_menu_item("map", "mp_clhanger", &func_set_map, "mp_clhanger");
+        self add_menu_item("map", "mp_common", &func_set_map, "mp_common");
+        self add_menu_item("map", "mp_drivein_rm", &func_set_map, "mp_drivein_rm");
+        self add_menu_item("map", "mp_dune", &func_set_map, "mp_dune");
+        self add_menu_item("map", "mp_echelon", &func_set_map, "mp_echelon");
+        self add_menu_item("map", "mp_express_rm", &func_set_map, "mp_express_rm");
+        self add_menu_item("map", "mp_firebase", &func_set_map, "mp_firebase");
+        self add_menu_item("map", "mp_hijacked_rm", &func_set_map, "mp_hijacked_rm");
+        self add_menu_item("map", "mp_jungle_rm", &func_set_map, "mp_jungle_rm");
+        self add_menu_item("map", "mp_kgb", &func_set_map, "mp_kgb");
+        self add_menu_item("map", "mp_mall", &func_set_map, "mp_mall");
+        self add_menu_item("map", "mp_miami", &func_set_map, "mp_miami");
+        self add_menu_item("map", "mp_miami_strike", &func_set_map, "mp_miami_strike");
+        self add_menu_item("map", "mp_moscow", &func_set_map, "mp_moscow");
+        self add_menu_item("map", "mp_nuketown6", &func_set_map, "mp_nuketown6");
+        self add_menu_item("map", "mp_paintball_rm", &func_set_map, "mp_paintball_rm");
+        self add_menu_item("map", "mp_raid_rm", &func_set_map, "mp_raid_rm");
+        self add_menu_item("map", "mp_russianbase_rm", &func_set_map, "mp_russianbase_rm");
+        self add_menu_item("map", "mp_satellite", &func_set_map, "mp_satellite");
+        self add_menu_item("map", "mp_slums_rm", &func_set_map, "mp_slums_rm");
+        self add_menu_item("map", "mp_sm_amsterdam", &func_set_map, "mp_sm_amsterdam");
+        self add_menu_item("map", "mp_sm_berlin_tunnel", &func_set_map, "mp_sm_berlin_tunnel");
+        self add_menu_item("map", "mp_sm_central", &func_set_map, "mp_sm_central");
+        self add_menu_item("map", "mp_sm_deptstore", &func_set_map, "mp_sm_deptstore");
+        self add_menu_item("map", "mp_sm_finance", &func_set_map, "mp_sm_finance");
+        self add_menu_item("map", "mp_sm_game_show", &func_set_map, "mp_sm_game_show");
+        self add_menu_item("map", "mp_sm_gas_station", &func_set_map, "mp_sm_gas_station");
+        self add_menu_item("map", "mp_sm_market", &func_set_map, "mp_sm_market");
+        self add_menu_item("map", "mp_sm_vault", &func_set_map, "mp_sm_vault");
+        self add_menu_item("map", "mp_tank", &func_set_map, "mp_tank");
+        self add_menu_item("map", "mp_tundra", &func_set_map, "mp_tundra");
+        self add_menu_item("map", "mp_village_rm", &func_set_map, "mp_village_rm");
+        self add_menu_item("map", "mp_zoo_rm", &func_set_map, "mp_zoo_rm");
+    } else if (is_warzone()) {
+        self add_menu_item("map", "wz_doa", &func_set_map, "wz_doa");
+        self add_menu_item("map", "wz_duga", &func_set_map, "wz_duga");
+        self add_menu_item("map", "wz_forest", &func_set_map, "wz_forest");
+        self add_menu_item("map", "wz_golova", &func_set_map, "wz_golova");
+        self add_menu_item("map", "wz_sanatorium", &func_set_map, "wz_sanatorium");
+        self add_menu_item("map", "wz_ski_slopes", &func_set_map, "wz_ski_slopes");
+        self add_menu_item("map", "wz_zoo", &func_set_map, "wz_zoo");
+    } else if (is_zombies()) {
+        self add_menu_item("map", "Die Maschine", &func_set_map, "zm_silver");
+        self add_menu_item("map", "Firebase Z", &func_set_map, "zm_gold");
+        self add_menu_item("map", "Mauer der Toten", &func_set_map, "zm_platinum");
+        self add_menu_item("map", "Forsaken", &func_set_map, "zm_tungsten");
+    }
+
     if (is_dev_mode()) {
         self add_menu("dev", "Dev", "start_menu", true);
         self add_menu_item("dev", "test dev 1", &func_dev_1);
         self add_menu_item("dev", "test varargs", &func_testvarargs);
         self add_menu_item("dev", "test unlock all", &func_unlock_all);
+
+
+        self add_menu_item("dev", "test weapon 1", &func_dev_weap_1);
+        self add_menu_item("dev", "test weapon 2", &func_dev_weap_2);
     }
 }
 

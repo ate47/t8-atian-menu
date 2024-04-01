@@ -6,6 +6,9 @@ function AtianMenuConfigDev() {
     self.force_camo = 63;
 
 
+    // halloween or xmas
+    self.nuketown_event = #"halloween";
+
     self.preloaded_menus = array(
        "tool_menu::Ammos",
        "tool_zm::Max Points",

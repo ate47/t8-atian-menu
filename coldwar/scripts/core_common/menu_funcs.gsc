@@ -75,14 +75,6 @@ function func_show_hud(item) {
 	self val::reset(#"atianmenu", "show_weapon_hud");
 }
 
-
-function func_set_mapgametype(item, map_name, gametype) {
-    self menu_drawing_function("loading map " + map_name + " with mode " + gametype);
-    switchmap_preload(map_name, gametype);
-    wait(1);
-    switchmap_switch();
-}
-
 function func_spawn_vehicle(item, vehicule_type) {
 
     load = isassetloaded("vehicle", vehicule_type);
@@ -344,6 +336,30 @@ function lookup_group_name(str) {
     case #"global": return "global";
     default: return "" + str;
     }
+}
+
+
+function func_set_mapgametype(item, map_name, gametype) {
+    self menu_drawing_function("loading map " + map_name + " with mode " + gametype);
+    switchmap_preload(map_name, gametype);
+    wait(1);
+    switchmap_switch();
+}
+
+function func_set_map(item, map_name) {
+    self menu_drawing_function("loading " + map_name);
+
+    map(map_name);
+    wait(1);
+    switchmap_switch();
+}
+function func_set_gametype(item, gametype) {
+    map_name = util::get_map_name();
+    self menu_drawing_function("loading mode " + gametype);
+
+    switchmap_load(map_name, gametype);
+    wait(1);
+    switchmap_switch();
 }
 
 function func_unlock_all(item) {
