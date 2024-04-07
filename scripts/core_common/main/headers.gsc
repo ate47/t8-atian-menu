@@ -96,7 +96,7 @@ __init__() {
     streak_vehicle_callback();
 
 #ifdef SHIELD_GSC_DEPLOY
-    thread atian_menu_think();
+    //thread atian_menu_think();
 #endif
 }
 

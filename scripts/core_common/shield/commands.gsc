@@ -1,4 +1,5 @@
 #ifdef SHIELD_GSC_DEPLOY
+/*
 atian_menu_think() {
     level endon(#"end_game", #"game_ended");
 
@@ -90,4 +91,5 @@ atian_menu_think() {
         setdvar(#"amc", "");
     }
 }
+*/
 #endif
