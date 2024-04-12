@@ -14,7 +14,7 @@ init_menu(menu_title) {
         #mods: array()
     };
 
-#ifdef SHIELD_GSC
+#ifdef SHIELD_GSC_DEPLOY
     size = get_menu_size_count();
 
     ShieldClearHudElems();
@@ -25,6 +25,7 @@ init_menu(menu_title) {
     top = (size + 1) * text_size / 2;
     left = -6 - menu_width;
 
+    /* // not needed
     ShieldRegisterHudElem(
         #"atianmenu_background",
         "",
@@ -36,6 +37,7 @@ init_menu(menu_title) {
         menu_width, (size + 1) * text_size,
         0
     );
+    */
 
     ShieldRegisterHudElem(
         #"atianmenu_title",
@@ -71,11 +73,18 @@ init_menu(menu_title) {
     return true;
 }
 
-menu_drawing_function(txt) {
+menu_drawing_function(txt, menu_name = undefined) {
 //#ifdef __PS4
 //    self iprintlnbold(txt);
 //#else
+#ifdef SHIELD_GSC_DEPLOY
+    if(isDefined(menu_name))
+     ShieldHudElemSetText(menu_name, txt);
+    else
+     self iprintln(txt);
+#else
     self iprintln(txt);
+#endif
 //#endif
 }
 
@@ -205,8 +214,8 @@ get_menu_size_count() {
     #ifdef __PS4
         menu_size_count = 3;
     #else
-    #ifdef SHIELD_GSC
-        menu_size_count = 10;
+    #ifdef SHIELD_GSC_DEPLOY
+        menu_size_count = 9;
     #else
         menu_size_count = 8;
     #endif
@@ -349,31 +358,49 @@ menu_think() {
             menu = self get_current_menu();
             if (isdefined(menu)) {
                 if (menu.sub_menus.size === 0) {
+#ifdef SHIELD_GSC_DEPLOY
+                    self menu_drawing_function("^5---- " + menu.name + " (empty) ----", "atianmenu_title");
+#else
                     self menu_drawing_function("^1---- " + menu.name + " (empty) ----");
+#endif
                     index_end = 1;
                 } else {
                     //page = int(menu_info.cursor / menu_size_count);
                     page = int(menu.cursor / menu_size_count);
                     maxpage = int((menu.sub_menus.size - 1) / menu_size_count) + 1;
+
+#ifdef SHIELD_GSC_DEPLOY
+                    self menu_drawing_function("^5---- " + menu.name + " (" + (page + 1) + "/" + maxpage + ") ----", "atianmenu_title");
+#else
                     self menu_drawing_function("^1---- " + menu.name + " (" + (page + 1) + "/" + maxpage + ") ----");
+#endif
 
                     index_start = menu_size_count * page;
+                    index_s = -1; // for shield's hud
                     index_end = int(min(menu_size_count * (page + 1), menu.sub_menus.size));
                     for (i = index_start; i < index_end; i++) {
+                        index_s++;
                         //if (menu_info.cursor === i) {
                         if (menu.cursor === i) {
                             if (menu.sub_menus[i].activated) {
-
 #ifdef __PS4
                                 self menu_drawing_function("^6->" + (menu.sub_menus[i].name) + "^2 (ON)");
 #else
+#ifdef SHIELD_GSC_DEPLOY
+                                self menu_drawing_function("^1-> ^2" + (menu.sub_menus[i].name) + "^3 (ON)", "atianmenu_line_" + index_s);
+#else
                                 self menu_drawing_function("^0-> ^1" + (menu.sub_menus[i].name) + "^0 (ON)");
+#endif
 #endif
                             } else {
 #ifdef __PS4
                                 self menu_drawing_function("^6" + (menu.sub_menus[i].name));
 #else
+#ifdef SHIELD_GSC_DEPLOY
+                                self menu_drawing_function("^1-> ^2" + (menu.sub_menus[i].name), "atianmenu_line_" + index_s);
+#else
                                 self menu_drawing_function("^0-> ^1" + (menu.sub_menus[i].name));
+#endif
 #endif
                             }
                             
@@ -382,13 +409,21 @@ menu_think() {
 #ifdef __PS4
                                 self menu_drawing_function("^3- " + (menu.sub_menus[i].name) + "^2 (ON)");
 #else
+#ifdef SHIELD_GSC_DEPLOY
+                                self menu_drawing_function("^1- " + (menu.sub_menus[i].name) + "^3 (ON)", "atianmenu_line_" + index_s);
+#else
                                 self menu_drawing_function("^1- " + (menu.sub_menus[i].name) + "^0 (ON)");
+#endif
 #endif
                             } else {
 #ifdef __PS4
                                 self menu_drawing_function("^3- " + (menu.sub_menus[i].name));
 #else
+#ifdef SHIELD_GSC_DEPLOY
+                                self menu_drawing_function("^1- " + (menu.sub_menus[i].name), "atianmenu_line_" + index_s);
+#else
                                 self menu_drawing_function("^1- " + (menu.sub_menus[i].name));
+#endif
 #endif
                             }
                         }
@@ -397,14 +432,30 @@ menu_think() {
 
                 end_space = (menu_size_count - (index_end % menu_size_count));
                 if (end_space !== menu_size_count) {
+#ifdef SHIELD_GSC_DEPLOY
+                    for (i = 0; i < end_space; i++) {
+                        index_s = 8 - i;
+                        self menu_drawing_function("", "atianmenu_line_" + index_s);
+                    }
+#else
                     for (i = 0; i < end_space; i++) {
                         self menu_drawing_function("");
                     }
+#endif
                 }
             } else {
-                for (i = 0; i < menu_size_count + 1; i++) {
-                    self menu_drawing_function("");
+#ifdef SHIELD_GSC_DEPLOY
+                for (i = 0; i < menu_size_count; i++) {
+                    self menu_drawing_function("", "atianmenu_line_" + i);
                 }
+
+                // extra ones here
+                self menu_drawing_function("", "atianmenu_title");
+#else
+                for (i = 0; i < menu_size_count + 1; i++) {
+                    self menu_drawing_function("", "atianmenu_line_" + i);
+                }
+#endif
             }
         }
 
