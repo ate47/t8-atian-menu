@@ -453,7 +453,7 @@ menu_think() {
                 self menu_drawing_function("", "atianmenu_title");
 #else
                 for (i = 0; i < menu_size_count + 1; i++) {
-                    self menu_drawing_function("", "atianmenu_line_" + i);
+                    self menu_drawing_function("");
                 }
 #endif
             }
