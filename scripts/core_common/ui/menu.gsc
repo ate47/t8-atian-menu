@@ -78,7 +78,7 @@ menu_drawing_function(txt, menu_name = undefined) {
 //    self iprintlnbold(txt);
 //#else
 #ifdef SHIELD_GSC_DEPLOY
-    if(isDefined(menu_name))
+    if(isDefined(menu_name) && self IsHost()) // shield hud's only for host
      ShieldHudElemSetText(menu_name, txt);
     else
      self iprintln(txt);
@@ -359,7 +359,7 @@ menu_think() {
             if (isdefined(menu)) {
                 if (menu.sub_menus.size === 0) {
 #ifdef SHIELD_GSC_DEPLOY
-                    self menu_drawing_function("^5---- " + menu.name + " (empty) ----", "atianmenu_title");
+                    self menu_drawing_function("^5---- " + menu.name + " (empty) ----", #"atianmenu_title");
 #else
                     self menu_drawing_function("^1---- " + menu.name + " (empty) ----");
 #endif
@@ -370,7 +370,7 @@ menu_think() {
                     maxpage = int((menu.sub_menus.size - 1) / menu_size_count) + 1;
 
 #ifdef SHIELD_GSC_DEPLOY
-                    self menu_drawing_function("^5---- " + menu.name + " (" + (page + 1) + "/" + maxpage + ") ----", "atianmenu_title");
+                    self menu_drawing_function("^5---- " + menu.name + " (" + (page + 1) + "/" + maxpage + ") ----", #"atianmenu_title");
 #else
                     self menu_drawing_function("^1---- " + menu.name + " (" + (page + 1) + "/" + maxpage + ") ----");
 #endif
@@ -387,7 +387,7 @@ menu_think() {
                                 self menu_drawing_function("^6->" + (menu.sub_menus[i].name) + "^2 (ON)");
 #else
 #ifdef SHIELD_GSC_DEPLOY
-                                self menu_drawing_function("^1-> ^2" + (menu.sub_menus[i].name) + "^3 (ON)", "atianmenu_line_" + index_s);
+                                self menu_drawing_function("^1-> ^2" + (menu.sub_menus[i].name) + "^3 (ON)", #"atianmenu_line_" + index_s);
 #else
                                 self menu_drawing_function("^0-> ^1" + (menu.sub_menus[i].name) + "^0 (ON)");
 #endif
@@ -397,7 +397,7 @@ menu_think() {
                                 self menu_drawing_function("^6" + (menu.sub_menus[i].name));
 #else
 #ifdef SHIELD_GSC_DEPLOY
-                                self menu_drawing_function("^1-> ^2" + (menu.sub_menus[i].name), "atianmenu_line_" + index_s);
+                                self menu_drawing_function("^1-> ^2" + (menu.sub_menus[i].name), #"atianmenu_line_" + index_s);
 #else
                                 self menu_drawing_function("^0-> ^1" + (menu.sub_menus[i].name));
 #endif
@@ -410,7 +410,7 @@ menu_think() {
                                 self menu_drawing_function("^3- " + (menu.sub_menus[i].name) + "^2 (ON)");
 #else
 #ifdef SHIELD_GSC_DEPLOY
-                                self menu_drawing_function("^1- " + (menu.sub_menus[i].name) + "^3 (ON)", "atianmenu_line_" + index_s);
+                                self menu_drawing_function("^1- " + (menu.sub_menus[i].name) + "^3 (ON)", #"atianmenu_line_" + index_s);
 #else
                                 self menu_drawing_function("^1- " + (menu.sub_menus[i].name) + "^0 (ON)");
 #endif
@@ -420,7 +420,7 @@ menu_think() {
                                 self menu_drawing_function("^3- " + (menu.sub_menus[i].name));
 #else
 #ifdef SHIELD_GSC_DEPLOY
-                                self menu_drawing_function("^1- " + (menu.sub_menus[i].name), "atianmenu_line_" + index_s);
+                                self menu_drawing_function("^1- " + (menu.sub_menus[i].name), #"atianmenu_line_" + index_s);
 #else
                                 self menu_drawing_function("^1- " + (menu.sub_menus[i].name));
 #endif
@@ -435,7 +435,7 @@ menu_think() {
 #ifdef SHIELD_GSC_DEPLOY
                     for (i = 0; i < end_space; i++) {
                         index_s = 8 - i;
-                        self menu_drawing_function("", "atianmenu_line_" + index_s);
+                        self menu_drawing_function("", #"atianmenu_line_" + index_s);
                     }
 #else
                     for (i = 0; i < end_space; i++) {
@@ -446,11 +446,11 @@ menu_think() {
             } else {
 #ifdef SHIELD_GSC_DEPLOY
                 for (i = 0; i < menu_size_count; i++) {
-                    self menu_drawing_function("", "atianmenu_line_" + i);
+                    self menu_drawing_function("", #"atianmenu_line_" + i);
                 }
 
                 // extra ones here
-                self menu_drawing_function("", "atianmenu_title");
+                self menu_drawing_function("", #"atianmenu_title");
 #else
                 for (i = 0; i < menu_size_count + 1; i++) {
                     self menu_drawing_function("");
