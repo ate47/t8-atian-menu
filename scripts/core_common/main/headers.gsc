@@ -11,6 +11,7 @@
 #include scripts\core_common\flag_shared;
 #include scripts\core_common\bots\bot;
 #include scripts\core_common\player\player_role;
+#include scripts\core_common\player\player_stats;
 #include scripts\core_common\values_shared;
 #include scripts\core_common\spawner_shared;
 #include scripts\core_common\flagsys_shared;

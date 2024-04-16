@@ -436,7 +436,7 @@ function func_unlock_all(item) {
 #endif
 }
 
-func_3rdperson(item) {
+function func_3rdperson(item) {
     if (!isdefined(self.thirdperson)) {
         self.thirdperson = false;
     }

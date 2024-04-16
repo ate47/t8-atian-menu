@@ -390,8 +390,8 @@ GSC-Function-49b9ae0,recordent,1,1,1,BlackOps4.exe+330A630,nulled
 GSC-Function-49b9ae0,recorderplayback,0,0,1,BlackOps4.exe+330A680,nulled
 GSC-Function-49b9ae0,print,1,7fffffff,1,BlackOps4.exe+3397C50,nulled
 GSC-Function-49b9ae0,println,1,7fffffff,1,BlackOps4.exe+3397C60,nulled
-GSC-Function-49b9ae0,profileprintln,1,7fffffff,0,BlackOps4.exe+3397C70,
-GSC-Function-49b9ae0,printtoprightln,1,3,0,BlackOps4.exe+3397C80,
+GSC-Function-49b9ae0,profileprintln,1,7fffffff,0,BlackOps4.exe+3397C70,nulled
+GSC-Function-49b9ae0,printtoprightln,1,3,0,BlackOps4.exe+3397C80,nulled
 GSC-Function-49b9ae0,iprintln,1,7fffffff,0,BlackOps4.exe+3397C90,
 GSC-Function-49b9ae0,iprintlnbold,1,7fffffff,0,BlackOps4.exe+3397CF0,
 GSC-Function-49b9ae0,print3d,2,6,1,BlackOps4.exe+3397D50,nulled

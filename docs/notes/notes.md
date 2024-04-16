@@ -1306,4 +1306,19 @@ music zm_frontend
 
 
 Animtree = sub_2755AB0
+
+DVAR_NONE = 0,
+DVAR_ARCHIVE = 1 << 0, // 0x1
+DVAR_USERINFO = 1 << 1, // 0x2
+DVAR_SERVERINFO = 1 << 2, // 0x4
+DVAR_SYSTEMINFO = 1 << 3, // 0x8
+DVAR_LATCH = 1 << 4, // 0x10
+DVAR_ROM = 1 << 5, // 0x20
+DVAR_SAVED = 1 << 6, // 0x40
+DVAR_INIT = 1 << 7, // 0x80
+DVAR_CHEAT = 1 << 8, // 0x100
+//DVAR_UNKNOWN = 1 << 9, // 0x200
+DVAR_EXTERNAL = 1 << 10, // 0x400
+//DVAR_UNKNOWN3x = 1 << 11-13, // 0x800-> // 0x2000
+DVAR_SESSIONMODE = 1 << 15 // 0x8000
 ```

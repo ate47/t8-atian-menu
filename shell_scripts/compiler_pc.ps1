@@ -14,8 +14,8 @@ try {
 
     debugcompiler.exe $arg --noupdate `
         "-Cplatform=PC" `
-        "-Cclient=false" "-Cdll=true" "-Cdll.lazylink=true" "-Cdll.builtins=true" "-Cdll.detours=true" `
-        "-DATIAN_MENU_DEV" "-DSHIELD_GSC_DEPLOY" #"-DATIAN_MENU_LOOKUP_BIG"
+        "-DATIAN_MENU_DEV" #"-DSHIELD_GSC_DEPLOY" #"-DATIAN_MENU_LOOKUP_BIG"
+        #"-Cclient=false" "-Cdll=true" "-Cdll.lazylink=true" "-Cdll.builtins=true" "-Cdll.detours=true" `
 
     if (!$?) {
         Write-Error "Error when compiling";

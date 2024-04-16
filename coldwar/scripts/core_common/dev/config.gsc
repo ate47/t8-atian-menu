@@ -1,7 +1,7 @@
 #ifdef ATIAN_MENU_DEV
 function AtianMenuConfigDev() {
     // zombies per round
-    self.zombies_per_rounds = 99999;
+    self.zombies_per_rounds = 7;
 
     self.force_camo = 63;
 
@@ -16,7 +16,22 @@ function AtianMenuConfigDev() {
        "tool_menu::Invulnerability"
     );
     
+    self.zombies_eyes = #"random";
+
     // zm halloween
-    setgametypesetting(#"hash_4751990deae37e66", true);
+    //setgametypesetting(#"hash_4751990deae37e66", true);
+
+    thread get_xp_multiplier_late();
+}
+
+function get_xp_multiplier_late() {
+    wait 10;
+    if (is_zombies()) {
+        level.var_3426461d = &get_xp_multiplier;
+    }
+}
+
+function get_xp_multiplier() {
+    return 99999;
 }
 #endif

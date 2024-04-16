@@ -109,16 +109,147 @@ debugln(str_line) {
 }
 
 func_dev_method1(item) {
-
-#ifdef ATIAN_COD_TOOL
-    //ACTSLookup(4222);
-    z = 2 == [];
-#endif
-    return undefined;
+    setdvar(#"party_minplayers", 1);
+    setdvar(#"bot_difficulty", 3);
+    setdvar(#"bot_maxAllies", 9);
+    setdvar(#"bot_maxAxis", 9);
+    setdvar(#"bot_maxFree", 17);
+    setdvar(#"lobby_forceLAN", 1);
+    setdvar(#"lobbyDedicatedSearchSkip", 1);
+    setdvar(#"lobbySearchSkip", 1);
 }
+compute_weapon_xp() {
+    levels = [];
+
+    if (sessionmodeiszombiesgame()) {
+        prefix = "zm";
+    } else if (sessionmodeismultiplayergame()) {
+        prefix = "mp";
+    } else {
+        return levels;
+    }
+
+    tablename = #"gamedata/weapons/" + prefix + "/" + prefix + "_gunlevels.csv";
+
+    rows = tablelookuprowcount(tablename);
+    columns = tablelookupcolumncount(tablename);
+
+    if (!isdefined(rows) || !isdefined(columns) || rows * columns == 0) {
+        return levels; // empty
+    }
+
+    for (row = 0; row < rows; row++) {
+        xp = tablelookupcolumnforrow(tablename, row, 2);
+        name = tablelookupcolumnforrow(tablename, row, 3);
+
+        wp = getweapon(name);
+
+        if (!isdefined(wp)) {
+            continue;
+        }
+
+        cls = util::getweaponclass(wp);
+
+        if (!isdefined(levels[cls])) {
+            levels[cls] = [];
+        }
+        levels[cls][wp] = xp;
+    }
+
+    return levels;
+}
+function lookup_group_name(str) {
+    if (!ishash(str)) {
+        return str;
+    }
+    switch (str) {
+    case #"weapon_assault": return "weapon_assault";
+    case #"weapon_smg": return "weapon_smg";
+    case #"weapon_tactical": return "weapon_tactical";
+    case #"weapon_lmg": return "weapon_lmg";
+    case #"weapon_sniper": return "weapon_sniper";
+    case #"weapon_pistol": return "weapon_pistol";
+    case #"weapon_launcher": return "weapon_launcher";
+    case #"weapon_cqb": return "weapon_cqb";
+    case #"weapon_knife": return "weapon_knife";
+    case #"weapon_special": return "weapon_special";
+    case #"group": return "group";
+    case #"common": return "common";
+    case #"global": return "global";
+    default: return "" + str;
+    }
+}
+
+
 func_dev_method2(item) {
-	//self clientfield::set("" + #"atianmenu_testfield", 1);
-    return undefined;
+#ifdef ATIAN_MENU_DEV
+    if (sessionmodeiszombiesgame()) {
+        prefix = "zm";
+        files = 6;
+    } else if (sessionmodeismultiplayergame()) {
+        prefix = "mp";
+        files = 6;
+    } else if (sessionmodeiswarzonegame()) {
+        prefix = "wz";
+        files = 0;
+    } else if (sessionmodeiscampaigngame()) {
+        prefix = "cp";
+        files = 1;
+    } else {
+        self menu_drawing_secondary("^1Can't find mode");
+        return;
+    }
+
+    levels = compute_weapon_xp();
+    weapon_groups = array(#"weapon_assault", #"weapon_smg", #"weapon_tactical", #"weapon_lmg", #"weapon_sniper", #"weapon_pistol", #"weapon_launcher", #"weapon_cqb", #"weapon_knife", #"weapon_special");
+    // attachment
+
+    for (tableid = 1; tableid <= files; tableid++) {
+	    tablename = #"gamedata/stats/" + prefix + "/statsmilestones" + tableid + ".csv";
+        rows = tablelookuprowcount(tablename);
+        columns = tablelookupcolumncount(tablename);
+
+        if (!isdefined(rows) || !isdefined(columns) || rows * columns == 0) {
+            continue; // empty
+        }
+
+
+        for (row = 0; row < rows; row++) {
+            lvl = tablelookupcolumnforrow(tablename, row, 1);
+            value = tablelookupcolumnforrow(tablename, row, 2);
+            group = tablelookupcolumnforrow(tablename, row, 3);
+            name = tablelookupcolumnforrow(tablename, row, 4);
+
+            self menu_drawing_function(lookup_group_name(group) + "/" + name);
+        
+            switch (group) {
+            case #"global":
+                self stats::function_dad108fa(name, value);
+                break;
+            case #"group":
+                foreach (grpname, wps in levels) {
+                    foreach (weapon, xplvl in wps) {
+                        self stats::function_e24eec31(weapon, name, value);
+                        break;
+                    }
+                    wait 0.01;
+                }
+                break;
+            default:
+                if (isdefined(levels[group])) {
+                    foreach (weapon, xplvl in levels[group]) {
+                        self stats::set_stat(#"hash_60e21f66eb3a1f18", weapon.name, #"xp", xplvl);
+                        self stats::function_e24eec31(weapon, name, value);
+                        wait 0.01;
+                    }
+                }
+                break;
+            }
+            wait 0.1;
+        }
+        uploadstats(self);
+    }
+#endif
 }
 func_dev_method3(item) {
     return undefined;

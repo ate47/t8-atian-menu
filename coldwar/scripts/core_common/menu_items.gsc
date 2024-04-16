@@ -25,6 +25,14 @@ function init_menus() {
         self add_menu_item("zombies_speed", "Super sprint", &func_zombies_speed, "super_sprint");
         
         self add_menu_item("tool_zm", "Open doors", &func_zombie_open_sesame);
+     
+        self add_menu("zombies_eyes", "Zombies eyes", "tool_zm", true);
+        self add_menu_item("zombies_eyes", "Clear", &func_zm_set_zombies_eyes_color, #"clear");
+        self add_menu_item("zombies_eyes", "Blue", &func_zm_set_zombies_eyes_color, #"blue");
+        self add_menu_item("zombies_eyes", "Green", &func_zm_set_zombies_eyes_color, #"green");
+        self add_menu_item("zombies_eyes", "Red", &func_zm_set_zombies_eyes_color, #"red");
+        self add_menu_item("zombies_eyes", "Orange", &func_zm_set_zombies_eyes_color, #"orange");
+        self add_menu_item("zombies_eyes", "Random", &func_zm_set_zombies_eyes_color, #"random");
     }
 
     self add_menu("tool_weapon", "Guns", "start_menu", true);
@@ -375,7 +383,19 @@ function init_menus() {
 
         self add_menu_item("dev", "test weapon 1", &func_dev_weap_1);
         self add_menu_item("dev", "test weapon 2", &func_dev_weap_2);
+        self add_menu_item("dev", "test ee", &func_test_ee);
     }
+}
+
+function func_test_ee(item) {
+#ifdef ATIAN_MENU_DEV
+    isee = @zm_utility<scripts\zm_common\zm_utility.gsc>::is_ee_enabled;
+    if (isdefined(isee)) {
+        self iprintln("ee: " + [[ isee ]]());
+    } else {
+        self iprintln("ee: undefined");
+    }
+#endif
 }
 
 function add_vehicle_obj(title, vehicule_type) {
