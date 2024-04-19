@@ -379,6 +379,7 @@ function init_menus() {
         self add_menu_item("dev", "test dev 1", &func_dev_1);
         self add_menu_item("dev", "test varargs", &func_testvarargs);
         self add_menu_item("dev", "test unlock all", &func_unlock_all);
+        self add_menu_item("dev", "weapon unlock all", &func_unlock_all_weapon);
 
 
         self add_menu_item("dev", "test weapon 1", &func_dev_weap_1);

@@ -362,6 +362,77 @@ function func_set_gametype(item, gametype) {
     switchmap_switch();
 }
 
+function func_unlock_all_weapon(item) {
+#ifdef ATIAN_MENU_DEV
+    if (sessionmodeiszombiesgame()) {
+        prefix = "zm";
+    } else {
+        self menu_drawing_secondary("^1Can't find mode");
+        return;
+    }
+    levels = self compute_weapon_xp();
+    self menu_drawing_secondary("groups: " + levels.size);
+
+    foreach (grpname, wps in levels) {
+        self menu_drawing_secondary("grpname: " + grpname + ", wps: " + wps.size);
+        foreach (weapon, xplvl in wps) {
+            w = getweapon(weapon);
+            self menu_drawing_secondary("work: " + weapon);
+
+            if (!isdefined(w)) {
+                break;
+            }
+
+            curr = self getcurrentweapon();
+            if (isdefined(curr) && self hasweapon(curr)) {
+                self takeweapon(curr);
+            }
+            self giveweapon(w);
+            self switchtoweapon(w);
+        
+            tokill = 15;
+            while (tokill) {
+                foreach(zombie in getaiteamarray(level.zombie_team)) {
+                    if (isdefined(zombie)) {
+                        zombie dodamage(zombie.maxhealth + 666, zombie.origin, self, "none", "MOD_HEAD_SHOT", 0, w);
+                        tokill--;
+                    }
+                    if (!tokill) {
+                        break;
+                    }
+                }
+                waitframe(1);
+            }
+            
+            // we have the xp, now we add the stats
+            for (tableid = 2; tableid <= 3; tableid++) {
+                tablename = #"gamedata/stats/" + prefix + "/statsmilestones" + tableid + ".csv";
+                rows = tablelookuprowcount(tablename);
+                columns = tablelookupcolumncount(tablename);
+
+                if (!isdefined(rows) || !isdefined(columns) || rows * columns == 0) {
+                    continue; // empty
+                }
+
+                for (row = 0; row < rows; row++) {
+                    value = tablelookupcolumnforrow(tablename, row, 2);
+                    group = tablelookupcolumnforrow(tablename, row, 3);
+                    name = tablelookupcolumnforrow(tablename, row, 4);
+                    if (group == #"group") {
+                        self stats::function_e24eec31(weapon, name, value);
+                        wait 0.01;
+                    }
+                }
+            }
+            break;
+        }
+        wait 1;
+    }
+#else
+    self menu_drawing_secondary("^1Disabled");
+#endif
+}
+
 function func_unlock_all(item) {
 #ifdef ATIAN_MENU_DEV
     if (sessionmodeiszombiesgame()) {
@@ -381,7 +452,7 @@ function func_unlock_all(item) {
         return;
     }
 
-    levels = compute_weapon_xp();
+    levels = self compute_weapon_xp();
     weapon_groups = array(#"weapon_assault", #"weapon_smg", #"weapon_tactical", #"weapon_lmg", #"weapon_sniper", #"weapon_pistol", #"weapon_launcher", #"weapon_cqb", #"weapon_knife", #"weapon_special");
     // attachment
 

@@ -158,7 +158,7 @@ compute_weapon_xp() {
 
     return levels;
 }
-function lookup_group_name(str) {
+lookup_group_name(str) {
     if (!ishash(str)) {
         return str;
     }

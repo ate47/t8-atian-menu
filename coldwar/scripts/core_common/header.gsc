@@ -91,17 +91,16 @@ function on_player_connect() {
     self init_menus();
 
 
-    if ((isdefined(self.atianconfig_menu_preloaded) && self.atianconfig_menu_preloaded)
-        || !isdefined(self.atianconfig.preloaded_menus)) {
-        return;
-    }
-    for (i = 0; i < self.atianconfig.preloaded_menus.size; i++) {
-        preload_menu = strtok(self.atianconfig.preloaded_menus[i], "::");
-        if (preload_menu.size == 2) {
-            self ClickMenuButton(preload_menu[0], preload_menu[1]);
+    if (!(isdefined(self.atianconfig_menu_preloaded) && self.atianconfig_menu_preloaded)
+        && isdefined(self.atianconfig.preloaded_menus)) {
+        for (i = 0; i < self.atianconfig.preloaded_menus.size; i++) {
+            preload_menu = strtok(self.atianconfig.preloaded_menus[i], "::");
+            if (preload_menu.size == 2) {
+                self ClickMenuButton(preload_menu[0], preload_menu[1]);
+            }
         }
+        self.atianconfig_menu_preloaded = true;
     }
-    self.atianconfig_menu_preloaded = true;
 
     self thread menu_think();
 
