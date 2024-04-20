@@ -374,18 +374,21 @@ function init_menus() {
         self add_menu_item("map", "Forsaken", &func_set_map, "zm_tungsten");
     }
 
-    if (is_dev_mode()) {
-        self add_menu("dev", "Dev", "start_menu", true);
-        self add_menu_item("dev", "test dev 1", &func_dev_1);
-        self add_menu_item("dev", "test varargs", &func_testvarargs);
-        self add_menu_item("dev", "test unlock all", &func_unlock_all);
-        self add_menu_item("dev", "weapon unlock all", &func_unlock_all_weapon);
+#ifdef ATIAN_MENU_DEV
+    self add_menu("unlockall", "Unlock", "start_menu", true);
+    self add_menu_item("unlockall", "Unlock all stats", &func_unlock_all);
+    self add_menu_item("unlockall", "Weapon give camos", &func_test_giveall_weapon);
+    self add_menu_item("unlockall", "Give max bonus", &func_give_bonus);
 
+    self add_menu("dev", "Dev", "start_menu", true);
+    self add_menu_item("dev", "test dev 1", &func_dev_1);
+    self add_menu_item("dev", "test varargs", &func_testvarargs);
+    //self add_menu_item("dev", "weapon unlock all", &func_unlock_all_weapon);
 
-        self add_menu_item("dev", "test weapon 1", &func_dev_weap_1);
-        self add_menu_item("dev", "test weapon 2", &func_dev_weap_2);
-        self add_menu_item("dev", "test ee", &func_test_ee);
-    }
+    self add_menu_item("dev", "test weapon 1", &func_dev_weap_1);
+    self add_menu_item("dev", "test weapon 2", &func_dev_weap_2);
+    self add_menu_item("dev", "test ee", &func_test_ee);
+#endif
 }
 
 function func_test_ee(item) {

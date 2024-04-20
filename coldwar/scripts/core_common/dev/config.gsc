@@ -1,7 +1,7 @@
 #ifdef ATIAN_MENU_DEV
 function AtianMenuConfigDev() {
     // zombies per round
-    self.zombies_per_rounds = 7;
+    self.zombies_per_rounds = 999999;
 
     self.force_camo = 63;
 
@@ -32,6 +32,6 @@ function get_xp_multiplier_late() {
 }
 
 function get_xp_multiplier() {
-    return 99999;
+    return 1;
 }
 #endif
