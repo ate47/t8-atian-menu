@@ -388,6 +388,8 @@ function init_menus() {
     self add_menu_item("dev", "test weapon 1", &func_dev_weap_1);
     self add_menu_item("dev", "test weapon 2", &func_dev_weap_2);
     self add_menu_item("dev", "test ee", &func_test_ee);
+    self add_menu_item("dev", "tp master", &func_tp_master_spawner);
+    
 #endif
 }
 

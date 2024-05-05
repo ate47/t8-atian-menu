@@ -66,7 +66,7 @@ function get_look_trace() {
     return bullettrace(tag_origin, tag_origin + vectorscale(look, 10000), 1, self);
 }
 function get_look_position() {
-    return get_look_trace()[#"position"];
+    return (get_look_trace())[#"position"];
 }
 
 

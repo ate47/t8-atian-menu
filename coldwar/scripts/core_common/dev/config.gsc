@@ -32,6 +32,6 @@ function get_xp_multiplier_late() {
 }
 
 function get_xp_multiplier() {
-    return 1;
+    return 2;
 }
 #endif

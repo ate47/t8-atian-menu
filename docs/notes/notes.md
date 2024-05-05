@@ -1305,6 +1305,10 @@ ASSET_TYPE_UNLOCKABLE_ITEM_TABLE -> sub_6B63F0
 music zm_frontend
 
 
+RegisterBool 3D04010
+             45479E9
+             FA7F258
+
 Animtree = sub_2755AB0
 
 DVAR_NONE = 0,

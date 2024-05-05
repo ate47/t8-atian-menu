@@ -197,9 +197,15 @@ function func_kill_zombies(item, loop = false) {
         return;
     }
     for (;;) {
-        foreach(zombie in getaiteamarray(level.zombie_team)) {
+        arr = getaiteamarray(level.zombie_team);
+        foreach(zombie in arr) {
             if (isdefined(zombie)) {
                 zombie dodamage(zombie.maxhealth + 666, zombie.origin, self);
+            }
+        }
+        foreach(zombie in arr) {
+            if (isdefined(zombie)) {
+                zombie delete();
             }
         }
         if (!(loop && !self key_mgr_has_key_pressed(#"parent_page"))) {
@@ -704,4 +710,49 @@ function func_3rdperson(item) {
     
     self setclientthirdperson(self.thirdperson);
     return true;
+}
+
+function func_tp_master_spawner(item) {
+    zombie_spawners = getentarray("zombie_spawner", "script_noteworthy");
+    if (!isdefined(zombie_spawners) || !zombie_spawners.size) {
+        self menu_drawing_secondary("invalid zombie spawners");
+        return;
+    }
+
+    if (!isdefined(level.atian.zombie_spawners_idx)) {
+        level.atian.zombie_spawners_idx = 0;
+    } else {
+        level.atian.zombie_spawners_idx = (level.atian.zombie_spawners_idx + 1) % zombie_spawners.size;
+    }
+
+    spawner = zombie_spawners[level.atian.zombie_spawners_idx];
+
+    if (!isdefined(spawner.origin)) {
+        self menu_drawing_secondary("invalid zombie spawner: no origin");
+        return;
+    }
+
+    self func_teleport(item, spawner.origin);
+}
+
+func_teleport(item, origin, angles = undefined) {
+    if (isentity(origin)) {
+        origin = origin.origin;
+    } else if (isstruct(origin)) {
+        origin = origin.origin;
+    }
+
+    if (!isdefined(origin) || !isvec(origin)) {
+        return;
+    }
+
+    self setorigin(origin);
+
+    if (isdefined(self.originObj)) { // teleport if we are in fly more
+        self.originObj.future_tp = origin;
+    }
+    if (isdefined(angles)) {
+        self setPlayerAngles(angles);
+    }
+    self menu_drawing_secondary("^6Teleported to ^2" + origin);
 }

@@ -11,6 +11,7 @@ Boy 145 Destructive Tank	3304446514	not an entity
 Boy 44 Blood Lamprey	3971544690	time cannot be negative
 Boy 601 Everest Tiger	312545010	not a vector
 Boy 856 Burner Eclipse	1015938482	not an entity
+Boy 918 Monster Gorilla	364298674	not an actor
 Boy 986 Extreme Crossbones	3488519410	object is not an array, string, or vector
 Bravo 421 Gold Marauder	1461218623	string index out of range
 Bravo 659 Operation Bear	57350207	Unknown perk
@@ -82,6 +83,7 @@ Frank 575 Unlimited Salvo	2331090760	stack does not have the pool
 Frank 581 Rocky Taurus	648498056	Can't use wait with profiler
 Frank 620 Proper Giant	887228744	origin being set to NAN.
 Frank 654 Knockout Ice	3633073800	parameter does not exist
+Frank 995 General Fleet	1708109640	try to send format param with unknown type
 Golf 643 Earth Specialist	2417691091	Execution Queue out of memory
 Hotel 151 Guerrilla Jackpot	3815761761	Error when loading fastfile
 Hotel 173 Tragic Goblin	3459949409	Failed to alloc client field - MAX_CLIENTFIELD_FIELDS_IN_SET=512 exceeded.
@@ -107,6 +109,7 @@ Juliett 791 Null Lantern	3678699265	not a pointer
 Juliett 859 Small Rookie	554833601	Can only do this call for node_turret
 June 426 Hurt Tactics	2489324310	cannot switch on type
 June 503 Swamp Lizard	369972438	First argument of a match call must be a struct
+June 927 Frozen Clover	3669018198	not an entity
 June 951 Prepared Cover	2655465686	not a script function pointer
 Kilo 45 Gold Dove	219686544	object is not an array index
 Kilo 538 Patient Sagittarius	762454160	not a pointer
@@ -127,6 +130,7 @@ May 612 Snow Obelisk	1333649786	IsMature can only be called on a player.
 May 706 Due Sagittarius	768316282	script stack overflow (too many embedded function calls)
 Mike 419 Violet Tank	3288551912	expected array type to add value pair
 Mike 434 Discovered Garrison	1777362536	Could not allocate memory for zone
+Mike 465 Great Theater	2512843688	GetVehicleNode used with more than one node
 Mike 664 Steel Lion	245612264	foreach should be used with an array
 Mike 988 Gold Lion	236473384	invalid session mode
 Negative 184 Fake Locker	2202233143	waittill_timeout must have at least one valid argument
@@ -157,6 +161,7 @@ Ocean 116 Confused Corps	1642120921	1st param should be a hash or a string
 Ocean 270 Grounded Infantry	1850691545	Debug Break
 Ocean 529 Broken Lamprey	3967909977	Trying to get version of a demo when the demo system is idle.
 Option 102 Grounded Thunder	525308842	GetBaseWeaponItemIndex: invalid weapon named passed.
+Option 129 Knockout Rescue	2240566762	entity is not a player
 Option 173 Camouflaged Mauler	3142427498	not an object
 Option 365 Old Ghoul	2687742442	Forced script exception.
 Option 961 Blue Whisper	3523382186	ScrEvent map is full, unable to register new event
@@ -179,7 +184,9 @@ Prep 633 October Menace	1438198158	Can't use wait with profiler
 Prep 941 Battle Gravedigger	3559732046	script stack overflow (too many embedded function calls)
 Quebec 126 Kinetic Mortar	1999906612	type is not a integer or float
 Quebec 387 Poison Goodnight	4106063796	key value provided for array is not valid
+Quebec 405 Major Mole	2742072756	Can't register more dvar
 Quebec 529 Knockout Headquarters	1804370036	Failed to verify file type 
+Quebec 646 Tropic Breakfast	3121501044	try to send format param string isn't cached
 Quebec 794 Bog Fleet	1697447028	Can't use wait with profiler
 Quebec 873 Midnight Operator	1487510644	Could not load gsc object
 Quebec 919 Hidden Dawn	4077883892	Param can't be higher than 7
@@ -253,6 +260,7 @@ Tango 882 Aurora Invasion	1909233687	Optional argument must be a vector type
 Tommy 439 Tin Highway	3592841213	cannot directly set the origin on AI.  Use the teleport command instead.
 Tommy 443 Destructive Command	1609894461	bad entity
 Tommy 478 Determined Volley	2532286589	error message
+Tommy 625 Cruel Moon	4131199549	GetVehicleNode - key is not internally a string
 Tommy 833 Rightful Hippo	987874813	self isn't a field object
 Uniform 31 Empty Jet	1915758537	RegisterClientField can only accept bit ranges between 1 and 32.
 Uniform 587 Nickel Breakfast	3122940489	caller is not an entity
@@ -335,3 +343,4 @@ Zulu 523 Electric Lion	247375020	Attempting to register client field in client f
 Zulu 53 Heavy Cause	3016026156	Can't find asset
 Zulu 540 Grim Refuge	4221135532	Optional argument must be a string type
 Zulu 636 Conflicted Conflict	1363519084	key is not internally a string
+Zulu 974 Winning Clover	3671833516	accuracy mod must be nonnegative
