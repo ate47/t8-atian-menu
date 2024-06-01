@@ -57,6 +57,7 @@ Echo 51 Emerald Section	2344222932	assert fail
 Echo 526 Cut Bridge	2589667284	invalid velocity parameter in moveslide command
 Echo 530 Undercover Contraband	2706458388	Invalid localclientnum
 Echo 530 Undercover Contraband	2706458388	Trying to get a local client index for a client that is not a local client.
+Echo 690 Dazed Owl	417308884	Invalid xpak magic
 Echo 782 Shellshocked Artillery	2269096660	vector scale expecting vector
 Echo 828 Hurt Scorpio	744499668	too many vehicles
 Edward 388 Embattled Ultra	2855209542	Cannot call IncrementClientField on a non-'counter' type clientfield.
@@ -262,6 +263,7 @@ Tommy 443 Destructive Command	1609894461	bad entity
 Tommy 478 Determined Volley	2532286589	error message
 Tommy 625 Cruel Moon	4131199549	GetVehicleNode - key is not internally a string
 Tommy 833 Rightful Hippo	987874813	self isn't a field object
+Uniform 205 Air Gorilla	354335369	Unable to find HierarchicalTaskNetwork asset
 Uniform 31 Empty Jet	1915758537	RegisterClientField can only accept bit ranges between 1 and 32.
 Uniform 587 Nickel Breakfast	3122940489	caller is not an entity
 Union 152 Midas Werewolf	969461336	The setHintStringForPlayer command only works on trigger or script mover entities.
@@ -316,6 +318,7 @@ Yankee 687 Screech Snake	512306404	not a function pointer
 Yankee 780 Bad Shell	2368908708	invalid session mode
 Yankee 913 Evil Libra	725202020	caller is not an object
 Yankee 921 Gothic Navy	2055356644	entity is not a script_brushmodel, script_model, script_origin, probe, or light
+Yankee 953 Axiom Helmet	1824757220	calcWeaponOptions takes at least 2 arguments
 Yorker 54 Violet Zombie	889403597	SpawnCollision: Collision model name is not valid
 Yorker 553 Broken Lion	243367053	The setHintStringForPlayer command can only change prompts for players.
 Yorker 721 Nickel Platoon	2116335949	function called with too many parameters
