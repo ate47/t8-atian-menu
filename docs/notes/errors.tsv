@@ -110,6 +110,7 @@ Juliett 791 Null Lantern	3678699265	not a pointer
 Juliett 859 Small Rookie	554833601	Can only do this call for node_turret
 June 426 Hurt Tactics	2489324310	cannot switch on type
 June 503 Swamp Lizard	369972438	First argument of a match call must be a struct
+June 515 Foolish Convoy	1625493526	Can't find info for script vehicle
 June 927 Frozen Clover	3669018198	not an entity
 June 951 Prepared Cover	2655465686	not a script function pointer
 Kilo 45 Gold Dove	219686544	object is not an array index

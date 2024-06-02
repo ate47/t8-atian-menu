@@ -348,7 +348,9 @@ function lookup_group_name(str) {
 function func_set_mapgametype(item, map_name, gametype) {
     self menu_drawing_function("loading map " + map_name + " with mode " + gametype);
     switchmap_preload(map_name, gametype);
-    wait(1);
+    util::wait_network_frame(1);
+    switchmap_load(map_name, gametype);
+    util::wait_network_frame(1);
     switchmap_switch();
 }
 
@@ -364,7 +366,7 @@ function func_set_gametype(item, gametype) {
     self menu_drawing_function("loading mode " + gametype);
 
     switchmap_load(map_name, gametype);
-    wait(1);
+    util::wait_network_frame(1);
     switchmap_switch();
 }
 
