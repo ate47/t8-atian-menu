@@ -11,7 +11,7 @@ AtianMenuConfigZombies() {
     self.zm_custom_show_timer = true;
 
     // xp multiplier (only in online)
-    // self.xp_multiplier = 9999;
+    // self.xp_multiplier = 9999 = true;
 
     // bypass custom mutation no EE policy
     self.zm_custom_ee = true;
