@@ -1298,8 +1298,27 @@ ximage_ce8f8ad3c930512 dice cod18
 
 i_mtl_wpn_t8_camo_topology_04_c
 
-ximage_ee83883ec8d08f topology 1
 
+dump "N:\SteamLibrary\steamapps\common\Call of Duty HQ\cod.exe"
+dump "N:\SteamLibrary\steamapps\common\Call of Duty HQ\sp23\sp23-cod.exe"
+sethandler mw6 init "N:\SteamLibrary\steamapps\common\Call of Duty HQ" setlocaleprefix "eng_" loadcommonfiles
+sethandler mw6 init "N:\SteamLibrary\steamapps\common\Call of Duty HQ\sp23" loadcommonfiles
+sethandler mw6 init "N:\SteamLibrary\steamapps\common\Call of Duty HQ"  decryptscript "N:\bo4hash\t8wip\gsc\output_bo6\gsc" "N:\bo4hash\t8wip\gsc\output_bo6\gsc_dec"
+sethandler bo6 init "N:\SteamLibrary\steamapps\common\Call of Duty HQ\" loadcommonfiles
+
+bo6 errors:
+3361 // stack overflow (ScriptMethodCallPointer)
+3371 // usage of ++ without number
+3375 // endon should be used with strings
+5229 // usage of .size on non string/pointer type
+5577 // can't allocate more variable
+14009 // usage of flat_args without giving array
+
+loadwc mp_jup*
+loadwc srv_*
+
+ximage_ee83883ec8d08f topology 1
+sp23-cod_dump
 ASSET_TYPE_UNLOCKABLE_ITEM_TABLE -> sub_6B63F0
 
 music zm_frontend
@@ -1325,4 +1344,11 @@ DVAR_CHEAT = 1 << 8, // 0x100
 DVAR_EXTERNAL = 1 << 10, // 0x400
 //DVAR_UNKNOWN3x = 1 << 11-13, // 0x800-> // 0x2000
 DVAR_SESSIONMODE = 1 << 15 // 0x8000
+
+
+// factions:
+hash_11DA02CA40639DE5 (boolean)
+hash_5341DE25CB0D6F66 (int)
+hash_47067C5D4FE9075E (int)
+
 ```

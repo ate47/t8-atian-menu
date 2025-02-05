@@ -1,0 +1,36 @@
+svc_nop 0
+svc_gamestate 1
+svc_configstring 2
+svc_gameinformation 3
+svc_baseline 4
+svc_entitycache 5
+svc_dynentstate 6
+svc_destructiblestate 7
+svc_ropestate 8
+svc_glassstate 9
+svc_serverCommand 10
+svc_serverCommandBuffer 11
+svc_download 12
+svc_snapshot 13
+svc_servercommands 14
+svc_EOF 15
+
+enum svc_ops_e : __int32
+{
+  svc_nop = 0x0,
+  svc_gamestate = 0x1,
+  svc_configstring = 0x2,
+  svc_gameinformation = 0x3,
+  svc_baseline = 0x4,
+  svc_entitycache = 0x5,
+  svc_dynentstate = 0x6,
+  svc_destructiblestate = 0x7,
+  svc_ropestate = 0x8,
+  svc_glassstate = 0x9,
+  svc_serverCommand = 0xA,
+  svc_serverCommandBuffer = 0xB,
+  svc_download = 0xC,
+  svc_snapshot = 0xD,
+  svc_servercommands = 0xE,
+  svc_EOF = 0xF,
+};
