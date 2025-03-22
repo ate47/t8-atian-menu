@@ -1297,7 +1297,7 @@ Offset	Xref	Function	Line	Column	Pseudocode line
 ximage_ce8f8ad3c930512 dice cod18
 
 i_mtl_wpn_t8_camo_topology_04_c
-
+^(([^.0-9sn])|(s[^u])|(n[^u])|(su[^b])).+
 
 dump "N:\SteamLibrary\steamapps\common\Call of Duty HQ\cod.exe"
 dump "N:\SteamLibrary\steamapps\common\Call of Duty HQ\sp23\sp23-cod.exe"
@@ -1305,6 +1305,10 @@ sethandler mw6 init "N:\SteamLibrary\steamapps\common\Call of Duty HQ" setlocale
 sethandler mw6 init "N:\SteamLibrary\steamapps\common\Call of Duty HQ\sp23" loadcommonfiles
 sethandler mw6 init "N:\SteamLibrary\steamapps\common\Call of Duty HQ"  decryptscript "N:\bo4hash\t8wip\gsc\output_bo6\gsc" "N:\bo4hash\t8wip\gsc\output_bo6\gsc_dec"
 sethandler bo6 init "N:\SteamLibrary\steamapps\common\Call of Duty HQ\" loadcommonfiles
+loadwc srv_* loadwc fra_* loadwc *zm_t10_quartz*
+
+bo6 hashes:
+#x4%llx -> scrhash
 
 bo6 errors:
 3361 // stack overflow (ScriptMethodCallPointer)

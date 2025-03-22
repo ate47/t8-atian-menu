@@ -2890,7 +2890,7 @@ CSC-Function-4ed3470,clearlastupdatedcollectibles,1,1,0,BlackOps4.exe+1C7DE60,
 CSC-Function-4ed3470,getmigrationstatus,1,1,0,BlackOps4.exe+1C7DE70,
 CSC-Function-4ed3470,getroundsplayed,1,1,0,BlackOps4.exe+1C86150,
 CSC-Function-4ed3470,adddebugcommand,2,2,1,BlackOps4.exe+1B63190,nulled
-CSC-Function-4ed3470,enablevr,0,0,0,BlackOps4.exe+1B6CC80,
+CSC-Function-4ed3470,enablevr,0,0,0,BlackOps4.exe+1B6CC80,nulled
 CSC-Function-4ed3470,startmission,1,1,0,BlackOps4.exe+1C7DED0,
 CSC-Function-4ed3470,stopmission,1,1,0,BlackOps4.exe+1C81F70,
 CSC-Function-4ed3470,disablevisioncirclebyentnum,2,2,0,BlackOps4.exe+1C86050,
