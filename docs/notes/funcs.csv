@@ -1710,7 +1710,7 @@ GSC-Method-49bd540,makevehicleunusable,0,0,0,BlackOps4.exe+340EDE0,
 GSC-Method-49bd540,usevehicle,2,2,0,BlackOps4.exe+340EE40,
 GSC-Method-49bd540,function_defc91b2,1,1,0,BlackOps4.exe+340EF20,
 GSC-Method-49bd540,isvehicleseatoccupied,1,1,0,BlackOps4.exe+340EFE0,
-GSC-Method-49bd540,function_dcef0ba1,1,1,0,BlackOps4.exe+340F090,
+GSC-Method-49bd540,<entity> function_dcef0ba1(int seat),1,1,0,BlackOps4.exe+340F090,Return if the seat is valid for this vehicle. entity if vehicle isn't a vehicle
 GSC-Method-49bd540,function_212db732,1,1,0,BlackOps4.exe+340F130,
 GSC-Method-49bd540,setneargoalnotifydist,1,1,0,BlackOps4.exe+340F210,
 GSC-Method-49bd540,setplanegoalpos,1,b,0,BlackOps4.exe+340F2B0,

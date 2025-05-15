@@ -1296,17 +1296,47 @@ Offset	Xref	Function	Line	Column	Pseudocode line
 
 ximage_ce8f8ad3c930512 dice cod18
 
+Trigger happy tag
+Mariachi mayhem
+
+frontend (mod) 0x30d69437 0x77332a3f 0xfd3cd65c
+
 i_mtl_wpn_t8_camo_topology_04_c
 ^(([^.0-9sn])|(s[^u])|(n[^u])|(su[^b])).+
 
 dump "N:\SteamLibrary\steamapps\common\Call of Duty HQ\cod.exe"
 dump "N:\SteamLibrary\steamapps\common\Call of Duty HQ\sp23\sp23-cod.exe"
+dump "N:\SteamLibrary\steamapps\common\Call of Duty HQ\mp24\mp24-cod.exe"
 sethandler mw6 init "N:\SteamLibrary\steamapps\common\Call of Duty HQ" setlocaleprefix "eng_" loadcommonfiles
 sethandler mw6 init "N:\SteamLibrary\steamapps\common\Call of Duty HQ\sp23" loadcommonfiles
 sethandler mw6 init "N:\SteamLibrary\steamapps\common\Call of Duty HQ"  decryptscript "N:\bo4hash\t8wip\gsc\output_bo6\gsc" "N:\bo4hash\t8wip\gsc\output_bo6\gsc_dec"
-sethandler bo6 init "N:\SteamLibrary\steamapps\common\Call of Duty HQ\" loadcommonfiles
+enableverbosity sethandler bo6 init "N:\SteamLibrary\steamapps\common\Call of Duty HQ\" loadcommonfiles
 loadwc srv_* loadwc fra_* loadwc *zm_t10_quartz*
+sethandler bo6 setflag sp init "N:\SteamLibrary\steamapps\common\Call of Duty HQ\" loadcommonfiles
+sethandler bocw init "O:\SteamLibrary\steamapps\common\Call of Duty Black Ops Cold War\" loadcommonfiles
 
+#namespace mp_jup_st_c_ob_
+
+#namespace mp_jup_.*_ob_
+// common ob
+mp_jup_st_c_ob_interacts_safe_cs / namespace_1c628592735d653a -> 1a82318e9000806c -> 795ec6e04a92f26a
+mp_jup_st_d_ob_contracts_zombie_control_cs / namespace_49716eb683ec01f1 -> 1a98318e9018b39f -> 795ec6e04a92f26a
+mp_jup_st_e_ob_ambient_mimics_cs / namespace_f31648baa92750b8 -> 1a9c518e901cefd6 -> 795ec6e04a92f26a
+mp_jup_st_f_ob_zip_door_cs / namespace_783ecb4f239cb69d -> 1a8f318e900e94f1 -> 795ec6e04a92f26a
+
+// name -> map_ob
+
+// sira
+mp_jup_sira_ob_activities_doghouse_cs / namespace_5a3652d54134c056 -> 84fadd98cb4eb6b1 -> 81279089394a70a5
+mp_jup_sira_ob_locked_spaces_cs / namespace_e71ed1e132bcd182 -> 84fadd98cb4eb6b1
+// mp_jup_tower
+mp_jup_tower_ob_activities_doghouse_cs / namespace_ba2dc23ab854879a -> 64eca95c9d527073 -> 81279089394a70a5
+mp_jup_tower_ob_s5_rift_run_ee_cs / namespace_80f13d3402b78c5d -> 64eca95c9d527073
+mp_jup_fort_ob_locked_spaces_cs / namespace_35558fc001df04a -> c3bb8dd558db4ead -> 81279089394a70a5
+mp_jup_bigmap_ob_rift_gate_cs / namespace_580fdd1a01eb7ad -> e51c9dec7a1be894 -> 81279089394a70a5
+
+1B4C4A84 18B80100 02050009 00101007 04370200 003C0201 023C0202
+se
 bo6 hashes:
 #x4%llx -> scrhash
 
